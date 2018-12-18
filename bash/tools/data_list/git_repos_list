@@ -1,0 +1,4 @@
+git clone https://github.com/rancher/community-catalog.git --bare github.com/rancher/community-catalog.git
+git clone https://git.rancher.io/rancher-catalog.git --bare git.rancher.io/rancher-catalog.git
+git clone -b 2.0.0-ONAP --single-branch http://gerrit.onap.org/r/testsuite/properties.git --bare gerrit.onap.org/r/testsuite/properties.git
+git clone -b 2.0.0-ONAP --single-branch http://gerrit.onap.org/r/portal.git --bare gerrit.onap.org/r/portal.git
