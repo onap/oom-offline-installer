@@ -1,0 +1,14 @@
+backports.functools_lru_cache
+certifi
+chardet
+cheroot
+CherryPy
+idna
+more_itertools
+portend
+PyMySQL
+pytz
+requests
+six
+tempora
+urllib3
