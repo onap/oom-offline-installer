@@ -1,0 +1,5 @@
+---
+- debug:
+    msg: "phase is {{ phase }}"
+
+- include_tasks: "{{ phase }}.yml"
