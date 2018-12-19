@@ -1,0 +1,34 @@
+FROM alpine:3.8
+
+ARG ansible_version=2.6.3
+LABEL ansible_version=$ansible_version vendor=Samsung
+
+# Install Ansible build dependencies
+RUN apk --no-cache update \
+&& apk --no-cache --update add --virtual build-dependencies \
+  gcc \
+  make \
+  musl-dev \
+  libffi-dev \
+  openssl-dev \
+  python3-dev \
+&& apk add --no-cache \
+  python3 \
+  py3-pip \
+  openssh-client \
+  openssl \
+  py3-openssl \
+  openssh \
+  sshpass \
+&& pip3 install --no-cache-dir --upgrade pip \
+&& pip3 install --no-cache-dir \
+  ansible==$ansible_version \
+  jmespath \
+&& apk del build-dependencies && rm -rf /var/cache/apk/*
+
+ENV ANSIBLE_HOST_KEY_CHECKING false
+ENV ANSIBLE_RETRY_FILES_ENABLED false
+
+WORKDIR /ansible
+
+ENTRYPOINT ["ansible-playbook"]
