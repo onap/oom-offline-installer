@@ -1,0 +1,33 @@
+---
+- name: Create nfs directory
+  file:
+    path: "{{ nfs_mount_path }}"
+    state: directory
+    mode: 0777
+
+- name: Setup nfs server
+  block:
+    - name: Start services
+      systemd:
+        name: "{{ item }}"
+        state: started
+      with_items: "{{ nfs_services[ansible_os_family] }}"
+
+    - name: Add hosts to exports
+      template:
+        src: exports.j2
+        dest: /etc/exports
+
+    - name: Export nfs
+      command: exportfs -ar
+  when:
+    - "'nfs-server' in group_names"
+
+- name: Mount dockerdata-nfs
+  mount:
+    path: "{{ nfs_mount_path }}"
+    src: "{{ hostvars[groups['nfs-server'].0].ansible_host }}:{{ nfs_mount_path }}"
+    fstype: nfs
+    state: mounted
+  when:
+    - "'nfs-server' not in group_names"
