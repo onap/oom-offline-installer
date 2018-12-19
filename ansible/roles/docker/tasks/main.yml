@@ -1,0 +1,34 @@
+---
+- name: Install docker
+  package:
+    name: 'docker-ce'
+    state: present
+  notify:
+    - Restart Docker
+
+- name: Install docker python module
+  package:
+    name: 'python2-docker'
+    state: present
+
+- name: Ensure /etc/docker exists
+  file:
+    path: /etc/docker
+    state: directory
+
+- name: Setup docker dns settings
+  json_add:
+    path: /etc/docker/daemon.json
+    key: dns
+    value: "{{ hostvars[groups.infrastructure[0]].ansible_host }}"
+  notify:
+    - Restart Docker
+
+- name: Force notified handlers to run at this point
+  meta: flush_handlers
+
+- name: Ensure docker is started
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
