@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Config
+clusters:
+- cluster:
+    api-version: v1
+    insecure-skip-tls-verify: true
+    server: "https://{{ ansible_host }}:8080/r/projects/{{ k8s_env_id }}/kubernetes:6443"
+  name: "{{ app_name }}"
+contexts:
+- context:
+    cluster: "{{ app_name }}"
+    user: "{{ app_name }}"
+  name: "{{ app_name }}"
+current-context: "{{ app_name }}"
+users:
+- name: "{{ app_name }}"
+  user:
+    token: "{{ (['Basic', [key_public, key_private] | join(':') | b64encode] | join(' ')) | b64encode }}"
+

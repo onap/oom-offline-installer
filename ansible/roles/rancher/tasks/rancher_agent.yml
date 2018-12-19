@@ -1,0 +1,13 @@
+---
+- name: Add Rancher Agent
+  docker_container:
+    name: rancher_agent
+    image: "{{ server_hostvars.rancher_agent_image }}"
+    command: "{{ server_hostvars.rancher_agent_reg_url }}"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/var/lib/rancher:/var/lib/rancher"
+    auto_remove: yes
+    privileged: yes
+  vars:
+    server_hostvars: "{{ hostvars[groups.infrastructure.0] }}"
