@@ -1,0 +1,34 @@
+---
+- name: Helm init and upgrade
+  command: |
+     {{ helm_bin_dir }}/helm init
+     --upgrade
+     --skip-refresh
+
+- name: Wait for helm
+  wait_for: timeout=10
+  delegate_to: localhost
+
+- name: Get all helm repos
+  command: "{{ helm_bin_dir }}/helm repo list"
+  register: repos
+
+- name: Remove stable repo
+  command: "{{ helm_bin_dir }}/helm repo remove stable"
+  when: "'stable' in repos.stdout"
+
+- name: Helm Serve
+  shell: "{{ helm_bin_dir }}/helm serve &"
+  async: 45
+  poll: 0
+
+- name: Helm Add Repo
+  command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name }} {{ helm_repository_url }}"
+
+- name: Helm Make All
+  make:
+    chdir: "{{ app_helm_charts_directory }}"
+    target: all
+
+- name: Helm Install application {{ app_name }}
+  command: "helm install {{ helm_repository_name }}/{{ app_helm_chart_name }} --name {{ app_helm_release_name }} --namespace {{ app_kubernetes_namespace }}"
