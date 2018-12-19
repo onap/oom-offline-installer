@@ -1,0 +1,51 @@
+---
+# DO NOT ADD SPACE AROUND ';'
+- name: Start rancher/server:v1.6.14
+  docker_container:
+    name: rancher_server
+    image: rancher/server:v1.6.14
+    command: ["sh", "-c", "/usr/sbin/update-ca-certificates;/usr/bin/entry /usr/bin/s6-svscan /service"]
+    ports: 8080:8080
+    state: started
+    restart_policy: unless-stopped
+    volumes:
+      - "{{ app_data_path }}/certs:/usr/local/share/ca-certificates/extra:ro"
+
+- name: Wait for rancher server to be ready
+  uri:
+    url: "{{ rancher_server_url }}/v2-beta"
+  register: response
+  retries: 10
+  delay: 30
+  until: not response.failed
+
+- name: Create kubernetes environment
+  rancher_k8s_environment:
+    name: "{{ app_name }}"
+    descr: "Kubernetes environment for {{ app_name }}"
+    server: "{{ rancher_server_url }}"
+    delete_other_k8s: "{{ rancher_remove_other_env }}"
+    force: "{{ rancher_redeploy_k8s_env }}"
+    host_os: "{{ ansible_os_family }}"
+  register: env
+  retries: 10
+  delay: 5
+  until: env.data is defined
+
+- name: Set apikey values
+  set_fact:
+    k8s_env_id: "{{ env.data.environment.id }}"
+    key_public: "{{ env.data.apikey.public }}"
+    key_private: "{{ env.data.apikey.private }}"
+    rancher_agent_image: "{{ env.data.registration_tokens.image }}"
+    rancher_agent_reg_url: "{{ env.data.registration_tokens.reg_url }}"
+
+- name: Ensure .kube directory exists
+  file:
+    path: "{{ kube_directory }}"
+    state: directory
+
+- name: Create kube config
+  template:
+    src: kube_config.j2
+    dest: "{{ kube_directory }}/config"
