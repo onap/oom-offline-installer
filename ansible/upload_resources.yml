@@ -1,0 +1,49 @@
+---
+- name: Check for presence of auxiliary resources tar file
+  hosts: resources[0]
+  tasks:
+    - name: Store auxiliary resources tar file info into variable
+      stat:
+        path: "{{ hostvars[groups.resources.0].resources_dir }}/{{ hostvars[groups.resources.0].aux_resources_filename }}"
+      register: aux_file_presence
+
+- name: Check infrastructure server for presence of resources and requirements
+  hosts: infrastructure
+  tasks:
+    - name: Check if nfs-utils is installed
+      yum:
+        list: nfs-utils
+      register: nfs_utils_check
+
+    - name: Check if the resources are already unpacked
+      stat:
+        path: "{{ app_data_path }}"
+      register: resources_data_check
+
+    - name: Check if the auxilliary resources are already unpacked
+      stat:
+        path: "{{ aux_data_path }}"
+      register: aux_resources_data_check
+      when: aux_data_path is defined and aux_data_path is not none
+
+- name: Ensure the existence of data directory/ies on infrastructure server
+  hosts: infrastructure
+  tasks:
+    - name: Create data directory
+      file:
+        path: "{{ app_data_path }}"
+        state: directory
+
+    - name: Create auxiliary data directory
+      file:
+        path: "{{ aux_data_path }}"
+        state: directory
+      when: aux_data_path is defined and aux_data_path is not none
+
+- name: Upload resources to infrastructure server
+  hosts: infrastructure
+  roles:
+    # use nfs or ssh and unpack resources into data directory/ies
+    - role: resource-data
+      vars:
+        transport: "{{ 'nfs' if resources_on_nfs and (nfs_utils_check.results|selectattr('yumstate', 'match', 'installed')|list|length != 0) else 'ssh' }}"
