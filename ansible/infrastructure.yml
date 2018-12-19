@@ -1,0 +1,71 @@
+---
+- name: Perform common environment setup for nodes
+  hosts: infrastructure, kubernetes
+  tasks:
+    - name: Setup resolv.conf
+      lineinfile:
+        line: "nameserver {{ hostvars[groups.infrastructure[0]].ansible_host }}"
+        path: /etc/resolv.conf
+        state: present
+        insertbefore: BOF
+      become: yes
+    - name: Add application offline rpm repository
+      yum_repository:
+        name: "{{ app_name }}"
+        file: "{{ app_name | lower }}"
+        description: "{{ app_name }} offline repository"
+        baseurl: "{{ 'http://repo.infra-server' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
+        gpgcheck: no
+        enabled: yes
+      when: deploy_rpm_repository
+      become: yes
+
+- name: Setup firewall
+  hosts: infrastructure, kubernetes
+  roles:
+    - role: firewall
+      vars:
+        state: disable
+
+- name: Setup infrastructure servers
+  hosts: infrastructure
+  roles:
+    - certificates
+    - docker
+    - dns
+    - vncserver
+    - role: nexus
+      vars:
+        phase: install
+    - nginx
+  tasks:
+    - name: "wait for nexus to come up"
+      uri:
+        url: "{{ nexus_url }}/service/metrics/healthcheck"
+        user: admin
+        password: admin123
+        force_basic_auth: yes
+        method: GET
+      register: nexus_wait
+      until: not nexus_wait.failed
+      retries: 30
+      delay: 10
+
+- name: Nexus changes in runtime
+  hosts: infrastructure
+  roles:
+    - role: nexus
+      vars:
+        phase: configure
+      when: populate_nexus | bool
+    - role: nexus
+      vars:
+        phase: runtime-populate
+      when: runtime_images is defined
+
+- name: Setup base for Kubernetes nodes
+  hosts: kubernetes
+  roles:
+    - docker
+  tasks:
+    - import_tasks: roles/certificates/tasks/upload_root_ca.yml
