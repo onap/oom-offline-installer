@@ -1,0 +1,7 @@
+---
+- name: Install kubectl
+  copy:
+    src: "{{ app_data_path }}/downloads/kubectl"
+    dest: "{{ kubectl_bin_dir }}/kubectl"
+    remote_src: true
+    mode: 0755
