@@ -1,0 +1,23 @@
+---
+- name: Setup nfs server
+  hosts: nfs-server
+  roles:
+    - {role: nfs, when: groups.kubernetes | length > 1 }
+
+- name: Setup nfs mounts
+  hosts: kubernetes:!nfs-server
+  roles:
+    - {role: nfs, when: groups.kubernetes | length > 1 }
+
+- name: Install Helm application {{ app_name }} into offline Kubernetes cluster
+  hosts: infrastructure
+  roles:
+    - role: application-install
+      vars:
+        phase: pre-install
+    - role: application-install
+      vars:
+        phase: install
+    - role: application-install
+      vars:
+        phase: post-install
