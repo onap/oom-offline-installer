@@ -1,0 +1,36 @@
+---
+nfs_mount_path: /dockerdata-nfs
+vnc_passwd: samsung
+simulated_hosts:
+  git:
+    - gerrit.onap.org
+    - git.rancher.io
+    - github.com
+  http:
+    - git.onap.org
+    - nexus.onap.org
+    - repo.infra-server
+    - www.getcloudify.org
+    - www.springframework.org
+    - repo.maven.apache.org
+    - repo1.maven.org
+  nexus:
+    - docker.elastic.co
+    - docker.io
+    - gcr.io
+    - nexus.{{ ansible_nodename }}
+    - nexus3.onap.org
+    - registry-1.docker.io
+    - registry.hub.docker.com
+    - registry.npmjs.org
+all_simulated_hosts:
+    "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
+rancher_server_url: "http://{{ hostvars[groups.infrastructure.0].ansible_host }}:8080"
+rancher_remove_other_env: yes
+rancher_redeploy_k8s_env: yes
+populate_nexus: no
+kube_directory: /root/.kube
+kubectl_bin_dir: /usr/local/bin
+helm_bin_dir: /usr/local/bin
+helm_repository_name: local
+helm_repository_url: http://127.0.0.1:8879
