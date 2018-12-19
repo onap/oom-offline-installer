@@ -1,0 +1,17 @@
+---
+- name: Check if firewalld is installed
+  yum:
+    list: firewalld
+    disablerepo: "*"
+  register: firewalld_check
+
+- name: Stop and disable firewalld if exists
+  service:
+    name: firewalld
+    state: stopped
+    enabled: no
+  when: firewalld_check.results|selectattr('yumstate', 'match', 'installed')|list|length != 0
+
+- name: Flush iptables
+  iptables:
+    flush: true
