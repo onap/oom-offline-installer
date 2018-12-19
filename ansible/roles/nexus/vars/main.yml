@@ -1,0 +1,1 @@
+nexus_url: "https://nexus.{{ hostvars[groups.infrastructure[0]].ansible_nodename }}"

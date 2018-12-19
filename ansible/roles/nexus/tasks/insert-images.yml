@@ -1,0 +1,19 @@
+---
+- name: Load docker images and push into registry
+  block:
+    - set_fact:
+        component: "{{ (item.path | basename | splitext)[0] }}"
+
+    - name: Docker login
+      docker_login:
+        registry: "{{ runtime_images[component].registry }}"
+        username: admin
+        password: admin123
+
+    - name: Load and push component {{ component }}
+      docker_image:
+        name: "{{ runtime_images[component].registry }}{{ runtime_images[component].path }}"
+        tag: "{{ runtime_images[component].tag }}"
+        push: yes
+        load_path: "{{ item.path }}"
+

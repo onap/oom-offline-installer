@@ -1,0 +1,2 @@
+#Defaults to install, can be set to configure.
+phase: install

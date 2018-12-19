@@ -1,0 +1,29 @@
+---
+- name: Change ownership of nexus_data
+  file:
+    path: "{{ app_data_path }}/nexus_data"
+    owner: 200
+    group: 200
+    recurse: yes
+
+- name: Load nexus image
+  docker_image:
+    name: sonatype/nexus3
+    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/sonatype_nexus3_latest.tar"
+    state: present
+
+- name: Create nexus network
+  docker_network:
+    name: nexus_network
+    state: present
+
+- name: Run nexus container
+  docker_container:
+    name: nexus
+    image: sonatype/nexus3
+    networks:
+      - name: nexus_network
+    volumes:
+      - "{{ app_data_path }}/nexus_data:/nexus-data:rw"
+    state: started
+    restart_policy: unless-stopped
