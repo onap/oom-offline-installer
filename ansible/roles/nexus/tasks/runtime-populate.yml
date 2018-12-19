@@ -1,0 +1,12 @@
+---
+- name: Find images to be inserted into nexus in runtime
+  find:
+    paths: "{{ aux_data_path }}"
+    patterns: '*.tar'
+  register: tar_images
+
+# WA: block of tasks cant be executed in iterations
+# need to iterate over those tasks in include
+- include: "insert-images.yml"
+  with_items: "{{ tar_images.files }}"
+

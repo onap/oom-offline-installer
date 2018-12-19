@@ -1,0 +1,34 @@
+---
+- name: "check if the configuration script is uploaded"
+  uri:
+    url: "{{ nexus_url }}/service/rest/v1/script/configure"
+    method: GET
+    force_basic_auth: yes
+    user: admin
+    password: admin123
+    status_code: [200, 404]
+  register: script
+- block:
+    - name: "upload the configuration script"
+      uri:
+        url: "{{ nexus_url }}/service/rest/v1/script"
+        method: POST
+        force_basic_auth: yes
+        user: admin
+        password: admin123
+        body_format: json
+        body:
+          name: configure
+          type: groovy
+          content: "{{ lookup('file', 'files/configure.groovy') }}"
+        status_code: [204]
+    - name: "execute configuration script"
+      uri:
+        url: "{{ nexus_url }}/service/rest/v1/script/configure/run"
+        method: POST
+        force_basic_auth: yes
+        user: admin
+        password: admin123
+        body_format: raw
+        headers: { "Content-Type": "text/plain" }
+  when: script.status == 404
