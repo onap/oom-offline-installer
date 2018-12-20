@@ -5,9 +5,14 @@
      --upgrade
      --skip-refresh
 
-- name: Wait for helm
-  wait_for: timeout=10
-  delegate_to: localhost
+#A correct way to implement this would be using --wait option in helm init invocation.
+#However, it does not work due to https://github.com/helm/helm/issues/4031 (fixed in newer helm release)
+- name: "Wait for helm upgrade to finish"
+  command: "{{ helm_bin_dir }}/helm version --tiller-connection-timeout 10"
+  register: result
+  until: result.rc == 0
+  delay: 10
+  retries: 12
 
 - name: Get all helm repos
   command: "{{ helm_bin_dir }}/helm repo list"
@@ -27,8 +32,10 @@
 
 - name: Helm Make All
   make:
-    chdir: "{{ app_helm_charts_directory }}"
+    chdir: "{{ app_helm_charts_infra_directory }}"
     target: all
+  environment:
+    PATH: "{{ helm_bin_dir }}:{{ ansible_env.PATH }}"
 
 - name: Helm Install application {{ app_name }}
-  command: "helm install {{ helm_repository_name }}/{{ app_helm_chart_name }} --name {{ app_helm_release_name }} --namespace {{ app_kubernetes_namespace }}"
+  command: "{{ helm_bin_dir }}/helm install {{ helm_repository_name }}/{{ app_helm_chart_name }} --name {{ app_helm_release_name }} --namespace {{ app_kubernetes_namespace }}"

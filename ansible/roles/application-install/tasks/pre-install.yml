@@ -1,0 +1,23 @@
+---
+# before custom specific code is executed we need to move helm charts to infra
+- name: Distribute helm charts to infra node
+  block:
+    - name: Archive helm charts
+      archive:
+        path: "{{ app_helm_charts_install_directory }}/*"
+        dest: "{{ app_helm_charts_install_directory }}.tgz"
+      delegate_to: localhost
+    - name: Create helm charts dir on infra
+      file:
+        path: "{{ app_helm_charts_infra_directory }}"
+        state: directory
+        mode: 0755
+    - name: Unarchive helm charts on infra node
+      unarchive:
+        src: "{{ app_helm_charts_install_directory }}.tgz"
+        dest: "{{ app_helm_charts_infra_directory }}"
+
+- name: "Execute custome role {{ application_pre_install_role }} if defined."
+  include_tasks: custom_role.yml
+  vars:
+    application_custom_role: "{{ application_pre_install_role }}"

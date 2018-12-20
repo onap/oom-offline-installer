@@ -1,0 +1,9 @@
+---
+# Caller fills application_custom_role variable with actual role name.
+- name: "Execute custom role {{ application_custom_role }} {{ phase }} Helm install."
+  include_role:
+    name: "{{ application_custom_role }}"
+  when:
+    - application_custom_role is defined
+    - application_custom_role is not none
+    - application_custom_role | trim != ''
