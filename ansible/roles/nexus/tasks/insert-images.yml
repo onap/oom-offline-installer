@@ -16,4 +16,4 @@
         tag: "{{ runtime_images[component].tag }}"
         push: yes
         load_path: "{{ item.path }}"
-
+        timeout: 120

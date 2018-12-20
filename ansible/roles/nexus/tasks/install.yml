@@ -11,6 +11,7 @@
     name: sonatype/nexus3
     load_path: "{{ app_data_path }}/offline_data/docker_images_infra/sonatype_nexus3_latest.tar"
     state: present
+    timeout: 120
 
 - name: Create nexus network
   docker_network:
