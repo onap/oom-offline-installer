@@ -71,11 +71,11 @@ app_name:
 # prebuilt nexus blob in installation time
 # Component name must match with tar filename
 # e.g.
-# aaiadapter-0.0.1.tar is expected in aux_data_path for aaiadapter image
+# aaa-component-0.0.1.tar is expected in aux_data_path for aaa-component image
 #runtime_images:
-#  aaiadapter-0.0.1:
+  #  aaa-component-0.0.1:
 #    registry: "nexus3.onap.org:10001"
-#    path:     "/onap/aaiadapter/aaiadapter"
+#    path:     "/onap/components/aaa-component"
 #    tag:      "latest"
 runtime_images:
 
