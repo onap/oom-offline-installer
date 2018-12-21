@@ -1,0 +1,24 @@
+authorityKeyIdentifier=keyid,issuer
+basicConstraints=CA:FALSE
+keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = nexus.student12
+DNS.2 = gcr.io
+DNS.3 = git.rancher.io
+DNS.4 = gerrit.onap.org
+DNS.5 = registry-1.docker.io
+DNS.6 = docker.io
+DNS.7 = registry.npmjs.org
+DNS.8 = nexus3.onap.org
+DNS.9 = nexus.onap.org
+DNS.10 = docker.elastic.co
+DNS.11 = www.getcloudify.org
+DNS.12 = registry.hub.docker.com
+DNS.13 = github.com
+DNS.14 = repo.maven.apache.org
+DNS.15 = www.springframework.org
+DNS.16 = repo1.maven.org
+DNS.17 = git.onap.org
+
