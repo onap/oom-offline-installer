@@ -448,8 +448,9 @@ case "$action" in
         install_wrapper
 
         # execute chroot
-        # copy resolv.conf
+        # copy resolv.conf and hosts file
         cp -a /etc/resolv.conf "$CHROOT_DIR"/etc/resolv.conf
+        cp -a /etc/hosts "$CHROOT_DIR"/etc/hosts
 
         if [ -n "$1" ] ; then
             :
