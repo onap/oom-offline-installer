@@ -15,6 +15,9 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 readonly IMG_LIST="/tmp/docker_image_list.txt"
+
 echo "gathering images"
 docker images --digests | grep -v 'IMAGE ID'|awk '{printf("%s:%s %s\n", $1, $2, $3)}' > $IMG_LIST
+

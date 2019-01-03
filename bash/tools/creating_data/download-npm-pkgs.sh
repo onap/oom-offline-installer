@@ -15,15 +15,19 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 LIST_FILE="$1"
+
 if [[ -z "$LIST_FILE" ]]; then
     LIST_FILE="all_npm_list.txt"
 fi
+
 outdir="$2"
 if [[ -z "$outdir" ]]; then
     echo "Missing arg outdir"
     exit 1
 fi
+
 mkdir -p "$outdir"
 cd "$outdir"
 lines=$(cat "$LIST_FILE" | wc -l)
@@ -33,4 +37,5 @@ while read -r line; do
     # yallist@2.1.2
     npm pack $line
     cnt=$((cnt+1))
+
 done < "$LIST_FILE"

@@ -1,3 +1,5 @@
+#   COPYRIGHT NOTICE STARTS HERE
+#
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,9 +15,13 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 FIND_PATH="/var/lib/docker/aufs/mnt/"
+
 LIST_FILE="/tmp/npm.list"
+
 : > $LIST_FILE
+
 echo "gathering npm packages from $FIND_PATH"
 while read -r line; do
     # yallist/2.1.2/package/package.json
@@ -24,4 +30,6 @@ while read -r line; do
 #    tag=$(echo $image|awk '{print $2}')
 #    save_image "$name:$tag"
     echo "$name@$ver" >> $LIST_FILE
+
 done <<< "$(find $FIND_PATH -path "*/.npm/*/package.json" | sed 's#^.*\.npm/\(.*\)$#\1#' | sort | uniq)"
+

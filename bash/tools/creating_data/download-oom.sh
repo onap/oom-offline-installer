@@ -15,6 +15,7 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 outdir="$1"
 if [[ -z "$outdir" ]]; then
     echo "Missing output dir"
@@ -25,9 +26,12 @@ if [[ -z "$patch_file" ]]; then
     echo "Missing patch file"
     exit 1
 fi
+
 cd "$outdir"
 git clone https://github.com/onap/oom.git
 cd oom
 echo "Checkout base commit which will be patched"
 git checkout -b patched_beijing bf47d706fc8b94fd1232960e90329a9a532c6a7b
+
 patch -p1 < "$patch_file"
+

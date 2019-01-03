@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+
 #   COPYRIGHT NOTICE STARTS HERE
 #
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
@@ -16,6 +17,8 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
+
 # boilerplate
 RELATIVE_PATH=../ # relative path from this script to 'common-functions.sh'
 if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
@@ -23,17 +26,22 @@ if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
     LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
     . "${LOCAL_PATH}"/"${RELATIVE_PATH}"/common-functions.sh
 fi
+
 SRC_IMAGE_LIST=$1
 if [[ -z "$SRC_IMAGE_LIST" ]]; then
     SRC_IMAGE_LIST="docker_image_list.txt"
 fi
+
 echo "Download all images"
+
 lines=$(cat $SRC_IMAGE_LIST | wc -l)
 line=1
 while read -r image; do
     echo "== pkg #$line of $lines =="
+
     name=$(echo $image|awk '{print $1}')
     digest=$(echo $image|awk '{print $2}')
+
     echo "$name digest:$digest"
     if [[ "$digest" == "<none>" ]]; then
         retry docker -l error pull "$name"
@@ -41,4 +49,5 @@ while read -r image; do
         retry docker -l error pull "$name"
     fi
     line=$((line+1))
+
 done < "$SRC_IMAGE_LIST"

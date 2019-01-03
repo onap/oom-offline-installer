@@ -1,3 +1,5 @@
+#   COPYRIGHT NOTICE STARTS HERE
+#
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +15,8 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
+
 if [[ -z "$ONAP_SERVERS" ]]; then
 #    ONAP_SERVERS="oom-beijing-postRC2-master oom-beijing-postRC2-compute1 oom-beijing-postRC2-compute2"
     echo "Missing environment ONAP_SERVERS"
@@ -22,15 +26,20 @@ if [[ -z "$LISTS_DIR" ]]; then
     LISTS_DIR=.
     echo "Using default output directory ."
 fi
+
 echo "Using onap servers: $ONAP_SERVERS"
+
 cd $(dirname $0)
+
 for server in $ONAP_SERVERS; do
+
     echo "================================================="
     echo "Gathering docker images list from server: $server"
     echo "================================================="
     scp ./make-docker-images-list.sh $server:/tmp/
     ssh $server '/tmp/make-docker-images-list.sh;rm /tmp/make-docker-images-list.sh'
     scp $server:/tmp/docker_image_list.txt $LISTS_DIR/docker_image_list-${server}.txt
+
     echo "================================================="
     echo "Gathering NPM packages list from server: $server"
     echo "================================================="
@@ -38,5 +47,7 @@ for server in $ONAP_SERVERS; do
     ssh $server '/tmp/make-npm-list.sh; rm /tmp/make-npm-list.sh'
     scp $server:/tmp/npm.list $LISTS_DIR/npm_list-${server}.txt
 done
+
 cat "$LISTS_DIR"/docker_image_list-*.txt | grep -v sonatype/nexus3 | grep -v own_nginx | sort | uniq > "$LISTS_DIR/docker_image_list.txt"
 cat "$LISTS_DIR"/npm_list-*.txt | grep -v '^@$' | sort | uniq > "$LISTS_DIR/npm_list.txt"
+

@@ -15,20 +15,25 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 LIST_FILE="$1"
 if [[ -z "$LIST_FILE" ]]; then
     echo "Missing list file"
     exit 1
 fi
+
 outdir="$2"
 if [[ -z "$outdir" ]]; then
     echo "Missing output directory"
     exit 1
 fi
+
 lines=$(cat "$LIST_FILE" | wc -l)
 cnt=1
+
 # create output dir if not exists
 mkdir -p "$outdir"
+
 while read -r line; do
     # www.springframework.org/schema/tool/spring-tool-4.3.xsd
     file="${line%%\?*}"
@@ -39,4 +44,5 @@ while read -r line; do
     # drop below 10b/10s
     curl --retry 5 -y 10 -Y 10 --location  "$line" -o "$outdir/$file" &>/dev/null
     cnt=$((cnt+1))
+
 done < "$LIST_FILE"

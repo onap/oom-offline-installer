@@ -15,17 +15,22 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 lists_dir="$1"
+
 if [[ -z "$lists_dir" ]]; then
     echo "Missing argument for lists_dir"
     exit 1
 fi
+
 outdir="$2"
 if [[ -z "$outdir" ]]; then
     outdir="./git-repo"
 fi
+
 mkdir -p "$outdir"
 cd "$outdir"
 # NOTE: will be better to use sh extension?
 sh $lists_dir/git_manual_list
 sh $lists_dir/git_repos_list
+

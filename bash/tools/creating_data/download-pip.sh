@@ -15,24 +15,31 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 LIST_FILE="$1"
 if [[ -z "$LIST_FILE" ]]; then
     echo "Missing list file"
     exit 1
 fi
 LIST_FILE=$(readlink -f "$LIST_FILE")
+
+
 outdir="$2"
 if [[ -z "$outdir" ]]; then
     echo "Missing output directory"
     exit 1
 fi
+
 lines=$(cat "$LIST_FILE" | wc -l)
 cnt=1
+
 # create output dir if not exists
 mkdir -p "$outdir"
+
 cd "$outdir"
 while read -r line; do
     echo "Downloading $cnt / $lines: $line"
     pip download $line
     cnt=$((cnt+1))
+
 done < "$LIST_FILE"

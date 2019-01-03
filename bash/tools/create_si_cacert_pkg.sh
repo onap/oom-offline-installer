@@ -1,4 +1,5 @@
 #! /bin/bash
+
 #   COPYRIGHT NOTICE STARTS HERE
 #
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
@@ -16,9 +17,13 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
+
 self="$0"
 tools_dir=$(dirname "$self")
+
 TARGET_FILE="./install_cacert.sh"
+
 cat "$tools_dir/certificates/self_extract_cacert.sh" "$tools_dir/../../live/certs/rootCAcert.crt" > $TARGET_FILE
 chmod a+x $TARGET_FILE
 echo "Created self installation file: $TARGET_FILE"

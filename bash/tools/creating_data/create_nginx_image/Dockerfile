@@ -15,8 +15,18 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 FROM nginx:alpine
+
 RUN apk add --no-cache --update fcgiwrap git git-daemon spawn-fcgi
+
+#RUN mkdir /srv/http
+#VOLUME ["/var/log/nginx"]
+
 COPY gitconfig /etc/
+#COPY nginx.conf /etc/nginx/nginx.conf
+
 CMD spawn-fcgi -M 666 -s /var/run/fcgiwrap.socket /usr/bin/fcgiwrap && \
     nginx -g "daemon off;"
+
+#CMD ["spawn-fcgi","-M 666","-s /var/run/fcgiwrap.socket","/usr/sbin/fcgiwrap"]

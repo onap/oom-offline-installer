@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
+
 #   COPYRIGHT NOTICE STARTS HERE
 #
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
@@ -16,6 +17,8 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
+
 script_dir="$(dirname ${BASH_SOURCE[0]})"
 cd "$script_dir"
 docker build -t own_nginx .

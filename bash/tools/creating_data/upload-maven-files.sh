@@ -15,6 +15,7 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
+
 DATA_DIR="$1"
 if [[ -z "$DATA_DIR" ]]; then
     # needs for example: /root/onap-offline-installer/http
@@ -22,10 +23,13 @@ if [[ -z "$DATA_DIR" ]]; then
     echo "Usage: $0 <path to http dir> <name of server> [<next server>...]"
     exit 1
 fi
+
 shift
 cd "$DATA_DIR"
+
 for server in $*; do
     echo "Uploading to server: $server"
+
     lines=$(find $server/ -type f | wc -l)
     count=1
     while read -r url; do
@@ -34,5 +38,6 @@ for server in $*; do
         path="$url"
         echo "Uploading file: $url"
         curl -u admin:admin123 --upload-file $path http://$url
+
     done <<< "$(find $server/ -type f)"
 done
