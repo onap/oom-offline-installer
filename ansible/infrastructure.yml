@@ -4,7 +4,7 @@
   tasks:
     - name: Setup resolv.conf
       lineinfile:
-        line: "nameserver {{ hostvars[groups.infrastructure[0]].ansible_host }}"
+        line: "nameserver {{ hostvars[groups.infrastructure[0]].cluster_ip }}"
         path: /etc/resolv.conf
         state: present
         insertbefore: BOF

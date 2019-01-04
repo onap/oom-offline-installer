@@ -24,6 +24,7 @@ RUN apk --no-cache update \
 && pip3 install --no-cache-dir \
   ansible==$ansible_version \
   jmespath \
+  netaddr \
 && apk del build-dependencies && rm -rf /var/cache/apk/*
 
 ENV ANSIBLE_HOST_KEY_CHECKING false
