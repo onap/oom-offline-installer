@@ -4,7 +4,7 @@
   tasks:
     - name: Setup resolv.conf
       lineinfile:
-        line: "nameserver {{ hostvars[groups.infrastructure[0]].ansible_host }}"
+        line: "nameserver {{ hostvars[groups.infrastructure[0]].ansible_all_ipv4_addresses | ipaddr(kubernetes_subnet) | first }}"
         path: /etc/resolv.conf
         state: present
         insertbefore: BOF

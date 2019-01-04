@@ -20,7 +20,7 @@
   json_add:
     path: /etc/docker/daemon.json
     key: dns
-    value: "{{ hostvars[groups.infrastructure[0]].ansible_host }}"
+    value: "{{ hostvars[groups.infrastructure[0]].ansible_all_ipv4_addresses | ipaddr(kubernetes_subnet) | first }}"
   notify:
     - Restart Docker
 
