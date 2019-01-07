@@ -16,6 +16,24 @@
       "revId": "55dd7f5c28a0d3e68a3825d25d757a63e8622155",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_f55c2c1b",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-01-07T15:18:37Z",
+      "side": 1,
+      "message": "well... not sure what to do then, ansible_host is just unacceptable.",
+      "parentUuid": "9adffdf1_f52e6c8b",
+      "revId": "55dd7f5c28a0d3e68a3825d25d757a63e8622155",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
