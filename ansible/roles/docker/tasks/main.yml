@@ -16,11 +16,15 @@
     path: /etc/docker
     state: directory
 
+- name: Resolve the ansible_host address to ip
+  shell: LANG=C ping -n -c1 "{{ hostvars[groups.infrastructure[0]].ansible_host }}" | sed -n 1p | cut -d' ' -f3 | tr -d '()'
+  register: infra_ipv4
+
 - name: Setup docker dns settings
   json_add:
     path: /etc/docker/daemon.json
     key: dns
-    value: "{{ hostvars[groups.infrastructure[0]].ansible_default_ipv4.address }}"
+    value: "{{ infra_ipv4.stdout }}"
   notify:
     - Restart Docker
 
