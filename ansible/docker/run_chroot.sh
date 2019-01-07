@@ -192,11 +192,7 @@ check_external_mounts()
                 ;;
         esac
 
-        if ! [ -d "$external" ] ; then
-            echo ERROR: "Directory for mounting does not exist: ${external}" >&2
-            exit 1
-        fi
-
+        # sanity check that the mountpoint is not empty or the root directory itself
         if echo "$internal" | grep -q '^/*$' ; then
             echo ERROR: "Unacceptable internal path: ${internal}" >&2
             exit 1
@@ -218,8 +214,31 @@ do_external_mounts()
             exit 1
         fi
 
-        if ! mkdir -p "${CHROOT_DIR}/${internal}" ; then
-            echo ERROR: "Cannot create mountpoint: ${CHROOT_DIR}/${internal}" >&2
+        # trying to follow the behaviour of docker
+        if ! [ -e "$external" ] || [ -d "$external" ] ; then
+            # external is a dir
+            if ! mkdir -p "$external" ; then
+                echo ERROR: "Cannot create directory: ${external}" >&2
+                exit 1
+            fi
+            if ! mkdir -p "${CHROOT_DIR}/${internal}" ; then
+                echo ERROR: "Cannot create mountpoint: ${CHROOT_DIR}/${internal}" >&2
+                exit 1
+            fi
+        elif [ -f "$external" ] ; then
+            # if external is a file mount it as a file
+            if [ -e "${CHROOT_DIR}/${internal}" ] && ! [ -f "${CHROOT_DIR}/${internal}" ] ; then
+                echo ERROR: "Mounting a file but the mountpoint is not a file: ${CHROOT_DIR}/${internal}" >&2
+                exit 1
+            else
+                if ! touch "${CHROOT_DIR}/${internal}" ; then
+                    echo ERROR: "Cannot create mountpoint: ${CHROOT_DIR}/${internal}" >&2
+                    exit 1
+                fi
+            fi
+        else
+            # anything but a simple file or a directory will fail
+            echo ERROR: "Unsupported mount: ${external} -> ${internal}" >&2
             exit 1
         fi
 
@@ -448,10 +467,6 @@ case "$action" in
         install_wrapper
 
         # execute chroot
-        # copy resolv.conf and hosts file
-        cp -a /etc/resolv.conf "$CHROOT_DIR"/etc/resolv.conf
-        cp -a /etc/hosts "$CHROOT_DIR"/etc/hosts
-
         if [ -n "$1" ] ; then
             :
         else

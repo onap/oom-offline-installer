@@ -119,13 +119,13 @@ if ! [ -d "$ANSIBLE_CHROOT" ] ; then
 fi
 
 # run chroot
-mkdir -p "$ANSIBLE_DIR"/application
-mkdir -p "$ANSIBLE_DIR"/certs
 "$ANSIBLE_DIR"/docker/run_chroot.sh \
     --mount rw:"${HOME}/.ssh":/root/.ssh \
     --mount ro:"$ANSIBLE_DIR":/ansible \
     --mount rw:"$ANSIBLE_DIR"/application:/ansible/application \
     --mount rw:"$ANSIBLE_DIR"/certs:/certs \
+    --mount ro:/etc/resolv.conf:/etc/resolv.conf \
+    --mount ro:/etc/hosts:/etc/hosts \
     --workdir /ansible \
     execute "$ANSIBLE_CHROOT" ansible-playbook "$@"
 
