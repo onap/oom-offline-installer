@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_f52e6c8b",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-07T15:04:53Z",
+      "side": 1,
+      "message": "This breaks the playbook, it is empty on simple installation",
+      "revId": "55dd7f5c28a0d3e68a3825d25d757a63e8622155",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
