@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_501e6660",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-01-07T17:02:20Z",
+      "side": 0,
+      "message": "To be honest, I believe that this really goes against ansible best practices. I would ask michal but he is on vacation. maybe samuli could help us, unless he is not an ansible expert... well unsure.",
+      "revId": "fb01a659da5c4216ff20007341d789ac9c7df933",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
