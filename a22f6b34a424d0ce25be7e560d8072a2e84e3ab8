@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_9a1dc8c0",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-08T19:27:16Z",
+      "side": 1,
+      "message": "This is not according to our discussion here: https://jira.onap.org/browse/OOM-1573\n\nAnd not really ansible way. Ansible is NOT a framework to launch shell commands and shell scripts!\nAvoid shell module (also command module) upto the last resort.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 124
+      },
+      "revId": "a22f6b34a424d0ce25be7e560d8072a2e84e3ab8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
