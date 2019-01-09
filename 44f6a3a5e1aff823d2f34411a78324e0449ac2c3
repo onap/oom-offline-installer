@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_932db397",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-09T14:00:59Z",
+      "side": 1,
+      "message": "This does not work - undefined variable. This works:\n\"{{ hostvars[groups.infrastructure[0]].ansible_default_ipv4.address | default(ansible_all_ipv4_addresses[0]) }}\"\n\nBut the first return address is wrong - idempotency is broken, because after first playbook run there are created new docker interfaces and this will return first non-loopback address which in my case was 172.16.0.0/16 instead of the desired one 10.0.0.0/8",
+      "revId": "44f6a3a5e1aff823d2f34411a78324e0449ac2c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
