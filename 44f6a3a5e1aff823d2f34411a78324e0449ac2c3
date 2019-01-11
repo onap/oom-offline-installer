@@ -16,6 +16,24 @@
       "revId": "44f6a3a5e1aff823d2f34411a78324e0449ac2c3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_a1f65cf7",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-01-11T11:22:17Z",
+      "side": 1,
+      "message": "Hey, honestly it is a bit interesting that the first ip address changes over time. if you would do \"ip addr\" on linux then first is always lo, then physical interfaces go, interfaces created later are shown later.",
+      "parentUuid": "9adffdf1_932db397",
+      "revId": "44f6a3a5e1aff823d2f34411a78324e0449ac2c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
