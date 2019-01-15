@@ -123,6 +123,7 @@ fi
     --mount rw:"${HOME}/.ssh":/root/.ssh \
     --mount ro:"$ANSIBLE_DIR":/ansible \
     --mount rw:"$ANSIBLE_DIR"/application:/ansible/application \
+    --mount rw:"$ANSIBLE_DIR"/log:/ansible/log \
     --mount rw:"$ANSIBLE_DIR"/certs:/certs \
     --mount ro:/etc/resolv.conf:/etc/resolv.conf \
     --mount ro:/etc/hosts:/etc/hosts \
