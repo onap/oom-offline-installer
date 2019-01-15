@@ -254,7 +254,7 @@ install_files() {
         cp "$APROJECT_DIR/resources/downloads/${binary}" /usr/local/bin/
         chmod 755 "/usr/local/bin/${binary}"
     done
-    mkdir ~/.kube
+    mkdir -p ~/.kube
 }
 
 setup_vnc_server() {
