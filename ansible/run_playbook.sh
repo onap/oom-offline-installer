@@ -25,6 +25,7 @@ script_path=$(readlink -f "$0")
 script_name=$(basename "$script_path")
 ANSIBLE_DIR=$(dirname "$script_path")
 ANSIBLE_CHROOT="${ANSIBLE_DIR}/ansible_chroot"
+ANSIBLE_LOG_PATH="/ansible/log/ansible-$(date +%Y.%m.%d-%H%M%S).log"
 
 
 #
@@ -82,6 +83,8 @@ REQUIREMENTS:
 # run playbook
 #
 
+export ANSIBLE_LOG_PATH
+
 # if no arg then print help and exit
 if [ -z "$1" ] ; then
     help
@@ -101,6 +104,8 @@ if [ -n "$ANSIBLE_DOCKER_IMAGE" ] ; then
         -v "$ANSIBLE_DIR:/ansible:ro" \
         -v "$ANSIBLE_DIR/application:/ansible/application:rw" \
         -v "$ANSIBLE_DIR/certs/:/certs:rw" \
+        -v "$ANSIBLE_DIR/log/:/ansible/log:rw" \
+        -e ANSIBLE_LOG_PATH \
         -it "${ANSIBLE_DOCKER_IMAGE}" "$@"
 fi
 
@@ -123,6 +128,7 @@ fi
     --mount rw:"${HOME}/.ssh":/root/.ssh \
     --mount ro:"$ANSIBLE_DIR":/ansible \
     --mount rw:"$ANSIBLE_DIR"/application:/ansible/application \
+    --mount rw:"$ANSIBLE_DIR"/log:/ansible/log \
     --mount rw:"$ANSIBLE_DIR"/certs:/certs \
     --mount ro:/etc/resolv.conf:/etc/resolv.conf \
     --mount ro:/etc/hosts:/etc/hosts \
