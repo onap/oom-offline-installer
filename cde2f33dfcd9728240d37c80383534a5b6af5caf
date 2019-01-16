@@ -1,0 +1,8 @@
+Code-Review-1: Samuli Silvius <s.silvius@partner.samsung.com>
+Code-Review+2: Michal Ptacek <m.ptacek@partner.samsung.com>
+Verified+1: Michal Ptacek <m.ptacek@partner.samsung.com>
+Submitted-by: Michal Ptacek <m.ptacek@partner.samsung.com>
+Submitted-at: Wed, 16 Jan 2019 09:43:44 +0000
+Reviewed-on: https://gerrit.onap.org/r/75820
+Project: oom/offline-installer
+Branch: refs/heads/master
