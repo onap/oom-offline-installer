@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_4a0b002a",
+        "filename": "ansible/inventory/hosts.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-01-16T12:46:02Z",
+      "side": 1,
+      "message": "For me it is confusing. You are right about those names not overlapping nevertheless when looking at it with my \"fresh\" eyes my mind immediately jumps to idea of some kubernetes network subnet (whatever that might be). I think that it should be some other name that describes this subnet better for the new user.",
+      "parentUuid": "9adffdf1_6a8124c2",
+      "revId": "7309411cbf2d21d223d889be011e8dd3e12da7dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_ea1d14bf",
         "filename": "ansible/roles/docker/tasks/main.yml",
         "patchSetId": 4
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Still wondering how much we need it or not",
       "parentUuid": "9adffdf1_ea1d14bf",
+      "revId": "7309411cbf2d21d223d889be011e8dd3e12da7dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_a5017f06",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-01-16T12:46:02Z",
+      "side": 1,
+      "message": "I am just wary of using subnet as a variable. It might lead to misconfiguration when wrong netmask is used. And if it is only place when this is/will be used I think it might be \"safer\" to use specific ip provided in variable by user.",
+      "parentUuid": "9adffdf1_2a6f9c2c",
       "revId": "7309411cbf2d21d223d889be011e8dd3e12da7dd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
