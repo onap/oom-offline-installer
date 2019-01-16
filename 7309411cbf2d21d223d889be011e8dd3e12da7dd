@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_2a28fce0",
+        "filename": "ansible/inventory/hosts.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-16T10:22:10Z",
+      "side": 1,
+      "message": "this is not good name (kubernetes is using 10.42.x.x by default) it should be e.g infrastructure_subnet ? (not sure if adding new param is worth for being able to specify hostname in ansible_host but probably yes)",
+      "revId": "7309411cbf2d21d223d889be011e8dd3e12da7dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ea1d14bf",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-16T10:22:10Z",
+      "side": 1,
+      "message": "this will not work for HA (as Petr wrote) probably we need to comment it so we can come back to it later ...",
+      "revId": "7309411cbf2d21d223d889be011e8dd3e12da7dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
