@@ -139,13 +139,11 @@ fi
 
 # Check the dependencies in the beginning
 
-# Install Node.js
-if yum list installed "nodejs" >/dev/null 2>&1; then
-    echo "Node.js is already installed"
+# Install jq
+if yum list installed "jq" >/dev/null 2>&1; then
+    echo "jq is already installed"
 else
-    yum install -y --setopt=skip_missing_names_on_install=False epel-release
-    curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
-    yum install -y --setopt=skip_missing_names_on_install=False nodejs
+    yum install -y --setopt=skip_missing_names_on_install=False http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/j/jq-1.5-1.el7.x86_64.rpm
 fi
 
 # Install curl if necessary
