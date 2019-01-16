@@ -345,14 +345,45 @@ create_all_certs() {
     create_cert "nexus"
 }
 
-update_firewall() {
-# TODO
-#firewall-cmd --permanent --add-port=53/udp
-#firewall-cmd --permanent --add-port=53/tcp
-#firewall-cmd --permanent --add-port=10001/tcp
-#firewall-cmd --permanent --add-port=80/tcp
-#firewall-cmd --permanent --add-port=443/tcp
-return 0
+# disable firewall (firewalld on rhel) and cleanup the iptables
+# args: [<distro>] [<ip>]
+# if no distro arg then run locally and only cleanup iptables
+# if no ip arg then run locally
+disable_firewall() {
+    _distro="$1"
+    _node_ip="$2"
+
+    case "$_distro" in
+        rhel)
+            message info "Disable firewalld"
+            if [ -n "$_node_ip" ] ; then
+                ssh -T "$_node_ip"
+            else
+                sh
+            fi <<EOF
+if rpm -ql firewalld ; then
+    systemctl stop firewalld && systemctl disable firewalld
+    exit \$?
+else
+    exit 0
+fi 2>&1 >/dev/null
+EOF
+            ;;
+    esac
+
+    message info "Cleanup iptables"
+    if [ -n "$_node_ip" ] ; then
+        ssh -T "$_node_ip"
+    else
+        sh
+    fi <<EOF
+iptables -P INPUT ACCEPT && \
+iptables -P OUTPUT ACCEPT && \
+iptables -P FORWARD ACCEPT && \
+iptables -F
+EOF
+
+    return 0
 }
 
 distribute_root_CA() {
@@ -556,6 +587,7 @@ deploy_node() {
     nodeip=$1
     os=$2
     echo "Deploying node $nodeip"
+    disable_firewall $os $nodeip
     distribute_root_CA $nodeip
     install_remote_docker $nodeip $os
     deploy_rancher_agent $nodeip

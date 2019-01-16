@@ -156,6 +156,9 @@ update_hosts
 # TODO
 #check_dependencies
 
+# TODO: add rules to the firewall
+disable_firewall
+
 echo "Restarting dnsmasq"
 # TODO dnsmasq config?
 systemctl enable dnsmasq
@@ -181,8 +184,6 @@ update_docker_cfg
 echo "Restarting docker"
 systemctl enable docker
 systemctl restart docker
-
-update_firewall
 
 set +e
 
