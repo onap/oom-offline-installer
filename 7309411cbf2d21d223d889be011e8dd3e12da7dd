@@ -105,6 +105,24 @@
       "revId": "7309411cbf2d21d223d889be011e8dd3e12da7dd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_850c7b3c",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-01-16T12:59:40Z",
+      "side": 1,
+      "message": "I am not sure if there will never be any situation where something else will need it. hmmm...",
+      "parentUuid": "9adffdf1_a5017f06",
+      "revId": "7309411cbf2d21d223d889be011e8dd3e12da7dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
