@@ -123,6 +123,24 @@
       "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_97702c0c",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T11:07:28Z",
+      "side": 1,
+      "message": "if so then how about adding just a check in the beginning and dropping those checks in all other places?\nBecause if we don\u0027t plan to support other distros it seems that this is unnecessary code complication",
+      "parentUuid": "9adffdf1_f70e588b",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
