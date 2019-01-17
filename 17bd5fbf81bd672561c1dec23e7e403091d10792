@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_57f084c8",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T09:51:32Z",
+      "side": 1,
+      "message": "I use spaces :) that trick works only with tabs it would messed up the whole file or whole file must be refactored. I am no spaces vs tabs zealot - although I use spaces exclusively for sanity but this indent issues with heredoc is elsewhere too in the code - frankly I dont see reason to refactor this file with tabs (to match the indent with the rest of the file) and leave other files as they are - or worse mix it up",
+      "parentUuid": "9adffdf1_5bcf5029",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_7bd494bc",
         "filename": "bash/tools/common-functions.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-01-17T01:12:19Z",
       "side": 1,
       "message": "shouldn\u0027t we print some error or at least warning that all other distros are not supported?",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_f7df3838",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T09:51:32Z",
+      "side": 1,
+      "message": "This is sadly thing for the installer so far - no other distro but rhel will work so far. I tried at least support the others in the commit by simply flushing all the firewall rules. Rhel/centos use firewalld, ubuntu ufw or similar - debian has no preference and I personally use simple iptables with it - and actually I would prefer iptables-persistent across the board because each and every of these \"firewalls\" are just wrappers with their own configs which generates at the end just iptables rules...",
+      "parentUuid": "9adffdf1_7bd494bc",
       "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
