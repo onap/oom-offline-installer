@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_bda18f95",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-17T19:54:02Z",
+      "side": 1,
+      "message": "to me it looks like some obfuscate code, if those commands are triggered directly it will be more legible than creating HERE doc (HERE doc for me is a way how to insert text in the code). what\u0027s the point here ?",
+      "revId": "7997ff10119d945138704f23a5bc7f0c6160cd84",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_3dbd9fb7",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-17T19:54:02Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "7997ff10119d945138704f23a5bc7f0c6160cd84",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
