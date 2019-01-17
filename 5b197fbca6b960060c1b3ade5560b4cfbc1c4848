@@ -34,6 +34,24 @@
       "revId": "5b197fbca6b960060c1b3ade5560b4cfbc1c4848",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_5ae66945",
+        "filename": "ansible/run_playbook.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T13:43:48Z",
+      "side": 1,
+      "message": "sorry I thought that you forgot to modify config file and that in this way we will need to template it. I just checked ansible doc:\nhttps://docs.ansible.com/ansible/2.4/config.html#envvar-ANSIBLE_LOG_PATH\n\nand now I get your point;)",
+      "parentUuid": "9adffdf1_9a6b71b6",
+      "revId": "5b197fbca6b960060c1b3ade5560b4cfbc1c4848",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
