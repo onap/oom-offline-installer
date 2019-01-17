@@ -88,6 +88,24 @@
       "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_378060bf",
+        "filename": "ansible/run_playbook.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T11:07:54Z",
+      "side": 1,
+      "message": ".ssh is ugly and in my case I dont modify it when I run playbooks because I setup the ssh keys before I am running any playbook. But there is a playbook which do this for a user - distributes new ssh keypair across the nodes and should be permanent so no overlay in thsi case - this is for another debate. For appliacation dir - I am not certain if it needs to be rw or not - also this can be separate commit - in this case I will just redo the log stuff",
+      "parentUuid": "9adffdf1_371940d7",
+      "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
