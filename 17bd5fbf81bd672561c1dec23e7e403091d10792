@@ -159,6 +159,24 @@
       "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_57fba446",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T11:28:13Z",
+      "side": 1,
+      "message": "Actually when I think about it...even on rhel we cannot anticipate that user has firewalld..he can use shorewall, ufw, whatnot - the only sure way is the iptables at the end of the day. I dunno if we should be so ambitious in the installation and check every firewall/iptables-wrapper-project in an existence. I am just disabling the firewalld for rhel because that is the default firewall there which is installed from installation media.",
+      "parentUuid": "9adffdf1_57e404ab",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
