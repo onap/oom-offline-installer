@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_5bcf5029",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T01:12:19Z",
+      "side": 1,
+      "message": "how about using \u003c\u003c- and indenting here document?",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_7bd494bc",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T01:12:19Z",
+      "side": 1,
+      "message": "shouldn\u0027t we print some error or at least warning that all other distros are not supported?",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
