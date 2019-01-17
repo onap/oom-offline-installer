@@ -16,6 +16,24 @@
       "revId": "5b197fbca6b960060c1b3ade5560b4cfbc1c4848",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_9a6b71b6",
+        "filename": "ansible/run_playbook.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T13:32:51Z",
+      "side": 1,
+      "message": "That IMHO improves nothing and bring more problems - now the path with log must be created before - there must be mkdir now for log dir. And the functionality will be the same. I dont see point. Docker may create the whole filepath (possibly not) and I definitively in my chroot script dont create the whole path. I create the last piece file or dir but the path must exist.",
+      "parentUuid": "9adffdf1_5a33c9f5",
+      "revId": "5b197fbca6b960060c1b3ade5560b4cfbc1c4848",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
