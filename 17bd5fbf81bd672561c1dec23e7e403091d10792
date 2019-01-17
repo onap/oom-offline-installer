@@ -105,6 +105,24 @@
       "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_f70e588b",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T11:03:36Z",
+      "side": 1,
+      "message": "I can/will do it here, but there are probably other places where we just silently ignore all other distros, I think that this installer should be marked as rhel only, with ansible installer there is a better chance to do it distro-agnostic and better",
+      "parentUuid": "9adffdf1_370b808f",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
