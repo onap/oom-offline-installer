@@ -17,7 +17,29 @@
         src: "{{ app_helm_charts_install_directory }}.tgz"
         dest: "{{ app_helm_charts_infra_directory }}"
 
+
+- name: Install helm plugins if needed
+  block:
+     - name: Create plugin directory in default folder
+       file:
+         path: "~/.helm/plugins"
+         state: directory
+         mode: 0755
+     - name: Register all plugins to be inserted by folder names
+       find:
+         paths: "{{ app_helm_plugins_directory }}"
+         file_type: "directory"
+       register: list_of_plugins
+     - name: Install all helm plugins from {{ app_helm_plugins_directory }} folder
+       command: "{{ helm_bin_dir }}/helm plugin install {{ item.path }}"
+       with_items: "{{ list_of_plugins.files }}"
+       register: helm_plugin_install_result
+       failed_when: "helm_plugin_install_result.rc > 0 and helm_plugin_install_result.stderr != 'Error: plugin already exists'"
+  become: true
+  when: app_helm_plugins_directory is defined and app_helm_plugins_directory is not none
+
 - name: "Execute custome role {{ application_pre_install_role }} if defined."
   include_tasks: custom_role.yml
   vars:
     application_custom_role: "{{ application_pre_install_role }}"
+
