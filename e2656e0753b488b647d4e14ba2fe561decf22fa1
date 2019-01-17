@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_9a4e113a",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-17T13:51:27Z",
+      "side": 1,
+      "message": "default version for casablanca is 1.6.22",
+      "revId": "e2656e0753b488b647d4e14ba2fe561decf22fa1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
