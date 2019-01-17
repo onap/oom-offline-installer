@@ -34,6 +34,24 @@
       "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_f7b658f8",
+        "filename": "ansible/run_playbook.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T09:57:43Z",
+      "side": 1,
+      "message": "well in terms of logs yeah it\u0027s not a big deal as they can be appended just like system logs but still it\u0027s nice to have a \"reboot\" delimiter just for convenience.\n\nThis comment is also related to the surrounding lines which are mounted rw.\nI\u0027m not sure if there is a need to template ansible cfg?\nMaybe you could just create those dirs in the beginning of this script? sth like:\nRUN_DIR\u003d$ANSIBLE_DIR/ansible_run_`date +%s`\nmkdir -p $RUN_DIR/ssh\nmkdir -p $RUN_DIR/application\nmkdir -p $RUN_DIR/log\nmkdir -p $RUN_DIR/certs\n\nand the mount this rw inside the container/chroot\n\nTo be honest the most important reason for my comment was mounting .ssh dir of current user rw into the environment not logs itself but as this pattern is repeating this may be a good opportunity to fix this;)",
+      "parentUuid": "9adffdf1_f7289834",
+      "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
