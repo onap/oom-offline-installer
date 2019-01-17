@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_d7fd546f",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T10:49:01Z",
+      "side": 1,
+      "message": "valid. Let\u0027s leave this as is;)",
+      "parentUuid": "9adffdf1_57f084c8",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_7bd494bc",
         "filename": "bash/tools/common-functions.sh",
         "patchSetId": 2
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "This is sadly thing for the installer so far - no other distro but rhel will work so far. I tried at least support the others in the commit by simply flushing all the firewall rules. Rhel/centos use firewalld, ubuntu ufw or similar - debian has no preference and I personally use simple iptables with it - and actually I would prefer iptables-persistent across the board because each and every of these \"firewalls\" are just wrappers with their own configs which generates at the end just iptables rules...",
       "parentUuid": "9adffdf1_7bd494bc",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_370b808f",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T10:49:01Z",
+      "side": 1,
+      "message": "yeah I know. I\u0027m just postulating to add here some error maybe with a suitable comment so that if anyone tries to use that on other distro he can be quickly pointed to the place of code where he should provide support for his setup.",
+      "parentUuid": "9adffdf1_f7df3838",
       "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
