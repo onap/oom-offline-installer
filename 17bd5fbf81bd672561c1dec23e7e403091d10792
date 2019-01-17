@@ -213,6 +213,24 @@
       "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_57a96422",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T11:50:00Z",
+      "side": 1,
+      "message": "firewalld is certainly installed from rhel iso which is our deployment environment and like I wrote it is meaningless to try to check other wrappers because every day can be created a new one - and checking only for firewalld has a flaw too - I use rpm for checking, ubuntu/debian has deb packages, alpine has apk...how else to check if there is a firewalld/another-wrapper installed? Systemd service - close enough, only few distros use runit or openrc, or still sysvinit, but the service name can change - there is no silver bullet - I think that test if it is rhel and check that package is installed is the clean way and other distro can be cleanly added - if the deployment is from cloud-image then it would be easy - there are no preinstaleld firewalls/wrappers there and no iptables rules configured - that is completely up to the user how his vm will be setup",
+      "parentUuid": "9adffdf1_17c0bcdf",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
