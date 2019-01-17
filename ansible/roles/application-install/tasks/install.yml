@@ -30,10 +30,11 @@
 - name: Helm Add Repo
   command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name }} {{ helm_repository_url }}"
 
-- name: Helm Make All
+- name: Build local helm repository
   make:
     chdir: "{{ app_helm_charts_infra_directory }}"
-    target: all
+    target: "{{ item }}"
+  with_items: "{{ app_helm_build_targets }}"
   environment:
     PATH: "{{ helm_bin_dir }}:{{ ansible_env.PATH }}"
 
