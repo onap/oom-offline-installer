@@ -70,6 +70,24 @@
       "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_371940d7",
+        "filename": "ansible/run_playbook.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T11:02:09Z",
+      "side": 1,
+      "message": "you are right in this case but this way it\u0027s also ugly as even through it runs inside chroot/container it modifies important parts of host system.\nif we need to populate directories maybe we should use overlay instead of bind mount?",
+      "parentUuid": "9adffdf1_77990878",
+      "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
