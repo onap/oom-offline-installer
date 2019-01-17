@@ -141,6 +141,24 @@
       "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_57e404ab",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T11:22:41Z",
+      "side": 1,
+      "message": "I am always trying not to throw sticks in front of the legs so if some user decide to fork this or tweak it for their needs this change does not break anything on another distro - if distro is not recognized it will just flush iptables - which is ultimately the result even for rhel - the only issue will be when the user restarts the node the firewalld/ufw/shorewall will recreate those rules again - I did not wrote the bash installer - I did like 3% of it :) so I am just judging from my review that there are other places where it will break on non-rhel distro - but that does not mean that I have to abort in this function when the install procedure just needs clean iptables - which is done here for all distros",
+      "parentUuid": "9adffdf1_97702c0c",
+      "revId": "17bd5fbf81bd672561c1dec23e7e403091d10792",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
