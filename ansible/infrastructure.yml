@@ -61,7 +61,7 @@
     - role: nexus
       vars:
         phase: runtime-populate
-      when: runtime_images is defined
+      when: runtime_images is defined and runtime_images is not none
 
 - name: Setup base for Kubernetes nodes
   hosts: kubernetes
