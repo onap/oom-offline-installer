@@ -16,6 +16,24 @@
       "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_f7289834",
+        "filename": "ansible/run_playbook.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T09:39:18Z",
+      "side": 1,
+      "message": "Ansible log is appended with every line prefixed with a timestamp and this installer is probably used only one time - how many times the customer will install the onap? On the other hand I am not against this - adding the timestamp to the logfile will be little hack though - ansible.cfg must be either templated or I will ignore it and use env. variable - I will try to use the best solution: if no env. variable set use the ansible.cfg",
+      "parentUuid": "9adffdf1_db4b40af",
+      "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
