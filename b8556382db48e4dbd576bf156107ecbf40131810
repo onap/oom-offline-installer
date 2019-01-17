@@ -52,6 +52,24 @@
       "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_77990878",
+        "filename": "ansible/run_playbook.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-17T10:14:22Z",
+      "side": 1,
+      "message": "application is prepopulated with a code (that is the point) - not mounted empty and populated, that goes for .ssh too, that would mean I would have to copy those dirs into timestamped dirs and those to mount, and after leave it? If I do it like that ansible-log timestamped folder can be kept (to make sense) but others makes not much sense to keep - .ssh is rw because some playbook is creating keys, application is rw because some playbook at least before used it to template something - now it can maybe be ro - so for your comment - I can make log dir templated but I think that is ugly and I would like to have all logs inside one dir log",
+      "parentUuid": "9adffdf1_f7b658f8",
+      "revId": "b8556382db48e4dbd576bf156107ecbf40131810",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
