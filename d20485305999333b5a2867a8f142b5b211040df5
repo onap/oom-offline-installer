@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_9bc93828",
+        "filename": "build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-17T01:06:59Z",
+      "side": 1,
+      "message": "How about refactoring this piece of code to get a clear list of requirements instead of copy-pasted if construction?",
+      "revId": "d20485305999333b5a2867a8f142b5b211040df5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
