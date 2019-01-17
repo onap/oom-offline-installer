@@ -16,6 +16,10 @@
       unarchive:
         src: "{{ app_helm_charts_install_directory }}.tgz"
         dest: "{{ app_helm_charts_infra_directory }}"
+    - name: Install helm plugins if needed
+      command: cp -r "{{ app_helm_plugins_directory }}" ~/.helm
+      become: true
+      when: app_helm_plugins_directory is defined and app_helm_plugins_directory is not none
 
 - name: "Execute custome role {{ application_pre_install_role }} if defined."
   include_tasks: custom_role.yml
