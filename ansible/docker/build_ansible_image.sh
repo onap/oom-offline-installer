@@ -27,7 +27,7 @@ image_name="${2:-ansible:latest}"
 script_path=$(readlink -f "$0")
 script_dir=$(dirname "$script_path")
 
-git_commit=$(git rev-parse --revs-only HEAD)
+git_commit=$(git rev-parse --revs-only HEAD || echo N/A)
 build_date=$(date -I)
 
 if [ -z "$ansible_version" ]; then
