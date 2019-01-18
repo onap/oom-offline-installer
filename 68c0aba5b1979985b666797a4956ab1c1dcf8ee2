@@ -94,6 +94,30 @@
       "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_c087ccb3",
+        "filename": "ansible/roles/application-install/tasks/pre-install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-18T08:04:21Z",
+      "side": 1,
+      "message": "copy is not recursive and synchronize is just a wrapper around rsync, we dont have rsync installed",
+      "parentUuid": "9adffdf1_00eb9478",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
