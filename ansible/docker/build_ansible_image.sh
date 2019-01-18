@@ -27,14 +27,10 @@ image_name="${2:-ansible:latest}"
 script_path=$(readlink -f "$0")
 script_dir=$(dirname "$script_path")
 
-git_commit=$(git rev-parse --revs-only HEAD)
+git_commit=$(git rev-parse --revs-only HEAD || true)
 build_date=$(date -I)
 
-if [ -z "$ansible_version" ]; then
-    docker build "$script_dir" -t "${image_name}" --label "git-commit=$git_commit" --label "build-date=$build_date"
-else
-    docker build "$script_dir" -t "${image_name}" --label "git-commit=$git_commit" --label "build-date=$build_date" --build-arg ansible_version="$ansible_version"
-fi
+docker build "$script_dir" -t "${image_name}" ${git_commit:+--label git-commit=${git_commit}} --label "build-date=$build_date" ${ansible_version:+--build-arg ansible_version=${ansible_version}}
 
 # Export docker image into chroot and tararchive it. It takes ~40M of space and is packaged together with sw.
 if "${script_dir}"/create_docker_chroot.sh convert "${image_name}" "${script_dir}"/ansible_chroot ; then
