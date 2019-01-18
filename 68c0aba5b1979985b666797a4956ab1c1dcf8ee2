@@ -22,6 +22,30 @@
       "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_c06b4c1c",
+        "filename": "ansible/roles/application-install/tasks/pre-install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-18T07:14:23Z",
+      "side": 1,
+      "message": "ansible is not having nice module for transferring resursive directories, creating own module doesn\u0027t make much sense for simple \"cp -r\". if you are aware of any suitable module please let me know ...",
+      "parentUuid": "9adffdf1_a0d408ec",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
