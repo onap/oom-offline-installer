@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_eb8191fb",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-18T13:14:30Z",
+      "side": 1,
+      "message": "yes yes, this is fine for this old bash solution. Bash should be used code anything:) Luckily we use ansible in new one.",
+      "parentUuid": "9adffdf1_0b0c153a",
+      "revId": "7997ff10119d945138704f23a5bc7f0c6160cd84",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_3dbd9fb7",
         "filename": "bash/tools/common-functions.sh",
         "patchSetId": 3
