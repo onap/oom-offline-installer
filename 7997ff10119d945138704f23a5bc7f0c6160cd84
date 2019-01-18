@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_0b0c153a",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-18T09:17:29Z",
+      "side": 1,
+      "message": "There is no other way how to NOT duplicate the same code. Another approach is to store the code into the variable - which will look the same or worse and is actually inferior because I would not be able to use varibales inside if I would need that - at least not without a eval. An even if I would be willing to duplicate the same code there still would not be any nice way how to avoid heredoc in ssh branch of conditional - either would be one argument to ssh which I will format more or less the same way or again heredoc or variable.",
+      "parentUuid": "9adffdf1_e0e690e7",
+      "revId": "7997ff10119d945138704f23a5bc7f0c6160cd84",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_3dbd9fb7",
         "filename": "bash/tools/common-functions.sh",
         "patchSetId": 3
