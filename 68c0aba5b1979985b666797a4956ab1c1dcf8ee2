@@ -46,6 +46,30 @@
       "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_20f25870",
+        "filename": "ansible/roles/application-install/tasks/pre-install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-18T07:48:57Z",
+      "side": 1,
+      "message": "transferring? So is this local operation in node?",
+      "parentUuid": "9adffdf1_c06b4c1c",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 20
+      },
+      "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
