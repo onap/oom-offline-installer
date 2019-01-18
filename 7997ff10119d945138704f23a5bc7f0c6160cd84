@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_abfb8977",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-18T14:14:57Z",
+      "side": 1,
+      "message": "If someone wants to improve on this - please, create a new patchset, we can judge it on its own merits, otherwise vote +2 so we can fix the current script and make the installation successfull. Without this change - installer fails on rhel installation from iso. Thanks",
+      "parentUuid": "9adffdf1_eb8191fb",
+      "revId": "7997ff10119d945138704f23a5bc7f0c6160cd84",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_3dbd9fb7",
         "filename": "bash/tools/common-functions.sh",
         "patchSetId": 3
