@@ -160,6 +160,24 @@
       "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8b99e57a",
+        "filename": "ansible/roles/application-install/tasks/pre-install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-18T13:12:52Z",
+      "side": 1,
+      "message": "rsync was not available in some of RHEL images we were using, I don\u0027t see we need to create additional dependency on OS packages to offline platform because of that.",
+      "parentUuid": "9adffdf1_eb40b108",
+      "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
