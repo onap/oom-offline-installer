@@ -142,6 +142,24 @@
       "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_eb40b108",
+        "filename": "ansible/roles/application-install/tasks/pre-install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-01-18T11:48:03Z",
+      "side": 1,
+      "message": "Hmm you sure rsync is not installed? redhat has curl by default, and not sure if it doesn\u0027t also have rsync?",
+      "parentUuid": "9adffdf1_201c9877",
+      "revId": "68c0aba5b1979985b666797a4956ab1c1dcf8ee2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
