@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_e0e690e7",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-18T06:05:26Z",
+      "side": 1,
+      "message": "it\u0027s for doing things over ssh. I also agree that it\u0027s very unreadable code.",
+      "parentUuid": "9adffdf1_bda18f95",
+      "revId": "7997ff10119d945138704f23a5bc7f0c6160cd84",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_3dbd9fb7",
         "filename": "bash/tools/common-functions.sh",
         "patchSetId": 3
