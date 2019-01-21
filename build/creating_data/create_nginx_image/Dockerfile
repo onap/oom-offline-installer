@@ -16,28 +16,12 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-DATA_DIR="$1"
-if [[ -z "$DATA_DIR" ]]; then
-    # needs for example: /root/onap-offline-installer/http
-    echo "Mising arg DATA_DIR"
-    echo "Usage: $0 <path to http dir> <name of server> [<next server>...]"
-    exit 1
-fi
+FROM nginx:alpine
 
-shift
-cd "$DATA_DIR"
+RUN apk add --no-cache --update fcgiwrap git git-daemon spawn-fcgi
 
-for server in $*; do
-    echo "Uploading to server: $server"
+COPY gitconfig /etc/
 
-    lines=$(find $server/ -type f | wc -l)
-    count=1
-    while read -r url; do
-        echo "== pkg #$count of $lines =="
-        count=$((count + 1))
-        path="$url"
-        echo "Uploading file: $url"
-        curl -u admin:admin123 --upload-file $path http://$url
+CMD spawn-fcgi -M 666 -s /var/run/fcgiwrap.socket /usr/bin/fcgiwrap && \
+    nginx -g "daemon off;"
 
-    done <<< "$(find $server/ -type f)"
-done

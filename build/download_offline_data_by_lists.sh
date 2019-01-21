@@ -32,7 +32,7 @@ fi
 
 CTOOLS="${LOCAL_PATH}/creating_data"
 LISTS_DIR="${LOCAL_PATH}/data_list"
-DATA_DIR="${LOCAL_PATH}/../../resources"
+DATA_DIR="${LOCAL_PATH}/../resources"
 TOTAL=12
 CURR=1
 
@@ -71,7 +71,7 @@ echo "[Step $((CURR++))/$TOTAL Download rhel pkgs]"
 $CTOOLS/download-pkg.sh "$DATA_DIR/pkg/rhel"
 
 echo "[Step $((CURR++))/$TOTAL Download oom]"
-$CTOOLS/download-oom.sh "$DATA_DIR" "${LOCAL_PATH}/../../patches/offline-changes.patch"
+$CTOOLS/download-oom.sh "$DATA_DIR" "${LOCAL_PATH}/../patches/offline-changes.patch"
 
 echo "[Step $((CURR++))/$TOTAL Download sdnc-ansible-server packages]"
 $CTOOLS/download-pip.sh "$LISTS_DIR/pip_list.txt" "$DATA_DIR/pkg/ubuntu/ansible_pkg"
