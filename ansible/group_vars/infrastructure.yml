@@ -1,5 +1,4 @@
 ---
-nfs_mount_path: /dockerdata-nfs
 vnc_passwd: samsung
 simulated_hosts:
   git:
