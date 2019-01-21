@@ -25,6 +25,7 @@ simulated_hosts:
 all_simulated_hosts:
     "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
 rancher_server_url: "http://{{ hostvars[groups.infrastructure.0].ansible_host }}:8080"
+rancher_server_version: v1.6.22
 rancher_remove_other_env: yes
 rancher_redeploy_k8s_env: yes
 populate_nexus: no
