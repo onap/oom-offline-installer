@@ -18,7 +18,6 @@
 
 
 if [[ -z "$ONAP_SERVERS" ]]; then
-#    ONAP_SERVERS="oom-beijing-postRC2-master oom-beijing-postRC2-compute1 oom-beijing-postRC2-compute2"
     echo "Missing environment ONAP_SERVERS"
     exit 1
 fi
