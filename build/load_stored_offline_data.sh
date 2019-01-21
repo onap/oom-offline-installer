@@ -27,13 +27,13 @@ if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
     . "${LOCAL_PATH}"/"${RELATIVE_PATH}"/common-functions.sh
 fi
 
-tools="${LOCAL_PATH}"
+build="${LOCAL_PATH}"
 message info "Reading configuration"
 get_configuration
 
-CTOOLS="$tools/creating_data"
-LISTS_DIR="$tools/data_list"
-DATA_DIR="$tools/../../resources/offline_data"
+CTOOLS="$build/creating_data"
+LISTS_DIR="$build/data_list"
+DATA_DIR="$build/../resources/offline_data"
 export NEXUS_HOST="https://$NEXUS_FQDN"
 NPM_REGISTRY="$NEXUS_HOST/repository/npm-private/"
 

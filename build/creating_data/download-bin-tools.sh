@@ -34,9 +34,6 @@ download() {
     curl --retry 5 -y 10 -Y 10 --location  "$url" -o "$file"
 }
 
-download "https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64"
-mv ./jq-linux64 ./jq
-
 download "https://storage.googleapis.com/kubernetes-release/release/v1.8.10/bin/linux/amd64/kubectl"
 
 download "https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz"
@@ -48,4 +45,4 @@ tar -xf ./rancher-linux-amd64-v0.6.7.tar.gz ./rancher-v0.6.7/rancher -O > ranche
 rm ./rancher-linux-amd64-v0.6.7.tar.gz
 
 
-chmod a+x ./helm ./jq ./kubectl ./rancher
+chmod a+x ./helm ./kubectl ./rancher

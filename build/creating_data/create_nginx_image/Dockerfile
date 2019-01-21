@@ -1,5 +1,3 @@
-#! /bin/bash
-
 #   COPYRIGHT NOTICE STARTS HERE
 #
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
@@ -18,12 +16,12 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
+FROM nginx:alpine
 
-self="$0"
-tools_dir=$(dirname "$self")
+RUN apk add --no-cache --update fcgiwrap git git-daemon spawn-fcgi
 
-TARGET_FILE="./install_cacert.sh"
+COPY gitconfig /etc/
 
-cat "$tools_dir/certificates/self_extract_cacert.sh" "$tools_dir/../../live/certs/rootCAcert.crt" > $TARGET_FILE
-chmod a+x $TARGET_FILE
-echo "Created self installation file: $TARGET_FILE"
+CMD spawn-fcgi -M 666 -s /var/run/fcgiwrap.socket /usr/bin/fcgiwrap && \
+    nginx -g "daemon off;"
+
