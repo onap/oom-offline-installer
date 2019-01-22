@@ -79,6 +79,15 @@ function add_additions {
     fi
 }
 
+function build_sw_artifacts {
+    cd ansible/docker
+    ./build_ansible_image.sh
+    if [ $? -ne 0 ]; then
+        crash 5 "Building of ansible runner image failed."
+    fi
+    cd -
+}
+
 function create_sw_package {
     local pkg_root="${PACKAGING_TARGET_DIR}/onap"
 
@@ -204,6 +213,7 @@ whotest[0]='test' || (crash 3 "Arrays not supported in this version of bash.")
 # Prepare output directory for our packaging and create all tars
 
 rm -rf ${PACKAGING_TARGET_DIR}
+build_sw_artifacts
 create_sw_package
 create_resource_package
 
