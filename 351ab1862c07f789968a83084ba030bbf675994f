@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_0a7c0671",
+        "filename": "ansible/docker/build_ansible_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-01-23T12:31:36Z",
+      "side": 1,
+      "message": "how about just dropping git-commit label instead of putting there some weir value which can then confuse some automatic tools?",
+      "revId": "351ab1862c07f789968a83084ba030bbf675994f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
