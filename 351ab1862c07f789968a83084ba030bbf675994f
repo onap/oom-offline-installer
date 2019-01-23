@@ -16,6 +16,24 @@
       "revId": "351ab1862c07f789968a83084ba030bbf675994f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_2af6aaf9",
+        "filename": "ansible/docker/build_ansible_image.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-01-23T12:48:55Z",
+      "side": 1,
+      "message": "N/A is universally known as Not Applicable, it can confuse an automatic tool about the same as that commit ref, but removing this label completely can confuse already existing automatic tool - in another words - existing environment is unaffected - this change only brings new usage outside of the git repo - if the label has no real usage and actually breaks something it can be removed in the future - as of now this change only improves user experience",
+      "parentUuid": "9adffdf1_0a7c0671",
+      "revId": "351ab1862c07f789968a83084ba030bbf675994f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
