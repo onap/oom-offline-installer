@@ -20,12 +20,12 @@ RUN apk --no-cache update \
   py3-openssl \
   openssh \
   sshpass \
-&& pip3 install --no-cache-dir --upgrade pip \
-&& pip3 install --no-cache-dir \
+&& pip3 install --upgrade pip \
+&& pip3 install \
   ansible==$ansible_version \
   jmespath \
   netaddr \
-&& apk del build-dependencies && rm -rf /var/cache/apk/*
+&& apk del build-dependencies && rm -rf /var/cache/apk/* && rm -rf /root/.cache
 
 ENV ANSIBLE_HOST_KEY_CHECKING false
 ENV ANSIBLE_RETRY_FILES_ENABLED false
