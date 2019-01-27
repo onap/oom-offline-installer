@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_aba13295",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-27T12:23:50Z",
+      "side": 1,
+      "message": "can you confirm that no function from this file is used during download and build/packaging logic ? Note we are moving to ansible installer all pre-install parts are from bash folder",
+      "revId": "aab7e4cc870d75a774e074d8cbfe7d31d51fc435",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_4bac468c",
+        "filename": "bash/tools/creating_data/docker-login.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-27T12:23:50Z",
+      "side": 1,
+      "message": "potentially unsafe, afaik this script is mentioned in build process ?",
+      "revId": "aab7e4cc870d75a774e074d8cbfe7d31d51fc435",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
