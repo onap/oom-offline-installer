@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9adffdf1_c1a49709",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-01-28T14:48:37Z",
+      "side": 1,
+      "message": "ansible_host might not be ip address",
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_c6110d5e",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 1
@@ -19,6 +36,40 @@
         "endLine": 131,
         "endChar": 69
       },
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_a16633eb",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-01-28T14:48:37Z",
+      "side": 1,
+      "message": "HOSTS_FILE_RECORD?",
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_61b36b4d",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-01-28T14:48:37Z",
+      "side": 1,
+      "message": "NPM_REGISTRY_RECORD or something similar might be better",
       "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
