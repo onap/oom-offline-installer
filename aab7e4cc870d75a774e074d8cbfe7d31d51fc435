@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_263339ac",
+        "filename": "bash/tools/common-functions.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-01-28T09:01:43Z",
+      "side": 1,
+      "message": "they are used but git didn\u0027t recognize this and \u0027new\u0027 common-functions.sh as the same file After lot of deleted stuff from and moving it to different dir.",
+      "parentUuid": "9adffdf1_aba13295",
+      "revId": "aab7e4cc870d75a774e074d8cbfe7d31d51fc435",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_4bac468c",
         "filename": "bash/tools/creating_data/docker-login.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-01-27T12:23:50Z",
       "side": 1,
       "message": "potentially unsafe, afaik this script is mentioned in build process ?",
+      "revId": "aab7e4cc870d75a774e074d8cbfe7d31d51fc435",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_c6258d5c",
+        "filename": "bash/tools/creating_data/docker-login.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-01-28T09:01:43Z",
+      "side": 1,
+      "message": "afaik you don\u0027t need it for build process anymore",
+      "parentUuid": "9adffdf1_4bac468c",
       "revId": "aab7e4cc870d75a774e074d8cbfe7d31d51fc435",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
