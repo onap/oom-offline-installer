@@ -116,14 +116,13 @@ app_kubernetes_namespace:
 # Optional application custom Ansible roles name for pre and post install logic.
 # Location of additional custom roles is defined in ansible.cfg with roles_path.
 # e.g. application_pre_install_role: "{{ project_configuration }}-patch-role"
-application_pre_install_role:
+application_pre_install_role: onap-casablanca-patch-role
 application_post_install_role:
 
 # any other application specific params can be specified in this file
-# e.g.
-# onap_values:
-#  openStackKeyStoneUrl: "http://1.2.3.4:5000"
-#  openStackServiceTenantName: "services"
+#onap_values:
+#  openStackKeyStoneUrl: "http://localhost:8181/apidoc/explorer/index.html"
+#  openStackServiceTenantName: "service"
 #  openStackDomain: "Default"
 #  openStackUserName: "admin"
 #  openStackEncryptedPassword: "f7920677e15e2678b0f33736189e8965"
