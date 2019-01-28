@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_61dfebd6",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-28T17:44:15Z",
+      "side": 1,
+      "message": "Are we going to patch values.yaml in every deployment ?\nLater-on it might cause that we need to recognize every param this file contains to be able to set it properly. Other option is to have some boolean value \"patching_onap_values.yaml\" or later \"patching_robot_values.yaml\" and default False ...\nSetting-up all OOM parameters is most likely not in scope of offline installer so maybe we should remove this templating or have it possible just for some cases ?",
+      "revId": "bb47d82d54e3f144df7d7ac22de83e42814ab573",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
