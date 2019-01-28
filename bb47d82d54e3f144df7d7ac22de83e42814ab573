@@ -16,6 +16,24 @@
       "revId": "bb47d82d54e3f144df7d7ac22de83e42814ab573",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8161af06",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-28T18:12:44Z",
+      "side": 1,
+      "message": "Yes this file really do not belong to this offline installer git.\nIt\u0027s app specific (Onap casablanca Helm charts). I.e. given Helm charts are modified before installed with installer. User could modify own provided Helm charts with all kind of own tools prior to use offline installer.\nThese fixes should be basically pushed into ONAP Helm charts in some form so that patching is not needed to be used with offline installer. \nMeanwhile it would be good to store this file to somewhere to be usable for anyone wants to use.",
+      "parentUuid": "9adffdf1_61dfebd6",
+      "revId": "bb47d82d54e3f144df7d7ac22de83e42814ab573",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
