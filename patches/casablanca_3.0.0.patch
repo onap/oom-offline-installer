@@ -1,0 +1,37 @@
+--- kubernetes/common/dgbuilder/templates/deployment.yaml	2019-01-28 13:01:35.017243076 +0100
++++ kubernetes/common/dgbuilder/templates/deployment.yaml	2019-01-28 13:19:04.238712534 +0100
+@@ -49,8 +49,14 @@
+         - name: {{ include "common.name" . }}
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+           imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+-          command: ["/bin/bash"]
+-          args: ["-c", "cd /opt/onap/ccsdk/dgbuilder/ && ./start.sh sdnc1.0 && wait"]
++          command:
++          - /bin/bash
++          - -c
++          - >
++            HOSTS_FILE_RECORD >> /etc/hosts;
++            NPM_REGISTRY_RECORD;
++            cd /opt/onap/ccsdk/dgbuilder/;
++            ./start.sh sdnc1.0 && wait
+           ports:
+           - containerPort: {{ .Values.service.internalPort }}
+           readinessProbe:
+--- kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml	2019-01-28 13:01:35.087243698 +0100
++++ kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml	2019-01-28 13:29:24.881069646 +0100
+@@ -49,8 +49,13 @@
+         name: {{ include "common.name" . }}-readiness
+       containers:
+         - name: {{ include "common.name" . }}
+-          command: ["/bin/bash"]
+-          args: ["-c", "cd /opt/onap/sdnc/admportal/shell && ./start_portal.sh"]
++          command:
++          - /bin/bash
++          - -c
++          - >
++            HOSTS_FILE_RECORD >> /etc/hosts;
++            NPM_REGISTRY_RECORD;
++            cd /opt/onap/sdnc/admportal/shell && ./start_portal.sh
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+           imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+           ports:
