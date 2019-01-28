@@ -105,6 +105,18 @@ app_helm_charts_infra_directory:
 # e.g. app_helm_chart_name: onap
 app_helm_chart_name:
 
+# Targets for helm charts repository build
+# e.g. for ONAP Casablanca
+# app_helm_build_targets:
+#   - all
+#   - onap
+app_helm_build_targets:
+
+# Directory with helm plugins
+# It's an optional parameter used e.g. in OOM Casablanca
+# app_helm_plugins_directory: "{{ app_helm_charts_infra_directory}}/kubernetes/helm/plugins/"
+app_helm_plugins_directory:
+
 # Helm release name (visible in POD names) used by Helm
 # e.g. app_helm_release_name: "{{ project_configuration }}"
 app_helm_release_name:
