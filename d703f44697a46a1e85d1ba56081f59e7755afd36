@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_c6110d5e",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-28T14:03:02Z",
+      "side": 1,
+      "message": "all.yml should not be modified for this. It contains default values. own application.yml should be used that is given on command line for ansible run to populate values.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
