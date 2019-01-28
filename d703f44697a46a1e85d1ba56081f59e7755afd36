@@ -84,6 +84,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_4180a78a",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-28T18:12:44Z",
+      "side": 1,
+      "message": "This file document what features offline installer supports. In ansible there are multiple ways to provide the values without storing them to git.\nIf some feature is tried to use where proper values is not filled offline installer will fail and user can notice what is missing.\n\nThen those completely app related parameters (onap_values added here) can be populated in app helm charts.",
+      "parentUuid": "9adffdf1_a124f30c",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_a16633eb",
         "filename": "patches/casablanca_3.0.0.patch",
         "patchSetId": 1
