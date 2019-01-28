@@ -69,6 +69,29 @@
       "revId": "aab7e4cc870d75a774e074d8cbfe7d31d51fc435",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8698e578",
+        "filename": "build/creating_data/load-docker-images.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-01-28T09:43:19Z",
+      "side": 1,
+      "message": "Isn\u0027t this deleted?",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 40
+      },
+      "revId": "aab7e4cc870d75a774e074d8cbfe7d31d51fc435",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
