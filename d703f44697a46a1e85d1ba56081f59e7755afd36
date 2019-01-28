@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_4148a7cb",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-28T17:19:38Z",
+      "side": 1,
+      "message": "good point, maybe we should have here cluster_ip instead. Support for that was already merged https://gerrit.onap.org/r/#/c/75452/10/ansible/inventory/hosts.yml",
+      "parentUuid": "9adffdf1_c1a49709",
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_c6110d5e",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2019-01-28T14:03:02Z",
       "side": 1,
       "message": "all.yml should not be modified for this. It contains default values. own application.yml should be used that is given on command line for ansible run to populate values.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 69
+      },
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_a124f30c",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-28T17:19:38Z",
+      "side": 1,
+      "message": "well maybe we can keep it here really empty, but we need to have some real values (even default) for templating script. Without those values templating in onap-casablanca-patch-role will fail.\nFurthermore I would like to introduce some example file which can be used by someone, I am quite sure that this practice of not having default values anywhere will leads that people will not fill all values properly and in expected format.",
+      "parentUuid": "9adffdf1_c6110d5e",
       "range": {
         "startLine": 119,
         "startChar": 1,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_411f47b7",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-28T17:19:38Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "9adffdf1_a16633eb",
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_61b36b4d",
         "filename": "patches/casablanca_3.0.0.patch",
         "patchSetId": 1
@@ -70,6 +130,24 @@
       "writtenOn": "2019-01-28T14:48:37Z",
       "side": 1,
       "message": "NPM_REGISTRY_RECORD or something similar might be better",
+      "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_611a8bc7",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-01-28T17:19:38Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "9adffdf1_61b36b4d",
       "revId": "d703f44697a46a1e85d1ba56081f59e7755afd36",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
