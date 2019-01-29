@@ -161,3 +161,4 @@ registry.hub.docker.com/oomk8s/ubuntu-init:2.0.0 sha256:bde840645eb1ae3d4397939a
 taskrabbit/elasticsearch-dump:latest sha256:93f16d8ef89ab05d928700432b0273138fabf365bb4a1e46ba0a493598a66d9f
 wurstmeister/kafka:1.1.0 sha256:5778f4c22f2f3facc273afcf0599d3d6c6f6daa546039f669c275d9d0aa6a261
 wurstmeister/zookeeper:latest sha256:1c11ca7e20385bf42e3aa58e7d1eb81a273a3ec650847ede225631e7d80e03e3
+sonatype/nexus3

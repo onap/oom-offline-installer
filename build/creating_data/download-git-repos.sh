@@ -1,3 +1,4 @@
+#! /usr/bin/env bash
 #   COPYRIGHT NOTICE STARTS HERE
 #
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
@@ -16,21 +17,41 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-lists_dir="$1"
+# fail fast
+set -e
 
-if [[ -z "$lists_dir" ]]; then
-    echo "Missing argument for lists_dir"
-    exit 1
-fi
+usage () {
+    echo "Usage:"
+    echo -e "./$(basename $0) <project version> [destination directory]\n"
+    echo "Examples:"
+    echo "  ./$(basename $0) onap_2.0.0 ./git-repo"
+}
 
-outdir="$2"
-if [[ -z "$outdir" ]]; then
-    outdir="./git-repo"
-fi
+TAG="${1}"
 
-mkdir -p "$outdir"
-cd "$outdir"
-# NOTE: will be better to use sh extension?
-sh $lists_dir/git_manual_list
-sh $lists_dir/git_repos_list
+if [[ -z "${RELEASE}" ]]; then
+	    echo "Missing argument for project version"
+	    exit 1
+	fi
 
+OUTDIR="${2}"
+	if [[ -z "${OUTDIR}" ]]; then
+	    OUTDIR="./git-repo"
+	fi
+
+	mkdir -p "${OUTDIR}"
+	cd "${OUTDIR}"
+
+LIST=${TAG}-git_repos.list
+
+while IFS=" " read -r REPO BRANCH remainder
+do
+        if [[ -z "${BRANCH}" ]]; then
+                git clone https://${REPO} --bare ${REPO}
+        else
+                git clone -b ${BRANCH} --single-branch https://${REPO} --bare ${REPO}
+        fi
+done < <(awk '$1 ~ /^[^;#]/' ${LIST})
+
+
+exit 0
