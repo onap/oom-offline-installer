@@ -33,7 +33,7 @@ crash () {
 usage () {
     echo "Usage:"
     echo "   ./$(basename $0) <project_name> <version>  <packaging_target_dir>"
-    echo "Example: ./$(basename $0) onap-me 1.0.1  /tmp/package_onap-me_1.0.0"
+    echo "Example: ./$(basename $0) onap 1.0.1  /tmp/package_onap_1.0.0"
     echo "packaging_target_dir will be created if does not exist. All tars will be produced into it."
 }
 
@@ -80,7 +80,7 @@ function add_additions {
 }
 
 function build_sw_artifacts {
-    cd ansible/docker
+    cd ../ansible/docker
     ./build_ansible_image.sh
     if [ $? -ne 0 ]; then
         crash 5 "Building of ansible runner image failed."
