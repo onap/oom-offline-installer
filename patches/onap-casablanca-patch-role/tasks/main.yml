@@ -22,3 +22,13 @@
   with_items:
     - common/dgbuilder/templates/deployment.yaml
     - sdnc/charts/sdnc-portal/templates/deployment.yaml
+
+- name: Patch OOM - set cert path for cloudify
+  lineinfile:
+    path: "{{ app_helm_charts_infra_directory }}/{{ item }}"
+    regexp: '^(.*)CERT_PATH'
+    line: '\g<1>/etc/pki/ca-trust/source/anchors'
+    backrefs: yes
+    state: present
+  with_items:
+    - dcaegen2/charts/dcae-cloudify-manager/templates/deployment.yaml
