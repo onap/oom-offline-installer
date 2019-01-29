@@ -16,15 +16,31 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-outdir="$1"
-if [[ -z "$outdir" ]]; then
-    echo "Missing arg outdir"
+usage () {
+    echo "Usage:"
+    echo -e "./$(basename $0) <project version> [destination directory]\n"
+    echo "Examples:"
+    echo "  ./$(basename $0) onap_2.0.0 ./git-repo"
+}
+
+if [ "${1}" == "-h" ] || [ -z "${1}" ] || [ -z "${2}"]; then
+    usage
     exit 1
+else
+    TAG="${1}"
+    OUTDIR="${2}"
 fi
 
+if [ "${TAG}" == onap_2.0.0 ]; then
+    KUBECTL_VERSION=1.8.10
+    HELM_VERSION=2.8.2
+elif [ "${TAG}" == onap_3.0.0 ]; then
+    KUBECTL_VERSION=1.11.2
+    HELM_VERSION=2.9.1
+fi
 
-mkdir -p "$outdir"
-cd "$outdir"
+mkdir -p "$OUTDIR"
+cd "$OUTDIR"
 
 download() {
     url="$1"
@@ -34,15 +50,12 @@ download() {
     curl --retry 5 -y 10 -Y 10 --location  "$url" -o "$file"
 }
 
-download "https://storage.googleapis.com/kubernetes-release/release/v1.8.10/bin/linux/amd64/kubectl"
+download "https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl"
 
-download "https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz"
-tar -xf ./helm-v2.8.2-linux-amd64.tar.gz linux-amd64/helm -O > helm
-rm ./helm-v2.8.2-linux-amd64.tar.gz
+download "https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-linux-amd64.tar.gz"
+tar -xf ./helm-v${HELM_VERSION}-linux-amd64.tar.gz linux-amd64/helm -O > helm
+rm -f ./helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
-download "https://github.com/rancher/cli/releases/download/v0.6.7/rancher-linux-amd64-v0.6.7.tar.gz"
-tar -xf ./rancher-linux-amd64-v0.6.7.tar.gz ./rancher-v0.6.7/rancher -O > rancher
-rm ./rancher-linux-amd64-v0.6.7.tar.gz
+chmod a+x ./helm ./kubectl
 
-
-chmod a+x ./helm ./kubectl ./rancher
+exit 0
