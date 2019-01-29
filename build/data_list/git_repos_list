@@ -1,4 +1,0 @@
-git clone -b 2.0.0-ONAP --single-branch http://gerrit.onap.org/r/aaf/authz.git --bare gerrit.onap.org/r/aaf/authz.git
-git clone -b 2.0.0-ONAP --single-branch http://gerrit.onap.org/r/demo.git --bare gerrit.onap.org/r/demo.git
-git clone -b 2.0.0-ONAP --single-branch http://gerrit.onap.org/r/dmaap/messagerouter/messageservice.git --bare gerrit.onap.org/r/dmaap/messagerouter/messageservice.git
-git clone -b 2.0.0-ONAP --single-branch http://gerrit.onap.org/r/so/docker-config.git --bare gerrit.onap.org/r/so/docker-config.git
