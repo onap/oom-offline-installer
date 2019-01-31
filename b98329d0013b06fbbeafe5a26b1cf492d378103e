@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9adffdf1_9cd3485f",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-01-31T15:10:01Z",
+      "side": 1,
+      "message": "Sorry, missed that",
+      "parentUuid": "9adffdf1_4828bf99",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "b98329d0013b06fbbeafe5a26b1cf492d378103e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_682343bd",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 3
