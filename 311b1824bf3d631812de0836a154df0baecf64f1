@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9adffdf1_2d48edb1",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "I don\u0027t think we call it anymore self-installer as it\u0027s not selfinstaller.",
+      "range": {
+        "startLine": 5,
+        "startChar": 27,
+        "endLine": 5,
+        "endChar": 41
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cdca811a",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "casablanca. \nI guess we do not add docs at all to beijing branch?",
+      "range": {
+        "startLine": 10,
+        "startChar": 58,
+        "endLine": 10,
+        "endChar": 65
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_edcd0532",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_8dd0f9c9",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "remove Samsung specific project names",
+      "range": {
+        "startLine": 31,
+        "startChar": 20,
+        "endLine": 31,
+        "endChar": 27
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_add37dd3",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "Samsung specific",
+      "range": {
+        "startLine": 44,
+        "startChar": 50,
+        "endLine": 44,
+        "endChar": 57
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0d92c9f5",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "Samsung specific",
+      "range": {
+        "startLine": 48,
+        "startChar": 20,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_edc2e5e7",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "I think docker-compose is not needed",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 42
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_0da96923",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "should we describe here what files user needs to change if wanting some different version of some docker/package.",
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_2da46d49",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "10",
+      "range": {
+        "startLine": 116,
+        "startChar": 32,
+        "endLine": 116,
+        "endChar": 34
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cd66012a",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "and vnc is not needed at all for offline installer. Should be removed.",
+      "range": {
+        "startLine": 199,
+        "startChar": 55,
+        "endLine": 199,
+        "endChar": 58
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_ed6985f9",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "this is for ONAP application purposes, not related to offline installer at all.\nTo be checked if this is still needed in Casablanca.",
+      "range": {
+        "startLine": 234,
+        "startChar": 21,
+        "endLine": 234,
+        "endChar": 40
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_c8026f09",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-01-31T11:37:35Z",
+      "side": 1,
+      "message": "Samsung specific",
+      "range": {
+        "startLine": 372,
+        "startChar": 22,
+        "endLine": 372,
+        "endChar": 29
+      },
+      "revId": "311b1824bf3d631812de0836a154df0baecf64f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
