@@ -22,6 +22,30 @@
       "revId": "b94e4915aee413673db44aa30b2c1a2101034b6b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9adffdf1_cd34c1fd",
+        "filename": "build/creating_data/download-git-repos.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-01-31T11:25:44Z",
+      "side": 1,
+      "message": "Wow, dunno how it happened. VSC I guess...",
+      "parentUuid": "9adffdf1_8d59d98f",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 15
+      },
+      "revId": "b94e4915aee413673db44aa30b2c1a2101034b6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
