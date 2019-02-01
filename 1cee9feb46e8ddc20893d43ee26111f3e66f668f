@@ -22,6 +22,30 @@
       "revId": "1cee9feb46e8ddc20893d43ee26111f3e66f668f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5434aa4c_a4c22a1d",
+        "filename": "build/download_offline_data_by_lists.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-01T10:00:55Z",
+      "side": 1,
+      "message": "Whole are building / packaging is currently tailored for casablanca and all people using this installer are using it for casablanca now. Please keep this in mind. Of course we should try to be generic, but for instance this \"auxilionary/additional\" stuff in packaging can be currently used just for inserting docker images in runtime into nexus. As per latest research made by Milan we don\u0027t think it\u0027s suitable to use nexus for rpm/deb storing (i dont recall details why now) so this stuff must be covered outside of nexus for now anyway it\u0027s another discussion not related to downloading. I would prefer to download everything from one place like this one. Maybe we should better document it or make it as optional part but I would wait for it once such requirement will really materialise",
+      "parentUuid": "9adffdf1_a80b6b22",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 91
+      },
+      "revId": "1cee9feb46e8ddc20893d43ee26111f3e66f668f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
