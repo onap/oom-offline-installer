@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "e4f79f3e_db8c9df2",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-01T09:13:07Z",
+      "side": 1,
+      "message": "I was thinking about this, but if you are really lucky... anyway changed to 300",
+      "parentUuid": "a45ee9e3_ab2cdd54",
+      "revId": "3b47d487f0fe9849e43c7a4deb39b283f91f22f6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "000978a9_909ed593",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 4
@@ -47,6 +65,24 @@
       "writtenOn": "2019-02-01T08:34:29Z",
       "side": 1,
       "message": "jq is used by build tool only right ? (ansible installer dont use it) wasn\u0027t nodejs replaced by jq in nexus build script recently ?",
+      "revId": "3b47d487f0fe9849e43c7a4deb39b283f91f22f6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e878302c_79af11b9",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-01T09:13:07Z",
+      "side": 1,
+      "message": "Actually I figured out that both are required and I would like to totally change the approach in the dependency resolution (it\u0027s really bad now). Anyway, in case the user\u0027d follow the instructions for the preparation, he wouldn\u0027t meet any issue.",
+      "parentUuid": "000978a9_909ed593",
       "revId": "3b47d487f0fe9849e43c7a4deb39b283f91f22f6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
