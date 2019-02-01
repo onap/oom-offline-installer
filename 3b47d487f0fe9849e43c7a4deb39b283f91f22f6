@@ -103,6 +103,24 @@
       "revId": "3b47d487f0fe9849e43c7a4deb39b283f91f22f6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f4c3352_5bca7a04",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-01T12:56:03Z",
+      "side": 1,
+      "message": "no we are not tailored for OOM Casabanca anywhere else concerning artifacts. And should not do that here either. \nTo keep things separated will clarify things in the end. So far new ansible solution is kept nicely app specific staff separated as planned. Let\u0027s not relax it right from the start.",
+      "parentUuid": "3b13cadb_a27eea4a",
+      "revId": "3b47d487f0fe9849e43c7a4deb39b283f91f22f6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
