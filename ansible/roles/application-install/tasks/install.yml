@@ -38,5 +38,20 @@
   environment:
     PATH: "{{ helm_bin_dir }}:{{ ansible_env.PATH }}"
 
+- name: Register root certificate
+  slurp:
+    src: '/certs/rootCA.crt'
+  register: root_cert
+  delegate_to: localhost
+
+# WA: this is required because deploy plugin dont process params properly
+- name: Create override file with global.cacert
+  copy:
+    dest: "{{ app_data_path}}/override.yaml"
+      content: |
+        global:
+          cacert:
+            {{ root_cert['content'] | b64decode | indent( width=4, indentfirst=False) }}
+
 - name: Helm Install application {{ app_name }}
-  command: "{{ helm_bin_dir }}/helm install {{ helm_repository_name }}/{{ app_helm_chart_name }} --name {{ app_helm_release_name }} --namespace {{ app_kubernetes_namespace }}"
+  command: "{{ helm_bin_dir }}/helm install {{ helm_repository_name }}/{{ app_helm_chart_name }} --name {{ app_helm_release_name }} --namespace {{ app_kubernetes_namespace }} -f {{ app_data_path }}/override.yaml"
