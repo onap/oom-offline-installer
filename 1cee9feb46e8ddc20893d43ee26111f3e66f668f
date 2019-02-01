@@ -46,6 +46,30 @@
       "revId": "1cee9feb46e8ddc20893d43ee26111f3e66f668f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0b15f70_e1676b27",
+        "filename": "build/download_offline_data_by_lists.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-01T10:27:40Z",
+      "side": 1,
+      "message": "Actually for the rpms we are able to put them to nexus without any problem (we just need to keep some out, because they are needed before the nexus is run). For the deb packages - we would need to rebuild the nexus container to add the deb repository plugin in, because currently the plugin is not in the official nexus.",
+      "parentUuid": "5434aa4c_a4c22a1d",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 91
+      },
+      "revId": "1cee9feb46e8ddc20893d43ee26111f3e66f668f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
