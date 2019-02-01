@@ -64,3 +64,273 @@
 +            path: /etc/pki/ca-trust/source/anchors
        imagePullSecrets:
        - name: "{{ include "common.namespace" . }}-docker-registry-key"
+--- kubernetes/policy/charts/brmsgw/templates/deployment.yaml   2019-01-24 09:55:33.000000000 +0100
++++ kubernetes/policy/charts/brmsgw/templates/deployment.yaml   2019-01-31 13:01:49.911044498 +0100
+@@ -46,6 +46,7 @@
+         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
+         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+         name: {{ include "common.name" . }}-readiness
++{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
+       containers:
+       - command:
+         - /bin/bash
+@@ -69,6 +70,8 @@
+           initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
+           periodSeconds: {{ .Values.readiness.periodSeconds }}
+         volumeMounts:
++{{ include "common.cacert-mount-ubuntu" . | indent 8 }}
++{{ include "common.system-ca-store-mount-ubuntu" . | indent 8 }}
+         - mountPath: /etc/localtime
+           name: localtime
+           readOnly: true
+@@ -95,6 +98,8 @@
+ {{ toYaml .Values.affinity | indent 10 }}
+       {{- end }}
+       volumes:
++{{ include "common.cacert-volume" . | indent 8 }}
++{{ include "common.system-ca-store-volume" . | indent 8 }}
+         - name: localtime
+           hostPath:
+             path: /etc/localtime
+--- kubernetes/policy/charts/drools/templates/statefulset.yaml  2019-01-24 09:55:33.000000000 +0100
++++ kubernetes/policy/charts/drools/templates/statefulset.yaml  2019-01-31 13:04:00.848634430 +0100
+@@ -52,6 +52,8 @@
+         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
+         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+         name: {{ include "common.name" . }}-readiness
++{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
++{{ include "policy.update-policy-keystore" . | indent 6 }}
+       containers:
+         - name: {{ include "common.name" . }}
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+@@ -79,6 +81,9 @@
+           - name: REPLICAS
+             value: "{{ .Values.replicaCount }}"
+           volumeMounts:
++{{ include "common.cacert-mount-ubuntu" . | indent 10 }}
++{{ include "common.system-ca-store-mount-ubuntu" . | indent 10 }}
++{{ include "policy.keystore-mount" . | indent 10 }}
+           - mountPath: /etc/localtime
+             name: localtime
+             readOnly: true
+@@ -137,6 +142,9 @@
+ {{ toYaml .Values.affinity | indent 10 }}
+         {{- end }}
+       volumes:
++{{ include "common.cacert-volume" . | indent 8 }}
++{{ include "common.system-ca-store-volume" . | indent 8 }}
++{{ include "policy.keystore-storage-volume" . | indent 8 }}
+         - name: localtime
+           hostPath:
+             path: /etc/localtime
+--- kubernetes/policy/charts/pdp/templates/statefulset.yaml 2019-01-24 09:55:33.000000000 +0100
++++ kubernetes/policy/charts/pdp/templates/statefulset.yaml 2019-01-31 13:07:16.161006088 +0100
+@@ -50,6 +50,7 @@
+         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
+         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+         name: {{ include "common.name" . }}-readiness
++{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
+       containers:
+       - command:
+         - /bin/bash
+@@ -75,6 +76,8 @@
+           initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
+           periodSeconds: {{ .Values.readiness.periodSeconds }}
+         volumeMounts:
++{{ include "common.cacert-mount-ubuntu" . | indent 8 }}
++{{ include "common.system-ca-store-mount-ubuntu" . | indent 8 }}
+         - mountPath: /etc/localtime
+           name: localtime
+           readOnly: true
+@@ -114,6 +117,8 @@
+         - mountPath: /usr/share/filebeat/data
+           name: policy-data-filebeat
+       volumes:
++{{ include "common.cacert-volume" . | indent 6 }}
++{{ include "common.system-ca-store-volume" . | indent 6 }}
+       - name: localtime
+         hostPath:
+           path: /etc/localtime
+--- kubernetes/common/common/templates/_cacert.tpl      2019-01-31 13:09:54.170924801 +0100
++++ kubernetes/common/common/templates/_cacert.tpl      2019-01-31 13:10:54.650659206 +0100
+@@ -0,0 +1,80 @@
++#   COPYRIGHT NOTICE STARTS HERE
++#
++#   Copyright 2018 © Samsung Electronics Co., Ltd.
++#
++#   Licensed under the Apache License, Version 2.0 (the "License");
++#   you may not use this file except in compliance with the License.
++#   You may obtain a copy of the License at
++#
++#       http://www.apache.org/licenses/LICENSE-2.0
++#
++#   Unless required by applicable law or agreed to in writing, software
++#   distributed under the License is distributed on an "AS IS" BASIS,
++#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++#   See the License for the specific language governing permissions and
++#   limitations under the License.
++#
++#   COPYRIGHT NOTICE ENDS HERE
++
++#This template adds volume for access to ca certificate.
++#Template is ignored when cacert not set.
++{{- define "common.cacert-volume" }}
++{{- if .Values.global.cacert }}
++- name: cacert
++  configMap:
++    name: {{ include "common.namespace" . }}-root-ca-cert
++{{- end }}
++{{- end }}
++
++#This template mounts the CA certificate in an ubuntu compatible way.
++#It is mounted to /usr/local/share/ca-certificates/cacert.crt.
++#Template is ignored if cacert not set.
++{{- define "common.cacert-mount-ubuntu" }}
++{{- if .Values.global.cacert }}
++- mountPath: "/usr/local/share/ca-certificates/cacert.crt"
++  name: cacert
++  subPath: certificate
++{{- end }}
++{{- end }}
++
++#This template creates an empty volume used to store system certificates (includes java keystore).
++{{- define "common.system-ca-store-volume" }}
++{{- if .Values.global.cacert }}
++- name: system-ca-store
++  emptyDir:
++{{- end }}
++{{- end }}
++
++#This template mounts system ca store volume to /etc/ssl/certs (ubuntu specific).
++#Template is ignored in case cacert is not given.
++{{- define "common.system-ca-store-mount-ubuntu" }}
++{{- if .Values.global.cacert }}
++- mountPath: "/etc/ssl/certs"
++  name: system-ca-store
++{{- end }}
++{{- end }}
++
++#This template is a template for an init container.
++#This init container can be declared to update system's ca store for ubuntu containers.
++#It runs as root using the same image as the main one.
++#It expects /etc/ssl/certs to be mounted as a volume.
++#It has to be shared with the main container.
++#This template is ignored if cacert is not given as helm value.
++{{- define "common.update-system-ca-store-ubuntu" }}
++{{- if .Values.global.cacert }}
++- command:
++  - "/bin/bash"
++  - "-c"
++  - |
++      mkdir -p /etc/ssl/certs/java
++      update-ca-certificates
++  name: update-system-ca-store
++  imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
++  image: {{ include "common.repository" . }}/{{ .Values.image }}
++  securityContext:
++    runAsUser: 0
++  volumeMounts:
++{{ include "common.cacert-mount-ubuntu" . | indent 2 }}
++{{ include "common.system-ca-store-mount-ubuntu" . | indent 2 }}
++{{- end }}
++{{- end }}
+--- kubernetes/onap/templates/configmap.yaml    2019-01-31 13:09:54.170924801 +0100
++++ kubernetes/onap/templates/configmap.yaml    2019-01-31 13:11:24.628023219 +0100
+@@ -0,0 +1,33 @@
++#   COPYRIGHT NOTICE STARTS HERE
++#
++#   Copyright 2018 © Samsung Electronics Co., Ltd.
++#
++#   Licensed under the Apache License, Version 2.0 (the "License");
++#   you may not use this file except in compliance with the License.
++#   You may obtain a copy of the License at
++#
++#       http://www.apache.org/licenses/LICENSE-2.0
++#
++#   Unless required by applicable law or agreed to in writing, software
++#   distributed under the License is distributed on an "AS IS" BASIS,
++#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++#   See the License for the specific language governing permissions and
++#   limitations under the License.
++#
++#   COPYRIGHT NOTICE ENDS HERE
++
++{{ if .Values.global.cacert -}}
++apiVersion: v1
++kind: ConfigMap
++metadata:
++  name: {{ include "common.namespace" . }}-root-ca-cert
++  namespace: {{ include "common.namespace" . }}
++  labels:
++    app: {{ include "common.name" . }}
++    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
++    release: {{ .Release.Name }}
++    heritage: {{ .Release.Service }}
++data:
++  certificate: |
++{{ .Values.global.cacert | indent 4 }}
++{{- end }}
+--- kubernetes/policy/charts/policy-common/templates/_keystore.tpl      2019-01-31 13:09:54.170924801 +0100
++++ kubernetes/policy/charts/policy-common/templates/_keystore.tpl      2019-01-31 13:11:49.122320657 +0100
+@@ -0,0 +1,61 @@
++#   COPYRIGHT NOTICE STARTS HERE
++#
++#   Copyright 2018 © Samsung Electronics Co., Ltd.
++#
++#   Licensed under the Apache License, Version 2.0 (the "License");
++#   you may not use this file except in compliance with the License.
++#   You may obtain a copy of the License at
++#
++#       http://www.apache.org/licenses/LICENSE-2.0
++#
++#   Unless required by applicable law or agreed to in writing, software
++#   distributed under the License is distributed on an "AS IS" BASIS,
++#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++#   See the License for the specific language governing permissions and
++#   limitations under the License.
++#
++#   COPYRIGHT NOTICE ENDS HERE
++
++#This template creates a volume for storing policy-keystore with imported ca.
++#It is ignored if cacert was not given.
++{{- define "policy.keystore-storage-volume" }}
++{{- if .Values.global.cacert }}
++- name: keystore-storage
++  emptyDir:
++{{- end }}
++{{- end }}
++
++#This template mounts policy-keystore in appropriate place for policy components to take it.
++#It is ignored if cacert is not given.
++{{- define "policy.keystore-mount" }}
++{{- if .Values.global.cacert }}
++- mountPath: "/tmp/policy-install/config/policy-keystore"
++  name: keystore-storage
++  subPath: policy-keystore
++{{- end }}
++{{- end }}
++
++#This will extract a policy keystore and then import
++#the root cacert of offline nexus into it.
++#This template expects a volume named keystore-storage where policy-keystore will be put.
++#It also expects volume named cacert where the file "certificate" will contain the cert to import.
++#Template is ignored if ca certificate not given.
++{{- define "policy.update-policy-keystore" }}
++{{- if .Values.global.cacert }}
++- command:
++  - "/bin/bash"
++  - "-c"
++  - |
++      set -e
++      tar -xzf base-*.tar.gz etc/ssl/policy-keystore
++      cp etc/ssl/policy-keystore keystore-storage/
++      keytool -import -keystore keystore-storage/policy-keystore -storepass "Pol1cy_0nap" -noprompt -file /usr/local/share/ca-certificates/cacert.crt
++  name: update-policy-keystore
++  imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
++  image: {{ include "common.repository" . }}/{{ .Values.image }}
++  volumeMounts:
++  - mountPath: "/tmp/policy-install/keystore-storage"
++    name: keystore-storage
++{{ include "common.cacert-mount-ubuntu" . | indent 2 }}
++{{- end }}
++{{- end }}
