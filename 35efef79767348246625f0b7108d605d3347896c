@@ -16,6 +16,92 @@
       "revId": "35efef79767348246625f0b7108d605d3347896c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e90cf77_62d9cf69",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:49:53Z",
+      "side": 1,
+      "message": "this looks for me as unrelated fix.\nI would prefer to put this in a single commit with a proper explanation in commit message",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e839b31_cd84c457",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:49:53Z",
+      "side": 1,
+      "message": "2019?",
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b537101e_5fc632f3",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 3
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:49:53Z",
+      "side": 1,
+      "message": "2019?",
+      "range": {
+        "startLine": 242,
+        "startChar": 15,
+        "endLine": 242,
+        "endChar": 19
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "269c3a8e_dadb97b6",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 3
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:49:53Z",
+      "side": 1,
+      "message": "2019?",
+      "range": {
+        "startLine": 278,
+        "startChar": 15,
+        "endLine": 278,
+        "endChar": 19
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
