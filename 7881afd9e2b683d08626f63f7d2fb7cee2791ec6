@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ff0444e_13424590",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:44:51Z",
+      "side": 1,
+      "message": "double space",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 28
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae788c25_7437eee4",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:44:51Z",
+      "side": 1,
+      "message": "How about defining more precise requirements for this like server list and maybe ports?",
+      "range": {
+        "startLine": 9,
+        "startChar": 54,
+        "endLine": 10,
+        "endChar": 12
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16871930_4009f821",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:44:51Z",
+      "side": 1,
+      "message": "I don\u0027t really get why some lines are wrapped and some are not:(",
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5488f2ce_1ee7301f",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:44:51Z",
+      "side": 1,
+      "message": "this clarification should probably follow resources word",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 222,
+        "endChar": 7
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e29ad929_0b9d334f",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:44:51Z",
+      "side": 1,
+      "message": "I expect this should be a list not a paragraph",
+      "range": {
+        "startLine": 220,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 62
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8788c83a_c75dfd69",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:44:51Z",
+      "side": 1,
+      "message": "this file is never mentioned in command above",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 22
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
