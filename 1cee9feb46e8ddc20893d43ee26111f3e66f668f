@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d7546182_3d7e4364",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:32:14Z",
+      "side": 1,
+      "message": "white space",
+      "revId": "1cee9feb46e8ddc20893d43ee26111f3e66f668f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_a80b6b22",
         "filename": "build/download_offline_data_by_lists.sh",
         "patchSetId": 3
