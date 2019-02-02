@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "494f4081_d7b790db",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:24:43Z",
+      "side": 1,
+      "message": "Why below lines are removed? How is it related to this patch?",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2675bb18_0d22c0f8",
+        "filename": "build/fetch_and_patch_charts.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2019-02-02T14:24:43Z",
+      "side": 1,
+      "message": "I would opt for using git am here instead of just patch to add also some commit messages to sources instead of just changes",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
