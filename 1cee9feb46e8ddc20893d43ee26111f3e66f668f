@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "b9037bd6_98d328f6",
+        "filename": "build/data_lists/http_files.list",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T07:49:28Z",
+      "side": 1,
+      "message": "finally the very confusing \"manual\" removed from file names.",
+      "revId": "1cee9feb46e8ddc20893d43ee26111f3e66f668f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9adffdf1_a80b6b22",
         "filename": "build/download_offline_data_by_lists.sh",
         "patchSetId": 3
