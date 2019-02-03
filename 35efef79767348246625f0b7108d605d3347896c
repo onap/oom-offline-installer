@@ -19,6 +19,46 @@
     },
     {
       "key": {
+        "uuid": "e239d76f_dfdaed4f",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T09:53:54Z",
+      "side": 1,
+      "message": "quite interesting way to use debug msg in actuall implementation? Is there better way to register this variable?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "804dadb1_ef0ea78c",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T09:53:54Z",
+      "side": 1,
+      "message": "if cert file is not there what to do? Some actions should be done. Fail this? Or just not to provide this override file at all then?",
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e90cf77_62d9cf69",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 3
@@ -30,6 +70,30 @@
       "writtenOn": "2019-02-02T14:49:53Z",
       "side": 1,
       "message": "this looks for me as unrelated fix.\nI would prefer to put this in a single commit with a proper explanation in commit message",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "519209dd_7fcca0bf",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T09:53:54Z",
+      "side": 1,
+      "message": "agree, it\u0027s important change and there are many ways to implement it.",
+      "parentUuid": "5e90cf77_62d9cf69",
       "range": {
         "startLine": 56,
         "startChar": 35,
