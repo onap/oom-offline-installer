@@ -65,6 +65,47 @@
     },
     {
       "key": {
+        "uuid": "24873a9f_49fe4452",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T08:15:07Z",
+      "side": 1,
+      "message": "Good point. Would need some guidelines how to do it.",
+      "parentUuid": "16871930_4009f821",
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66868ae8_01f71c2e",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T08:15:07Z",
+      "side": 1,
+      "message": "The first sentence is ok i.e. some separate server is preferred to be used. Or at least we should not put any requirements for user that he could not do the packaging in his own laptop.\n\nBut the reasoning sentence is directly from Samsung\u0027s internal doc as there we have also Java Maven building as part of this guide. So please check now again what tools actually is needed (different) in this building server and target server where package is installed.\n\nI wanted to make separate guides to upstream and then internal guides where is references to upstream guides. But that was not agreed and now we need to do more work to do it again here. I hope next time it\u0027s not done twice.",
+      "range": {
+        "startLine": 14,
+        "startChar": 97,
+        "endLine": 16,
+        "endChar": 35
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5488f2ce_1ee7301f",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 5
