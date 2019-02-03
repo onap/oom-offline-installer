@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "cfbbeaa3_305d9b7f",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T16:43:31Z",
+      "side": 1,
+      "message": "On the contrary the aim is try to make it more clear and easier to use. I.e. ONAP Casablanca needed configuration in one place and not in many places deep inside the git repo structure.\nThis is very basic separation of code (installer) and the configuration. All the needed generality is already there and no change on that or making it more generic. Just using it in the way it was designed. \nThe other cases you refer is probably something else than ONAP? This is not the intended use case I\u0027m after here (even if it will help on that also), just separate onap Casablanca configuration. Other use cases could be ONAP Beijing, ONAP Dublin and ONAP with different components and different configs (different patch roles).",
+      "parentUuid": "e03c7f2a_aa7b3db4",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217fb607_f828095e",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 4
