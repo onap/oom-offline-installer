@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c81c7f02_d2734eb1",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T15:50:55Z",
+      "side": 1,
+      "message": "roles will be there in right place during runtime (user do not need to care where), only in git it will be empty. We do not even need the dir in git but it\u0027s there for the documentation reasons (README), but when documentation will be created properly on top level we can remove these single README files.\nThe point is that that place where app helm charts and app roles are copied is internal for the installer not revealed for the user. \nWe document for the user properly how to provide helm charts and roles for the installer (package) and it will not be confusing.\n\nI git we can save the app configuration and app roles needed for Casablanca to separate folder on top level (like the patches) and those files can be used if user wants when making package. Those files will be \"outside\" installer and just one option how to package. Basically these files could be also provided in different git repo.",
+      "parentUuid": "750a72bd_5adad207",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217fb607_f828095e",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 4
@@ -72,6 +90,30 @@
       "side": 1,
       "message": "keeping this file that generic and empty, means that in practice is useless and one has to use some \"example but real config instead\", this will just introduce additional unnecessary step but I will think about it.",
       "parentUuid": "217fb607_f828095e",
+      "range": {
+        "startLine": 131,
+        "startChar": 30,
+        "endLine": 131,
+        "endChar": 56
+      },
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bec7392_c32bdd66",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T15:50:55Z",
+      "side": 1,
+      "message": "well this is documentation of available options AND default values for all parameters we reasonable can define some default. I don\u0027t think onap-casablanca-patch-role is good generic default value for this. Of course it does not harm as it can be overriden by own config but will be confusing. \n\nAs mentioned in other comment we can save values i.e. application_configuration.yml file known to working with ONAP Casablanca to top level dir together with those app roles files.",
+      "parentUuid": "85039067_db9a3155",
       "range": {
         "startLine": 131,
         "startChar": 30,
@@ -137,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "df684647_63fc5c34",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T15:50:55Z",
+      "side": 1,
+      "message": "as mentioned above this is documentation. Example values can be anything app related onap or something else.\ndoes not matter much are those here or not but they need to be commented out lines anyway. And comment on line 134 we should keep at least.",
+      "parentUuid": "2ba1ed92_bd038762",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14766362_f028199e",
         "filename": "build/fetch_and_patch_charts.sh",
         "patchSetId": 4
@@ -172,6 +232,30 @@
       "side": 1,
       "message": "it\u0027s in newer version of buildguide, see row 301 at https://gerrit.onap.org/r/#/c/77575/5/doc/BuildGuide.rst",
       "parentUuid": "14766362_f028199e",
+      "range": {
+        "startLine": 21,
+        "startChar": 5,
+        "endLine": 22,
+        "endChar": 46
+      },
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c38ab9e7_c3ed5366",
+        "filename": "build/fetch_and_patch_charts.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-03T15:50:55Z",
+      "side": 1,
+      "message": "yes found it later.",
+      "parentUuid": "925e4536_dfc4899c",
       "range": {
         "startLine": 21,
         "startChar": 5,
