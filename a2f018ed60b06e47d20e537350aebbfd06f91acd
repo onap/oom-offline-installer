@@ -91,6 +91,24 @@
     },
     {
       "key": {
+        "uuid": "bbc75396_cd1074d4",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-03T17:40:55Z",
+      "side": 1,
+      "message": "each release is having different expectations from the installer (mostly inside ./roles/application ) and we can easily cover it by following same branching strategy with other ONAP projects. All necessary adaptations will come \"for free\" in respective branch. Keeping installer \"generic\" means same code can be run for different ONAP versions creates unnecessary overhead.\nWhat will be the benefit of it ?? Anyone can simply use code tailored for specific release in respective branch. So there is no benefit. On the other hand code will be less readable and clear instructions will be replaced by \"generic sayings\" like use the right number of k8s nodes for your specific release. \nMore examples: a) nfs handling for dockerdata config - mandatory is R2, optional in R3, irrelevant in R4\nb) helm install / helm plugins c) download scripts - we can keep even same names of all files, in generic case everything will comes from some parameter, d) library/rancher_k8s_environment module - this is tailored to  specific rancher version, it is an overhead of making it compatible with all versions of rancher used, isn\u0027t it ? \nPractically any single change we need to apply for current release is less cost \u0026 effort than the same change if we need to keep the same code compatible with older release.\nAny example above can be covered by introducing some more complexity but what\u0027s the point of making it that complicated ?",
+      "parentUuid": "cfbbeaa3_305d9b7f",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217fb607_f828095e",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 4
