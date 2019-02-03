@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "e03c7f2a_aa7b3db4",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-03T16:22:31Z",
+      "side": 1,
+      "message": "our primary goal and afaik 100% of consumers of this oom/offline-installer repo expects that they can install Casablanca ONAP using OOM charts. I am afraid that such push for genericity of installer makes this primary usecase more cumbersome to apply. If we put all changes we need (config from group_vars, casablanca patching role, patchfile) for this installation outside of installer and just try make some instructions in README it will create unnecessary extra (manual) step and potential for failure. I am not against writing the installer generic so it can be reused later for other cases, but just when it\u0027s not complicating it\u0027s primary purpose. What about OOM PTL to decide here ? Both these views are based on our understanding of expectations from the community, comments of people outside of our group might be very beneficial.",
+      "parentUuid": "c81c7f02_d2734eb1",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217fb607_f828095e",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 4
