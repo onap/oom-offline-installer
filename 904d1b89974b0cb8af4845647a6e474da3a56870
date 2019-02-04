@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51515a12_5e6d1306",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-04T16:12:48Z",
+      "side": 1,
+      "message": "1) split to multiple lines for better readability.\n2) will deployment work if by some chance deploy plugin isn\u0027t present and \u0027helm install\u0027 is used?",
+      "revId": "904d1b89974b0cb8af4845647a6e474da3a56870",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
