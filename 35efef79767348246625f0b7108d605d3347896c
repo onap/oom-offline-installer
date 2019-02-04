@@ -131,6 +131,30 @@
     },
     {
       "key": {
+        "uuid": "77de1a53_1cade19e",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-04T15:27:55Z",
+      "side": 1,
+      "message": "there is slurp ansible module for getting contents of file if you want to avoid debug module",
+      "parentUuid": "fe8c3202_71b1f2a7",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804dadb1_ef0ea78c",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 3
