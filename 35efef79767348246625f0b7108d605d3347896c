@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "b6170b26_550aae56",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-04T06:46:32Z",
+      "side": 1,
+      "message": "please, make it as variable.",
+      "range": {
+        "startLine": 43,
+        "startChar": 29,
+        "endLine": 43,
+        "endChar": 47
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e239d76f_dfdaed4f",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 3
@@ -84,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "fe8c3202_71b1f2a7",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-04T06:46:32Z",
+      "side": 1,
+      "message": "ok, look strange. I don\u0027t have other suggestions for now.",
+      "parentUuid": "1dfe68f1_f38d75e6",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804dadb1_ef0ea78c",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 3
@@ -113,6 +160,24 @@
       "side": 1,
       "message": "I am not sure if we need to support this case. All are deployments needs certificate to be distributed and it\u0027s the core stuff we are patching in OOM",
       "parentUuid": "804dadb1_ef0ea78c",
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d04c6bcd_04097b50",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-04T06:46:32Z",
+      "side": 1,
+      "message": "well support for not forcing each Helm app to use certs is dead easy.\nBut if we support only apps needing to override certs like this, then the minimum is to make this fail on this step if cert is missing.",
+      "parentUuid": "50f36a1f_c8255503",
       "revId": "35efef79767348246625f0b7108d605d3347896c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
