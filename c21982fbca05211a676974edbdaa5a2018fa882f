@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "415aed54_dcc92384",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-04T15:40:42Z",
+      "side": 1,
+      "message": "is 2.0.0 version supported in this incarnation of offline-installer or is this list present in this branch?",
+      "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3546f6f_6f233d30",
+        "filename": "build/creating_data/download-git-repos.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-04T15:40:42Z",
+      "side": 1,
+      "message": "3.0.0 is better example",
+      "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
