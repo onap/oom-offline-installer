@@ -32,8 +32,8 @@ crash () {
 
 usage () {
     echo "Usage:"
-    echo "   ./$(basename $0) <project_name> <version>  <packaging_target_dir>"
-    echo "Example: ./$(basename $0) onap-me 1.0.1  /tmp/package_onap-me_1.0.0"
+    echo "   ./$(basename $0) <project_name> <version>  <packaging_target_dir> [--conf]"
+    echo "Example: ./$(basename $0) myproject 1.0.1 /tmp/package --conf ~/myproject.conf"
     echo "packaging_target_dir will be created if does not exist. All tars will be produced into it."
 }
 
@@ -89,7 +89,7 @@ function build_sw_artifacts {
 }
 
 function create_sw_package {
-    local pkg_root="${PACKAGING_TARGET_DIR}/onap"
+    local pkg_root="${PACKAGING_TARGET_DIR}/sw"
 
     # Create tar package
     echo "[Creating software package]"
@@ -186,15 +186,8 @@ PROJECT_VERSION="$2"
 PACKAGING_TARGET_DIR="$3"
 
 TIMESTAMP=$(date -u +%Y%m%dT%H%M%S)
-
-# ensure that package.conf is sourced even when package.sh executed from another place
 SCRIPT_DIR=$(dirname "${0}")
 LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
-
-# lets start from script directory as some path in script are relative
-pushd "${LOCAL_PATH}"
-source ./package.conf
-
 
 if [ "$#" -lt 3 ]; then
     echo "Missing some mandatory parameter!"
@@ -202,9 +195,26 @@ if [ "$#" -lt 3 ]; then
     exit 1
 fi
 
-if [ ! -f "./package.conf" ]; then
-    crash 2 "Mandatory config file ./package.conf missing!"
+CONF_FILE=""
+for arg in "$@"; do
+  shift
+  case "$arg" in
+    -c|--conf)
+        CONF_FILE="$1" ;;
+    *)
+        set -- "$@" "$arg"
+  esac
+done
+
+if [ -z ${CONF_FILE} ]; then
+    CONF_FILE=${LOCAL_PATH}/package.conf # Fall to default conf file
 fi
+
+if [ ! -f ${CONF_FILE} ]; then
+    crash 2 "Mandatory config file missing! Provide it with --conf option or ${LOCAL_PATH}/package.conf"
+fi
+
+source ${CONF_FILE}
 
 # checking bash capability of parsing arrays
 whotest[0]='test' || (crash 3 "Arrays not supported in this version of bash.")
