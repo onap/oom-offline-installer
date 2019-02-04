@@ -172,6 +172,29 @@
       "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c879111e_b687abb2",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-04T07:24:46Z",
+      "side": 1,
+      "message": "this application part needs to be instructed better. But I think I will come back to this with other commits as there are some minor other stuff also to fix in packaging.\nAnother thing wondering is that should we even have packaging as a separate guide.",
+      "range": {
+        "startLine": 331,
+        "startChar": 2,
+        "endLine": 331,
+        "endChar": 104
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
