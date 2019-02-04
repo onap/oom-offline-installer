@@ -334,3 +334,45 @@
 +{{ include "common.cacert-mount-ubuntu" . | indent 2 }}
 +{{- end }}
 +{{- end }}
+--- kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml	2019-02-01 13:40:02.349210360 +0100
++++ kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml	2019-02-01 15:29:52.182542898 +0100
+@@ -47,8 +47,16 @@
+         name: {{ include "common.name" . }}-readiness
+       containers:
+         - name: {{ include "common.name" . }}
+-          command: ["/bin/bash"]
+-          args: ["-c", "cd /opt/onap/ccsdk && ./startAnsibleServer.sh"]
++          command:
++            - /bin/bash
++            - -c
++            -  >
++               pip install -i http://nexus3.onap.org/repository/pypi-private/simple/
++               --trusted-host nexus3.onap.org
++               PyMySQL cherrypy requests;
++               curl -s repo.infra-server/ubuntu/xenial/onap.list > /etc/apt/sources.list;
++               apt-get update;
++               cd /opt/onap/ccsdk && ./startAnsibleServer.sh
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+           imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+           ports:
+--- kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml	2019-02-01 13:40:02.415877026 +0100
++++ kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml	2019-02-01 15:29:39.399209565 +0100
+@@ -47,8 +47,16 @@
+         name: {{ include "common.name" . }}-readiness
+       containers:
+         - name: {{ include "common.name" . }}
+-          command: ["/bin/bash"]
+-          args: ["-c", "cd /opt/onap/ccsdk && ./startAnsibleServer.sh"]
++          command:
++            - /bin/bash
++            - -c
++            -  >
++               pip install -i http://nexus3.onap.org/repository/pypi-private/simple/
++               --trusted-host nexus3.onap.org
++               PyMySQL cherrypy requests;
++               curl -s repo.infra-server/ubuntu/xenial/onap.list > /etc/apt/sources.list;
++               apt-get update;
++               cd /opt/onap/ccsdk && ./startAnsibleServer.sh
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+           imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+           ports:
