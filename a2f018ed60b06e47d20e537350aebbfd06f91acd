@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "35a57bb8_4426f37e",
+        "filename": "ansible/application/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-04T06:37:28Z",
+      "side": 1,
+      "message": "None of the things you described is related to this commit and my comments for it. I already said before that my comments are not related to this kind of \"generic\" you think here and for some reason hate/fear without grounds. \nSo let\u0027s keep this in the actual matter.\n\nComments was to keep app configuration in separate place instead of inserting it into installer code (defaults) itself. That is just the way this installer is designed to be used nothing more. The config will be in git and that same config same files can be overwritten in each onap branch according to onap projects like you described. And all those \"free\" stuff will apply. We don\u0027t need to keep config files of all onap releases in all branches, it\u0027s not forcing it, it\u0027s completely independent choice.",
+      "parentUuid": "bbc75396_cd1074d4",
+      "revId": "a2f018ed60b06e47d20e537350aebbfd06f91acd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "217fb607_f828095e",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 4
