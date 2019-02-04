@@ -14,7 +14,7 @@
         name: "{{ app_name }}"
         file: "{{ app_name | lower }}"
         description: "{{ app_name }} offline repository"
-        baseurl: "{{ 'http://repo.infra-server' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
+        baseurl: "{{ 'http://repo.infra-server/rhel' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
         gpgcheck: no
         enabled: yes
       when: deploy_rpm_repository
