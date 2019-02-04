@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57b249b9_bee69316",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-04T09:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ff0444e_13424590",
+      "range": {
+        "startLine": 5,
+        "startChar": 26,
+        "endLine": 5,
+        "endChar": 28
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ae788c25_7437eee4",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 5
@@ -83,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "56b347a0_dc3472c5",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-04T09:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24873a9f_49fe4452",
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66868ae8_01f71c2e",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 5
@@ -129,6 +171,30 @@
     },
     {
       "key": {
+        "uuid": "62b56c9a_42413e5f",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-04T09:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5488f2ce_1ee7301f",
+      "range": {
+        "startLine": 221,
+        "startChar": 31,
+        "endLine": 222,
+        "endChar": 7
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e29ad929_0b9d334f",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 5
@@ -152,6 +218,30 @@
     },
     {
       "key": {
+        "uuid": "897a3933_3f4a3dfd",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-04T09:02:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29ad929_0b9d334f",
+      "range": {
+        "startLine": 220,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 62
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8788c83a_c75dfd69",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 5
@@ -163,6 +253,30 @@
       "writtenOn": "2019-02-02T14:44:51Z",
       "side": 1,
       "message": "this file is never mentioned in command above",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 22
+      },
+      "revId": "7881afd9e2b683d08626f63f7d2fb7cee2791ec6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4002136_eba9bdfb",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-04T09:02:33Z",
+      "side": 1,
+      "message": "It\u0027s in the configuration",
+      "parentUuid": "8788c83a_c75dfd69",
       "range": {
         "startLine": 284,
         "startChar": 0,
