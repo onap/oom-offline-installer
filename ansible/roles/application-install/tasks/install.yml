@@ -38,5 +38,10 @@
   environment:
     PATH: "{{ helm_bin_dir }}:{{ ansible_env.PATH }}"
 
+- name: Check for deploy plugin presence
+  stat:
+    path: '~/.helm/plugins/deploy/deploy.sh'
+  register: deploy_plugin_presence
+
 - name: Helm Install application {{ app_name }}
-  command: "{{ helm_bin_dir }}/helm install {{ helm_repository_name }}/{{ app_helm_chart_name }} --name {{ app_helm_release_name }} --namespace {{ app_kubernetes_namespace }}"
+  command: "{{ helm_bin_dir }}/helm {{ 'deploy' if deploy_plugin_presence.stat.exists else 'install' }} {{ helm_repository_name }}/{{ app_helm_chart_name }} --name {{ app_helm_release_name }} --namespace {{ app_kubernetes_namespace }}"
