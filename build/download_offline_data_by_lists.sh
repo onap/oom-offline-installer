@@ -47,7 +47,7 @@ fi
 CTOOLS="${LOCAL_PATH}/creating_data"
 LISTS_DIR="${LOCAL_PATH}/data_lists"
 DATA_DIR="${LOCAL_PATH}/../../resources"
-TOTAL=10
+TOTAL=11
 CURR=1
 
 message info "Downloading started: $(date)"
@@ -78,11 +78,14 @@ $CTOOLS/download-npm-pkgs.sh "$LISTS_DIR/${TAG}-npm.list" "$DATA_DIR/offline_dat
 echo "[Step $((CURR++))/$TOTAL Download bin tools]"
 $CTOOLS/download-bin-tools.sh "${TAG}" "$DATA_DIR/downloads"
 
-echo "[Step $((CURR++))/$TOTAL Download rhel pkgs]"
-$CTOOLS/download-pkg.sh "$DATA_DIR/pkg/rhel"
+echo "[Step $((CURR++))/$TOTAL Create RHEL repository]"
+$CTOOLS/create-rhel-repo.sh "$DATA_DIR/pkg/rhel"
 
 echo "[Step $((CURR++))/$TOTAL Download sdnc-ansible-server packages]"
-$CTOOLS/download-pip.sh "$LISTS_DIR/${TAG}-pip_list.txt" "$DATA_DIR/offline_data/pypi"
-$CTOOLS/download-files.sh "$LISTS_DIR/pkg_list.txt" "$DATA_DIR/pkg/ubuntu/xenial"
+$CTOOLS/download-pip.sh "$LISTS_DIR/${TAG}-pip_packages.list" "$DATA_DIR/offline_data/pypi"
+$CTOOLS/download-files.sh "$LISTS_DIR/deb_packages.list" "$DATA_DIR/pkg/ubuntu/xenial"
+
+echo "[Step $((CURR++))/$TOTAL Create APT repository]"
+$CTOOLS/create-ubuntu-repo.sh "$DATA_DIR/pkg/ubuntu/xenial"
 
 message info "Downloading finished: $(date)"
