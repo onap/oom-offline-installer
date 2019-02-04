@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "20490e56_f96f0246",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T16:46:21Z",
+      "side": 1,
+      "message": "not that crucial, but our default tag is now 3.0.0 or 3.0.1 in couple of days.",
+      "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "415aed54_dcc92384",
         "filename": "build/creating_data/download-bin-tools.sh",
         "patchSetId": 8
@@ -13,6 +30,24 @@
       "writtenOn": "2019-02-04T15:40:42Z",
       "side": 1,
       "message": "is 2.0.0 version supported in this incarnation of offline-installer or is this list present in this branch?",
+      "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "297f8afc_7bc3083d",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T16:46:21Z",
+      "side": 1,
+      "message": "I am ok with keeping this here. Maybe to add some comments explaining what this tag means. We don\u0027t want to test beijing onao in this version of installer, therefore our beijing data lists are just in beijing branch but we can keep this logic here, so if someone would like to use it in this context he/she might benefit from having this part pre-pre-prepared",
+      "parentUuid": "415aed54_dcc92384",
       "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
