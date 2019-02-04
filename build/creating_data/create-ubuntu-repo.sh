@@ -16,27 +16,18 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-outdir="$1"
-if [[ -z "$outdir" ]]; then
+OUTDIR="${1}"
+if [[ -z "${OUTDIR}" ]]; then
     echo "Missing output dir"
     exit 1
 fi
 
-# if onap.repo does not exists create it
-mkdir -p $outdir
-if [ ! -f "$outdir/onap.repo" ]; then
-   cat > "$outdir/onap.repo" <<EOF
-[ONAP]
-name=Offline ONAP repository
-baseurl=PATH
-enabled=1
-gpgcheck=0
-EOF
-fi
 
-# this exact docker version is required by ONAP/beijing
-# it should be available in centos docker repo
-yumdownloader --resolve --destdir="$outdir" docker-ce-17.03.2.ce libtool-ltdl docker-ce-selinux
+# create the package index
+dpkg-scanpackages -m ${OUTDIR}/ > ${OUTDIR}/Packages
+cat ${OUTDIR}/Packages | gzip -9c > ${OUTDIR}/Packages.gz
 
-yumdownloader --resolve --destdir="$outdir" dnsmasq icewm firefox tigervnc-server perl*
-createrepo "$outdir"
+# create the Release file
+echo 'deb [trusted=yes] http://repo.infra-server/ubuntu/xenial /' > ${OUTDIR}/onap.list
+
+exit 0
