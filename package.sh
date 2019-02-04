@@ -105,10 +105,13 @@ function create_sw_package {
     done
 
     # Helm charts handling
-    echo "Helm charts handling"
-    # Copy charts available for ansible playbook to use/move them to target server/dir
-    mkdir -p "${pkg_root}"/ansible/application/helm_charts
-    cp -r "${HELM_CHARTS_DIR}"/* "${pkg_root}"/ansible/application/helm_charts
+    if [ ! -z "${HELM_CHARTS_DIR}" ];
+    then
+        echo "Helm charts handling"
+        # Copy charts available for ansible playbook to use/move them to target server/dir
+        mkdir -p "${pkg_root}"/ansible/application/helm_charts
+        cp -r "${HELM_CHARTS_DIR}"/* "${pkg_root}"/ansible/application/helm_charts
+    fi
 
     # Add metadata to the package
     add_metadata "${pkg_root}"/package.info
