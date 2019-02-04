@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d1379245_9265b1bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T06:06:48Z",
+      "side": 1,
+      "message": "good catch, it should be OOM-1609",
+      "parentUuid": "3a34e217_6d2e7276",
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e239d76f_dfdaed4f",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "1dfe68f1_f38d75e6",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T06:06:48Z",
+      "side": 1,
+      "message": "well this way seems to be quite popular, I found it on couple of places alternatively we can use cat within shell module but this way looks better to me. any other suggestions ?",
+      "parentUuid": "e239d76f_dfdaed4f",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804dadb1_ef0ea78c",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 3
@@ -53,6 +95,24 @@
       "writtenOn": "2019-02-03T09:53:54Z",
       "side": 1,
       "message": "if cert file is not there what to do? Some actions should be done. Fail this? Or just not to provide this override file at all then?",
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50f36a1f_c8255503",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T06:06:48Z",
+      "side": 1,
+      "message": "I am not sure if we need to support this case. All are deployments needs certificate to be distributed and it\u0027s the core stuff we are patching in OOM",
+      "parentUuid": "804dadb1_ef0ea78c",
       "revId": "35efef79767348246625f0b7108d605d3347896c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -94,6 +154,30 @@
       "side": 1,
       "message": "agree, it\u0027s important change and there are many ways to implement it.",
       "parentUuid": "5e90cf77_62d9cf69",
+      "range": {
+        "startLine": 56,
+        "startChar": 35,
+        "endLine": 56,
+        "endChar": 43
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d71d876e_34cc75fd",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T06:06:48Z",
+      "side": 1,
+      "message": "agree, it\u0027s important and unrelated change (leftover from https://gerrit.onap.org/r/#/c/75958/) I will extract it from here",
+      "parentUuid": "519209dd_7fcca0bf",
       "range": {
         "startLine": 56,
         "startChar": 35,
