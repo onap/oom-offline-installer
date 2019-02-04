@@ -155,6 +155,30 @@
     },
     {
       "key": {
+        "uuid": "c4f1e0b6_85cbe55c",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T16:33:25Z",
+      "side": 1,
+      "message": "thanks, will check that",
+      "parentUuid": "77de1a53_1cade19e",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 21
+      },
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "804dadb1_ef0ea78c",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 3
@@ -202,6 +226,24 @@
       "side": 1,
       "message": "well support for not forcing each Helm app to use certs is dead easy.\nBut if we support only apps needing to override certs like this, then the minimum is to make this fail on this step if cert is missing.",
       "parentUuid": "50f36a1f_c8255503",
+      "revId": "35efef79767348246625f0b7108d605d3347896c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92c3062d_5502b8cd",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-04T16:33:25Z",
+      "side": 1,
+      "message": "if certificate (which is internal part of our offline installer) is not found, creating of override file will fail.",
+      "parentUuid": "d04c6bcd_04097b50",
       "revId": "35efef79767348246625f0b7108d605d3347896c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
