@@ -1,0 +1,291 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bb213db_3d822c69",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "Maybe some other top level dir would be better for this file.\nIt\u0027s needed to conf whole onap deployment not only patching.\n\nThe problem is to invent the dir name:) \n\nonap-conf\nonap-values\nonap-parameters\n?",
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd24069f_92661158",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "need to consider naming here. Is onap-cge upstream project or Samsung internal? I though so far it\u0027s Samsung internal.\nIs term \"cge\" introduced to upstream?",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 41
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db2b4ef4_adeb06b5",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "remove if not used.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a73220e_9378fe70",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "remove, default value is already \u0027no\u0027 in ansible/group_vars/all.yml",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 20
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fe90e494_ec0f091c",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "remove, not used.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef25f681_3e57c496",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "remove, default already same.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 21
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "584aafa3_53331425",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "remove, default already same.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc22b477_462fe90c",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "remove, not used.",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 15
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc2009a7_f6f91e11",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "same as mentioned above. Some other name?",
+      "range": {
+        "startLine": 88,
+        "startChar": 30,
+        "endLine": 89,
+        "endChar": 31
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "766be1db_6d8e7a2d",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "I just created a commit https://gerrit.onap.org/r/#/c/77851/\nwhere default values was provided for this.\nSo this can be removed from here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 69
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8920ba69_315e0313",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "same as above. Can be removed.",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 102,
+        "endChar": 66
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "312c2629_dd990cdb",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "also can be removed as default value will be same.",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b412810_f865190f",
+        "filename": "patches/onap-casablanca-patch-role/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:24:06Z",
+      "side": 1,
+      "message": "directory name for this and at the same time role name \"onap-casablanca-path-role\" is release specific.\nDo we want to keep it and keep changing the dir/role name in each onap release? Of course this is minor as we may get rid of the pactching. But still different if otherwice we will keep files in branch targeted to that branch (release).",
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
