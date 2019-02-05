@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "4fe38896_c576fb07",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-05T10:13:30Z",
+      "side": 1,
+      "message": "both ansible role and patchfile is there for patching. The only exception is example configuration file which is kind of example file with patching role .... honestly I still likes \"patches\" a bit more than onap-\u003c\u003e because it\u0027s better fitting to content",
+      "parentUuid": "0bb213db_3d822c69",
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd24069f_92661158",
         "filename": "patches/application_configuration.yaml",
         "patchSetId": 5
@@ -214,6 +232,30 @@
       "writtenOn": "2019-02-05T08:24:06Z",
       "side": 1,
       "message": "I just created a commit https://gerrit.onap.org/r/#/c/77851/\nwhere default values was provided for this.\nSo this can be removed from here.",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 69
+      },
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a8709d2f_9f88c049",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-05T10:13:30Z",
+      "side": 1,
+      "message": "we can remove once your is merged, not earlier",
+      "parentUuid": "766be1db_6d8e7a2d",
       "range": {
         "startLine": 91,
         "startChar": 0,
