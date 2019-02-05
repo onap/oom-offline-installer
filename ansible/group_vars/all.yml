@@ -84,22 +84,28 @@ runtime_images:
 # Application specific params #
 ###############################
 
-# Project name to utilize same codebase
-# e.g. project_configuration: onap-me
+# Project name to utilize same codebase. Just helper variable inside ansible
+# configuration files (like this file) to avoid writing own project name multiple
+# times for paths, namespaces, Helm release, derived variables..
+# e.g. project_configuration: myapp
 project_configuration:
 
-# App Helm charts dir. E.g. application/helm_charts/<xxx> where xxx is a charts folder name.
-# Helm charts are expected to be inside SW package somewhere inside ./ansible/application
-# those will be available for offline installer under /ansible/application/<helm_charts_name>
-# for OOM project helm charts are usually within kubernetes sub-folder
-# so the path for them can be:
-# e.g app_helm_charts_install_directory: "/ansible/application/oom/kubernetes"
-app_helm_charts_install_directory:
+# App Helm charts directory location in installation package.
+# The path is absolute path (even locates relative inside of this sw package
+# installation folder) because it must be visible for ansible docker/chroot
+# process to find directory and to transfer it into machine (infra node) running
+# Helm repository.
+# Content of the folder must be Helm chart directories of the app with Makefile.
+# In case of ONAP OOM it would be <oom_repo>/kubernetes folder content.
+# NOTE: This default value should not be changed if not really needed and it
+# must match with the variable "HELM_CHARTS_DIR_IN_PACKAGE" value in package.sh
+# script!
+app_helm_charts_install_directory: "/ansible/application/helm_charts"
 
 # to specify target dir where helm charts should be copied into on infra node
 # this should be directory with all charts and Makefile
 # e.g. app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
-app_helm_charts_infra_directory:
+app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
 
 # Main Helm chart to install
 # e.g. app_helm_chart_name: onap
@@ -114,12 +120,12 @@ app_helm_build_targets:
 
 # Directory with helm plugins
 # It's an optional parameter used e.g. in OOM Casablanca
-# app_helm_plugins_directory: "{{ app_helm_charts_infra_directory}}/kubernetes/helm/plugins/"
+# app_helm_plugins_directory: "{{ app_helm_charts_infra_directory}}/helm/plugins/"
 app_helm_plugins_directory:
 
 # Helm release name (visible in POD names) used by Helm
 # e.g. app_helm_release_name: "{{ project_configuration }}"
-app_helm_release_name:
+app_helm_release_name: "{{ project_configuration }}"
 
 # Kubernetes namespace where application is installed
 # e.g. app_kubernetes_namespace: onap
