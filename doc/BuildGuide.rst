@@ -22,6 +22,7 @@ More-over following sw packages has to be installed:
 
 * for the Download artifacts for offline installer (Part 2) only
     -  createrepo
+    -  dpkg-dev
     -  python2-pip
 
 * for the Download artifacts for offline installer (Part 2) and the Populate local nexus (Part 3)
@@ -31,6 +32,9 @@ More-over following sw packages has to be installed:
 
 * for the Download artifacts for offline installer (Part 2) and for the Application helm charts preparation and patching (Part 4)
     -  patch
+
+* for the Populate local nexus (Part 3)
+    -  twine
 
 This can be achieved by following commands:
 
@@ -46,6 +50,8 @@ This can be achieved by following commands:
 
     # install following packages
     yum install -y expect nodejs git wget createrepo python2-pip jq patch
+
+    pip install twine
 
     # install docker
     curl https://releases.rancher.com/install-docker/17.03.sh | sh
@@ -214,12 +220,24 @@ There are mandatory parameters need to be set in configuration file:
 | NXS\_SRC\_DOCKER\_IMG\_DIR   | resource directory of docker images                                                      |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_SRC\_NPM\_DIR           | resource directory of npm packages                                                       |
+<<<<<<< HEAD
+=======
++------------------------------
++------------------------------------------------------------------------------------------+
+| NXS\_SRC\_PYPI\_DIR           | resource directory of npm packages                                                       |
+>>>>>>> Adding PyPI repository and packages to Nexus
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_DOCKER\_IMG\_LIST       | list of docker images to be pushed to Nexus repository                                   |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_DOCKER\_WO\_LIST        | list of docker images which uses default repository                                      |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_NPM\_LIST               | list of npm packages to be published to Nexus repository                                 |
+<<<<<<< HEAD
+=======
++------------------------------
++------------------------------------------------------------------------------------------+
+| NXS\_PYPI\_LIST               | list of pypi packages to be published to Nexus repository                                 |
+>>>>>>> Adding PyPI repository and packages to Nexus
 +------------------------------+------------------------------------------------------------------------------------------+
 | NEXUS\_DATA\_TAR             | target tarball of Nexus data path/name                                                   |
 +------------------------------+------------------------------------------------------------------------------------------+
@@ -242,9 +260,16 @@ Example of the configuration file:
 
     NXS_SRC_DOCKER_IMG_DIR="/tmp/onap-offline/resources/offline_data/docker_images_for_nexus"
     NXS_SRC_NPM_DIR="/tmp/onap-offline/resources/offline_data/npm_tar"
+<<<<<<< HEAD
     NXS_DOCKER_IMG_LIST="/tmp/onap-me-data_lists/docker_img.list"
     NXS_DOCKER_WO_LIST="/tmp/onap-me-data_lists/docker_no_registry.list"
     NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/npm_list.txt"
+=======
+    NXS_SRC_PYPI_DIR="/tmp/onap-offline/resources/offline_data/pypi"
+    NXS_DOCKER_IMG_LIST="/tmp/onap-me-data_lists/docker_img.list"
+    NXS_DOCKER_WO_LIST="/tmp/onap-me-data_lists/docker_no_registry.list"
+    NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/onap_3.0.0-npm.list"
+>>>>>>> Adding PyPI repository and packages to Nexus
     NEXUS_DATA_TAR="/root/nexus_data.tar"
     NEXUS_DATA_DIR="/tmp/onap-offline/resources/nexus_data"
     NEXUS_IMAGE="/tmp/onap-offline/resources/offline_data/docker_images_infra/sonatype_nexus3_latest.tar"

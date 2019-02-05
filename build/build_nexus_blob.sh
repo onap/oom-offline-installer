@@ -24,9 +24,11 @@
 # Mandatory variables need to be set in configuration file:
 #   NXS_SRC_DOCKER_IMG_DIR  - resource directory of docker images
 #   NXS_SRC_NPM_DIR         - resource directory of npm packages
+#   NXS_SRC_PYPI_DIR        - resource directory of pypi packages
 #   NXS_DOCKER_IMG_LIST     - list of docker images to be pushed to Nexus repository
 #   NXS_DOCKER_WO_LIST      - list of docker images which uses default repository
 #   NXS_NPM_LIST            - list of npm packages to be published to Nexus repository
+#   NXS_PYPI_LIST           - list of pypi packages to be uploaded to Nexus repository
 #   NEXUS_DATA_TAR          - target tarball of Nexus data path/name
 #   NEXUS_DATA_DIR          - directory used for the Nexus blob build
 #   NEXUS_IMAGE             - Sonatype/Nexus3 docker image which will be used for data blob creation
@@ -37,6 +39,7 @@ set -e
 # Nexus repository location
 NEXUS_DOMAIN="nexus"
 NPM_REGISTRY="http://${NEXUS_DOMAIN}:8081/repository/npm-private/"
+PYPI_REGISTRY="http://${NEXUS_DOMAIN}:8081/repository/pypi-private/"
 DOCKER_REGISTRY="${NEXUS_DOMAIN}:8082"
 
 # Nexus repository credentials
@@ -69,10 +72,12 @@ repositoryManager.browse().each {
 /* Add bearer token realms at the end of realm lists... */
 realmManager.enableRealm("NpmToken")
 realmManager.enableRealm("DockerToken")
+realmManager.enableRealm("PypiToken")
 /* Create the docker user. */
 security.addUser("docker", "docker", "docker", "docker@example.com", true, "docker", ["nx-anonymous"])
-/* Create docker and npm repositories. Their default configuration should be compliant with our requirements, except the docker registry creation. */
+/* Create docker, npm and pypi repositories. Their default configuration should be compliant with our requirements, except the docker registry creation. */
 repository.createNpmHosted("npm-private")
+repository.createPyPiHosted("pypi-private")
 def r = repository.createDockerHosted("onap", 8082, 0)
 /* force basic authentication true by default, must set to false for docker repo. */
 conf=r.getConfiguration()
@@ -94,9 +99,11 @@ usage () {
     echo "      "
     echo "      NXS_SRC_DOCKER_IMG_DIR    - directory of resource docker images"
     echo "      NXS_SRC_NPM_DIR           - directory of resource npm packages"
+    echo "      NXS_SRC_PYPI_DIR          - directory of resource pypi packages"
     echo "      NXS_DOCKER_IMG_LIST       - list of docker images to be pushed to Nexus repository"
     echo "      NXS_DOCKER_WO_LIST        - list of docker images which uses default repository"
     echo "      NXS_NPM_LIST              - list of npm packages to be published to Nexus repository"
+    echo "      NXS_PYPI_LIST             - list of pypi packages to be uploaded to Nexus repository"
     echo "      NEXUS_DATA_TAR            - target tarball of Nexus data path/name"
     echo "      NEXUS_DATA_DIR            - directory used for the Nexus blob build"
     echo "      NEXUS_IMAGE               - Sonatype/Nexus3 docker image which will be used for data blob creation"
@@ -123,7 +130,7 @@ if [ -n "${2}" ]; then
     NEXUS_DATA_TAR="${2}"
 fi
 
-for VAR in NXS_SRC_DOCKER_IMG_DIR NXS_SRC_NPM_DIR NXS_DOCKER_IMG_LIST NXS_DOCKER_WO_LIST NXS_NPM_LIST NEXUS_DATA_TAR NEXUS_DATA_DIR NEXUS_IMAGE; do
+for VAR in NXS_SRC_DOCKER_IMG_DIR NXS_SRC_NPM_DIR NXS_SRC_PYPI_DIR NXS_DOCKER_IMG_LIST NXS_DOCKER_WO_LIST NXS_NPM_LIST NXS_PYPI_LIST NEXUS_DATA_TAR NEXUS_DATA_DIR NEXUS_IMAGE; do
     if [ -n "${!VAR}" ] ; then
         echo "${VAR} is set to ${!VAR}"
     else
@@ -256,7 +263,7 @@ expect eof
 EOF
 
 # Patch problematic package
-cd ${NXS_SRC_NPM_DIR}
+pushd ${NXS_SRC_NPM_DIR}
 tar xvzf tsscmp-1.0.5.tgz
 rm -f tsscmp-1.0.5.tgz
 sed -i "s|https://registry.npmjs.org|http://${NEXUS_DOMAIN}:8081|g" package/package.json
@@ -268,6 +275,17 @@ rm -rf package
 for ARCHIVE in $(sed $'s/\r// ; s/\\@/\-/g ; s/$/\.tgz/g' ${NXS_NPM_LIST} | awk '{ print $1 }'); do
     npm publish --access public ${ARCHIVE}
 done
+popd
+
+##############################
+#  Populate PyPi repository  #
+##############################
+
+pushd ${NXS_SRC_PYPI_DIR}
+for PACKAGE in $(sed $'s/\r//; s/==/-/' ${NXS_PYPI_LIST}); do
+    twine upload -u ${NEXUS_USERNAME} -p ${NEXUS_PASSWORD} --repository-url ${PYPI_REGISTRY} ./${PACKAGE}*
+done
+popd
 
 ##############################
 # Populate Docker repository #
