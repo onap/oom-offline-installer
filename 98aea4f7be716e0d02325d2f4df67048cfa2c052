@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "d1ba0f82_976be503",
+        "filename": "patches/application_configuration.yaml",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T10:58:58Z",
+      "side": 1,
+      "message": "honestly honestly.\nThis \"example\" configuration file is the whole point. That defines all values how onap Casablanca should be installed and what configuration we are testing.\nPatching staff is part of that configuration for sure, and at the moment you see only that, but all other lines on this config file are equally important.",
+      "parentUuid": "4fe38896_c576fb07",
+      "revId": "98aea4f7be716e0d02325d2f4df67048cfa2c052",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd24069f_92661158",
         "filename": "patches/application_configuration.yaml",
         "patchSetId": 5
