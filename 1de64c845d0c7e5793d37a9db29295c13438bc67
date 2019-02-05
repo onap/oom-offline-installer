@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "94c1c290_faa2d144",
+        "filename": "build/creating_data/create-rhel-repo.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-05T11:42:40Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "208e97f8_32ecb45e",
+      "revId": "1de64c845d0c7e5793d37a9db29295c13438bc67",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2dd80a61_b6429a21",
         "filename": "build/creating_data/create-rhel-repo.sh",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "40a901b5_baaeb08e",
+        "filename": "build/creating_data/create-rhel-repo.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-05T11:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2dd80a61_b6429a21",
+      "revId": "1de64c845d0c7e5793d37a9db29295c13438bc67",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9633721b_f4e478a0",
         "filename": "build/download_offline_data_by_lists.sh",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2019-02-05T11:30:42Z",
       "side": 1,
       "message": "this must break if in the script you want 2 args but here you pass only one",
+      "revId": "1de64c845d0c7e5793d37a9db29295c13438bc67",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "681d1028_0387eb22",
+        "filename": "build/download_offline_data_by_lists.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-05T11:42:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9633721b_f4e478a0",
       "revId": "1de64c845d0c7e5793d37a9db29295c13438bc67",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
