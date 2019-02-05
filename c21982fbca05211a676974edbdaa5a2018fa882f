@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "8c0067cb_fbaee582",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T09:45:42Z",
+      "side": 1,
+      "message": "well how many different versions of Heat template Openstack heat supports? Same for many others.\nProducts always have to drop some old support at some point. Mainly these kind of tool versions should be handled so that any version or limited versions are supported. Only limit versions if really needed.\nUser should not be forced to any helm or kube version and it\u0027s different thing what we have used/tested/recommend for the release.",
+      "parentUuid": "c8ca67aa_3107c4a1",
+      "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3546f6f_6f233d30",
         "filename": "build/creating_data/download-git-repos.sh",
         "patchSetId": 8
