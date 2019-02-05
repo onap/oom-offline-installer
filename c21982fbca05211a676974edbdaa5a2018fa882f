@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "141ebd02_27d57d1c",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T07:59:10Z",
+      "side": 1,
+      "message": "agree with Michal.",
+      "parentUuid": "297f8afc_7bc3083d",
+      "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3546f6f_6f233d30",
         "filename": "build/creating_data/download-git-repos.sh",
         "patchSetId": 8
