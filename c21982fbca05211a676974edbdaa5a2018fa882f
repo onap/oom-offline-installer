@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "f87c01e3_6daaf20d",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-05T10:14:03Z",
+      "side": 1,
+      "message": "I would not support list long as the Ten Commandments. But the two versions are OK, IMHO",
+      "parentUuid": "8c0067cb_fbaee582",
+      "revId": "c21982fbca05211a676974edbdaa5a2018fa882f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3546f6f_6f233d30",
         "filename": "build/creating_data/download-git-repos.sh",
         "patchSetId": 8
