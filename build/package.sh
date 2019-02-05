@@ -109,8 +109,8 @@ function create_sw_package {
     then
         echo "Helm charts handling"
         # Copy charts available for ansible playbook to use/move them to target server/dir
-        mkdir -p "${pkg_root}"/ansible/application/helm_charts
-        cp -r "${HELM_CHARTS_DIR}"/* "${pkg_root}"/ansible/application/helm_charts
+        mkdir -p ${pkg_root}/${HELM_CHARTS_DIR_IN_PACKAGE}
+        cp -r "${HELM_CHARTS_DIR}"/* ${pkg_root}/${HELM_CHARTS_DIR_IN_PACKAGE}
     fi
 
     # Add metadata to the package
@@ -191,6 +191,17 @@ PACKAGING_TARGET_DIR="$3"
 TIMESTAMP=$(date -u +%Y%m%dT%H%M%S)
 SCRIPT_DIR=$(dirname "${0}")
 LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
+
+# Relative location inside the package to place Helm charts to be available for
+# Ansible process to transfer them into machine (infra node) running Helm repository.
+# NOTE: This is quite hardcoded place to put them and agreement with Ansible code
+# is done in ansible/group_vars/all.yml with variable "app_helm_charts_install_directory"
+# whihc value must match to value of this variable (with exception of slash '/'
+# prepended so that ansible docker/chroot process can see the dir).
+# This variable can be of course changed in package.conf if really needed if
+# corresponding ansible variable "app_helm_charts_install_directory" value
+# adjusted accordingly.
+HELM_CHARTS_DIR_IN_PACKAGE="ansible/application/helm_charts"
 
 if [ "$#" -lt 3 ]; then
     echo "Missing some mandatory parameter!"

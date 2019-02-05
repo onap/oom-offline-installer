@@ -2,4 +2,21 @@
 - debug:
     msg: "phase is {{ phase }}"
 
+- name: Check if install needed
+  block:
+    - name: "Does {{ app_helm_charts_install_directory }} exist and contain Helm Charts"
+      find:
+        paths: "{{ app_helm_charts_install_directory }}"
+        recurse: yes
+      delegate_to: localhost
+      register: charts_files
+    - name: Set install active fact
+      set_fact:
+        install_needed: "{{ yes if charts_files.matched | int > 0 else no }}"
+  when: phase == "pre-install"
+
 - include_tasks: "{{ phase }}.yml"
+  when: install_needed
+
+- debug:
+    msg: "Install needed {{ install_needed }}"
