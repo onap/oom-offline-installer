@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "56f59d19_4c74f993",
+        "filename": "package.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-05T14:12:21Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "5732628b6218cd08906aaa6efd06b6e317964078",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f74ee76_0017cb31",
+        "filename": "package.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-05T14:12:21Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "5732628b6218cd08906aaa6efd06b6e317964078",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bdc39da_104fdd74",
         "filename": "package.sh",
         "patchSetId": 1
