@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "50c41a36_7419d38a",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-05T07:59:12Z",
+      "side": 1,
+      "message": "this is hardcoded in many places (ansible/roles/certificates/tasks/main.yml) we better change it in diffrent commit",
+      "parentUuid": "b362d6bf_2f8a237f",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e06ee603_27b35cac",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 6
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "fa33973f_4d0443c4",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-05T07:59:12Z",
+      "side": 1,
+      "message": "jup, it will fail on slurp task already",
+      "parentUuid": "e06ee603_27b35cac",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614658b8_db31b117",
         "filename": "patches/casablanca_3.0.0.patch",
         "patchSetId": 6
@@ -82,6 +130,24 @@
       "writtenOn": "2019-02-05T06:45:41Z",
       "side": 1,
       "message": "difficult to read this what is happening here.\n\nIs the patch updated according to new Casablanca template changes?",
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5885ba13_b5b04915",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-05T07:59:12Z",
+      "side": 1,
+      "message": "yes, at this stage we can\u0027t effectively test it but it looks that certificate is propagated in the right place",
+      "parentUuid": "614658b8_db31b117",
       "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
