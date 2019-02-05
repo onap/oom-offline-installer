@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bf30b8e_03c619d9",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T06:45:41Z",
+      "side": 1,
+      "message": "oh yeah, this is the one.",
+      "range": {
+        "startLine": 42,
+        "startChar": 2,
+        "endLine": 42,
+        "endChar": 7
+      },
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b362d6bf_2f8a237f",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T06:45:41Z",
+      "side": 1,
+      "message": "make it as variable.",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e06ee603_27b35cac",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T06:45:41Z",
+      "side": 1,
+      "message": "if cert file does not exists or is empty. Does it fail already on slurp task?\nIf not this task should fail it.",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "614658b8_db31b117",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T06:45:41Z",
+      "side": 1,
+      "message": "difficult to read this what is happening here.\n\nIs the patch updated according to new Casablanca template changes?",
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
