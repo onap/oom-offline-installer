@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c8032a50_62ffd5a7",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:28:53Z",
+      "side": 1,
+      "message": "different commit is fine.",
+      "parentUuid": "50c41a36_7419d38a",
+      "range": {
+        "startLine": 43,
+        "startChar": 10,
+        "endLine": 43,
+        "endChar": 27
+      },
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e06ee603_27b35cac",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 6
@@ -119,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ee2ae27d_b5929c48",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:28:53Z",
+      "side": 1,
+      "message": "ok",
+      "parentUuid": "fa33973f_4d0443c4",
+      "range": {
+        "startLine": 48,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "614658b8_db31b117",
         "filename": "patches/casablanca_3.0.0.patch",
         "patchSetId": 6
@@ -148,6 +196,24 @@
       "side": 1,
       "message": "yes, at this stage we can\u0027t effectively test it but it looks that certificate is propagated in the right place",
       "parentUuid": "614658b8_db31b117",
+      "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d451eec5_7fdb8b74",
+        "filename": "patches/casablanca_3.0.0.patch",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-05T08:28:53Z",
+      "side": 1,
+      "message": "ok, just worried cases when underlaying baseline template was changed beijing-\u003eCasablanca on top of whihc we patch this.",
+      "parentUuid": "5885ba13_b5b04915",
       "revId": "f59aae50ad530faa00aad5509d300e9b0b71eb28",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
