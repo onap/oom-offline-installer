@@ -2,4 +2,24 @@
 - debug:
     msg: "phase is {{ phase }}"
 
+- name: Check if install needed
+  block:
+    - name: Init install needed fact
+      set_fact:
+        install_needed: no
+    - name: "Does {{ app_helm_charts_install_directory }} exist"
+      stat:
+        path: "{{ app_helm_charts_install_directory }}"
+      delegate_to: localhost
+      register: charts_dir
+    - name: Set install active fact
+      set_fact:
+        install_needed: yes
+      when: charts_dir.stat.exists
+  when: phase == "pre-install"
+
 - include_tasks: "{{ phase }}.yml"
+  when: install_needed
+
+- debug:
+    msg: "Install needed {{ install_needed }}"
