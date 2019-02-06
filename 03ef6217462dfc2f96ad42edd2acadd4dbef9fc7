@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f91db0fd_2cec092e",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:26:48Z",
+      "side": 1,
+      "message": "I try to reformat, did not get though your sentence:)",
+      "parentUuid": "ae7dec0b_79918fdb",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5570a59c_fc846139",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "7dbe3020_5c2f62e1",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:26:48Z",
+      "side": 1,
+      "message": "Yes. Now script generates always those 3 packages (can be empty packages).",
+      "parentUuid": "5570a59c_fc846139",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bb5b5d4_7e3b1ed8",
         "filename": "package.conf",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2019-02-06T12:56:30Z",
       "side": 1,
       "message": "if all this stuff is for making our application generic, why all packages we are producing are starting onap-offline ?? Maybe this prefix should be completely removed ?",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d67af1cf_7ef74ca3",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:26:48Z",
+      "side": 1,
+      "message": "I don\u0027t get your \"generic\" point? \nI don\u0027t any of the changes here try to make this more generic at all.\n\nGeneric !\u003d than name values used in config.\n\nUser can use package name he/she wants. Having onap or some other app name as example value does not decrease generality at all.",
+      "parentUuid": "1bb5b5d4_7e3b1ed8",
       "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -76,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "904feccf_ee9821f5",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:26:48Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "5e272f0e_3d4d3292",
+      "range": {
+        "startLine": 44,
+        "startChar": 81,
+        "endLine": 44,
+        "endChar": 86
+      },
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d38ee323_65045a5d",
         "filename": "package.conf",
         "patchSetId": 4
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "597855d5_1eed5239",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:26:48Z",
+      "side": 1,
+      "message": "on purpose it\u0027s \"myappfiles\" to tell user that he really can provide the files from whereever he likes.\n\nI can add one example for those values also.",
+      "parentUuid": "d38ee323_65045a5d",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f23d768_512e8715",
         "filename": "package.conf",
         "patchSetId": 4
@@ -104,6 +200,24 @@
       "writtenOn": "2019-02-06T12:56:30Z",
       "side": 1,
       "message": "why PREPARE_AUX_PACKAGE  was removed ?",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ed42c13_91aa92ab",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:26:48Z",
+      "side": 1,
+      "message": "I think it was useless. We can detect if APP_AUX_BINARIES variable is not filled.\n\nNow also all 3 packages are always created but can be empty if nothing is given. \nOther way is to generate only packages where user gives artifacts. Which one is better?",
+      "parentUuid": "4f23d768_512e8715",
       "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
