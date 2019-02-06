@@ -1,158 +1,53 @@
---- kubernetes/common/dgbuilder/templates/deployment.yaml	2019-01-28 13:01:35.017243076 +0100
-+++ kubernetes/common/dgbuilder/templates/deployment.yaml	2019-01-28 13:19:04.238712534 +0100
-@@ -49,8 +49,14 @@
-         - name: {{ include "common.name" . }}
-           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
-           imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
--          command: ["/bin/bash"]
--          args: ["-c", "cd /opt/onap/ccsdk/dgbuilder/ && ./start.sh sdnc1.0 && wait"]
-+          command:
-+          - /bin/bash
-+          - -c
-+          - >
-+            HOSTS_FILE_RECORD >> /etc/hosts;
-+            NPM_REGISTRY_RECORD;
-+            cd /opt/onap/ccsdk/dgbuilder/;
-+            ./start.sh sdnc1.0 && wait
-           ports:
-           - containerPort: {{ .Values.service.internalPort }}
-           readinessProbe:
---- kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml	2019-01-28 13:01:35.087243698 +0100
-+++ kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml	2019-01-28 13:29:24.881069646 +0100
-@@ -49,8 +49,13 @@
+From 10656e7f8089e3c3a718a947fd10b1a728eeb8c6 Mon Sep 17 00:00:00 2001
+From: Milan Verespej <m.verespej@partner.samsung.com>
+Date: Wed, 6 Feb 2019 10:24:09 +0100
+Subject: [PATCH] Casablanca 3.0.0 offline patch
+
+---
+ .../templates/deployment.yaml                 | 12 ++-
+ .../common/common/templates/_cacert.tpl       | 80 +++++++++++++++++++
+ .../dgbuilder/templates/deployment.yaml       | 10 ++-
+ .../templates/deployment.yaml                 |  7 ++
+ kubernetes/onap/templates/configmap.yaml      | 33 ++++++++
+ .../charts/brmsgw/templates/deployment.yaml   |  5 ++
+ .../charts/drools/templates/statefulset.yaml  |  8 ++
+ .../charts/pdp/templates/statefulset.yaml     |  5 ++
+ .../policy-common/templates/_keystore.tpl     | 61 ++++++++++++++
+ .../templates/deployment.yaml                 | 12 ++-
+ .../sdnc-portal/templates/deployment.yaml     |  9 ++-
+ 11 files changed, 234 insertions(+), 8 deletions(-)
+ create mode 100644 kubernetes/common/common/templates/_cacert.tpl
+ create mode 100644 kubernetes/onap/templates/configmap.yaml
+ create mode 100644 kubernetes/policy/charts/policy-common/templates/_keystore.tpl
+
+diff --git a/kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml b/kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml
+index a7daa051..b7cdd9e6 100644
+--- a/kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml
++++ b/kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml
+@@ -47,8 +47,16 @@ spec:
          name: {{ include "common.name" . }}-readiness
        containers:
          - name: {{ include "common.name" . }}
 -          command: ["/bin/bash"]
--          args: ["-c", "cd /opt/onap/sdnc/admportal/shell && ./start_portal.sh"]
+-          args: ["-c", "cd /opt/onap/ccsdk && ./startAnsibleServer.sh"]
 +          command:
-+          - /bin/bash
-+          - -c
-+          - >
-+            HOSTS_FILE_RECORD >> /etc/hosts;
-+            NPM_REGISTRY_RECORD;
-+            cd /opt/onap/sdnc/admportal/shell && ./start_portal.sh
++            - /bin/bash
++            - -c
++            -  >
++               pip install -i http://nexus3.onap.org/repository/pypi-private/simple/
++               --trusted-host nexus3.onap.org
++               PyMySQL cherrypy requests;
++               curl -s repo.infra-server/ubuntu/xenial/onap.list > /etc/apt/sources.list;
++               apt-get update;
++               cd /opt/onap/ccsdk && ./startAnsibleServer.sh
            image: "{{ include "common.repository" . }}/{{ .Values.image }}"
            imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
            ports:
---- kubernetes/dcaegen2/charts/dcae-cloudify-manager/templates/deployment.yaml  2019-01-24 09:55:30.000000000 +0100
-+++ kubernetes/dcaegen2/charts/dcae-cloudify-manager/templates/deployment.yaml  2019-01-29 18:07:59.057804519 +0100
-@@ -70,6 +70,8 @@
-           - mountPath: /etc/localtime
-             name: localtime
-             readOnly: true
-+          - mountPath: /etc/pki/ca-trust/source/anchors
-+            name: root-ca
-           securityContext:
-             privileged: True
-           lifecycle:
-@@ -82,6 +84,8 @@
-                   set -ex
-                   mkdir -p /var/run/secrets/kubernetes.io/
-                   ln -s /secret /var/run/secrets/kubernetes.io/serviceaccount
-+                  echo -e '\nREQUESTS_CA_BUNDLE="/etc/ssl/certs/ca-bundle.crt"' >> /etc/sysconfig/cloudify-restservice
-+                  update-ca-trust extract
-       volumes:
-         - name: {{ include "common.fullname" . }}-config
-           configMap:
-@@ -95,5 +99,8 @@
-         - name: localtime
-           hostPath:
-             path: /etc/localtime
-+        - name: root-ca
-+          hostPath:
-+            path: /etc/pki/ca-trust/source/anchors
-       imagePullSecrets:
-       - name: "{{ include "common.namespace" . }}-docker-registry-key"
---- kubernetes/policy/charts/brmsgw/templates/deployment.yaml   2019-01-24 09:55:33.000000000 +0100
-+++ kubernetes/policy/charts/brmsgw/templates/deployment.yaml   2019-01-31 13:01:49.911044498 +0100
-@@ -46,6 +46,7 @@
-         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
-         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
-         name: {{ include "common.name" . }}-readiness
-+{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
-       containers:
-       - command:
-         - /bin/bash
-@@ -69,6 +70,8 @@
-           initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
-           periodSeconds: {{ .Values.readiness.periodSeconds }}
-         volumeMounts:
-+{{ include "common.cacert-mount-ubuntu" . | indent 8 }}
-+{{ include "common.system-ca-store-mount-ubuntu" . | indent 8 }}
-         - mountPath: /etc/localtime
-           name: localtime
-           readOnly: true
-@@ -95,6 +98,8 @@
- {{ toYaml .Values.affinity | indent 10 }}
-       {{- end }}
-       volumes:
-+{{ include "common.cacert-volume" . | indent 8 }}
-+{{ include "common.system-ca-store-volume" . | indent 8 }}
-         - name: localtime
-           hostPath:
-             path: /etc/localtime
---- kubernetes/policy/charts/drools/templates/statefulset.yaml  2019-01-24 09:55:33.000000000 +0100
-+++ kubernetes/policy/charts/drools/templates/statefulset.yaml  2019-01-31 13:04:00.848634430 +0100
-@@ -52,6 +52,8 @@
-         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
-         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
-         name: {{ include "common.name" . }}-readiness
-+{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
-+{{ include "policy.update-policy-keystore" . | indent 6 }}
-       containers:
-         - name: {{ include "common.name" . }}
-           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
-@@ -79,6 +81,9 @@
-           - name: REPLICAS
-             value: "{{ .Values.replicaCount }}"
-           volumeMounts:
-+{{ include "common.cacert-mount-ubuntu" . | indent 10 }}
-+{{ include "common.system-ca-store-mount-ubuntu" . | indent 10 }}
-+{{ include "policy.keystore-mount" . | indent 10 }}
-           - mountPath: /etc/localtime
-             name: localtime
-             readOnly: true
-@@ -137,6 +142,9 @@
- {{ toYaml .Values.affinity | indent 10 }}
-         {{- end }}
-       volumes:
-+{{ include "common.cacert-volume" . | indent 8 }}
-+{{ include "common.system-ca-store-volume" . | indent 8 }}
-+{{ include "policy.keystore-storage-volume" . | indent 8 }}
-         - name: localtime
-           hostPath:
-             path: /etc/localtime
---- kubernetes/policy/charts/pdp/templates/statefulset.yaml 2019-01-24 09:55:33.000000000 +0100
-+++ kubernetes/policy/charts/pdp/templates/statefulset.yaml 2019-01-31 13:07:16.161006088 +0100
-@@ -50,6 +50,7 @@
-         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
-         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
-         name: {{ include "common.name" . }}-readiness
-+{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
-       containers:
-       - command:
-         - /bin/bash
-@@ -75,6 +76,8 @@
-           initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
-           periodSeconds: {{ .Values.readiness.periodSeconds }}
-         volumeMounts:
-+{{ include "common.cacert-mount-ubuntu" . | indent 8 }}
-+{{ include "common.system-ca-store-mount-ubuntu" . | indent 8 }}
-         - mountPath: /etc/localtime
-           name: localtime
-           readOnly: true
-@@ -114,6 +117,8 @@
-         - mountPath: /usr/share/filebeat/data
-           name: policy-data-filebeat
-       volumes:
-+{{ include "common.cacert-volume" . | indent 6 }}
-+{{ include "common.system-ca-store-volume" . | indent 6 }}
-       - name: localtime
-         hostPath:
-           path: /etc/localtime
---- kubernetes/common/common/templates/_cacert.tpl      2019-01-31 13:09:54.170924801 +0100
-+++ kubernetes/common/common/templates/_cacert.tpl      2019-01-31 13:10:54.650659206 +0100
+diff --git a/kubernetes/common/common/templates/_cacert.tpl b/kubernetes/common/common/templates/_cacert.tpl
+new file mode 100644
+index 00000000..4fb80964
+--- /dev/null
++++ b/kubernetes/common/common/templates/_cacert.tpl
 @@ -0,0 +1,80 @@
 +#   COPYRIGHT NOTICE STARTS HERE
 +#
@@ -234,8 +129,63 @@
 +{{ include "common.system-ca-store-mount-ubuntu" . | indent 2 }}
 +{{- end }}
 +{{- end }}
---- kubernetes/onap/templates/configmap.yaml    2019-01-31 13:09:54.170924801 +0100
-+++ kubernetes/onap/templates/configmap.yaml    2019-01-31 13:11:24.628023219 +0100
+diff --git a/kubernetes/common/dgbuilder/templates/deployment.yaml b/kubernetes/common/dgbuilder/templates/deployment.yaml
+index 353c2314..2cb02d62 100644
+--- a/kubernetes/common/dgbuilder/templates/deployment.yaml
++++ b/kubernetes/common/dgbuilder/templates/deployment.yaml
+@@ -49,8 +49,14 @@ spec:
+         - name: {{ include "common.name" . }}
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+           imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+-          command: ["/bin/bash"]
+-          args: ["-c", "cd /opt/onap/ccsdk/dgbuilder/ && ./start.sh sdnc1.0 && wait"]
++          command:
++          - /bin/bash
++          - -c
++          - >
++            HOSTS_FILE_RECORD >> /etc/hosts;
++            NPM_REGISTRY_RECORD;
++            cd /opt/onap/ccsdk/dgbuilder/;
++            ./start.sh sdnc1.0 && wait
+           ports:
+           - containerPort: {{ .Values.service.internalPort }}
+           readinessProbe:
+diff --git a/kubernetes/dcaegen2/charts/dcae-cloudify-manager/templates/deployment.yaml b/kubernetes/dcaegen2/charts/dcae-cloudify-manager/templates/deployment.yaml
+index 79bd8962..8e807a9b 100644
+--- a/kubernetes/dcaegen2/charts/dcae-cloudify-manager/templates/deployment.yaml
++++ b/kubernetes/dcaegen2/charts/dcae-cloudify-manager/templates/deployment.yaml
+@@ -70,6 +70,8 @@ spec:
+           - mountPath: /etc/localtime
+             name: localtime
+             readOnly: true
++          - mountPath: /etc/pki/ca-trust/source/anchors
++            name: root-ca
+           securityContext:
+             privileged: True
+           lifecycle:
+@@ -82,6 +84,8 @@ spec:
+                   set -ex
+                   mkdir -p /var/run/secrets/kubernetes.io/
+                   ln -s /secret /var/run/secrets/kubernetes.io/serviceaccount
++                  echo -e '\nREQUESTS_CA_BUNDLE="/etc/ssl/certs/ca-bundle.crt"' >> /etc/sysconfig/cloudify-restservice
++                  update-ca-trust extract
+       volumes:
+         - name: {{ include "common.fullname" . }}-config
+           configMap:
+@@ -95,5 +99,8 @@ spec:
+         - name: localtime
+           hostPath:
+             path: /etc/localtime
++        - name: root-ca
++          hostPath:
++            path: /etc/pki/ca-trust/source/anchors
+       imagePullSecrets:
+       - name: "{{ include "common.namespace" . }}-docker-registry-key"
+diff --git a/kubernetes/onap/templates/configmap.yaml b/kubernetes/onap/templates/configmap.yaml
+new file mode 100644
+index 00000000..b1804a36
+--- /dev/null
++++ b/kubernetes/onap/templates/configmap.yaml
 @@ -0,0 +1,33 @@
 +#   COPYRIGHT NOTICE STARTS HERE
 +#
@@ -270,8 +220,104 @@
 +  certificate: |
 +{{ .Values.global.cacert | indent 4 }}
 +{{- end }}
---- kubernetes/policy/charts/policy-common/templates/_keystore.tpl      2019-01-31 13:09:54.170924801 +0100
-+++ kubernetes/policy/charts/policy-common/templates/_keystore.tpl      2019-01-31 13:11:49.122320657 +0100
+diff --git a/kubernetes/policy/charts/brmsgw/templates/deployment.yaml b/kubernetes/policy/charts/brmsgw/templates/deployment.yaml
+index 7535d541..bbd63c13 100644
+--- a/kubernetes/policy/charts/brmsgw/templates/deployment.yaml
++++ b/kubernetes/policy/charts/brmsgw/templates/deployment.yaml
+@@ -46,6 +46,7 @@ spec:
+         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
+         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+         name: {{ include "common.name" . }}-readiness
++{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
+       containers:
+       - command:
+         - /bin/bash
+@@ -69,6 +70,8 @@ spec:
+           initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
+           periodSeconds: {{ .Values.readiness.periodSeconds }}
+         volumeMounts:
++{{ include "common.cacert-mount-ubuntu" . | indent 8 }}
++{{ include "common.system-ca-store-mount-ubuntu" . | indent 8 }}
+         - mountPath: /etc/localtime
+           name: localtime
+           readOnly: true
+@@ -95,6 +98,8 @@ spec:
+ {{ toYaml .Values.affinity | indent 10 }}
+       {{- end }}
+       volumes:
++{{ include "common.cacert-volume" . | indent 8 }}
++{{ include "common.system-ca-store-volume" . | indent 8 }}
+         - name: localtime
+           hostPath:
+             path: /etc/localtime
+diff --git a/kubernetes/policy/charts/drools/templates/statefulset.yaml b/kubernetes/policy/charts/drools/templates/statefulset.yaml
+index 6564e798..53c8b600 100644
+--- a/kubernetes/policy/charts/drools/templates/statefulset.yaml
++++ b/kubernetes/policy/charts/drools/templates/statefulset.yaml
+@@ -52,6 +52,8 @@ spec:
+         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
+         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+         name: {{ include "common.name" . }}-readiness
++{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
++{{ include "policy.update-policy-keystore" . | indent 6 }}
+       containers:
+         - name: {{ include "common.name" . }}
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+@@ -79,6 +81,9 @@ spec:
+           - name: REPLICAS
+             value: "{{ .Values.replicaCount }}"
+           volumeMounts:
++{{ include "common.cacert-mount-ubuntu" . | indent 10 }}
++{{ include "common.system-ca-store-mount-ubuntu" . | indent 10 }}
++{{ include "policy.keystore-mount" . | indent 10 }}
+           - mountPath: /etc/localtime
+             name: localtime
+             readOnly: true
+@@ -137,6 +142,9 @@ spec:
+ {{ toYaml .Values.affinity | indent 10 }}
+         {{- end }}
+       volumes:
++{{ include "common.cacert-volume" . | indent 8 }}
++{{ include "common.system-ca-store-volume" . | indent 8 }}
++{{ include "policy.keystore-storage-volume" . | indent 8 }}
+         - name: localtime
+           hostPath:
+             path: /etc/localtime
+diff --git a/kubernetes/policy/charts/pdp/templates/statefulset.yaml b/kubernetes/policy/charts/pdp/templates/statefulset.yaml
+index a3a8f6a9..4ae0ead5 100644
+--- a/kubernetes/policy/charts/pdp/templates/statefulset.yaml
++++ b/kubernetes/policy/charts/pdp/templates/statefulset.yaml
+@@ -50,6 +50,7 @@ spec:
+         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
+         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+         name: {{ include "common.name" . }}-readiness
++{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
+       containers:
+       - command:
+         - /bin/bash
+@@ -75,6 +76,8 @@ spec:
+           initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
+           periodSeconds: {{ .Values.readiness.periodSeconds }}
+         volumeMounts:
++{{ include "common.cacert-mount-ubuntu" . | indent 8 }}
++{{ include "common.system-ca-store-mount-ubuntu" . | indent 8 }}
+         - mountPath: /etc/localtime
+           name: localtime
+           readOnly: true
+@@ -114,6 +117,8 @@ spec:
+         - mountPath: /usr/share/filebeat/data
+           name: policy-data-filebeat
+       volumes:
++{{ include "common.cacert-volume" . | indent 6 }}
++{{ include "common.system-ca-store-volume" . | indent 6 }}
+       - name: localtime
+         hostPath:
+           path: /etc/localtime
+diff --git a/kubernetes/policy/charts/policy-common/templates/_keystore.tpl b/kubernetes/policy/charts/policy-common/templates/_keystore.tpl
+new file mode 100644
+index 00000000..81ba09bc
+--- /dev/null
++++ b/kubernetes/policy/charts/policy-common/templates/_keystore.tpl
 @@ -0,0 +1,61 @@
 +#   COPYRIGHT NOTICE STARTS HERE
 +#
@@ -334,9 +380,11 @@
 +{{ include "common.cacert-mount-ubuntu" . | indent 2 }}
 +{{- end }}
 +{{- end }}
---- kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml	2019-02-01 13:40:02.349210360 +0100
-+++ kubernetes/appc/charts/appc-ansible-server/templates/deployment.yaml	2019-02-01 15:29:52.182542898 +0100
-@@ -47,8 +47,16 @@
+diff --git a/kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml b/kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml
+index 1f14dd31..18b579dd 100644
+--- a/kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml
++++ b/kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml
+@@ -47,8 +47,16 @@ spec:
          name: {{ include "common.name" . }}-readiness
        containers:
          - name: {{ include "common.name" . }}
@@ -355,24 +403,26 @@
            image: "{{ include "common.repository" . }}/{{ .Values.image }}"
            imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
            ports:
---- kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml	2019-02-01 13:40:02.415877026 +0100
-+++ kubernetes/sdnc/charts/sdnc-ansible-server/templates/deployment.yaml	2019-02-01 15:29:39.399209565 +0100
-@@ -47,8 +47,16 @@
+diff --git a/kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml b/kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml
+index 35dffee5..18dd7cd4 100644
+--- a/kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml
++++ b/kubernetes/sdnc/charts/sdnc-portal/templates/deployment.yaml
+@@ -49,8 +49,13 @@ spec:
          name: {{ include "common.name" . }}-readiness
        containers:
          - name: {{ include "common.name" . }}
 -          command: ["/bin/bash"]
--          args: ["-c", "cd /opt/onap/ccsdk && ./startAnsibleServer.sh"]
+-          args: ["-c", "cd /opt/onap/sdnc/admportal/shell && ./start_portal.sh"]
 +          command:
-+            - /bin/bash
-+            - -c
-+            -  >
-+               pip install -i http://nexus3.onap.org/repository/pypi-private/simple/
-+               --trusted-host nexus3.onap.org
-+               PyMySQL cherrypy requests;
-+               curl -s repo.infra-server/ubuntu/xenial/onap.list > /etc/apt/sources.list;
-+               apt-get update;
-+               cd /opt/onap/ccsdk && ./startAnsibleServer.sh
++          - /bin/bash
++          - -c
++          - >
++            HOSTS_FILE_RECORD >> /etc/hosts;
++            NPM_REGISTRY_RECORD;
++            cd /opt/onap/sdnc/admportal/shell && ./start_portal.sh
            image: "{{ include "common.repository" . }}/{{ .Values.image }}"
            imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
            ports:
+-- 
+2.20.1
+

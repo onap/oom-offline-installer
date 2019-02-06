@@ -51,6 +51,7 @@ fi
 # git and patch tools are preconditions for this to work
 CURR=1
 TOTAL=5
+PATCH_FILE=$(realpath "${3}")
 
 echo -e "${_G}[Step $((CURR++))/${TOTAL} cloning repo with charts to be patched]${C_}"
 git clone "${1}" "${4}"
@@ -62,7 +63,7 @@ echo -e "${_G}[Step $((CURR++))/${TOTAL} git-checkout to correct base]${C_}"
 git checkout "${2}"
 
 echo -e "${_G}[Step $((CURR++))/${TOTAL} patching charts]${C_}"
-patch -p0 < "${3}"
+git apply "${PATCH_FILE}"
 
 echo -e "${_G}[Step $((CURR++))/${TOTAL} returning to original working directory]${C_}"
 popd
