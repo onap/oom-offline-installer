@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1b9d797_de3d52b7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-06T09:45:18Z",
+      "side": 1,
+      "message": "You meant \"by providing\" i suppose?",
+      "revId": "a9bacdebcb58690c42c4b17b72337e1a4c29cad8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc88f73a_c6c34187",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-06T09:45:18Z",
+      "side": 1,
+      "message": "\"on installer side\"",
+      "revId": "a9bacdebcb58690c42c4b17b72337e1a4c29cad8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca831341_7dfd2f65",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-06T09:45:18Z",
+      "side": 1,
+      "message": "\"tries\" or \"aims on improving\"",
+      "revId": "a9bacdebcb58690c42c4b17b72337e1a4c29cad8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
