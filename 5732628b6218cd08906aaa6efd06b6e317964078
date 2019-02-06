@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "727eab23_5a11ef11",
+        "filename": "package.conf",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T06:26:08Z",
+      "side": 1,
+      "message": "will be fixed in subsequent commit.",
+      "parentUuid": "6f74ee76_0017cb31",
+      "revId": "5732628b6218cd08906aaa6efd06b6e317964078",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9bdc39da_104fdd74",
         "filename": "package.sh",
         "patchSetId": 1
