@@ -291,23 +291,21 @@ For the packagin itself it's necessary to prepare configuration. You can
 use ./onap/install/onap-offline/build/package.conf as template or
 directly modify it.
 
-There are some parameters needs to be set in configuration file and some
-are optional:
+There are some parameters needs to be set in configuration file.
 
 +---------------------------------------+------------------------------------------------------------------------------+
 | Parameter                             | Description                                                                  |
 +=======================================+==============================================================================+
 | SOFTWARE\_PACKAGE\_BASENAME           | defines package name prefix (e.g. onap-offline)                              |
 +---------------------------------------+------------------------------------------------------------------------------+
-| HELM\_CHARTS\_DIR                     | oom directory from oom git repostitory                                       |
+| HELM\_CHARTS\_DIR                     | directory with Helm charts for the application                               |
 +---------------------------------------+------------------------------------------------------------------------------+
-| SW\_PACKAGE\_ADDONS                   | specific entries which are inserted into ./ansible/application               |
+| APP\_CONFIGURATION                    | application install configuration (application_configuration.yml) for        |
+|                                       | ansible installer and custom ansible role code directories if any            |
 +---------------------------------------+------------------------------------------------------------------------------+
-| EXTERNAL\_BINARIES\_PACKAGE\_ADDONS   | other addons used as resources                                               |
+| APP\_BINARY\_RESOURCES\_DIR           | directory with all (binary) resources for offline infra and application      |
 +---------------------------------------+------------------------------------------------------------------------------+
-| PREPARE\_AUX\_PACKAGE                 | boolean condition if prepare AUX package [optional]                          |
-+---------------------------------------+------------------------------------------------------------------------------+
-| AUX\_BINARIES\_PACKAGE\_ADDONS        | additional binaries such as docker images loaded during runtime [optional]   |
+| APP\_AUX\_BINARIES                    | additional binaries such as docker images loaded during runtime   [optional] |
 +---------------------------------------+------------------------------------------------------------------------------+
 
 Offline installer packages are created with prepopulated data via
@@ -326,5 +324,4 @@ So in the target directory you should find tar files with
 
 <PACKAGE\_BASE\_NAME>-<PROJECT\_NAME>-<PROJECT\_VERSION>-resources.tar
 
-Optionally:
 <PACKAGE\_BASE\_NAME>-<PROJECT\_NAME>-<PROJECT\_VERSION>-aux-resources.tar
