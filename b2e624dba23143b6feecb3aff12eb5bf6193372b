@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ed930d2_f3b645fd",
+        "filename": "ansible/roles/application-install/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-06T18:13:06Z",
+      "side": 1,
+      "message": "can we have something on style:\n\ninstall_needed: \"{{ yes if charts_files.matched | int \u003e 0 else no }}\"\n\ninstead of init fact task and then setting?",
+      "revId": "b2e624dba23143b6feecb3aff12eb5bf6193372b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
