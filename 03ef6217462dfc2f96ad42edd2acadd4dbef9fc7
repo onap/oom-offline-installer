@@ -241,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "72aa9e71_1ec1e6c9",
+        "filename": "package.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:28:34Z",
+      "side": 1,
+      "message": "not anymore local (removed local) as it\u0027s used in create_pkg function.",
+      "parentUuid": "c9fe9615_5f7ef3d5",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "401d46d1_a95e7cfa",
         "filename": "package.sh",
         "patchSetId": 4
@@ -252,6 +270,24 @@
       "writtenOn": "2019-02-06T12:56:30Z",
       "side": 1,
       "message": "same as in row129",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55a41597_1f563914",
+        "filename": "package.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T13:28:34Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "401d46d1_a95e7cfa",
       "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
