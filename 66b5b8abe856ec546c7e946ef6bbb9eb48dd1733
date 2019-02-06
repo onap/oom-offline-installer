@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ddfe906_55c16ebf",
+        "filename": "build/creating_data/download-git-repos.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T17:01:57Z",
+      "side": 1,
+      "message": "where is RELEASE variable coming?",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "66b5b8abe856ec546c7e946ef6bbb9eb48dd1733",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04643ec0_fe61f596",
+        "filename": "build/package.sh",
+        "patchSetId": 16
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-06T17:01:57Z",
+      "side": 1,
+      "message": "if script moved to build dir, this needs update",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "66b5b8abe856ec546c7e946ef6bbb9eb48dd1733",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
