@@ -1,0 +1,163 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae7dec0b_79918fdb",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "\"By application specific files within this auxiliary resource tar it supports currently just docker images in tar format\"",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5570a59c_fc846139",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "this is optional package and not for typical deployment.",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bb5b5d4_7e3b1ed8",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "if all this stuff is for making our application generic, why all packages we are producing are starting onap-offline ?? Maybe this prefix should be completely removed ?",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e272f0e_3d4d3292",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "which",
+      "range": {
+        "startLine": 44,
+        "startChar": 81,
+        "endLine": 44,
+        "endChar": 86
+      },
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d38ee323_65045a5d",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "I would prefer here example reference to existing files we have in ./config and ./patches folders this \"myappfiles\" are too generic and not illustrative.",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f23d768_512e8715",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "why PREPARE_AUX_PACKAGE  was removed ?",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9fe9615_5f7ef3d5",
+        "filename": "package.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "why this was done ? It\u0027s a local variable and it should be written in small letters",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "401d46d1_a95e7cfa",
+        "filename": "package.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "same as in row129",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17d74adb_ba14dd40",
+        "filename": "package.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-06T12:56:30Z",
+      "side": 1,
+      "message": "creating aux package is optional",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
