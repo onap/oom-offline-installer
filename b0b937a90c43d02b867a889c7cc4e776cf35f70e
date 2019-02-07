@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "747b0b53_fee48346",
+        "filename": "build/package.sh",
+        "patchSetId": 17
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-07T08:20:37Z",
+      "side": 1,
+      "message": "cannot be verified but I guess you did not verify packaging. Cannot work in this dir without changing this line.",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 21
+      },
+      "revId": "b0b937a90c43d02b867a889c7cc4e776cf35f70e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
