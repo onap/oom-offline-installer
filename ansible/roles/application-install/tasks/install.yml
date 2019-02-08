@@ -55,7 +55,7 @@
 
 - name: Check for deploy plugin presence
   stat:
-    path: '~/.helm/plugins/deploy/deploy.sh'
+    path: '{{ helm_home_dir.stdout }}/plugins/deploy/deploy.sh'
   register: deploy_plugin_presence
 
 - name: "Helm Install application {{ app_name }}"
