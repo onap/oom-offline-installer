@@ -16,6 +16,24 @@
       "revId": "751fa6366350f287163d8d738250b25dbcd03394",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb4bbf06_220a8412",
+        "filename": "ansible/roles/application-install/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T17:02:32Z",
+      "side": 1,
+      "message": "Whaaaat the h** has happened... I did it, where\u0027s my change?",
+      "parentUuid": "919ca5f8_99e8721c",
+      "revId": "751fa6366350f287163d8d738250b25dbcd03394",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
