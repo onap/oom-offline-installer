@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "34b44e7e_508409a7",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T07:51:23Z",
+      "side": 1,
+      "message": ":-) what about \"docker images in tar format are currently the only supported content of aux_resources package",
+      "parentUuid": "f91db0fd_2cec092e",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5570a59c_fc846139",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 4
@@ -72,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "acab76be_cd42035b",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T07:51:23Z",
+      "side": 1,
+      "message": "Ok this is maybe better. The output of packaging will be less ambiguous.",
+      "parentUuid": "7dbe3020_5c2f62e1",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bb5b5d4_7e3b1ed8",
         "filename": "package.conf",
         "patchSetId": 4
@@ -101,6 +137,24 @@
       "side": 1,
       "message": "I don\u0027t get your \"generic\" point? \nI don\u0027t any of the changes here try to make this more generic at all.\n\nGeneric !\u003d than name values used in config.\n\nUser can use package name he/she wants. Having onap or some other app name as example value does not decrease generality at all.",
       "parentUuid": "1bb5b5d4_7e3b1ed8",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "849ff6c7_dd8cd39d",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T07:51:23Z",
+      "side": 1,
+      "message": "sorry, I put it wrong. What about redundancy perspective. Do we need to have resource package named:\n\"onap-offline-\u003cproject\u003e-\u003cversion\u003e-resources.tar\" \nwhy not just \"offline-\u003cproject\u003e-\u003cversion\u003e-resources.tar\"\nor even \"\u003cproject\u003e-\u003cversion\u003e-resources.tar",
+      "parentUuid": "d67af1cf_7ef74ca3",
       "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -189,6 +243,24 @@
     },
     {
       "key": {
+        "uuid": "8f951b9e_2811da02",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T07:51:23Z",
+      "side": 1,
+      "message": "the difference between using \"myapp\" / \"somevalue\" in group_vars and this config file I see is that for group_vars we have some real example with proper values (no need to edit or just a bit) in config/application_configuration.yml. This package.conf don\u0027t have any example configuration, so IMHO examples here must be as close to expected values as possible avoiding \"myapp\" / \"somevalue\" but rather using real paths we are using as example like \"/onap-offline/config/application_configuration.yml\" but your point is also valid, we still refer to example configuration and theoretically anything can be set there.",
+      "parentUuid": "597855d5_1eed5239",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4f23d768_512e8715",
         "filename": "package.conf",
         "patchSetId": 4
@@ -224,6 +296,24 @@
     },
     {
       "key": {
+        "uuid": "81965d0f_febc47cf",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T07:51:23Z",
+      "side": 1,
+      "message": "I slightly prefer idea of always producing 3 packages (less ambiguous result of build) I hope users will not be confused by empty file and not filling aux params for installer.",
+      "parentUuid": "4ed42c13_91aa92ab",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9fe9615_5f7ef3d5",
         "filename": "package.sh",
         "patchSetId": 4
@@ -253,6 +343,24 @@
       "side": 1,
       "message": "not anymore local (removed local) as it\u0027s used in create_pkg function.",
       "parentUuid": "c9fe9615_5f7ef3d5",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61453a16_c76f5ecd",
+        "filename": "package.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T07:51:23Z",
+      "side": 1,
+      "message": "ok, I see. thanks",
+      "parentUuid": "72aa9e71_1ec1e6c9",
       "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
