@@ -69,7 +69,7 @@ echo "[Step $((CURR++))/$TOTAL Download git repos]"
 $CTOOLS/download-git-repos.sh "${TAG}" "$DATA_DIR/git-repo"
 
 echo "[Step $((CURR++))/$TOTAL Download http files]"
-$CTOOLS/download-http-files.sh "$LISTS_DIR/http_files.list" "$DATA_DIR/http"
+$CTOOLS/download-http-files.sh "$LISTS_DIR/${TAG}-http_files.list" "$DATA_DIR/http"
 
 echo "[Step $((CURR++))/$TOTAL Download npm pkgs]"
 $CTOOLS/download-npm-pkgs.sh "$LISTS_DIR/${TAG}-npm.list" "$DATA_DIR/offline_data/npm_tar"
