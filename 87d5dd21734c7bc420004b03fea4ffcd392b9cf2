@@ -46,6 +46,30 @@
       "revId": "87d5dd21734c7bc420004b03fea4ffcd392b9cf2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9359db27_ef1978fc",
+        "filename": "build/data_lists/onap_3.0.0-http_files.list",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T12:31:22Z",
+      "side": 1,
+      "message": "yes true, most of this file is very outdated to Casablanca. There must be a way to generate these files. I.e. later when hooked to ci/cd very many lines will change daily basis.",
+      "parentUuid": "cd1ac61c_b478a01b",
+      "range": {
+        "startLine": 83,
+        "startChar": 181,
+        "endLine": 83,
+        "endChar": 188
+      },
+      "revId": "87d5dd21734c7bc420004b03fea4ffcd392b9cf2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
