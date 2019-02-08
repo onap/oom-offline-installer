@@ -16,6 +16,24 @@
       "revId": "6e51ee7eefcf3448c1676a11a6eb584b1fe027c9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77480cdd_78a9539e",
+        "filename": "package.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T11:02:53Z",
+      "side": 1,
+      "message": "I modified the path as absolute path is clear as it may suggest to user that certain user or path (absolute path) should be used.\n\nI commented the value out to have the default functionality be Kubernetes cluster without installed application. That is important use case. Will add comment about that if not yet done in further commits.\n\nAlso commented out because there cannot be reasonable default value for this (same for all configuration in this file except package base name) and commenting out have a valid default functionality.\n\nWould like to keep handling similar for all parameters whihc cannot have default value (all commented out).",
+      "parentUuid": "7e5f2422_d33e9889",
+      "revId": "6e51ee7eefcf3448c1676a11a6eb584b1fe027c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
