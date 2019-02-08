@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93773b49_4091ad5f",
+        "filename": "package.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T08:05:05Z",
+      "side": 1,
+      "message": "onap or onap-full will tell me more how to fill it :-)",
+      "revId": "581efdafcdecc601f167a6d27f50aef8d004274a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bffbd7ed_410e9b21",
+        "filename": "package.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T08:05:05Z",
+      "side": 1,
+      "message": "I like more accurate examples for packaging",
+      "revId": "581efdafcdecc601f167a6d27f50aef8d004274a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
