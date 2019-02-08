@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e4811d8b_abbfe5ed",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T07:44:03Z",
+      "side": 1,
+      "message": "not really. As mentioned in added comment this variable is just helper here locally. We can remove whole variable if it\u0027s confusing, it\u0027s not needed other than not need to write projetc name multiple times as part of other variable names.",
+      "parentUuid": "472108d6_20e17dec",
+      "revId": "b2e624dba23143b6feecb3aff12eb5bf6193372b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2258caac_7ff87170",
         "filename": "ansible/group_vars/all.yml",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-08T07:04:33Z",
       "side": 1,
       "message": "this reference with Makefile is very important, thanks for writing it here. We must ensure that in app_helm_charts_install_directory (which will come from packaging is not whole OOM but just kubernetes subfolder, we might easily break deployment if it\u0027s not set properly. What is wrong deployment will pass but helm charts wont be patched properly if there are in wrong path. I think we need to address this in another ticket",
+      "revId": "b2e624dba23143b6feecb3aff12eb5bf6193372b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d9e1453_68a9366d",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T07:44:03Z",
+      "side": 1,
+      "message": "Yes I spend quite some time to investigate how it works. Don\u0027t know about other tickets, or how to address that better?\nI did my best on this config and comments and mainly lines 103 and 108 default value will address that.",
+      "parentUuid": "2258caac_7ff87170",
       "revId": "b2e624dba23143b6feecb3aff12eb5bf6193372b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
