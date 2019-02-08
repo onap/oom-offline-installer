@@ -83,9 +83,9 @@ repo1.maven.org/maven2/com/att/research/xacml/xacml-pdp/1.0.1/xacml-pdp-1.0.1.ja
 git.onap.org/policy/drools-applications/plain/controlloop/templates/archetype-cl-amsterdam/src/main/resources/archetype-resources/src/main/resources/__closedLoopControlName__.drl?h=beijing
 nexus.onap.org/service/local/repositories/raw/content/org.onap.ccsdk.platform.plugins/type_files/sshkeyshare/sshkey_types.yaml
 nexus.onap.org/service/local/repositories/raw/content/org.onap.ccsdk.platform.plugins/type_files/pgaas/1.1.0/pgaas_types.yaml
-nexus.onap.org/service/local/repositories/raw/content/org.onap.dcaegen2.platform.plugins/R2/k8splugin/1.1.0/k8splugin_types.yaml
-nexus.onap.org/service/local/repositories/raw/content/org.onap.dcaegen2.platform.plugins/R2/relationshipplugin/1.0.0/relationshipplugin_types.yaml
-nexus.onap.org/service/local/repositories/raw/content/org.onap.dcaegen2.platform.plugins/R2/dcaepolicyplugin/2.3.0/dcaepolicyplugin_types.yaml
+nexus.onap.org/service/local/repositories/raw/content/org.onap.dcaegen2.platform.plugins/R3/k8splugin/1.1.0/k8splugin_types.yaml
+nexus.onap.org/service/local/repositories/raw/content/org.onap.dcaegen2.platform.plugins/R3/relationshipplugin/1.0.0/relationshipplugin_types.yaml
+nexus.onap.org/service/local/repositories/raw/content/org.onap.dcaegen2.platform.plugins/R3/dcaepolicyplugin/2.3.0/dcaepolicyplugin_types.yaml
 nexus.onap.org/content/sites/raw/org.onap.demo/boot/1.1.1/robot_install.sh
 nexus.onap.org/content/repositories/staging/org/onap/policy/drools-applications/controlloop/common/model-impl/events/maven-metadata.xml.md5
 nexus.onap.org/content/repositories/staging/org/onap/policy/drools-applications/controlloop/common/model-impl/events/maven-metadata.xml.sha1
