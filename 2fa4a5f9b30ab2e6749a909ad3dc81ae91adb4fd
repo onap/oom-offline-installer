@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be12be32_8ef413e5",
+        "filename": "build/package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T13:01:35Z",
+      "side": 1,
+      "message": "will have better comments etc. in subsequent commit.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 24
+      },
+      "revId": "2fa4a5f9b30ab2e6749a909ad3dc81ae91adb4fd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
