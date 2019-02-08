@@ -22,6 +22,30 @@
       "revId": "87d5dd21734c7bc420004b03fea4ffcd392b9cf2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ac61c_b478a01b",
+        "filename": "build/data_lists/onap_3.0.0-http_files.list",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-08T11:40:36Z",
+      "side": 1,
+      "message": "Well, fixed that. But what about the others? The pom files looks quite old versions and dunno what else. I don\u0027t wanna patch line by line.",
+      "parentUuid": "a315555a_408947d2",
+      "range": {
+        "startLine": 83,
+        "startChar": 181,
+        "endLine": 83,
+        "endChar": 188
+      },
+      "revId": "87d5dd21734c7bc420004b03fea4ffcd392b9cf2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
