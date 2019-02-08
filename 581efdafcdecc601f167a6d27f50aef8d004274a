@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d18aed27_d342d3f3",
+        "filename": "package.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T10:49:00Z",
+      "side": 1,
+      "message": "How? It\u0027s a name and used only in package name and metadata file as project name.",
+      "parentUuid": "93773b49_4091ad5f",
+      "revId": "581efdafcdecc601f167a6d27f50aef8d004274a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bffbd7ed_410e9b21",
         "filename": "package.sh",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-08T08:05:05Z",
       "side": 1,
       "message": "I like more accurate examples for packaging",
+      "revId": "581efdafcdecc601f167a6d27f50aef8d004274a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a82a0d51_9d58ac03",
+        "filename": "package.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T10:49:00Z",
+      "side": 1,
+      "message": "what examples? This is temporal directory for packaging to place sw. I guess sw describes better for what it\u0027s used than onap?",
+      "parentUuid": "bffbd7ed_410e9b21",
       "revId": "581efdafcdecc601f167a6d27f50aef8d004274a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
