@@ -20,21 +20,27 @@
 
 - name: Install helm plugins if needed
   block:
-     - name: Ensure that dir for helm plugins exists
-       file:
-         path: "~/.helm/plugins"
-         state: directory
-         mode: 0755
-     - name: Register all plugins to be inserted by dir names
-       find:
-         paths: "{{ app_helm_plugins_directory }}"
-         file_type: "directory"
-       register: list_of_plugins
-     - name: Install all helm plugins from {{ app_helm_plugins_directory }} dir
-       command: "{{ helm_bin_dir }}/helm plugin install {{ item.path }}"
-       with_items: "{{ list_of_plugins.files }}"
-       register: helm_plugin_install_result
-       failed_when: "helm_plugin_install_result.rc > 0 and helm_plugin_install_result.stderr != 'Error: plugin already exists'"
+    - name: Get helm dir
+      command: "{{ helm_bin_dir }}/helm home"
+      register: helm_home_dir
+    - name: Ensure that dir for helm plugins exists
+      file:
+        path: "{{ helm_home_dir.stdout }}/plugins"
+        state: directory
+        mode: 0755
+    - name: Register all plugins to be inserted by dir names
+      find:
+        paths: "{{ app_helm_plugins_directory }}"
+        file_type: "directory"
+      register: list_of_plugins
+      delegate_to: localhost
+    - name: Install all helm plugins from {{ app_helm_plugins_directory }} dir
+      copy:
+        src: "{{ item.path }}"
+        dest: "{{ helm_home_dir.stdout }}"/plugins"
+        directory_mode: yes
+        mode: 0755
+      with_items: "{{ list_of_plugins.files }}"
   become: true
   when: app_helm_plugins_directory is defined and app_helm_plugins_directory is not none
 
