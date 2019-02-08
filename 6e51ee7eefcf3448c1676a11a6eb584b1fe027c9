@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5f2422_d33e9889",
+        "filename": "package.conf",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-08T07:58:09Z",
+      "side": 1,
+      "message": "I have a small problem with that, typical deployment needs helm charts filled. From UX perspective this parameter (if by default disabled) can easily trigger that someone will forget to fill it and create package w/o helm charts. All of that just because we would like to support deployment w/o helm charts. What about by default having it enabled with some \"to be filled value\" or even keep this file unchanged or just with small update of description.",
+      "revId": "6e51ee7eefcf3448c1676a11a6eb584b1fe027c9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
