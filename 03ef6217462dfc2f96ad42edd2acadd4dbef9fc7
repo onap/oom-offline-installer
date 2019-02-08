@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1e77adca_6aa6ef54",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T11:18:31Z",
+      "side": 1,
+      "message": "yes will make it better.",
+      "parentUuid": "34b44e7e_508409a7",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5570a59c_fc846139",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 4
@@ -108,6 +126,24 @@
     },
     {
       "key": {
+        "uuid": "ea1d1ead_17b7cea7",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T11:18:31Z",
+      "side": 1,
+      "message": "Ok, but also it\u0027s easy to change it to work so that empty packages are not generated. So either way. So if resources and aux not given script would generate only sw package.\n\nWe can adjust this according to our testing what is better for ansible installation.",
+      "parentUuid": "acab76be_cd42035b",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1bb5b5d4_7e3b1ed8",
         "filename": "package.conf",
         "patchSetId": 4
@@ -155,6 +191,24 @@
       "side": 1,
       "message": "sorry, I put it wrong. What about redundancy perspective. Do we need to have resource package named:\n\"onap-offline-\u003cproject\u003e-\u003cversion\u003e-resources.tar\" \nwhy not just \"offline-\u003cproject\u003e-\u003cversion\u003e-resources.tar\"\nor even \"\u003cproject\u003e-\u003cversion\u003e-resources.tar",
       "parentUuid": "d67af1cf_7ef74ca3",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1c67f37_d706061d",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T11:18:31Z",
+      "side": 1,
+      "message": "this is good proposal. \nSo actually we can remove whole variable if we just prepend offline.\noffline-\u003cproject\u003e-\u003cversion\u003e-sw.tar\noffline-\u003cproject\u003e-\u003cversion\u003e-resources.tar\noffline-\u003cproject\u003e-\u003cversion\u003e-aux-resources.tar",
+      "parentUuid": "849ff6c7_dd8cd39d",
       "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -255,6 +309,24 @@
       "side": 1,
       "message": "the difference between using \"myapp\" / \"somevalue\" in group_vars and this config file I see is that for group_vars we have some real example with proper values (no need to edit or just a bit) in config/application_configuration.yml. This package.conf don\u0027t have any example configuration, so IMHO examples here must be as close to expected values as possible avoiding \"myapp\" / \"somevalue\" but rather using real paths we are using as example like \"/onap-offline/config/application_configuration.yml\" but your point is also valid, we still refer to example configuration and theoretically anything can be set there.",
       "parentUuid": "597855d5_1eed5239",
+      "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b74438a9_0ed4acab",
+        "filename": "package.conf",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-08T11:18:31Z",
+      "side": 1,
+      "message": "I try to make it better. But real values cannot be used as those would be some absolute paths, but some pseudo paths could be used.\nAlso would like to avoid feeling that user would need to use absolute paths.",
+      "parentUuid": "8f951b9e_2811da02",
       "revId": "03ef6217462dfc2f96ad42edd2acadd4dbef9fc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
