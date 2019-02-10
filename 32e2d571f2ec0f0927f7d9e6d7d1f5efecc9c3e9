@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ddba3871_f262726b",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-10T17:23:31Z",
+      "side": 1,
+      "message": "sure, let\u0027s return.",
+      "parentUuid": "3986be09_6a4c33ee",
+      "revId": "32e2d571f2ec0f0927f7d9e6d7d1f5efecc9c3e9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7949b2e6_9ce3ec7d",
         "filename": "config/application_configuration.yml",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-10T16:54:37Z",
       "side": 1,
       "message": "by moving all of those into group_vars and setting default\u0027s there (mainly deriving from app_name) it will limit us in the future. With this commit we are setting artificial dependency on:\napp_name -\u003e  helm chart, release, namespace\nMaybe it\u0027s not bad, people can change group_vars.yml right.\nWe are using group_vars.yml as some template for user and everyone is supposed to create own file out of this.",
+      "revId": "32e2d571f2ec0f0927f7d9e6d7d1f5efecc9c3e9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c4e13a2_b8cacb28",
+        "filename": "config/application_configuration.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-10T17:23:31Z",
+      "side": 1,
+      "message": "Hmm, I removed the extra variable  project_configuration because some people were confused. \nNow there is no extra variables and it\u0027s streamlined to the minimum.\nThis will not limit anybody. And people are not changing group_vars but their own application_configuration.yml (this file) where they can override ANY variable they want.\n\nYes the design of ansible and also this project has been from the start exactly that, group_vars are \"template\" with good default values, but user configures over it with own variable file when needed.",
+      "parentUuid": "7949b2e6_9ce3ec7d",
       "revId": "32e2d571f2ec0f0927f7d9e6d7d1f5efecc9c3e9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
