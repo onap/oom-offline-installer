@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "924bf710_3f763a02",
+        "filename": "build/package.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-10T16:07:27Z",
+      "side": 1,
+      "message": "yes removed in another commit.",
+      "parentUuid": "608d7a34_775d7cd5",
+      "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da945bbd_549da27e",
         "filename": "build/package.conf",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-10T14:03:21Z",
       "side": 1,
       "message": "I think we have default params for this, OOM helm charts are by default placed according to our build instructions https://gerrit.onap.org/r/gitweb?p\u003doom/offline-installer.git;a\u003dblob;f\u003ddoc/BuildGuide.rst;h\u003d6e36b253267a34773568b998d4ce7fc0a7fcbbfa;hb\u003dHEAD#l299\ninto ./ansible/application/helm_charts as of now we still need to have OUR (patched) helm charts. this must be well mentioned in description. I don\u0027t agree that deployment w/o app is important use case, we never used it.",
+      "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e0cb06ba_a0dd0920",
+        "filename": "build/package.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-10T16:07:27Z",
+      "side": 1,
+      "message": "deployment without app is important use case even if you don\u0027t agree. We will need it even by ourselves for testing. And for sure others will require that.\n\nIn coming commits we can change the example value here to point to similar location mentioned in guide. And improve the description if not already done in subsequent commits.",
+      "parentUuid": "da945bbd_549da27e",
       "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
