@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3986be09_6a4c33ee",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-10T16:54:37Z",
+      "side": 1,
+      "message": "this looks wrong, helm targets order depends on how Makefile is written, this pair is matching ONAP Casablanca case, In Beijing \"make all\" was sufficient. According to logic described in other places, we should have this empty and set in config/application_configuration.yml example",
+      "revId": "32e2d571f2ec0f0927f7d9e6d7d1f5efecc9c3e9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7949b2e6_9ce3ec7d",
+        "filename": "config/application_configuration.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-10T16:54:37Z",
+      "side": 1,
+      "message": "by moving all of those into group_vars and setting default\u0027s there (mainly deriving from app_name) it will limit us in the future. With this commit we are setting artificial dependency on:\napp_name -\u003e  helm chart, release, namespace\nMaybe it\u0027s not bad, people can change group_vars.yml right.\nWe are using group_vars.yml as some template for user and everyone is supposed to create own file out of this.",
+      "revId": "32e2d571f2ec0f0927f7d9e6d7d1f5efecc9c3e9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
