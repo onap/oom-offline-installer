@@ -65,7 +65,7 @@ deploy_rpm_repository: yes
 
 # Offline solution is deploying app specific rpm repository and requires some name
 # also for k8s cluster
-# e.g. app_name: ONAP
+# e.g. app_name: onap
 app_name:
 
 # runtime_images provides an way to insert docker images
@@ -90,12 +90,6 @@ runtime_images:
 # Application specific params #
 ###############################
 
-# Project name to utilize same codebase. Just helper variable inside ansible
-# configuration files (like this file) to avoid writing own project name multiple
-# times for paths, namespaces, Helm release, derived variables..
-# e.g. project_configuration: onap-casablanca
-project_configuration:
-
 # App Helm charts directory location in installation package.
 # The path is absolute path (even locates relative inside of this sw package
 # installation folder) because it must be visible for ansible docker/chroot
@@ -116,7 +110,7 @@ app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
 
 # Main Helm chart to install
 # e.g. app_helm_chart_name: onap
-app_helm_chart_name:
+app_helm_chart_name: "{{ app_name }}"
 
 # Targets for helm charts repository build
 # e.g. for ONAP Casablanca
@@ -128,19 +122,19 @@ app_helm_build_targets:
 # Directory with helm plugins
 # It's an optional parameter used e.g. in OOM Casablanca
 # app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
-app_helm_plugins_directory:
+app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
 
 # Helm release name (visible in POD names) used by Helm
-# e.g. app_helm_release_name: "{{ project_configuration }}"
-app_helm_release_name: "{{ project_configuration }}"
+# e.g. app_helm_release_name: onap
+app_helm_release_name: "{{ app_name }}"
 
 # Kubernetes namespace where application is installed
 # e.g. app_kubernetes_namespace: onap
-app_kubernetes_namespace:
+app_kubernetes_namespace: "{{ app_name }}"
 
 # Optional application custom Ansible roles name for pre and post install logic.
 # Location of additional custom roles is defined in ansible.cfg with roles_path.
-# e.g. application_pre_install_role: "{{ project_configuration }}-patch-role"
+# e.g. application_pre_install_role: "{{ app_name }}-patch-role"
 application_pre_install_role:
 application_post_install_role:
 
