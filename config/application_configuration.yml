@@ -1,95 +1,21 @@
 ---
-###################################
-# Resources configuration entries #
-###################################
 
-# Resource host information
-
-# folder on resource host where tars with resources are present
+#
+# This is example configuration to install offline ONAP.
+# See available variables to configure and used default values
+# from ../ansible/group_vars/*.yml files.
+#
 resources_dir: /data
-
-# tarfile name within this folder with offline infrastructure sw
-resources_filename: onap-offline-onap-full-3.0.0.resources.tar
-
-# Infra node specific information
-
-# offline solution source data binaries will be decompressed in following dir on infra
-# e.g. app_data_path: /opt/onap
-app_data_path: /opt/onap
-
-##########################################
-# Offline Infrastructure specific params #
-##########################################
-
-# information from which rootCA is created
-# e.g.
-# organization_name: Samsung
-# state_or_province_name: Poland
-# country_name: PL
-# locality_name: Krakow
+app_name: onap
+resources_filename: "offline-{{ app_name }}-3.0.0.resources.tar"
+app_data_path: "/opt/{{ app_name }}"
 certificates:
   organization_name: Samsung
   state_or_province_name: Poland
   country_name: PL
   locality_name: Krakow
-
-# Offline solution is deploying app specific rpm repository and requires some name
-# also for k8s cluster
-# e.g. app_name: ONAP
-app_name: ONAP
-
-
-###############################
-# Application specific params #
-###############################
-
-# Project name to utilize same codebase
-# e.g. project_configuration: onap-full
-project_configuration: onap-full
-
-# App Helm charts dir. E.g. application/helm_charts/<xxx> where xxx is a charts folder name.
-# Helm charts are expected to be inside SW package somewhere inside ./ansible/application
-# those will be available for offline installer under /ansible/application/<helm_charts_name>
-# for OOM project helm charts are usually within kubernetes sub-folder
-# so the path for them can be:
-# e.g app_helm_charts_install_directory: "/ansible/application/oom/kubernetes"
-app_helm_charts_install_directory: "/ansible/application/helm_charts"
-
-# to specify target dir where helm charts should be copied into on infra node
-# this should be directory with all charts and Makefile
-# e.g. app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
-app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
-
-# Main Helm chart to install
-# e.g. app_helm_chart_name: onap
-app_helm_chart_name: onap
-
-# Targets for helm charts repository build
-# e.g. for ONAP Casablanca
-# app_helm_build_targets:
-#   - all
-#   - onap
 app_helm_build_targets:
   - all
-  - onap
+  - "{{ app_name }}"
+application_pre_install_role: "{{ app_name }}-casablanca-patch-role"
 
-# Directory with helm plugins
-# It's an optional parameter used e.g. in OOM Casablanca
-# app_helm_plugins_directory: "{{ app_helm_charts_infra_directory}}/kubernetes/helm/plugins/"
-app_helm_plugins_directory: "{{ app_helm_charts_infra_directory}}/kubernetes/helm/plugins/"
-
-# Helm release name (visible in POD names) used by Helm
-# e.g. app_helm_release_name: "{{ project_configuration }}"
-app_helm_release_name: "{{ project_configuration }}"
-
-# Kubernetes namespace where application is installed
-# e.g. app_kubernetes_namespace: onap
-app_kubernetes_namespace: onap
-
-# Optional application custom Ansible roles name for pre and post install logic.
-# Location of additional custom roles is defined in ansible.cfg with roles_path.
-# e.g. application_pre_install_role: "{{ project_configuration }}-patch-role"
-application_pre_install_role: onap-casablanca-patch-role
-application_post_install_role:
-
-# any other application specific params can be specified in this file
