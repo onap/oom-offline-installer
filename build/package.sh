@@ -80,7 +80,7 @@ function add_additions {
 }
 
 function build_sw_artifacts {
-    cd ../ansible/docker
+    cd ../deploy/docker
     ./build_ansible_image.sh
     if [ $? -ne 0 ]; then
         crash 5 "Building of ansible runner image failed."
@@ -96,19 +96,19 @@ function create_sw_package {
 
     # Create directory structure of the sw package
     mkdir -p "${pkg_root}"
-    cp -r ansible "${pkg_root}"
+    cp -r deploy "${pkg_root}"
 
     # Add additional files/dirs into package based on package.conf
     for item in "${SW_PACKAGE_ADDONS[@]}";do
-        # all SW package addons are expected within ./ansible/application folder
-        add_additions "${item}" "${pkg_root}/ansible/application"
+        # all SW package addons are expected within ./deploy/application folder
+        add_additions "${item}" "${pkg_root}/deploy/application"
     done
 
     # Helm charts handling
     echo "Helm charts handling"
     # Copy charts available for ansible playbook to use/move them to target server/dir
-    mkdir -p "${pkg_root}"/ansible/application/helm_charts
-    cp -r "${HELM_CHARTS_DIR}"/* "${pkg_root}"/ansible/application/helm_charts
+    mkdir -p "${pkg_root}"/deploy/application/helm_charts
+    cp -r "${HELM_CHARTS_DIR}"/* "${pkg_root}"/deploy/application/helm_charts
 
     # Add metadata to the package
     add_metadata "${pkg_root}"/package.info

@@ -296,7 +296,7 @@ offline. Use the following command:
 
 For example:
 
-``$ ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /root/offline-installer/patches/casablanca_3.0.0.patch /tmp/offline-installer/ansible/application/helm_charts``
+``$ ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /root/offline-installer/patches/casablanca_3.0.0.patch /tmp/offline-installer/deploy/application/helm_charts``
 
 Part 5. Creating offline installation package
 ---------------------------------------------
@@ -315,7 +315,7 @@ are optional:
 +---------------------------------------+------------------------------------------------------------------------------+
 | HELM\_CHARTS\_DIR                     | oom directory from oom git repostitory                                       |
 +---------------------------------------+------------------------------------------------------------------------------+
-| SW\_PACKAGE\_ADDONS                   | specific entries which are inserted into ./ansible/application               |
+| SW\_PACKAGE\_ADDONS                   | specific entries which are inserted into ./deploy/application                |
 +---------------------------------------+------------------------------------------------------------------------------+
 | EXTERNAL\_BINARIES\_PACKAGE\_ADDONS   | other addons used as resources                                               |
 +---------------------------------------+------------------------------------------------------------------------------+
