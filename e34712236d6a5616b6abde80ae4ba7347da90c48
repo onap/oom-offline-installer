@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff215c72_ff069ed3",
+        "filename": "config/application_configuration.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-11T06:03:36Z",
+      "side": 1,
+      "message": "there is problem here, in both app_helm_plugins_directory , infra_helm_plugins_directory we need to get rid of this \"kubernetes\" subfolder, but I think this is addressed in another commit so it should not be a big deal.",
+      "revId": "e34712236d6a5616b6abde80ae4ba7347da90c48",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
