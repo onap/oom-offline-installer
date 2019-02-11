@@ -69,6 +69,24 @@
       "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e71fef3d_9de13242",
+        "filename": "build/package.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-11T14:52:47Z",
+      "side": 1,
+      "message": "What for do we need to comment it out in case the default use case is to have it there? Could we make it easier to edit for user for the default purpose?",
+      "parentUuid": "e0cb06ba_a0dd0920",
+      "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
