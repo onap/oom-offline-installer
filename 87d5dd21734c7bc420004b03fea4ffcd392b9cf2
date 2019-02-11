@@ -70,6 +70,30 @@
       "revId": "87d5dd21734c7bc420004b03fea4ffcd392b9cf2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cd5443d_f03f8842",
+        "filename": "build/data_lists/onap_3.0.0-http_files.list",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-11T06:16:34Z",
+      "side": 1,
+      "message": "We definitely get this original list populated automatically, Vlad did it 6 months back when doing vFWCL. I think he created small python script, which was parsing all pom files for additional files. Those maven repos are huge in upstream and we just need some subset of this. Hope to find more details about how he did it",
+      "parentUuid": "9359db27_ef1978fc",
+      "range": {
+        "startLine": 83,
+        "startChar": 181,
+        "endLine": 83,
+        "endChar": 188
+      },
+      "revId": "87d5dd21734c7bc420004b03fea4ffcd392b9cf2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
