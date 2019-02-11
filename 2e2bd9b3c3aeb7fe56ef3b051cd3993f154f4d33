@@ -16,6 +16,24 @@
       "revId": "2e2bd9b3c3aeb7fe56ef3b051cd3993f154f4d33",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a06cd2f7_04a68c3e",
+        "filename": "doc/BuildGuide.rst",
+        "patchSetId": 8
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-11T07:24:53Z",
+      "side": 1,
+      "message": "I think Tomas added it to populate Python packages properly into nexus.",
+      "parentUuid": "e558cd86_986fbca3",
+      "revId": "2e2bd9b3c3aeb7fe56ef3b051cd3993f154f4d33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
