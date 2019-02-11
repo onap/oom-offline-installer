@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "d28b57bb_f5eeac7c",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-11T10:27:27Z",
+      "side": 1,
+      "message": "packed",
+      "range": {
+        "startLine": 16,
+        "startChar": 56,
+        "endLine": 16,
+        "endChar": 64
+      },
+      "revId": "2e2bd9b3c3aeb7fe56ef3b051cd3993f154f4d33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69db40db_9b3ef026",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-11T10:27:27Z",
+      "side": 1,
+      "message": "There is no compression used, right? Extracted?",
+      "range": {
+        "startLine": 30,
+        "startChar": 2,
+        "endLine": 30,
+        "endChar": 14
+      },
+      "revId": "2e2bd9b3c3aeb7fe56ef3b051cd3993f154f4d33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a21319e_6145a7a6",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-11T10:27:27Z",
+      "side": 1,
+      "message": "a way",
+      "range": {
+        "startLine": 71,
+        "startChar": 26,
+        "endLine": 71,
+        "endChar": 32
+      },
+      "revId": "2e2bd9b3c3aeb7fe56ef3b051cd3993f154f4d33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e558cd86_986fbca3",
         "filename": "doc/BuildGuide.rst",
         "patchSetId": 8
