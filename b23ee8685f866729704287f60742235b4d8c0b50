@@ -87,6 +87,24 @@
       "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f5138b9_9879d708",
+        "filename": "build/package.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-11T15:18:39Z",
+      "side": 1,
+      "message": "Please, check the latest version of this file (the last commit in this chain). All of the variables in this file are commented out. \nAs we cannot provide any working default value for any of the variables in this file, this file is just documenting the configuration supported.\n\nIn latest version I have changed the example value to follow the BuildGuide example paths (yet real working paths cannot be provided as it always depends on user environment).\n\nWe could provide an scripts e.g. \"build_onap\" and \"package_onap\" where all paths are really fixed.",
+      "parentUuid": "e71fef3d_9de13242",
+      "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
