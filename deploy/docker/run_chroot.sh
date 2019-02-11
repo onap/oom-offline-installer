@@ -73,30 +73,30 @@ USAGE:
             Multiple usage of this argument can be used to create complex
             hierarchy. Order is significant.
             For example:
-                --mount ro:/scripts/ANSIBLE_DIR:/ansible \
-                --mount rw:/scripts/ANSIBLE_DIR/app:/ansible/app
-                This will mount directory ansible as read-only into chroot,
+                --mount ro:/scripts/ANSIBLE_DIR:/deploy \
+                --mount rw:/scripts/ANSIBLE_DIR/app:/deploy/app
+                This will mount directory deploy as read-only into chroot,
                 but it's subdirectory 'app' will be writeable.
 
         --workdir <inner-dir>
             This will set working directory (PWD) inside the chroot.
 
 EXAMPLE:
-    ${CMD} --mount ro:/scripts/ansible:ansible \
-        --mount rw:/scripts/ansible/app:ansible/app \
-        --workdir /ansible execute /tmp/ansible_chroot
+    ${CMD} --mount ro:/scripts/deploy:deploy \
+        --mount rw:/scripts/deploy/app:deploy/app \
+        --workdir /deploy execute /tmp/ansible_chroot
     # pwd
-    /ansible
+    /deploy
     # mount
     overlay on / type overlay ...
-    /dev/disk on /ansible type ext4 (ro,relatime,errors=remount-ro)
-    /dev/disk on /ansible/application type ext4 (rw,relatime,errors=remount-ro)
+    /dev/disk on /deploy type ext4 (ro,relatime,errors=remount-ro)
+    /dev/disk on /deploy/application type ext4 (rw,relatime,errors=remount-ro)
     none on /proc type proc (rw,relatime)
     none on /sys type sysfs (rw,relatime)
     none on /dev/shm type tmpfs (rw,relatime)
 
-    Directory /ansible inside the chroot is not writable but subdirectory
-    /ansible/app is.
+    Directory /deploy inside the chroot is not writable but subdirectory
+    /deploy/app is.
 
     Rest of the chroot is under overlay and all changes will be lost when
     chroot command ends. Only changes in app directory persists bacause it
