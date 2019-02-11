@@ -30,6 +30,6 @@ RUN apk --no-cache update \
 ENV ANSIBLE_HOST_KEY_CHECKING false
 ENV ANSIBLE_RETRY_FILES_ENABLED false
 
-WORKDIR /ansible
+WORKDIR /deploy
 
 ENTRYPOINT ["ansible-playbook"]

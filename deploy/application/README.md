@@ -51,7 +51,7 @@ application_pre_install_role: "{{ project_configuration }}-patch-role"
 ## Inventory hosts
 
 Ansible inventory file is least application specific but in practice example
-inventory file in git ansible/inventory/hosts.yml cannot be directly used anyway
+inventory file in git deploy/inventory/hosts.yml cannot be directly used anyway
 and at least ip addresses need to be changed according to target servers after
 installer installation and before starting installer execution.
 

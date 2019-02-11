@@ -48,12 +48,12 @@ app_name: ONAP
 project_configuration: onap-full
 
 # App Helm charts dir. E.g. application/helm_charts/<xxx> where xxx is a charts folder name.
-# Helm charts are expected to be inside SW package somewhere inside ./ansible/application
-# those will be available for offline installer under /ansible/application/<helm_charts_name>
+# Helm charts are expected to be inside SW package somewhere inside ./deploy/application
+# those will be available for offline installer under /deploy/application/<helm_charts_name>
 # for OOM project helm charts are usually within kubernetes sub-folder
 # so the path for them can be:
-# e.g app_helm_charts_install_directory: "/ansible/application/oom/kubernetes"
-app_helm_charts_install_directory: "/ansible/application/helm_charts"
+# e.g app_helm_charts_install_directory: "/deploy/application/oom/kubernetes"
+app_helm_charts_install_directory: "/deploy/application/helm_charts"
 
 # to specify target dir where helm charts should be copied into on infra node
 # this should be directory with all charts and Makefile
