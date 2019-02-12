@@ -105,6 +105,24 @@
       "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a453478_af4f13c1",
+        "filename": "build/package.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-12T20:35:54Z",
+      "side": 1,
+      "message": "this looks to be the only tricky point before accepting/merging all dependent commits. As per our understanding we can\u0027t have package.conf with everything commented-out. There must be some way how to get some default values for most of the stuff including HELM_CHARTS_DIR (our default deployment). As a default values we can use values we are using, so it might be simply reusable as it is ?? Isn\u0027t it better than \"empty\" config file with a lot of text and description ? It\u0027s ok that user can fill everything, but ideally it should just work out of the box for the default way ...",
+      "parentUuid": "5f5138b9_9879d708",
+      "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
