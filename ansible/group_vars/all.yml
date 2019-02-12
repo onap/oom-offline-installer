@@ -53,9 +53,8 @@ certificates:
 # Default value is to allow redeploy
 redeploy_k8s_env: yes
 
-# Distribute offline rpm repository
-# Default value is to distribute rpm
-deploy_rpm_repository: yes
+# Distribute offline software package (rpm,apt) repository
+deploy_package_repository: yes
 
 # Offline solution is deploying app specific rpm repository and requires some name
 # also for k8s cluster
