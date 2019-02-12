@@ -1,28 +1,8 @@
 ---
 - name: Perform common environment setup for nodes
   hosts: infrastructure, kubernetes
-  tasks:
-    - name: Setup resolv.conf
-      lineinfile:
-        line: "nameserver {{ hostvars[groups.infrastructure[0]].cluster_ip }}"
-        path: /etc/resolv.conf
-        state: present
-        insertbefore: BOF
-      become: yes
-    - name: Add application offline rpm repository
-      yum_repository:
-        name: "{{ app_name }}"
-        file: "{{ app_name | lower }}"
-        description: "{{ app_name }} offline repository"
-        baseurl: "{{ 'http://repo.infra-server/rhel' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
-        gpgcheck: no
-        enabled: yes
-      when: deploy_rpm_repository
-      become: yes
-
-- name: Setup firewall
-  hosts: infrastructure, kubernetes
   roles:
+    - package-repository
     - role: firewall
       vars:
         state: disable
