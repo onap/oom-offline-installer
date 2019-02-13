@@ -16,6 +16,24 @@
       "revId": "a107419945c6cb7c75e57412925258bdddfac0ee",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "acea6384_963fb9b2",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-13T13:57:09Z",
+      "side": 1,
+      "message": "Thanks, the line I was waiting comments mostly.\nYes you are right unfortunately. Will return it back.",
+      "parentUuid": "9a39d857_0bbf4e9d",
+      "revId": "a107419945c6cb7c75e57412925258bdddfac0ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
