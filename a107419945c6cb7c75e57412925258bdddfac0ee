@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a39d857_0bbf4e9d",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-13T13:43:20Z",
+      "side": 1,
+      "message": "this won\u0027t work. on infra it can\u0027t be http because to run nginx which handles http docker needs to be installed first.",
+      "revId": "a107419945c6cb7c75e57412925258bdddfac0ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
