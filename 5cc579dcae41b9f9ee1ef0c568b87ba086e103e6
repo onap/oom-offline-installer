@@ -16,6 +16,24 @@
       "revId": "5cc579dcae41b9f9ee1ef0c568b87ba086e103e6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c516622_9363dc1b",
+        "filename": "ansible/roles/nexus/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-13T15:07:14Z",
+      "side": 1,
+      "message": "Ok. I did not changed the functionality from old. At least this should work same way.\n\nAnd I don\u0027t know why it was done like this, i.e. nginx needs to be started in the middle. Is it because below waiting loop needs nginx to be up to query nexus healthcheck? Is that what you mean with \"publish nexus port\" that we could run healtcheck loop without starting nginx?\nThat would be great change and we could move nginx role to playbook after nexus.\n\nIf that\u0027s possible I want to do that change also as part of this commit. Or separate commit?",
+      "parentUuid": "8e5ccfd6_76dd97b9",
+      "revId": "5cc579dcae41b9f9ee1ef0c568b87ba086e103e6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
