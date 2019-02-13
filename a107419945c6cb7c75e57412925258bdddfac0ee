@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "65cda78b_aab340f7",
+        "filename": "ansible/infrastructure.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-13T14:15:57Z",
+      "side": 1,
+      "message": "you deleted 3 more lines than necessary",
+      "revId": "a107419945c6cb7c75e57412925258bdddfac0ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "002a2097_6d8af5d4",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-13T14:15:57Z",
+      "side": 1,
+      "message": "new line before this line",
+      "revId": "a107419945c6cb7c75e57412925258bdddfac0ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a39d857_0bbf4e9d",
         "filename": "ansible/roles/package-repository/tasks/main.yml",
         "patchSetId": 1
@@ -31,6 +65,24 @@
       "side": 1,
       "message": "Thanks, the line I was waiting comments mostly.\nYes you are right unfortunately. Will return it back.",
       "parentUuid": "9a39d857_0bbf4e9d",
+      "revId": "a107419945c6cb7c75e57412925258bdddfac0ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eacb6c91_862a767e",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-13T14:15:57Z",
+      "side": 1,
+      "message": "Tasks can be moved to role though. I like that.",
+      "parentUuid": "acea6384_963fb9b2",
       "revId": "a107419945c6cb7c75e57412925258bdddfac0ee",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
