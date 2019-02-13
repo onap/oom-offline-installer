@@ -1,5 +1,8 @@
 ---
+nfs_packages:
+  RedHat:
+    - nfs-utils
 nfs_services:
   RedHat:
     - rpcbind
-    - nfs
+    - nfs-server

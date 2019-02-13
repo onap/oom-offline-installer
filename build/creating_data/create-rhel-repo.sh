@@ -36,7 +36,7 @@ fi
 
 # this exact docker version is required by ONAP/beijing
 # it should be available in centos docker repo
-yumdownloader --resolve --destdir="${OUTDIR}" docker-ce-17.03.2.ce libtool-ltdl docker-ce-selinux
+yumdownloader --resolve --destdir="${OUTDIR}" docker-ce-17.03.2.ce libtool-ltdl docker-ce-selinux nfs-utils
 
 createrepo "${OUTDIR}"
 
