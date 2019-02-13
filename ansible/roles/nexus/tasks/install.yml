@@ -26,5 +26,19 @@
       - name: nexus_network
     volumes:
       - "{{ app_data_path }}/nexus_data:/nexus-data:rw"
+    ports:
+      - 8081:8081
     state: started
     restart_policy: unless-stopped
+
+- name: Wait for nexus to come up
+  uri:
+    url: "{{ nexus_url }}:8081/service/metrics/healthcheck"
+    user: admin
+    password: admin123
+    force_basic_auth: yes
+    method: GET
+  register: nexus_wait
+  until: not nexus_wait.failed
+  retries: 30
+  delay: 10
