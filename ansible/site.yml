@@ -1,0 +1,12 @@
+---
+#
+# Master playbook to run offline installer.
+# Run this playbook e.g. with command: ./run_playbook.sh -e @application/application_configuration.yml
+#
+
+- import_playbook: setup.yml
+- import_playbook: upload_resources.yml
+- import_playbook: infrastructure.yml
+- import_playbook: rancher_kubernetes.yml
+- import_playbook: application.yml
+
