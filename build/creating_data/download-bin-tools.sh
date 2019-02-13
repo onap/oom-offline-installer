@@ -20,7 +20,7 @@ usage () {
     echo "Usage:"
     echo -e "./$(basename $0) <project version> [destination directory]\n"
     echo "Examples:"
-    echo "  ./$(basename $0) onap_2.0.0 ./git-repo"
+    echo "  ./$(basename $0) onap_3.0.0 ./git-repo"
 }
 
 if [ "${1}" == "-h" ] || [ -z "${1}" ] || [ -z "${2}"]; then
@@ -35,6 +35,9 @@ if [ "${TAG}" == onap_2.0.0 ]; then
     KUBECTL_VERSION=1.8.10
     HELM_VERSION=2.8.2
 elif [ "${TAG}" == onap_3.0.0 ]; then
+    KUBECTL_VERSION=1.11.2
+    HELM_VERSION=2.9.1
+else
     KUBECTL_VERSION=1.11.2
     HELM_VERSION=2.9.1
 fi
