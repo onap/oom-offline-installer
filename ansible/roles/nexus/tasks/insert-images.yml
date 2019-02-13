@@ -14,6 +14,7 @@
       docker_image:
         name: "{{ runtime_images[component].registry }}{{ runtime_images[component].path }}"
         tag: "{{ runtime_images[component].tag }}"
-        push: yes
+        push: true
         load_path: "{{ item.path }}"
         timeout: 120
+      changed_when: false  # for idenpotence
