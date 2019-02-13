@@ -35,6 +35,7 @@ if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
     SCRIPT_DIR=$(dirname "${0}")
     LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
     . "${LOCAL_PATH}"/"${RELATIVE_PATH}"/common-functions.sh
+fi
 
 if [ "${1}" == "-h" ] || [ -z "${1}" ]; then
     usage
@@ -52,39 +53,39 @@ CURR=1
 message info "Downloading started: $(date)"
 
 echo "[Step $((CURR++))/$TOTAL Download collected docker images]"
-$CTOOLS/download-docker-images.sh "$LISTS_DIR/${TAG}-docker_images.list"
+$CTOOLS/download-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list"
 
 echo "[Step $((CURR++))/$TOTAL Build own nginx image]"
 $CTOOLS/create_nginx_image/01create-image.sh
 
 echo "[Step $((CURR++))/$TOTAL Save docker images from docker cache to tarfiles]"
-$CTOOLS/save-docker-images.sh "$DATA_DIR/offline_data/docker_images_for_nexus"
+$CTOOLS/save-docker-images.sh "${DATA_DIR}/offline_data/docker_images_for_nexus"
 
 echo "[Step $((CURR++))/$TOTAL move infra related images to infra folder]"
-mkdir -p "$DATA_DIR/offline_data/docker_images_infra"
-mv "$DATA_DIR/offline_data/docker_images_for_nexus/own_nginx_latest.tar" "$DATA_DIR/offline_data/docker_images_infra"
-mv "$DATA_DIR/offline_data/docker_images_for_nexus/sonatype_nexus3_latest.tar" "$DATA_DIR/offline_data/docker_images_infra"
+mkdir -p "${DATA_DIR}/offline_data/docker_images_infra"
+mv "${DATA_DIR}/offline_data/docker_images_for_nexus/own_nginx_latest.tar" "${DATA_DIR}/offline_data/docker_images_infra"
+mv "${DATA_DIR}/offline_data/docker_images_for_nexus/sonatype_nexus3_latest.tar" "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Download git repos]"
-$CTOOLS/download-git-repos.sh "${TAG}" "$DATA_DIR/git-repo"
+$CTOOLS/download-git-repos.sh "${LISTS_DIR}/${TAG}" "${DATA_DIR}/git-repo"
 
 echo "[Step $((CURR++))/$TOTAL Download http files]"
-$CTOOLS/download-http-files.sh "$LISTS_DIR/${TAG}-http_files.list" "$DATA_DIR/http"
+$CTOOLS/download-http-files.sh "${LISTS_DIR}/${TAG}-http_files.list" "${DATA_DIR}/http"
 
 echo "[Step $((CURR++))/$TOTAL Download npm pkgs]"
-$CTOOLS/download-npm-pkgs.sh "$LISTS_DIR/${TAG}-npm.list" "$DATA_DIR/offline_data/npm_tar"
+$CTOOLS/download-npm-pkgs.sh "${LISTS_DIR}/${TAG}-npm.list" "${DATA_DIR}/offline_data/npm_tar"
 
 echo "[Step $((CURR++))/$TOTAL Download bin tools]"
-$CTOOLS/download-bin-tools.sh "${TAG}" "$DATA_DIR/downloads"
+$CTOOLS/download-bin-tools.sh "${TAG}" "${DATA_DIR}/downloads"
 
 echo "[Step $((CURR++))/$TOTAL Create RHEL repository]"
-$CTOOLS/create-rhel-repo.sh "$DATA_DIR/pkg/rhel"
+$CTOOLS/create-rhel-repo.sh "${DATA_DIR}/pkg/rhel"
 
 echo "[Step $((CURR++))/$TOTAL Download sdnc-ansible-server packages]"
-$CTOOLS/download-pip.sh "$LISTS_DIR/${TAG}-pip_packages.list" "$DATA_DIR/offline_data/pypi"
-$CTOOLS/download-files.sh "$LISTS_DIR/deb_packages.list" "$DATA_DIR/pkg/ubuntu/xenial"
+$CTOOLS/download-pip.sh "${LISTS_DIR}/${TAG}-pip_packages.list" "${DATA_DIR}/offline_data/pypi"
+$CTOOLS/download-files.sh "${LISTS_DIR}/deb_packages.list" "${DATA_DIR}/pkg/ubuntu/xenial"
 
 echo "[Step $((CURR++))/$TOTAL Create APT repository]"
-$CTOOLS/create-ubuntu-repo.sh "$DATA_DIR/pkg/ubuntu/xenial"
+$CTOOLS/create-ubuntu-repo.sh "${DATA_DIR}/pkg/ubuntu/xenial"
 
 message info "Downloading finished: $(date)"
