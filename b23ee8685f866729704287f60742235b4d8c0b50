@@ -141,6 +141,24 @@
       "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6ea9497_c3e4f563",
+        "filename": "build/package.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-13T07:15:28Z",
+      "side": 1,
+      "message": "Please, check now from this commit: https://gerrit.onap.org/r/#/c/78174/",
+      "parentUuid": "b8ea4c5f_4ddd9493",
+      "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
