@@ -5,15 +5,18 @@
 
 # Resource host information
 
-# folder on resource host where tars with resources are present
+# Directory on resource host where tars with resources are present
 resources_dir:
 
-# tarfile name within this folder with offline infrastructure sw
+# tarfile name within resources_dir directory with offline infrastructure binaries.
+# Content of APP_BINARY_RESOURCES_DIR (defined in package.conf) packaged by package.sh to single tar file.
 resources_filename:
 
+# tarfile name within resources_dir directory with auxiliary resources.
+# Content of APP_AUX_BINARIES (defined in package.conf) packaged by package.sh to single tar file.
 # the purpose of auxiliary resources is to provide user an interface
-# of how to distribute to infra node another big tar which might be
-# usefull later on in application playbooks, optional param
+# to distribute to infra node tar file with application specific files.
+# Docker images in tar format are currently the only supported content of aux_resources package.
 aux_resources_filename:
 
 # resources can be exported via nfs
@@ -23,14 +26,17 @@ resources_on_nfs: no
 
 # Infra node specific information
 
-# offline solution source data binaries will be decompressed in following dir on infra
+# Offline solution source data binaries (resources_filename tar) will be
+# decompressed in this directory on target infra server.
 # e.g. app_data_path: /opt/onap
 app_data_path:
 
-# additional data path for auxiliary data transfer
-# e.g. aux_data_path: /opt/onap/onap_me_docker_images
-aux_data_path:
-
+# Path for auxiliary data in target infra server.
+# Data from resource host defined by aux_resources_filename variable is placed to this directory.
+# Currently docker images in tar format are supported (see runtime_images parameter).
+# Could be used for other kind of application specific data also.
+# e.g. aux_data_path: /opt/onap/my_extra_pods_docker_images
+aux_data_path: "{{ app_data_path }}/runtime_images_source_dir"
 
 
 ##########################################
@@ -59,51 +65,52 @@ deploy_rpm_repository: yes
 
 # Offline solution is deploying app specific rpm repository and requires some name
 # also for k8s cluster
-# e.g. app_name: ONAP
+# e.g. app_name: onap
 app_name:
 
-# as nexus blob is prepopulated during build time following block
-# of runtime_images code provides an alternative way how to insert
-# specified images into nexus during infrastructure playbook execution
-# images specified in there must be available inside aux_resources_filename
-# tar file
+# runtime_images provides an way to insert docker images
+# into nexus during infrastructure playbook execution (populated to nexus at runtime).
+# images specified must be available inside aux_resources_filename
+# tar file that is extracted by installer into aux_data_path directory in infra server.
+# Source format of an image is .tar file in aux_data_path directory and all .tar
+# files in that dir are checked to match runtime_images definition.
 # if runtime_images are not specified nothing is inserted on top of existing
-# prebuilt nexus blob in installation time
-# Component name must match with tar filename
+# prebuilt nexus blob in installation time.
+# Component name must match with tar filename!
 # e.g.
 # aaa-component-0.0.1.tar is expected in aux_data_path for aaa-component image
 #runtime_images:
-  #  aaa-component-0.0.1:
+#    aaa-component-0.0.1:
 #    registry: "nexus3.onap.org:10001"
 #    path:     "/onap/components/aaa-component"
 #    tag:      "latest"
 runtime_images:
 
-
 ###############################
 # Application specific params #
 ###############################
 
-# Project name to utilize same codebase
-# e.g. project_configuration: onap-me
-project_configuration:
+# App Helm charts directory location in installation package.
+# The path is absolute path (even locates relative inside of this sw package
+# installation folder) because it must be visible for ansible docker/chroot
+# process to find directory and to transfer it into machine (infra node) running
+# Helm repository.
+# Content of the folder must be Helm chart directories of the app with Makefile.
+# In case of ONAP OOM it would be <oom_repo>/kubernetes folder content.
+# NOTE: This default value should not be changed if not really needed and it
+# must match with the variable "HELM_CHARTS_DIR_IN_PACKAGE" value in package.sh
+# script!
+app_helm_charts_install_directory: "/ansible/application/helm_charts"
 
-# App Helm charts dir. E.g. application/helm_charts/<xxx> where xxx is a charts folder name.
-# Helm charts are expected to be inside SW package somewhere inside ./ansible/application
-# those will be available for offline installer under /ansible/application/<helm_charts_name>
-# for OOM project helm charts are usually within kubernetes sub-folder
-# so the path for them can be:
-# e.g app_helm_charts_install_directory: "/ansible/application/oom/kubernetes"
-app_helm_charts_install_directory:
-
-# to specify target dir where helm charts should be copied into on infra node
-# this should be directory with all charts and Makefile
+# Specify target dir where helm charts are copied into on infra node.
+# (same as content of "app_helm_charts_install_directory" copied by installer to this dir.)
+# This must be directory with all charts and Makefile.
 # e.g. app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
-app_helm_charts_infra_directory:
+app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
 
 # Main Helm chart to install
 # e.g. app_helm_chart_name: onap
-app_helm_chart_name:
+app_helm_chart_name: "{{ app_name }}"
 
 # Targets for helm charts repository build
 # e.g. for ONAP Casablanca
@@ -114,20 +121,20 @@ app_helm_build_targets:
 
 # Directory with helm plugins
 # It's an optional parameter used e.g. in OOM Casablanca
-# app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/kubernetes/helm/plugins/"
-app_helm_plugins_directory:
+# app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
+app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
 
 # Helm release name (visible in POD names) used by Helm
-# e.g. app_helm_release_name: "{{ project_configuration }}"
-app_helm_release_name:
+# e.g. app_helm_release_name: onap
+app_helm_release_name: "{{ app_name }}"
 
 # Kubernetes namespace where application is installed
 # e.g. app_kubernetes_namespace: onap
-app_kubernetes_namespace:
+app_kubernetes_namespace: "{{ app_name }}"
 
 # Optional application custom Ansible roles name for pre and post install logic.
 # Location of additional custom roles is defined in ansible.cfg with roles_path.
-# e.g. application_pre_install_role: "{{ project_configuration }}-patch-role"
+# e.g. application_pre_install_role: "{{ app_name }}-patch-role"
 application_pre_install_role:
 application_post_install_role:
 

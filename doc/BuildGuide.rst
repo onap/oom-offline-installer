@@ -296,32 +296,36 @@ offline. Use the following command:
 
 For example:
 
-``$ ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /root/offline-installer/patches/casablanca_3.0.0.patch /tmp/offline-installer/ansible/application/helm_charts``
+``$ ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/offline-installer/patches/casablanca_3.0.0.patch /tmp/oom-clone``
 
 Part 5. Creating offline installation package
 ---------------------------------------------
 
 For the packagin itself it's necessary to prepare configuration. You can
-use ./onap/install/onap-offline/build/package.conf as template or
+use ./build/package.conf as template or
 directly modify it.
 
-There are some parameters needs to be set in configuration file and some
-are optional:
+There are some parameters needs to be set in configuration file.
+Example values below are setup according to steps done in this guide to package ONAP.
 
 +---------------------------------------+------------------------------------------------------------------------------+
 | Parameter                             | Description                                                                  |
 +=======================================+==============================================================================+
-| SOFTWARE\_PACKAGE\_BASENAME           | defines package name prefix (e.g. onap-offline)                              |
+| HELM\_CHARTS\_DIR                     | directory with Helm charts for the application                               |
+|                                       | Example: /tmp/oom-clone/kubernetes                                           |
 +---------------------------------------+------------------------------------------------------------------------------+
-| HELM\_CHARTS\_DIR                     | oom directory from oom git repostitory                                       |
+| APP\_CONFIGURATION                    | application install configuration (application_configuration.yml) for        |
+|                                       | ansible installer and custom ansible role code directories if any.           |
+|                                       | Example:                                                                     |
+|                                       | APP_CONFIGURATION=(                                                          |
+|                                       |    /tmp/offline-installer/config/application_configuration.yml               |
+|                                       |    /tmp/offline-installer/patches/onap-casablanca-patch-role                 |
+|                                       | )                                                                            |
 +---------------------------------------+------------------------------------------------------------------------------+
-| SW\_PACKAGE\_ADDONS                   | specific entries which are inserted into ./ansible/application               |
+| APP\_BINARY\_RESOURCES\_DIR           | directory with all (binary) resources for offline infra and application      |
+|                                       | Example: /tmp/onap-offline/resources                                         |
 +---------------------------------------+------------------------------------------------------------------------------+
-| EXTERNAL\_BINARIES\_PACKAGE\_ADDONS   | other addons used as resources                                               |
-+---------------------------------------+------------------------------------------------------------------------------+
-| PREPARE\_AUX\_PACKAGE                 | boolean condition if prepare AUX package [optional]                          |
-+---------------------------------------+------------------------------------------------------------------------------+
-| AUX\_BINARIES\_PACKAGE\_ADDONS        | additional binaries such as docker images loaded during runtime [optional]   |
+| APP\_AUX\_BINARIES                    | additional binaries such as docker images loaded during runtime   [optional] |
 +---------------------------------------+------------------------------------------------------------------------------+
 
 Offline installer packages are created with prepopulated data via
@@ -331,14 +335,13 @@ following command run from offline-installer directory
 
 E.g.
 
-``$ ./build/package.sh onap 1.0.1  /tmp/package_onap_1.0.0"``
+``$ ./build/package.sh onap 1.0.1 /tmp/package"``
 
 
 So in the target directory you should find tar files with
 
-<PACKAGE\_BASE\_NAME>-<PROJECT\_NAME>-<PROJECT\_VERSION>-sw.tar
+offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-sw.tar
 
-<PACKAGE\_BASE\_NAME>-<PROJECT\_NAME>-<PROJECT\_VERSION>-resources.tar
+offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-resources.tar
 
-Optionally:
-<PACKAGE\_BASE\_NAME>-<PROJECT\_NAME>-<PROJECT\_VERSION>-aux-resources.tar
+offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-aux-resources.tar
