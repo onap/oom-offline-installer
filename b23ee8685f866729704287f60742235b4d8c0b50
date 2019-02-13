@@ -123,6 +123,24 @@
       "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8ea4c5f_4ddd9493",
+        "filename": "build/package.conf",
+        "patchSetId": 6
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-13T06:40:35Z",
+      "side": 1,
+      "message": "The idea is same as in ansible. We document available parameters with examples and provide reasonable default values for those we can.\nIn this case there is no parameter we can give default value so that it would work out of the box. User should anyway generate own config file for the situation at hand, it cannot be run as it is if we provide some absolute paths here for our example.\n\nFor accepting these commits this detail should not have anything to do. If it\u0027s really up to this, I can hardcode those paths to this file according to our BuildGuide example. Will not do it in this commit, but the last commit in the chain.",
+      "parentUuid": "7a453478_af4f13c1",
+      "revId": "b23ee8685f866729704287f60742235b4d8c0b50",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
