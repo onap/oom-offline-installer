@@ -28,3 +28,19 @@
       - "{{ app_data_path }}/nexus_data:/nexus-data:rw"
     state: started
     restart_policy: unless-stopped
+
+- name: At this point start nginx
+  include_role:
+    name: nginx
+
+- name: Wait for nexus to come up
+  uri:
+    url: "{{ nexus_url }}/service/metrics/healthcheck"
+    user: admin
+    password: admin123
+    force_basic_auth: yes
+    method: GET
+  register: nexus_wait
+  until: not nexus_wait.failed
+  retries: 30
+  delay: 10

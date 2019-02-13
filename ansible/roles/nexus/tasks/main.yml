@@ -1,2 +1,9 @@
 ---
-- include_tasks: "{{ phase }}.yml"
+- include_tasks: install.yml
+- include_tasks: configure.yml
+  when: populate_nexus | bool
+- include_tasks: runtime-populate.yml
+  when:
+    - runtime_images is defined
+    - runtime_images is not none
+    - runtime_images | selectattr("path", "defined") | list | length > 0

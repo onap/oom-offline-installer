@@ -71,13 +71,17 @@ app_name:
 # prebuilt nexus blob in installation time
 # Component name must match with tar filename
 # e.g.
-# aaa-component-0.0.1.tar is expected in aux_data_path for aaa-component image
+# aaa/bbb-component-0.0.1.tar are expected in aux_data_path for component images.
 #runtime_images:
-  #  aaa-component-0.0.1:
+#  aaa-component-0.0.1:
 #    registry: "nexus3.onap.org:10001"
 #    path:     "/onap/components/aaa-component"
 #    tag:      "latest"
-runtime_images:
+#  bbb-component-0.0.1:
+#    registry: "nexus3.onap.org:10001"
+#    path:     "/onap/components/bbb-component"
+#    tag:      "latest"
+runtime_images: {}
 
 
 ###############################
