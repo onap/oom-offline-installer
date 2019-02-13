@@ -34,6 +34,24 @@
       "revId": "5cc579dcae41b9f9ee1ef0c568b87ba086e103e6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88e872bd_131f1e73",
+        "filename": "ansible/roles/nexus/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-13T15:33:14Z",
+      "side": 1,
+      "message": "nginx.conf has nexus specified as upstream so nginx won\u0027t start without nexus already listening on the ports specified in that config and container will crash.\nSince port is not published (bound to port on host) you can communicate with nexus only through nginx. I would say that\u0027s why this loop is after nginx. So yeah if you bind port 8081 you can query nexus health there.\nI am ok with that change to be in this commit.",
+      "parentUuid": "0c516622_9363dc1b",
+      "revId": "5cc579dcae41b9f9ee1ef0c568b87ba086e103e6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
