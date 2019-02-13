@@ -1,2 +1,6 @@
-#Defaults to install, can be set to configure.
-phase: install
+---
+# By default prepopulated nexus binary blob used.
+populate_nexus: false
+# By dafault no additional docker images pushed to nexus at runtime
+# but all images are pre-populated either at buildtime or at install time (populate_nexus).
+runtime_images: {}
