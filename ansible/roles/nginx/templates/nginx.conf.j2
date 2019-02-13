@@ -12,14 +12,6 @@ http {
     proxy_send_timeout 120;
     proxy_read_timeout 300;
 
-    upstream nexus {
-        server nexus:8081;
-    }
-
-    upstream registry {
-        server nexus:8082;
-    }
-
 # http simulations
     server {
         listen 80;
@@ -38,6 +30,7 @@ http {
 
 # nexus simulations
     server {
+        resolver 127.0.0.11 valid=30s;
         listen 80;
         listen 443 ssl;
         server_name {% for host in simulated_hosts.nexus -%}
@@ -49,15 +42,18 @@ http {
         keepalive_timeout  5 5;
         proxy_buffering    off;
 
+
         # allow large uploads
         client_max_body_size 3G;
 
         location / {
+            set $upstream_nexus nexus:8081;
+            set $upstream_registry nexus:8082;
             # redirect to docker registry
             if ($http_user_agent ~ docker ) {
-                proxy_pass http://registry;
+                proxy_pass http://$upstream_registry;
             }
-            proxy_pass http://nexus;
+            proxy_pass http://$upstream_nexus;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

@@ -9,4 +9,3 @@
 # need to iterate over those tasks in include
 - include: "insert-images.yml"
   with_items: "{{ tar_images.files }}"
-

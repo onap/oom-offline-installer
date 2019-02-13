@@ -34,34 +34,8 @@
     - docker
     - dns
     - vncserver
-    - role: nexus
-      vars:
-        phase: install
+    - nexus
     - nginx
-  tasks:
-    - name: "wait for nexus to come up"
-      uri:
-        url: "{{ nexus_url }}/service/metrics/healthcheck"
-        user: admin
-        password: admin123
-        force_basic_auth: yes
-        method: GET
-      register: nexus_wait
-      until: not nexus_wait.failed
-      retries: 30
-      delay: 10
-
-- name: Nexus changes in runtime
-  hosts: infrastructure
-  roles:
-    - role: nexus
-      vars:
-        phase: configure
-      when: populate_nexus | bool
-    - role: nexus
-      vars:
-        phase: runtime-populate
-      when: runtime_images is defined and runtime_images is not none
 
 - name: Setup base for Kubernetes nodes
   hosts: kubernetes

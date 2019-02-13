@@ -3,7 +3,7 @@
   uri:
     url: "{{ nexus_url }}/service/rest/v1/script/configure"
     method: GET
-    force_basic_auth: yes
+    force_basic_auth: true
     user: admin
     password: admin123
     status_code: [200, 404]
@@ -13,7 +13,7 @@
       uri:
         url: "{{ nexus_url }}/service/rest/v1/script"
         method: POST
-        force_basic_auth: yes
+        force_basic_auth: true
         user: admin
         password: admin123
         body_format: json
@@ -26,7 +26,7 @@
       uri:
         url: "{{ nexus_url }}/service/rest/v1/script/configure/run"
         method: POST
-        force_basic_auth: yes
+        force_basic_auth: true
         user: admin
         password: admin123
         body_format: raw
