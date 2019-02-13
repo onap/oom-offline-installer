@@ -5,6 +5,12 @@
     state: directory
     mode: 0777
 
+- name: Install nfs packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ nfs_packages[ansible_os_family] }}"
+
 - name: Setup nfs server
   block:
     - name: Start services
