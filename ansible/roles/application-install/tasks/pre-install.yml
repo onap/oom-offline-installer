@@ -37,7 +37,7 @@
     - name: Install all helm plugins from {{ app_helm_plugins_directory }} dir
       copy:
         src: "{{ item.path }}"
-        dest: "{{ helm_home_dir.stdout }}"/plugins"
+        dest: "{{ helm_home_dir.stdout }}/plugins"
         directory_mode: yes
         mode: 0755
       with_items: "{{ list_of_plugins.files }}"
