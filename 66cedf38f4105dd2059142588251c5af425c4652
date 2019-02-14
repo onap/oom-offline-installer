@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f95e07c7_6fe53860",
+        "filename": "build/package.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-14T15:34:40Z",
+      "side": 1,
+      "message": "prematurely",
+      "range": {
+        "startLine": 29,
+        "startChar": 36,
+        "endLine": 29,
+        "endChar": 47
+      },
+      "revId": "66cedf38f4105dd2059142588251c5af425c4652",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
