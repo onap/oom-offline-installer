@@ -38,6 +38,8 @@ fi
 # it should be available in centos docker repo
 yumdownloader --resolve --destdir="${OUTDIR}" docker-ce-17.03.2.ce libtool-ltdl docker-ce-selinux nfs-utils
 
+yum install --downloadonly --downloaddir="${OUTDIR}" https://cbs.centos.org/kojifiles/packages/python-docker/2.5.1/2.el7/noarch/python2-docker-2.5.1-2.el7.noarch.rpm
+
 createrepo "${OUTDIR}"
 
 exit 0
