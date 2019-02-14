@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2018 © Samsung Electronics Co., Ltd.
+#   Copyright 2018-2019 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -21,11 +21,12 @@
 
 # Scope of this packaging script is to generate tarfiles for offline installation
 # Build of any additional artifacts is out of scope for this script
+set -e
 
 crash () {
     local exit_code="$1"
     local cause="$2"
-    echo "Packaging script finished prematuraly"
+    echo "Packaging script finished prematurely"
     echo "Cause: $2"
     exit "${exit_code}"
 }
