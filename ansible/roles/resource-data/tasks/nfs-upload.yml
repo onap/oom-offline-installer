@@ -22,6 +22,7 @@
         dest: "{{ aux_data_path }}"
       when: >
         hostvars[groups.resources.0].aux_resources_filename is defined
+        and hostvars[groups.resources.0].aux_resources_filename is not none
         and aux_data_path is defined and aux_data_path is not none
         and hostvars[groups.resources.0].aux_file_presence.stat.exists
         and not aux_resources_data_check.stat.exists
