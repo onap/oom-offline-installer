@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c774adc2_e8861ed0",
+        "filename": "build/creating_data/create-rhel-repo.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-14T19:33:46Z",
+      "side": 1,
+      "message": "it probably doesn\u0027t work as expected:\n2 packages were missing in our latest platform I had to download them again explicitly using:\nyumdownloader --resolve python-docker-pycreds python-websocket-client\n\nit produced:\npython-websocket-client-0.32.0-116.el7.noarch.rpm\npython-docker-pycreds-0.3.0-8.el7_6.noarch.rpm",
+      "revId": "cb349a5c0bd120e1e34e29b42d27504b3bc6acf7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
