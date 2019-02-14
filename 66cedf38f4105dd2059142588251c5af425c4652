@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2e62e5a3_3a70b89e",
+        "filename": "build/package.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2019-02-14T15:38:14Z",
+      "side": 1,
+      "message": "I guess this should be 2018-2019 now",
+      "range": {
+        "startLine": 5,
+        "startChar": 14,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "66cedf38f4105dd2059142588251c5af425c4652",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f95e07c7_6fe53860",
         "filename": "build/package.sh",
         "patchSetId": 1
