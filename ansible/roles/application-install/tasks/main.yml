@@ -12,7 +12,7 @@
       register: charts_files
     - name: Set install active fact
       set_fact:
-        install_needed: "{{ yes if charts_files.matched | int > 0 else no }}"
+        install_needed: "{{ true if charts_files.matched | int > 0 else false }}"
   when: phase == "pre-install"
 
 - include_tasks: "{{ phase }}.yml"
