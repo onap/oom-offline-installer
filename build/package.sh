@@ -21,6 +21,7 @@
 
 # Scope of this packaging script is to generate tarfiles for offline installation
 # Build of any additional artifacts is out of scope for this script
+set -e
 
 crash () {
     local exit_code="$1"
