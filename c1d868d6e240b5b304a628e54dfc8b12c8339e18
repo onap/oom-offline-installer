@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3876b958_42639b3e",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "discussed in the office, changed to them and rewritten the sentence - sounds better, but someone with a flawless english can jump in and correct it",
+      "parentUuid": "235f53aa_5c18bd85",
+      "range": {
+        "startLine": 12,
+        "startChar": 233,
+        "endLine": 12,
+        "endChar": 239
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "458eee20_8b190f5b",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2019-02-15T08:57:14Z",
       "side": 1,
       "message": "I think we should mention there Rhel 7.x platform\n(my understanding is that in theory we support every 7.x OS if the same version was used during offline platform generating and subsequent installation to avoid issues with rpm version collisions)",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e83b3cb8_cba501c4",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "this section is baout hw resources - does not feel the right place to discuss distro - it is discussed soon below",
+      "parentUuid": "458eee20_8b190f5b",
       "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "f6e4eb37_29f40799",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "info added",
+      "parentUuid": "02f882dd_08daf105",
+      "range": {
+        "startLine": 28,
+        "startChar": 412,
+        "endLine": 28,
+        "endChar": 425
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5dc9d643_b7a956e4",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
@@ -99,6 +165,30 @@
       "writtenOn": "2019-02-15T08:57:14Z",
       "side": 1,
       "message": "pls add \"Installer is described and clarified in later parts of this guide\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 80,
+        "endLine": 49,
+        "endChar": 93
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84cdfd9e_09556a6d",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "this feel unnecessary but added: described below",
+      "parentUuid": "5dc9d643_b7a956e4",
       "range": {
         "startLine": 49,
         "startChar": 80,
@@ -146,6 +236,24 @@
     },
     {
       "key": {
+        "uuid": "59d304c6_76490a6e",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "I added 7.x and described more the issue with version",
+      "parentUuid": "e6711414_8bf82b3e",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "db585d51_f718fa82",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
@@ -163,6 +271,24 @@
     },
     {
       "key": {
+        "uuid": "ab65befe_3ee7c7f6",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "db585d51_f718fa82",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31c8eff7_88f69458",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
@@ -174,6 +300,24 @@
       "writtenOn": "2019-02-15T08:57:14Z",
       "side": 1,
       "message": "this will be closer to latest changes in packaging:\noffline-onap-3.0.1-aux-resources.tar\noffline-onap-3.0.1-resources.tar\noffline-onap-3.0.1-sw.tar",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1fec400_468d5822",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "done, though forcing the aux package (when is empty) seems weird",
+      "parentUuid": "31c8eff7_88f69458",
       "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -215,6 +359,24 @@
     },
     {
       "key": {
+        "uuid": "c6b69434_5b6e6831",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "added below",
+      "parentUuid": "d32b3efd_685e964e",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd961bc5_22dcf14c",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
@@ -226,6 +388,30 @@
       "writtenOn": "2019-02-15T08:57:14Z",
       "side": 1,
       "message": "have instead \"had have\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 83,
+        "endLine": 121,
+        "endChar": 91
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "071a77ca_6139e7bd",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "I think mine is correct, but never sure: https://www.quora.com/How-can-I-use-have-had-has-had-and-had-had",
+      "parentUuid": "cd961bc5_22dcf14c",
       "range": {
         "startLine": 121,
         "startChar": 83,
@@ -261,6 +447,30 @@
     },
     {
       "key": {
+        "uuid": "10c7f771_01ea8bcf",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "didnt know about this template - switched with all.yml",
+      "parentUuid": "79165465_a0d24700",
+      "range": {
+        "startLine": 126,
+        "startChar": 132,
+        "endLine": 126,
+        "endChar": 178
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b41b27a8_67af6d39",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
@@ -272,6 +482,24 @@
       "writtenOn": "2019-02-15T08:57:14Z",
       "side": 1,
       "message": "regarding that network described by cluster_ip: as my understanding this param for kubernetes_host is never used. application playbook still relies on ansible_host param. I can share some more details if needed (proposed patch to our CIinstaller for that). The only usecase for cluster_ip is currently on infra just for dns configs where we can\u0027t use hostname and resolving to IP might be problematic.",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c0b2544_aa54eddd",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "then the whole point of having it was completely missed...it was discussed in the two-weeks opinions exchange - here in the gerrit somewhere",
+      "parentUuid": "b41b27a8_67af6d39",
       "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -313,6 +541,30 @@
       "side": 1,
       "message": "it\u0027s not correct Michal. As user can set any variables to that file available in group_vars/*.yml files.",
       "parentUuid": "ff472d83_75867616",
+      "range": {
+        "startLine": 241,
+        "startChar": 42,
+        "endLine": 241,
+        "endChar": 69
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b52a3976_1be88d05",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "small nuance, but yes, I would keep the current wording",
+      "parentUuid": "aa44f2f8_9b3715e0",
       "range": {
         "startLine": 241,
         "startChar": 42,
@@ -372,6 +624,30 @@
     },
     {
       "key": {
+        "uuid": "985f60a1_594dea7d",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "yes, fixed",
+      "parentUuid": "8e27e7cb_166b0b7a",
+      "range": {
+        "startLine": 248,
+        "startChar": 64,
+        "endLine": 248,
+        "endChar": 80
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbfd9b42_b5d55e15",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
@@ -383,6 +659,24 @@
       "writtenOn": "2019-02-15T08:57:14Z",
       "side": 1,
       "message": "I would put here a note that at this point all ansible playbooks are finished but it might take another 1 hr in average before all pods are properly initialized.\nEventually we might add also Chapter 4 - Post-Install which can cover e.g. verification of working environment like ./robot/ete-k8s.sh onap health for healthchecks",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3b191c9_97d9b616",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-15T12:27:36Z",
+      "side": 1,
+      "message": "done - except the part4 - that may be added later",
+      "parentUuid": "fbfd9b42_b5d55e15",
       "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
