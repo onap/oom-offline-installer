@@ -70,6 +70,24 @@
       "revId": "5cc579dcae41b9f9ee1ef0c568b87ba086e103e6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8833e533_ede431a3",
+        "filename": "ansible/roles/nexus/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-02-15T10:10:35Z",
+      "side": 1,
+      "message": "Hmmm... actually why does nginx specify it as upstream server instead of proxying directly there? using proxy_pass to http:// address will not crash nginx.",
+      "parentUuid": "0bc1223f_c3121a9b",
+      "revId": "5cc579dcae41b9f9ee1ef0c568b87ba086e103e6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
