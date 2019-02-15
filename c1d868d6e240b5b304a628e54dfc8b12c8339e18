@@ -1,0 +1,307 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "235f53aa_5c18bd85",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "those",
+      "range": {
+        "startLine": 12,
+        "startChar": 233,
+        "endLine": 12,
+        "endChar": 239
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "458eee20_8b190f5b",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "I think we should mention there Rhel 7.x platform\n(my understanding is that in theory we support every 7.x OS if the same version was used during offline platform generating and subsequent installation to avoid issues with rpm version collisions)",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3d205e1_72ebf947",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "Maybe I would rephrase to \"In our deployments mainly due to limited HW resources we were deploying Casablanca in more simplified way.",
+      "range": {
+        "startLine": 28,
+        "startChar": 83,
+        "endLine": 28,
+        "endChar": 121
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02f882dd_08daf105",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "we can be more specific here: the limitation is known, it\u0027s 110pod limit for node, which can be changed as described e.g. here https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556?p\u003d\nhowever few nodes or even single node deployments are considered experimental",
+      "range": {
+        "startLine": 28,
+        "startChar": 412,
+        "endLine": 28,
+        "endChar": 425
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5dc9d643_b7a956e4",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "pls add \"Installer is described and clarified in later parts of this guide\"",
+      "range": {
+        "startLine": 49,
+        "startChar": 80,
+        "endLine": 49,
+        "endChar": 93
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14c57979_06a89b74",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "it\u0027s good that it\u0027s written there but RHEL7 can be mentioned also in requirements as it will be more illustrative",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db585d51_f718fa82",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "I would move this part (not as note) to the beginning of Chapter2, row94",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31c8eff7_88f69458",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "this will be closer to latest changes in packaging:\noffline-onap-3.0.1-aux-resources.tar\noffline-onap-3.0.1-resources.tar\noffline-onap-3.0.1-sw.tar",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d32b3efd_685e964e",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "we should mention there are auxiliary package (we don\u0027t need it for this type of installation but it might be handy to mention that there is a option for that). Note: we are now producing aux package with every packaging run (empty for full-onap case)",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd961bc5_22dcf14c",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "have instead \"had have\"",
+      "range": {
+        "startLine": 121,
+        "startChar": 83,
+        "endLine": 121,
+        "endChar": 91
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79165465_a0d24700",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "I would replace this sentence with \"We have verified populated template stored at ./config/application_configuration.yml if some fine tuning is needed, details can be found in following parts.",
+      "range": {
+        "startLine": 126,
+        "startChar": 132,
+        "endLine": 126,
+        "endChar": 178
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b41b27a8_67af6d39",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "regarding that network described by cluster_ip: as my understanding this param for kubernetes_host is never used. application playbook still relies on ansible_host param. I can share some more details if needed (proposed patch to our CIinstaller for that). The only usecase for cluster_ip is currently on infra just for dns configs where we can\u0027t use hostname and resolving to IP might be problematic.",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff472d83_75867616",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "I would recommend \"We can set following params in application_configuration.yml\"",
+      "range": {
+        "startLine": 241,
+        "startChar": 42,
+        "endLine": 241,
+        "endChar": 69
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9b8416d_bc083854",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "resources_host. install_server doesn\u0027t need to be on resource host it might be confusing to say it\u0027s the same.",
+      "range": {
+        "startLine": 248,
+        "startChar": 64,
+        "endLine": 248,
+        "endChar": 80
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbfd9b42_b5d55e15",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-15T08:57:14Z",
+      "side": 1,
+      "message": "I would put here a note that at this point all ansible playbooks are finished but it might take another 1 hr in average before all pods are properly initialized.\nEventually we might add also Chapter 4 - Post-Install which can cover e.g. verification of working environment like ./robot/ete-k8s.sh onap health for healthchecks",
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
