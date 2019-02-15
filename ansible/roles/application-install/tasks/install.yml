@@ -50,7 +50,7 @@
     dest: "{{ app_data_path}}/override.yaml"
     content: |
       global:
-        cacert:
+        cacert: |
           {{ root_cert['content'] | b64decode | indent( width=4, indentfirst=False) }}
 
 - name: Check for deploy plugin presence
