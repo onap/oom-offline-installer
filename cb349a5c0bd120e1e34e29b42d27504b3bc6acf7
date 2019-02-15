@@ -16,6 +16,24 @@
       "revId": "cb349a5c0bd120e1e34e29b42d27504b3bc6acf7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72ca6d82_9fa7fbd4",
+        "filename": "build/creating_data/create-rhel-repo.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-15T07:37:21Z",
+      "side": 1,
+      "message": "I verified it once again and it works. It was probably an error between my chair and my keyboard during the transfer of the repo from my build server to the resources",
+      "parentUuid": "c774adc2_e8861ed0",
+      "revId": "cb349a5c0bd120e1e34e29b42d27504b3bc6acf7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
