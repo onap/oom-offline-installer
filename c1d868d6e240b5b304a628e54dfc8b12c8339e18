@@ -601,6 +601,30 @@
     },
     {
       "key": {
+        "uuid": "68afb004_f504a6b3",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-16T17:11:56Z",
+      "side": 1,
+      "message": "there is \"we\", but ok, it may be bad english, I made a new patchset where I fixed that",
+      "parentUuid": "82a2e08b_64c323a9",
+      "range": {
+        "startLine": 241,
+        "startChar": 42,
+        "endLine": 241,
+        "endChar": 69
+      },
+      "revId": "c1d868d6e240b5b304a628e54dfc8b12c8339e18",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e9b8416d_bc083854",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 1
