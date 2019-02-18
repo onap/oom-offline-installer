@@ -4,7 +4,7 @@
   tasks:
     - name: Store auxiliary resources tar file info into variable
       stat:
-        path: "{{ hostvars[groups.resources.0].resources_dir }}/{{ hostvars[groups.resources.0].aux_resources_filename }}"
+        path: "{{ resources_dir }}/{{ aux_resources_filename }}"
       register: aux_file_presence
 
 - name: Check infrastructure server for presence of resources and requirements

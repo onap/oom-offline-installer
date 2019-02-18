@@ -15,7 +15,7 @@
         ssh -o StrictHostKeyChecking=no -o BatchMode=yes
         -i /root/.ssh/infra_to_resource.privkey
         {{ hostvars[groups.resources.0].ansible_host }}
-        'cat "{{ hostvars[groups.resources.0].resources_dir }}/{{ hostvars[groups.resources.0].resources_filename }}"'
+        'cat "{{ resources_dir }}/{{ resources_filename }}"'
         | tar -C "{{ app_data_path }}" -xf -
       args:
         warn: False
@@ -25,11 +25,11 @@
       shell: >
         ssh -i /root/.ssh/infra_to_resource.privkey
         {{ hostvars[groups.resources.0].ansible_host }}
-        'cat "{{ hostvars[groups.resources.0].resources_dir }}/{{ hostvars[groups.resources.0].aux_resources_filename }}"'
+        'cat "{{ resources_dir }}/{{ aux_resources_filename }}"'
         | tar -C "{{ aux_data_path }}" -xf -
       when: >
-        hostvars[groups.resources.0].aux_resources_filename is defined
-        and hostvars[groups.resources.0].aux_resources_filename is not none
+        aux_resources_filename is defined
+        and aux_resources_filename is not none
         and aux_data_path is defined and aux_data_path is not none
         and hostvars[groups.resources.0].aux_file_presence.stat.exists
         and not aux_resources_data_check.stat.exists

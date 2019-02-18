@@ -4,25 +4,25 @@
     - name: Mount resources
       mount:
         path: /tmp/resource_data
-        src: "{{ hostvars[groups.resources.0].ansible_host }}:{{ hostvars[groups.resources.0].resources_dir }}"
+        src: "{{ hostvars[groups.resources.0].ansible_host }}:{{ resources_dir }}"
         fstype: nfs
         state: mounted
 
     - name: Unarchive resources
       unarchive:
-        src: "/tmp/resource_data/{{ hostvars[groups.resources.0].resources_filename }}"
+        src: "/tmp/resource_data/{{ resources_filename }}"
         remote_src: yes
         dest: "{{ app_data_path }}"
       when: not resources_data_check.stat.exists
 
     - name: Unarchive auxiliary resources
       unarchive:
-        src: "/tmp/resource_data/{{ hostvars[groups.resources.0].aux_resources_filename }}"
+        src: "/tmp/resource_data/{{ aux_resources_filename }}"
         remote_src: yes
         dest: "{{ aux_data_path }}"
       when: >
-        hostvars[groups.resources.0].aux_resources_filename is defined
-        and hostvars[groups.resources.0].aux_resources_filename is not none
+        aux_resources_filename is defined
+        and aux_resources_filename is not none
         and aux_data_path is defined and aux_data_path is not none
         and hostvars[groups.resources.0].aux_file_presence.stat.exists
         and not aux_resources_data_check.stat.exists
@@ -36,7 +36,7 @@
     - name: unmount resource dir
       mount:
         path: /tmp/resource_data
-        src: "{{ hostvars[groups.resources.0].ansible_host }}:{{hostvars[groups.resources.0].resources_dir }}"
+        src: "{{ hostvars[groups.resources.0].ansible_host }}:{{ resources_dir }}"
         fstype: nfs
         state: absent
 
