@@ -22,6 +22,30 @@
       "revId": "43813aff81e7a2c509bc6d49ad41840fdafaf4ee",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14d3301b_a2e077b3",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-18T12:30:05Z",
+      "side": 1,
+      "message": "that is much better",
+      "parentUuid": "9a2e0905_f3be5459",
+      "range": {
+        "startLine": 12,
+        "startChar": 192,
+        "endLine": 12,
+        "endChar": 241
+      },
+      "revId": "43813aff81e7a2c509bc6d49ad41840fdafaf4ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
