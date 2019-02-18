@@ -22,6 +22,30 @@
       "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b220c01f_97de5d3f",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-18T14:06:19Z",
+      "side": 1,
+      "message": "OK, no, I am taking this back - actually, both the resource-host and infra-node has ansible_host so we can expect that those ips are on the same network and they can communicate on that interface just fine - it would have been very strange setup if every kubernetes node had been on a different subnet and we cannot cater for every possible configuration",
+      "parentUuid": "c8bab7c4_bb2acfd7",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 399
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
