@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8bab7c4_bb2acfd7",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-18T13:57:04Z",
+      "side": 1,
+      "message": "here, I realized that I made a mistake - and it is quite important information - because in the upload-resources playbook - infra will initiate ssh connection to resource-host to download resources - and we again are using here a ansible_host - is it wrong? I dunno, but we have now one ip address which must be reacheable from install-server and infra-server, both of which can be on a different network",
+      "range": {
+        "startLine": 185,
+        "startChar": 0,
+        "endLine": 185,
+        "endChar": 399
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
