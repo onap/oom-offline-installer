@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a2e0905_f3be5459",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-18T10:15:48Z",
+      "side": 1,
+      "message": "Let\u0027s simplify it like: \"which provides the instructions for creating them\"",
+      "range": {
+        "startLine": 12,
+        "startChar": 192,
+        "endLine": 12,
+        "endChar": 241
+      },
+      "revId": "43813aff81e7a2c509bc6d49ad41840fdafaf4ee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
