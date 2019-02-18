@@ -1,10 +1,18 @@
 ---
 #
 # Master playbook to run offline installer.
-# Run this playbook e.g. with command: ./run_playbook.sh -e @application/application_configuration.yml
+# Run this playbook e.g. with command: ./run_playbook.sh -e @application/application_configuration.yml site.yml
 #
 
-- import_playbook: setup.yml
+# the setup.yml playbook is excluded from this list for the following reasons:
+# 1. setup.yml playbook requires either already deployed ssh key or
+#    --ask-pass argument to interactively distribute a new key, which may
+#    be a redundant effort if you already secured passwordless login
+# 2. Also, the setup.yml playbook is not mandatory and can be replaced with
+#    manual or semi-manual steps with ssh-copy-id command or other
+# 3. playbooks here are more or less batch jobs and the ssh authentication
+#    is a precondition, which should be done during configuration of the
+#    installer
 - import_playbook: upload_resources.yml
 - import_playbook: infrastructure.yml
 - import_playbook: rancher_kubernetes.yml
