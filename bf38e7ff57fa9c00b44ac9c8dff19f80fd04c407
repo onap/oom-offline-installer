@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "023d85fe_14c0c831",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T09:26:19Z",
+      "side": 1,
+      "message": "OK, let\u0027s merge it",
+      "parentUuid": "0c901479_537d97bd",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ab0e082_f94e35e7",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 6
