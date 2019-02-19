@@ -1,0 +1,30 @@
+---
+- name: "Check and generate key if needed"
+  block:
+    - name: ssh dir
+      file:
+        path: "{{ ssh_dir }}"
+        state: directory
+        mode: 0700
+
+    - name: check ssh pub key exists
+      stat:
+        path: '{{ private_key }}.pub'
+      register: p
+
+    - name: generate ssh keys
+      command: ssh-keygen -f {{ private_key }} -t rsa -N ''
+      when: not p.stat.exists
+  vars:
+    private_key: "{{ ssh_dir }}/offline_ssh_key"
+  delegate_to: localhost
+  run_once: true
+
+- name: Setup authorized_keys file
+  authorized_key:
+    user: root
+    state: present
+    key: "{{ lookup('file', public_key) }}"
+  become: true
+  vars:
+    public_key: "{{ ssh_dir }}/offline_ssh_key.pub"
