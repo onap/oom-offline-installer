@@ -13,7 +13,7 @@
 # 3. playbooks here are more or less batch jobs and the ssh authentication
 #    is a precondition, which should be done during configuration of the
 #    installer
-- import_playbook: upload_resources.yml
+- import_playbook: resources.yml
 - import_playbook: infrastructure.yml
 - import_playbook: rancher_kubernetes.yml
 - import_playbook: application.yml

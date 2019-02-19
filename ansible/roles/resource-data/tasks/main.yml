@@ -1,2 +1,32 @@
 ---
-- include_tasks: "{{ transport }}-upload.yml"
+- name: Collect source resources
+  block:
+    - name: Check if source dir and files are present
+      stat:
+        path: "{{ item.source }}"
+        get_checksum: false
+      loop:
+        - { source: "{{ resources_dir }}/{{ resources_filename | default('thisdoesnotexists', true) }}",
+            target: "{{ app_data_path }}/{{ resources_filename | default('thisdoesnotexists', true) }}" }
+        - { source: "{{ resources_dir }}/{{ aux_resources_filename | default('thisdoesnotexists', true) }}",
+            target: "{{ aux_data_path }}/{{ aux_resources_filename | default('thisdoesnotexists', true) }}" }
+      register: source_path
+
+    - name: Create initial resources list of dicts
+      set_fact:
+        to_be_uploaded_resources_list: "{{
+            to_be_uploaded_resources_list | default([]) + [
+            {'file': item.item.target | basename,
+            'destination_dir': item.item.target | dirname } ] }}"
+      loop: "{{ source_path.results }}"
+      when: item.stat.exists
+  when: inventory_hostname in groups.resources
+
+- name: "Upload resource files {{ hostvars[groups.resources.0].to_be_uploaded_resources_list }} to infrastructure"
+  include_tasks: upload_resources.yml
+  vars:
+    resources_source_host: "{{ hostvars[groups.resources.0].ansible_host | default(hostvars[groups.resources.0].inventory_hostname) }}"
+    resources_list_of_dicts: "{{ hostvars[groups.resources.0].to_be_uploaded_resources_list }}"
+  when:
+    - inventory_hostname in groups.infrastructure
+    - hostvars[groups.resources.0].to_be_uploaded_resources_list is defined
