@@ -2,6 +2,121 @@
   "comments": [
     {
       "key": {
+        "uuid": "4fd6cdc7_17f26dc2",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t those be the bullets (items of the list)?",
+      "range": {
+        "startLine": 25,
+        "startChar": 32,
+        "endLine": 25,
+        "endChar": 54
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ab0e082_f94e35e7",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "Probably would be better to remove these",
+      "range": {
+        "startLine": 153,
+        "startChar": 0,
+        "endLine": 153,
+        "endChar": 4
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ab1cb6a_9ac4fb9a",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "And here",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 4
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "621a0b81_08c66e95",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "here",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 4
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cc7feb4_f10d9a54",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "here",
+      "range": {
+        "startLine": 176,
+        "startChar": 0,
+        "endLine": 176,
+        "endChar": 4
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8bab7c4_bb2acfd7",
         "filename": "doc/InstallGuide.rst",
         "patchSetId": 6
@@ -42,6 +157,98 @@
         "startChar": 0,
         "endLine": 185,
         "endChar": 399
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4da07190_db34541b",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 4
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3e06706_0f2cebf3",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "here",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 4
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3f3eaa1_9bccd0e3",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "here",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 4
+      },
+      "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1c7401e_8a645670",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T07:57:14Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 235,
+        "startChar": 0,
+        "endLine": 235,
+        "endChar": 4
       },
       "revId": "bf38e7ff57fa9c00b44ac9c8dff19f80fd04c407",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
