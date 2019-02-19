@@ -1,0 +1,6 @@
+---
+- name: Transfer needed resources from resource to infra servers
+  hosts: resources[0], infrastructure
+  serial: 1
+  roles:
+    - resource-data

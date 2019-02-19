@@ -1,0 +1,34 @@
+---
+#
+# Expected variables
+#   resource_source_host
+#   resource_source_directory
+#   resource_source_filename
+#   resource_destination_directory
+# Output is upload_failed true/false
+#
+- name: "Upload resource {{ resource_source_directory }}/{{ resource_source_filename }} to infrastructure servers over nfs"
+  block:
+    - name: Mount resource dir
+      mount:
+        path: /tmp/resource_data
+        src: "{{ resource_source_host }}:{{ resource_source_directory }}"
+        fstype: nfs
+        state: mounted
+
+    - name: "Unarchive resource {{ resource_source_directory }}/{{ resource_source_filename }} to {{ resource_destination_directory }} dir on infrastructure servers over nfs"
+      unarchive:
+        src: "/tmp/resource_data/{{ resource_source_filename }}"
+        dest: "{{ resource_destination_directory }}"
+        remote_src: yes
+  rescue:
+    - name: Upload failed
+      set_fact:
+        upload_failed: true
+  always:
+    - name: Unmount resource dir
+      mount:
+        path: /tmp/resource_data
+        src: "{{ resource_source_host }}:{{ resource_source_directory }}"
+        fstype: nfs
+        state: absent

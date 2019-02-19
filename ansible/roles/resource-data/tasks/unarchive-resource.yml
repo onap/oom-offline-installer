@@ -1,0 +1,36 @@
+---
+#
+# Wrapper to pass through following variables
+#   resource_source_host
+#   resource_source_directory
+#   resource_source_filename
+#   resource_destination_directory
+# And handling target directory creation and possible removal on failure.
+# Idempotence is also handled here as nothing is done if resource_destination_directory
+# was already created.
+#
+# Logically also tranport method selection belongs to here but left it to caller
+# as this is called in a loop causing "package_facts" called many times
+# (not sure if it would matter).
+#
+- name: "Create {{ resource_destination_directory }} directory"
+  file:
+    path: "{{ resource_destination_directory }}"
+    state: directory
+  register: create_destination_dir
+
+- name: "Handle transport of one archive file"
+  block:
+    - name: Re-set upload_failed
+      set_fact:
+        upload_failed: false
+
+    - name: "Unarchive resource {{ resource_source_filename }} from host {{ resource_source_host }}, transport is {{ transport }}"
+      include_tasks: "unarchive-{{ transport }}-resource.yml"
+
+    - name: "Remove the destination directory {{ resource_destination_directory }} on error"
+      file:
+        path: "{{ resource_destination_directory }}"
+        state: absent
+      when: upload_failed
+  when: create_destination_dir.changed
