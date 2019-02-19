@@ -1,0 +1,15 @@
+---
+- name: Query package facts to check nfs-utils existence
+  package_facts:
+    manager: auto
+
+- name: Set transport fact to nfs or ssh
+  set_fact:
+    transport: "{{ 'nfs' if resources_on_nfs and 'nfs-utils' in ansible_facts.packages else 'ssh' }}"
+
+- name: "Upload resources to infrastructure servers over {{ transport }}"
+  include_tasks: unarchive-resource.yml
+  vars:
+    resource_source_filename: "{{ item.file }}"
+    resource_destination_directory: "{{ item.destination_dir }}"
+  loop: "{{ resources_list_of_dicts }}"
