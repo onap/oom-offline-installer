@@ -1,0 +1,51 @@
+---
+#
+# Expected variables
+#   resources_source_host
+#   resources_dir
+#   resource_source_filename
+#   resource_destination_directory
+# Output is upload_failed true/false
+#
+- name: "Upload resource {{ resources_dir }}/{{ resource_source_filename }} to infrastructure servers over ssh"
+  block:
+    - name: Upload ssh private key
+      copy:
+        src: "{{ ansible_ssh_private_key_file }}"
+        dest: /root/.ssh/infra_to_resource.privkey
+        mode: 0600
+        owner: root
+        group: root
+        remote_src: no
+
+    - name: Detect if archive is compressed
+      shell: >
+        ssh -o StrictHostKeyChecking=no
+        -i /root/.ssh/infra_to_resource.privkey
+        {{ resources_source_host }}
+        'file "{{ resources_dir }}/{{ resource_source_filename }}"'
+        | grep "compressed"
+      register: compressed
+
+    - name: Set tar extract options
+      set_fact:
+        tar_extract_options: "{{ '-xzf' if compressed.rc == 0 else '-xf' }}"
+
+    - name: "Unarchive resource {{ resources_dir }}/{{ resource_source_filename }} to {{ resource_destination_directory }} dir on infrastructure servers over ssh"
+      shell: >
+        ssh -o StrictHostKeyChecking=no -o BatchMode=yes
+        -i /root/.ssh/infra_to_resource.privkey
+        {{ resources_source_host }}
+        'cat "{{ resources_dir }}/{{ resource_source_filename }}"'
+        | tar -C "{{ resource_destination_directory }}" "{{ tar_extract_options }}" -
+      args:
+        warn: false
+  rescue:
+    - name: Upload failed
+      set_fact:
+        upload_failed: true
+  always:
+    - name: Remove the ssh private key
+      file:
+        path: /root/.ssh/infra_to_resource.privkey
+        state: absent
