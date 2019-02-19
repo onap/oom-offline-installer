@@ -22,6 +22,30 @@
       "revId": "be81ab048f3f331d83f02749cb27bf9d30d1b8a6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "76030d67_a87d877b",
+        "filename": "doc/InstallGuide.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-19T14:18:57Z",
+      "side": 1,
+      "message": "I think so, just the next paragraph is explaining it more - it is enough for me, maybe someone sees it differently though - if you suggest better sentence, then I may create a new patchset\n\nthe problem is that the theory is clear (for me at least), but we dont follow it in the practice - there are occurences of ansible_host, where cluster_ip should be, so I am explaining something what may not be true and reflected in the codebase...every test is done on a simple vm with one interface, maybe if someone would try to create more sophisticated setup, then those places in the code would become more obvious",
+      "parentUuid": "74cfd1b5_00134d01",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 193
+      },
+      "revId": "be81ab048f3f331d83f02749cb27bf9d30d1b8a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
