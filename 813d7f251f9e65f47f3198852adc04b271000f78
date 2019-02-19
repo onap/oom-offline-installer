@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6d525d7_a91d78d0",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-19T12:32:14Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be reduced/optimized to:\n\nif [ \"${TAG}\" \u003d\u003d onap_2.0.0 ]; then\n    KUBECTL_VERSION\u003d1.8.10\n    HELM_VERSION\u003d2.8.2\nelse\n    KUBECTL_VERSION\u003d1.11.2\n    HELM_VERSION\u003d2.9.1\nfi\n\n?",
+      "revId": "813d7f251f9e65f47f3198852adc04b271000f78",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
