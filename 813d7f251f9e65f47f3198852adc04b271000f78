@@ -52,6 +52,24 @@
       "revId": "813d7f251f9e65f47f3198852adc04b271000f78",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abebd2b8_59f5a497",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-02-19T15:14:40Z",
+      "side": 1,
+      "message": "I agree, but currently there\u0027s no place to hold all the versions related to the each part. E.g. this is for the bin download, there is another set in the rancher_server.yml. So we need to figure out where to place all in a future (re-factorization)",
+      "parentUuid": "23baeacf_3f338616",
+      "revId": "813d7f251f9e65f47f3198852adc04b271000f78",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
