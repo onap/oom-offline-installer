@@ -34,6 +34,24 @@
       "revId": "813d7f251f9e65f47f3198852adc04b271000f78",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23baeacf_3f338616",
+        "filename": "build/creating_data/download-bin-tools.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-19T14:35:46Z",
+      "side": 1,
+      "message": "More generic question: shouldn\u0027t/couldn\u0027t we put that kind of variable data in config? Not sure if package.conf specifically is a place for such settings. My point is that it would be nice to change eg. package version numbers in config, not in code.",
+      "parentUuid": "60bf5df9_db0f4b53",
+      "revId": "813d7f251f9e65f47f3198852adc04b271000f78",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
