@@ -1,0 +1,3 @@
+---
+ssh_dir: ~/.ssh
+offline_ssh_key_file_name: offline_ssh_key

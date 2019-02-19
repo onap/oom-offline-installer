@@ -1,26 +1,6 @@
 ---
-- hosts: localhost
+- name: Setup nodes for installer
+  hosts: all
   gather_facts: false
-  tasks:
-    - name: "Check and generate key if needed"
-      block:
-        - stat:
-            path: '{{ private_key }}.pub'
-          register: p
-
-        - command: ssh-keygen -f {{ private_key }} -t rsa -N ''
-          when: not p.stat.exists
-  vars:
-    private_key: /root/.ssh/offline_ssh_key
-
-- hosts: all
-  gather_facts: false
-  tasks:
-  - name: Setup authorized_keys file
-    authorized_key:
-      user: root
-      state: present
-      key: "{{ lookup('file', public_key) }}"
-    become: true
-  vars:
-    public_key: /root/.ssh/offline_ssh_key.pub
+  roles:
+    - setup
