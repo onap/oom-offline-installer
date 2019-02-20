@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7ea98ecd_2d762957",
+        "filename": "ansible/resources.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-20T16:56:58Z",
+      "side": 1,
+      "message": "Yes.\nDo you think it\u0027s long time?",
+      "parentUuid": "2124d67e_54d4b280",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "876ebbc4_6b6156dd",
         "filename": "ansible/roles/resource-data/tasks/main.yml",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-02-20T12:55:15Z",
       "side": 1,
       "message": "Are you renaming this var for a particular reason? I find plainly aliasing well known vars somehow disturbing.",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4bb41b7_92e1d5d9",
+        "filename": "ansible/roles/resource-data/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-20T16:56:58Z",
+      "side": 1,
+      "message": "I find it much more disturbing to have global variables. Coming from real programming languages it\u0027s quite painful in ansible to accept that madness.\nTo keep thing at least little bit sane for submodules called (in this case upload_resources.yml and that one further calls unarchive-resource.yml and then unarchive-{{ transport }}-resource.yml) it\u0027s good to keep \"passed parameters\" explicit. Ones saying that I broke that rule already in unarchive-resource.yml module where variables are not explicitly given to called \"unarchive-{{ transport }}-resource.yml\" but they are going as global vars. But it\u0027s mentioned in the comments.\n\nSo the reason is modularity as usually writing modules usable in many places, however called can always set that variable to some value. So no special reason. \nI would either keep explicit variables or relax it everywhere.",
+      "parentUuid": "876ebbc4_6b6156dd",
       "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e63e4699_2f9ab5a2",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-20T16:56:58Z",
+      "side": 1,
+      "message": "I think already explained in previous comment.",
+      "parentUuid": "93381474_c90fe9c3",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0a68722d_a0dc11c2",
         "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "dac61b41_bfed4669",
+        "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-20T16:56:58Z",
+      "side": 1,
+      "message": "same",
+      "parentUuid": "0a68722d_a0dc11c2",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9773c5fd_732d73a3",
         "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2019-02-20T12:55:15Z",
       "side": 1,
       "message": "Same as in roles/resource-data/tasks/main.yml - renaming once again? Why? Very disturbing IMO.",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce47721c_56cfc3ad",
+        "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-20T16:56:58Z",
+      "side": 1,
+      "message": "Being explicit usually is not a problem. Having long loop of calls and then rely on global var set somewhere can also be difficult to follow.\n\nI\u0027m ok to change all of the variables global where it make sense as it\u0027s ok in ansible (very bad practice in any programming language). As ansible is not a programming language.",
+      "parentUuid": "9773c5fd_732d73a3",
       "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
