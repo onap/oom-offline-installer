@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2124d67e_54d4b280",
+        "filename": "ansible/resources.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-20T12:55:15Z",
+      "side": 1,
+      "message": "Won\u0027t we get longer play time due to all tasks \u0027skipped\u0027 for resources[0] host after \n\n  when:\n    - inventory_hostname in groups.infrastructure\n\nin roles/resource-data/tasks/main.yml?",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "876ebbc4_6b6156dd",
+        "filename": "ansible/roles/resource-data/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-20T12:55:15Z",
+      "side": 1,
+      "message": "Are you renaming this var for a particular reason? I find plainly aliasing well known vars somehow disturbing.",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93381474_c90fe9c3",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-20T12:55:15Z",
+      "side": 1,
+      "message": "Could you please explain what does \u0027Wrapper\u0027 in above context mean? Why are you constantly passing the same variables while calling another tasks file?",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a68722d_a0dc11c2",
+        "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-20T12:55:15Z",
+      "side": 1,
+      "message": "Isn\u0027t it superfluous declaration? It has a point?",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9773c5fd_732d73a3",
+        "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-20T12:55:15Z",
+      "side": 1,
+      "message": "Same as in roles/resource-data/tasks/main.yml - renaming once again? Why? Very disturbing IMO.",
+      "revId": "26dffe8ec6499656fb0079da9ce797df8e7c28f8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
