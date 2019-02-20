@@ -221,14 +221,14 @@ There are mandatory parameters need to be set in configuration file:
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_SRC\_NPM\_DIR           | resource directory of npm packages                                                       |
 +------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_SRC\_PYPI\_DIR           | resource directory of npm packages                                                      |
+| NXS\_SRC\_PYPI\_DIR          | resource directory of npm packages                                                       |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_DOCKER\_IMG\_LIST       | list of docker images to be pushed to Nexus repository                                   |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_DOCKER\_WO\_LIST        | list of docker images which uses default repository                                      |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_NPM\_LIST               | list of npm packages to be published to Nexus repository                                 |
-+-------------------------------------------------------------------------------------------------------------------------+
++------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_PYPI\_LIST              | list of pypi packages to be published to Nexus repository                                |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NEXUS\_DATA\_TAR             | target tarball of Nexus data path/name                                                   |
@@ -312,17 +312,22 @@ Example values below are setup according to steps done in this guide to package 
 | Parameter                             | Description                                                                  |
 +=======================================+==============================================================================+
 | HELM\_CHARTS\_DIR                     | directory with Helm charts for the application                               |
+|                                       |                                                                              |
 |                                       | Example: /tmp/oom-clone/kubernetes                                           |
 +---------------------------------------+------------------------------------------------------------------------------+
 | APP\_CONFIGURATION                    | application install configuration (application_configuration.yml) for        |
 |                                       | ansible installer and custom ansible role code directories if any.           |
-|                                       | Example:                                                                     |
-|                                       | APP_CONFIGURATION=(                                                          |
-|                                       |    /tmp/offline-installer/config/application_configuration.yml               |
-|                                       |    /tmp/offline-installer/patches/onap-casablanca-patch-role                 |
-|                                       | )                                                                            |
+|                                       |                                                                              |
+|                                       | Example::                                                                    |
+|                                       |                                                                              |
+|                                       |  APP_CONFIGURATION=(                                                         |
+|                                       |     /tmp/offline-installer/config/application_configuration.yml              |
+|                                       |     /tmp/offline-installer/patches/onap-casablanca-patch-role                |
+|                                       |  )                                                                           |
+|                                       |                                                                              |
 +---------------------------------------+------------------------------------------------------------------------------+
 | APP\_BINARY\_RESOURCES\_DIR           | directory with all (binary) resources for offline infra and application      |
+|                                       |                                                                              |
 |                                       | Example: /tmp/onap-offline/resources                                         |
 +---------------------------------------+------------------------------------------------------------------------------+
 | APP\_AUX\_BINARIES                    | additional binaries such as docker images loaded during runtime   [optional] |
