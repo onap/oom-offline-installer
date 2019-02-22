@@ -7,13 +7,41 @@
     insertbefore: BOF
   become: true
 
+- name: Disable all OS default repositories
+  block:
+    - name: Find repo files names
+      find:
+        paths: /etc/yum.repos.d
+        pattern: '*.repo'
+      register: repo_files
+
+    - name: Get all defined offline repo names
+      set_fact: package_repositories_names="{{ package_repositories | selectattr('name', 'defined') | map(attribute='name') | list  }}"
+
+    - name: Backup repo files
+      copy:
+        remote_src: yes
+        src: "{{ item.path }}"
+        dest: "{{ item.path }}.disabled"
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+
+    - name: Remove disabled repo files
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+  become: yes
+
 - name: Add application offline package repository
   yum_repository:
-    name: "{{ app_name }}"
-    file: "{{ app_name | lower }}"
-    description: "{{ app_name | upper }} offline repository"
-    baseurl: "{{ 'http://repo.infra-server/rhel' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
-    gpgcheck: false
-    enabled: true
-  when: deploy_package_repository
+    name: "{{ item.name }}"
+    file: "{{ item.file }}"
+    description: "{{ item.description | default('') }}"
+    baseurl: "{{ item.baseurl | default('') }}"
+    gpgcheck: "{{ item.gpgcheck | default(true) }}"
+    enabled: "{{ item.enabled | default(false) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ package_repositories }}"
   become: true
