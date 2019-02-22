@@ -6,6 +6,7 @@
     state: present
     insertbefore: BOF
   become: yes
+  tags: package-repository
 
 - name: Add application offline package repository
   yum_repository:
@@ -15,5 +16,5 @@
     baseurl: "{{ 'http://repo.infra-server/rhel' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
     gpgcheck: no
     enabled: yes
-  when: deploy_package_repository
   become: yes
+  tags: package-repository
