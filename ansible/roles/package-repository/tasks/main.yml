@@ -15,5 +15,4 @@
     baseurl: "{{ 'http://repo.infra-server/rhel' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
     gpgcheck: false
     enabled: true
-  when: deploy_package_repository
   become: true
