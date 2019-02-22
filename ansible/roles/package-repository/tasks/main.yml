@@ -8,13 +8,15 @@
   become: yes
   tags: package-repository
 
-- name: Add application offline package repository
+- name: Add application offline package repository and disable all others
   yum_repository:
-    name: "{{ app_name }}"
-    file: "{{ app_name | lower }}"
-    description: "{{ app_name | upper }} offline repository"
-    baseurl: "{{ 'http://repo.infra-server/rhel' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rhel' }}"
-    gpgcheck: no
-    enabled: yes
+    name: "{{ item.name }}"
+    file: "{{ item.file }}"
+    description: "{{ item.description | default('') }}"
+    baseurl: "{{ item.baseurl | default('') }}"
+    gpgcheck: "{{ item.gpgcheck | default(true) }}"
+    enabled: "{{ item.enabled | default(false) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ yum_repositories }}"
   become: yes
   tags: package-repository
