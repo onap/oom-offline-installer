@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7715e923_14696421",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-25T14:38:41Z",
+      "side": 1,
+      "message": "what if user specified directory that was already present before execution?",
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
