@@ -52,6 +52,24 @@
       "revId": "becdf7c19b37da95d27b83b9cb70d8eedb7bb16c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4def6de9_d573fc29",
+        "filename": "ansible/roles/package-repository/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-25T14:36:02Z",
+      "side": 1,
+      "message": "MichalP: yes but that would require an additional patch as simply overwriting above dict wouldn\u0027t work due to default ansible config   \"DEFAULT_HASH_BEHAVIOUR(default) \u003d replace\". We would need to merge above dict and that defined by user.",
+      "parentUuid": "7095bec9_07b55364",
+      "revId": "becdf7c19b37da95d27b83b9cb70d8eedb7bb16c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
