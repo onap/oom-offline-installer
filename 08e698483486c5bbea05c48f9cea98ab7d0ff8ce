@@ -19,6 +19,60 @@
     },
     {
       "key": {
+        "uuid": "be0308a2_6d079919",
+        "filename": "ansible/roles/setup/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-25T16:33:34Z",
+      "side": 1,
+      "message": "Maybe not. We could introduce a variable for that.\nBut this commit did not changed that part, it\u0027s same in original code https://gerrit.onap.org/r/#/c/78766/1/ansible/setup.yml",
+      "parentUuid": "8db4d6c8_ced91195",
+      "revId": "08e698483486c5bbea05c48f9cea98ab7d0ff8ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9b16568_1a988361",
+        "filename": "ansible/roles/setup/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-25T16:33:34Z",
+      "side": 1,
+      "message": "Maybe not. We could introduce a variable for that.\nBut this commit did not changed that part, it\u0027s same in original code https://gerrit.onap.org/r/#/c/78766/1/ansible/setup.yml",
+      "parentUuid": "8db4d6c8_ced91195",
+      "revId": "08e698483486c5bbea05c48f9cea98ab7d0ff8ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c700733_952962a3",
+        "filename": "ansible/roles/setup/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-25T16:33:34Z",
+      "side": 1,
+      "message": "Maybe not. We could introduce a variable for that.\nBut this commit did not changed that part, it\u0027s same in original code https://gerrit.onap.org/r/#/c/78766/1/ansible/setup.yml",
+      "parentUuid": "8db4d6c8_ced91195",
+      "revId": "08e698483486c5bbea05c48f9cea98ab7d0ff8ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6858e0b6_eeeee8e0",
         "filename": "ansible/roles/setup/tasks/main.yml",
         "patchSetId": 1
