@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8db4d6c8_ced91195",
+        "filename": "ansible/roles/setup/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-25T13:34:28Z",
+      "side": 1,
+      "message": "hardcoded name of key is not best idea.",
+      "revId": "08e698483486c5bbea05c48f9cea98ab7d0ff8ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6858e0b6_eeeee8e0",
+        "filename": "ansible/roles/setup/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-25T13:34:28Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "08e698483486c5bbea05c48f9cea98ab7d0ff8ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
