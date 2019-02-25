@@ -34,6 +34,24 @@
       "revId": "becdf7c19b37da95d27b83b9cb70d8eedb7bb16c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7095bec9_07b55364",
+        "filename": "ansible/roles/package-repository/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-25T14:20:36Z",
+      "side": 1,
+      "message": "In theory this \"Adding our repo and disabling all other repos\" task is not just Centos specific and we might benefit from the same logic also in some RHEL deployments (for some customized rhel deployments with preenabled repos). In that scenario we can have same task to be running on RHEL but need to store repos names to be disabled in some array as configuration parameter ... into application_configuration.yml ?",
+      "parentUuid": "622f8ee2_e7c0c3eb",
+      "revId": "becdf7c19b37da95d27b83b9cb70d8eedb7bb16c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
