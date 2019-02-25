@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b6be6c9_2095431a",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-25T14:33:34Z",
+      "side": 1,
+      "message": "isn\u0027t it better to add it to package-repository role ? (single tag)\nfurthermore what is the benefit of introducing tags in this context, does it makes any sense to run or skip this role ?",
+      "revId": "8c04226afa489f5db701d764ae00c4e771c0caee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
