@@ -1,0 +1,6 @@
+---
+firewall:
+  state: disable
+  package_name:
+    RedHat: 'firewalld'
+    Debian: 'ufw'

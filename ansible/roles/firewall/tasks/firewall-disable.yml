@@ -1,16 +1,15 @@
 ---
-- name: Check if firewalld is installed
-  yum:
-    list: firewalld
-    disablerepo: "*"
-  register: firewalld_check
+- name: Get installed packages list
+  package_facts: 
+    manager: "auto"
+  tags: firewall
 
-- name: Stop and disable firewalld if exists
+- name: Stop and disable default OS firewall if exists
   service:
-    name: firewalld
+    name: "{{ firewall.package_name[ansible_facts.os_family] }}"
     state: stopped
     enabled: no
-  when: firewalld_check.results|selectattr('yumstate', 'match', 'installed')|list|length != 0
+  when: firewall.package_name[ansible_facts.os_family] in ansible_facts.packages
 
 - name: Flush iptables
   iptables:
