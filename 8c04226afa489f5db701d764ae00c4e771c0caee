@@ -16,6 +16,24 @@
       "revId": "8c04226afa489f5db701d764ae00c4e771c0caee",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d734b0c_d288fac2",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-25T16:29:21Z",
+      "side": 1,
+      "message": "tags in in general is good idea. We just have not used them before and I would prefer we agree first some design how to use those and how to implement those and then do it in single commit for all roles/playbooks.",
+      "parentUuid": "1b6be6c9_2095431a",
+      "revId": "8c04226afa489f5db701d764ae00c4e771c0caee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
