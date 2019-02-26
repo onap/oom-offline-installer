@@ -70,6 +70,24 @@
       "revId": "becdf7c19b37da95d27b83b9cb70d8eedb7bb16c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d6dd67d_2dd76fd6",
+        "filename": "ansible/roles/package-repository/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-26T14:58:56Z",
+      "side": 1,
+      "message": "I\u0027m gonna change the implementation - there shouldn\u0027t be a need to define any repos to be disabled at all, all enabled repos except onap should be switched off, i\u0027ll find a way to enumerate them.",
+      "parentUuid": "4def6de9_d573fc29",
+      "revId": "becdf7c19b37da95d27b83b9cb70d8eedb7bb16c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
