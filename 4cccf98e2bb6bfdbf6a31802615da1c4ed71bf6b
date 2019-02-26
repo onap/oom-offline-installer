@@ -34,6 +34,24 @@
       "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ff0c6e_008dd5aa",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-26T13:14:11Z",
+      "side": 1,
+      "message": "I am curious how you will solve this - there was a reason why I made it like this - I said already that is idempotent enough - other option is to override it every time (danger and slow) or do checksum on every file in source and target and sync it - safe but difficult and slow...prove me wrong",
+      "parentUuid": "d0f3e342_33817170",
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
