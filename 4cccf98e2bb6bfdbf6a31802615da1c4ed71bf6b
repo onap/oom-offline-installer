@@ -16,6 +16,24 @@
       "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0f3e342_33817170",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-26T08:46:21Z",
+      "side": 1,
+      "message": "yes that\u0027s a problem. Same problem with the original code.\nRelates to bad idempotence here because of using shell command to transfer.",
+      "parentUuid": "7715e923_14696421",
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
