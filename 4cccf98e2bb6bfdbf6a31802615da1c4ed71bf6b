@@ -52,6 +52,24 @@
       "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bacae26_93818be5",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-26T16:02:36Z",
+      "side": 1,
+      "message": "Yes the problem remains.\nIt\u0027s not going to be addressed in this commit and will be exactly same level with original code.\n\nWe need to address that (if needed) in separate commit.\n\nThe problem is not easy and maybe that is the reason why no Ansible module handle this. \nI agree it might be enough idempotence for us.\n\nIf we want to make it better we could implement our own Ansible module for this.\nFirst study available Ansible modules for this and why they do not address this.\nMaybe fork one of them having most of the needed functionality rather than creating our own from cratch?\nSome kind of checksum checking I guess most generic... Maybe store the checksum of the extracted package to some (user defined) file in the target host and module can use that to check the new tar.",
+      "parentUuid": "f9ff0c6e_008dd5aa",
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
