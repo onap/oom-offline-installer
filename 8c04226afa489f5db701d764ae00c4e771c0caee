@@ -34,6 +34,24 @@
       "revId": "8c04226afa489f5db701d764ae00c4e771c0caee",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "48ae5d64_099f7a84",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-26T12:33:13Z",
+      "side": 1,
+      "message": "MichalP: it\u0027s easier for testing purposes. I\u0027ll remove them for now, we should do as Samuli suggested. probably as we\u0027ll be introducing Molecule.",
+      "parentUuid": "3d734b0c_d288fac2",
+      "revId": "8c04226afa489f5db701d764ae00c4e771c0caee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
