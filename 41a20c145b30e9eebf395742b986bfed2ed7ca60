@@ -34,6 +34,24 @@
       "revId": "41a20c145b30e9eebf395742b986bfed2ed7ca60",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b307fc6_8061e159",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-26T12:35:01Z",
+      "side": 1,
+      "message": "ok Thank zou:)",
+      "parentUuid": "6ce30409_56ec8332",
+      "revId": "41a20c145b30e9eebf395742b986bfed2ed7ca60",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
