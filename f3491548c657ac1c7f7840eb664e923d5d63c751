@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e385ca3_cfc5e5cf",
+        "filename": "ansible/infrastructure.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-26T16:03:30Z",
+      "side": 0,
+      "message": "the idea was to add actual firewall rules instead of simple disable - so there could be both enable (with rules) and disable (let everything in and out) state",
+      "revId": "f3491548c657ac1c7f7840eb664e923d5d63c751",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

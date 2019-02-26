@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de5dfc2a_9e5b7a92",
+        "filename": "ansible/roles/firewall/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-26T16:03:30Z",
+      "side": 1,
+      "message": "you deleted the state var - how this function now?",
+      "revId": "a0abde9dbf8da91fb36ab7e1e732592309daca0e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
