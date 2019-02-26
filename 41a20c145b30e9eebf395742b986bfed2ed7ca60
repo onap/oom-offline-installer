@@ -16,6 +16,24 @@
       "revId": "41a20c145b30e9eebf395742b986bfed2ed7ca60",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ce30409_56ec8332",
+        "filename": ".gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-26T12:15:28Z",
+      "side": 1,
+      "message": "documentation is now docs, doc is the upstream repo and that is how zou should test it - in their instructions - truth is that their instruction did not worked for me or thez written incorrectlz - so I did my own steps how to build it locally - and I can have that doc directorz anzwhere else - but if zou do follow their instructions then zou want that line in gitignore - otherwise you maz add their files to our repo",
+      "parentUuid": "7395c150_afd6b30f",
+      "revId": "41a20c145b30e9eebf395742b986bfed2ed7ca60",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
