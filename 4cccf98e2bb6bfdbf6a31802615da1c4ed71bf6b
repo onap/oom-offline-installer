@@ -70,6 +70,24 @@
       "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8dfe3e45_f6bffc2b",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-27T09:40:35Z",
+      "side": 1,
+      "message": "yesterday on the meeting, someone proposed to add a \"signal\" file, that playbook is done...it is almost the same function like what that dir. check does but this file would be created after successfull run, it will help, it is not perfect solution, but it is easy and solves the issues someone had with current solution",
+      "parentUuid": "0bacae26_93818be5",
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
