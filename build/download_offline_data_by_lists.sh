@@ -59,7 +59,7 @@ echo "[Step $((CURR++))/$TOTAL Build own nginx image]"
 $CTOOLS/create_nginx_image/01create-image.sh
 
 echo "[Step $((CURR++))/$TOTAL Save docker images from docker cache to tarfiles]"
-$CTOOLS/save-docker-images.sh "${DATA_DIR}/offline_data/docker_images_for_nexus"
+$CTOOLS/save-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list" "${DATA_DIR}/offline_data/docker_images_for_nexus"
 
 echo "[Step $((CURR++))/$TOTAL move infra related images to infra folder]"
 mkdir -p "${DATA_DIR}/offline_data/docker_images_infra"
