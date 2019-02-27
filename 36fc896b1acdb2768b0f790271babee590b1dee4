@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f7e83f3_15c332f6",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-27T15:31:41Z",
+      "side": 1,
+      "message": "wouldn\u0027t it better to use replace ansible module to replace enabled\u003d1 to 0? it has backup option which creates backup with timestamp so we don\u0027t need to copy and then remove.",
+      "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
