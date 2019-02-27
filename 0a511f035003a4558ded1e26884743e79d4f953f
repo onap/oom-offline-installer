@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2328933_7c94c575",
+        "filename": "ansible/roles/firewall/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-02-27T09:48:33Z",
+      "side": 1,
+      "message": "I said many times that I am novice to ansible, so I am confused where is the line for config run or what is hardwired - you moved this var from top level file deep and down here - I am not saying that it is right or wrong, I am just curious if this correct ansible way - if we add a new file firewall-enable does that mean that user must go deep down the role files and change this var here? Or this can be set elsewhere in the top level - the file which is exposed to user every time - hosts or group_var something - so should not be there from start?",
+      "revId": "0a511f035003a4558ded1e26884743e79d4f953f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
