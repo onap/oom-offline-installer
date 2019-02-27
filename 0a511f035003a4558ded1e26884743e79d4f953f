@@ -16,6 +16,24 @@
       "revId": "0a511f035003a4558ded1e26884743e79d4f953f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d19a9b3_b010b6b1",
+        "filename": "ansible/roles/firewall/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-27T11:55:12Z",
+      "side": 1,
+      "message": "Default value is just it - a default value. You define it to eliminate the need to apply dirty conditionals like \"{var} is defined\" in tasks. Once var is assigned a default value you can be sure it won\u0027t be undefined and won\u0027t cause play to crash under certain circumstances.\n\nIf we add firewall-enable.yml then the user which wants it to be played has to override it in his favourite way: cmd line, group_vars, @settings_file. No need to modify defaults!",
+      "parentUuid": "a2328933_7c94c575",
+      "revId": "0a511f035003a4558ded1e26884743e79d4f953f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
