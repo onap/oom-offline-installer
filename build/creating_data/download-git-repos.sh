@@ -24,7 +24,7 @@ usage () {
     echo "Usage:"
     echo -e "./$(basename $0) <repository list> [destination directory]\n"
     echo "Examples:"
-    echo "  ./$(basename $0) onap_3.0.0 ./git-repo"
+    echo "  ./$(basename $0) onap_3.0.0-git_repos.list ./git-repo"
 }
 
 LIST="${1}"

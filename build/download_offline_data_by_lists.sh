@@ -67,7 +67,7 @@ mv "${DATA_DIR}/offline_data/docker_images_for_nexus/own_nginx_latest.tar" "${DA
 mv "${DATA_DIR}/offline_data/docker_images_for_nexus/sonatype_nexus3_latest.tar" "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Download git repos]"
-$CTOOLS/download-git-repos.sh "${LISTS_DIR}/${TAG}" "${DATA_DIR}/git-repo"
+$CTOOLS/download-git-repos.sh "${LISTS_DIR}/${TAG}-git_repos.list" "${DATA_DIR}/git-repo"
 
 echo "[Step $((CURR++))/$TOTAL Download http files]"
 $CTOOLS/download-http-files.sh "${LISTS_DIR}/${TAG}-http_files.list" "${DATA_DIR}/http"
