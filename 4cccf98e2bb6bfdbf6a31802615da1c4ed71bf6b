@@ -88,6 +88,47 @@
       "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "30ed2a31_fcb16e2b",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-02-28T12:17:20Z",
+      "side": 1,
+      "message": "you can also at the end of the upload change dir name, for example onap_temp to onap without any new flag files",
+      "parentUuid": "8dfe3e45_f6bffc2b",
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "50d841e5_4d37b3dd",
+        "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-02-28T12:17:20Z",
+      "side": 1,
+      "message": "not all the systems have nfs named that way, vide Ubuntu",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 97
+      },
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
