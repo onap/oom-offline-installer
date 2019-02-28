@@ -3,7 +3,6 @@ library/alpine:3.6
 library/busybox:latest
 library/cassandra:2.1
 cdposs/zookeeper:3.4.9
-consol/centos-icewm-vnc:latest
 library/consul:1.0.6
 crunchydata/crunchy-pgpool:centos7-10.4-2.0.0
 crunchydata/crunchy-postgres:centos7-10.3-1.8.2
