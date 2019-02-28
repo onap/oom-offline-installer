@@ -52,6 +52,24 @@
       "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b25a501_034f96b7",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-28T08:06:15Z",
+      "side": 1,
+      "message": "To be more specific: default repo file doesn\u0027t have \u0027enabled\u0027 keyword in each repo section as \u0027enabled\u003d1\u0027 is a default behaviour, unless specified explicitly otherwise.",
+      "parentUuid": "f89e8995_d4667e92",
+      "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
