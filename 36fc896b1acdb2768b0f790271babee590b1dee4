@@ -70,6 +70,24 @@
       "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5b438c_a6f0cf2c",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-28T09:30:31Z",
+      "side": 1,
+      "message": "No I did not seen default centos repo file recently. I just asked if it wouldn\u0027t be better for this case to do it like that. It is fine by me to do it like as well.",
+      "parentUuid": "7b25a501_034f96b7",
+      "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
