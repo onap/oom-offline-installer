@@ -16,6 +16,24 @@
       "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfa6583_41694e69",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-02-28T05:49:05Z",
+      "side": 1,
+      "message": "+1 for changing enabled tag only instead of moving file",
+      "parentUuid": "3f7e83f3_15c332f6",
+      "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
