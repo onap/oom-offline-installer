@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7d593e4_b4efadc2",
+        "filename": "ansible/roles/package-repository/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-28T13:39:09Z",
+      "side": 1,
+      "message": "Why did you revert my patch done here https://gerrit.onap.org/r/c/79016/2 ? I made it on top of your review, shouldn\u0027t you have rebased first?",
+      "revId": "03d7bfb5a4b044bcbb8ea6ab17e37c2dcdab99b4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
