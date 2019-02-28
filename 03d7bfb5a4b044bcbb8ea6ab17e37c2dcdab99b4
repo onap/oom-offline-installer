@@ -16,6 +16,24 @@
       "revId": "03d7bfb5a4b044bcbb8ea6ab17e37c2dcdab99b4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ac0173_85c32483",
+        "filename": "ansible/roles/package-repository/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-02-28T14:29:09Z",
+      "side": 1,
+      "message": "I have no idea. I guess I rebased with master, but did not noticed to rebase with my commit. \nWill try to do that.",
+      "parentUuid": "f7d593e4_b4efadc2",
+      "revId": "03d7bfb5a4b044bcbb8ea6ab17e37c2dcdab99b4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
