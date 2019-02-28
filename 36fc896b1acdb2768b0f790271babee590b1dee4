@@ -34,6 +34,24 @@
       "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f89e8995_d4667e92",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-02-28T08:03:11Z",
+      "side": 1,
+      "message": "Have you actually seen default Centos repo file? There is no \"enabled\" keyword in each repo definition so nothing to be changed. Secondly repo files are ini style files and there\u0027s a dedicated module for that, namely \"ini_file\". And i didn\u0027t use \u0027ini_file\u0027 as my solution is more future proof - only slight changes will be needed to support Debian like repo files. Even using \u0027ini_file\u0027 there would be need not only to enumarate repo files but also sections inside them with repo definitions so logic would be more complicated.\n\nDon\u0027t use a module like \u0027replace\u0027 or \u0027lineinfile\u0027 if there\u0027s a dedicated module for particular kind of structured file - you don\u0027t have to deal manually with idempotence then, which is the case in those two mentioned.",
+      "parentUuid": "4bfa6583_41694e69",
+      "revId": "36fc896b1acdb2768b0f790271babee590b1dee4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
