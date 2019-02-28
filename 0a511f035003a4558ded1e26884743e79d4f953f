@@ -34,6 +34,40 @@
       "revId": "0a511f035003a4558ded1e26884743e79d4f953f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eabcdd13_91e15759",
+        "filename": "ansible/roles/firewall/tasks/firewall-disable.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-28T09:46:07Z",
+      "side": 1,
+      "message": "whitespace",
+      "revId": "0a511f035003a4558ded1e26884743e79d4f953f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "981211cf_a8cd9410",
+        "filename": "ansible/roles/firewall/tasks/firewall-disable.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-02-28T09:46:07Z",
+      "side": 1,
+      "message": "did we have the tag discussion yet?",
+      "revId": "0a511f035003a4558ded1e26884743e79d4f953f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
