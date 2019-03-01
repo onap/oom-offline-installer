@@ -177,6 +177,30 @@
       "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b371f6ff_4c9733ff",
+        "filename": "ansible/roles/resource-data/tasks/upload_resources.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-01T07:38:24Z",
+      "side": 1,
+      "message": "@Bartek you have already addressed similar problem in your change 79115 for same codebase\n@Samuli ok for me",
+      "parentUuid": "55fe7bd5_02209999",
+      "range": {
+        "startLine": 8,
+        "startChar": 14,
+        "endLine": 8,
+        "endChar": 97
+      },
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
