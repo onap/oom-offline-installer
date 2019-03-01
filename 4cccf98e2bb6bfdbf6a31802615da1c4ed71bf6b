@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e6dbc1ca_40448fa1",
+        "filename": "ansible/roles/resource-data/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-01T15:24:13Z",
+      "side": 1,
+      "message": "don\u0027t know if this is right commit for it but\nsetting get_checksum: no for stat module will save noticable amount of time",
+      "revId": "4cccf98e2bb6bfdbf6a31802615da1c4ed71bf6b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7715e923_14696421",
         "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
         "patchSetId": 2
