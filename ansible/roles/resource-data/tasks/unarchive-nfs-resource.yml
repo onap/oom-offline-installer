@@ -21,10 +21,6 @@
         src: "/tmp/resource_data/{{ resource_source_filename }}"
         dest: "{{ resource_destination_directory }}"
         remote_src: yes
-  rescue:
-    - name: Upload failed
-      set_fact:
-        upload_failed: true
   always:
     - name: Unmount resource dir
       mount:
