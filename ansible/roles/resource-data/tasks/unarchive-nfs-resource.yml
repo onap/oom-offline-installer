@@ -21,6 +21,10 @@
         src: "/tmp/resource_data/{{ resource_source_filename }}"
         dest: "{{ resource_destination_directory }}"
         remote_src: yes
+    - file:
+        path: "{{ resource_destination_directory }}/{{ resource_source_filename }}-uploaded"
+        state: touch
+
   rescue:
     - name: Upload failed
       set_fact:
