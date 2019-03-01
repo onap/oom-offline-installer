@@ -16,16 +16,14 @@
         mode: 0600
         owner: root
         group: root
-        remote_src: no
 
     - name: Detect if archive is compressed
       shell: >
-        ssh -o StrictHostKeyChecking=no
-        -i /root/.ssh/infra_to_resource.privkey
-        {{ resources_source_host }}
-        'file "{{ resources_dir }}/{{ resource_source_filename }}"'
+        file "{{ resources_dir }}/{{ resource_source_filename }}"
         | grep "compressed"
       register: compressed
+      failed_when: compressed.rc > 1
+      delegate_to: "{{ resources_source_host }}"
 
     - name: Set tar extract options
       set_fact:
@@ -40,10 +38,15 @@
         | tar -C "{{ resource_destination_directory }}" "{{ tar_extract_options }}" -
       args:
         warn: false
+    - file:
+        path: "{{ resource_destination_directory }}/{{ resource_source_filename }}-uploaded"
+        state: touch
   rescue:
-    - name: Upload failed
-      set_fact:
-        upload_failed: true
+    - name: "Get list of destination directory files"
+      find:
+        path: "{{ resource_destination_directory }}"
+        file_type: any
+      register: files_after_fail
   always:
     - name: Remove the ssh private key
       file:

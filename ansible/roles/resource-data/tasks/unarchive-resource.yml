@@ -17,20 +17,27 @@
   file:
     path: "{{ resource_destination_directory }}"
     state: directory
-  register: create_destination_dir
+
+- name: Check if resources are uploaded
+  stat:
+    path: "{{ resource_destination_directory }}/{{ resource_source_filename }}-uploaded"
+  register: uploaded
 
 - name: "Handle transport of one archive file"
+  when: not uploaded.stat.exists
   block:
-    - name: Re-set upload_failed
-      set_fact:
-        upload_failed: false
+    - name: "Get list of destination directory files"
+      find:
+        path: "{{ resource_destination_directory }}"
+        file_type: any
+      register: original_files
 
     - name: "Unarchive resource {{ resource_source_filename }} from host {{ resources_source_host }}, transport is {{ transport }}"
       include_tasks: "unarchive-{{ transport }}-resource.yml"
 
-    - name: "Remove the destination directory {{ resource_destination_directory }} on error"
+    - name: "Cleanup the destination directory {{ resource_destination_directory }} on error"
       file:
-        path: "{{ resource_destination_directory }}"
+        path: "{{ item.path }}"
         state: absent
-      when: upload_failed
-  when: create_destination_dir.changed
+      with_items: "{{ files_after_fail.files | difference(original_files.files) }}"
+      when: files_after_fail is defined
