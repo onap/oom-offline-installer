@@ -1,0 +1,3 @@
+---
+# After play dir can be deleted but idenpotence is lost and certs are re-generated
+certificates_tmp_dir: "{{ playbook_dir }}/certs"
