@@ -40,7 +40,7 @@
 
 - name: Register root certificate
   slurp:
-    src: '/certs/rootCA.crt'
+    src: "{{ playbook_dir }}/certs/rootCA.crt"
   register: root_cert
   delegate_to: localhost
 

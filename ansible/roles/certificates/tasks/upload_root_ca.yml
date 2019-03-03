@@ -1,10 +1,14 @@
 ---
 - name: Copy root certificate
   copy:
-    src: "/certs/rootCA.crt"
+    src: "{{ certificates_local_dir }}/rootCA.crt"
     dest: /etc/pki/ca-trust/source/anchors/
+  register: copycert
   notify: Restart Docker
 
 - name: Extract root certificate
   command: /usr/bin/update-ca-trust extract
+  when:
+    - copycert.changed
+    - ansible_distribution == "CentOS" or ansible_distribution == "RedHat"
   notify: Restart Docker
