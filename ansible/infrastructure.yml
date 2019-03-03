@@ -21,3 +21,5 @@
     - docker
   tasks:
     - import_tasks: roles/certificates/tasks/upload_root_ca.yml
+      vars:
+        certificates_local_dir: certs
