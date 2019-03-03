@@ -16,23 +16,18 @@
     state: present
     timeout: 120
 
+- name: Create nexus network
+  docker_network:
+    name: nexus_network
+    state: present
+
 - name: Start nginx
   docker_container:
     name: own_nginx
     image: own_nginx
     networks:
       - name: nexus_network
-    ports:
-      - "80:80"
-      - "443:443"
-      - "10001:443"
-    volumes:
-      - "{{ app_data_path }}/cfg/nginx.conf:/etc/nginx/nginx.conf:ro"
-      - "{{ app_data_path }}/certs:/etc/nginx/certs:ro"
-      - "{{ app_data_path }}/git-repo:/srv/git:rw"
-      - "{{ app_data_path }}/http:/srv/http:rw"
-      - "{{ app_data_path }}/pkg/rhel:/srv/http/repo.infra-server/rhel:rw"
-      - "{{ app_data_path }}/pkg/ubuntu/xenial:/srv/http/repo.infra-server/ubuntu/xenial:rw"
-      - /var/log/nginx:/var/log/nginx:rw
+    ports: "{{ nginx.ports }}"
+    volumes: "{{ nginx.volumes }}"
     state: started
     restart_policy: unless-stopped
