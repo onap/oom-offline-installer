@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42b61cd8_27227d00",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-03T13:34:50Z",
+      "side": 0,
+      "message": "nfs logic is broken if you remove this.",
+      "range": {
+        "startLine": 25,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "b023d187d11c696c9c16169f14eb03da020eed74",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

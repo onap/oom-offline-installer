@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "196dc37c_03c5155d",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-nfs-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-03T13:34:50Z",
+      "side": 1,
+      "message": "move creation of this file to same module where it\u0027s used i.e. the caller.",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 92
+      },
+      "revId": "cb56e8b731042640b501eed52ce4c4a504594d26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f90250d8_72378677",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-03T13:34:50Z",
+      "side": 1,
+      "message": "this is much better idempotence for this role.\nWould prefer some more hidden place for the file e.g. tmp dir with full path / changed to _ when making filename.",
+      "range": {
+        "startLine": 23,
+        "startChar": 11,
+        "endLine": 23,
+        "endChar": 87
+      },
+      "revId": "cb56e8b731042640b501eed52ce4c4a504594d26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d23c0e43_45df5555",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-ssh-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-03T13:34:50Z",
+      "side": 1,
+      "message": "move creation of this file to same module where it\u0027s used i.e. the caller.",
+      "range": {
+        "startLine": 42,
+        "startChar": 7,
+        "endLine": 42,
+        "endChar": 92
+      },
+      "revId": "cb56e8b731042640b501eed52ce4c4a504594d26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3732af5f_50e6dccf",
+        "filename": "ansible/roles/resource-data/tasks/unarchive-ssh-resource.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-03T13:34:50Z",
+      "side": 1,
+      "message": "move this also to same place where it\u0027s used.",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 32
+      },
+      "revId": "cb56e8b731042640b501eed52ce4c4a504594d26",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
