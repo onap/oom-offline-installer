@@ -111,17 +111,6 @@ app_helm_charts_install_directory: "/ansible/application/helm_charts"
 # e.g. app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
 app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
 
-# Main Helm chart to install
-# e.g. app_helm_chart_name: onap
-app_helm_chart_name: "{{ app_name }}"
-
-# Targets for helm charts repository build
-# e.g. for ONAP Casablanca
-# app_helm_build_targets:
-#   - all
-#   - onap
-app_helm_build_targets:
-
 # Directory with helm plugins
 # It's an optional parameter used e.g. in OOM Casablanca
 # app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
@@ -137,7 +126,7 @@ app_kubernetes_namespace: "{{ app_name }}"
 
 # Optional application custom Ansible roles name for pre and post install logic.
 # Location of additional custom roles is defined in ansible.cfg with roles_path.
-# e.g. application_pre_install_role: "{{ app_name }}-patch-role"
+# e.g. application_pre_install_role: "my-pre-install-role"
 application_pre_install_role:
 application_post_install_role:
 

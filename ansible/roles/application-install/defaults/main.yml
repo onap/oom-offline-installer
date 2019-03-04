@@ -1,1 +1,9 @@
 phase: install
+
+# Main Helm chart to install
+app_helm_chart_name: onap
+
+# Targets for helm charts repository build
+app_helm_build_targets:
+  - all
+  - onap
