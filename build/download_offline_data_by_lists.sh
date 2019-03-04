@@ -47,7 +47,7 @@ fi
 CTOOLS="${LOCAL_PATH}/creating_data"
 LISTS_DIR="${LOCAL_PATH}/data_lists"
 DATA_DIR="${LOCAL_PATH}/../../resources"
-TOTAL=11
+TOTAL=12
 CURR=1
 
 message info "Downloading started: $(date)"
@@ -55,16 +55,19 @@ message info "Downloading started: $(date)"
 echo "[Step $((CURR++))/$TOTAL Download collected docker images]"
 $CTOOLS/download-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list"
 
+echo "[Step $((CURR++))/$TOTAL Download docker images for infra-server]"
+$CTOOLS/download-docker-images.sh "${LISTS_DIR}/infra_docker_images.list"
+
 echo "[Step $((CURR++))/$TOTAL Build own nginx image]"
 $CTOOLS/create_nginx_image/01create-image.sh
 
 echo "[Step $((CURR++))/$TOTAL Save docker images from docker cache to tarfiles]"
 $CTOOLS/save-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list" "${DATA_DIR}/offline_data/docker_images_for_nexus"
 
-echo "[Step $((CURR++))/$TOTAL move infra related images to infra folder]"
+echo "[Step $((CURR++))/$TOTAL Prepare infra related images to infra folder]"
 mkdir -p "${DATA_DIR}/offline_data/docker_images_infra"
 mv "${DATA_DIR}/offline_data/docker_images_for_nexus/own_nginx_latest.tar" "${DATA_DIR}/offline_data/docker_images_infra"
-mv "${DATA_DIR}/offline_data/docker_images_for_nexus/sonatype_nexus3_latest.tar" "${DATA_DIR}/offline_data/docker_images_infra"
+$CTOOLS/save-docker-images.sh "${LISTS_DIR}/infra_docker_images.list" "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Download git repos]"
 $CTOOLS/download-git-repos.sh "${LISTS_DIR}/${TAG}-git_repos.list" "${DATA_DIR}/git-repo"
