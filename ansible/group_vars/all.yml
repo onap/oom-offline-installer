@@ -133,7 +133,7 @@ app_kubernetes_namespace: "{{ app_name }}"
 
 # Optional application custom Ansible roles name for pre and post install logic.
 # Location of additional custom roles is defined in ansible.cfg with roles_path.
-# e.g. application_pre_install_role: "{{ app_name }}-patch-role"
+# e.g. application_pre_install_role: "my-pre-install-role"
 application_pre_install_role:
 application_post_install_role:
 

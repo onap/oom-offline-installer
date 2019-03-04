@@ -6,9 +6,10 @@ also on target server where package is installed.
 
 ## Application configuration
 
-All application related configuration variables are defined in file
-`application_configuration.yml` in this folder. The name of configuration file
-does not matter but it must be given to ansible run as command line variable file.
+All application related configuration variables are defined in the
+`application_configuration.yml` file in this folder. The name of the configuration
+file can be altered but it must be passed to ansible run as command line 
+variable file nevertheless.
 
 Example:
 ```
@@ -26,12 +27,14 @@ Helm charts transfer from packaging up to the target infra server.
 ## Application specific roles
 
 Installer supports optional custom pre and post install roles. Custom roles' code folders
-are placed to this directory at packaging time and name of those folders are configured in
-application.yml with variable `application_pre_install_role` and `application_post_install_role`.
+are placed into this directory at packaging time and names of those folders shall be configured in
+application_configuration.yml with variable `application_pre_install_role` and `application_post_install_role`.
+Note that these directory names must correspond to those configured in APP_CONFIGURATION inside package.conf
+during package build time.
 
 Example:
 ```
-application_pre_install_role: "{{ app_name }}-patch-role"
+application_pre_install_role: "my-pre-install-role"
 ```
 
 ## Inventory hosts
