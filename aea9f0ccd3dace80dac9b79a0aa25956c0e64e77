@@ -16,6 +16,24 @@
       "revId": "aea9f0ccd3dace80dac9b79a0aa25956c0e64e77",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac241a74_83b21489",
+        "filename": "config/application_configuration.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-04T16:32:21Z",
+      "side": 1,
+      "message": "onap can be fixed here for app_helm_build_targets because this file is example configuration to install onap casablanca in particular.",
+      "parentUuid": "39c2bec7_288665c1",
+      "revId": "aea9f0ccd3dace80dac9b79a0aa25956c0e64e77",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
