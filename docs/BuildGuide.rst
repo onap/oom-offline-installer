@@ -296,7 +296,7 @@ offline. Use the following command:
 
 For example:
 
-``$ ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/offline-installer/patches/casablanca_3.0.0.patch /tmp/oom-clone``
+``$ ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/offline-installer/patches/casablanca.patch /tmp/oom-clone``
 
 Part 5. Creating offline installation package
 ---------------------------------------------
