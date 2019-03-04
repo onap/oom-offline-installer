@@ -1,0 +1,4 @@
+---
+docker:
+  log_max_size: 100m
+  log_max_file: 3

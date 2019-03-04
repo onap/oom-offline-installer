@@ -16,11 +16,19 @@
     path: /etc/docker
     state: directory
 
+- name: Setup docker container logging settings
+  json_mod:
+    path: /etc/docker/daemon.json
+    key: '' # the whole JSON document per https://tools.ietf.org/html/rfc6901
+    # "value" must be wrapped in single quote "'" with extra space in front of "{" (ansible workaround)
+    value: ' { "log-driver": "json-file", "log-opts": { "max-size": "{{ docker.log_max_size }}", "max-file": "{{ docker.log_max_file }}" } }'
+
 - name: Setup docker dns settings
-  json_add:
+  json_mod:
     path: /etc/docker/daemon.json
     key: dns
-    value: "{{ hostvars[groups.infrastructure[0]].cluster_ip }}"
+    # "value" must be wrapped in single quote "'" with extra space in front of "[" (ansible workaround)
+    value: ' [ "{{ hostvars[groups.infrastructure[0]].cluster_ip }}" ]'
   notify:
     - Restart Docker
 
