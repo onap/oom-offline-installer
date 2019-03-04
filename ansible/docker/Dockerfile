@@ -25,6 +25,7 @@ RUN apk --no-cache update \
   ansible==$ansible_version \
   jmespath \
   netaddr \
+  jsonpointer \
 && apk del build-dependencies && rm -rf /var/cache/apk/* && rm -rf /root/.cache
 
 ENV ANSIBLE_HOST_KEY_CHECKING false
