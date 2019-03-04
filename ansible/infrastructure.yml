@@ -4,8 +4,6 @@
   roles:
     - package-repository
     - role: firewall
-      vars:
-        state: disable
 
 - name: Setup infrastructure servers
   hosts: infrastructure
