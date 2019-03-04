@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b433d320_99b72ec8",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-04T08:12:27Z",
+      "side": 1,
+      "message": "previously we were \"adding\" our cluster_ip value to daemon.json, now we are going to \"replace\" value?\nI also did not get it running yet ... was this tested ?\n(looks that original version more far more robust and don\u0027t make any expectations whether dns was set or not, it should work that if dns is set add our value, if it\u0027s not set create whole dns attribute with our value",
+      "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
