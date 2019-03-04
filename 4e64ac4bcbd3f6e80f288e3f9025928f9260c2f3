@@ -22,6 +22,23 @@
       "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af5cfc14_b3dc93f3",
+        "filename": "ansible/roles/certificates/tasks/generate-certificates.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-04T09:30:10Z",
+      "side": 1,
+      "message": "if you do this please remove certs mount from run_playbook.sh. also another thing to remember is that although certificates are regenerated everytime this role runs (see last task) this will definitely force everything to be regenerated all over again because you will lose \"originals\". Copies will be on infra node but ansible won\u0027t see them.",
+      "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
