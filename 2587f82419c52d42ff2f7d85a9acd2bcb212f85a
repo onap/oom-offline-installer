@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8ed4830_b39f011b",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-04T17:52:02Z",
+      "side": 1,
+      "message": "parsing yaml goes overkill with bash already. Please switch to Python.",
+      "revId": "2587f82419c52d42ff2f7d85a9acd2bcb212f85a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
