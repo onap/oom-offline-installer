@@ -16,6 +16,24 @@
       "revId": "2587f82419c52d42ff2f7d85a9acd2bcb212f85a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6adbcfa_efb1b696",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-04T18:24:09Z",
+      "side": 1,
+      "message": "Yeah, that\u0027s the plan, but I\u0027m not there yet. I\u0027d like to rewrite whole build process to python, but haven\u0027t used that since 2.2 and wanted to bring this functionality as required.",
+      "parentUuid": "d8ed4830_b39f011b",
+      "revId": "2587f82419c52d42ff2f7d85a9acd2bcb212f85a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
