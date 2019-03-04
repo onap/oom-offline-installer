@@ -57,6 +57,24 @@
       "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06995fb0_5cf4697d",
+        "filename": "ansible/roles/certificates/tasks/generate-certificates.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-04T12:46:36Z",
+      "side": 1,
+      "message": "if this will be somehow idempotent then you have to generate certs in some persistent place for Ansible container/chroot to keep idempotency. In currenst state you will loose them with default /tmp/certs after ansible execution ends.",
+      "parentUuid": "33691313_8292de49",
+      "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
