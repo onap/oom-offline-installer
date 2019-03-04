@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "596745c8_264eba46",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-04T19:50:31Z",
+      "side": 1,
+      "message": "I can improve on this.",
+      "parentUuid": "de359bfc_8c775c58",
+      "range": {
+        "startLine": 36,
+        "startChar": 5,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "057809a6_6784611a",
         "filename": "ansible/library/json_mod.py",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-04T17:00:10Z",
       "side": 1,
       "message": "do we really need all these options?\nI guess these are related to the json object i.e. ways to modify it. But from file point of view all these options are confusing. Could it be explained better?",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dbb7ad4_d2b525c0",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-04T19:50:31Z",
+      "side": 1,
+      "message": "I tried to explain them in description, I guess I didn\u0027t do good job. I was trying to keep the action\u0027s name similar to python methods on those objects. Naming and description can be changed of course, if you provide me better alternative.\n\nBasically:\nadd - adds new key/value to the json if there is no such key yet\nreplace - the same as add but it will overwrite the value if key is already there\nappend - it appends to dict or list a value - the object must exists and must be dict or list, with dict it has special effect to not overwrite any value if there is some already\nupdate - applies to dicts only and behaves like append but this time does overwrite old value\nextend - applies only to list - it is the same as list\u0027s method extend",
+      "parentUuid": "057809a6_6784611a",
       "range": {
         "startLine": 62,
         "startChar": 3,
