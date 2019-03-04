@@ -69,6 +69,24 @@
       "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b564958d_d81fef26",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-04T11:13:25Z",
+      "side": 1,
+      "message": "If it will be needed then just change \"replace\" to \"extend\". I created the new module because the old one would not be able to setup other options lik the logging options, which is done in this commit. It should be flexible enough for any other json-modification usage.",
+      "parentUuid": "34d54790_6ac8bcd8",
+      "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
