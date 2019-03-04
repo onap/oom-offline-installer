@@ -93,6 +93,24 @@
       "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ac768b_03881f5f",
+        "filename": "ansible/roles/certificates/tasks/generate-certificates.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-04T13:57:06Z",
+      "side": 1,
+      "message": "I agree it\u0027s not good outside container/chroot. Mounts in run_playbook.sh were set for simplicity with only container in mind.",
+      "parentUuid": "a84f6e06_ee825e07",
+      "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
