@@ -75,6 +75,24 @@
       "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a84f6e06_ee825e07",
+        "filename": "ansible/roles/certificates/tasks/generate-certificates.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-04T13:51:18Z",
+      "side": 1,
+      "message": "Ok at the same time realized that one.\nActually I think we should change our mounting in run_playbook.sh etc. to mount this to current dir and not to absolute path /certs which is maybe fine when running through container/chroot but totally insane path when running with normal ansible like molecule.",
+      "parentUuid": "06995fb0_5cf4697d",
+      "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
