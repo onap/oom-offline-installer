@@ -39,6 +39,24 @@
       "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33691313_8292de49",
+        "filename": "ansible/roles/certificates/tasks/generate-certificates.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-04T11:20:03Z",
+      "side": 1,
+      "message": "Yes, I noticed already this and also application play has reference to certs that needs to be included into this commit.\n\nAlso noticed that this role is not idempotent. Should idenpotence fix the above problem you refer?\n\nWe could which now to newer ansible as commented in this module it could solve something.",
+      "parentUuid": "af5cfc14_b3dc93f3",
+      "revId": "4e64ac4bcbd3f6e80f288e3f9025928f9260c2f3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
