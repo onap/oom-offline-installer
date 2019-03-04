@@ -16,6 +16,24 @@
       "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32b71e2d_1a480149",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-04T09:22:27Z",
+      "side": 1,
+      "message": "Tested it was, but not with our installer - I had to tell ansible where module is - what error we are talking about?\n\nThe previous version was not robust at all - it could only add to the list or create a new list at the top-level object. This is much more flexible.\n\nFor replace - it clould be changed to append but I made this decision for obvious reasons - we wwant tot fake dns right? So we dont want to add another nameserever because than we dont have certainty that our fake dns resolving will work.",
+      "parentUuid": "b433d320_99b72ec8",
+      "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
