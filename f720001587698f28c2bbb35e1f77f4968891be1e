@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f872d1d0_a5f29de3",
+        "filename": "build/data_lists/infra_docker_images.list",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-04T11:46:45Z",
+      "side": 1,
+      "message": "should use actual tagged version instead of latest.",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 22
+      },
+      "revId": "f720001587698f28c2bbb35e1f77f4968891be1e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
