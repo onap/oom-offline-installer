@@ -34,6 +34,24 @@
       "revId": "e5e9746f0228f845affa0858d729ba7776c9b178",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec73b715_0994357e",
+        "filename": "ansible/roles/nginx/templates/nginx.conf.j2",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-04T17:11:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cea6f9cf_f2bc66fc",
+      "revId": "e5e9746f0228f845affa0858d729ba7776c9b178",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
