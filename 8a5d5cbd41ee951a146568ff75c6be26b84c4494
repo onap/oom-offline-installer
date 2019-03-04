@@ -51,6 +51,24 @@
       "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34d54790_6ac8bcd8",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-04T11:08:13Z",
+      "side": 1,
+      "message": "adding was done because our CI had some preconfigured dns that it needed.\nalso old module just did what was necessary from it - nothing more. (YAGNI)",
+      "parentUuid": "32b71e2d_1a480149",
+      "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
