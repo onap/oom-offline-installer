@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a5beb886_25d91557",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-04T10:23:01Z",
+      "side": 1,
+      "message": "So this fails on hosts where there is no python3 - I tested this module in chroot but the host had python3 - I have to workaround the code to work on both python2 and python3...",
+      "revId": "8a5d5cbd41ee951a146568ff75c6be26b84c4494",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b433d320_99b72ec8",
         "filename": "ansible/roles/docker/tasks/main.yml",
         "patchSetId": 1
