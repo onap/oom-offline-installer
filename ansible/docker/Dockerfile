@@ -1,6 +1,6 @@
 FROM alpine:3.8
 
-ARG ansible_version=2.6.3
+ARG ansible_version=2.7.8
 LABEL ansible_version=$ansible_version vendor=Samsung
 
 # Install Ansible build dependencies
