@@ -117,6 +117,30 @@
       "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a64b395_24c09b70",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-05T09:32:00Z",
+      "side": 1,
+      "message": "No? This has nothing to do with ansible reporting..this is option for the user. User may want some option in json (in all cases), but he wants to honor the old values if there is already some, or...he does not care and he wants to overwrite that option regardless.\n\nThis has nothing to do with declarative/imperative - verything in ansible is mixture of that - or can we reorder the tasks and the result will be the same? No, it would break the ansible run - some task expects that other tasks already executed.",
+      "parentUuid": "61e6f781_1d4d427b",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
