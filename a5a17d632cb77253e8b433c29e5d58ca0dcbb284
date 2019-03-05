@@ -93,6 +93,30 @@
       "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "61e6f781_1d4d427b",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-05T07:54:02Z",
+      "side": 1,
+      "message": "Feels like imperative mixed with declarative somehow. \nFor user the module should be declarative.\nE.g. add/replace could be just one option? Changed flag is set if module actually did overwrite value.",
+      "parentUuid": "0dbb7ad4_d2b525c0",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
