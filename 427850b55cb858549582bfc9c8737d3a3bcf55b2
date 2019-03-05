@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a72a627e_21b174b3",
+        "filename": "ansible/roles/nginx/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-05T17:05:31Z",
+      "side": 1,
+      "message": "why we have same task here and same in nexus role ? \nhttps://gerrit.onap.org/r/gitweb?p\u003doom/offline-installer.git;a\u003dblob;f\u003dansible/roles/nexus/tasks/install.yml;h\u003d99d73dce57fcec0e3723de98128c9cbd63386597;hb\u003drefs/heads/master#l16",
+      "revId": "427850b55cb858549582bfc9c8737d3a3bcf55b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
