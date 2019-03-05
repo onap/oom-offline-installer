@@ -1,1 +1,5 @@
 ansible_chroot
+application/application_configuration.yml
+application/helm_charts/
+application/onap-casablanca-patch-role/
+application/package.info
