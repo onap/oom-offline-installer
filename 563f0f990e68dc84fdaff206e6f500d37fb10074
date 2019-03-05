@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "449db65d_89b634dc",
+        "filename": "ansible/.gitignore",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-05T12:01:19Z",
+      "side": 1,
+      "message": "this is probably very application (wink) specific (application/* etc) - can you just add application/* and I am almost certain that if the application/README.md is explicitly added to git repo it will not be skipped - that is easy to test - and I did and it works - so everything what we want inside application folder can be added explicitly - this is intended to be empty and populated by user",
+      "revId": "563f0f990e68dc84fdaff206e6f500d37fb10074",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
