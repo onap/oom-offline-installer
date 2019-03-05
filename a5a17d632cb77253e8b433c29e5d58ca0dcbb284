@@ -141,6 +141,30 @@
       "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d8e5b14_01c76707",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-05T09:53:51Z",
+      "side": 1,
+      "message": "If you would like more of option \"present\", \"absent\" then it would cripple this module - I cannot from those two words deduce if you want from key\u003ddns value\u003d\"10.0.0.1\" to do this:\n\n{ \"dns\": \"10.0.0.1\" } \u003c\u003c\u003c this is broken config\n\nor this:\n\n{ \"dns\": [ \"10.0.0.1\" ] } \u003c\u003c\u003c correct config\n\nor what if that ip is already there and you want only to add bunch of new values?\n\nkey\u003ddns value\u003d\" [ \\\"10.0.0.2\\\", \\\"10.0.0.3\\\" ]\"\n\nshould it do this?:\n\n{ \"dns\": [ \"10.0.0.1\" , [ \"10.0.0.2\", \"10.0.0.2\" ] ] } \u003c broken\n\nor this:\n\n{ \"dns\": [ \"10.0.0.1\" , \"10.0.0.2\", \"10.0.0.2\" ] } \u003c correct\n\nThis module can deal with any of these usecases, but I cannot from one word (present) realize what user wants or I have to force one usecase - and the usefulness of this module is gone.\n\nAnd this deals with dns only and there you have the logging options, which are not lists at all, but it is dictionary...old module could not do anything with that - it could only deal with lists in top-level - new module can go deep in json and modify it there...",
+      "parentUuid": "5a64b395_24c09b70",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 66,
+        "endChar": 15
+      },
+      "revId": "a5a17d632cb77253e8b433c29e5d58ca0dcbb284",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
