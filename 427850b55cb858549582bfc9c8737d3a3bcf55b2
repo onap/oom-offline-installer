@@ -16,6 +16,24 @@
       "revId": "427850b55cb858549582bfc9c8737d3a3bcf55b2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7152705f_64dc9668",
+        "filename": "ansible/roles/nginx/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-06T07:38:34Z",
+      "side": 1,
+      "message": "links does not work well here...\n\nWhy not? This was needed to be added because the order of roles execution was changed, it\u0027s now nginx first then nexus.\nThere is no need to remove this same step from nexus role. And it makes possible to test both roles independently.",
+      "parentUuid": "a72a627e_21b174b3",
+      "revId": "427850b55cb858549582bfc9c8737d3a3bcf55b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
