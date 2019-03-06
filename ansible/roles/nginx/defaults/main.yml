@@ -1,0 +1,21 @@
+---
+simulated_hosts:
+  git:
+  http:
+  nexus:
+all_simulated_hosts:
+    "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
+
+nginx:
+  ports:
+    - "80:80"
+    - "443:443"
+    - "10001:443"
+  volumes:
+    - "{{ app_data_path }}/cfg/nginx.conf:/etc/nginx/nginx.conf:ro"
+    - "{{ app_data_path }}/certs:/etc/nginx/certs:ro"
+    - "{{ app_data_path }}/git-repo:/srv/git:rw"
+    - "{{ app_data_path }}/http:/srv/http:rw"
+    - "{{ app_data_path }}/pkg/rhel:/srv/http/repo.infra-server/rhel:rw"
+    - "{{ app_data_path }}/pkg/ubuntu/xenial:/srv/http/repo.infra-server/ubuntu/xenial:rw"
+    - /var/log/nginx:/var/log/nginx:rw
