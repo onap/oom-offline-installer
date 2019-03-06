@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0585f1ae_b52d96ad",
+        "filename": "ansible/roles/application-install/defaults/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-06T11:25:54Z",
+      "side": 1,
+      "message": "this is defaulting to onap. We do not have anywhere yet any defaulting to onap. So would not put it here either.\nRole defaults are good place for options for technical parameter\u0027s defaults, but these are content related.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 8
+      },
+      "revId": "4de372dd34e4f61ce1b16041ab4eacce06fac9f7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

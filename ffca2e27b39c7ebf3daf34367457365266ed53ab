@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d82c5560_29e97d85",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-06T11:25:54Z",
+      "side": 0,
+      "message": "these should not be removed from here.\nAs this is the main file to document all configurable options.",
+      "range": {
+        "startLine": 114,
+        "startChar": 4,
+        "endLine": 123,
+        "endChar": 23
+      },
+      "revId": "ffca2e27b39c7ebf3daf34367457365266ed53ab",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
