@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caedc18b_896bf56a",
+        "filename": "ansible/roles/certificates/tasks/generate-certificates.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-06T14:28:10Z",
+      "side": 1,
+      "message": "just noticed missing delegate_to on tasks",
+      "revId": "054d592d0392520b9ce1114011a3629cece5083a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
