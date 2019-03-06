@@ -66,25 +66,19 @@
     extended_key_usage:
       - serverAuth
     subject_alt_name:
-      "{{ simulated_hosts | map('regex_replace', '(.*)', 'DNS:\\1') | list }}"
+      "{{ all_simulated_hosts | map('regex_replace', '(.*)', 'DNS:\\1') | list }}"
 
-- name: Generate v3 extension config file
-  template:
-    src: v3.ext.j2
-    dest: "{{ certificates_local_dir }}/v3.ext"
-
-# Signing certificate is added to Ansible in version 2.7 (release date 04.10.2018)
-# Currently using 2.6.3
 - name: Sign Nexus certificate
-  command: >
-    openssl
-    x509
-    -req
-    -in "{{ certificates_local_dir }}/nexus_server.csr"
-    -extfile "{{ certificates_local_dir }}/v3.ext"
-    -CA "{{ certificates_local_dir }}/rootCA.crt"
-    -CAkey "{{ certificates_local_dir }}/rootCA.key"
-    -CAcreateserial
-    -out "{{ certificates_local_dir }}/nexus_server.crt"
-    -days 3650
-    -sha256
+  openssl_certificate:
+    provider: ownca
+    path: "{{ certificates_local_dir }}/nexus_server.crt"
+    csr_path: "{{ certificates_local_dir }}/nexus_server.csr"
+    ownca_path: "{{ certificates_local_dir }}/rootCA.crt"
+    ownca_privatekey_path: "{{ certificates_local_dir }}/rootCA.key"
+    key_usage:
+      - digitalSignature
+      - nonRepudiation
+      - keyEncipherment
+      - dataEncipherment
+    subject_alt_name:
+      "{{ all_simulated_hosts | map('regex_replace', '(.*)', 'DNS:\\1') | list }}"
