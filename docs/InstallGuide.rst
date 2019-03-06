@@ -333,10 +333,40 @@ This will take a while so be patient.
 - ``rancher_kubernetes.yml``
 - ``application.yml``
 
+----
+
+.. _oooi_installguide_postinstall:
+
+Part 4. Postinstallation and troubleshooting
+--------------------------------------------
+
 After all the playbooks are finished, it will still take a lot of time until all pods will be up and running. You can monitor your newly created kubernetes cluster for example like this::
 
     $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.4 # tailor this command to connect to your infra-node
     $ watch -d -n 5 'kubectl get pods --all-namespaces'
+
+
+Final result of installation varies based on number of k8s nodes used and distribution of pods. In some dev envs we quite frequently hit problems with not all pods properly deployed. In successful deployments all jobs should be in successful state.
+This can be verified using ::
+
+    $ kubectl get jobs -n <namespace>
+
+If some of the job is hanging in some wrong end-state like ``'BackoffLimitExceeded'`` manual intervention is required to heal this and make also dependent jobs passing. More details about particular job state can be obtained using ::
+
+    $ kubectl describe job -n <namespace> <job_name>
+
+If manual intervention is required, one can remove failing job and retry helm install command directly, which will not launch full deployment but rather check current state of the system and rebuild parts which are not up & running. Exact commands are as follows ::
+
+    $ kubectl delete job -n <namespace> <job_name>
+    $ helm deploy <env_name> <helm_chart_name> --namespace <namespace_name>
+
+    E.g. helm deploy dev local/onap --namespace onap
+
+Once all pods are properly deployed and in running state, one can verify functionality e.g. by running onap healthchecks ::
+
+    $ cd <app_data_path>/<app_name>/helm_charts/robot
+    $ ./ete-k8s.sh onap health
+
 
 -----
 
