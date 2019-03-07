@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7f44871_48a71d9a",
+        "filename": "ansible/roles/resource-data/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-07T09:55:39Z",
+      "side": 1,
+      "message": "wrong indent",
+      "revId": "3f65d760ceda084aa125ed10ac80425a151d8be9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
