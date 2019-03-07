@@ -85,6 +85,30 @@
       "revId": "b50383c66f105ea22619b9710bc0fab8ca6b8f21",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36df5d5e_57fef201",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-07T08:19:09Z",
+      "side": 1,
+      "message": "\u0027successful\u0027 actually :-D",
+      "parentUuid": "b4847843_b70b5fc4",
+      "range": {
+        "startLine": 349,
+        "startChar": 184,
+        "endLine": 349,
+        "endChar": 195
+      },
+      "revId": "b50383c66f105ea22619b9710bc0fab8ca6b8f21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
