@@ -4,6 +4,7 @@
     - name: Check if source dir and files are present
       stat:
         path: "{{ item.source }}"
+      get_checksum: false
       loop:
         - { source: "{{ resources_dir }}/{{ resources_filename | default('thisdoesnotexists', true) }}",
             target: "{{ app_data_path }}/{{ resources_filename | default('thisdoesnotexists', true) }}" }
