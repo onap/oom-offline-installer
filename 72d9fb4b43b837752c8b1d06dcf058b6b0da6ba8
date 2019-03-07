@@ -22,6 +22,30 @@
       "revId": "72d9fb4b43b837752c8b1d06dcf058b6b0da6ba8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1be66eea_0790b1b7",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-07T09:08:48Z",
+      "side": 1,
+      "message": "Ok so in all.yml we want:\napp_helm_chart_name:\napp_helm_build_targets:\n\nAnd in application_configuration.yml:\napp_helm_build_targets:\n  - all\n  - onap\napp_helm_chart_name: onap\n\nIs that the final expected layout?",
+      "parentUuid": "fe2812fd_8a03a3c1",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 8
+      },
+      "revId": "72d9fb4b43b837752c8b1d06dcf058b6b0da6ba8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
