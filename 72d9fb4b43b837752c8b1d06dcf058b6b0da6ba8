@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe2812fd_8a03a3c1",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-07T07:22:58Z",
+      "side": 1,
+      "message": "should not populate default values here for specific application. Some technical installer specific defaults can be filled and derived values.\nPlease use only exmple application_configuration.yml for populating application specific values.",
+      "range": {
+        "startLine": 116,
+        "startChar": 1,
+        "endLine": 125,
+        "endChar": 8
+      },
+      "revId": "72d9fb4b43b837752c8b1d06dcf058b6b0da6ba8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
