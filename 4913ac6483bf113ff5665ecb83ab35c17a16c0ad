@@ -16,6 +16,24 @@
       "revId": "4913ac6483bf113ff5665ecb83ab35c17a16c0ad",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a45bdae4_b4aa8ce5",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-08T13:50:48Z",
+      "side": 1,
+      "message": "update_cache is not exactly \"clean all\" cache. \nThis commit is not a workaround, it\u0027s rather improvement to get issue visible directly when it appears.  The original trigger for this problem as described in OOM-1689 is caused by not properly populated platform, but we saw several other issues with different rootcause in the past where repos were not working properly. This commit will make it visible where it should be.",
+      "parentUuid": "79ddcc48_19989a28",
+      "revId": "4913ac6483bf113ff5665ecb83ab35c17a16c0ad",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
