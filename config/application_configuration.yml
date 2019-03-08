@@ -16,6 +16,6 @@ certificates:
   locality_name: Krakow
 app_helm_build_targets:
   - all
-  - "{{ app_name }}"
-application_pre_install_role: "{{ app_name }}-casablanca-patch-role"
-
+  - onap
+app_helm_chart_name: onap
+application_pre_install_role: "onap-casablanca-patch-role"
