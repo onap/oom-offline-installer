@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79ddcc48_19989a28",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-08T09:26:26Z",
+      "side": 1,
+      "message": "Why have you used \"command\" if there is native ansible module \u0027yum\u0027, it has \u0027update_cache\u0027 opt.\n\nSecondly patch above is a workaround not solution for the real problem which is corrupted resources files. I think we need to further improve resource uploading to be a tansactional and atomic operation with all files not being corrupted as a prereq for successfull transaction \u0027commit\u0027. Why did problem described in OOM-1689 occur? Some upload process automation issue? Disk issue?",
+      "revId": "4913ac6483bf113ff5665ecb83ab35c17a16c0ad",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
