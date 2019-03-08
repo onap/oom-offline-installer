@@ -210,6 +210,24 @@
       "revId": "054d592d0392520b9ce1114011a3629cece5083a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d25d2444_8991481d",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-08T10:56:24Z",
+      "side": 1,
+      "message": "ou yes, that was/is the only part did not yet included to my molecule test i.e. the kube node.\nYes, have to check that, thanks.",
+      "parentUuid": "5fc8b359_d0d09f79",
+      "revId": "054d592d0392520b9ce1114011a3629cece5083a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
