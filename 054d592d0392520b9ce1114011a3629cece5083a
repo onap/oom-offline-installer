@@ -228,6 +228,24 @@
       "revId": "054d592d0392520b9ce1114011a3629cece5083a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5e8c1a1_981088ce",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-08T10:59:38Z",
+      "side": 1,
+      "message": "unfortunately the feedback loop time is still this huge as we do not have tests yet in place. In which case such simple errors should not be even ever pushed here.",
+      "parentUuid": "d25d2444_8991481d",
+      "revId": "054d592d0392520b9ce1114011a3629cece5083a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
