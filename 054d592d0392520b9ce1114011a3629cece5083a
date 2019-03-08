@@ -193,6 +193,23 @@
       "revId": "054d592d0392520b9ce1114011a3629cece5083a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc8b359_d0d09f79",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-08T09:50:27Z",
+      "side": 1,
+      "message": "this breaks infrastructure playbook part that is executed on kubernetes nodes. \n\"The task includes an option with an undefined variable. The error was: \u0027certificates_tmp_dir\u0027 is undefined\\n\\nThe error appears to have been in \u0027/ansible/roles/certificates/tasks/upload_root_ca.yml\u0027: line 2, column 3, but may\\nbe elsewhere in the file depending on the exact syntax problem.\\n\\nThe offending line appears to be:\\n\\n---\\n- name: Copy root certificate\\n  ^ here\\n\"",
+      "revId": "054d592d0392520b9ce1114011a3629cece5083a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
