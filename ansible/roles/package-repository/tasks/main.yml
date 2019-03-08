@@ -32,7 +32,7 @@
         state: absent
       loop: "{{ repo_files.files }}"
       when: "(item.path | basename | splitext)[0] not in package_repositories_names"
-  become: yes
+  become: true
 
 - name: Add application offline package repository
   yum_repository:
@@ -45,3 +45,27 @@
     state: "{{ item.state | default('present') }}"
   loop: "{{ package_repositories }}"
   become: true
+
+# yum module doesnt support querying from particular repo
+# also its important to clean cache as it can hide potential problem
+- name: Clean cache and check health of offline package repository block
+  block:
+    - name: Clean yum cache
+      command: yum clean all
+      args:
+        warn: False # yum module is insufficient
+      changed_when: false
+
+    - name: Remove yum cache
+      file:
+        path: /var/cache/yum
+        state: absent
+
+    - name: Check offline package repos
+      command: "yum repo-pkgs {{ item.name }} list"
+      args:
+        warn: False # yum module is insufficient
+      changed_when: false
+      loop: "{{ package_repositories }}"
+  become: true
+
