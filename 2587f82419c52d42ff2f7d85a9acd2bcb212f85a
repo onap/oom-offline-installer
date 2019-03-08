@@ -52,6 +52,24 @@
       "revId": "2587f82419c52d42ff2f7d85a9acd2bcb212f85a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9763966c_2a139a08",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-08T17:01:25Z",
+      "side": 1,
+      "message": "why to write it 2 times?",
+      "parentUuid": "f15c0776_400b4e8f",
+      "revId": "2587f82419c52d42ff2f7d85a9acd2bcb212f85a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
