@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "b11e8588_9eb0c4a6",
+        "filename": "ansible/roles/certificates/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-08T08:56:09Z",
+      "side": 1,
+      "message": "\"certificates_tmp_dir\" might be a bit confusing name, because this is dir where we generate and also use our certificates, tmp sounds to me like something what can be removed, what about \"keystore_dir\" or \"certificates_dir\" ?",
+      "revId": "054d592d0392520b9ce1114011a3629cece5083a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7b9a1ac_cd474d3a",
+        "filename": "ansible/roles/certificates/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-08T08:56:09Z",
+      "side": 1,
+      "message": "idempotence",
+      "revId": "054d592d0392520b9ce1114011a3629cece5083a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7176f7db_c460e188",
+        "filename": "ansible/roles/certificates/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-08T08:56:09Z",
+      "side": 1,
+      "message": "this must be always \"ansible/certs\" dir as we mounting just this one into ansible container, why to use variable for something which is static ? the only reason I can imagine would be that we would like it to be more readable, is it your intention ?",
+      "revId": "054d592d0392520b9ce1114011a3629cece5083a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "caedc18b_896bf56a",
         "filename": "ansible/roles/certificates/tasks/generate-certificates.yml",
         "patchSetId": 2
