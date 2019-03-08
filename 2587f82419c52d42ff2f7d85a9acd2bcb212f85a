@@ -34,6 +34,24 @@
       "revId": "2587f82419c52d42ff2f7d85a9acd2bcb212f85a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f15c0776_400b4e8f",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-08T13:27:23Z",
+      "side": 1,
+      "message": "I don\u0027t see python as mandatory for first version, if this works well.",
+      "parentUuid": "b6adbcfa_efb1b696",
+      "revId": "2587f82419c52d42ff2f7d85a9acd2bcb212f85a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
