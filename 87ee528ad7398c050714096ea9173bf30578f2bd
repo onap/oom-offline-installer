@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42d4c160_095d7e16",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-11T13:04:58Z",
+      "side": 1,
+      "message": "what about RHEL?",
+      "revId": "87ee528ad7398c050714096ea9173bf30578f2bd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
