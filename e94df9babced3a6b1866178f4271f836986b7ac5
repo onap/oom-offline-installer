@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4065e1bb_16fd1bfc",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-12T07:48:25Z",
+      "side": 1,
+      "message": "What\u0027s the point of checking in the second task if the distro is redhat like if you\u0027re not doing it in the first task? If we want to have real interoperability between distros of various kind let\u0027s implement it for real straight from the beginning and do not only pretend that we actually do. \n\nThe first task will fail as in Debian like distros the actual dir is \"/etc/ca-certificates\".\n\nI say we either support both Debian/RedHat role wide or we actually do not and not pretend in single tasks that we do.",
+      "revId": "e94df9babced3a6b1866178f4271f836986b7ac5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
