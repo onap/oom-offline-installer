@@ -16,6 +16,24 @@
       "revId": "e94df9babced3a6b1866178f4271f836986b7ac5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "708ea6cc_9e2faf3a",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-12T08:45:54Z",
+      "side": 1,
+      "message": "yes no point. It was an ad hoc addition to just underline this is really a OS specific.\nShould be handled anyway completely different way when really doing the other OS supports.\n\nWill remove it completely as don\u0027t want to copy same condition to other task or make block of this now.",
+      "parentUuid": "4065e1bb_16fd1bfc",
+      "revId": "e94df9babced3a6b1866178f4271f836986b7ac5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
