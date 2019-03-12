@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "825406b1_6fac6e6c",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-12T15:19:35Z",
+      "side": 1,
+      "message": "The version of the image is missing and the published ports could be provided more sophisticated way",
+      "range": {
+        "startLine": 166,
+        "startChar": 94,
+        "endLine": 166,
+        "endChar": 161
+      },
+      "revId": "830ed9da3924a88bfe27d1350b5488f10d0e2f49",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
