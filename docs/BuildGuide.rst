@@ -234,82 +234,22 @@ Prerequisites:
 
 .. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the copy of resources data are untarred in *./onap-offline/../resources/*
 
-Whole nexus blob data tarball will be created by running script
-build\_nexus\_blob.sh. It will load the listed docker images, run the
-Nexus, configure it as npm and docker repository. Then it will push all
-listed npm packages and docker images to the repositories. After all is
-done the repository container is stopped and from the nexus-data
-directory is created tarball.
+Whole nexus blob data will be created by running script build\_nexus\_blob.sh.
+It will load the listed docker images, run the Nexus, configure it as npm, pypi
+and docker repositories. Then it will push all listed npm and pypi packages and
+docker images to the repositories. After all is done the repository container
+is stopped.
 
-There are mandatory parameters need to be set in configuration file:
+You can run the script as following example:
 
-+------------------------------+------------------------------------------------------------------------------------------+
-| Parameter                    | Description                                                                              |
-+==============================+==========================================================================================+
-| NXS\_SRC\_DOCKER\_IMG\_DIR   | resource directory of docker images                                                      |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_SRC\_NPM\_DIR           | resource directory of npm packages                                                       |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_SRC\_PYPI\_DIR          | resource directory of npm packages                                                       |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_DOCKER\_IMG\_LIST       | list of docker images to be pushed to Nexus repository                                   |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_DOCKER\_WO\_LIST        | list of docker images which uses default repository                                      |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_NPM\_LIST               | list of npm packages to be published to Nexus repository                                 |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_PYPI\_LIST              | list of pypi packages to be published to Nexus repository                                |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NEXUS\_DATA\_TAR             | target tarball of Nexus data path/name                                                   |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NEXUS\_DATA\_DIR             | directory used for the Nexus blob build                                                  |
-+------------------------------+------------------------------------------------------------------------------------------+
-| NEXUS\_IMAGE                 | Sonatype/Nexus3 docker image which will be used for data blob creation for this script   |
-+------------------------------+------------------------------------------------------------------------------------------+
+``$ ./install/onap-offline/build_nexus_blob.sh onap_3.0.2``
 
-Some of the docker images using default registry requires special
-treatment (e.g. they use different ports or SSL connection), therefore
-there is the list NXS\_DOCKER\_WO\_LIST by which are the images retagged
-to be able to push them to our nexus repository.
-Following steps can be used to split *docker_images.list* into files for
-NXS_DOCKER_IMG_LIST & NXS_DOCKER_WO_LIST variables.
+Where the onap_3.0.2 is the tag to specify which lists will be used for the
+resources
 
-e.g.
-
-::
-
-    sed -n '/\.[^/].*\//p'  onap_3.0.2-docker_images.list > /tmp/onap-me-data_lists/docker_img.list
-    sed -n '/\.[^/].*\//!p' onap_3.0.2-docker_images.list > /tmp/onap-me-data_lists/docker_no_registry.list
-
-.. note:: It's recomended to use abolute paths in the configuration file for the current script
-
-Example of the configuration file:
-
-::
-
-    NXS_SRC_DOCKER_IMG_DIR="/tmp/onap-offline/resources/offline_data/docker_images_for_nexus"
-    NXS_SRC_NPM_DIR="/tmp/onap-offline/resources/offline_data/npm_tar"
-    NXS_SRC_PYPI_DIR="/tmp/onap-offline/resources/offline_data/pypi"
-    NXS_DOCKER_IMG_LIST="/tmp/onap-me-data_lists/docker_img.list"
-    NXS_DOCKER_WO_LIST="/tmp/onap-me-data_lists/docker_no_registry.list"
-    NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/onap_3.0.x-npm_list.txt"
-    NXS_PYPI_LIST="/tmp/onap-offline/bash/tools/data_list/onap_3.0.x-pypi.list"
-    NEXUS_DATA_TAR="/root/nexus_data.tar"
-    NEXUS_DATA_DIR="/tmp/onap-offline/resources/nexus_data"
-    NEXUS_IMAGE="/tmp/onap-offline/resources/offline_data/docker_images_infra/sonatype_nexus3_3.15.2.tar"
-
-Once everything is ready you can run the script as following example:
-
-``$ ./onap-offline/build/build_nexus_blob.sh /root/nexus_build.conf``
-
-Where the nexus\_build.conf is the configuration file and the
-/root/nexus\_data.tar is the destination tarball
-
-.. note:: Move, link or mount the NEXUS\_DATA\_DIR to the resources directory if there was different directory specified in configuration or use the resulting nexus\_data.tar for movement between machines.
-
-Once the Nexus data blob is created, the docker images and npm packages
-can be deleted to reduce the package size as they won't be needed in the
-installation time:
+Once the Nexus data blob is created, the docker images and npm and pypi
+packages can be deleted to reduce the package size as they won't be needed in
+the installation time:
 
 E.g.
 

@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2018 © Samsung Electronics Co., Ltd.
+#   Copyright 2018-2019 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -18,37 +18,101 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-
 ### This script prepares Nexus repositories data blobs for ONAP
 
-# Mandatory variables need to be set in configuration file:
-#   NXS_SRC_DOCKER_IMG_DIR  - resource directory of docker images
-#   NXS_SRC_NPM_DIR         - resource directory of npm packages
-#   NXS_SRC_PYPI_DIR        - resource directory of pypi packages
-#   NXS_DOCKER_IMG_LIST     - list of docker images to be pushed to Nexus repository
-#   NXS_DOCKER_WO_LIST      - list of docker images which uses default repository
-#   NXS_NPM_LIST            - list of npm packages to be published to Nexus repository
-#   NXS_PYPI_LIST           - list of pypi packages to be uploaded to Nexus repository
-#   NEXUS_DATA_TAR          - target tarball of Nexus data path/name
-#   NEXUS_DATA_DIR          - directory used for the Nexus blob build
-#   NEXUS_IMAGE             - Sonatype/Nexus3 docker image which will be used for data blob creation
+## The script requires following dependencies are installed: nodejs, jq, docker
+## All required resources are expected in the upper directory
+## created during download procedure as DATA_DIR
+## All lists used must be in project data_lists directory
 
 # Fail fast settings
 set -e
 
+TIMESTAMP="date +'%Y-%m-%d_%H-%M-%S'"
+SCRIPT_LOG="/tmp/$(basename $0)_$(eval ${TIMESTAMP}).log"
+
+# Log everything
+exec &> >(tee -a "${SCRIPT_LOG}")
+
+usage () {
+    echo "  This script is preparing Nexus data blob from docker images and npm and pypi packages"
+    echo "      Usage:"
+    echo "        ./$(basename $0) <project version> [<target>]"
+    echo "      "
+    echo "      Example: ./$(basename $0) onap_3.0.1 /root/nexus_data"
+    echo "      "
+    echo "      Dependencies: nodejs, jq, docker"
+    echo "      "
+    exit 1
+}
+
 # Nexus repository location
 NEXUS_DOMAIN="nexus"
-NPM_REGISTRY="http://${NEXUS_DOMAIN}:8081/repository/npm-private/"
-PYPI_REGISTRY="http://${NEXUS_DOMAIN}:8081/repository/pypi-private/"
-DOCKER_REGISTRY="${NEXUS_DOMAIN}:8082"
+NEXUS_PORT="8081"
+NEXUS_DOCKER_PORT="8082"
+NPM_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/npm-private/"
+PYPI_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/pypi-private/"
+DOCKER_REGISTRY="${NEXUS_DOMAIN}:${NEXUS_DOCKER_PORT}"
+DEFAULT_REGISTRY="docker.io"
 
 # Nexus repository credentials
 NEXUS_USERNAME=admin
 NEXUS_PASSWORD=admin123
 NEXUS_EMAIL=admin@example.org
 
-# Setup simulated domain names to be able to push all in private Nexus repository
-SIMUL_HOSTS="docker.elastic.co gcr.io hub.docker.com nexus3.onap.org nexus.onap.org registry.hub.docker.com ${NEXUS_DOMAIN}"
+if [ "${1}" == "-h" ] || [ "${1}" == "--help"  ] || [ $# -eq 0 ]; then
+    usage
+else
+    TAG="${1}"
+fi
+
+# Setting paths
+LOCAL_PATH="$(readlink -f $(dirname ${0}))"
+DATA_DIR="$(realpath ${LOCAL_PATH}/../../resources)"
+
+if [ -z "${2}" ]; then
+    NEXUS_DATA_DIR="${DATA_DIR}/nexus_data"
+else
+    NEXUS_DATA_DIR="${2}"
+fi
+
+# Setup directory with resources lists
+LISTS_DIR="${LOCAL_PATH}/data_lists"
+
+# Setup directories with resources for docker, npm and pypi
+NXS_SRC_DOCKER_IMG_DIR="${DATA_DIR}/offline_data/docker_images_for_nexus"
+NXS_SRC_NPM_DIR="${DATA_DIR}/offline_data/npm_tar"
+NXS_SRC_PYPI_DIR="${DATA_DIR}/offline_data/pypi"
+
+# Setup specific resources list based on the tag provided
+NXS_DOCKER_IMG_LIST="${LISTS_DIR}/${TAG}-docker_images.list"
+NXS_NPM_LIST="${LISTS_DIR}/$(sed 's/.$/x/' <<< ${TAG})-npm.list"
+NXS_PYPI_LIST="${LISTS_DIR}/$(sed 's/.$/x/' <<< ${TAG})-pip_packages.list"
+
+# Setup Nexus image used for build and install infra
+INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
+NEXUS_IMAGE="$(grep sonatype/nexus3 ${INFRA_LIST})"
+NEXUS_IMAGE_TAR="${DATA_DIR}/offline_data/docker_images_infra/$(sed 's/\//\_/ ; s/$/\.tar/ ; s/\:/\_/' <<< ${NEXUS_IMAGE})"
+
+# Setup default ports published to host as docker registry
+PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_PORT}"
+
+# Setup additional ports published to host based on simulated docker registries
+for REGISTRY in $(sed -n '/\.[^/].*\//p' ${NXS_DOCKER_IMG_LIST} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true); do
+    if [[ ${REGISTRY} != *":"* ]]; then
+        if [[ ${PUBLISHED_PORTS} != *"80:${NEXUS_DOCKER_PORT}"* ]]; then
+            PUBLISHED_PORTS="${PUBLISHED_PORTS} -p 80:${NEXUS_DOCKER_PORT}"
+        fi
+    else
+        REGISTRY_PORT="$(sed 's/^.*\:\([[:digit:]]*\)$/\1/' <<< ${REGISTRY})"
+        if [[ ${PUBLISHED_PORTS} != *"${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"* ]]; then
+            PUBLISHED_PORTS="${PUBLISHED_PORTS} -p ${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"
+        fi
+    fi
+done
+
+# Setup simulated domain names to be able to push all to private Nexus repository
+SIMUL_HOSTS="$(sed -n '/\.[^/].*\//p' ${NXS_DOCKER_IMG_LIST} | sed -e 's/\/.*$// ; s/:.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true) ${NEXUS_DOMAIN}"
 
 # Nexus repository configuration setup
 NEXUS_CONFIG_GROOVY='import org.sonatype.nexus.security.realm.RealmManager
@@ -84,143 +148,53 @@ conf=r.getConfiguration()
 conf.attributes("docker").set("forceBasicAuth", false)
 repositoryManager.update(conf)'
 
-usage () {
-    echo "  This script is preparing Nexus data blob from docker images and npm packages"
-    echo "      Usage:"
-    echo "        ./$(basename $0) <config_file> [<target>]"
-    echo "      "
-    echo "      config_file is a file with defined variables, which are mandatory for this script"
-    echo "      target is optional parameter where you can specify full path/name of resulted package"
-    echo "      which replaces the value specified in configuration file"
-    echo "      "
-    echo "      Example: ./$(basename $0) ./package.conf  /root/nexus_data.tar"
-    echo "      "
-    echo "      Parameters need to be defined in configuration file:"
-    echo "      "
-    echo "      NXS_SRC_DOCKER_IMG_DIR    - directory of resource docker images"
-    echo "      NXS_SRC_NPM_DIR           - directory of resource npm packages"
-    echo "      NXS_SRC_PYPI_DIR          - directory of resource pypi packages"
-    echo "      NXS_DOCKER_IMG_LIST       - list of docker images to be pushed to Nexus repository"
-    echo "      NXS_DOCKER_WO_LIST        - list of docker images which uses default repository"
-    echo "      NXS_NPM_LIST              - list of npm packages to be published to Nexus repository"
-    echo "      NXS_PYPI_LIST             - list of pypi packages to be uploaded to Nexus repository"
-    echo "      NEXUS_DATA_TAR            - target tarball of Nexus data path/name"
-    echo "      NEXUS_DATA_DIR            - directory used for the Nexus blob build"
-    echo "      NEXUS_IMAGE               - Sonatype/Nexus3 docker image which will be used for data blob creation"
-    exit 1
-}
-
+# Prepare the Nexus configuration
+NEXUS_CONFIG=$(echo "${NEXUS_CONFIG_GROOVY}" | jq -Rsc  '{"name":"configure", "type":"groovy", "content":.}')
 
 #################################
 # Prepare the local environment #
 #################################
 
-# Load the config file
-if [ "${1}" == "-h" ] || [ -z "${1}" ]; then
-    usage
-elif [ -f ${1} ]; then
-    . ${1}
-else
-    echo "Missing mandatory configuration file!"
-    usage
-    exit 1
-fi
-
-if [ -n "${2}" ]; then
-    NEXUS_DATA_TAR="${2}"
-fi
-
-for VAR in NXS_SRC_DOCKER_IMG_DIR NXS_SRC_NPM_DIR NXS_SRC_PYPI_DIR NXS_DOCKER_IMG_LIST NXS_DOCKER_WO_LIST NXS_NPM_LIST NXS_PYPI_LIST NEXUS_DATA_TAR NEXUS_DATA_DIR NEXUS_IMAGE; do
-    if [ -n "${!VAR}" ] ; then
-        echo "${VAR} is set to ${!VAR}"
-    else
-        echo "${VAR} is not set and it is mandatory"
-        FAIL="1"
-    fi
-done
-
-if [ "${FAIL}" == "1" ]; then
-    echo "One or more mandatory variables are not set"
-    exit 1
-fi
-
-# Check the dependencies in the beginning
-
-# Install jq
-if yum list installed "jq" >/dev/null 2>&1; then
-    echo "jq is already installed"
-else
-    yum install -y --setopt=skip_missing_names_on_install=False http://dl.fedoraproject.org/pub/epel/7/x86_64/Packages/j/jq-1.5-1.el7.x86_64.rpm
-fi
-
-# Install curl if necessary
-if yum list installed "curl" >/dev/null 2>&1; then
-    echo "curl is already installed"
-else
-    yum install -y --setopt=skip_missing_names_on_install=False curl
-fi
-
-# Install expect if necessary
-if yum list installed "expect" >/dev/null 2>&1; then
-    echo "expect is already installed"
-else
-    yum install -y --setopt=skip_missing_names_on_install=False expect
-fi
-
-# Install Docker (docker-ce in version 17.03 for RHEL) from online repositories if no version installed
-if yum list installed "docker-ce" >/dev/null 2>&1 || which docker>/dev/null 2>&1; then
-    echo "Docker is already installed"
-else
-    curl https://releases.rancher.com/install-docker/17.03.sh | sh
-fi
-
-# Prepare the Nexus configuration
-NEXUS_CONFIG=$(echo "${NEXUS_CONFIG_GROOVY}" | jq -Rsc  '{"name":"configure", "type":"groovy", "content":.}')
-
 # Add simulated domain names to /etc/hosts
-cp /etc/hosts /etc/$(date +"%Y-%m-%d_%H-%M-%S")_hosts.bk
+HOSTS_BACKUP="$(eval ${TIMESTAMP}_hosts.bk)"
+cp /etc/hosts "/etc/${HOSTS_BACKUP}"
 for DNS in ${SIMUL_HOSTS}; do
     echo "127.0.0.1 ${DNS}" >> /etc/hosts
 done
 
 # Backup the current docker registry settings
-if [ -f /root/.docker/config.json ]; then
-    mv /root/.docker/config.json /root/.docker/$(date +"%Y-%m-%d_%H-%M-%S")config.json.bk
+if [ -f ~/.docker/config.json ]; then
+    DOCKER_CONF_BACKUP="$(eval ${TIMESTAMP}_config.json.bk)"
+    mv ~/.docker/config.json "~/.docker/${DOCKER_CONF_BACKUP}"
 fi
 
 #################################
 # Docker repository preparation #
 #################################
 
+# Load predefined Nexus image
+docker load -i ${NEXUS_IMAGE_TAR}
+
 # Load all necessary images
-for ARCHIVE in $(sed $'s/\r// ; s/\:/\_/g ; s/\//\_/g ; s/$/\.tar/g' ${NXS_DOCKER_IMG_LIST} | awk '{ print $1 }'); do
-    docker load -i ${NXS_SRC_DOCKER_IMG_DIR}/${ARCHIVE}
+for ARCHIVE in $(sed $'s/\r// ; /^#/d ; s/\:/\_/g ; s/\//\_/g ; s/$/\.tar/g' ${NXS_DOCKER_IMG_LIST} | awk '{ print $1 }'); do
+   docker load -i ${NXS_SRC_DOCKER_IMG_DIR}/${ARCHIVE}
 done
-
-for ARCHIVE in $(sed $'s/\r// ; s/\:/\_/g ; s/\//\_/g ; s/$/\.tar/g' ${NXS_DOCKER_WO_LIST} | awk '{ print $1 }'); do
-    docker load -i ${NXS_SRC_DOCKER_IMG_DIR}/${ARCHIVE}
-done
-
-# Tag docker images from default repository to simulated repository to be able to upload it to our private registry
-for IMAGE in $(sed $'s/\r//' ${NXS_DOCKER_WO_LIST} | awk '{ print $1 }'); do
-    docker tag ${IMAGE} ${DOCKER_REGISTRY}/${IMAGE}
-done
-
 
 ################################
 # Nexus repository preparation #
 ################################
 
-# Load predefined Nexus image
-docker load -i ${NEXUS_IMAGE}
-
 # Prepare nexus-data directory
 if [ -d ${NEXUS_DATA_DIR} ]; then
-    if [ "$(docker ps -q -f name=nexus)" ]; then
-        docker rm -f $(docker ps -aq -f name=nexus)
-    fi
-    cd ${NEXUS_DATA_DIR}/..
-    mv ${NEXUS_DATA_DIR} $(date +"%Y-%m-%d_%H-%M-%S")_$(basename ${NEXUS_DATA_DIR})_bk
+   if [ "$(docker ps -q -f name="${NEXUS_DOMAIN}")" ]; then
+       echo "Removing container ${NEXUS_DOMAIN}"
+       docker rm -f $(docker ps -aq -f name="${NEXUS_DOMAIN}")
+   fi
+   pushd ${NEXUS_DATA_DIR}/..
+   NXS_BACKUP="$(eval ${TIMESTAMP})_$(basename ${NEXUS_DATA_DIR})_bk"
+   mv ${NEXUS_DATA_DIR} "${NXS_BACKUP}"
+   echo "${NEXUS_DATA_DIR} already exists - backing up to ${NXS_BACKUP}"
+   popd
 fi
 
 mkdir -p ${NEXUS_DATA_DIR}
@@ -231,24 +205,25 @@ chmod 777 ${NEXUS_DATA_DIR}
 docker images --no-trunc | grep sonatype/nexus3 | awk '{ print $1":"$2" "$3}' > ${NEXUS_DATA_DIR}/nexus.ver
 
 # Start the Nexus
-NEXUS_CONT_ID=$(docker run -d --rm -v ${NEXUS_DATA_DIR}:/nexus-data:rw --name nexus -p 8081:8081 -p 8082:8082 -p 80:8082 -p 10001:8082 sonatype/nexus3)
+NEXUS_CONT_ID=$(docker run -d --rm -v ${NEXUS_DATA_DIR}:/nexus-data:rw --name ${NEXUS_DOMAIN} ${PUBLISHED_PORTS} ${NEXUS_IMAGE})
 echo "Waiting for Nexus to fully start"
-until curl -su admin:admin123 http://${NEXUS_DOMAIN}:8081/service/metrics/healthcheck | grep '"healthy":true' > /dev/null ; do
+until curl -su ${NEXUS_USERNAME}:${NEXUS_PASSWORD} http://${NEXUS_DOMAIN}:${NEXUS_PORT}/service/metrics/healthcheck | grep '"healthy":true' > /dev/null ; do
     printf "."
     sleep 3
 done
 echo -e "\nNexus started"
 
 # Configure the nexus repository
-curl -X POST --header 'Content-Type: application/json' --data-binary "${NEXUS_CONFIG}" http://admin:admin123@${NEXUS_DOMAIN}:8081/service/rest/v1/script
-curl -X POST --header "Content-Type: text/plain" http://admin:admin123@${NEXUS_DOMAIN}:8081/service/rest/v1/script/configure/run
+curl -sX POST --header 'Content-Type: application/json' --data-binary "${NEXUS_CONFIG}" http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@${NEXUS_DOMAIN}:${NEXUS_PORT}/service/rest/v1/script
+curl -sX POST --header "Content-Type: text/plain" http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@${NEXUS_DOMAIN}:${NEXUS_PORT}/service/rest/v1/script/configure/run > /dev/null
 
 ###########################
 # Populate NPM repository #
 ###########################
 
 # Configure NPM registry to our Nexus repository
-npm config set registry ${NPM_REGISTRY}
+echo "Configure NPM registry to ${NPM_REGISTRY}"
+npm config set registry "${NPM_REGISTRY}"
 
 # Login to NPM registry
 /usr/bin/expect <<EOF
@@ -264,61 +239,86 @@ EOF
 
 # Patch problematic package
 pushd ${NXS_SRC_NPM_DIR}
-tar xvzf tsscmp-1.0.5.tgz
-rm -f tsscmp-1.0.5.tgz
-sed -i 's|\"registry\":\ \".*\"|\"registry\":\ \"'"${NPM_REGISTRY}"'\"|g' package/package.json
-tar -zcvf tsscmp-1.0.5.tgz package
-rm -rf package
+PATCHED_NPM="$(grep tsscmp ${NXS_NPM_LIST} | sed $'s/\r// ; s/\\@/\-/ ; s/$/\.tgz/')"
+if [[ ! -z "${PATCHED_NPM}" ]] && ! zgrep -aq "${NPM_REGISTRY}" "${PATCHED_NPM}" 2>/dev/null; then
+    tar xzf "${PATCHED_NPM}"
+    rm -f "${PATCHED_NPM}"
+    sed -i 's|\"registry\":\ \".*\"|\"registry\":\ \"'"${NPM_REGISTRY}"'\"|g' package/package.json
+    tar -zcf "${PATCHED_NPM}" package
+    rm -rf package
+fi
 
 # Push NPM packages to Nexus repository
-for ARCHIVE in $(sed $'s/\r// ; s/\\@/\-/g ; s/$/\.tgz/g' ${NXS_NPM_LIST} | awk '{ print $1 }'); do
-    npm publish --access public ${ARCHIVE}
+for ARCHIVE in $(sed $'s/\r// ; s/\\@/\-/g ; s/$/\.tgz/g' ${NXS_NPM_LIST});do
+   npm publish --access public ${ARCHIVE} > /dev/null
+   echo "NPM ${ARCHIVE} pushed to Nexus"
 done
 popd
 
-##############################
-#  Populate PyPi repository  #
-##############################
+###############################
+##  Populate PyPi repository  #
+###############################
 
 pushd ${NXS_SRC_PYPI_DIR}
 for PACKAGE in $(sed $'s/\r//; s/==/-/' ${NXS_PYPI_LIST}); do
-    twine upload -u ${NEXUS_USERNAME} -p ${NEXUS_PASSWORD} --repository-url ${PYPI_REGISTRY} ./${PACKAGE}*
+   twine upload -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" --repository-url ${PYPI_REGISTRY} ${PACKAGE}*
+   echo "PYPI ${PACKAGE} pushed to Nexus"
 done
 popd
 
-##############################
-# Populate Docker repository #
-##############################
+###############################
+## Populate Docker repository #
+###############################
 
-for REGISTRY in $(sed 's/\/.*//' ${NXS_DOCKER_IMG_LIST} | uniq) ${NEXUS_DOMAIN}:8082; do
-    docker login -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" ${REGISTRY} > /dev/null
+# Login to simulated docker registries
+for REGISTRY in $(sed -n '/\.[^/].*\//p' ${NXS_DOCKER_IMG_LIST} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY}) ${DOCKER_REGISTRY}; do
+   echo "Docker login to ${REGISTRY}"
+   docker login -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" ${REGISTRY} > /dev/null
 done
 
-for IMAGE in $(sed $'s/\r//' ${NXS_DOCKER_WO_LIST} | awk '{ print $1 }'); do
-    docker push ${DOCKER_REGISTRY}/${IMAGE}
-done
-
-for IMAGE in $(sed $'s/\r//' ${NXS_DOCKER_IMG_LIST} | awk '{ print $1 }'); do
-    docker push ${IMAGE}
+# Push images to private nexus based on the list
+# Images from default registry need to be tagged to private registry
+# and those without defined repository in tag uses default repository 'library'
+for IMAGE in $(sed $'s/\r// ; /^#/d' ${NXS_DOCKER_IMG_LIST} | awk '{ print $1 }'); do
+    PUSH=""
+    if [[ ${IMAGE} != *"/"* ]]; then
+        PUSH="${DOCKER_REGISTRY}/library/${IMAGE}"
+    elif [[ ${IMAGE} == *"${DEFAULT_REGISTRY}"* ]]; then
+	if [[ ${IMAGE} == *"/"*"/"* ]]; then
+            PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'/' <<< ${IMAGE})"
+        else
+            PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'\/library/' <<< ${IMAGE})"
+        fi
+    elif [[ -z $(sed -n '/\.[^/].*\//p' <<< ${IMAGE}) ]]; then
+        PUSH="${DOCKER_REGISTRY}/${IMAGE}"
+    fi
+    if [[ ! -z ${PUSH} ]]; then
+        docker tag ${IMAGE} ${PUSH}
+    else
+        PUSH="${IMAGE}"
+    fi
+    docker push ${PUSH}
+    echo "${IMAGE} pushed as ${PUSH} to Nexus"
 done
 
 ##############################
 # Stop the Nexus and cleanup #
 ##############################
 
+echo "Stopping Nexus and returning backups"
+
 # Stop the Nexus
-docker stop ${NEXUS_CONT_ID}
+docker stop ${NEXUS_CONT_ID} > /dev/null
 
-# Create the nexus-data package
-cd ${NEXUS_DATA_DIR}/..
-echo "Packing the ${NEXUS_DATA_DIR} dir"
-until tar -cf ${NEXUS_DATA_TAR} $(basename ${NEXUS_DATA_DIR}); do
-    printf "."
-    sleep 5
-done
-echo "${NEXUS_DATA_TAR} has been created"
+# Return backed up configuration files
+mv -f "${HOSTS_BACKUP}" /etc/hosts
 
-# Return the previous version of /etc/hosts back to its place
-mv -f $(ls -tr /etc/*hosts.bk | tail -1) /etc/hosts
+if [ -f "~/.docker/${DOCKER_CONF_BACKUP}" ]; then
+    mv -f "${DOCKER_CONF_BACKUP}" ~/.docker/config.json
+fi
 
+# Return default settings
+npm config set registry "https://registry.npmjs.org"
+
+echo "Nexus blob is built"
 exit 0
