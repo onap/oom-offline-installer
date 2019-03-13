@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "39d36df8_5c08ed4e",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-13T12:14:24Z",
+      "side": 1,
+      "message": "okey, I think it should be outside of the script, from the perspective of this script it makes sense only if input is given in one specific format. Plus there might be plenty of tags  At least it would be nice to comment is \"For Legacy reasons bla bla bla\". It is hard to do it in clean way. also extracting app.. what if tag will be given as \"latest\" \"stabel\"",
+      "parentUuid": "0f51cd02_eb87b259",
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c12b561b_7a4982fe",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 5
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "Dunno what you mean. Tag is mandatory, the output is optional.",
       "parentUuid": "c12b561b_7a4982fe",
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1f42cf8_bcbd283a",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-13T12:14:24Z",
+      "side": 1,
+      "message": "imagine this \"if\" with {2} given. where does it end up?",
+      "parentUuid": "3abf0299_989576de",
       "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
