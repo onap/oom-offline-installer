@@ -3,11 +3,12 @@
   hosts: infrastructure, kubernetes
   roles:
     - package-repository
-    - role: firewall
+    - firewall
 
 - name: Setup infrastructure servers
   hosts: infrastructure
   roles:
+    - package-repository-check
     - certificates
     - docker
     - dns
@@ -18,6 +19,7 @@
 - name: Setup base for Kubernetes nodes
   hosts: kubernetes
   roles:
+    - package-repository-check
     - docker
   tasks:
     - import_tasks: roles/certificates/tasks/upload_root_ca.yml

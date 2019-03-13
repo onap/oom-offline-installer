@@ -1,0 +1,28 @@
+---
+# Purpose of this role is to check whether configured repositories are working.
+#
+# Successfull prior invocation of 'package-repository' role on 'infrastructure' hosts
+# is prerequisite for playing this one on 'infrastructure' group.
+#
+# Successfull prior invocation of 'package-repository' and 'nginx' role on infrastructure hosts
+# is prerequisite for playing this one on 'kubernetes' group.
+
+#Set of tasks designated to failing fast if configured repos are not functioning properly
+- name: verify
+  block:
+    # Clean cache prior to refreshing
+    - name: Clean yum cache
+      command: yum clean all
+      args:
+        warn: false
+    # Refresh cache to ensure repo is reachable
+    - name: Update yum cache
+      yum:
+        update_cache: yes
+        state: latest
+  rescue:
+    - name: Fail if yum cache updating failed
+      fail:
+        msg: "Couldn't refresh yum cache, repositories not configured properly. Check ansible logs for details."
+  become: true
+
