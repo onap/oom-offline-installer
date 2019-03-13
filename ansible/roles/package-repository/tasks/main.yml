@@ -45,3 +45,16 @@
     state: "{{ item.state | default('present') }}"
   loop: "{{ package_repositories }}"
   become: true
+
+#Set of tasks designated to failing fast if configured repos are not functioning properly
+- name: verify
+  block:
+    - name: Update yum cache
+      yum:
+        update_cache: yes
+        state: latest
+  rescue:
+    - name: Fail if yum cache updating failed
+      fail:
+        msg: "Couldn't refresh yum cache, repositories not configured properly. Check ansible logs for details."
+  become: true
