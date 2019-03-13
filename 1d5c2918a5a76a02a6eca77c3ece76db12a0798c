@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21ec2572_703f5f30",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-13T10:40:00Z",
+      "side": 1,
+      "message": "I am not sure what is the reason for this sed:)",
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c12b561b_7a4982fe",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-13T10:40:00Z",
+      "side": 1,
+      "message": "no case with custom output",
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1a6e439_ed38c556",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-13T10:40:00Z",
+      "side": 1,
+      "message": "maybe it should be stated that it requires installed helm and working nexus on same host. here or in the comments or in documentation.",
+      "range": {
+        "startLine": 71,
+        "startChar": 1,
+        "endLine": 71,
+        "endChar": 12
+      },
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f181368_15c5d1cf",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-13T10:40:00Z",
+      "side": 1,
+      "message": "extra empty line?",
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
