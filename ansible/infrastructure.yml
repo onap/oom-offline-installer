@@ -3,12 +3,13 @@
   hosts: infrastructure, kubernetes
   roles:
     - package-repository
-    - role: firewall
+    - firewall
 
 - name: Setup infrastructure servers
   hosts: infrastructure
   roles:
     - chrony
+    - package-repository-check
     - certificates
     - docker
     - dns
@@ -20,6 +21,7 @@
   hosts: kubernetes
   roles:
     - chrony
+    - package-repository-check
     - docker
   tasks:
     - include_role:

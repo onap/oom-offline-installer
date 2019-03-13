@@ -1,0 +1,12 @@
+---
+# Purpose of this role is to check whether configured repositories are working.
+#
+# Successfull prior invocation of 'package-repository' role on 'infrastructure' hosts
+# is prerequisite for playing this one on 'infrastructure' group.
+#
+# Successfull prior invocation of 'package-repository' and 'nginx' role on infrastructure hosts
+# is prerequisite for playing this one on 'kubernetes' group.
+
+#Set of tasks designated to failing fast if configured repos are not functioning properly
+- include_tasks: "{{ ansible_os_family }}.yml"
+  when: ansible_os_family == 'RedHat'

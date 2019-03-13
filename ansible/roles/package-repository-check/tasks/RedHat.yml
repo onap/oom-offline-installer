@@ -1,0 +1,20 @@
+---
+- name: verify
+  block:
+    # Clean cache prior to refreshing
+    - name: Clean yum cache
+      command: yum clean all
+      args:
+        warn: false
+    # Refresh cache to ensure repo is reachable
+    - name: Update yum cache
+      yum:
+        update_cache: yes
+        state: latest
+      tags:
+        - skip_ansible_lint # Prevent '[403] Package installs should not use latest' ansible lint task rule
+  rescue:
+    - name: Fail if yum cache updating failed
+      fail:
+        msg: "Couldn't refresh yum cache, repositories not configured properly. Check ansible logs for details."
+  become: true
