@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "fab77d24_6737a5b5",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-13T13:27:05Z",
+      "side": 1,
+      "message": "Will add some comment for that",
+      "parentUuid": "39d36df8_5c08ed4e",
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c12b561b_7a4982fe",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 5
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "imagine this \"if\" with {2} given. where does it end up?",
       "parentUuid": "3abf0299_989576de",
+      "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f381d234_ebe335a6",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-13T13:27:05Z",
+      "side": 1,
+      "message": "I see, the 2nd condition should be inverted. My bad. Fixed in the next patch-set",
+      "parentUuid": "c1f42cf8_bcbd283a",
       "revId": "1d5c2918a5a76a02a6eca77c3ece76db12a0798c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
