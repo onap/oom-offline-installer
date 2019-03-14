@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf9b5315_bb53e642",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-14T10:49:24Z",
+      "side": 1,
+      "message": "Yes, I was thinking about it as well. Even if you\u0027d like to have the option to modify the enabled subsystems before the parsing.",
+      "parentUuid": "6eb594bf_5e6e1097",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49264200_697576ab",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-14T09:17:27Z",
       "side": 1,
       "message": "what is the reason helm is needed?\nWhy can\u0027t we just parse charts files with Python yaml module? \nThe whole script should be Python.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dddb5ddf_a1bb9982",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-14T10:49:24Z",
+      "side": 1,
+      "message": "Actually I haven\u0027t found the common pattern as the images are often entered in different way and not all of the images in the charts are used in the deployment. I thing there should be a way how to do that without the helm, but haven\u0027t found out how to do that yet. So I decided to use the helm to get the relevant list of the images in three different patterns only.",
+      "parentUuid": "49264200_697576ab",
       "range": {
         "startLine": 77,
         "startChar": 0,
