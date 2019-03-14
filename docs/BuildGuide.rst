@@ -62,7 +62,7 @@ Then it is necessary to clone all installer and build related repositories and p
 
     # prepare the onap build directory structure
     cd /tmp
-    git clone -b casablanca https://gerrit.onap.org/r/oom/offline-installer
+    git clone https://gerrit.onap.org/r/oom/offline-installer onap-offline
     cd onap-offline
 
 Part 2. Download artifacts for offline installer
