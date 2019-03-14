@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6eb594bf_5e6e1097",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-14T09:17:27Z",
+      "side": 1,
+      "message": "the used Charts source does not belong inside this script. I would like to run the script for any local dir on my machine having some charts.",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49264200_697576ab",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-14T09:17:27Z",
+      "side": 1,
+      "message": "what is the reason helm is needed?\nWhy can\u0027t we just parse charts files with Python yaml module? \nThe whole script should be Python.",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6f144bf3_6efa82c8",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-14T09:17:27Z",
+      "side": 1,
+      "message": "describe what format of line this script will produce into final file.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 45
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab3617f7_c75c5fba",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-14T09:17:27Z",
+      "side": 1,
+      "message": "if Helm is really needed, it should be told why.",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
