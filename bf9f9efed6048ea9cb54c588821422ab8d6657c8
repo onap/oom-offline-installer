@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc8afe3d_bd313c64",
+        "filename": "build/package.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-15T07:15:21Z",
+      "side": 1,
+      "message": "wasn\u0027t it the whole idea to skip copy step if the files are already there? Now script either crashes or removes directory. Maybe insted of --force it would be better to use flag \"--skip-copy-if-possible\".",
+      "revId": "bf9f9efed6048ea9cb54c588821422ab8d6657c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
