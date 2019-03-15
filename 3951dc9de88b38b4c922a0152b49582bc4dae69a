@@ -192,6 +192,30 @@
     },
     {
       "key": {
+        "uuid": "0a54b41e_dcf53ab6",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-15T13:18:04Z",
+      "side": 1,
+      "message": "you are right it is there, at least for onap. I think it would be better not to use helm I just do not see the point for Tomas to struggle with it now using bash.",
+      "parentUuid": "e348f6fc_5045850e",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f144bf3_6efa82c8",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
