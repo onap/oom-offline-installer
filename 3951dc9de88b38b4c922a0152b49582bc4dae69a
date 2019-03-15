@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "2a1b9a1e_c2940305",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-15T12:18:42Z",
+      "side": 1,
+      "message": "If I understand the Tomeses problem is: one component provides image as value \"readinessImage\" the other as \"image\". Also if you want to prepare package with not all components enabled. How would you see that solved only using only files? Exuse me if I do not understand everything fully I am quite new in here:)",
+      "parentUuid": "89988e3f_5e8fd637",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f144bf3_6efa82c8",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
