@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d8a99f0e_5a65cb2c",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-03-15T09:50:23Z",
+      "side": 1,
+      "message": "I agree with Tomas, one can spend a lot of time reproducing helms logic (for estetic reasons) and in the end if helms changes it will impact this script.",
+      "parentUuid": "dddb5ddf_a1bb9982",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f144bf3_6efa82c8",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
