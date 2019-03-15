@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "89988e3f_5e8fd637",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-15T11:17:12Z",
+      "side": 1,
+      "message": "I don\u0027t understand the problem and trying to ask why Helm is needed?\nYou mean Helm charts format/structure changes and this script would need to change as image info parsed differently?\nAnd if Helm changes, is it then guaranteed that below \"helm template\" command output does _not_ ever change?\n\nAnd why we would need to reproduce helm logic? Is it so that I cannot find image version from Helm chart files, but I need to setup helm and apply given charts and ask from helm.",
+      "parentUuid": "d8a99f0e_5a65cb2c",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f144bf3_6efa82c8",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
