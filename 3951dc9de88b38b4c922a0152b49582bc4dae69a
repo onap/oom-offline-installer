@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "e348f6fc_5045850e",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-15T12:27:07Z",
+      "side": 1,
+      "message": "no problem, I don\u0027t understand either:)\nAnd one of the comments was that if this script is installing and using helm, it should be explained why.\n\nThis enabled thing, isn\u0027t that already handled on line 55 of this script i.e. plain files reading no Helm needed?",
+      "parentUuid": "2a1b9a1e_c2940305",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f144bf3_6efa82c8",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
