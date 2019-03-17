@@ -1,23 +1,19 @@
 ---
-- name: Install binaries for controlling deployment
-  hosts: infrastructure
-  roles:
-    - kubectl
-    - helm
-
 - name: Deploy rancher server and create k8s env
   hosts: infrastructure
   roles:
-    - rancher
-  vars:
-     rancher_role: server
+    - role: rancher
+      vars:
+        rancher_role: server
+    - kubectl
+    - helm
 
 - name: Deploy rancher agents
   hosts: kubernetes
   roles:
-    - rancher
-  vars:
-     rancher_role: agent
+    - role: rancher
+      vars:
+        rancher_role: agent
 
 - name: Wait for Kubernetes environment to be healthy
   hosts: infrastructure
