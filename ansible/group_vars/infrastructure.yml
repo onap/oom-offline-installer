@@ -31,6 +31,5 @@ rancher_redeploy_k8s_env: yes
 populate_nexus: no
 kube_directory: /root/.kube
 kubectl_bin_dir: /usr/local/bin
-helm_bin_dir: /usr/local/bin
 helm_repository_name: local
 helm_repository_url: http://127.0.0.1:8879
