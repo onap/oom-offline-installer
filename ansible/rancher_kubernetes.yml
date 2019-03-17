@@ -1,31 +1,23 @@
 ---
-- name: Install binaries for controlling deployment
+- name: Install kube binaries and rancher server
   hosts: infrastructure
   roles:
     - kubectl
     - helm
+    - role: rancher
+      vars:
+        mode: server
 
-- name: Deploy rancher server and create k8s env
-  hosts: infrastructure
-  roles:
-    - rancher
-  vars:
-     rancher_role: server
-
-- name: Deploy rancher agents
+- name: Deploy rancher agents for kube nodes
   hosts: kubernetes
   roles:
-    - rancher
-  vars:
-     rancher_role: agent
+    - role: rancher
+      vars:
+        mode: agent
 
 - name: Wait for Kubernetes environment to be healthy
   hosts: infrastructure
-  tasks:
-  - name: Check cluster health
-    uri:
-      url: "{{ rancher_server_url }}/v2-beta/projects/{{ k8s_env_id }}"
-    register: env_info
-    retries: 30
-    delay: 15
-    until: "env_info.json.healthState == 'healthy'"
+  roles:
+    - role: rancher
+      vars:
+        mode: health
