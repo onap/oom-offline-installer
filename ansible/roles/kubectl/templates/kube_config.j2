@@ -4,7 +4,7 @@ clusters:
 - cluster:
     api-version: v1
     insecure-skip-tls-verify: true
-    server: "https://{{ ansible_host }}:8080/r/projects/{{ k8s_env_id }}/kubernetes:6443"
+    server: "{{ kube_server }}"
   name: "{{ app_name }}"
 contexts:
 - context:
