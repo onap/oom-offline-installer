@@ -1,2 +1,2 @@
 ---
-- include_tasks: "rancher_{{ rancher_role }}.yml"
+- include_tasks: "rancher_{{ mode }}.yml"
