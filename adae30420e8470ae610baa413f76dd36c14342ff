@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33d6e9d6_f7559f8a",
+        "filename": "ansible/rancher_kubernetes.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T12:18:35Z",
+      "side": 1,
+      "message": "this name is no longer matching, what about \"Install helm binary\"",
+      "revId": "adae30420e8470ae610baa413f76dd36c14342ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
