@@ -33,8 +33,15 @@ crash () {
 
 usage () {
     echo "Usage:"
-    echo "   ./$(basename $0) <project_name> <version>  <packaging_target_dir> [--conf <file>]"
-    echo "Example: ./$(basename $0) myproject 1.0.1 /tmp/package --conf ~/myproject.conf"
+    echo "   ./$(basename $0) <project_name> <version> <packaging_target_dir> [--conf <file>] [--force]"
+    echo ""
+    echo "Options:"
+    echo "   --force Remove packaging_target_dir if exists prior to script execution"
+    echo "   --conf  Custom configuration file path for script"
+    echo ""
+    echo "Example:"
+    echo "   ./$(basename $0) myproject 1.0.1 /tmp/package --conf ~/myproject.conf"
+    echo ""
     echo "packaging_target_dir will be created if does not exist. All tars will be produced into it."
 }
 
@@ -194,17 +201,20 @@ APPLICATION_FILES_IN_PACKAGE="ansible/application"
 HELM_CHARTS_DIR_IN_PACKAGE="${APPLICATION_FILES_IN_PACKAGE}/helm_charts"
 
 if [ "$#" -lt 3 ]; then
-    echo "Missing some mandatory parameter!"
+    echo "Missing some mandatory arguments!"
     usage
     exit 1
 fi
 
 CONF_FILE=""
+FORCE_REMOVE=0
 for arg in "$@"; do
   shift
   case "$arg" in
     -c|--conf)
         CONF_FILE="$1" ;;
+    --force)
+        FORCE_REMOVE=1 ;;
     *)
         set -- "$@" "$arg"
   esac
@@ -224,10 +234,17 @@ pushd ${LOCAL_PATH}
 # checking bash capability of parsing arrays
 whotest[0]='test' || (crash 3 "Arrays not supported in this version of bash.")
 
+# Prepare output directory for our packaging
+# Check target dir exists and is not empty
+if [ -d ${PACKAGING_TARGET_DIR} ] && [ "$(ls -A ${PACKAGING_TARGET_DIR})" ]; then
+    if [ ${FORCE_REMOVE} -eq 0 ]; then
+        crash 1 "Target directory not empty. Use --force to overwrite it."
+    else
+        rm -rf ${PACKAGING_TARGET_DIR}
+    fi
+fi
 
-# Prepare output directory for our packaging and create all tars
-
-rm -rf ${PACKAGING_TARGET_DIR}
+# Create all tars
 build_sw_artifacts
 create_sw_package
 create_resource_package
