@@ -468,6 +468,30 @@
       "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a8a7077_8b45882d",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-18T13:36:12Z",
+      "side": 1,
+      "message": "yes effort we are here after with these comments. And wanted those groundings to be explained here in the code as it\u0027s a quite exotic way to parse information in utility script. Even if how \"native\" it can be in the environment where helm is supposed to be used, it\u0027s not at all so native in this kind of script.\n\nAnd now when actually started to thinking the purpose of this script, wonder are we doing this completely wrong way now if trying to collect this list from helm charts?\n\nThere is some process in onap for artifacts versions:\nhttps://wiki.onap.org/display/DW/Independent+Versioning+and+Release+Process\n\nand manifests of version lists both for docker images:\nhttps://git.onap.org/integration/tree/version-manifest/src/main/resources/docker-manifest.csv\n\nand java artifacts:\nhttps://git.onap.org/integration/tree/version-manifest/src/main/resources/java-manifest.csv\n\nShould we base our downloading on those? At least we should have version to support those formats/urls.",
+      "parentUuid": "f07d8a25_743ffe52",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
