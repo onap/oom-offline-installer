@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "e4bacec7_db5c142e",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T12:01:40Z",
+      "side": 1,
+      "message": "This is experimental/first version of the script which should allow us to collect images versions from OOM using helm charts. We don\u0027t aim for \"ANY\" charts source as this was never tested outside of \"OOM\" but in theory it should work.\nI guess that helm charts localhost presence should be covered outside of this script and dir with helm charts can be obtained as parameter ? i.e. especially on offline deployments we can\u0027t simply pull oom from outside gerrit and this script is not downloading images just producing the list, which should work also in offline lab",
+      "parentUuid": "cf9b5315_bb53e642",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49264200_697576ab",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
@@ -216,6 +240,30 @@
     },
     {
       "key": {
+        "uuid": "10740daa_1470dd73",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T12:01:40Z",
+      "side": 1,
+      "message": "Using helm seems to be the only way for now, I also dislike this dependency but in fact is a nice trick how to reuse helm native parsing, I can understand how complex it could be if we don\u0027t use this native way and try to implement some python yaml parsing for helm charts instead.",
+      "parentUuid": "49264200_697576ab",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 41
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6f144bf3_6efa82c8",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
@@ -250,6 +298,30 @@
       "writtenOn": "2019-03-14T09:17:27Z",
       "side": 1,
       "message": "if Helm is really needed, it should be told why.",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ebdd848_5712b727",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T12:01:40Z",
+      "side": 1,
+      "message": "helm is more native tool for parsing helm charts, isn\u0027t it ?\nThe main thing as I understand it from earlier comments in this file is that helm is using it\u0027s own syntax within yaml and images are processed differently across onap sub-projects ... this will disappear once they are successfully inserted into local helm repo and can be more easily parsed. To me this looks like simpler approach and native way of parsing helm charts.",
+      "parentUuid": "ab3617f7_c75c5fba",
       "range": {
         "startLine": 87,
         "startChar": 4,
