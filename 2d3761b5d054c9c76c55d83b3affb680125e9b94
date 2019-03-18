@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0c7720af_22d2baa7",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-18T13:08:21Z",
+      "side": 1,
+      "message": "At this moment you did not initiliaze the ansible module which is done in main - and there it fails fast",
+      "parentUuid": "baa81a86_4cc88a1f",
+      "revId": "2d3761b5d054c9c76c55d83b3affb680125e9b94",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c7f05662_d257a8be",
         "filename": "ansible/roles/docker/tasks/main.yml",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-18T11:06:27Z",
       "side": 1,
       "message": "For me this comment is not sufficient, i\u0027d paste the link to the post on stackoverflow with explanation. Anyone not reading this review and trying to reuse this code will be wondering what\u0027s the reasoning for this space at the start of the string.",
+      "revId": "2d3761b5d054c9c76c55d83b3affb680125e9b94",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c6de0bc_69149745",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-18T13:08:21Z",
+      "side": 1,
+      "message": "I was thinking about it, but the link is quite long",
+      "parentUuid": "c7f05662_d257a8be",
       "revId": "2d3761b5d054c9c76c55d83b3affb680125e9b94",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
