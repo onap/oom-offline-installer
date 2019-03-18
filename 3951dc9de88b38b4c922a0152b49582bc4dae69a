@@ -492,6 +492,30 @@
       "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e0e646d_99b388c8",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-18T14:49:12Z",
+      "side": 1,
+      "message": "I agree with Samuli the way how it\u0027s done here is not pure, but as I said before, so far I haven\u0027t found any better way to get the relevant result (all images I want and no remainders).\nAd the process: It looks like the release process doesn\u0027t work at all. As you can see the manifest contains images we don\u0027t use in our deployments, the versions of those we use are about 3 patch versions behind our 3.0.1 list and there is about 60 images missing (about 30 related to rancher kubernetes).\nFrom my point of view the best would be if the image lists would come from OOM project or the OOM should be more focused to offline, as I doubt there would be any real online deployment (security reasons).",
+      "parentUuid": "1a8a7077_8b45882d",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
