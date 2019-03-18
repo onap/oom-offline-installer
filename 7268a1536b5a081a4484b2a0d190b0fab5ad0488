@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "15f8e768_f4bf2a9e",
+        "filename": "ansible/rancher_kubernetes.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-18T12:52:14Z",
+      "side": 1,
+      "message": "ok, naming can be changed.",
+      "parentUuid": "73634d84_653bb004",
+      "revId": "7268a1536b5a081a4484b2a0d190b0fab5ad0488",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b8961610_f5da41c5",
         "filename": "ansible/roles/rancher/defaults/main.yml",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-18T12:14:38Z",
       "side": 1,
       "message": "this is just hiding rancher version (previously more visible in groupvars) \nhttps://gerrit.onap.org/r/gitweb?p\u003doom/offline-installer.git;a\u003dblob;f\u003dansible/group_vars/infrastructure.yml;h\u003d9fd88f25065d287769d016169d9b05e72f8b49e0;hb\u003dHEAD#l28\n\nIt seems that this version will always be overwritten from group_vars, right ?",
+      "revId": "7268a1536b5a081a4484b2a0d190b0fab5ad0488",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc3b3819_e3360323",
+        "filename": "ansible/roles/rancher/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-18T12:52:14Z",
+      "side": 1,
+      "message": "please, don\u0027t use those gerrit links as they seems not working here.\n\nIt\u0027s not hiding, cause defaults has lowest precedence of all. And it\u0027s not removed from group_vars so group_vars will always win.",
+      "parentUuid": "b8961610_f5da41c5",
       "revId": "7268a1536b5a081a4484b2a0d190b0fab5ad0488",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
