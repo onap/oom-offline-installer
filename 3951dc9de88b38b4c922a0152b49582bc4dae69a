@@ -114,6 +114,30 @@
     },
     {
       "key": {
+        "uuid": "4030adc2_0b085fd9",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T13:03:54Z",
+      "side": 1,
+      "message": "yes, I think I agreed with this part already",
+      "parentUuid": "1a92a944_ac9ee261",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49264200_697576ab",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
@@ -411,6 +435,30 @@
       "side": 1,
       "message": "Helm is using yaml. \nPlease describe here what different conventions helm uses and how it unifies the end result. We sure can parse all the different conventions purely with yaml too. Then we see whihc one is simpler. It\u0027s really not simple if we need to use helm for this.",
       "parentUuid": "2ebdd848_5712b727",
+      "range": {
+        "startLine": 87,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 17
+      },
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f07d8a25_743ffe52",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T13:03:54Z",
+      "side": 1,
+      "message": "exact examples are visible in this comment\nhttps://jira.onap.org/browse/OOM-1622?focusedCommentId\u003d35132\u0026page\u003dcom.atlassian.jira.plugin.system.issuetabpanels%3Acomment-tabpanel#comment-35132\n\nTomas already spent some time in finding non-helm way and I really don\u0027t think it\u0027s worth for the effort. Furthermore, keeping native helm parsing looks also safer to maintain with regards of all possible changes in yaml charts.",
+      "parentUuid": "934490a7_be59ace2",
       "range": {
         "startLine": 87,
         "startChar": 4,
