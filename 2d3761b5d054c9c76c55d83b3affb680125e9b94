@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa81a86_4cc88a1f",
+        "filename": "ansible/library/json_mod.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-18T11:06:27Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to use fail_json attribute here directly on AnsibleModule  (AnsibleModule.fail_json) to fail fast instead of using it on class instance as far as in line 289?",
+      "revId": "2d3761b5d054c9c76c55d83b3affb680125e9b94",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7f05662_d257a8be",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-18T11:06:27Z",
+      "side": 1,
+      "message": "For me this comment is not sufficient, i\u0027d paste the link to the post on stackoverflow with explanation. Anyone not reading this review and trying to reuse this code will be wondering what\u0027s the reasoning for this space at the start of the string.",
+      "revId": "2d3761b5d054c9c76c55d83b3affb680125e9b94",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
