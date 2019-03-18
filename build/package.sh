@@ -31,6 +31,12 @@ crash () {
     exit "${exit_code}"
 }
 
+crash_arguments () {
+    echo "Missing some mandatory arguments!"
+    usage
+    exit 1
+}
+
 usage () {
     echo "Usage:"
     echo "   ./$(basename $0) <project_name> <version> <packaging_target_dir> [--conf <file>] [--force]"
@@ -200,16 +206,21 @@ APPLICATION_FILES_IN_PACKAGE="ansible/application"
 # adjusted accordingly.
 HELM_CHARTS_DIR_IN_PACKAGE="${APPLICATION_FILES_IN_PACKAGE}/helm_charts"
 
-if [ "$#" -lt 3 ]; then
-    echo "Missing some mandatory arguments!"
-    usage
-    exit 1
+if [ $# -eq 0 ]; then
+    crash_arguments
 fi
 
 CONF_FILE=""
 FORCE_REMOVE=0
+arg_ind=0
 for arg in "$@"; do
   shift
+  ((arg_ind+=1))
+  if [[ ${arg} =~ ^[-]{1,2}[a-zA-Z-]+$ && ${arg_ind} -lt 4 ]]; then
+      echo "Non-positional parameters should follow mandatory arguments!"
+      usage
+      exit 1
+  fi
   case "$arg" in
     -c|--conf)
         CONF_FILE="$1" ;;
@@ -217,6 +228,9 @@ for arg in "$@"; do
         FORCE_REMOVE=1 ;;
     *)
         set -- "$@" "$arg"
+        if [ "$#" -lt 3 ]; then
+	    crash_arguments
+        fi ;;
   esac
 done
 
