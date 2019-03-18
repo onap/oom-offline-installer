@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c8f4ae5_18b56d12",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T11:47:22Z",
+      "side": 1,
+      "message": "maybe it would be good to note also here (instead of those removed params some short node about expected preconditions for running this script i.e. after download phase is done and we have resources available in exactly this format .... )",
+      "revId": "6ccdb78f686aa9e0c1d4a20f00d764b0f70b3d1b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c0ab217_f01c8cf6",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T11:47:22Z",
+      "side": 1,
+      "message": "what is 3 and 4 ? I never saw that. Always using just standardized ones:\n0 - stdin\n1 - stdout\n2 - stderr",
+      "revId": "6ccdb78f686aa9e0c1d4a20f00d764b0f70b3d1b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd20d5e1_05b29018",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T11:47:22Z",
+      "side": 1,
+      "message": "by",
+      "range": {
+        "startLine": 202,
+        "startChar": 35,
+        "endLine": 202,
+        "endChar": 38
+      },
+      "revId": "6ccdb78f686aa9e0c1d4a20f00d764b0f70b3d1b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
