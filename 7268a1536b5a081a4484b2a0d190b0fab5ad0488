@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73634d84_653bb004",
+        "filename": "ansible/rancher_kubernetes.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T12:14:38Z",
+      "side": 1,
+      "message": "rancher_role doesn\u0027t looks fitting now, maybe we should rename this var to rancher_action: and use server_install agent_install and healthcheck ...",
+      "revId": "7268a1536b5a081a4484b2a0d190b0fab5ad0488",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8961610_f5da41c5",
+        "filename": "ansible/roles/rancher/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T12:14:38Z",
+      "side": 1,
+      "message": "this is just hiding rancher version (previously more visible in groupvars) \nhttps://gerrit.onap.org/r/gitweb?p\u003doom/offline-installer.git;a\u003dblob;f\u003dansible/group_vars/infrastructure.yml;h\u003d9fd88f25065d287769d016169d9b05e72f8b49e0;hb\u003dHEAD#l28\n\nIt seems that this version will always be overwritten from group_vars, right ?",
+      "revId": "7268a1536b5a081a4484b2a0d190b0fab5ad0488",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
