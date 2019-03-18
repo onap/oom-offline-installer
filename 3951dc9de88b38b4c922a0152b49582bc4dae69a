@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "019930ac_6292e7da",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-18T12:51:31Z",
+      "side": 1,
+      "message": "this will always match if 2nd param is filled, if 2nd param is not filled it will lead to \"else\" clause and exit 1.\n\nWe need to remove this \"!\" and redesign else clause",
+      "revId": "3951dc9de88b38b4c922a0152b49582bc4dae69a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eb594bf_5e6e1097",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 6
