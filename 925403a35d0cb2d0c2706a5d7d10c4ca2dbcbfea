@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8da40d7a_acc6521e",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T12:47:53Z",
+      "side": 1,
+      "message": "Typo breaking the link to the target",
+      "range": {
+        "startLine": 80,
+        "startChar": 19,
+        "endLine": 80,
+        "endChar": 27
+      },
+      "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
