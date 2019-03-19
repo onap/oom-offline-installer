@@ -5,8 +5,8 @@
      --upgrade
      --skip-refresh
 
-#A correct way to implement this would be using --wait option in helm init invocation.
-#However, it does not work due to https://github.com/helm/helm/issues/4031 (fixed in newer helm release)
+# A correct way to implement this would be using --wait option in helm init invocation.
+# However, it does not work due to https://github.com/helm/helm/issues/4031 (fixed in newer helm release)
 - name: "Wait for helm upgrade to finish"
   command: "{{ helm_bin_dir }}/helm version --tiller-connection-timeout 10"
   register: result
@@ -28,30 +28,20 @@
   poll: 0
 
 - name: Helm Add Repo
-  command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name }} {{ helm_repository_url }}"
+  command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name | mandatory }} {{ helm_repository_url | mandatory }}"
 
 - name: Build local helm repository
   make:
     chdir: "{{ app_helm_charts_infra_directory }}"
     target: "{{ item }}"
-  with_items: "{{ app_helm_build_targets }}"
+  loop: "{{ app_helm_build_targets }}"
   environment:
     PATH: "{{ helm_bin_dir }}:{{ ansible_env.PATH }}"
 
-- name: Register root certificate
-  slurp:
-    src: "{{ playbook_dir }}/certs/rootCA.crt"
-  register: root_cert
-  delegate_to: localhost
-
-# WA: this is required because deploy plugin dont process params properly
-- name: Create override file with global.cacert
-  copy:
-    dest: "{{ app_data_path}}/override.yaml"
-    content: |
-      global:
-        cacert: |
-          {{ root_cert['content'] | b64decode | indent( width=4, indentfirst=False) }}
+- name: Generate Helm application override file with custom role
+  include_role:
+    name: "{{ app_helm_override_role }}"
+  when: not app_skip_helm_override
 
 - name: Check for deploy plugin presence
   stat:
@@ -65,4 +55,4 @@
           {{ app_helm_release_name }}
           {{ helm_repository_name }}/{{ app_helm_chart_name }}
           --namespace {{ app_kubernetes_namespace }}
-          -f {{ app_data_path }}/override.yaml
+          {{ '' if app_skip_helm_override else '-f ' + app_helm_override_file }}
