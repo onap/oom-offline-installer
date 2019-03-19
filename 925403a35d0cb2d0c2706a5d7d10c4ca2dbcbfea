@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c63151e_c505487d",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T12:55:52Z",
+      "side": 1,
+      "message": "https://en.wikipedia.org/wiki/Integration_testing\nhttps://en.wikipedia.org/wiki/Unit_testing\n\nI already pointed it out in OOM-1703 - roles are ansible modules and testing modules is \u0027unit testing\u0027 not \u0027integration testing\u0027.",
+      "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f885dd_992e8eba",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T12:55:52Z",
+      "side": 1,
+      "message": "*sufficient\n*design",
+      "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5be686f3_cffb9b2f",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T12:55:52Z",
+      "side": 1,
+      "message": "*design",
+      "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8da40d7a_acc6521e",
         "filename": "docs/TestingGuide.rst",
         "patchSetId": 1
