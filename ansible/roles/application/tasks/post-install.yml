@@ -2,4 +2,4 @@
 - name: "Execute custome role {{ application_post_install_role }} if defined."
   include_tasks: custom_role.yml
   vars:
-    application_custom_role: "{{ application_post_install_role }}"
+    application_custom_role: "{{ application_post_install_role | default('') }}"
