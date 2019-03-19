@@ -16,6 +16,24 @@
       "revId": "e9fca5ef39ebdc51d4d0f1af175960fb51cd903e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7833c223_3d5ae7c8",
+        "filename": "ansible/roles/application/tasks/transfer-helm-charts.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-19T12:24:33Z",
+      "side": 0,
+      "message": "I did not saw that needed. All steps on nodes we anyway run as root (we do not use become anywere) and the localhost step in this block is reading directories from directory so root access should not be needed.",
+      "parentUuid": "a927827a_11162a4e",
+      "revId": "e9fca5ef39ebdc51d4d0f1af175960fb51cd903e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
