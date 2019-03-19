@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "608685da_98b3495a",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-19T13:14:12Z",
+      "side": 1,
+      "message": "Ok. I disagree.\nRoles are run with real ansible and against simulated hosts. In our playbook level testing we run complete playbooks. Testing is not white box like in unittesting and results are checked either indirectly by ansible failures or from actual results on nodes.\nIn unittest all \"real\" interfaces are mocked and failures can be simulated. In molecule testing we can also simulate some things as we control \"real\" nodes etc.\nTechnical setup (scope) for single role may look like unittesting though.",
+      "parentUuid": "1c63151e_c505487d",
+      "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "00f885dd_992e8eba",
         "filename": "docs/TestingGuide.rst",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9108c0e4_274d63bc",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-19T13:14:12Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "00f885dd_992e8eba",
+      "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5be686f3_cffb9b2f",
         "filename": "docs/TestingGuide.rst",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2019-03-19T12:55:52Z",
       "side": 1,
       "message": "*design",
+      "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b08dd47_1929339d",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-19T13:14:12Z",
+      "side": 1,
+      "message": "thanks",
+      "parentUuid": "5be686f3_cffb9b2f",
       "revId": "925403a35d0cb2d0c2706a5d7d10c4ca2dbcbfea",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
