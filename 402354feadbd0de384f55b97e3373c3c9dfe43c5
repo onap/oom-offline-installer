@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6da052db_5bb02a51",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "Should be only once, right?",
+      "range": {
+        "startLine": 16,
+        "startChar": 23,
+        "endLine": 16,
+        "endChar": 40
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3315248d_1f11984e",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "before merge / before it\u0027s merged ?",
+      "range": {
+        "startLine": 42,
+        "startChar": 72,
+        "endLine": 42,
+        "endChar": 85
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bacd36e8_db7e8db7",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "and ?",
+      "range": {
+        "startLine": 47,
+        "startChar": 70,
+        "endLine": 47,
+        "endChar": 74
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb8360c8_fb43fe73",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "Unify it in the document, please. Both is correct, but in one document I would expect one way from the options: \u0027to re-use | re-usable | re-used / to reuse | reusable | reused\u0027",
+      "range": {
+        "startLine": 48,
+        "startChar": 52,
+        "endLine": 48,
+        "endChar": 61
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a2b321c1_bf45ca01",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "The purpose",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 7
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b172222d_012e5edf",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "an ?",
+      "range": {
+        "startLine": 123,
+        "startChar": 34,
+        "endLine": 123,
+        "endChar": 37
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbff93fe_9c08587f",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "I\u0027d rather use too instead of some",
+      "range": {
+        "startLine": 151,
+        "startChar": 5,
+        "endLine": 151,
+        "endChar": 25
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c547210b_06daaab9",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "Is it necessary to keep it here if it\u0027s not done yet?",
+      "range": {
+        "startLine": 263,
+        "startChar": 0,
+        "endLine": 264,
+        "endChar": 7
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bca6c76_74c32a9d",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-19T14:27:07Z",
+      "side": 1,
+      "message": "till or until",
+      "range": {
+        "startLine": 281,
+        "startChar": 24,
+        "endLine": 281,
+        "endChar": 30
+      },
+      "revId": "402354feadbd0de384f55b97e3373c3c9dfe43c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
