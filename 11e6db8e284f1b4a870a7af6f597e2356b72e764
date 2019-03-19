@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1edfe174_170b574c",
+        "filename": "ansible/roles/rancher/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T14:16:14Z",
+      "side": 1,
+      "message": "Well, the matter of repeating vars declaration already discussed in gerrit.onap.org/r/c/82628/2/ansible/roles/application/defaults/main.yml",
+      "revId": "11e6db8e284f1b4a870a7af6f597e2356b72e764",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
