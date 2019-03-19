@@ -1,0 +1,24 @@
+---
+- name: Check if application Helm charts exist and install is even needed
+  block:
+    - name: "Does {{ app_helm_charts_install_directory }} directory exist and contain Helm Charts"
+      find:
+        paths: "{{ app_helm_charts_install_directory }}"
+        recurse: true
+      delegate_to: localhost
+      register: charts_files
+    - name: Set install active fact
+      set_fact:
+        install_needed: "{{ true if charts_files.matched | int > 0 else false }}"
+
+- name: Install app with Helm charts
+  block:
+    - include_tasks: transfer-helm-charts.yml
+    - include_tasks: pre-install.yml
+    - include_tasks: install.yml
+    - include_tasks: post-install.yml
+  when: install_needed
+
+- debug:
+    msg: "NOTE, nothing done as application Helm charts does not exist!"
+  when: not install_needed

@@ -90,9 +90,10 @@ runtime_images: {}
 # Application specific params #
 ###############################
 
-# App Helm charts directory location in installation package.
-# The path is absolute path (even locates relative inside of this sw package
-# installation folder) because it must be visible for ansible docker/chroot
+# App Helm charts directory location in installation package
+# (local path for the ansible process).
+# The path locates relative inside of this sw package
+# installation folder and must be visible for ansible docker/chroot
 # process to find directory and to transfer it into machine (infra node) running
 # Helm repository.
 # Content of the folder must be Helm chart directories of the app with Makefile.
@@ -100,7 +101,7 @@ runtime_images: {}
 # NOTE: This default value should not be changed if not really needed and it
 # must match with the variable "HELM_CHARTS_DIR_IN_PACKAGE" value in package.sh
 # script!
-app_helm_charts_install_directory: "/ansible/application/helm_charts"
+app_helm_charts_install_directory: application/helm_charts
 
 # Specify target dir where helm charts are copied into on infra node.
 # (same as content of "app_helm_charts_install_directory" copied by installer to this dir.)
