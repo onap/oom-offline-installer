@@ -38,14 +38,7 @@
       copy:
         src: "{{ item.path }}"
         dest: "{{ helm_home_dir.stdout }}/plugins"
-        directory_mode: yes
+        directory_mode: true
         mode: 0755
       with_items: "{{ list_of_plugins.files }}"
-  become: true
   when: app_helm_plugins_directory is defined and app_helm_plugins_directory is not none
-
-- name: "Execute custom role {{ application_pre_install_role }} if defined."
-  include_tasks: custom_role.yml
-  vars:
-    application_custom_role: "{{ application_pre_install_role }}"
-

@@ -1,0 +1,5 @@
+---
+- name: "Execute custom role {{ application_pre_install_role }} if defined."
+  include_tasks: custom_role.yml
+  vars:
+    application_custom_role: "{{ application_pre_install_role | default('') }}"

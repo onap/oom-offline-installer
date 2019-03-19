@@ -1,0 +1,16 @@
+---
+# Role for generating Helm override.yml file
+- name: Register root certificate
+  slurp:
+    src: "{{ playbook_dir }}/certs/rootCA.crt"
+  register: root_cert
+  delegate_to: localhost
+
+# WA: this is required because deploy plugin dont process params properly
+- name: Create override file with global.cacert
+  copy:
+    dest: "{{ app_helm_override_file }}"
+    content: |
+      global:
+        cacert: |
+          {{ root_cert['content'] | b64decode | indent( width=4, indentfirst=False) }}
