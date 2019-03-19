@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "8da75ea1_83f32f4a",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-19T14:03:45Z",
+      "side": 1,
+      "message": "yes, I know. Will think about this.",
+      "parentUuid": "9befdcd5_ddf43325",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffd262ba_c9ee3473",
         "filename": "ansible/roles/application/defaults/main.yml",
         "patchSetId": 2
@@ -125,6 +143,24 @@
     },
     {
       "key": {
+        "uuid": "8e67c720_e6fdbb59",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-19T14:03:45Z",
+      "side": 1,
+      "message": "app_skip_helm_override is skipping override completely, it should not set to true if one wants to provide one.\n\napp_helm_override_file is not template, it\u0027s just path and filename to the final file. That is not needed to be changed if user if fine with default path and default filename.\n\nonly thing is to change app_helm_override_role to own role that can be dead simple to provide own file (if static file) or generate the content with code like in our case we are doing.",
+      "parentUuid": "a65fcb1b_eb743bcb",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "493f6ac4_124da6f0",
         "filename": "ansible/roles/application/tasks/main.yml",
         "patchSetId": 2
@@ -172,6 +208,24 @@
       "side": 1,
       "message": "Did some hacking specially for you:)\n\ngit reset --soft e9fca5ef39ebdc51d4d0f1af175960fb51cd903e\ngit reset HEAD ansible/roles/application/tasks/main.yml ansible/roles/application-install/tasks/main.yml\ngit checkout ansible/roles/application-install/tasks/main.yml\ncp ansible/roles/application/tasks/main.yml /tmp/\ngit mv -f ansible/roles/application-install/tasks/main.yml ansible/roles/application/tasks/main.yml\ncp /tmp/main.yml ansible/roles/application/tasks/main.yml\ngit add ansible/roles/application/tasks/main.yml\ngit commit -a\n\nI bet there\u0027s a more git native way to achieve the same. We can commence some contest on this, MichalP will buy beer for the winner :\u003e",
       "parentUuid": "b60dbda2_c525983f",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f7a0192_be3cf491",
+        "filename": "ansible/roles/application/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-19T14:03:45Z",
+      "side": 1,
+      "message": "OMG, cool, thanks!",
+      "parentUuid": "655c9918_33c770d6",
       "revId": "524bb639542356fcd3907585c32db19b2874379c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
