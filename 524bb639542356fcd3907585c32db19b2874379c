@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "9befdcd5_ddf43325",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T13:43:35Z",
+      "side": 1,
+      "message": "The issue with defining vars in several places is it\u0027s error prone - chances are someone changing a var will either change it only in one place and what\u0027s even worse - in wrong place.\n\nIf reasoning for putting variables in goup_vars is documenting them then i think we should put them only here and in documentation, not group_vars. In my opinion a user seeks instructions in doc, not in code. At least as long as everything that is user adjustable is documented.\n\nI understand however your concern about group_vars visibility by caller. Can\u0027t it somehow use actual group_vars files? https://molecule.readthedocs.io/en/latest/configuration.html mentions symlinking as a possible way to include those (paragraph beginning with \"An alternative to the above is symlinking. Molecule creates (...)\".",
+      "parentUuid": "9e1ffac2_8ce7758f",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffd262ba_c9ee3473",
         "filename": "ansible/roles/application/defaults/main.yml",
         "patchSetId": 2
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "a65fcb1b_eb743bcb",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T13:43:35Z",
+      "side": 1,
+      "message": "What i called \u0027overengineering\u0027 in particular is the need to change as much as three vars in roles/application/defaults/main.yml in order to configure it: app_skip_helm_override to true, app_helm_override_role to some fancy role name, app_helm_override_file to the actual file template. \n\nIf done by just allowing user to provide own template only one var will  have to be setup + actual template.",
+      "parentUuid": "b429fedc_c9aaff16",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "493f6ac4_124da6f0",
         "filename": "ansible/roles/application/tasks/main.yml",
         "patchSetId": 2
@@ -118,6 +154,24 @@
       "side": 1,
       "message": "Ok I try, is it still possible with subsequent changeset?",
       "parentUuid": "493f6ac4_124da6f0",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "655c9918_33c770d6",
+        "filename": "ansible/roles/application/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T13:43:35Z",
+      "side": 1,
+      "message": "Did some hacking specially for you:)\n\ngit reset --soft e9fca5ef39ebdc51d4d0f1af175960fb51cd903e\ngit reset HEAD ansible/roles/application/tasks/main.yml ansible/roles/application-install/tasks/main.yml\ngit checkout ansible/roles/application-install/tasks/main.yml\ncp ansible/roles/application/tasks/main.yml /tmp/\ngit mv -f ansible/roles/application-install/tasks/main.yml ansible/roles/application/tasks/main.yml\ncp /tmp/main.yml ansible/roles/application/tasks/main.yml\ngit add ansible/roles/application/tasks/main.yml\ngit commit -a\n\nI bet there\u0027s a more git native way to achieve the same. We can commence some contest on this, MichalP will buy beer for the winner :\u003e",
+      "parentUuid": "b60dbda2_c525983f",
       "revId": "524bb639542356fcd3907585c32db19b2874379c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
