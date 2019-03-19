@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c53ab530_a00792d1",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T11:50:40Z",
+      "side": 1,
+      "message": "Almost all of these are defined with same values in ansible/groupvars/all.yml, what would be the reason to put them here?",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffd262ba_c9ee3473",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T11:50:40Z",
+      "side": 1,
+      "message": "Already commented the matter of custom override file in ansible/roles/application/tasks/install.yml. Use case where a custom override file would be needed would be better addressed by just possibility to define a custom override file IMHO.\n\nAnd BTW this functionality lacks documentation (should be documented in install guide) without which this patch is incomplete to me.",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8cf1edb_323b6a55",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T11:50:40Z",
+      "side": 1,
+      "message": "This is pure overengineering for me - if the only purpose of this change was to allow a user to specify custom override file for helm then let\u0027s keep it simple: allow user to define in application_configuration.yml a variable with path to custom override file and in the task below (\"Helm Install application {{ app_name }}\") perform a check like \"if user_defined_template_path var is defined then include it otherwise take default one\".",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493f6ac4_124da6f0",
+        "filename": "ansible/roles/application/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T11:50:40Z",
+      "side": 1,
+      "message": "Please \"git mv ansible/roles/application-install/tasks/main.yml ansible/roles/application/tasks/main.yml\", we\u0027re loosing history for this file after git rm \u003e git add and possibility to see real improvement in diff.",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
