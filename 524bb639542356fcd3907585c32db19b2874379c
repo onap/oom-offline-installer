@@ -229,6 +229,24 @@
       "revId": "524bb639542356fcd3907585c32db19b2874379c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae5dc99c_52e0043e",
+        "filename": "ansible/roles/application/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-19T14:08:07Z",
+      "side": 1,
+      "message": "16€ or beer",
+      "parentUuid": "4f7a0192_be3cf491",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
