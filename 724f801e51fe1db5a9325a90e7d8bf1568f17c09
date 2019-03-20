@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3156920_9c29bcb0",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5169
+      },
+      "writtenOn": "2019-03-20T12:36:52Z",
+      "side": 1,
+      "message": "Is their really a need to load these images in again if they have previously been pulled down and are in local repository?",
+      "revId": "724f801e51fe1db5a9325a90e7d8bf1568f17c09",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
