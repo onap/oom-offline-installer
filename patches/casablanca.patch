@@ -259,7 +259,7 @@ index 6564e798..53c8b600 100644
          imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
          name: {{ include "common.name" . }}-readiness
 +{{ include "common.update-system-ca-store-ubuntu" . | indent 6 }}
-+{{ include "policy.update-policy-keystore" . | indent 6 }}
++{{ include "policy.update-policy-truststore" . | indent 6 }}
        containers:
          - name: {{ include "common.name" . }}
            image: "{{ include "common.repository" . }}/{{ .Values.image }}"
@@ -269,7 +269,7 @@ index 6564e798..53c8b600 100644
            volumeMounts:
 +{{ include "common.cacert-mount-ubuntu" . | indent 10 }}
 +{{ include "common.system-ca-store-mount-ubuntu" . | indent 10 }}
-+{{ include "policy.keystore-mount" . | indent 10 }}
++{{ include "policy.truststore-mount" . | indent 10 }}
            - mountPath: /etc/localtime
              name: localtime
              readOnly: true
@@ -279,7 +279,7 @@ index 6564e798..53c8b600 100644
        volumes:
 +{{ include "common.cacert-volume" . | indent 8 }}
 +{{ include "common.system-ca-store-volume" . | indent 8 }}
-+{{ include "policy.keystore-storage-volume" . | indent 8 }}
++{{ include "policy.truststore-storage-volume" . | indent 8 }}
          - name: localtime
            hostPath:
              path: /etc/localtime
@@ -337,46 +337,46 @@ index 00000000..81ba09bc
 +#
 +#   COPYRIGHT NOTICE ENDS HERE
 +
-+#This template creates a volume for storing policy-keystore with imported ca.
++#This template creates a volume for storing policy-truststore with imported ca.
 +#It is ignored if cacert was not given.
-+{{- define "policy.keystore-storage-volume" }}
++{{- define "policy.truststore-storage-volume" }}
 +{{- if .Values.global.cacert }}
-+- name: keystore-storage
++- name: truststore-storage
 +  emptyDir:
 +{{- end }}
 +{{- end }}
 +
-+#This template mounts policy-keystore in appropriate place for policy components to take it.
++#This template mounts policy-truststore in appropriate place for policy components to take it.
 +#It is ignored if cacert is not given.
-+{{- define "policy.keystore-mount" }}
++{{- define "policy.truststore-mount" }}
 +{{- if .Values.global.cacert }}
-+- mountPath: "/tmp/policy-install/config/policy-keystore"
-+  name: keystore-storage
-+  subPath: policy-keystore
++- mountPath: "/tmp/policy-install/config/policy-truststore"
++  name: truststore-storage
++  subPath: policy-truststore
 +{{- end }}
 +{{- end }}
 +
-+#This will extract a policy keystore and then import
++#This will extract a policy truststore and then import
 +#the root cacert of offline nexus into it.
-+#This template expects a volume named keystore-storage where policy-keystore will be put.
++#This template expects a volume named truststore-storage where policy-truststore will be put.
 +#It also expects volume named cacert where the file "certificate" will contain the cert to import.
 +#Template is ignored if ca certificate not given.
-+{{- define "policy.update-policy-keystore" }}
++{{- define "policy.update-policy-truststore" }}
 +{{- if .Values.global.cacert }}
 +- command:
 +  - "/bin/bash"
 +  - "-c"
 +  - |
 +      set -e
-+      tar -xzf base-*.tar.gz etc/ssl/policy-keystore
-+      cp etc/ssl/policy-keystore keystore-storage/
-+      keytool -import -keystore keystore-storage/policy-keystore -storepass "Pol1cy_0nap" -noprompt -file /usr/local/share/ca-certificates/cacert.crt
-+  name: update-policy-keystore
++      tar -xzf base-*.tar.gz etc/ssl/policy-truststore
++      cp etc/ssl/policy-truststore truststore-storage/
++      keytool -import -keystore truststore-storage/policy-truststore -storepass "Pol1cy_0nap" -noprompt -file /usr/local/share/ca-certificates/cacert.crt
++  name: update-policy-truststore
 +  imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
 +  image: {{ include "common.repository" . }}/{{ .Values.image }}
 +  volumeMounts:
-+  - mountPath: "/tmp/policy-install/keystore-storage"
-+    name: keystore-storage
++  - mountPath: "/tmp/policy-install/truststore-storage"
++    name: truststore-storage
 +{{ include "common.cacert-mount-ubuntu" . | indent 2 }}
 +{{- end }}
 +{{- end }}
