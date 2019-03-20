@@ -16,6 +16,24 @@
       "revId": "724f801e51fe1db5a9325a90e7d8bf1568f17c09",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20e949fb_05bc3e80",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-20T13:13:04Z",
+      "side": 1,
+      "message": "It depends where the step is done. The fact is that the current process need to be revisited and to have an option to not save all images to tarballs in download step and then load it from tarballs in the following step. I just didn\u0027t want to mix it with the simplification of the nexus build itself",
+      "parentUuid": "c3156920_9c29bcb0",
+      "revId": "724f801e51fe1db5a9325a90e7d8bf1568f17c09",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
