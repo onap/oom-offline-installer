@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d3ca5f9_48faf9e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-20T08:06:29Z",
+      "side": 1,
+      "message": "Kindly please add short description/reasoning for the patch in a separate paragraph. See other commits in this repo for reference. Thank you.",
+      "revId": "dd3a9adc78712a9b43651b80818834f433019b44",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
