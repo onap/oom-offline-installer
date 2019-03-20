@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "881ddb04_e5187be4",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-20T09:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f15a69ea_3af9ab1e",
+      "revId": "f7a3335ba82e6f3177df678dfe52e68ced501f83",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "19f103f7_18c01cc2",
         "filename": "build/build_nexus_blob.sh",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2019-03-19T15:02:38Z",
       "side": 1,
       "message": "To me \"[ -z \"${1}\" ]\" reduces it\u0027s logic to \"[ $# -eq 0 ]\". You rather won\u0027t have non empty $2 and empty $1.",
+      "revId": "f7a3335ba82e6f3177df678dfe52e68ced501f83",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a56fc7_8b770a90",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-20T09:12:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19f103f7_18c01cc2",
       "revId": "f7a3335ba82e6f3177df678dfe52e68ced501f83",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
