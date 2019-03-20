@@ -25,6 +25,5 @@
     user: root
     state: present
     key: "{{ lookup('file', public_key) }}"
-  become: true
   vars:
     public_key: "{{ ssh_dir }}/{{ offline_ssh_key_file_name }}.pub"
