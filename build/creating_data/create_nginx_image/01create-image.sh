@@ -18,7 +18,8 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-
+DOCKER_IMAGE_LIST=$1
 script_dir="$(dirname ${BASH_SOURCE[0]})"
 cd "$script_dir"
 docker build -t own_nginx .
+echo "own_nginx:latest" >> $DOCKER_IMAGE_LIST

@@ -64,3 +64,5 @@ while read -r image; do
     line=$((line+1))
 
 done < "${LIST}"
+
+sed -i '/own_nginx/d' "${LIST}"
