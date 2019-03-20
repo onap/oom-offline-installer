@@ -104,6 +104,24 @@
       "revId": "724f801e51fe1db5a9325a90e7d8bf1568f17c09",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57909b1a_9eb83b9d",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 5169
+      },
+      "writtenOn": "2019-03-20T15:01:34Z",
+      "side": 1,
+      "message": "That\u0027s fair enough.",
+      "parentUuid": "20e949fb_05bc3e80",
+      "revId": "724f801e51fe1db5a9325a90e7d8bf1568f17c09",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
