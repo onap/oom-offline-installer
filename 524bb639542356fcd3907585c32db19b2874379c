@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "a7806639_09b20899",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-20T08:11:48Z",
+      "side": 1,
+      "message": "Ok for now I removed all duplication. Thanks for pushing.\n\nTrying to divide variables in the way only meaningful for users are in group_vars and technical variables in role defaults. \n\nAnd btw unfortunately molecule\u0027s linking to group_vars doe not work for us as we have many mandatory variables in group_vars without value and molecule cannot combine group_vars from link and group_vars given directly in molecule.yml (they are mutually exclusive).",
+      "parentUuid": "8da75ea1_83f32f4a",
+      "revId": "524bb639542356fcd3907585c32db19b2874379c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ffd262ba_c9ee3473",
         "filename": "ansible/roles/application/defaults/main.yml",
         "patchSetId": 2
