@@ -59,14 +59,12 @@ echo "[Step $((CURR++))/$TOTAL Download docker images for infra-server]"
 $CTOOLS/download-docker-images.sh "${LISTS_DIR}/infra_docker_images.list"
 
 echo "[Step $((CURR++))/$TOTAL Build own nginx image]"
-$CTOOLS/create_nginx_image/01create-image.sh
+$CTOOLS/create_nginx_image/01create-image.sh "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Save docker images from docker cache to tarfiles]"
 $CTOOLS/save-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list" "${DATA_DIR}/offline_data/docker_images_for_nexus"
 
 echo "[Step $((CURR++))/$TOTAL Prepare infra related images to infra folder]"
-mkdir -p "${DATA_DIR}/offline_data/docker_images_infra"
-mv "${DATA_DIR}/offline_data/docker_images_for_nexus/own_nginx_latest.tar" "${DATA_DIR}/offline_data/docker_images_infra"
 $CTOOLS/save-docker-images.sh "${LISTS_DIR}/infra_docker_images.list" "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Download git repos]"

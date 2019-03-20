@@ -18,7 +18,13 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
+IMG_DIR="${1}"
+
+if [[ ! -e $IMG_DIR ]]; then
+    mkdir -p "${IMG_DIR}"
+fi
 
 script_dir="$(dirname ${BASH_SOURCE[0]})"
 cd "$script_dir"
 docker build -t own_nginx .
+docker -l error save -o "$IMG_DIR/own_nginx_latest.tar" "own_nginx:latest"
