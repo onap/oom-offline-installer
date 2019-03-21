@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ebb008f4_92af8613",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T13:38:08Z",
+      "side": 1,
+      "message": "ansible-lint is complaining with [301] Commands should not change things if nothing needs doing if changed_when is not set for all command tasks, so it\u0027s just an syntax sugar",
+      "parentUuid": "17513187_6789790c",
+      "range": {
+        "startLine": 7,
+        "startChar": 16,
+        "endLine": 7,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31319471_82ba9588",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-03-21T13:09:09Z",
       "side": 1,
       "message": "why true explicitly?",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2c55530f_bcea61cc",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T13:38:08Z",
+      "side": 1,
+      "message": "if stable repo is not there task is skipped, so it\u0027s correct",
+      "parentUuid": "31319471_82ba9588",
       "range": {
         "startLine": 26,
         "startChar": 16,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "81e6b16d_436bf4b9",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T13:38:08Z",
+      "side": 1,
+      "message": "good catch, will fix",
+      "parentUuid": "26cf2370_4b88d2af",
+      "range": {
+        "startLine": 30,
+        "startChar": 11,
+        "endLine": 30,
+        "endChar": 24
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7c28430_e1ce2a15",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2019-03-21T13:09:09Z",
       "side": 1,
       "message": "why true explicitly?",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "187c453e_19d07c7c",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T13:38:08Z",
+      "side": 1,
+      "message": "same as before, otherwise it\u0027s skipped",
+      "parentUuid": "c7c28430_e1ce2a15",
       "range": {
         "startLine": 47,
         "startChar": 16,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "68fa7698_e87910db",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T13:38:08Z",
+      "side": 1,
+      "message": "syntax sugar to pass ansible-lint",
+      "parentUuid": "82fe05ca_4aedf063",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e796087c_8ad3bfe2",
         "filename": "ansible/roles/certificates/handlers/main.yml",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2019-03-21T13:09:09Z",
       "side": 1,
       "message": "explicit?",
+      "range": {
+        "startLine": 4,
+        "startChar": 16,
+        "endLine": 4,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ec3ef04_ff3949cb",
+        "filename": "ansible/roles/certificates/handlers/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T13:38:08Z",
+      "side": 1,
+      "message": "syntax sugar again, E301 from https://docs.ansible.com/ansible-lint/rules/default_rules.html",
+      "parentUuid": "e796087c_8ad3bfe2",
       "range": {
         "startLine": 4,
         "startChar": 16,

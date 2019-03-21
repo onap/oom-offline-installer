@@ -22,6 +22,30 @@
       "revId": "dbc6a7202dc89264a2857e12c625fb2328584a1e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff0af276_f41f2fae",
+        "filename": "ansible/roles/application-install/tasks/custom_role.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T13:38:08Z",
+      "side": 0,
+      "message": "[602] Don\u0027t compare to empty string\nhttps://docs.ansible.com/ansible-lint/rules/default_rules.html",
+      "parentUuid": "0abee400_1eb641dd",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "dbc6a7202dc89264a2857e12c625fb2328584a1e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
