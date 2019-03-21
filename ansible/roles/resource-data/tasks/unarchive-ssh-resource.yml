@@ -29,7 +29,8 @@
       set_fact:
         tar_extract_options: "{{ '-xzf' if compressed.rc == 0 else '-xf' }}"
 
-    - name: "Unarchive resource {{ resources_dir }}/{{ resource_source_filename }} to {{ resource_destination_directory }} dir on infrastructure servers over ssh"
+    - name: "Unarchive resource {{ resources_dir }}/{{ resource_source_filename }} \
+             to {{ resource_destination_directory }} dir on infrastructure servers over ssh"
       shell: >
         ssh -o StrictHostKeyChecking=no -o BatchMode=yes
         -i /root/.ssh/infra_to_resource.privkey
