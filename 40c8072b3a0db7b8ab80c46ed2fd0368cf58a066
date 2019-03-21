@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "06074d17_c1b38ae4",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T14:25:36Z",
+      "side": 1,
+      "message": "in case stable repo exists, \"when\" condition is fulfilled which leads to this task execution (marked as changed due to changed_when\u003dtrue), if stable repo doesn\u0027t exists task is skipped (not changed), so what is wrong ?",
+      "parentUuid": "6c11fb5b_c0a325ee",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26cf2370_4b88d2af",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 1
@@ -297,6 +321,30 @@
       "side": 1,
       "message": "ou, now I get it. Usually I have fixed the idempotency in this case or set change_when to false. But setting it to true was so weir.\n\nAs a comment to this whole file, in current form we cannot make it idempotent and I need to skip idepompotence totally in molecule for this.\nShould be checked separately if we can do something about it. Ansible has Helm module but I read that it\u0027s beta state...",
       "parentUuid": "68fa7698_e87910db",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b97c517_d5bf8760",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-21T14:25:36Z",
+      "side": 1,
+      "message": "correct, the scope of this task is to remove lint warnings not ensure full idempotency. This we can discuss separately. Any more objections to adding changed_when sugar here ? This   task always lead to \"change\". If helm env doesn\u0027t exists it will create it, if env exists update action is triggered which doesn\u0027t necessarily change anything but it\u0027s out of scope of this commit",
+      "parentUuid": "2b7ecbb8_9d44a627",
       "range": {
         "startLine": 85,
         "startChar": 16,
