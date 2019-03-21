@@ -144,6 +144,30 @@
     },
     {
       "key": {
+        "uuid": "3d173ee3_8e1ed6e4",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-21T17:44:48Z",
+      "side": 1,
+      "message": "This is going so strange now...\nnot changed is correct/good when task is skipped and it\u0027s correct to skip it according to when condition i.e. it\u0027s idempotent. We should not mark it as changed on such case.",
+      "parentUuid": "06074d17_c1b38ae4",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26cf2370_4b88d2af",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 1
@@ -345,6 +369,30 @@
       "side": 1,
       "message": "correct, the scope of this task is to remove lint warnings not ensure full idempotency. This we can discuss separately. Any more objections to adding changed_when sugar here ? This   task always lead to \"change\". If helm env doesn\u0027t exists it will create it, if env exists update action is triggered which doesn\u0027t necessarily change anything but it\u0027s out of scope of this commit",
       "parentUuid": "2b7ecbb8_9d44a627",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ce8a110_dce18881",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-21T17:44:48Z",
+      "side": 1,
+      "message": "yes I have objections.\nDo not want any sugar here.\nI\u0027m running now same version of ansible-lint with molecule and it\u0027s not reporting anything about this.",
+      "parentUuid": "2b97c517_d5bf8760",
       "range": {
         "startLine": 85,
         "startChar": 16,
