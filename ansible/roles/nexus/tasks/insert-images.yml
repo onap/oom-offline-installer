@@ -1,7 +1,8 @@
 ---
 - name: Load docker images and push into registry
   block:
-    - set_fact:
+    - name: Register component name for docker login/load
+      set_fact:
         component: "{{ (item.path | basename | splitext)[0] }}"
 
     - name: Docker login
