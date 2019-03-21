@@ -23,3 +23,5 @@
     - import_tasks: roles/certificates/tasks/upload_root_ca.yml
       vars:
         certificates_local_dir: certs
+  handlers: # ansible wont find role handler for imported tasks
+    - include: roles/certificates/handlers/main.yml
