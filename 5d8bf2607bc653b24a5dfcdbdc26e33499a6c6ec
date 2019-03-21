@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d151eb40_536cf844",
+        "filename": "ansible/roles/certificates/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-21T16:22:52Z",
+      "side": 1,
+      "message": "I think this comment is somehow misleading - indeed handler is executed only on caller reporting state \"changed\" but this changed_when declaration has nothing to do with that.",
+      "revId": "5d8bf2607bc653b24a5dfcdbdc26e33499a6c6ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
