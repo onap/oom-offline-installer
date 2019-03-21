@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0abee400_1eb641dd",
+        "filename": "ansible/roles/application-install/tasks/custom_role.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-21T13:09:09Z",
+      "side": 0,
+      "message": "not sure if can accept this if empty string is not working anymore. How linting is related to this?",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 42
+      },
+      "revId": "dbc6a7202dc89264a2857e12c625fb2328584a1e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
