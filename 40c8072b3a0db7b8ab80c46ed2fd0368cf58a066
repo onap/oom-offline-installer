@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6c11fb5b_c0a325ee",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-21T14:10:34Z",
+      "side": 1,
+      "message": "correct? Skipping is the thing we want with when condition, right?",
+      "parentUuid": "2c55530f_bcea61cc",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26cf2370_4b88d2af",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 1
@@ -190,6 +214,30 @@
     },
     {
       "key": {
+        "uuid": "c010bca9_c6de7bfd",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-21T14:10:34Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "187c453e_19d07c7c",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82fe05ca_4aedf063",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 1
@@ -225,6 +273,30 @@
       "side": 1,
       "message": "syntax sugar to pass ansible-lint",
       "parentUuid": "82fe05ca_4aedf063",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7ecbb8_9d44a627",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-21T14:10:34Z",
+      "side": 1,
+      "message": "ou, now I get it. Usually I have fixed the idempotency in this case or set change_when to false. But setting it to true was so weir.\n\nAs a comment to this whole file, in current form we cannot make it idempotent and I need to skip idepompotence totally in molecule for this.\nShould be checked separately if we can do something about it. Ansible has Helm module but I read that it\u0027s beta state...",
+      "parentUuid": "68fa7698_e87910db",
       "range": {
         "startLine": 85,
         "startChar": 16,
