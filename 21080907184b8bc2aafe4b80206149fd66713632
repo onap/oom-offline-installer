@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fadfef73_faf54121",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-22T14:22:33Z",
+      "side": 1,
+      "message": "Is substituting /usr/local/bin/fakeshell.sh with \u0027sh\u0027 intended?\n\n[root@installer ansible]# ./run_playbook.sh (...)\nINFO: Bind mounting of external mounts...\n(...)\nINFO: Mount: /etc/hosts -\u003e /etc/hosts\nchroot: failed to run command ‘sh’: No such file or directory",
+      "revId": "21080907184b8bc2aafe4b80206149fd66713632",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
