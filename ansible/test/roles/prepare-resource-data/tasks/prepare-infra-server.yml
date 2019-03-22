@@ -1,0 +1,16 @@
+---
+- name: Make sure the target dirs (where data is put i.e. what the whole resource-data role is testing) are empty at first
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - aux_data_path
+    - app_data_path
+
+- name: Install nfs-utils
+  package:
+    name: nfs-utils
+    state: present
+  when:
+    - resources_on_nfs is defined
+    - resources_on_nfs

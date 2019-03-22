@@ -1,2 +1,2 @@
 ---
-resources_on_nfs: no
+resources_on_nfs: false
