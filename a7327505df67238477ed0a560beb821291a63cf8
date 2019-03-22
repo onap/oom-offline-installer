@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b48b1926_1d9ed695",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-22T13:52:20Z",
+      "side": 1,
+      "message": "I suppose you should put a proper ONAP\u0027s Jira ticket here.",
+      "revId": "a7327505df67238477ed0a560beb821291a63cf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
