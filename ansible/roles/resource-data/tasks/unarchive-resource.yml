@@ -34,7 +34,9 @@
 
     - name: "Unarchive resource {{ resource_source_filename }} from host {{ resources_source_host }}, transport is {{ transport }}"
       include_tasks: "unarchive-{{ transport }}-resource.yml"
-    - file:
+
+    - name: Generate flag file
+      file:
         path: "{{ resource_destination_directory }}/{{ resource_source_filename }}-uploaded"
         state: touch
   rescue:
@@ -51,5 +53,6 @@
       with_items: "{{ files_after_fail.files | difference(original_files.files) }}"
       when: files_after_fail is defined
 
-    - fail:
+    - name: Upload failed
+      fail:
         msg: "Upload of {{ resource_source_filename }} failed"
