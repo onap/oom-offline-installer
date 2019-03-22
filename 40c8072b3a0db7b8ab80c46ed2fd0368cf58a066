@@ -168,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "83f2f7c3_db96dc5e",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-22T09:29:28Z",
+      "side": 1,
+      "message": "We never will have wrongly \"false changed\", we will have either skipped or \"correct changed\", really don\u0027t see any problem",
+      "parentUuid": "3d173ee3_8e1ed6e4",
+      "range": {
+        "startLine": 26,
+        "startChar": 16,
+        "endLine": 26,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26cf2370_4b88d2af",
         "filename": "ansible/roles/application-install/tasks/install.yml",
         "patchSetId": 1
@@ -393,6 +417,30 @@
       "side": 1,
       "message": "yes I have objections.\nDo not want any sugar here.\nI\u0027m running now same version of ansible-lint with molecule and it\u0027s not reporting anything about this.",
       "parentUuid": "2b97c517_d5bf8760",
+      "range": {
+        "startLine": 85,
+        "startChar": 16,
+        "endLine": 85,
+        "endChar": 20
+      },
+      "revId": "40c8072b3a0db7b8ab80c46ed2fd0368cf58a066",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9251989_8ff04266",
+        "filename": "ansible/roles/application-install/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-22T09:29:28Z",
+      "side": 1,
+      "message": "is your version checking E301 from https://docs.ansible.com/ansible-lint/rules/default_rules.htm ? Commands should either read information (and thus set changed_when) or not do something if it has already been done (using creates/removes) or only do it if another check has a particular result (when) .... it looks that my change is correct",
+      "parentUuid": "8ce8a110_dce18881",
       "range": {
         "startLine": 85,
         "startChar": 16,
