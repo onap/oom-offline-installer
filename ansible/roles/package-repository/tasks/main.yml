@@ -5,7 +5,6 @@
     path: /etc/resolv.conf
     state: present
     insertbefore: BOF
-  become: true
 
 - name: Disable all OS default repositories
   block:
@@ -20,7 +19,7 @@
 
     - name: Backup repo files
       copy:
-        remote_src: yes
+        remote_src: true
         src: "{{ item.path }}"
         dest: "{{ item.path }}.disabled"
       loop: "{{ repo_files.files }}"
@@ -32,7 +31,6 @@
         state: absent
       loop: "{{ repo_files.files }}"
       when: "(item.path | basename | splitext)[0] not in package_repositories_names"
-  become: yes
 
 - name: Add application offline package repository
   yum_repository:
@@ -44,4 +42,3 @@
     enabled: "{{ item.enabled | default(false) }}"
     state: "{{ item.state | default('present') }}"
   loop: "{{ package_repositories }}"
-  become: true
