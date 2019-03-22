@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea9fe106_847b8d34",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-22T07:46:50Z",
+      "side": 1,
+      "message": "why to make dependency to onap\u0027s oom?\nIt can be just any dir with any helm charts. Just check that makefile or something is there.",
+      "range": {
+        "startLine": 62,
+        "startChar": 13,
+        "endLine": 62,
+        "endChar": 39
+      },
+      "revId": "9e57de7b063bc93f06eebfc2b8aec402b794f48e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6c958093_4d610652",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-22T07:46:50Z",
+      "side": 1,
+      "message": "and add optional make targets (in addition to all) as parameter to the script.",
+      "range": {
+        "startLine": 83,
+        "startChar": 15,
+        "endLine": 83,
+        "endChar": 19
+      },
+      "revId": "9e57de7b063bc93f06eebfc2b8aec402b794f48e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4221ecad_255121a0",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-22T07:46:50Z",
+      "side": 1,
+      "message": "or seems need to give some project name as parameter. And then it also get\u0027s documented that this script supports the way that one project in helm charts is the main/master app and others are \"subcharts\". Happens to be onap way to do it but is also one general way to do it.",
+      "range": {
+        "startLine": 87,
+        "startChar": 51,
+        "endLine": 87,
+        "endChar": 56
+      },
+      "revId": "9e57de7b063bc93f06eebfc2b8aec402b794f48e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
