@@ -22,7 +22,6 @@
 set -e
 
 CMD=$(basename "$0")
-UMOUNT_TIMEOUT=120 # 2mins
 
 
 #
@@ -106,31 +105,16 @@ EXAMPLE:
 "
 }
 
-# arg: <directory>
-is_mounted()
-{
-    mountpoint=$(echo "$1" | sed 's#//*#/#g')
-
-    LANG=C mount | grep -q "^[^[:space:]]\+[[:space:]]\+on[[:space:]]\+${mountpoint}[[:space:]]\+type[[:space:]]\+"
-}
-
 # layers are right to left! First is on the right, top/last is on the left
 do_overlay_mount()
 {
-    if [ -d "$overlay" ] && is_mounted "$overlay" ; then
-        echo ERROR: "The overlay directory is already mounted: $overlay" >&2
-        echo ERROR: "Fix the issue - cannot proceed" >&2
-        exit 1
-    fi
-
     # prepare dirs
-    rm -rf "$overlay" "$upperdir" "$workdir"
     mkdir -p "$overlay"
     mkdir -p "$upperdir"
     mkdir -p "$workdir"
 
     # finally overlay mount
-    if ! mount -t overlay --make-rprivate \
+    if ! mount -t overlay \
         -o lowerdir="$lowerdir",upperdir="$upperdir",workdir="$workdir" \
         overlay "$overlay" ;
     then
@@ -147,40 +131,16 @@ do_overlay_mount()
     return 0
 }
 
-cleanup()
-{
-    case "$OVERLAY_MOUNT" in
-        yes)
-            echo INFO: "Umounting overlay..." >&2
-            if ! umount_retry "$CHROOT_DIR" ; then
-                echo ERROR: "Cannot umount chroot: $CHROOT_DIR" >&2
-                return 1
-            fi
-
-            ;;
-        no)
-            echo INFO: "No overlay to umount" >&2
-            ;;
-    esac
-
-    if ! is_mounted "$overlay" ; then
-        echo INFO: "Deleting of temp directories..." >&2
-        rm -rf "$overlay" "$upperdir" "$workdir"
-    else
-        echo ERROR: "Overlay is still mounted: $CHROOT_DIR" >&2
-        echo ERROR: "Cannot delete: $overlay" >&2
-        echo ERROR: "Cannot delete: $upperdir" >&2
-        echo ERROR: "Cannot delete: $workdir" >&2
-        return 1
-    fi
-}
-
 check_external_mounts()
 {
-    echo "$EXTERNAL_MOUNTS" | sed '/^[[:space:]]*$/d' | while read -r mountexpr ; do
+    echo "$EXTERNAL_MOUNTS" | while read -r mountexpr ; do
+        #Skip empty lines, done with if for readability.
+        if [ -z $mountexpr ]; then
+            continue
+        fi
         mount_type=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $1;}')
         external=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $2;}')
-        internal=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $3;}' | sed -e 's#^/*##' -e 's#//*#/#g')
+        internal=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $3;}')
 
         case "$mount_type" in
             ro|rw)
@@ -203,16 +163,13 @@ check_external_mounts()
 do_external_mounts()
 {
     echo INFO: "Bind mounting of external mounts..." >&2
-    echo "$EXTERNAL_MOUNTS" | sed '/^[[:space:]]*$/d' | while read -r mountexpr ; do
+    echo "$EXTERNAL_MOUNTS" | while read -r mountexpr ; do
+        if [ -z $mountexpr ]; then
+            continue
+        fi
         mount_type=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $1;}')
         external=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $2;}')
-        internal=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $3;}' | sed -e 's#^/*##' -e 's#//*#/#g')
-
-        if is_mounted "${CHROOT_DIR}/${internal}" ; then
-            echo ERROR: "Mountpoint is already mounted: ${CHROOT_DIR}/${internal}" >&2
-            echo ERROR: "Fix the issue - cannot proceed" >&2
-            exit 1
-        fi
+        internal=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $3;}')
 
         # trying to follow the behaviour of docker
         if ! [ -e "$external" ] || [ -d "$external" ] ; then
@@ -242,7 +199,9 @@ do_external_mounts()
             exit 1
         fi
 
-        if ! mount --make-rprivate -o bind,${mount_type} "$external" "${CHROOT_DIR}/${internal}" ; then
+#Note, this double mounting is needed to support older util-linux.
+        if ! mount -o bind "${external}" "${CHROOT_DIR}/${internal}" ||
+          ! mount -o remount,bind,${mount_type} "${CHROOT_DIR}/${internal}" ; then
             echo ERROR: "Failed to mount: ${external} -> ${internal}" >&2
             exit 1
         else
@@ -251,231 +210,151 @@ do_external_mounts()
     done
 }
 
-# arg: <mountpoint>
-umount_retry()
-{
-    mountpoint=$(echo "$1" | sed 's#//*#/#g')
-    timeout=${UMOUNT_TIMEOUT}
-
-    umount "$mountpoint" 2>/dev/null
-    while is_mounted "$mountpoint" && [ $timeout -gt 0 ] ; do
-        umount "$mountpoint" 2>/dev/null
-        sleep 1
-        timeout=$(( timeout - 1 ))
-    done
-
-    if ! is_mounted "$mountpoint" ; then
-        return 0
-    fi
-
-    return 1
-}
-
-undo_external_mounts()
-{
-    echo INFO: "Umount external mount points..." >&2
-    echo "$EXTERNAL_MOUNTS" | tac | sed '/^[[:space:]]*$/d' | while read -r mountexpr ; do
-        mount_type=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $1;}')
-        external=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $2;}')
-        internal=$(echo "$mountexpr" | awk 'BEGIN{FS=":"}{print $3;}' | sed -e 's#^/*##' -e 's#//*#/#g')
-        if umount_retry "${CHROOT_DIR}/${internal}" ; then
-            echo INFO: "Unmounted: ${CHROOT_DIR}/${internal}" >&2
-        else
-            echo ERROR: "Failed to umount: ${CHROOT_DIR}/${internal}" >&2
-        fi
-    done
-}
-
-install_wrapper()
-{
-    cat > "$CHROOT_DIR"/usr/local/bin/fakeshell.sh <<EOF
-#!/bin/sh
-
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-export PATH
-
-gid_tty=\$(getent group | sed -n '/^tty:/p' | cut -d: -f 3)
-
-mount -t proc proc /proc
-mount -t sysfs none /sys
-mount -t tmpfs none /dev
-
-mkdir -p /dev/shm
-mkdir -p /dev/pts
-mount -t devpts -o gid=\${gid_tty},mode=620 none /dev/pts
-
-[ -e /dev/full ] || mknod -m 666 /dev/full c 1 7
-[ -e /dev/ptmx ] || mknod -m 666 /dev/ptmx c 5 2
-[ -e /dev/random ] || mknod -m 644 /dev/random c 1 8
-[ -e /dev/urandom ] || mknod -m 644 /dev/urandom c 1 9
-[ -e /dev/zero ] || mknod -m 666 /dev/zero c 1 5
-[ -e /dev/tty ] || mknod -m 666 /dev/tty c 5 0
-[ -e /dev/console ] || mknod -m 622 /dev/console c 5 1
-[ -e /dev/null ] || mknod -m 666 /dev/null c 1 3
-
-chown root:tty /dev/console
-chown root:tty /dev/ptmx
-chown root:tty /dev/tty
-
-mkdir -p "\$1" || exit 1
-cd "\$1" || exit 1
-shift
-
-exec "\$@"
-
-EOF
-    chmod +x "$CHROOT_DIR"/usr/local/bin/fakeshell.sh
-}
-
-on_exit()
-{
-    set +e
-    echo
-
-    if [ -n "$OVERLAY_MOUNT" ] ; then
-        undo_external_mounts
-    fi
-    cleanup
-}
 
 
 #
-# parse arguments
+# parse arguments out of namespace.
 #
 
-state=nil
-action=nil
-EXTERNAL_MOUNTS=''
-CHROOT_WORKDIR=''
-CHROOT_METADIR=''
-CHROOT_DIR=''
-COMMAND=''
-while [ -n "$1" ] ; do
-    case "$state" in
-        nil)
-            case "$1" in
-                ''|-h|--help|help)
-                    help
-                    exit 0
-                    ;;
-                --mount)
-                    EXTERNAL_MOUNTS=$(printf "%s\n%s\n" "$EXTERNAL_MOUNTS" "${2}")
-                    state=next
-                    ;;
-                --workdir)
-                    if [ -z "$CHROOT_WORKDIR" ] ; then
-                        CHROOT_WORKDIR="$2"
+if [ -z $IN_NAMESPACE ]; then
+    export state=nil
+    export action=nil
+    export EXTERNAL_MOUNTS=''
+    export CHROOT_WORKDIR=''
+    export CHROOT_METADIR=''
+    export CHROOT_DIR=''
+    export COMMAND=''
+    while [ -n "$1" ] ; do
+        case "$state" in
+            nil)
+                case "$1" in
+                    ''|-h|--help|help)
+                        help
+                        exit 0
+                        ;;
+                    --mount)
+                        EXTERNAL_MOUNTS=$(printf "%s\n%s" "$EXTERNAL_MOUNTS" "${2}")
                         state=next
-                    else
-                        echo ERROR: "Multiple working directory argument" >&2
+                        ;;
+                    --workdir)
+                        if [ -z "$CHROOT_WORKDIR" ] ; then
+                            CHROOT_WORKDIR="$2"
+                            state=next
+                        else
+                            echo ERROR: "Multiple working directory argument" >&2
+                            help >&2
+                            exit 1
+                        fi
+                        ;;
+                    execute)
+                        action=execute
+                        state=execute
+                        ;;
+                    *)
+                        echo ERROR: "Bad usage" >&2
                         help >&2
                         exit 1
-                    fi
-                    ;;
-                execute)
-                    action=execute
-                    state=execute
-                    ;;
-                *)
-                    echo ERROR: "Bad usage" >&2
-                    help >&2
-                    exit 1
-                    ;;
-            esac
-            ;;
-        next)
-            state=nil
-            ;;
-        execute)
-            CHROOT_METADIR="$1"
-            shift
-            break
-            ;;
-    esac
-    shift
-done
+                        ;;
+                esac
+                ;;
+            next)
+                state=nil
+                ;;
+            execute)
+                CHROOT_METADIR="$1"
+                shift
+                break
+                ;;
+        esac
+        shift
+    done
 
 
-case "$action" in
-    ''|nil)
+    if [ $action = "nil" ]; then
         echo ERROR: "Nothing to do - missing command" >&2
         help >&2
         exit 1
-        ;;
-    execute)
-        # firstly do sanity checking ...
+    fi
 
-        if [ -z "$CHROOT_METADIR" ] ; then
-            echo ERROR: "Missing argument" >&2
-            help >&2
-            exit 1
-        fi
+    # do sanity checking ...
 
-        # making sure that CHROOT_METADIR is absolute path
-        CHROOT_METADIR=$(readlink -f "$CHROOT_METADIR")
+    if [ -z "$CHROOT_METADIR" ] ; then
+        echo ERROR: "Missing argument" >&2
+        help >&2
+        exit 1
+    fi
 
-        if ! [ -d "$CHROOT_METADIR"/chroot ] ; then
-            echo ERROR: "Filepath does not exist: ${CHROOT_METADIR}/chroot" >&2
-            exit 1
-        fi
+    # making sure that CHROOT_METADIR is absolute path
+    CHROOT_METADIR=$(readlink -f "$CHROOT_METADIR")
 
-        # check external mounts if there are any
-        check_external_mounts
+    if ! [ -d "$CHROOT_METADIR"/chroot ] ; then
+        echo ERROR: "Filepath does not exist: ${CHROOT_METADIR}/chroot" >&2
+        exit 1
+    fi
 
-        # check workdir
-        if [ -n "$CHROOT_WORKDIR" ] ; then
-            CHROOT_WORKDIR=$(echo "$CHROOT_WORKDIR" | sed -e 's#^/*##' -e 's#//*#/#g')
-        fi
+    # check external mounts if there are any
+    check_external_mounts
 
-        # we must be root
-        if [ "$(id -u)" -ne 0 ] ; then
-            echo ERROR: "Need to be root and you are not: $(id -nu)" >&2
-            exit 1
-        fi
+    # we must be root
+    if [ "$(id -u)" -ne 0 ] ; then
+        echo ERROR: "Need to be root and you are not: $(id -nu)" >&2
+        exit 1
+    fi
 
-        if ! which unshare >/dev/null 2>/dev/null ; then
-            echo ERROR: "'unshare' system command is missing - ABORT" >&2
-            echo INFO: "Try to install 'util-linux' package" >&2
-            exit 1
-        fi
+    if ! which unshare >/dev/null 2>/dev/null ; then
+        echo ERROR: "'unshare' system command is missing - ABORT" >&2
+        echo INFO: "Try to install 'util-linux' package" >&2
+        exit 1
+    fi
 
-        # ... sanity checking done
+    # ... sanity checking done
 
-        # setup paths
-        lowerdir="$CHROOT_METADIR"/chroot
-        upperdir="$CHROOT_METADIR"/.overlay
-        workdir="$CHROOT_METADIR"/.workdir
-        overlay="$CHROOT_METADIR"/.merged
+    #Reexec ourselves in new pid and mount namespace (isolate!).
+    #Note: newly executed shell will be pid1 in a new namespace. Killing it will kill
+    #every other process in the whole process tree with sigkill. That will in turn
+    #destroy namespaces and undo all mounts done previously.
+    IN_NAMESPACE=1 exec unshare -mpf "$0" "$@"
+fi
 
-        # set trap
-        trap on_exit QUIT TERM EXIT
+#We are namespaced.
+# setup paths
+lowerdir="$CHROOT_METADIR"/chroot
+upperdir="$CHROOT_METADIR"/.overlay
+workdir="$CHROOT_METADIR"/.workdir
+overlay="$CHROOT_METADIR"/.merged
 
-        # mount overlay
-        OVERLAY_MOUNT=''
-        if do_overlay_mount ; then
-            # overlay chroot
-            OVERLAY_MOUNT=yes
-        else
-            # non overlay mount
-            OVERLAY_MOUNT=no
-        fi
+#In case we are using a realy old unshare, make the whole tree into private mounts manually.
+mount --make-rprivate /
+#New mounts are private always from now on.
 
-        # do the user-specific mounts
-        do_external_mounts
+do_overlay_mount
 
-        # I need this wrapper to do some setup inside the chroot...
-        install_wrapper
+# do the user-specific mounts
+do_external_mounts
 
-        # execute chroot
-        if [ -n "$1" ] ; then
-            :
-        else
-            set -- /bin/sh -l
-        fi
-        unshare -mfpi --propagation private \
-            chroot "$CHROOT_DIR" /usr/local/bin/fakeshell.sh "${CHROOT_WORKDIR:-/}" "$@"
-        ;;
-esac
+#And setup api filesystems.
+mount -t proc proc "${CHROOT_DIR}/proc"
+mount -t sysfs none "${CHROOT_DIR}/sys"
+mount -t tmpfs none "${CHROOT_DIR}/dev"
+
+mkdir -p "${CHROOT_DIR}/dev/shm"
+mkdir -p "${CHROOT_DIR}/dev/pts"
+mount -t devpts none "${CHROOT_DIR}/dev/pts"
+
+mknod -m 666 "${CHROOT_DIR}/dev/full" c 1 7
+mknod -m 666 "${CHROOT_DIR}/dev/ptmx" c 5 2
+mknod -m 644 "${CHROOT_DIR}/dev/random" c 1 8
+mknod -m 644 "${CHROOT_DIR}/dev/urandom" c 1 9
+mknod -m 666 "${CHROOT_DIR}/dev/zero" c 1 5
+mknod -m 666 "${CHROOT_DIR}/dev/tty" c 5 0
+mknod -m 622 "${CHROOT_DIR}/dev/console" c 5 1
+mknod -m 666 "${CHROOT_DIR}/dev/null" c 1 3
+
+# execute chroot
+if [ -z "$1" ] ; then
+    set -- /bin/sh -l
+fi
+exec chroot "${CHROOT_DIR}" /bin/sh -c 'cd $1 && shift && exec "$@"' sh "${CHROOT_WORKDIR:-/}" "$@"
 
 exit 0
 
