@@ -52,6 +52,24 @@
       "revId": "a7327505df67238477ed0a560beb821291a63cf8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9935920_d70b561f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-22T14:12:45Z",
+      "side": 1,
+      "message": "I did. I just had wrong ticket number here, corrected (i hope).",
+      "parentUuid": "9d3ee36b_9c0420e4",
+      "revId": "a7327505df67238477ed0a560beb821291a63cf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
