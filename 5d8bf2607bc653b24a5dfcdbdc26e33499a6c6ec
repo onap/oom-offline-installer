@@ -16,6 +16,24 @@
       "revId": "5d8bf2607bc653b24a5dfcdbdc26e33499a6c6ec",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f205907_2cdfcfe6",
+        "filename": "ansible/roles/certificates/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-22T09:29:28Z",
+      "side": 1,
+      "message": "my point was to describe why changed_when is always true, maybe I should rephrase it somehow",
+      "parentUuid": "d151eb40_536cf844",
+      "revId": "5d8bf2607bc653b24a5dfcdbdc26e33499a6c6ec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
