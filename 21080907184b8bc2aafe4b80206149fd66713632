@@ -16,6 +16,24 @@
       "revId": "21080907184b8bc2aafe4b80206149fd66713632",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fdab3d0_4703574e",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-22T14:26:22Z",
+      "side": 1,
+      "message": "Well, generally yes, it is intended. it should run sh -c something, so what happened?",
+      "parentUuid": "fadfef73_faf54121",
+      "revId": "21080907184b8bc2aafe4b80206149fd66713632",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
