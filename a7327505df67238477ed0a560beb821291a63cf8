@@ -34,6 +34,24 @@
       "revId": "a7327505df67238477ed0a560beb821291a63cf8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d3ee36b_9c0420e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-22T14:03:27Z",
+      "side": 1,
+      "message": "Please click on the link and see where it\u0027s pointing, some dummy ticket. Just create proper one.",
+      "parentUuid": "77c9729c_1c861a6b",
+      "revId": "a7327505df67238477ed0a560beb821291a63cf8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
