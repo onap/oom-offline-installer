@@ -1,0 +1,8 @@
+---
+- include_tasks: prepare-resource-server.yml
+  vars:
+    subdir: somedir
+  when: inventory_hostname in groups.resources
+
+- include_tasks: prepare-infra-server.yml
+  when: inventory_hostname in groups.infrastructure

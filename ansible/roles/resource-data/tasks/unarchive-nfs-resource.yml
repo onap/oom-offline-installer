@@ -16,11 +16,12 @@
         fstype: nfs
         state: mounted
 
-    - name: "Unarchive resource {{ resources_dir }}/{{ resource_source_filename }} to {{ resource_destination_directory }} dir on infrastructure servers over nfs"
+    - name: "Unarchive resource {{ resources_dir }}/{{ resource_source_filename }} \
+             to {{ resource_destination_directory }} dir on infrastructure servers over nfs"
       unarchive:
         src: "/tmp/resource_data/{{ resource_source_filename }}"
         dest: "{{ resource_destination_directory }}"
-        remote_src: yes
+        remote_src: true
   always:
     - name: Unmount resource dir
       mount:
