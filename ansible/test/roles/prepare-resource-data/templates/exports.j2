@@ -1,0 +1,3 @@
+{% for host in groups.infrastructure -%}
+    {{ nfs_mount_path }}  {{ hostvars[host].inventory_hostname }}(ro,sync,no_root_squash,no_subtree_check)
+{% endfor %}
