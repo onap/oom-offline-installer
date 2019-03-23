@@ -1,0 +1,44 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: kubernetes-node-1
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - kubernetes
+      - nfs-server
+    networks:
+      - name: nfs-net
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - ${HOME}/data:/dockerdata-nfs:rw
+
+  - name: kubernetes-node-2
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - kubernetes
+    networks:
+      - name: nfs-net
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  inventory:
+    links:
+      group_vars: ../../../../group_vars
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
