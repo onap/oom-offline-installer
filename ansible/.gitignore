@@ -1,3 +1,6 @@
 ansible_chroot
 application/*
 certs/
+
+# Molecule testing
+__pycache__/
