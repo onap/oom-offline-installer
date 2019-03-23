@@ -1,3 +1,3 @@
-{% for host in groups.kubernetes[1:] -%}
-    {{ nfs_mount_path }}  {{ hostvars[host].ansible_host }}(rw,sync,no_root_squash,no_subtree_check)
+{% for host in groups.kubernetes -%}
+    {{ nfs_mount_path }}  {{ hostvars[host].ansible_host | default(hostvars[host].inventory_hostname) }}(rw,sync,no_root_squash,no_subtree_check)
 {% endfor %}
