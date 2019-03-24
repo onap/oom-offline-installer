@@ -1,0 +1,11 @@
+---
+- name: Install firewall
+  package:
+    name: "{{ firewall.package_name[ansible_facts.os_family] }}"
+    state: present
+
+- name: Start and enable firewall
+  service:
+    name: "{{ firewall.package_name[ansible_facts.os_family] }}"
+    state: started
+    enabled: true
