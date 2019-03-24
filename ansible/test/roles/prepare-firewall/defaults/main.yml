@@ -1,0 +1,5 @@
+---
+firewall:
+  package_name:
+    RedHat: 'firewalld'
+    Debian: 'ufw'
