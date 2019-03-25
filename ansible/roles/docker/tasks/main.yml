@@ -24,7 +24,7 @@
 - name: Setup docker container logging settings
   json_mod:
     path: /etc/docker/daemon.json
-    key: '' # the whole JSON document per https://tools.ietf.org/html/rfc6901
+    key: ''  # the whole JSON document per https://tools.ietf.org/html/rfc6901
     # "value" must be wrapped in single quote "'" with extra space in front of "{" (ansible workaround)
     # reference: https://stackoverflow.com/questions/31969872
     value: ' { "log-driver": "json-file", "log-opts": { "max-size": "{{ docker.log_max_size }}", "max-file": "{{ docker.log_max_file }}" } }'
@@ -46,4 +46,4 @@
   systemd:
     name: docker
     state: started
-    enabled: yes
+    enabled: true
