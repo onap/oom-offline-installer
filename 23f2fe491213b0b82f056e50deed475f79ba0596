@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54e32c3c_1b141626",
+        "filename": "ansible/infrastructure.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-25T17:25:34Z",
+      "side": 1,
+      "message": "the handler is not found because certificate role where it\u0027s defined is not part of the play. Like docker role is and docker related handlers are found and called.\n\nThis is a bit hacky and maybe we will find better way to this.",
+      "range": {
+        "startLine": 26,
+        "startChar": 1,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "23f2fe491213b0b82f056e50deed475f79ba0596",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
