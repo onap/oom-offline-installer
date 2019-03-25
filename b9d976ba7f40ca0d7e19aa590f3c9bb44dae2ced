@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "297f56fd_49935ecf",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-25T09:28:32Z",
+      "side": 1,
+      "message": "when you rerun this script with this guard then you dont get inside this block to setup the CHROOT_ variables, right? Does this work? Or do the exports populate the env of unshare?",
+      "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
