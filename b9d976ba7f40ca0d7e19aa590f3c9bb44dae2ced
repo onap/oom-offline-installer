@@ -16,6 +16,24 @@
       "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a5933a6_9be2e082",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-25T10:33:02Z",
+      "side": 1,
+      "message": "Well, yes, exports populate the environment and unshare command is not like sudo, it does not clear it, so the variables are passed through.",
+      "parentUuid": "297f56fd_49935ecf",
+      "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
