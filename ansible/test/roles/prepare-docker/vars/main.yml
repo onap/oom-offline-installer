@@ -1,0 +1,7 @@
+---
+docker_needed_repos:
+  - /etc/yum.repos.d/CentOS-Base.repo.disabled
+  - /etc/yum.repos.d/docker-ce.repo.disabled
+  - /etc/yum.repos.d/own-repo.repo.disabled
+
+offline_repo_file: /etc/yum.repos.d/onap.repo
