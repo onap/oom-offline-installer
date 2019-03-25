@@ -1,0 +1,38 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - infrastructure
+    env:
+      container: docker
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    host_vars:
+      infrastructure-server:
+        cluster_ip: 1.2.3.4
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+  lint:
+    name: flake8
+    options:
+      ignore: W291  # trailing whitespace
