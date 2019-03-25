@@ -44,14 +44,14 @@
   register: root_cert
   delegate_to: localhost
 
-# WA: this is required because deploy plugin dont process params properly
-- name: Create override file with global.cacert
+- name: "set root ca certificate"
+  set_fact:
+    overrides: "{{ overrides | default({}) | combine({'global': {'cacert': root_cert.content | b64decode}}, recursive=True) }}"
+
+- name: create override.yaml
   copy:
     dest: "{{ app_data_path}}/override.yaml"
-    content: |
-      global:
-        cacert: |
-          {{ root_cert['content'] | b64decode | indent( width=4, indentfirst=False) }}
+    content: "{{ overrides | to_nice_yaml }}"
 
 - name: Check for deploy plugin presence
   stat:
