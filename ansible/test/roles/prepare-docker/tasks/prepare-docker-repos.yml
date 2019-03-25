@@ -1,0 +1,15 @@
+---
+- name: Install Docker-CE repo
+  yum_repository:
+    name: docker-ce
+    description: Docker-ce YUM repo
+    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+- name: Install docker python bindings
+  import_tasks: python-bindings.yml
+
+- name: Fake dockerd on container
+  import_tasks: docker-socket-override.yml
+  when: ansible_env.container == 'docker'
