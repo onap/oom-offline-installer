@@ -11,6 +11,11 @@
     name: 'python2-docker'
     state: present
 
+- name: Install python jsonpointer module
+  package:
+    name: 'python-jsonpointer'
+    state: present
+
 - name: Ensure /etc/docker exists
   file:
     path: /etc/docker

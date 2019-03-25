@@ -36,7 +36,7 @@ fi
 
 # this exact docker version is required by ONAP/beijing
 # it should be available in centos docker repo
-yumdownloader --resolve --destdir="${OUTDIR}" docker-ce-17.03.2.ce libtool-ltdl docker-ce-selinux nfs-utils
+yumdownloader --resolve --destdir="${OUTDIR}" docker-ce-17.03.2.ce libtool-ltdl docker-ce-selinux nfs-utils python-jsonpointer
 
 wget https://cbs.centos.org/kojifiles/packages/python-docker/2.5.1/2.el7/noarch/python2-docker-2.5.1-2.el7.noarch.rpm -P "${OUTDIR}"
 
