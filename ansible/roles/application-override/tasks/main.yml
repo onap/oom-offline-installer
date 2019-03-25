@@ -6,11 +6,13 @@
   register: root_cert
   delegate_to: localhost
 
-# WA: this is required because deploy plugin dont process params properly
-- name: Create override file with global.cacert
+- name: "Set root ca certificate"
+  set_fact:
+    merged_overrides: "{{ overrides | default({}) | combine({'global': {'cacert': root_cert.content | b64decode}}, recursive=True) }}"
+
+- name: "Create {{ app_helm_override_file }}"
   copy:
     dest: "{{ app_helm_override_file }}"
-    content: |
-      global:
-        cacert: |
-          {{ root_cert['content'] | b64decode | indent( width=4, indentfirst=False) }}
+    # replace fiter is required otherwise to_nice_yaml filter is
+    # adding not needed extra empty rows 
+    content: "{{ merged_overrides | to_nice_yaml | replace('\n\n', '\n') }}"
