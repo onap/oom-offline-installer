@@ -39,3 +39,26 @@
     key_private: "{{ env.data.apikey.private }}"
     rancher_agent_image: "{{ env.data.registration_tokens.image }}"
     rancher_agent_reg_url: "{{ env.data.registration_tokens.reg_url }}"
+
+- name: Configure the size of the rancher cattle db and logs
+  block:
+    - name: Main tables
+      rancher1_api:
+        server: "{{ rancher_server_url }}"
+        option: main_tables.purge.after.seconds
+        value: "{{ rancher.main_tables_purge_after_seconds }}"
+    - name: Events
+      rancher1_api:
+        server: "{{ rancher_server_url }}"
+        option: events.purge.after.seconds
+        value: "{{ rancher.events_purge_after_seconds }}"
+    - name: Service log
+      rancher1_api:
+        server: "{{ rancher_server_url }}"
+        option: service_log.purge.after.seconds
+        value: "{{ rancher.service_log_purge_after_seconds }}"
+    - name: Audit log
+      rancher1_api:
+        server: "{{ rancher_server_url }}"
+        option: audit_log.purge.after.seconds
+        value: "{{ rancher.audit_log_purge_after_seconds }}"
