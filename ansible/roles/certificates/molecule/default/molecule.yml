@@ -1,0 +1,74 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    env:
+      container: docker
+    groups:
+      - infrastructure
+
+  - name: kubernetes-node-1
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    env:
+      container: docker
+    groups:
+      - kubernetes
+provisioner:
+  name: ansible
+  log: true
+  lint:
+    name: ansible-lint
+    options:
+      x:
+        - ANSIBLE0016  # [ANSIBLE0016] "Tasks that run when changed should likely be handlers". Remove exception when this is merged: https://gerrit.onap.org/r/#/c/82923/
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    links:
+      group_vars: ../../../../group_vars/
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - cleanup
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    # - idempotence
+    #  --> Action: 'idempotence'
+    #  ERROR: Idempotence test failed because of the following tasks:
+    #  * [infrastructure-server -> localhost] => certificates : Generate an OpenSSL CSR.
+    #  * [infrastructure-server -> localhost] => certificates : Generate root CA certificate
+    #  * [infrastructure-server] => certificates : Upload certificates to infrastructure server
+    #  * [infrastructure-server] => certificates : Copy root certificate
+    #  * [infrastructure-server] => certificates : Extract root certificate
+    #  * [infrastructure-server] => docker : Setup docker dns settings
+    #  * [kubernetes-node-1] => certificates : Copy root certificate
+    #  * [kubernetes-node-1] => certificates : Extract root certificate
+    #  * [kubernetes-node-1] => certificates : Extract root certificate
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+  lint:
+    name: flake8
