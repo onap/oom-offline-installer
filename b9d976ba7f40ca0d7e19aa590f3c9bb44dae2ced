@@ -107,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "77c0aaae_ff11ecff",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-26T13:55:52Z",
+      "side": 1,
+      "message": "true, I did not notice that default mode is 600",
+      "parentUuid": "2b4b575a_dc502dd6",
+      "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5ccb410_01de3ab8",
         "filename": "ansible/docker/run_chroot.sh",
         "patchSetId": 4
