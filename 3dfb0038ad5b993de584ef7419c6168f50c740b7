@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f98d0bc7_45e1ade5",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-26T14:52:02Z",
+      "side": 1,
+      "message": "Should be same in dash, but different number of possible descriptors I guess. Anyway I decided to keep it simple and will remove it",
+      "parentUuid": "e1452d72_212bb12c",
+      "revId": "3dfb0038ad5b993de584ef7419c6168f50c740b7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42be2262_c932d80e",
         "filename": "build/build_nexus_blob.sh",
         "patchSetId": 7

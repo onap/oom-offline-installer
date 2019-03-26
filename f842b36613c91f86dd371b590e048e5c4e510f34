@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d6238c13_4bf8e5cd",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-26T14:52:02Z",
+      "side": 0,
+      "message": "I always used /bin/bash only and never met a problem. But it\u0027s not an issue to have it like this",
+      "parentUuid": "1685f39d_0ac3d714",
+      "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81eaed4c_ee756e4b",
         "filename": "build/build_nexus_blob.sh",
         "patchSetId": 7
