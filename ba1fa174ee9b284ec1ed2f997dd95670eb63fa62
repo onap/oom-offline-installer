@@ -16,6 +16,24 @@
       "revId": "ba1fa174ee9b284ec1ed2f997dd95670eb63fa62",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5dff24ef_42248c8b",
+        "filename": "ansible/roles/firewall/tasks/firewall-disable.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-26T08:38:46Z",
+      "side": 1,
+      "message": "yes from molecule.\nI don\u0027t know why iptables module does not implement this as idempotent.\n\nif we set this changed_when: true then molecule idempotence test does not pass.",
+      "parentUuid": "cec7129c_b905dac8",
+      "revId": "ba1fa174ee9b284ec1ed2f997dd95670eb63fa62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
