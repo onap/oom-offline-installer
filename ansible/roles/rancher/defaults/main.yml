@@ -2,3 +2,20 @@
 rancher_server_url: "http://{{ hostvars[groups.infrastructure.0].ansible_host }}:8080"
 rancher_remove_other_env: true
 rancher_redeploy_k8s_env: true
+rancher:
+  # The following variables can be set via the UI under advanced/settings.
+  # All of these affect tables in the cattle db and are uninteresting
+  # to the user (they serve the internal logic of the cattle), but
+  # they can eat a lot of space when a deployment is busy or faulty.
+  #
+  # Audit-Log is the only user-facing option here and it is represented
+  # in the UI.
+  #
+  # Auto-purge deleted entries from most tables after this long (seconds)
+  main_tables_purge_after_seconds: 28800  # 8 hours
+  # Auto-purge Event entries after this long (seconds)
+  events_purge_after_seconds: 28800       # 8 hours
+  # Auto-purge Service Log entries after this long (seconds)
+  service_log_purge_after_seconds: 86400  # 1 day
+  # Auto-purge Audit Log entries after this long (seconds)
+  audit_log_purge_after_seconds: 2592000  # 30 days
