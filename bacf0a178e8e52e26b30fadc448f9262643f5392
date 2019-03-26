@@ -16,6 +16,24 @@
       "revId": "bacf0a178e8e52e26b30fadc448f9262643f5392",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7e869df_3bebf3c0",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-26T14:41:35Z",
+      "side": 1,
+      "message": "that is why I added a comment above, about redirecting stdin and why i have to do it. it is the same as those exec trick to redirect output to logs i saw in another commit. There is also a comment above the final exec line about having to restore it back. so at least the *why* seems covered to me.\nOf course, i could have a small script copied to chroot, but I do not like copying something created by hand just to run it as opposed to running without copying.",
+      "parentUuid": "cc0cffc9_f2357c2b",
+      "revId": "bacf0a178e8e52e26b30fadc448f9262643f5392",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
