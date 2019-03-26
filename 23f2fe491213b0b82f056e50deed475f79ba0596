@@ -22,6 +22,29 @@
       "revId": "23f2fe491213b0b82f056e50deed475f79ba0596",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb26c144_1a3f6e04",
+        "filename": "ansible/infrastructure.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-26T06:55:36Z",
+      "side": 1,
+      "message": "I tried your code with Molecule and it detected the problem right away.\nAnd tried this solution that worked.\nReplace this with this:\n\n    - include_role:\n        name: certificates\n        tasks_from: upload_root_ca.yml\n      vars:\n        certificates_local_dir: certs",
+      "range": {
+        "startLine": 23,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 51
+      },
+      "revId": "23f2fe491213b0b82f056e50deed475f79ba0596",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
