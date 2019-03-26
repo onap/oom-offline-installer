@@ -1,0 +1,22 @@
+---
+- name: Check if server mode
+  set_fact:
+    chrony_mode: 'server'
+  when: "'infrastructure' in group_names and timesync.servers is not defined"
+
+- name: Check if client mode
+  set_fact:
+    chrony_mode: 'client'
+  when: "timesync.servers is defined or 'infrastructure' not in group_names"
+
+- name: "Upload chronyd {{ chrony_mode }} configuration"
+  template:
+    src: "chrony.conf.j2"
+    dest: "{{ chrony['conf'][ansible_os_family]['config_file'] }}"
+  notify: Restart chronyd
+
+- name: Ensure chronyd is enabled/running
+  systemd:
+    name: chronyd
+    state: started
+    enabled: true
