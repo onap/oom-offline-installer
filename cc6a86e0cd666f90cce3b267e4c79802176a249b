@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7870922_3806d343",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 9
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-26T15:18:15Z",
+      "side": 1,
+      "message": "oh, i meant specifically this grep.",
+      "revId": "cc6a86e0cd666f90cce3b267e4c79802176a249b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
