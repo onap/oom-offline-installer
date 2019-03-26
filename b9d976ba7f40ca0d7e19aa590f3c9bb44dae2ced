@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "8e45bd0d_eb8580ec",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-26T12:14:15Z",
+      "side": 1,
+      "message": "these temp directories are never cleaned up - and .overlay is leaving files behind - this looks like error to me - how the following overlay mounts deal with non-empty working dir?",
+      "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "297f56fd_49935ecf",
         "filename": "ansible/docker/run_chroot.sh",
         "patchSetId": 4
@@ -31,6 +48,40 @@
       "side": 1,
       "message": "Well, yes, exports populate the environment and unshare command is not like sudo, it does not clear it, so the variables are passed through.",
       "parentUuid": "297f56fd_49935ecf",
+      "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e90ef9f_919a110a",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-26T12:14:15Z",
+      "side": 1,
+      "message": "why did you removed mode from this? I know we are running everything as root inside but that can change, I see no hurt in it to stay as before",
+      "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5ccb410_01de3ab8",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-26T12:14:15Z",
+      "side": 1,
+      "message": "this fails when workdir inside the chroot does not exist - previous version ensured creation of such path\n\nAlso this line seems overly cryptic - IMHO fakeshell.sh made it more readable",
       "revId": "b9d976ba7f40ca0d7e19aa590f3c9bb44dae2ced",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
