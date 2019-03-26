@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "e1452d72_212bb12c",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-26T11:52:17Z",
+      "side": 1,
+      "message": "hmm not sure... i have probably seen this once or twice, but do you have a guarantee that bash itself does not in fact use these descriptors? When you use bash specific features to allocate a fresh descriptor, bash always starts from 10. Not quite sure if this redirection via using argument-less exec is bash specific or not, but if we want bash specific behaviour we may do for example, instead of 3\u003e\u00261, something like {OLD_STDOUT}\u003e\u00261.",
+      "revId": "3dfb0038ad5b993de584ef7419c6168f50c740b7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42be2262_c932d80e",
         "filename": "build/build_nexus_blob.sh",
         "patchSetId": 7
