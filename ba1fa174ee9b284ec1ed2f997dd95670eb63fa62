@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cec7129c_b905dac8",
+        "filename": "ansible/roles/firewall/tasks/firewall-disable.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-26T08:30:00Z",
+      "side": 1,
+      "message": "so this is coming from molecule testing, right ? I dont understand why iptables module is not reporting correct value, but this is false just when iptables is empty right ? I thought there are always some default rules in there, if this is NOOP kind of task, it makes no sense, shouldn\u0027t we rather have changed_when: true ?",
+      "revId": "ba1fa174ee9b284ec1ed2f997dd95670eb63fa62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
