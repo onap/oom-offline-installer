@@ -1,4 +1,4 @@
 ---
 # Generate certs to local current dir where ansible in run (= playbook_dir)
 # After ansible run, dir can be deleted but idempotence is lost and certs are re-generated in next run
-certificates_local_dir: certs
+certificates_local_dir: "{{ playbook_dir }}/certs"

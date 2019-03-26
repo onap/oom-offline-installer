@@ -20,7 +20,7 @@
         body:
           name: configure
           type: groovy
-          content: "{{ lookup('file', 'files/configure.groovy') }}"
+          content: "{{ lookup('file', '{{ role_path }}/files/configure.groovy') }}"
         status_code: [204]
     - name: "execute configuration script"
       uri:
