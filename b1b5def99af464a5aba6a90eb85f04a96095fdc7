@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e01d60ca_ce675b9b",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 4411
+      },
+      "writtenOn": "2019-03-26T19:39:45Z",
+      "side": 1,
+      "message": "Think this is a typo and not required.",
+      "range": {
+        "startLine": 268,
+        "startChar": 86,
+        "endLine": 268,
+        "endChar": 87
+      },
+      "revId": "b1b5def99af464a5aba6a90eb85f04a96095fdc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
