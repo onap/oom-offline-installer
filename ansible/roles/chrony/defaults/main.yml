@@ -1,0 +1,16 @@
+---
+timesync: {}
+chrony:
+  servers: "{{ timesync.servers | default([hostvars[groups.infrastructure[0]].cluster_ip]) }}" # chronyd's NTP servers
+  slewclock: "{{ timesync.slewclock | default(false) }}" # chronyd's makestep property
+  timezone: "{{ timesync.timezone | default('Universal') }}" # Timezone name according to tz database
+  makestep: '1 -1'
+  maxjitter: 10 # Max allowed jitter if using infra as time source as it may by unstable due to pretending stratum 1 time source
+  initstepslew: 30
+  conf:
+    RedHat:
+      config_file: /etc/chrony.conf
+      driftfile: /var/lib/chrony/drift
+    Debian:
+      config_file: /etc/chrony/chrony.conf
+      driftfile: /var/lib/chrony/chrony.drift

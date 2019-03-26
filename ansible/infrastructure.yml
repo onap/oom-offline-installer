@@ -8,6 +8,7 @@
 - name: Setup infrastructure servers
   hosts: infrastructure
   roles:
+    - chrony
     - certificates
     - docker
     - dns
@@ -18,6 +19,7 @@
 - name: Setup base for Kubernetes nodes
   hosts: kubernetes
   roles:
+    - chrony
     - docker
   tasks:
     - include_role:

@@ -122,7 +122,7 @@ Change the current directory to the ``'ansible'``::
 
 You can see multiple files and directories inside - this is the *offline-installer*. It is implemented as a set of ansible playbooks.
 
-If you created the ``'sw'`` package according to the *Build Guide* then you should had have the ``'application'`` directory populated with at least the following files:
+If you created the ``'sw'`` package according to the *Build Guide* then you should have had the ``'application'`` directory populated with at least the following files:
 
 - ``application_configuration.yml``
 - ``hosts.yml``
@@ -250,6 +250,7 @@ Here, we will be interested in the following variables:
 - ``app_data_path``
 - ``aux_data_path``
 - ``app_name``
+- ``timesync``
 
 ``'resource_dir'``, ``'resources_filename'`` and ``'aux_resources_filename'`` must correspond to the file paths on the *resource-host* (variable ``'resource_host'``), which is in our case the *install-server*.
 
@@ -259,14 +260,43 @@ The ``'resource_dir'`` should be set to ``'/data'``, ``'resources_filename'`` to
 
 **NOTE:** As we mentioned in `Installer packages`_ - the auxiliary package is not mandatory and we will not utilize it in here either.
 
-The last variable ``'app_name'`` should be short and descriptive. We will set it simply to: ``onap``.
+The ``'app_name'`` variable should be short and descriptive. We will set it simply to: ``onap``.
 
-It can look all together something like this::
+The ``'timesync'`` variable is optional and controls synchronisation of the system clock on hosts. It should be configured only if a custom NTP server is available and needed. Such a time authority should be on a host reachable from all installation nodes. If this setting is not provided then the default behavior is to setup NTP daemon on infra-node and sync all kube-nodes' time with it.
+
+If you wish to provide your own NTP servers configure their IPs as follows::
+
+    timesync:
+      servers:
+       - <ip address of NTP_1>
+       - <...>
+       - <ip address of NTP_N>
+
+Another time adjustment related variables are ``'timesync.slewclock'`` and ``'timesync.timezone'`` .
+First one can have value of ``'true'`` or ``'false'`` (default). It controls whether (in case of big time difference compared to server) time should be adjusted gradually by slowing down or speeding up the clock as required (``'true'``) or in one step (``'false'``)::
+
+    timesync:
+      slewclock: true
+
+Second one controls time zone setting on host. It's value should be time zone name according to tz database names with ``'Universal'`` being the default one::
+
+    timesync.
+      timezone: UTC
+
+``'timesync.servers'``, ``'timesync.slewclock'`` and ``'timesync.timezone'`` settings can be used independently.
+
+Final configuration can resemble the following::
 
     resources_dir: /data
     resources_filename: offline-onap-3.0.1-resources.tar
     app_data_path: /opt/onap
     app_name: onap
+    timesync:
+      servers:
+        - 192.168.0.1
+        - 192.168.0.2
+      slewclock: true
+      timezone: UTC
 
 .. _oooi_installguide_config_ssh:
 
