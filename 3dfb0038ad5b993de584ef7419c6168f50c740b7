@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42be2262_c932d80e",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-26T11:26:35Z",
+      "side": 1,
+      "message": "Hmm, shouldn\u0027t this use something like \\[^/\\]\\.\\[^/]\\. or similar in this grep regex? note that .* matches a slash too.there is another occurrence of this particular thing below, too lazy to find it.",
+      "revId": "3dfb0038ad5b993de584ef7419c6168f50c740b7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}

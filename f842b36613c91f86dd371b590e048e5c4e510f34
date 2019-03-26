@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81eaed4c_ee756e4b",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-26T11:26:35Z",
+      "side": 0,
+      "message": "Wondering if nexus versions should be saved at all? shouldn\u0027t we just pin both offline installer and this script to use one predefined instead of somehow discovering it?",
+      "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
