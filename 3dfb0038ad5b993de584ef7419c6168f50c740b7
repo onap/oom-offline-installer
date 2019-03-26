@@ -51,6 +51,24 @@
       "revId": "3dfb0038ad5b993de584ef7419c6168f50c740b7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "be4d0bd2_7a798adc",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-26T14:44:57Z",
+      "side": 1,
+      "message": "i specifically mean the grep regexp",
+      "parentUuid": "c31838d0_e55211d6",
+      "revId": "3dfb0038ad5b993de584ef7419c6168f50c740b7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
