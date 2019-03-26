@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "1685f39d_0ac3d714",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-26T11:59:30Z",
+      "side": 0,
+      "message": "Hmm... I know that this is not really changed compared to the old build script, but #!/usr/bin/env bash will certainly work, however is there any linux distro not putting bash in /bin? In fact new linux distros often symlink /bin to /usr/bin. Even if not symlinked, bash should be traditionally in /bin, unless you know any exception. On the other hand not quite sure if you can trust env being in /usr/bin.\np.s. sorry for commenting in separate replies, it is just new comments popping up in my head.",
+      "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "81eaed4c_ee756e4b",
         "filename": "build/build_nexus_blob.sh",
         "patchSetId": 7
