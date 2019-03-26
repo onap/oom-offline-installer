@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc0cffc9_f2357c2b",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-26T14:20:42Z",
+      "side": 1,
+      "message": "This is so unnecessary. I had to use this technique for stdout only once in my life and here it is not even needed...and it looks very obscure.\n\nhow is this any different from just running mini script inside the chroot and without any copying to the two descriptors?\n\nYour version:\nunshare\n   -\u003e /bin/sh \u003cheredoc\u003e (and descriptor magic)\n\nPrevious version:\nunshare\n   -\u003e /bin/sh fakeshell.sh (no magic)\n\nI dont see benefits from this approach which would compensate the complexity and piping worked before as expected.\n\nI will not -1 this, but I dont like it - it is just unnecessarily obscure and not everyone will understand why and what it does.",
+      "revId": "bacf0a178e8e52e26b30fadc448f9262643f5392",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
