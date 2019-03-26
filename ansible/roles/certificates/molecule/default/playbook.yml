@@ -1,0 +1,17 @@
+---
+- name: Infra
+  hosts: infrastructure
+  roles:
+    - certificates
+    - docker  # docker role needed here just because of docker restart handler
+
+- name: Kube
+  hosts: kubernetes
+  roles:
+    - docker  # docker role needed here just because of docker restart handler
+  tasks:
+    - include_role:
+        name: certificates
+        tasks_from: upload_root_ca.yml
+      vars:
+        certificates_local_dir: certs
