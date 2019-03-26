@@ -33,6 +33,24 @@
       "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c56c2056_c9d2e661",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-26T14:33:03Z",
+      "side": 0,
+      "message": "I put it there as there was used latest tag before, what could cause an issue in case of different data on build and runtime site. What do you mean by discovering it? If you know the digest, you can pull it directly like \u0027docker pull \u003capp\u003e@\u003cdigest\u003e\u0027 But sure, in case there\u0027s the exact version used like right now, this part is extra",
+      "parentUuid": "81eaed4c_ee756e4b",
+      "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }

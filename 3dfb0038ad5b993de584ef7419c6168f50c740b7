@@ -33,6 +33,24 @@
       "revId": "3dfb0038ad5b993de584ef7419c6168f50c740b7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c31838d0_e55211d6",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-26T14:33:03Z",
+      "side": 1,
+      "message": "You probably mean the line 270. But I\u0027m confused if you mean the grep or the sed regexp",
+      "parentUuid": "42be2262_c932d80e",
+      "revId": "3dfb0038ad5b993de584ef7419c6168f50c740b7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
