@@ -1,0 +1,22 @@
+{% if chrony_mode == 'server' %}
+local stratum 1
+allow
+{% elif chrony_mode == 'client' %}
+{% for tserver in chrony.servers %}
+server {{ tserver }} iburst
+{% endfor %}
+{% if chrony.slewclock == false %}
+{# Step the time by default  #}
+makestep {{ chrony.makestep }}
+{% else %}
+{# Slew the clock but step at boot time if time error larger than 30 seconds #}
+initstepslew {{ chrony.initstepslew }}{% for tserver in chrony.servers %} {{ tserver }}{% endfor %}
+
+{% endif %}
+{% if timesync.servers is not defined %}
+maxjitter {{ chrony.maxjitter }}
+{% endif %}
+{% endif %}
+driftfile {{ chrony['conf'][ansible_os_family]['driftfile'] }}
+rtcsync
+logdir /var/log/chrony
