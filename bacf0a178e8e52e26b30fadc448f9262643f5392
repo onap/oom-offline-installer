@@ -34,6 +34,24 @@
       "revId": "bacf0a178e8e52e26b30fadc448f9262643f5392",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2dbc8a5f_cee3cd41",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-26T15:14:31Z",
+      "side": 1,
+      "message": "I am quite sure that bunch of people never saw this and they will be banging their head why and what is that number three and that weird syntax around it.\n\nIt is not common and people know mostly only simple redirections like: \u003e \u003c \u003e\u003e \u003c\u003c 2\u003e\u00261 \u003e\u00262 because that is the only usage they will come accross on regular basis. And also they dont even realize that some file descriptors are involved with these.\n\nI am just saying that in this case it is overkill - actually no, it is not overkill becaue it does not bring anything new to the table - it does the same and provides the same but with an alien syntax. It just obscures semantics. You dont like previous version, which is fine, everyone has different tastes.",
+      "parentUuid": "e7e869df_3bebf3c0",
+      "revId": "bacf0a178e8e52e26b30fadc448f9262643f5392",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
