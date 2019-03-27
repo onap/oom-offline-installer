@@ -1,0 +1,20 @@
+---
+- name: Stopping docker systemd service
+  systemd:
+    name: docker
+    state: stopped
+    enabled: yes
+
+# WA for docker bug, see OOM-1735
+- name: Ensure docker.sock cleaned properly
+  file:
+    state: absent
+    path: /var/run/docker.sock
+  delay: 2 # increase chance of proper docker stopping
+
+- name: Starting docker systemd service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
