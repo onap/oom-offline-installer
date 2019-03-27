@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b2d426b3_ab7448a9",
+        "filename": "ansible/roles/chrony/templates/chrony.conf.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-27T15:20:33Z",
+      "side": 1,
+      "message": "Whitespace control for me is PITA, that\u0027s why i don\u0027t use it. But i really tried with this one as you requested nevertheless and gave up after half one hour of fighting with unnecessary spaces or lack of line feed, this is how it would look, but it still fails in one circumstance:\n\n{% if chrony_mode \u003d\u003d \u0027server\u0027 %}\nlocal stratum 1\nallow\n{% elif chrony_mode \u003d\u003d \u0027client\u0027 %}\n  {%- for tserver in chrony.servers %}\nserver {{ tserver }} iburst\n  {%- endfor %}\n  {%- if chrony.slewclock \u003d\u003d false %}\n  {#- Step the time by default #}\n\nmakestep {{ chrony.makestep }}\n  {%- else %}\n  {#- Slew the clock but step at boot time if time error larger than 30 seconds #}\n\ninitstepslew {{ chrony.initstepslew }}{% for tserver in chrony.servers %} {{ tserver }}{% endfor %}\n\n  {%- endif %}\n  {%- if timesync.servers is not defined %}\n\nmaxjitter {{ chrony.maxjitter }}\n  {%- endif %}\n{% endif -%}\n\ndriftfile {{ chrony[\u0027conf\u0027][ansible_os_family][\u0027driftfile\u0027] }}\nrtcsync\nlogdir /var/log/chrony\n\n\nIf it\u0027s really much more readable i can fight for another half an hour, what you think?",
+      "parentUuid": "d1810d33_ca62ea10",
+      "revId": "1f307d2223a1aa61e154f833a1a257696eecf25e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a24dc790_f61642b8",
         "filename": "ansible/roles/chrony/templates/chrony.conf.j2",
         "patchSetId": 2
