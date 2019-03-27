@@ -16,6 +16,24 @@
       "revId": "2a7756bd50baa20a04d72423e66a0f28177a49ca",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5616eac9_78ec8785",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-27T12:11:42Z",
+      "side": 1,
+      "message": "Yes, it is. Thx. I need to rethink the rethink the process anyway, because of some exceptions.",
+      "parentUuid": "eeba9bab_79750107",
+      "revId": "2a7756bd50baa20a04d72423e66a0f28177a49ca",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
