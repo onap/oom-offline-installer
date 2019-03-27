@@ -22,6 +22,30 @@
       "revId": "b1b5def99af464a5aba6a90eb85f04a96095fdc7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42a14485_2b76279b",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 11
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-03-27T08:04:03Z",
+      "side": 1,
+      "message": "thx",
+      "parentUuid": "e01d60ca_ce675b9b",
+      "range": {
+        "startLine": 268,
+        "startChar": 86,
+        "endLine": 268,
+        "endChar": 87
+      },
+      "revId": "b1b5def99af464a5aba6a90eb85f04a96095fdc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
