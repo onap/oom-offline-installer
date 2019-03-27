@@ -1,6 +1,3 @@
 ---
 - name: Restart Docker
-  systemd:
-    name: docker
-    state: restarted
-    enabled: yes
+  import_tasks: docker_restart.yml
