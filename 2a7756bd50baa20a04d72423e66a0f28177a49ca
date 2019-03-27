@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eeba9bab_79750107",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 14
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-03-27T10:45:46Z",
+      "side": 1,
+      "message": "well I believe that this dot before [^/] is wrong here...?",
+      "revId": "2a7756bd50baa20a04d72423e66a0f28177a49ca",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
