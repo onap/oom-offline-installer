@@ -16,6 +16,24 @@
       "revId": "a28f4093e9045bec5f69e0be0e912982d5387a5f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ea89a0_8b42ca78",
+        "filename": "ansible/roles/docker/handlers/docker_restart.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-03-27T16:36:08Z",
+      "side": 1,
+      "message": "thanks, good point",
+      "parentUuid": "586e953b_ee257f1f",
+      "revId": "a28f4093e9045bec5f69e0be0e912982d5387a5f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
