@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0dd0971_818b221d",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-27T11:10:56Z",
+      "side": 1,
+      "message": "Override file can be user defined:\nansible/roles/application/defaults/main.yml:app_helm_override_file: \"{{ app_data_path }}/override.yaml\"\n\nSo i\u0027d rather make it:\n- name: create {{ app_helm_override_file }}",
+      "revId": "5cc507161fcf4b27103105212a444d3276a9c253",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
