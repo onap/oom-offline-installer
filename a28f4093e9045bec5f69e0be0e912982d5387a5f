@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "586e953b_ee257f1f",
+        "filename": "ansible/roles/docker/handlers/docker_restart.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-27T15:41:58Z",
+      "side": 1,
+      "message": "Ansible modules are declarative, if \u0027systemd\u0027 module run with \u0027state: stopped\u0027 exited with success then the result is \u0027stopped\u0027, no need to perform this kind of hacks IMO. And if for some reason this is the case however then i think we need some proper check to ensure docker stopped, not some random sleep.",
+      "revId": "a28f4093e9045bec5f69e0be0e912982d5387a5f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
