@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "175ef64f_bdda237a",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-27T13:17:58Z",
+      "side": 1,
+      "message": "first letter of the task name should be capital for consistency.",
+      "revId": "4f17d956fafaaa68c6a3e93a6c62dc12b1256d13",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00081b21_d0079163",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-27T13:17:58Z",
+      "side": 1,
+      "message": "same as above",
+      "revId": "4f17d956fafaaa68c6a3e93a6c62dc12b1256d13",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
