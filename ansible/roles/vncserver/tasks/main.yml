@@ -1,15 +1,15 @@
 ---
 - name: Load VNC server image
   docker_image:
-    name: consol/centos-icewm-vnc:latest
-    load_path: '{{ app_data_path }}/offline_data/docker_images_infra/consol_centos_icewm_vnc_latest.tar'
+    name: consol/centos-icewm-vnc:{{ vnc_server_version }}
+    load_path: '{{ app_data_path }}/offline_data/docker_images_infra/consol_centos-icewm-vnc_{{ vnc_server_version }}.tar'
     state: present
     timeout: 120
 
 - name: Run VNC server
   docker_container:
     name: vnc_server
-    image: consol/centos-icewm-vnc
+    image: consol/centos-icewm-vnc:{{ vnc_server_version }}
     state: started
     restart_policy: unless-stopped
     ports:

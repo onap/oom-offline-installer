@@ -11,8 +11,8 @@
 
 - name: Load nginx image
   docker_image:
-    name: own_nginx
-    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/own_nginx_latest.tar"
+    name: own_nginx:{{ own_nginx_version }}
+    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/own_nginx_{{ own_nginx_version }}.tar"
     state: present
     timeout: 120
 
@@ -24,7 +24,7 @@
 - name: Start nginx
   docker_container:
     name: own_nginx
-    image: own_nginx
+    image: own_nginx:{{ own_nginx_version }}
     networks:
       - name: nexus_network
     ports: "{{ nginx.ports }}"
