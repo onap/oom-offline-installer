@@ -34,3 +34,7 @@ kubectl_bin_dir: /usr/local/bin
 helm_bin_dir: /usr/local/bin
 helm_repository_name: local
 helm_repository_url: http://127.0.0.1:8879
+vnc_server_version: 1.4.0
+nexus3_version: 3.15.2
+dnsmasq_version: 2.7.6
+own_nginx_version: 2.0.0

@@ -12,8 +12,8 @@
 
 - name: Load dnsmasq container
   docker_image:
-    name: andyshinn/dnsmasq:2.76
-    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/andyshinn_dnsmasq_2.76.tar"
+    name: andyshinn/dnsmasq:{{ dnsmasq_version }}
+    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/andyshinn_dnsmasq_{{ dnsmasq_version }}.tar"
     state: present
     timeout: 120
   notify: Restart dnsmasq container
