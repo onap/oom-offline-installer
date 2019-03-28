@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c468614d_c9d21a01",
+        "filename": "ansible/roles/chrony/templates/chrony.conf.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-28T07:34:54Z",
+      "side": 1,
+      "message": "not worth it +1",
+      "parentUuid": "b2d426b3_ab7448a9",
+      "revId": "1f307d2223a1aa61e154f833a1a257696eecf25e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a24dc790_f61642b8",
         "filename": "ansible/roles/chrony/templates/chrony.conf.j2",
         "patchSetId": 2
