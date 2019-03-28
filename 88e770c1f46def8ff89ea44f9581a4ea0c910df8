@@ -22,6 +22,30 @@
       "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77c830ad_57b8aed7",
+        "filename": "ansible/roles/rancher/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-28T12:33:14Z",
+      "side": 1,
+      "message": "Yes, I was in hurry, it can be more descriptive name",
+      "parentUuid": "e7bcd5b8_a8405446",
+      "range": {
+        "startLine": 3,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 43
+      },
+      "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
