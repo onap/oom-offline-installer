@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "bbac018b_3fdac0dd",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-03-28T14:20:51Z",
+      "side": 1,
+      "message": "Oh, I know why now - vim is checking my code against PEP and this I would get with bare except:\nhttps://stackoverflow.com/questions/51034424/pep8-does-not-allow-try-except-block/51034440",
+      "parentUuid": "30ca995c_c046aee5",
+      "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "446097a6_76317a06",
         "filename": "ansible/library/rancher1_api.py",
         "patchSetId": 1
