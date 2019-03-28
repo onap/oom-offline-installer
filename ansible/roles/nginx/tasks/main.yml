@@ -9,10 +9,10 @@
     src: nginx.conf.j2
     dest: "{{ app_data_path }}/cfg/nginx.conf"
 
-- name: Load nginx image
+- name: Load nginx server image
   docker_image:
-    name: own_nginx
-    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/own_nginx_latest.tar"
+    name: "{{ nginx_server_image }}"
+    load_path: "{{ infra_images_path }}/{{ nginx_server_image_tar }}"
     state: present
     timeout: 120
 
@@ -21,10 +21,10 @@
     name: nexus_network
     state: present
 
-- name: Start nginx
+- name: Start nginx server container
   docker_container:
-    name: own_nginx
-    image: own_nginx
+    name: nginx_server
+    image: "{{ nginx_server_image }}"
     networks:
       - name: nexus_network
     ports: "{{ nginx.ports }}"
