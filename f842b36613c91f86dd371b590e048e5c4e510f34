@@ -46,6 +46,30 @@
       "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6081332_1f6c157c",
+        "filename": "ansible/roles/nfs/templates/exports.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-28T13:52:31Z",
+      "side": 0,
+      "message": "If I understood correctly this file defines which hosts can connect to mount. And I hope it does not matter if nfs server itself is also on the list?\n\nThe problem was that this was dependent on the inventory generation order, and if inventory was generated in the order where nfs-server was not the first one on the list then the client server did not get into list and failed to mount directory.",
+      "parentUuid": "52dd10ba_8585f3f2",
+      "range": {
+        "startLine": 1,
+        "startChar": 32,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }

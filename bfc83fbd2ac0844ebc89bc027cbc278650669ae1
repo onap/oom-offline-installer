@@ -16,6 +16,24 @@
       "revId": "bfc83fbd2ac0844ebc89bc027cbc278650669ae1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f846cc2c_ca44d2eb",
+        "filename": "ansible/roles/nfs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-28T13:52:31Z",
+      "side": 1,
+      "message": "sounds right to me.",
+      "parentUuid": "3d31999b_d0a0c177",
+      "revId": "bfc83fbd2ac0844ebc89bc027cbc278650669ae1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
