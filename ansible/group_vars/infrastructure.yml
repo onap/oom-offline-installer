@@ -32,3 +32,11 @@ populate_nexus: no
 kube_directory: /root/.kube
 kubectl_bin_dir: /usr/local/bin
 helm_bin_dir: /usr/local/bin
+vnc_server_image_name: consol/centos-icewm-vnc
+vnc_server_image_tag: 1.4.0
+nexus3_image_name: sonatype/nexus3
+nexus3_image_tag: 3.15.2
+dns_server_image_name: andyshinn/dnsmasq
+dns_server_image_tag: 2.76
+nginx_server_image_name: own_nginx
+nginx_server_image_tag: 2.0.0
