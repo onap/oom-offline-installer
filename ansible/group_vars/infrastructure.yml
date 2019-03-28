@@ -27,3 +27,11 @@ all_simulated_hosts:
 rancher_server_version: v1.6.22
 populate_nexus: false
 helm_bin_dir: /usr/local/bin
+vnc_server_image: consol/centos-icewm-vnc:1.4.0
+vnc_server_image_tar: "{{ vnc_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+nexus3_image: sonatype/nexus3:3.15.2
+nexus3_image_tar: "{{ nexus3_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+dns_server_image: andyshinn/dnsmasq:2.76
+dns_server_image_tar: "{{ dns_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+nginx_server_image: own_nginx:2.0.0
+nginx_server_image_tar: "{{ nginx_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"

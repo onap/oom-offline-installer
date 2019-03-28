@@ -31,6 +31,9 @@ resources_on_nfs: no
 # e.g. app_data_path: /opt/onap
 app_data_path:
 
+# Path for tarballs with images loaded on infrastructure server
+infra_images_path: "{{ app_data_path }}/offline_data/docker_images_infra"
+
 # Path for auxiliary data in target infra server.
 # Data from resource host defined by aux_resources_filename variable is placed to this directory.
 # Currently docker images in tar format are supported (see runtime_images parameter).

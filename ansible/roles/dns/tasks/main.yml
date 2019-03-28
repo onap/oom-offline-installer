@@ -8,21 +8,21 @@
   template:
     src: simulated_hosts.j2
     dest: "{{ app_data_path }}/cfg/simulated_hosts"
-  notify: Restart dnsmasq container
+  notify: Restart dns server container
 
-- name: Load dnsmasq container
+- name: Load dns server container
   docker_image:
-    name: andyshinn/dnsmasq:2.76
-    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/andyshinn_dnsmasq_2.76.tar"
+    name: "{{ dns_server_image }}"
+    load_path: "{{ infra_images_path }}/{{ dns_server_image_tar }}"
     state: present
     timeout: 120
-  notify: Restart dnsmasq container
+  notify: Restart dns server container
 
-- name: Start dnsmasq container
+- name: Start dns server container
   docker_container:
-    name: dnsmasq
+    name: dns_server
     network_mode: host
-    image: andyshinn/dnsmasq:2.76
+    image: "{{ dns_server_image }}"
     command: -H /simulated_hosts --log-facility=-
     capabilities: NET_ADMIN
     dns_servers:
