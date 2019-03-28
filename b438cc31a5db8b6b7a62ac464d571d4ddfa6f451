@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "f54e9029_4147ef62",
+        "filename": "ansible/test/images/docker/centos7/Dockerfile",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-28T13:28:43Z",
+      "side": 1,
+      "message": "After changing unit file \u0027systemctl daemon-reload\u0027 is needed to actually notify init system about the change.",
+      "revId": "b438cc31a5db8b6b7a62ac464d571d4ddfa6f451",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "735dfc1d_525ba20c",
         "filename": "ansible/test/images/docker/centos7/build.sh",
         "patchSetId": 1
