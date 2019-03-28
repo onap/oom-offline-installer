@@ -2,6 +2,97 @@
   "comments": [
     {
       "key": {
+        "uuid": "986bc528_18cf3c77",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-28T13:36:54Z",
+      "side": 1,
+      "message": "timeout\u003dtimeout ?",
+      "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "14e79d4a_5622bf61",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-28T13:36:54Z",
+      "side": 1,
+      "message": "why not just except: if you don\u0027t care about any info about exception?",
+      "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "446097a6_76317a06",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-28T13:36:54Z",
+      "side": 1,
+      "message": "timeout\u003dtimeout",
+      "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b272fae_77d0f43e",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-28T13:36:54Z",
+      "side": 1,
+      "message": "use decorator or something to avoid duplicate code",
+      "range": {
+        "startLine": 76,
+        "startChar": 4,
+        "endLine": 101,
+        "endChar": 20
+      },
+      "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7921f4d_36c44754",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-28T13:36:54Z",
+      "side": 1,
+      "message": "if this is hard-coded you should change the name to something like rancher_settings",
+      "revId": "88e770c1f46def8ff89ea44f9581a4ea0c910df8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e7bcd5b8_a8405446",
         "filename": "ansible/roles/rancher/defaults/main.yml",
         "patchSetId": 1
