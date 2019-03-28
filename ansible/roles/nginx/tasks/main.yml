@@ -11,8 +11,8 @@
 
 - name: Load nginx image
   docker_image:
-    name: own_nginx
-    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/own_nginx_latest.tar"
+    name: own_nginx:{{ own_nginx_version }}
+    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/own_nginx_{{ own_nginx_version }}.tar"
     state: present
     timeout: 120
 
