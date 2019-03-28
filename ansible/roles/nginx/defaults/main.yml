@@ -19,3 +19,5 @@ nginx:
     - "{{ app_data_path }}/pkg/rhel:/srv/http/repo.infra-server/rhel:rw"
     - "{{ app_data_path }}/pkg/ubuntu/xenial:/srv/http/repo.infra-server/ubuntu/xenial:rw"
     - /var/log/nginx:/var/log/nginx:rw
+# Default rule for tarball naming translation
+nginx_server_image_tar: "{{ nginx_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"

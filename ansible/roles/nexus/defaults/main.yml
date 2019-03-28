@@ -4,3 +4,5 @@ populate_nexus: false
 # By dafault no additional docker images pushed to nexus at runtime
 # but all images are pre-populated either at buildtime or at install time (populate_nexus).
 runtime_images: {}
+# Default rule for tarball naming translation
+nexus3_image_tar: "{{ nexus3_image | regex_replace('(\\/|\\:)', '_') }}.tar"
