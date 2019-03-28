@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d31999b_d0a0c177",
+        "filename": "ansible/roles/nfs/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-03-28T13:48:38Z",
+      "side": 1,
+      "message": "just thinking if it wouldn\u0027t be safer to use lineinfile to keep exports that might have been there before for some reason (but probably different commit if yes)",
+      "revId": "bfc83fbd2ac0844ebc89bc027cbc278650669ae1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
