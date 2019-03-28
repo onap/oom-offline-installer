@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44658d9c_9643bdb5",
+        "filename": "ansible/roles/docker/handlers/docker_restart.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-28T06:34:45Z",
+      "side": 1,
+      "message": "true",
+      "range": {
+        "startLine": 6,
+        "startChar": 13,
+        "endLine": 6,
+        "endChar": 16
+      },
+      "revId": "5e0d717a1c8af1d3bb58a247e10084d69131adc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f66a2f6b_504411d9",
+        "filename": "ansible/roles/docker/handlers/docker_restart.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-28T06:34:45Z",
+      "side": 1,
+      "message": "true",
+      "range": {
+        "startLine": 18,
+        "startChar": 13,
+        "endLine": 18,
+        "endChar": 16
+      },
+      "revId": "5e0d717a1c8af1d3bb58a247e10084d69131adc7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
