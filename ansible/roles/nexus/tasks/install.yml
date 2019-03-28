@@ -8,8 +8,8 @@
 
 - name: Load nexus image
   docker_image:
-    name: sonatype/nexus3
-    load_path: "{{ app_data_path }}/offline_data/docker_images_infra/sonatype_nexus3_latest.tar"
+    name: "{{ nexus3_image }}"
+    load_path: "{{ infra_images_path }}/{{ nexus3_image_tar }}"
     state: present
     timeout: 120
 
@@ -18,10 +18,10 @@
     name: nexus_network
     state: present
 
-- name: Run nexus container
+- name: Start nexus server container
   docker_container:
     name: nexus
-    image: sonatype/nexus3
+    image: "{{ nexus3_image }}"
     networks:
       - name: nexus_network
     volumes:
