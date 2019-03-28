@@ -1,0 +1,3 @@
+---
+# Default rule for tarball naming translation
+vnc_server_image_tar: "{{ vnc_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"

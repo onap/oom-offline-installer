@@ -1,8 +1,8 @@
 ---
-- name: Restart dnsmasq container
+- name: Restart dns server container
   docker_container:
-    name: dnsmasq
-    image: andyshinn/dnsmasq:2.76
+    name: dns_server
+    image: "{{ dns_server_image }}"
     command: -H /simulated_hosts --log-facility=-
     capabilities: NET_ADMIN
     volumes:

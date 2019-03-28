@@ -1,0 +1,3 @@
+---
+# Default rule for tarball naming translation
+dns_server_image_tar: "{{ dns_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
