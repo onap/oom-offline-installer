@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23e220ab_89b87a0f",
+        "filename": "ansible/roles/package-repository/molecule/default/molecule.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-29T13:51:33Z",
+      "side": 1,
+      "message": "This probably should be:\n\nimage: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}\n\nto align with image name given in test/images/docker/centos7/build.sh, right?",
+      "revId": "885694bcc02161673c8779004122de8ab452101a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
