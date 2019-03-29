@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8d73872_d67101d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-29T11:39:09Z",
+      "side": 1,
+      "message": "Funny thing, \"molecule.sh\" is being interpreted into hyperlink and it surprisingly points to a real page, try it :-O",
+      "revId": "5684dd2c2becdbc07920a52bae4149cf55e91a12",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
