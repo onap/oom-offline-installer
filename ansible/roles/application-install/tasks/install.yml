@@ -83,3 +83,5 @@
           --namespace {{ app_kubernetes_namespace }}
           -f {{ app_data_path }}/override.yaml
   changed_when: true # when executed its a changed type of action
+  register: helm_install
+  failed_when: helm_install.stderr
