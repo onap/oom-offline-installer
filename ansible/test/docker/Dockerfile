@@ -15,6 +15,6 @@ RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     # Add user to same docker group as in docker_host to be able to use docker driver as sudo
     groupadd docker-host -g ${DOCKER_GROUP_ID} && \
     usermod -aG ${DOCKER_GROUP_ID} molecule \
-;fi
+ ;fi
 
-USER molecule
+USER if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then molecule else root fi
