@@ -16,6 +16,24 @@
       "revId": "65f6138140e995e9cc4cebdb6d81cd8bc920e30b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f717510c_5d9025a1",
+        "filename": "ansible/roles/docker/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-29T13:40:55Z",
+      "side": 1,
+      "message": "Yes default playbooks like:\ncreate.yml\ndestroy.yml\ncleanup.yml\nplaybook.yml\nprepare.yml\n\ncan be overriden just by placing respective file to scenario directory.\nThose can be also mentioned in molecule.yml and must be if using some different name and/or path for it.",
+      "parentUuid": "7d7d9cf9_b77b8ec1",
+      "revId": "65f6138140e995e9cc4cebdb6d81cd8bc920e30b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
