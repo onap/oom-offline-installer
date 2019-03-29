@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2998252d_5bf793c2",
+        "filename": "build/data_lists/onap_3.0.1-http_files.list",
+        "patchSetId": 1
+      },
+      "lineNbr": 1483,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-03-29T07:12:01Z",
+      "side": 1,
+      "message": "Might be stupid question but do we need those three (just example, happens all over the list) different releases in the list? Different components need different versions, that\u0027s the case?",
+      "range": {
+        "startLine": 1464,
+        "startChar": 0,
+        "endLine": 1483,
+        "endChar": 92
+      },
+      "revId": "3e1444f0347e7bd2ec1fc275ac22dcb00cfe95c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
