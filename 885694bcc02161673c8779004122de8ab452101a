@@ -16,6 +16,24 @@
       "revId": "885694bcc02161673c8779004122de8ab452101a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72400d49_5901c693",
+        "filename": "ansible/roles/package-repository/molecule/default/molecule.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-03-30T07:53:17Z",
+      "side": 1,
+      "message": "Actually this is intended. I.e. here is not used pre-build image but the standard centos7 that Molecule is building at fly when running the test.\n\nThis is a topic of longer discussion, but shortly we should just decide images we are testing with (can be multiple ones).\nOne option (like here) is to prefer cleanest possible upstream version in all roles it\u0027s possible.",
+      "parentUuid": "23e220ab_89b87a0f",
+      "revId": "885694bcc02161673c8779004122de8ab452101a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
