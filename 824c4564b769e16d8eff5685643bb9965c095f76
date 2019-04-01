@@ -70,6 +70,24 @@
       "revId": "824c4564b769e16d8eff5685643bb9965c095f76",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a52264e2_45c0ea6e",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-01T11:37:21Z",
+      "side": 1,
+      "message": "Looks strange - for sure it removes trailing empty lines? It looks like it just substitutes two empty lines with one.",
+      "parentUuid": "9553e575_600eefed",
+      "revId": "824c4564b769e16d8eff5685643bb9965c095f76",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
