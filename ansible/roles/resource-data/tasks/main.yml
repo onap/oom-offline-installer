@@ -3,23 +3,34 @@
   block:
     - name: Check if source dir and files are present
       stat:
-        path: "{{ item.source }}"
+        path: "{{ item.source_dir }}/{{ item.source_filename }}"
         get_checksum: false
       loop:
-        - { source: "{{ resources_dir }}/{{ resources_filename | default('thisdoesnotexists', true) }}",
-            target: "{{ app_data_path }}/{{ resources_filename | default('thisdoesnotexists', true) }}" }
-        - { source: "{{ resources_dir }}/{{ aux_resources_filename | default('thisdoesnotexists', true) }}",
-            target: "{{ aux_data_path }}/{{ aux_resources_filename | default('thisdoesnotexists', true) }}" }
+        - { source_dir: "{{ resources_dir | default('', true) }}",
+            source_filename: "{{ resources_filename | default('', true) }}",
+            target_dir: "{{ app_data_path | default('', true) }}",
+            target_filename: "{{ resources_filename | default('', true) }}" }
+
+        - { source_dir: "{{ resources_dir | default('', true) }}",
+            source_filename: "{{ aux_resources_filename | default('', true) }}",
+            target_dir: "{{ aux_data_path | default('', true) }}",
+            target_filename: "{{ aux_resources_filename | default('', true) }}" }
       register: source_path
+      when:
+        - item.source_dir | length > 0
+        - item.source_filename | length > 0
+        - item.target_dir | length > 0
+        - item.target_filename | length > 0
 
     - name: Create initial resources list of dicts
       set_fact:
         to_be_uploaded_resources_list: "{{
             to_be_uploaded_resources_list | default([]) + [
-            {'file': item.item.target | basename,
-            'destination_dir': item.item.target | dirname } ] }}"
+            {'file': item.item.target_filename,
+            'destination_dir': item.item.target_dir } ] }}"
       loop: "{{ source_path.results }}"
-      when: item.stat.exists
+      when: item.stat is defined
+      failed_when: not item.stat.exists
   when: inventory_hostname in groups.resources
 
 - name: "Upload resource files {{ hostvars[groups.resources.0].to_be_uploaded_resources_list }} to infrastructure"
