@@ -70,6 +70,24 @@
       "revId": "ba1fa174ee9b284ec1ed2f997dd95670eb63fa62",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b131b36a_a8aa004c",
+        "filename": "ansible/roles/firewall/tasks/firewall-disable.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-01T11:02:56Z",
+      "side": 1,
+      "message": "iptables is quite dummy module, no output it\u0027s producing. At this point where it is called, rules should be out already. So maybe we can simply keep it as it is.\n\nIn case of some cleaner approach, we should be moving outside of iptables module and calling some commands directly. But this is too much to me for the sake of passing idempotency check and also not very nice.\n\n# flush all chains\niptables -F\niptables -t nat -F\niptables -t mangle -F\n# delete all chains\niptables -X\n\n(removing -1)",
+      "parentUuid": "20bed698_0f219574",
+      "revId": "ba1fa174ee9b284ec1ed2f997dd95670eb63fa62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
