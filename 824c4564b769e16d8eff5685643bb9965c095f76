@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be5b0582_51a8cc15",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-01T07:39:49Z",
+      "side": 1,
+      "message": "this to_nice_yaml is potentially a problem, there are some bugreports opened for it that it doesnt produce output correctly. I tested this and in our case it\u0027s adding some empty rows into certificate ... not sure if this is functional impact as ConfigMap with cefrtificate looks correct,\n\nBut I would recommend adding: some task to remove empty rows \n\n# to_nice_yaml filter is wrongly adding empty lines\n- name: Remove blank lines from override_file\n  replace:\n    path: \"{{ app_helm_override_file }}\"\n    regexp: \u0027(^\\n)\u0027\n    replace: \u0027\u0027",
+      "revId": "824c4564b769e16d8eff5685643bb9965c095f76",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
