@@ -16,6 +16,24 @@
       "revId": "824c4564b769e16d8eff5685643bb9965c095f76",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd1b611c_a663b3de",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-01T07:52:09Z",
+      "side": 1,
+      "message": "Wouldn\u0027t \n\ncontent: \"{{ merged_overrides | to_nice_yaml | replace(\u0027^\\n\u0027, \u0027\u0027) }}\"\n\nsuffice?",
+      "parentUuid": "be5b0582_51a8cc15",
+      "revId": "824c4564b769e16d8eff5685643bb9965c095f76",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
