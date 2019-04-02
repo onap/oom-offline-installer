@@ -156,6 +156,30 @@
       "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aaafdce9_13e6d6bd",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-02T14:31:35Z",
+      "side": 1,
+      "message": "It should be on separated line",
+      "parentUuid": "007c84a2_0ce47ff9",
+      "range": {
+        "startLine": 278,
+        "startChar": 150,
+        "endLine": 278,
+        "endChar": 152
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
