@@ -16,6 +16,29 @@
       "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "81f71080_a24df1f8",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-02T14:07:35Z",
+      "side": 1,
+      "message": "duplicate \u0027:\u0027",
+      "range": {
+        "startLine": 278,
+        "startChar": 150,
+        "endLine": 278,
+        "endChar": 152
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
