@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64c47bda_f550aef1",
+        "filename": "ansible/test/images/docker/centos7/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-02T13:19:42Z",
+      "side": 1,
+      "message": "Obsolete, in current base image it\u0027s already there.",
+      "revId": "2a1fd0277310dd2d04fe000e0a90001e76533e4a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d779f5b_939881f5",
+        "filename": "ansible/test/images/docker/centos7/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-02T13:19:42Z",
+      "side": 1,
+      "message": "Removed it as it is mapped explicitly in molecule.yml via platforms.volume{_mounts} key, not needed otherwise.",
+      "revId": "2a1fd0277310dd2d04fe000e0a90001e76533e4a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1837d728_0821aed1",
+        "filename": "ansible/test/images/docker/centos7/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-02T13:19:42Z",
+      "side": 1,
+      "message": "Removed the \u0027latest\u0027 tag. Milan also pointed out we can avoid it here.",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "2a1fd0277310dd2d04fe000e0a90001e76533e4a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
