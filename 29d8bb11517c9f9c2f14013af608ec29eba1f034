@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4aafa689_f159b527",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-02T14:47:17Z",
+      "side": 1,
+      "message": "I don\u0027t see how long it should be, though",
+      "parentUuid": "2ef8ed78_104f3de3",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 18
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cb4073c_0e8213eb",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 2
@@ -105,6 +129,54 @@
         "startChar": 243,
         "endLine": 276,
         "endChar": 254
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a6b77e5_15a9f097",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-02T14:47:17Z",
+      "side": 1,
+      "message": "to be honest, I mostly meant where do those values come from, not where they are set. I believe that where they are set is an implementation detail that does not affect installer user, so I didn\u0027t mention this.",
+      "parentUuid": "2c305e84_7be257c8",
+      "range": {
+        "startLine": 276,
+        "startChar": 243,
+        "endLine": 276,
+        "endChar": 254
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f3f7f90_a4a24043",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-02T14:47:17Z",
+      "side": 1,
+      "message": "hmm I have problems formulating this, actually. Rephrased it completely for now, not sure",
+      "parentUuid": "6d138943_5be3b8d7",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 9
       },
       "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
@@ -227,6 +299,30 @@
       "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cf03e82_59f87e5d",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-02T14:47:17Z",
+      "side": 1,
+      "message": "Hmm, looking at the docs i had the impression that they are rather not imperative, at least above this paragraph i see docs in 2\u0027nd person singular and such like.",
+      "parentUuid": "e112b995_e4989f3a",
+      "range": {
+        "startLine": 278,
+        "startChar": 13,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
