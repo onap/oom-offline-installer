@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "329f7642_67aecd16",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-02T07:04:09Z",
+      "side": 1,
+      "message": "might as well made whole name as a variable and change name of task to just dns in case it something else then dnsmasq",
+      "revId": "a1fc23ef24cfba70837555ad6210b0401170bb2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ae0cb77_bdc05498",
+        "filename": "ansible/roles/nexus/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-02T07:04:09Z",
+      "side": 1,
+      "message": "make name variable as well",
+      "revId": "a1fc23ef24cfba70837555ad6210b0401170bb2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ada20fd6_18333a9c",
+        "filename": "ansible/roles/nginx/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-02T07:04:09Z",
+      "side": 1,
+      "message": "here too",
+      "revId": "a1fc23ef24cfba70837555ad6210b0401170bb2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cdbe265_91e8163c",
+        "filename": "ansible/roles/vncserver/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-02T07:04:09Z",
+      "side": 1,
+      "message": "name can be variable too",
+      "revId": "a1fc23ef24cfba70837555ad6210b0401170bb2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
