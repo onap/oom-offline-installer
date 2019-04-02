@@ -1,0 +1,7 @@
+---
+- name: Setup all hosts for playing chrony role
+  hosts: all
+  gather_facts: false
+
+  roles:
+    - prepare-chrony
