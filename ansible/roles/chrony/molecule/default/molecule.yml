@@ -1,0 +1,36 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infra_host
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    pre_build_image: True
+    privileged: true
+    volume_mounts:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    override_command: False
+    groups:
+      - infrastructure
+  - name: node0
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    pre_build_image: True
+    privileged: true
+    volume_mounts:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    override_command: False
+    groups:
+      - kubernetes
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
