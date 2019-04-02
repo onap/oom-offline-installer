@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "8c08f632_be48987a",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-02T16:49:57Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "40a9ab1f_bf98afa7",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 274,
+        "endChar": 18
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cb4073c_0e8213eb",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 2
