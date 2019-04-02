@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "6d138943_5be3b8d7",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-02T14:10:22Z",
+      "side": 1,
+      "message": "Less ambiguous statement would be \"Should you need to modify (...)\" and rephrase the rest of this and next sentence.",
+      "range": {
+        "startLine": 276,
+        "startChar": 0,
+        "endLine": 276,
+        "endChar": 9
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba2cfe1_e903f33d",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-02T14:10:22Z",
+      "side": 1,
+      "message": "Not \"override.yaml\"?",
+      "range": {
+        "startLine": 276,
+        "startChar": 243,
+        "endLine": 276,
+        "endChar": 254
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81f71080_a24df1f8",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 2
@@ -39,6 +85,29 @@
       "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e112b995_e4989f3a",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-02T14:10:22Z",
+      "side": 1,
+      "message": "I think we try to keep all statements imperative so i would rather \"following lines ... can be appended to .... to set up (...)\"",
+      "range": {
+        "startLine": 278,
+        "startChar": 13,
+        "endLine": 278,
+        "endChar": 29
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
