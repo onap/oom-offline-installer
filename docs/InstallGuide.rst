@@ -268,6 +268,24 @@ It can look all together something like this::
     app_data_path: /opt/onap
     app_name: onap
 
+.. _oooi_installguide_config_appconfig_overrides:
+
+Helm chart value overrides
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If there is a need to change onap settings such as managed openstack credentials, service ports, or even docker image versions used, you can do this by putting settings under the ``overrides`` key in ``application_configuration.yml``.
+These settings will override helm values originally stored in ``values.yaml`` files in helm chart directories.
+
+For example, the following lines could be appended to ``application_configuration.yml`` to set up managed openstack credentials for onap's so component::
+
+    overrides:
+      so:
+        config:
+          openStackUserName: "os_user"
+          openStackRegion: "region_name"
+          openStackKeyStoneUrl: "keystone_url"
+          openStackEncryptedPasswordHere: "encrypted_password"
+
 .. _oooi_installguide_config_ssh:
 
 SSH authentication
