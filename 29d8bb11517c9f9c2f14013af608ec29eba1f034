@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "2c305e84_7be257c8",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-02T14:14:36Z",
+      "side": 1,
+      "message": "I mean maybe it should be pointed that an overrides.yaml file is generated with overrides and not values.yaml altered.",
+      "parentUuid": "8ba2cfe1_e903f33d",
+      "range": {
+        "startLine": 276,
+        "startChar": 243,
+        "endLine": 276,
+        "endChar": 254
+      },
+      "revId": "29d8bb11517c9f9c2f14013af608ec29eba1f034",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "81f71080_a24df1f8",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 2
