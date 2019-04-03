@@ -26,7 +26,9 @@ usage () {
     echo "Usage:"
     echo -e "./$(basename $0) <project version>\n"
     echo "Example:"
-    echo "  ./$(basename $0) onap_3.0.0"
+    echo "# Use onap_3.0.0 tag for original Casablanca"
+    echo "# Use onap_3.0.1 tag for latest Casablanca MR"
+    echo "  ./$(basename $0) onap_3.0.1"
 }
 
 # boilerplate
@@ -68,22 +70,22 @@ echo "[Step $((CURR++))/$TOTAL Prepare infra related images to infra folder]"
 $CTOOLS/save-docker-images.sh "${LISTS_DIR}/infra_docker_images.list" "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Download git repos]"
-$CTOOLS/download-git-repos.sh "${LISTS_DIR}/${TAG}-git_repos.list" "${DATA_DIR}/git-repo"
+$CTOOLS/download-git-repos.sh "${LISTS_DIR}/onap_3.0.x-git_repos.list" "${DATA_DIR}/git-repo"
 
 echo "[Step $((CURR++))/$TOTAL Download http files]"
-$CTOOLS/download-http-files.sh "${LISTS_DIR}/${TAG}-http_files.list" "${DATA_DIR}/http"
+$CTOOLS/download-http-files.sh "${LISTS_DIR}/onap_3.0.x-http_files.list" "${DATA_DIR}/http"
 
 echo "[Step $((CURR++))/$TOTAL Download npm pkgs]"
-$CTOOLS/download-npm-pkgs.sh "${LISTS_DIR}/${TAG}-npm.list" "${DATA_DIR}/offline_data/npm_tar"
+$CTOOLS/download-npm-pkgs.sh "${LISTS_DIR}/onap_3.0.x-npm.list" "${DATA_DIR}/offline_data/npm_tar"
 
 echo "[Step $((CURR++))/$TOTAL Download bin tools]"
-$CTOOLS/download-bin-tools.sh "${TAG}" "${DATA_DIR}/downloads"
+$CTOOLS/download-bin-tools.sh "${DATA_DIR}/downloads"
 
 echo "[Step $((CURR++))/$TOTAL Create RHEL repository]"
 $CTOOLS/create-rhel-repo.sh "${DATA_DIR}/pkg/rhel"
 
 echo "[Step $((CURR++))/$TOTAL Download sdnc-ansible-server packages]"
-$CTOOLS/download-pip.sh "${LISTS_DIR}/${TAG}-pip_packages.list" "${DATA_DIR}/offline_data/pypi"
+$CTOOLS/download-pip.sh "${LISTS_DIR}/onap_3.0.x-pip_packages.list" "${DATA_DIR}/offline_data/pypi"
 $CTOOLS/download-files.sh "${LISTS_DIR}/deb_packages.list" "${DATA_DIR}/pkg/ubuntu/xenial"
 
 echo "[Step $((CURR++))/$TOTAL Create APT repository]"
