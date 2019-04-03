@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "572ad499_55f4e79a",
+        "filename": "ansible/test/roles/prepare-docker/tasks/enable-repos.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-03T13:17:09Z",
+      "side": 1,
+      "message": "Repo files are INI style files, using ini_file ansible module could be more straightforward with those.",
+      "revId": "48c3b693338bd7c8d57fee70d1ed6ef4798f8b69",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
