@@ -50,6 +50,24 @@
       "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad046605_be24e79a",
+        "filename": "ansible/test/images/docker/centos7/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-03T06:05:37Z",
+      "side": 1,
+      "message": "Well, but that is what we want, at least to me, don\u0027t we? Or you mean some parameter with default value of \u0027latest\u0027? I\u0027m not sure we\u0027ll need those tags here anyway.",
+      "parentUuid": "0950d869_40667856",
+      "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
