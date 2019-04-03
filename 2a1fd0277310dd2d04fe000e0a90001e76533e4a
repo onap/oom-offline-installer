@@ -56,6 +56,30 @@
       "revId": "2a1fd0277310dd2d04fe000e0a90001e76533e4a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d9d720_3e84755a",
+        "filename": "ansible/test/images/docker/centos7/build.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-03T05:01:42Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "1837d728_0821aed1",
+      "range": {
+        "startLine": 22,
+        "startChar": 34,
+        "endLine": 22,
+        "endChar": 41
+      },
+      "revId": "2a1fd0277310dd2d04fe000e0a90001e76533e4a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
