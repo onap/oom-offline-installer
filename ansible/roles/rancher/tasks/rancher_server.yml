@@ -2,7 +2,7 @@
 # DO NOT ADD SPACE AROUND ';'
 - name: Start rancher/server:{{ rancher_server_version }}
   docker_container:
-    name: rancher_server
+    name: rancher-server
     image: rancher/server:{{ rancher_server_version }}
     command: ["sh", "-c", "/usr/sbin/update-ca-certificates;/usr/bin/entry /usr/bin/s6-svscan /service"]
     ports: 8080:8080
@@ -39,13 +39,3 @@
     key_private: "{{ env.data.apikey.private }}"
     rancher_agent_image: "{{ env.data.registration_tokens.image }}"
     rancher_agent_reg_url: "{{ env.data.registration_tokens.reg_url }}"
-
-- name: Ensure .kube directory exists
-  file:
-    path: "{{ kube_directory }}"
-    state: directory
-
-- name: Create kube config
-  template:
-    src: kube_config.j2
-    dest: "{{ kube_directory }}/config"
