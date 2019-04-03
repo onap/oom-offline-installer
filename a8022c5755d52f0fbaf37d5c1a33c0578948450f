@@ -16,6 +16,40 @@
       "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd5a53d_a3d8d2e1",
+        "filename": "ansible/test/images/docker/build-all.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-03T05:01:42Z",
+      "side": 1,
+      "message": "yes exactly this kind of script was in my mind. Thanks.",
+      "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0950d869_40667856",
+        "filename": "ansible/test/images/docker/centos7/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-03T05:01:42Z",
+      "side": 1,
+      "message": "we need to fix some tag (version) here. This will be otherwise automatically latest.",
+      "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
