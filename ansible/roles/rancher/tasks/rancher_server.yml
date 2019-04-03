@@ -19,7 +19,7 @@
   delay: 30
   until: not response.failed
 
-- name: Create kubernetes environment
+- name: Create rancher kubernetes environment
   rancher_k8s_environment:
     name: "{{ app_name }}"
     descr: "Kubernetes environment for {{ app_name }}"
