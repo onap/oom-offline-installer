@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "687cc808_abedd292",
+        "filename": "ansible/roles/nfs/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-03T11:48:51Z",
+      "side": 1,
+      "message": "Not sure if you are aware of this, but I saw that you can have export dropins in /etc/exports.d instead of modifying the main one, far better way. However not sure if it is always supported, and how new this feature is.",
+      "revId": "11ce29363400bfcc909c9b94eda01aeafc6c17dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f114f780_c186424f",
+        "filename": "ansible/roles/nfs/templates/exports.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-03T11:48:51Z",
+      "side": 1,
+      "message": "Actually shouldn\u0027t this use cluster_ip? nfs communication between nodes probably uses cluster network.\nOr, using \"*\" instead of a whitelist, probably possible. Maybe less secure though.",
+      "revId": "11ce29363400bfcc909c9b94eda01aeafc6c17dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
