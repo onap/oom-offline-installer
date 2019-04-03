@@ -62,6 +62,30 @@
       "revId": "b956f04f45632d786676d4aff77d2b602ee21fec",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fdc3d94_3b3f8151",
+        "filename": "ansible/roles/nexus/tasks/install.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-03T08:56:32Z",
+      "side": 1,
+      "message": "It was ugly even before",
+      "parentUuid": "a43a4003_ad9186f5",
+      "range": {
+        "startLine": 12,
+        "startChar": 86,
+        "endLine": 12,
+        "endChar": 129
+      },
+      "revId": "b956f04f45632d786676d4aff77d2b602ee21fec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
