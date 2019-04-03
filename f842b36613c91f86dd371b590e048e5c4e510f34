@@ -142,6 +142,30 @@
       "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c1b72ac0_e1ea2eed",
+        "filename": "ansible/roles/nfs/templates/exports.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-03T12:46:20Z",
+      "side": 0,
+      "message": "well still there is a separate nfs servers group, so even if that is fixed, it is better to also make this template not to depend on such a hidden thing like order of nodes in group. :)",
+      "parentUuid": "14cf030f_1f33d6a2",
+      "range": {
+        "startLine": 1,
+        "startChar": 32,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
