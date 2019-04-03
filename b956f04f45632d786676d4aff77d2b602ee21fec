@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0a8bc5e_fc12fc96",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-03T05:10:20Z",
+      "side": 1,
+      "message": "why not just have name and version as one variable?",
+      "revId": "b956f04f45632d786676d4aff77d2b602ee21fec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d3241be_f4a7ac2d",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-03T05:10:20Z",
+      "side": 1,
+      "message": "OMG",
+      "range": {
+        "startLine": 16,
+        "startChar": 83,
+        "endLine": 16,
+        "endChar": 149
+      },
+      "revId": "b956f04f45632d786676d4aff77d2b602ee21fec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a43a4003_ad9186f5",
+        "filename": "ansible/roles/nexus/tasks/install.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-03T05:10:20Z",
+      "side": 1,
+      "message": "just have variable instead. Or do all these nasty looking regex in variable file?",
+      "range": {
+        "startLine": 12,
+        "startChar": 86,
+        "endLine": 12,
+        "endChar": 129
+      },
+      "revId": "b956f04f45632d786676d4aff77d2b602ee21fec",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
