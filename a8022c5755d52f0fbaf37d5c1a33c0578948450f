@@ -122,6 +122,24 @@
       "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15d7e989_47a5ae2a",
+        "filename": "ansible/test/images/docker/centos7/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-03T06:58:43Z",
+      "side": 1,
+      "message": "Well, now i\u0027m not following - then what do we do, do we leave it as is or put some fancy tag here and fix it also in all molecule.yml?",
+      "parentUuid": "e27348e2_09d6ab1d",
+      "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
