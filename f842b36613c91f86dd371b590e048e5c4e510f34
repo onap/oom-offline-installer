@@ -190,6 +190,30 @@
       "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "532b4ae9_1ba7bb04",
+        "filename": "ansible/roles/nfs/templates/exports.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-03T12:53:51Z",
+      "side": 0,
+      "message": "ah, ok.",
+      "parentUuid": "e3901a38_71a840dd",
+      "range": {
+        "startLine": 1,
+        "startChar": 32,
+        "endLine": 1,
+        "endChar": 36
+      },
+      "revId": "f842b36613c91f86dd371b590e048e5c4e510f34",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
