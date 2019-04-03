@@ -86,6 +86,24 @@
       "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08b5e28c_c96ddca7",
+        "filename": "ansible/test/images/docker/centos7/build.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-03T06:45:25Z",
+      "side": 1,
+      "message": "Hm, but we now have \n\n    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}\n\nall over the molecule.yml in roles so if we introduce some custom fixed tag here then either we will have to fix it also for \"image\" keys in molecule.yml or set the tag name via env PREBUILD_DISTRO_VERSION var on each molecule invocation, which is rather not what we want.",
+      "parentUuid": "37c737c8_0e4fa2de",
+      "revId": "a8022c5755d52f0fbaf37d5c1a33c0578948450f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
