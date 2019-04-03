@@ -147,3 +147,12 @@ application_post_install_role:
 #  openStackDomain: "Default"
 #  openStackUserName: "admin"
 #  openStackEncryptedPassword: "f7920677e15e2678b0f33736189e8965"
+
+# Optional time synchronisation settings
+# timesync:
+#   servers:
+#     - <ip address of NTP_1>
+#     - <...>
+#     - <ip address of NTP_N>
+#   slewclock: false
+#   timezone: <timezone name from tz database>
