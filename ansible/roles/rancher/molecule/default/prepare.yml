@@ -1,0 +1,5 @@
+---
+- name: Prepare kube nodes
+  hosts: kubernetes
+  roles:
+    - prepare-docker
