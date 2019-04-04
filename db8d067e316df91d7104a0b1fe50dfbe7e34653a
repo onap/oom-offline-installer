@@ -16,6 +16,24 @@
       "revId": "db8d067e316df91d7104a0b1fe50dfbe7e34653a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4324cd9_b9aef89f",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-04T13:22:28Z",
+      "side": 1,
+      "message": "I think we can really hide it into respective role defaults. This is not something we want user to change, right ?",
+      "parentUuid": "1b836340_83e61fa2",
+      "revId": "db8d067e316df91d7104a0b1fe50dfbe7e34653a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
