@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "be72ae87_569c4847",
+        "filename": "ansible/group_vars/all.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-04T12:10:50Z",
+      "side": 1,
+      "message": "thx",
+      "parentUuid": "7c62209e_ff89bd38",
+      "revId": "9291846252c5280113fbc77d171898e3d3597306",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "070048fb_dccd1445",
         "filename": "build/creating_data/create_nginx_image/01create-image.sh",
         "patchSetId": 7
