@@ -51,6 +51,24 @@
       "revId": "9291846252c5280113fbc77d171898e3d3597306",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "28d825de_c0d42201",
+        "filename": "build/creating_data/create_nginx_image/01create-image.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-04T12:28:51Z",
+      "side": 1,
+      "message": "It\u0027s a good habit to close scripts correctly, but since we don\u0027t read the return value elsewhere, it\u0027s unnecessary. Will remove that...",
+      "parentUuid": "070048fb_dccd1445",
+      "revId": "9291846252c5280113fbc77d171898e3d3597306",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
