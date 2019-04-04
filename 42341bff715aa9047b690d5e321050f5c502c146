@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0dd6fb5_1fc564c4",
+        "filename": "ansible/roles/rancher/molecule/default/playbook.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-04T16:35:18Z",
+      "side": 1,
+      "message": "response",
+      "range": {
+        "startLine": 26,
+        "startChar": 75,
+        "endLine": 26,
+        "endChar": 83
+      },
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
