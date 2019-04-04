@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b836340_83e61fa2",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-04T12:52:31Z",
+      "side": 1,
+      "message": "++ for moving image tar files names mangling out of task file but what\u0027s here in lines 31,33,35,37 should be definitely put in relevant role\u0027s defaults IMHO.",
+      "revId": "db8d067e316df91d7104a0b1fe50dfbe7e34653a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
