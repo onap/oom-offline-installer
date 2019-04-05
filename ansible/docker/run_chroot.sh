@@ -364,6 +364,8 @@ fi
 #The redirection is to save our stdin, because we use it to pipe commands and we
 #may want interactivity.
 exec chroot "${CHROOT_DIR}" /bin/sh /dev/stdin "${CHROOT_WORKDIR:-/}" "$@" 3<&0 << "EOF"
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PATH
 mkdir -p $1
 cd $1
 shift
