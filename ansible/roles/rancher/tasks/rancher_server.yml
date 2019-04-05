@@ -1,9 +1,9 @@
 ---
 # DO NOT ADD SPACE AROUND ';'
-- name: Start rancher/server:{{ rancher_server_version }}
+- name: Start rancher server container
   docker_container:
     name: rancher-server
-    image: rancher/server:{{ rancher_server_version }}
+    image: {{ rancher_server_image }}
     command: ["sh", "-c", "/usr/sbin/update-ca-certificates;/usr/bin/entry /usr/bin/s6-svscan /service"]
     ports: 8080:8080
     state: started
