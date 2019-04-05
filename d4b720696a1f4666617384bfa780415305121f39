@@ -16,6 +16,23 @@
       "revId": "d4b720696a1f4666617384bfa780415305121f39",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da45ac64_4d9ca805",
+        "filename": "ansible/roles/certificates/molecule/default/molecule.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-05T13:53:35Z",
+      "side": 1,
+      "message": "I did investigate on this crap, here\u0027s what i found: This is due to a bug in module that causes it to not to be idempotent:\n\nhttps://github.com/ansible/ansible/issues/51429\nhttps://github.com/ansible/ansible/pull/51473\n\nIt was fixed as a result of the last pull in devel for release in Ansible 2.8. \n\nBUT it was also backported to the version we use: https://github.com/ansible/ansible/pull/52024\n\nNow, why it\u0027s still reporting \u0027changed\u0027 is unknown to me, any idea? I tested with ansible 2.7.10 to no avail.\n\nTwo scenarios: we wait for ansible 2.8 in hope it helps OR we add this \u0027changed_when\u0027 thing or whatever to supress it.",
+      "revId": "d4b720696a1f4666617384bfa780415305121f39",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
