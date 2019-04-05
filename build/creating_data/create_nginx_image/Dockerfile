@@ -20,6 +20,8 @@ FROM nginx:alpine
 
 RUN apk add --no-cache --update fcgiwrap git git-daemon spawn-fcgi
 
+ADD VERSION .
+
 COPY gitconfig /etc/
 
 CMD spawn-fcgi -M 666 -s /var/run/fcgiwrap.socket /usr/bin/fcgiwrap && \
