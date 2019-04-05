@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "324e63e2_6c214b25",
+        "filename": "ansible/docker/run_chroot.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-05T08:29:22Z",
+      "side": 1,
+      "message": "I would rather use PATH\u003d$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin  isn\u0027t it safer than rewrite it fully ? also can\u0027t it be done in one row ? export PATH\u003d$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin\n\n?",
+      "revId": "bef7cab612005cea481b11b2ac88c06604572efe",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
