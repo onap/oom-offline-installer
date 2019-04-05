@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "44f96260_f0381c14",
+        "filename": "ansible/roles/nfs/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-05T10:26:14Z",
+      "side": 1,
+      "message": "will be covered in OOM-1770",
+      "parentUuid": "687cc808_abedd292",
+      "revId": "11ce29363400bfcc909c9b94eda01aeafc6c17dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f114f780_c186424f",
         "filename": "ansible/roles/nfs/templates/exports.j2",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-03T11:48:51Z",
       "side": 1,
       "message": "Actually shouldn\u0027t this use cluster_ip? nfs communication between nodes probably uses cluster network.\nOr, using \"*\" instead of a whitelist, probably possible. Maybe less secure though.",
+      "revId": "11ce29363400bfcc909c9b94eda01aeafc6c17dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77919bb9_e03ec34b",
+        "filename": "ansible/roles/nfs/templates/exports.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-05T10:26:14Z",
+      "side": 1,
+      "message": "can be covered later in OOM-1770",
+      "parentUuid": "f114f780_c186424f",
       "revId": "11ce29363400bfcc909c9b94eda01aeafc6c17dc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
