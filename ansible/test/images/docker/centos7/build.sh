@@ -19,4 +19,5 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 set -e
-docker build . -t molecule-centos7:latest
+TAG=${1:-centos7.6}
+docker build . -t molecule-centos:${TAG}
