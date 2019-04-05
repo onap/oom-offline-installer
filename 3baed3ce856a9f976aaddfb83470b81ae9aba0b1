@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e8d5e20_6c2d830a",
+        "filename": "ansible/roles/certificates/molecule/default/molecule.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-05T13:43:34Z",
+      "side": 1,
+      "message": "Did what is says.",
+      "revId": "3baed3ce856a9f976aaddfb83470b81ae9aba0b1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
