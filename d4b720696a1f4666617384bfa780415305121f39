@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6357ef67_3579e8d9",
+        "filename": "ansible/roles/certificates/molecule/default/molecule.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-05T13:43:34Z",
+      "side": 1,
+      "message": "Changed image name as 84312 is merged",
+      "revId": "d4b720696a1f4666617384bfa780415305121f39",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
