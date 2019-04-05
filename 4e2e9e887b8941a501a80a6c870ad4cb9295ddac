@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2a990e1_55f4bd5c",
+        "filename": "build/data_lists/onap_3.0.x-git_repos.list",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-05T05:16:58Z",
+      "side": 0,
+      "message": "when those 2 possible version inside release are removed from certain artifacts (git repos) then the file also should be named without any numbers or branch names. just onap_git_repos.list",
+      "revId": "4e2e9e887b8941a501a80a6c870ad4cb9295ddac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
