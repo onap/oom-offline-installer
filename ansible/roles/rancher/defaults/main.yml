@@ -22,5 +22,12 @@ rancher:
   # Auto-purge Audit Log entries after this long (seconds)
   audit_log_purge_after_seconds: 2592000  # 30 days
 
+  # By default we don't enable local authentication (mainly due to
+  # to the fact that rancher_k8s_environment.py would have to be
+  # rewritten completely)
+  # But if you don't need to run rancher_kubernetes playbook more
+  # than once (you should not have to under the terms of a regular
+  # installation), then you can safely enable it.
+  auth_enabled: false
   # Set this password for the rancher admin account:
   admin_password: "admin"
