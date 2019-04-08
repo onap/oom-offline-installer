@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "335a3315_b513ed87",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-08T16:31:56Z",
+      "side": 1,
+      "message": "Sorry, there\u0027s a typo and it should be \u0027/\\.[^/].*\\//p\u0027. The result printed is the same, but this one is the correct one",
+      "range": {
+        "startLine": 280,
+        "startChar": 11,
+        "endLine": 280,
+        "endChar": 26
+      },
+      "revId": "b14da03bdff5fa1add1ffc5ced5332f6544158ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "47bf289f_9252cecc",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 6
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-08T16:31:56Z",
+      "side": 1,
+      "message": "\u0027/\\.[^/].*\\//!p\u0027",
+      "range": {
+        "startLine": 281,
+        "startChar": 11,
+        "endLine": 281,
+        "endChar": 27
+      },
+      "revId": "b14da03bdff5fa1add1ffc5ced5332f6544158ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
