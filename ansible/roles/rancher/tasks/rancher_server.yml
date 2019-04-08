@@ -32,6 +32,14 @@
   delay: 5
   until: env.data is defined
 
+# There is a lack of idempotency in the previous task and so there are new api
+# key-pairs created with each run.
+#
+# ToDo: fix idempotency of rancher role
+#
+# Anyway as rke will be default k8s orchestrator in Dublin, it's supposed to be
+# low prio topic. The following tasks dealing with the API are ignoring this problem
+# and they simply use the new created API key-pair, which is set as a fact here:
 - name: Set apikey values
   set_fact:
     k8s_env_id: "{{ env.data.environment.id }}"
@@ -39,6 +47,15 @@
     key_private: "{{ env.data.apikey.private }}"
     rancher_agent_image: "{{ env.data.registration_tokens.image }}"
     rancher_agent_reg_url: "{{ env.data.registration_tokens.reg_url }}"
+
+- name: Setup rancher admin password and enable authentication
+  rancher1_api:
+    server: "{{ rancher_server_url }}"
+    account_key: "{{ key_public }}:{{ key_private }}"
+    mode: access_control
+    data:
+      account_id: 1a1 # default rancher admin account
+      password: "{{ rancher.admin_password }}"
 
 - name: Configure the size of the rancher cattle db and logs
   block:
