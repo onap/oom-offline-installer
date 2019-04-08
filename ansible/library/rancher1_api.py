@@ -5,6 +5,7 @@ from ansible.module_utils.basic import AnsibleModule
 import requests
 import json
 import functools
+import time
 
 DOCUMENTATION = """
 ---
@@ -96,8 +97,11 @@ def _decorate_rancher_api_request(request_method):
     def wrap_request(*args, **kwargs):
 
         response = request_method(*args, **kwargs)
+        authorized = True
 
-        if response.status_code != requests.codes.ok:
+        if response.status_code == 401:
+            authorized = False
+        elif response.status_code != requests.codes.ok:
             response.raise_for_status()
 
         try:
@@ -105,7 +109,7 @@ def _decorate_rancher_api_request(request_method):
         except Exception:
             json_data = None
 
-        return json_data
+        return json_data, authorized
 
     return wrap_request
 
@@ -214,17 +218,18 @@ def mode_access_control(api_url, data=None, headers=None,
 
         # API get current value
         try:
-            json_response = get_rancher_api_value(request_url,
-                                                  username=access_key,
-                                                  password=secret_key,
-                                                  headers=headers,
-                                                  timeout=timeout)
+            json_response, authorized = \
+                get_rancher_api_value(request_url,
+                                      username=access_key,
+                                      password=secret_key,
+                                      headers=headers,
+                                      timeout=timeout)
         except requests.HTTPError as e:
             raise ModeError(str(e))
         except requests.Timeout as e:
             raise ModeError(str(e))
 
-        if not json_response:
+        if not authorized or not json_response:
             raise ModeError('ERROR: BAD RESPONSE (GET) - no json value in '
                             + 'the response')
 
@@ -237,6 +242,37 @@ def mode_access_control(api_url, data=None, headers=None,
             pass
 
         return None
+
+    def remove_password(password_id, action):
+        if action == 'deactivate':
+            action_status = 'deactivating'
+        elif action == 'remove':
+            action_status = 'removing'
+
+        request_url = api_url + 'passwords/' + password_id + \
+            '/?action=' + action
+
+        try:
+            json_response, authorized = \
+                set_rancher_api_value(request_url,
+                                      {},
+                                      username=access_key,
+                                      password=secret_key,
+                                      headers=headers,
+                                      method='POST',
+                                      timeout=timeout)
+        except requests.HTTPError as e:
+            raise ModeError(str(e))
+        except requests.Timeout as e:
+            raise ModeError(str(e))
+
+        if not authorized or not json_response:
+            raise ModeError('ERROR: BAD RESPONSE (POST) - no json value in '
+                            + 'the response')
+
+        if json_response['state'] != action_status:
+            raise ModeError("ERROR: Failed to '%s' the password: %s" %
+                            (action, password_id))
 
     # check if data contains all required fields
     try:
@@ -258,17 +294,18 @@ def mode_access_control(api_url, data=None, headers=None,
 
     # API get current value
     try:
-        json_response = get_rancher_api_value(request_url,
-                                              username=access_key,
-                                              password=secret_key,
-                                              headers=headers,
-                                              timeout=timeout)
+        json_response, authorized = \
+            get_rancher_api_value(request_url,
+                                  username=access_key,
+                                  password=secret_key,
+                                  headers=headers,
+                                  timeout=timeout)
     except requests.HTTPError as e:
         raise ModeError(str(e))
     except requests.Timeout as e:
         raise ModeError(str(e))
 
-    if not json_response:
+    if not authorized or not json_response:
         raise ModeError('ERROR: BAD RESPONSE (GET) - no json value in the '
                         + 'response')
 
@@ -285,7 +322,7 @@ def mode_access_control(api_url, data=None, headers=None,
         enabled = False
 
     if dry_run:
-        # we will not set anything, only signal potential change
+        # we will not set anything and only signal potential change
         if enabled:
             changed = False
         else:
@@ -293,22 +330,23 @@ def mode_access_control(api_url, data=None, headers=None,
     else:
         # we will try to enable again with the same password
         localauth_payload = create_localauth_payload(data['password'])
-        json_response = None
         try:
-            json_response = set_rancher_api_value(request_url,
-                                                  localauth_payload,
-                                                  username=access_key,
-                                                  password=secret_key,
-                                                  headers=headers,
-                                                  method='POST',
-                                                  timeout=timeout)
+            json_response, authorized = \
+                set_rancher_api_value(request_url,
+                                      localauth_payload,
+                                      username=access_key,
+                                      password=secret_key,
+                                      headers=headers,
+                                      method='POST',
+                                      timeout=timeout)
         except requests.HTTPError as e:
             raise ModeError(str(e))
         except requests.Timeout as e:
             raise ModeError(str(e))
 
+        # here we ignore authorized status - we will try to reset password
         if not json_response:
-            raise ModeError('ERROR: BAD RESPONSE (PUT) - no json value in '
+            raise ModeError('ERROR: BAD RESPONSE (POST) - no json value in '
                             + 'the response')
 
         # we check if the admin was already set or not...
@@ -318,7 +356,7 @@ def mode_access_control(api_url, data=None, headers=None,
         elif is_admin_enabled(json_response, data['password']):
             # we enabled it for the first time
             changed = True
-        # ...and reset password if needed
+        # ...and reset password if needed (unauthorized access)
         else:
             # local auth is enabled but the password differs
             # we must reset the admin's password
@@ -328,9 +366,29 @@ def mode_access_control(api_url, data=None, headers=None,
                 raise ModeError("ERROR: admin's password is set, but we "
                                 + "cannot identify it")
 
-            # TODO
-            raise ModeError("TODO: Reset of the admin password is not yet "
-                            + "implemented")
+            # One of the way to reset the password is to remove it first
+            # TODO - refactor this
+            remove_password(password_id, 'deactivate')
+            time.sleep(2)
+            remove_password(password_id, 'remove')
+            time.sleep(1)
+
+            try:
+                json_response, authorized = \
+                    set_rancher_api_value(request_url,
+                                          localauth_payload,
+                                          username=access_key,
+                                          password=secret_key,
+                                          headers=headers,
+                                          method='POST',
+                                          timeout=timeout)
+            except requests.HTTPError as e:
+                raise ModeError(str(e))
+            except requests.Timeout as e:
+                raise ModeError(str(e))
+
+            # finally we signal the change
+            changed = True
 
     if changed:
         msg = "Local authentication is enabled, admin has assigned password"
@@ -401,17 +459,18 @@ def mode_settings(api_url, data=None, headers=None, timeout=default_timeout,
 
     # API get current value
     try:
-        json_response = get_rancher_api_value(request_url,
-                                              username=access_key,
-                                              password=secret_key,
-                                              headers=headers,
-                                              timeout=timeout)
+        json_response, authorized = \
+            get_rancher_api_value(request_url,
+                                  username=access_key,
+                                  password=secret_key,
+                                  headers=headers,
+                                  timeout=timeout)
     except requests.HTTPError as e:
         raise ModeError(str(e))
     except requests.Timeout as e:
         raise ModeError(str(e))
 
-    if not json_response:
+    if not authorized or not json_response:
         raise ModeError('ERROR: BAD RESPONSE (GET) - no json value in the '
                         + 'response')
 
@@ -432,18 +491,19 @@ def mode_settings(api_url, data=None, headers=None, timeout=default_timeout,
     elif valid and differs:
         # API set new value
         try:
-            json_response = set_rancher_api_value(request_url,
-                                                  payload,
-                                                  username=access_key,
-                                                  password=secret_key,
-                                                  headers=headers,
-                                                  timeout=timeout)
+            json_response, authorized = \
+                set_rancher_api_value(request_url,
+                                      payload,
+                                      username=access_key,
+                                      password=secret_key,
+                                      headers=headers,
+                                      timeout=timeout)
         except requests.HTTPError as e:
             raise ModeError(str(e))
         except requests.Timeout as e:
             raise ModeError(str(e))
 
-        if not json_response:
+        if not authorized or not json_response:
             raise ModeError('ERROR: BAD RESPONSE (PUT) - no json value in '
                             + 'the response')
         else:
