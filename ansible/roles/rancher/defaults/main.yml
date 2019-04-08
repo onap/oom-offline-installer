@@ -19,3 +19,6 @@ rancher:
   service_log_purge_after_seconds: 86400  # 1 day
   # Auto-purge Audit Log entries after this long (seconds)
   audit_log_purge_after_seconds: 2592000  # 30 days
+
+  # Set this password for the rancher admin account:
+  admin_password: "admin"
