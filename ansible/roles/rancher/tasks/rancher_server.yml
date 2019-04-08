@@ -45,6 +45,7 @@
     rancher_agent_image: "{{ env.data.registration_tokens.image }}"
     rancher_agent_reg_url: "{{ env.data.registration_tokens.reg_url }}"
 
+# By default disabled - when enabled this playbook cannot be run more than once.
 - name: Setup rancher admin password and enable authentication
   rancher1_api:
     server: "{{ rancher_server_url }}"
@@ -53,6 +54,7 @@
     data:
       account_id: 1a1 # default rancher admin account
       password: "{{ rancher.admin_password }}"
+  when: "rancher.auth_enabled is defined and rancher.auth_enabled"
 
 - name: Configure the size of the rancher cattle db and logs
   block:
