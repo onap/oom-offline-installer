@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0bd7daf_5fb62e2e",
+        "filename": "ansible/test/docker/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-09T09:43:07Z",
+      "side": 1,
+      "message": "if you build it as root, container will not start: docker run -it --rm molecule-dev:2.20.0 sh\ndocker: Error response from daemon: linux spec user: unable to find user molecule: no matching entries in passwd file.\n\nif you build as a member of the docker group you have pretty good chances you end up with: groupadd: GID \u0027999\u0027 already exists",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9a5a704047d3d3e92b78df0349064c08ba7a4987",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
