@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f309035a_8ce42410",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-04-09T12:23:06Z",
+      "side": 1,
+      "message": "You will never call this function - it is technically a function (maybe not, I am not python expert), but used solely as a sugar to \"decorate\" another function which actually will be called (python\u0027s \"lambda\" expressions are just jokes and this is a poor substitute) - It looks more clear to me when going through the code that this I never want to use and this name emphasizes that fact.\n\nIf there is no PEP for this I would like this to stick out from code.",
+      "parentUuid": "ae9f2876_5167339a",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "38311c7c78fda7bf6d669f7a72c550ea9242a4ef",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d59be16_bdb0bd67",
         "filename": "ansible/library/rancher1_api.py",
         "patchSetId": 5
