@@ -22,6 +22,30 @@
       "revId": "9a5a704047d3d3e92b78df0349064c08ba7a4987",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "363cb52d_864dab4d",
+        "filename": "ansible/test/docker/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-09T10:22:09Z",
+      "side": 1,
+      "message": "Developer never runs anything as root. This is code run on developer laptop or Ci/CD where root should not be used either.\nThat docker group part I do not get? It\u0027s adding group to container.\n\nHowever we could try to fix root usage if seen needed. I did not tested with root.",
+      "parentUuid": "b0bd7daf_5fb62e2e",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9a5a704047d3d3e92b78df0349064c08ba7a4987",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
