@@ -90,7 +90,7 @@ Different molecule runs can be implemented as own scenarios (in addition to defa
 or default scenario playbook can be extended to run role tests multiple times just adjusting
 configuration between.
 
-Example with nexus role
+Single scenario example with nexus role
 ::
 
     ├── infrastructure.yml
@@ -106,6 +106,46 @@ Example with nexus role
     │   │   │       └── tests
     │   │   ├── tasks
     │   │   └── vars
+
+Multiple scenario example with chrony role
+::
+
+    roles/chrony
+    ├── defaults
+    │   └── main.yml
+    ├── handlers
+    │   └── main.yml
+    ├── molecule
+    │   ├── default
+    │   │   ├── molecule.yml
+    │   │   ├── playbook.yml
+    │   │   └── prepare.yml
+    │   └── ubuntu
+    │       └── molecule.yml
+    ├── tasks
+    │   └── main.yml
+    └── templates
+        └── chrony.conf.j2
+
+By default molecule runs just default scenario. To run specific one ``-s <scenario name>``
+option must be used. The only subcommands supporting ``--all`` switch for playing with
+all scenarios are ``test`` and ``destroy``. If using other ones ``-s`` must be used.
+
+The cross-scenario code reuse paradigm should be rather implemented inside particular
+scenario's ``molecule.yml`` file than by using filesystem symlinks. All provisioner
+playbooks should be located in default scenarios directory then and referenced in
+alternative scenarios as follows
+::
+
+    provisioner:
+      name: ansible
+      lint:
+        name: ansible-lint
+      env:
+        ANSIBLE_ROLES_PATH: ../../../../test/roles
+      playbooks:
+        prepare: ../default/prepare.yml
+        converge: ../default/playbook.yml
 
 Playbook level testing
 ----------------------
@@ -245,9 +285,11 @@ Molecule can build images of the tested hosts on the fly with default
 Dockerfile template (docker driver) or from a Dockerfile provided by user.
 In case of Vagrant driver used box image can be also fully customized by user.
 
-To speed up testing it's preferred to pre-build needed images to be usable in
-local docker repository in case of docker driver or Vagrant image cache in case
-of Vagrant driver.
+To speed up testing and lessen the footprint of code for image preparation it's
+preferred to use unmodified images from Docker Registry whenever possible (can be
+pulled prior to running Molecule) or pre-build images created from Dockerfiles
+listed below. Most significant feature of those is support for Systemd, so they
+should be used in cases where ansible's 'systemd' module is used.
 
 Used Dockerfiles/Box definitions are kept in following directory structure
 ::
@@ -258,12 +300,16 @@ Used Dockerfiles/Box definitions are kept in following directory structure
             │   ├── build-all.sh
             │   ├── centos7
             │   │   ├── build.sh
-            │   │   ├── dbus.service
             │   │   └── Dockerfile
             │   └── ubuntu
             │       ├── build.sh
             │       └── Dockerfile
             └── vagrant
+
+``Build-all.sh`` is a script for building all images, ``build.sh`` scripts in
+particular platforms subdirs are for building just specific images. Keep in mind
+that while images from Docker Registry will be downloaded automatically at run
+time, the above ones **must** be built manually prior to launching Molecule.
 
 Build images
 ------------
