@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "986ee69a_2b463e0c",
+        "filename": "ansible/roles/nfs/molecule/default/cleanup.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-09T13:54:33Z",
+      "side": 1,
+      "message": "I\u0027m not pretty sure that \u0027cleanup.yml\u0027 should be your place of choice for those tasks. Quoting upstream docs: \n\n\"The cleanup playbook is for cleaning up test infrastructure that may not be present on the instance that will be destroyed. The primary use-case is for “cleaning up” changes that were made outside of Molecule’s test environment.\"\n\nI\u0027d rather pick destroy.yml for that.  You\u0027re playing on \u0027all\u0027 hosts which are molecule created hosts, which conflicts with the beforementioned manual excerpt.",
+      "revId": "5741213b2f06c5a89386a18ad45fec7ae76030ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "087e58dd_6a5a1ea1",
         "filename": "ansible/test/roles/nfs_cleanup/tasks/main.yml",
         "patchSetId": 1
