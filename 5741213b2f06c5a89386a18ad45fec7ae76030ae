@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "0d7ea319_46019918",
+        "filename": "ansible/roles/nfs/molecule/default/molecule.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-09T14:02:11Z",
+      "side": 1,
+      "message": "While i\u0027m aware that using both: symlinking and directly defined vars here is unsupported, i\u0027m not convinced if you can\u0027t still use symlinks for group_vars and directly defined in inventory.hosts.\u003chost\u003e key host variables. Have tried that? It would look nicer to have the vars here and not in separate default/host_vars dir.",
+      "revId": "5741213b2f06c5a89386a18ad45fec7ae76030ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "087e58dd_6a5a1ea1",
         "filename": "ansible/test/roles/nfs_cleanup/tasks/main.yml",
         "patchSetId": 1
