@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "919b9f69_9a17e0e7",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-09T07:13:21Z",
+      "side": 1,
+      "message": "it needs",
+      "revId": "0cfa99f496d73831a0cad653b9c1921bba22849a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
