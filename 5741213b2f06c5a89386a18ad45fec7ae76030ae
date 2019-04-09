@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9d5b336c_db97b163",
+        "filename": "ansible/roles/nfs/molecule/default/cleanup.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-09T15:15:39Z",
+      "side": 1,
+      "message": "Well, destroy.yml is described as something that runs outside of the hosts, because it is destroying them.\nSo I couldn\u0027t unmount anything from there. cleanup.yml was described in an unclear way and this description really suggests it is also running outside. However, it is opposed to the prepare.yml playbook, and prepare.yml is running inside, so I assumed this one also is. I believe i am correct.\nAlso note destroy.yml is provided by molecule and cannot be... \"subclassed\".",
+      "parentUuid": "986ee69a_2b463e0c",
+      "revId": "5741213b2f06c5a89386a18ad45fec7ae76030ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d7ea319_46019918",
         "filename": "ansible/roles/nfs/molecule/default/molecule.yml",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-09T14:02:11Z",
       "side": 1,
       "message": "While i\u0027m aware that using both: symlinking and directly defined vars here is unsupported, i\u0027m not convinced if you can\u0027t still use symlinks for group_vars and directly defined in inventory.hosts.\u003chost\u003e key host variables. Have tried that? It would look nicer to have the vars here and not in separate default/host_vars dir.",
+      "revId": "5741213b2f06c5a89386a18ad45fec7ae76030ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85ee0a5d_2c74a8c4",
+        "filename": "ansible/roles/nfs/molecule/default/molecule.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-09T15:15:39Z",
+      "side": 1,
+      "message": "yes I have tried that and it didn\u0027t work. Actually I used host_vars :) they seemed to be ignored.",
+      "parentUuid": "0d7ea319_46019918",
       "revId": "5741213b2f06c5a89386a18ad45fec7ae76030ae",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
