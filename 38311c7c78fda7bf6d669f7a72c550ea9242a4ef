@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae9f2876_5167339a",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-09T11:22:47Z",
+      "side": 1,
+      "message": "i think rancher_api_request is good enough name. or rancher_api_request_decorator. no need for \u0027_\u0027 in front with this.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "38311c7c78fda7bf6d669f7a72c550ea9242a4ef",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d59be16_bdb0bd67",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-04-09T11:22:47Z",
+      "side": 1,
+      "message": "get rid of commented code if \"final\" form",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 28
+      },
+      "revId": "38311c7c78fda7bf6d669f7a72c550ea9242a4ef",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
