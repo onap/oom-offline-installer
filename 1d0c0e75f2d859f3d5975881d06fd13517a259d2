@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Tomáš Levora <t.levora@partner.samsung.com>
+Code-Review+1: Milan Verešpej <m.verespej@partner.samsung.com>
+Submitted-by: Michal Ptacek <m.ptacek@partner.samsung.com>
+Submitted-at: Tue, 09 Apr 2019 14:02:02 +0000
+Reviewed-on: https://gerrit.onap.org/r/84310
+Project: oom/offline-installer
+Branch: refs/heads/master
