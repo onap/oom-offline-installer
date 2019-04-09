@@ -1,0 +1,5 @@
+- name: "Unmount /dockerdata-nfs if mounted"
+  ignore_errors: true
+  mount:
+    path: /dockerdata-nfs
+    state: unmounted

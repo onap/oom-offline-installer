@@ -23,7 +23,7 @@
     - name: Add hosts to exports
       template:
         src: exports.j2
-        dest: /etc/exports
+        dest: /etc/exports.d/dockerdata-nfs.exports
       notify:
         - reload nfs
   when:
@@ -35,7 +35,7 @@
 - name: Mount dockerdata-nfs
   mount:
     path: "{{ nfs_mount_path }}"
-    src: "{{ hostvars[groups['nfs-server'].0].ansible_host | default(hostvars[groups['nfs-server'].0].inventory_hostname) }}:{{ nfs_mount_path }}"
+    src: "{{ hostvars[groups['nfs-server'].0].cluster_ip }}:{{ nfs_mount_path }}"
     fstype: nfs
     state: mounted
   when:
