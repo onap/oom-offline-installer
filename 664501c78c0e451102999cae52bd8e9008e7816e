@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41d621f5_b162c71f",
+        "filename": "ansible/roles/docker/molecule/default/tests/test_default.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-09T15:52:50Z",
+      "side": 1,
+      "message": "trailing whitechars 3x",
+      "revId": "664501c78c0e451102999cae52bd8e9008e7816e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87ad0c37_5c630cd0",
+        "filename": "ansible/test/roles/prepare-docker/tasks/main.yml",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-09T15:52:50Z",
+      "side": 1,
+      "message": "this will not give us \"our\" docker afaik 17.03 is not latest,  shouldn\u0027t we keep parity with installer in this test role ?",
+      "revId": "664501c78c0e451102999cae52bd8e9008e7816e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
