@@ -7,12 +7,13 @@ OOM ONAP Offline Installer Package Build Guide
 
 This document is describing procedure for building offline installer packages. It is supposed to be triggered on server with internet connectivity and will download all artifacts required for ONAP deployment based on our static lists. The server used for the procedure in this guide is preferred to be separate build server.
 
-Procedure was completely tested on RHEL 7.4 as it’s tested target platform, however with small adaptations it should be applicable also for other platforms.
+Procedure was completely tested on RHEL 7.6 as it’s tested target platform, however with small adaptations it should be applicable also for other platforms.
+Some discrepancies when Centos 7.6 is used are described below as well.
 
 Part 1. Preparations
 --------------------
 
-We assume that procedure is executed on RHEL 7.4 server with \~300G disc space, 16G+ RAM and internet connectivity
+We assume that procedure is executed on RHEL 7.6 server with \~300G disc space, 16G+ RAM and internet connectivity
 
 More-over following sw packages has to be installed:
 
@@ -36,9 +37,14 @@ More-over following sw packages has to be installed:
 * for the Populate local nexus (Part 3)
     -  twine
 
-This can be achieved by following commands:
+Configure repos for downloading all needed rpms for download/packaging tooling:
+
 
 ::
+
+    ############
+    # RHEL 7.6 #
+    ############
 
     # Register server
     subscription-manager register --username <rhel licence name> --password <password> --auto-attach
@@ -48,8 +54,23 @@ This can be achieved by following commands:
 
     # enable rhel-7-server-e4s-optional-rpms in /etc/yum.repos.d/redhat.repo
 
+Alternatively
+
+::
+
+   ##############
+   # Centos 7.6 #
+   ##############
+
+   # enable epel repo for npm and jq
+   yum install -y epel-release
+
+Subsequent steps are the same on both platforms:
+
+::
+
     # install following packages
-    yum install -y expect nodejs git wget createrepo python2-pip jq patch
+    yum install -y expect nodejs git wget createrepo python2-pip jq patch dpkg-dev
 
     pip install twine
 
@@ -68,7 +89,7 @@ Then it is necessary to clone all installer and build related repositories and p
 Part 2. Download artifacts for offline installer
 ------------------------------------------------
 
-**Note: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus**
+.. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
 
 All artifacts should be downloaded by running the download script as follows:
 
@@ -76,7 +97,12 @@ All artifacts should be downloaded by running the download script as follows:
 
 For example:
 
-``$ ./build/download_offline_data_by_lists.sh onap_3.0.0``
+::
+
+  # onap_3.0.0 for casablanca                     (sign-off 30/11/2018)
+  # onap_3.0.1 for casablanca maintenance release (sign-off 10/12/2018)
+
+  $ ./build/download_offline_data_by_lists.sh onap_3.0.1
 
 Download is as reliable as network connectivity to internet, it is highly recommended to run it in screen and save log file from this script execution for checking if all artifacts were successfully collected. Each start and end of script call should contain timestamp in console output. Downloading consists of 10 steps, which should be checked at the end one-by-one.
 
@@ -112,8 +138,12 @@ E.g
 
 [Step 2/10 Build own nginx image]
 
-=> there is no hardening in this step, if it failed needs to be
-retriggered. It should end with **Successfully built <id>**
+=> there is no hardening in this step, if it fails it needs to be
+retriggered. It should end with
+
+::
+
+  Successfully built <id>
 
 [Step 3/10 Save docker images from docker cache to tarfiles]
 
@@ -201,9 +231,7 @@ Prerequisites:
 - Following ports are not occupied buy another service: 80, 8081, 8082, 10001
 - There's no docker container called "nexus"
 
-**Note: In case you skipped the Part 2 for the artifacts download,
-please ensure that the copy of resources data are untarred in
-./install/onap-offline/resources/**
+.. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the copy of resources data are untarred in *./install/onap-offline/resources/*
 
 Whole nexus blob data tarball will be created by running script
 build\_nexus\_blob.sh. It will load the listed docker images, run the
@@ -242,9 +270,17 @@ Some of the docker images using default registry requires special
 treatment (e.g. they use different ports or SSL connection), therefore
 there is the list NXS\_DOCKER\_WO\_LIST by which are the images retagged
 to be able to push them to our nexus repository.
+Following steps can be used to split *docker_images.list* into files for
+NXS_DOCKER_IMG_LIST & NXS_DOCKER_WO_LIST variables.
 
-**Note: It's recomended to use abolute paths in the configuration file
-for the current script**
+e.g.
+
+::
+
+    sed -n '/\.[^/].*\//p'  onap_3.0.1-docker_images.list > /tmp/onap-me-data_lists/docker_img.list
+    sed -n '/\.[^/].*\//!p' onap_3.0.1-docker_images.list > /tmp/onap-me-data_lists/docker_no_registry.list
+
+.. note:: It's recomended to use abolute paths in the configuration file for the current script
 
 Example of the configuration file:
 
@@ -270,9 +306,7 @@ Once everything is ready you can run the script as following example:
 Where the nexus\_build.conf is the configuration file and the
 /root/nexus\_data.tar is the destination tarball
 
-**Note: Move, link or mount the NEXUS\_DATA\_DIR to the resources
-directory if there was different directory specified in configuration or
-use the resulting nexus\_data.tar for movement between machines.**
+.. note:: Move, link or mount the NEXUS\_DATA\_DIR to the resources directory if there was different directory specified in configuration or use the resulting nexus\_data.tar for movement between machines.
 
 Once the Nexus data blob is created, the docker images and npm packages
 can be deleted to reduce the package size as they won't be needed in the
@@ -291,12 +325,15 @@ Part 4. Application helm charts preparation and patching
 This is about to clone oom repository and patch it to be able to use it
 offline. Use the following command:
 
-./build/fetch\_and\_patch\_charts.sh <helm charts repo>
-<commit/tag/branch> <patchfile> <target\_dir>
+::
+
+  ./build/fetch\_and\_patch\_charts.sh <helm charts repo> <commit/tag/branch> <patchfile> <target\_dir>
 
 For example:
 
-``$ ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/offline-installer/patches/casablanca.patch /tmp/oom-clone``
+::
+
+  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/offline-installer/patches/casablanca.patch /tmp/oom-clone
 
 Part 5. Creating offline installation package
 ---------------------------------------------
@@ -336,17 +373,21 @@ Example values below are setup according to steps done in this guide to package 
 Offline installer packages are created with prepopulated data via
 following command run from offline-installer directory
 
-./build/package.sh <project> <version> <packaging target directory>
+::
+
+  ./build/package.sh <project> <version> <packaging target directory>
 
 E.g.
 
-``$ ./build/package.sh onap 1.0.1 /tmp/package"``
+::
+
+  ./build/package.sh onap 1.0.1 /tmp/package
 
 
 So in the target directory you should find tar files with
 
-offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-sw.tar
+::
 
-offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-resources.tar
-
-offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-aux-resources.tar
+  offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-sw.tar
+  offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-resources.tar
+  offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-aux-resources.tar
