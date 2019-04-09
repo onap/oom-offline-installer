@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21cbc2d7_0622d0e0",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-09T11:57:20Z",
+      "side": 1,
+      "message": "option?",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 3
+      },
+      "revId": "22a4c28cc6831663c66569e5419391a33da8411d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "170332e8_f4c4835b",
+        "filename": "docs/TestingGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-09T11:57:20Z",
+      "side": 1,
+      "message": "built",
+      "range": {
+        "startLine": 312,
+        "startChar": 33,
+        "endLine": 312,
+        "endChar": 38
+      },
+      "revId": "22a4c28cc6831663c66569e5419391a33da8411d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
