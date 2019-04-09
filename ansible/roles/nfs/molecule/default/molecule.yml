@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: kubernetes-node-1
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
     pre_build_image: true
     privileged: true
     command: ${MOLECULE_DOCKER_COMMAND:-""}
@@ -21,7 +21,7 @@ platforms:
       - ${HOME}/data:/dockerdata-nfs:rw
 
   - name: kubernetes-node-2
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos7}:${PREBUILD_DISTRO_VERSION:-latest}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
     pre_build_image: true
     privileged: true
     command: ${MOLECULE_DOCKER_COMMAND:-""}
