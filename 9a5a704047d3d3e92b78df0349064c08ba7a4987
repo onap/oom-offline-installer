@@ -46,6 +46,30 @@
       "revId": "9a5a704047d3d3e92b78df0349064c08ba7a4987",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6b86086_1c273f67",
+        "filename": "ansible/test/docker/Dockerfile",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-09T11:20:53Z",
+      "side": 1,
+      "message": "\"Developer never runs anything as root\" + \"on developer laptop\". if you say so\n\nThe second case is random, if your local docker group has id that is already \"in use\" in the molecule image build will fail. You have no way to fix it on your side, this is only for you to be aware of that.",
+      "parentUuid": "363cb52d_864dab4d",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 12
+      },
+      "revId": "9a5a704047d3d3e92b78df0349064c08ba7a4987",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
