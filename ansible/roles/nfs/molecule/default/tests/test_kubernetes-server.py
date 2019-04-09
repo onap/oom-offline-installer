@@ -1,5 +1,6 @@
 import os
 
+import testinfra
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
@@ -7,9 +8,11 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_nfs_mount(host):
+    node1_ip = testinfra.get_host("docker://kubernetes-node-1").interface(
+        "eth0").addresses[0]
     mp = host.mount_point("/dockerdata-nfs")
     assert mp.exists
-    assert mp.filesystem == "nfs"
-    assert mp.device == "kubernetes-node-1:/dockerdata-nfs"
+    assert mp.filesystem == "nfs" or mp.filesystem == "nfs4"
+    assert mp.device == node1_ip + ":/dockerdata-nfs"
     assert host.file("/etc/fstab").\
-        contains("kubernetes-node-1:/dockerdata-nfs /dockerdata-nfs nfs")
+        contains(node1_ip + ":/dockerdata-nfs /dockerdata-nfs nfs")
