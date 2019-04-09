@@ -266,8 +266,7 @@ EOF
 pushd ${NXS_SRC_NPM_DIR}
 tar xvzf tsscmp-1.0.5.tgz
 rm -f tsscmp-1.0.5.tgz
-sed -i "s|https://registry.npmjs.org|http://${NEXUS_DOMAIN}:8081|g" package/package.json
-sed -i "s|https://nexus.onap-me.novalocal|http://${NEXUS_DOMAIN}:8081|g" package/package.json
+sed -i 's|\"registry\":\ \".*\"|\"registry\":\ \"'"${NPM_REGISTRY}"'\"|g' package/package.json
 tar -zcvf tsscmp-1.0.5.tgz package
 rm -rf package
 
