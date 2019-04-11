@@ -69,6 +69,24 @@
       "revId": "664501c78c0e451102999cae52bd8e9008e7816e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c148cb6_ce180401",
+        "filename": "ansible/test/roles/prepare-docker/tasks/main.yml",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-11T11:09:53Z",
+      "side": 1,
+      "message": "Actually i also just came across this while debugging some issue with docker in docker not working on container deployed by molecule to test \u0027docker\u0027 role. For me the question of how much the different version of package matters should be out of equation - primary principle in testing should be uniformity with target platform. And for that cause we should have parity in package versions too.",
+      "parentUuid": "0ce028c2_7be9f8d6",
+      "revId": "664501c78c0e451102999cae52bd8e9008e7816e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
