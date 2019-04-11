@@ -17,6 +17,7 @@ platforms:
       container: docker
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /dev:/dev:ro
 provisioner:
   name: ansible
   lint:

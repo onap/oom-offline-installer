@@ -3,7 +3,7 @@ FROM centos/systemd
 RUN yum -y update && yum clean all
 
 RUN yum -y install openssh-server sudo openssh-clients \
-    epel-release python-docker-py iproute
+    epel-release python-docker-py iproute e2fsprogs
 RUN systemctl enable sshd.service
 
 VOLUME ["/run"]
