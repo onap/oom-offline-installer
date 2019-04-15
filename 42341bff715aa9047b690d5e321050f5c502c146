@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "4e5a5baf_76d9b9d5",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-15T12:54:17Z",
+      "side": 1,
+      "message": "\"molecule create\" fails on me:\n\n                \"msg\": \"Failed to connect to the host via ssh: root@localhost: Permission denied (publickey,password).\", \n\nWhy do i need ssh access to localhost?",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7db9a14f_2bb27da9",
+        "filename": "ansible/roles/rancher/molecule/default/playbook.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-15T12:54:17Z",
+      "side": 1,
+      "message": "I guess this shouldn\u0027t be here but in prepare.yml, right? Also there is no ansible/test/roles/prepare-common role in file tree.",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b0dd6fb5_1fc564c4",
         "filename": "ansible/roles/rancher/molecule/default/playbook.yml",
         "patchSetId": 2
@@ -22,6 +56,23 @@
       "revId": "42341bff715aa9047b690d5e321050f5c502c146",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6133848b_eb5ae169",
+        "filename": "ansible/roles/rancher/molecule/default/prepare.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-15T12:54:17Z",
+      "side": 1,
+      "message": "This role is not in the file tree of this commit nor it\u0027s in relation chain of this review/",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
