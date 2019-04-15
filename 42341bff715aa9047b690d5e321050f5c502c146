@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3b237796_ade4bc01",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-15T18:54:05Z",
+      "side": 1,
+      "message": "because this role test is using molecule-docker runner and it needs to access localhost by ssh. That then requires to install ssh server into localhost (and that\u0027s not by default installed on developer laptop). This requirement is also still missing from doc.\nAlso ssh access needs user/password that needs to be given either at runner shell script .env file (see 83711). Or given as .env.yml file on current role dir (molecule feature).",
+      "parentUuid": "4e5a5baf_76d9b9d5",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b11d733d_2d1653b2",
         "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "e6a26e11_5796df5f",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-15T18:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b11d733d_2d1653b2",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7db9a14f_2bb27da9",
         "filename": "ansible/roles/rancher/molecule/default/playbook.yml",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2019-04-15T12:54:17Z",
       "side": 1,
       "message": "I guess this shouldn\u0027t be here but in prepare.yml, right? Also there is no ansible/test/roles/prepare-common role in file tree.",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10724f10_2e510cc0",
+        "filename": "ansible/roles/rancher/molecule/default/playbook.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-15T18:54:05Z",
+      "side": 1,
+      "message": "now prepare-common is there it was missing.\n\nNo it needs to be here. It\u0027s for populating cluster_ip",
+      "parentUuid": "7db9a14f_2bb27da9",
       "revId": "42341bff715aa9047b690d5e321050f5c502c146",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
@@ -87,6 +141,24 @@
       "writtenOn": "2019-04-15T12:54:17Z",
       "side": 1,
       "message": "This role is not in the file tree of this commit nor it\u0027s in relation chain of this review/",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac69f73_218f005d",
+        "filename": "ansible/roles/rancher/molecule/default/prepare.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-15T18:54:05Z",
+      "side": 1,
+      "message": "yes it\u0027s not in this tree, but it\u0027s somewhere else. Lost already with these commits. Not so relevant yet as CI not failing our commits yet.",
+      "parentUuid": "6133848b_eb5ae169",
       "revId": "42341bff715aa9047b690d5e321050f5c502c146",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
