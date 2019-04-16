@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba4f3003_634187ff",
+        "filename": "ansible/test/docker/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-16T06:26:16Z",
+      "side": 1,
+      "message": "Missing semicolons as command delimiter",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 87
+      },
+      "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
