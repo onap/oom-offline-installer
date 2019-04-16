@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "2e213407_7139d325",
+        "filename": "ansible/test/bin/ci-molecule.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-16T07:48:47Z",
+      "side": 1,
+      "message": "out of the box ends up with: \nunable to prepare context: unable to evaluate symlinks in Dockerfile path: lstat \u003clocation from where you have executed ci-molecule.sh\u003e/Dockerfile: no such file or directory.\n\nAm I doing something wrong, i am not really sure if there is an documentation that describes how/where this script should be executed.",
+      "range": {
+        "startLine": 34,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba4f3003_634187ff",
         "filename": "ansible/test/docker/Dockerfile",
         "patchSetId": 3
@@ -13,6 +36,30 @@
       "writtenOn": "2019-04-16T06:26:16Z",
       "side": 1,
       "message": "Missing semicolons as command delimiter",
+      "range": {
+        "startLine": 20,
+        "startChar": 61,
+        "endLine": 20,
+        "endChar": 87
+      },
+      "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62730436_db181173",
+        "filename": "ansible/test/docker/Dockerfile",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-16T07:48:47Z",
+      "side": 1,
+      "message": "I tried to run it, but it looks like this is bash logic that works well under RUN but has nothing to do with USER. I think the best option would be to move it out to build.sh and pass extra ARG ${USER}\nfinally this line would look like: USER ${USER}",
+      "parentUuid": "ba4f3003_634187ff",
       "range": {
         "startLine": 20,
         "startChar": 61,
