@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "177ba9b8_6bbe175a",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T07:15:59Z",
+      "side": 1,
+      "message": "Personally i think Molecule configuration should be written in a way not requiring this kind of adjustments at run time. I mean from a dev perspective i want to checkout the code and be able to run the engine, from this comments i understand that it will fail unless i comment/uncomment some sections of this file, for me it\u0027s barely acceptable.",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55dd16fd_55eaada9",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T07:15:59Z",
+      "side": 1,
+      "message": "Could you please elaborate why do you actually set cluster_ip to host\u0027s IP? Shouldn\u0027t it be set to container IP and gathered from it\u0027s facts?\nIf you need to spawn container for rancher_server_image in roles/rancher/tasks/rancher_server.yml then i think you should just create appropriate additional host in molecule.yml\u0027s \u0027platforms\u0027 section, like:\n\nplatforms:\n  - name: rancher-server\n    image: rancher/server:v1.6.22\n    pre_build_image: true\n\nand then set cluster_ip to this container IP gathered from facts.",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7df47f70_4056f132",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T07:15:59Z",
+      "side": 1,
+      "message": "Why do you check if it\u0027s not localhost if this playbook is played on \u0027infrastructure\u0027 hosts?\n\n- name: Converge rancher master\t\n  hosts: infrastructure\n  roles\n    - prepare-common",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dcf4acb_4d158700",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T07:15:59Z",
+      "side": 1,
+      "message": "What is the purpose of this block? Variable set here is not used anywhere (at least that what \u0027git grep\u0027 for this patchset says)",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
