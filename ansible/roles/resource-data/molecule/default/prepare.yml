@@ -1,0 +1,5 @@
+---
+- name: Prepare resource-data
+  hosts: all
+  roles:
+    - prepare-resource-data

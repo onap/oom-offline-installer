@@ -1,0 +1,72 @@
+---
+- name: Install file exacutable if not there for archive compression checking
+  package:
+    name: file
+    state: present
+
+- name: "Create resource dir {{ resources_dir }}"
+  file:
+    path: "{{ resources_dir }}/{{ subdir }}"
+    state: directory
+
+- name: Create test files for the dummy packages
+  file:
+    path: "{{ item }}"
+    state: touch
+  loop:
+    - "{{ resources_dir }}/resource1.txt"
+    - "{{ resources_dir }}/resource2.txt"
+    - "{{ resources_dir }}/resource3.txt"
+    - "{{ resources_dir }}/{{ subdir }}/resource4.txt"
+    - "{{ resources_dir }}/auxdata"
+
+- name: Create resources tar archive for testing
+  archive:
+    path:
+      - "{{ resources_dir }}/resource*"
+      - "{{ resources_dir }}/{{ subdir }}/resource*"
+    dest: "{{ resources_dir }}/{{ resources_filename }}"
+  when:
+    - resources_filename is defined
+    - resources_filename is not none
+
+- name: Create aux tar archive for testing
+  archive:
+    path: "{{ resources_dir }}/aux*"
+    dest: "{{ resources_dir }}/{{ aux_resources_filename }}"
+  when:
+    - aux_resources_filename is defined
+    - aux_resources_filename is not none
+
+- block:
+    - name: Install nfs-utils
+      package:
+        name: nfs-utils
+        state: present
+
+    - name: Start services
+      systemd:
+        name: "{{ item }}"
+        state: started
+      loop:
+        - rpcbind
+        - nfs
+
+    - name: Create data dir to host machine for nfs mount. Must match with volume mount in molecule.yml
+      file:
+        path: ~{{ resources_dir }}
+        state: directory
+      delegate_to: localhost
+
+    - name: Add hosts to exports
+      template:
+        src: exports.j2
+        dest: /etc/exports
+      vars:
+        nfs_mount_path: "{{ resources_dir }}"
+
+    - name: Export nfs
+      command: exportfs -ar
+  when:
+    - resources_on_nfs is defined
+    - resources_on_nfs
