@@ -87,6 +87,24 @@
       "revId": "664501c78c0e451102999cae52bd8e9008e7816e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dae69ab9_d8eb2917",
+        "filename": "ansible/test/roles/prepare-docker/tasks/main.yml",
+        "patchSetId": 11
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-16T06:00:46Z",
+      "side": 1,
+      "message": "yes yes, can we please make it in separate commit as this chain is already big one? \nAgain the point of molecule tests is not FULL integration but yes we can make it close.",
+      "parentUuid": "7c148cb6_ce180401",
+      "revId": "664501c78c0e451102999cae52bd8e9008e7816e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
