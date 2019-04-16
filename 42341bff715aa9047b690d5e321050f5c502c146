@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "390b4d4c_7fb83264",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T07:15:59Z",
+      "side": 1,
+      "message": "Isn\u0027t it to constrained? I think we shouldn\u0027t impose such requirements on dev env, if something needs to be done outside of docker containers it should be put in prepare.yml and if that\u0027s something that doesn\u0027t fit there or can\u0027t be done there then we should find another way to write those tests.\n\nIf i had my dev env in a vm or so then configuring ssh like required by tests for this role wouldn\u0027t be a problem, but in the host OS it\u0027s unacceptable.",
+      "parentUuid": "3b237796_ade4bc01",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b11d733d_2d1653b2",
         "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
         "patchSetId": 2
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "now prepare-common is there it was missing.\n\nNo it needs to be here. It\u0027s for populating cluster_ip",
       "parentUuid": "7db9a14f_2bb27da9",
+      "revId": "42341bff715aa9047b690d5e321050f5c502c146",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8624e1a7_fed8e98a",
+        "filename": "ansible/roles/rancher/molecule/default/playbook.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T07:15:59Z",
+      "side": 1,
+      "message": "But that\u0027s roughly against out documentation, you proposed there some workflow of putting prepare-\u003crole\u003e roles in ansible/test/roles, according to that prepare-\u003crole\u003e should be in prepare.yml.",
+      "parentUuid": "10724f10_2e510cc0",
       "revId": "42341bff715aa9047b690d5e321050f5c502c146",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
