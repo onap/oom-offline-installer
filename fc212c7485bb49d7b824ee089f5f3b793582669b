@@ -46,6 +46,30 @@
       "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6eefa5c_6732e3fd",
+        "filename": "ansible/test/roles/prepare-docker/tasks/main.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T08:52:48Z",
+      "side": 1,
+      "message": "I don\u0027t understand that statement. What do you mean by \"it was while i tested\" - you did some changes to container manually??? All that is happening in containers managed by molecule should be within the scope of test for docker role and i don\u0027t see \u0027package-repository\u0027 included anywhere.",
+      "parentUuid": "74e7a1cf_c377eba6",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 85
+      },
+      "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
