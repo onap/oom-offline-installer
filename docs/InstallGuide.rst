@@ -393,6 +393,15 @@ After all the playbooks are finished, it will still take a lot of time until all
     $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.4 # tailor this command to connect to your infra-node
     $ watch -d -n 5 'kubectl get pods --all-namespaces'
 
+Alternatively you can monitor progress with ``helm_deployment_status.py`` script located in offline-installer directory. While on infra-node this can be achieved like this::
+
+    $ python helm_deployment_status.py -n <namespace_name> # namespace defaults to onap
+
+To automatically verify functionality, after deployment becomes ready or after timeout period expires, add path to healthcheck scripts::
+
+    $ python helm_deployment_status.py -hp <app_data_path>/<app_name>/helm_charts/robot/ete-k8s.sh
+
+It is strongly recommended to check help for ``helm_deployment_status.py`` to be able to tailor monitoring to your needs since default values might not be what you are looking for.
 
 Final result of installation varies based on number of k8s nodes used and distribution of pods. In some dev envs we quite frequently hit problems with not all pods properly deployed. In successful deployments all jobs should be in successful state.
 This can be verified using ::
