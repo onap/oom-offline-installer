@@ -69,6 +69,23 @@
       "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bbe1a29b_094c5dcd",
+        "filename": "ansible/test/images/build-all.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T08:04:50Z",
+      "side": 1,
+      "message": "In master there is already ansible/test/images/docker/build-all.sh written by my, what is the use of this one? Is it superfluous or serves another purpose?",
+      "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
