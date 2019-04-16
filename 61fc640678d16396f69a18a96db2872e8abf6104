@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2aed6f88_5575ebc8",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-16T09:00:24Z",
+      "side": 1,
+      "message": "so my comments are not good as it\u0027s not so.\n\nWe should (and will) setup one way to run this only and definitely no modification to any file is needed.\nCurrently it\u0027s setup the way it\u0027s run with molecule in docker way. And if we decide later also all the rest molecule.yml files are modified accordingly. So depends on how we are going to run test on CI.",
+      "parentUuid": "177ba9b8_6bbe175a",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55dd16fd_55eaada9",
         "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2019-04-16T07:15:59Z",
       "side": 1,
       "message": "Could you please elaborate why do you actually set cluster_ip to host\u0027s IP? Shouldn\u0027t it be set to container IP and gathered from it\u0027s facts?\nIf you need to spawn container for rancher_server_image in roles/rancher/tasks/rancher_server.yml then i think you should just create appropriate additional host in molecule.yml\u0027s \u0027platforms\u0027 section, like:\n\nplatforms:\n  - name: rancher-server\n    image: rancher/server:v1.6.22\n    pre_build_image: true\n\nand then set cluster_ip to this container IP gathered from facts.",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73c60a7f_71cc8601",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-16T09:00:24Z",
+      "side": 1,
+      "message": "never though it that way, it could work...\nSo rancher is docker outside docker i.e. infra node (docker) starts it. And this cluster_ip is set to point to docker host so that infra docker can communicate with that rancher docker.",
+      "parentUuid": "55dd16fd_55eaada9",
       "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "68d44eef_2dfc659e",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-16T09:00:24Z",
+      "side": 1,
+      "message": "it\u0027s not working with localhost (molecule in container) and needed only for actual nodes anyway like infra.",
+      "parentUuid": "7df47f70_4056f132",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8dcf4acb_4d158700",
         "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2019-04-16T07:15:59Z",
       "side": 1,
       "message": "What is the purpose of this block? Variable set here is not used anywhere (at least that what \u0027git grep\u0027 for this patchset says)",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3009c2_af6285a7",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-16T09:00:24Z",
+      "side": 1,
+      "message": "the purpose is detect and save the distro of localhost (now molecule installed natively, not as container) as it\u0027s needed in some prepare-xx roles to do staff differently on host system depending on distro. \nProbably it\u0027s some prepare- that is not committed yet if you do not found it. It\u0027s related to certificates.",
+      "parentUuid": "8dcf4acb_4d158700",
       "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
