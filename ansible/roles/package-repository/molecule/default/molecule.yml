@@ -1,0 +1,46 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: ${PLATFORM_DISTRO:-centos}:${DISTRO_VERSION:-7}
+    groups:
+      - infrastructure
+    # By design certain file like /etc/resolv.conf cannot be edited in docker
+    # container. To enable role to "edit" /etc/resolv.conf define value already to same.
+    dns_servers:
+      - 6.5.4.3
+
+  - name: kubernetes-node-1
+    image: ${PLATFORM_DISTRO:-centos}:${DISTRO_VERSION:-7}
+    groups:
+      - kubernetes
+    # By design certain file like /etc/resolv.conf cannot be edited in docker
+    # container. To enable role to "edit" /etc/resolv.conf define value already to same.
+    dns_servers:
+      - 6.5.4.3
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  inventory:
+    host_vars:
+      infrastructure-server:
+        cluster_ip: 6.5.4.3
+    group_vars:
+      all:
+        app_name: moleculetestapp
+        app_data_path: "/opt/{{ app_name }}"
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+  lint:
+    name: flake8
