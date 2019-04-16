@@ -70,6 +70,30 @@
       "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e86de1f_8931f131",
+        "filename": "ansible/test/roles/prepare-docker/tasks/main.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-16T09:03:16Z",
+      "side": 1,
+      "message": "when we get all stuff committed you will see.\nprepare-docker is re-used in many role\u0027s testing, so it\u0027s some of those.",
+      "parentUuid": "d6eefa5c_6732e3fd",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 85
+      },
+      "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
