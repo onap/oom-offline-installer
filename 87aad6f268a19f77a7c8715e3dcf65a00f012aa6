@@ -199,6 +199,24 @@
       "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd9bded4_774bbc33",
+        "filename": "ansible/test/images/build-all.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-16T11:26:54Z",
+      "side": 1,
+      "message": "yes and I commented your commit that this way exactly I wanted this script to go. This my version was just quick first version and left the loop implementation later and though you did it. And you did, but seems without knowledge of this initial version:)",
+      "parentUuid": "7beabecd_79776298",
+      "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
