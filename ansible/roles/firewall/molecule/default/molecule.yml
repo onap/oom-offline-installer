@@ -1,0 +1,33 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: centos7
+    image: couchbase/centos7-systemd
+    privileged: true
+    command: ""
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+  - name: ubuntu18
+    image: solita/ubuntu-systemd:18.04
+    command: /sbin/init
+    privileged: true
+    volumes:
+      - /lib/modules:/lib/modules:ro
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+  lint:
+    name: ansible-lint
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+  lint:
+    name: flake8

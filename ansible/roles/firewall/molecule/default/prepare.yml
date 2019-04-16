@@ -1,0 +1,5 @@
+---
+- name: Prepare
+  hosts: all
+  roles:
+    - prepare-firewall
