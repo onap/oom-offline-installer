@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e146eac9_44d7743d",
+        "filename": "ansible/test/bin/molecule.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-16T06:28:02Z",
+      "side": 1,
+      "message": "to be removed",
+      "range": {
+        "startLine": 23,
+        "startChar": 58,
+        "endLine": 23,
+        "endChar": 61
+      },
+      "revId": "e9f506653d4da2bd5b2c7e2646a559a5c800e4cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c7ed357_1097ada0",
+        "filename": "ansible/test/molecule-docker/Dockerfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-16T06:28:02Z",
+      "side": 1,
+      "message": "if you build it as a root then when you try to run it it will not start at all returning no such user \"molecule\" anyway we have been there",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 13
+      },
+      "revId": "e9f506653d4da2bd5b2c7e2646a559a5c800e4cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
