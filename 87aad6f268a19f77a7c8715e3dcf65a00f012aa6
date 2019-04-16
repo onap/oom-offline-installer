@@ -181,6 +181,24 @@
       "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7beabecd_79776298",
+        "filename": "ansible/test/images/build-all.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T11:19:01Z",
+      "side": 1,
+      "message": "Ok, seems you\u0027re right:\n\nhttps://gerrit.onap.org/r/c/83008/3/ansible/test/images/docker/build-all.sh\n\nUploaded it on 2nd of April. But my is more \u0027all\u0027 than yours i think because finds all build scripts, in your version only centos7 is included. So yes please, remove this one. Thanks.",
+      "parentUuid": "b253f8b7_e784b6c5",
+      "revId": "87aad6f268a19f77a7c8715e3dcf65a00f012aa6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
