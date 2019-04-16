@@ -94,6 +94,30 @@
       "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c9b48ef_8537a90d",
+        "filename": "ansible/test/roles/prepare-docker/tasks/main.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T09:23:01Z",
+      "side": 1,
+      "message": "For me the logic introduced in this prepare role is too complicated, we\u0027ll end up with unreliable test results in the end. For me it should not be a generic-docker-preparation-role, just for \u0027docker\u0027 role. If some other role uses docker too it should have it\u0027s own prepare-\u003crole\u003e role with simplified logic to make the testing image more reliable.",
+      "parentUuid": "5e86de1f_8931f131",
+      "range": {
+        "startLine": 15,
+        "startChar": 27,
+        "endLine": 15,
+        "endChar": 85
+      },
+      "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
