@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e81af7af_47ecf772",
+        "filename": "ansible/roles/docker/molecule/default/playbook.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-16T11:18:50Z",
+      "side": 1,
+      "message": "is this some molecule good practice naming?",
+      "range": {
+        "startLine": 2,
+        "startChar": 8,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "42ccc703_cd367392",
         "filename": "ansible/test/roles/prepare-docker/tasks/main.yml",
         "patchSetId": 13
@@ -142,6 +165,29 @@
       "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afbe4c75_e8328647",
+        "filename": "ansible/test/roles/prepare-docker/tasks/prepare-docker-repos.yml",
+        "patchSetId": 13
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-16T11:18:50Z",
+      "side": 1,
+      "message": "prepare-docker-repos.yml \u003e\u003e python-bindings.yml \u003e\u003e python2-docker.yml \nis there some higher logic in that?",
+      "range": {
+        "startLine": 11,
+        "startChar": 16,
+        "endLine": 11,
+        "endChar": 35
+      },
+      "revId": "fc212c7485bb49d7b824ee089f5f3b793582669b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
