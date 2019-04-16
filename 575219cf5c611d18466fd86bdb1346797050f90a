@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6bdb0b74_a512b72a",
+        "filename": "ansible/roles/chrony/molecule/default/prepare.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-16T14:20:50Z",
+      "side": 1,
+      "message": "In playbooks i always split \u0027roles\u0027, \u0027tasks\u0027 and other sections with empty line, for readability:\n\n- name: \"Name\"\n  hosts: all\n\n  pre_tasks:\n    - name: \u0027pre task 1\u0027\n       (...)\n\n  roles:\n    - role1",
+      "parentUuid": "f31d5f65_6f4ba2bd",
+      "revId": "575219cf5c611d18466fd86bdb1346797050f90a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e3865cba_94fc73d5",
         "filename": "ansible/roles/chrony/molecule/default/tests/test_default.py",
         "patchSetId": 10
