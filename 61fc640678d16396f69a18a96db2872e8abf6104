@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "a551d364_e6dd6ad7",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-17T07:32:13Z",
+      "side": 1,
+      "message": "currently it work for both, but not without modification in this file. So we later need to pick which way to run this (now it\u0027s by container in this commit).\nIf somebody invents a way to enable both at same time, go ahead and knock yourself out.",
+      "parentUuid": "61b1e33d_0f2b866b",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55dd16fd_55eaada9",
         "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
         "patchSetId": 6
