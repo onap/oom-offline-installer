@@ -34,6 +34,24 @@
       "revId": "bb3bef83ca562b9aadc288b3ec46264d73ec73ac",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa1a52dc_c1a73bec",
+        "filename": "ansible/roles/rancher/molecule/default/cleanup.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-17T07:45:08Z",
+      "side": 1,
+      "message": "Ok so it is the same case as we discussed in ansible/roles/rancher/molecule/default/molecule.yml (file comment), so a field for further improvement.",
+      "parentUuid": "6d9bffcb_95fe587d",
+      "revId": "bb3bef83ca562b9aadc288b3ec46264d73ec73ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
