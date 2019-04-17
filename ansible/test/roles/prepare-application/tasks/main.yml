@@ -1,0 +1,47 @@
+---
+- name: Create Application helm charts directory
+  file:
+    path: "{{ app_helm_charts_install_directory }}"
+    state: directory
+  delegate_to: localhost
+
+- name: Create Makefile to simulate helm charts dir and make building
+  copy:
+    content: |
+      all:
+      onap:
+    dest: "{{ app_helm_charts_install_directory }}/Makefile"
+  delegate_to: localhost
+  when: simulate_helm
+
+- name: Clean previous simulation output file
+  file:
+    path: "{{ helm_simulation_output_file }}"
+    state: absent
+
+- name: simulate helm binary
+  copy:
+    content: |
+      #!/bin/bash
+      echo "$@" >> {{ helm_simulation_output_file }}
+    dest: "{{ helm_bin_dir }}/helm"
+    mode: 0755
+  when: simulate_helm
+
+- name: Install make
+  package:
+    name: make
+    state: present
+
+- name: Create local certs dir for dummy certs
+  file:
+    path: certs
+    state: directory
+  delegate_to: localhost
+
+- name: Create dummy cert file to simulate offline server certificates in helm install with override.yml file
+  copy:
+    content: |
+      this is dummy server certificate value
+    dest: certs/rootCA.crt
+  delegate_to: localhost

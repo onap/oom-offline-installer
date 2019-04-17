@@ -1,0 +1,5 @@
+---
+- name: Prepare infra
+  hosts: all
+  roles:
+    - prepare-application
