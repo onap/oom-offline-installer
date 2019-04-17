@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "61b1e33d_0f2b866b",
+        "filename": "ansible/roles/rancher/molecule/default/molecule.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-17T07:14:37Z",
+      "side": 1,
+      "message": "The matter whether Molecule is run in container or installed via pip and run accordingly is up to dev, in CI it can be fixed by dev should have option, just like the doc gives two options to run it. Currently with my setup it\u0027s not working so i\u0027m not able for example to use molecule for this role development.\n\nBut ok, if it\u0027s working with container i\u0027m fine with merging it and making it work also for PIP installs in separate upload.",
+      "parentUuid": "2aed6f88_5575ebc8",
+      "revId": "61fc640678d16396f69a18a96db2872e8abf6104",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "55dd16fd_55eaada9",
         "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
         "patchSetId": 6
