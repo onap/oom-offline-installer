@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e71fe62_de0df36b",
+        "filename": "ansible/roles/rancher/molecule/default/cleanup.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-17T07:14:37Z",
+      "side": 1,
+      "message": "What it is actually? Where are those containers created? I can see they\u0027re removed in test/roles/cleanup-containers/tasks/main.yml but where are they created?",
+      "revId": "bb3bef83ca562b9aadc288b3ec46264d73ec73ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
