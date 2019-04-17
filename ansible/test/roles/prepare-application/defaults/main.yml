@@ -1,0 +1,4 @@
+---
+simulate_helm: true
+app_helm_charts_install_directory: application/helm_charts
+helm_simulation_output_file: /tmp/helm_simu_output
