@@ -16,6 +16,24 @@
       "revId": "bb3bef83ca562b9aadc288b3ec46264d73ec73ac",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d9bffcb_95fe587d",
+        "filename": "ansible/roles/rancher/molecule/default/cleanup.yml",
+        "patchSetId": 9
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-17T07:32:13Z",
+      "side": 1,
+      "message": "they are created by ansible rancher role we are testing here.",
+      "parentUuid": "6e71fe62_de0df36b",
+      "revId": "bb3bef83ca562b9aadc288b3ec46264d73ec73ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
