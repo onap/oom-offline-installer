@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Mateusz Pilat <m.pilat@partner.samsung.com>
+Code-Review+1: Bartek Grzybowski <b.grzybowski@partner.samsung.com>
+Code-Review+2: Michal Ptacek <m.ptacek@partner.samsung.com>
+Submitted-by: Samuli Silvius <s.silvius@partner.samsung.com>
+Submitted-at: Wed, 17 Apr 2019 08:12:48 +0000
+Reviewed-on: https://gerrit.onap.org/r/84185
+Project: oom/offline-installer
+Branch: refs/heads/master
