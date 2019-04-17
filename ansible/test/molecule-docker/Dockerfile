@@ -3,6 +3,7 @@ FROM quay.io/ansible/molecule:2.20
 ARG USER_ID
 ARG GROUP_ID
 ARG DOCKER_GROUP_ID
+ARG DOCKER_USER
 
 # When user/group provided, create user to have matching ids (for the host user)
 # to avoid this docker writing files as root owned
@@ -17,4 +18,5 @@ RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     usermod -aG ${DOCKER_GROUP_ID} molecule \
 ;fi
 
-USER molecule
+USER ${DOCKER_USER}
+
