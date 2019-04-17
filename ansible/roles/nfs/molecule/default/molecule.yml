@@ -35,8 +35,6 @@ platforms:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
 provisioner:
   name: ansible
-  playbooks:
-    cleanup: cleanup.yml
   env:
     ANSIBLE_ROLES_PATH: "../../../../test/roles"
   inventory:
