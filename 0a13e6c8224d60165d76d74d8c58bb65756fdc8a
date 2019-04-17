@@ -16,6 +16,24 @@
       "revId": "0a13e6c8224d60165d76d74d8c58bb65756fdc8a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87735acc_9ca2aab9",
+        "filename": "ansible/test/molecule-docker/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-17T16:19:46Z",
+      "side": 1,
+      "message": "good point. And I guess user can be re-used as a group also.",
+      "parentUuid": "731fb8bf_46578b79",
+      "revId": "0a13e6c8224d60165d76d74d8c58bb65756fdc8a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
