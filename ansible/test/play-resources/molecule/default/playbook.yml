@@ -1,0 +1,6 @@
+---
+- name: Test resource transfer with ssh
+  hosts: all
+  roles:
+    - setup
+    - resource-data
