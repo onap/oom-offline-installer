@@ -1,0 +1,8 @@
+---
+- name: Test resource transfer with nfs
+  hosts: all
+  roles:
+    - setup
+    - role: resource-data
+      vars:
+        resources_on_nfs: true
