@@ -1,0 +1,20 @@
+---
+- name: Test resource transfer with ssh
+  hosts: all
+  roles:
+    - setup
+    - resource-data
+
+- name: Prepare test again for nfs transfer testing
+  hosts: all
+  roles:
+    - role: prepare-resource-data
+      vars:
+        resources_on_nfs: true
+
+- name: Test resource transfer with nfs
+  hosts: all
+  roles:
+    - role: resource-data
+      vars:
+        resources_on_nfs: true
