@@ -1,0 +1,7 @@
+---
+- name: Prepare resource-data
+  hosts: all
+  roles:
+    - role: prepare-resource-data
+      vars:
+        resources_on_nfs: true
