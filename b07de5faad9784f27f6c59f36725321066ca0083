@@ -22,6 +22,30 @@
       "revId": "b07de5faad9784f27f6c59f36725321066ca0083",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "398f1f89_6cba1fa2",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 15
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-18T07:52:31Z",
+      "side": 1,
+      "message": "The package is not used actually, so was removed, but I will keep it here anyway",
+      "parentUuid": "db6d7cb0_82a16b2b",
+      "range": {
+        "startLine": 239,
+        "startChar": 11,
+        "endLine": 239,
+        "endChar": 23
+      },
+      "revId": "b07de5faad9784f27f6c59f36725321066ca0083",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
