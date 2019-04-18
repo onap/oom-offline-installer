@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d65ee1b_3e0bbcae",
+        "filename": "ansible/test/roles/prepare-resource-data/tasks/prepare-infra-server.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-18T13:33:42Z",
+      "side": 0,
+      "message": "No need to check that as this variable is assigned a default value in prepare-resource-data/defaults/main.yml",
+      "revId": "45fa0030abb4c013722f68c1ef23d53ba1d1620e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
