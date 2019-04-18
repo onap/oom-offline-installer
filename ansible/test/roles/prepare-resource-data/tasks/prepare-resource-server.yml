@@ -1,9 +1,4 @@
 ---
-- name: Install file exacutable if not there for archive compression checking
-  package:
-    name: file
-    state: present
-
 - name: "Create resource dir {{ resources_dir }}"
   file:
     path: "{{ resources_dir }}/{{ subdir }}"
@@ -68,5 +63,4 @@
     - name: Export nfs
       command: exportfs -ar
   when:
-    - resources_on_nfs is defined
     - resources_on_nfs
