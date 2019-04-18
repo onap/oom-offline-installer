@@ -16,6 +16,23 @@
       "revId": "0ddc4c7e91bf9c444f0ab5746a4d80e71446f1b0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7b0cbef_00cf75a9",
+        "filename": "ansible/test/play-resources/molecule/default/playbook.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-18T12:42:30Z",
+      "side": 1,
+      "message": "Honestly, this can be done in more Molecule native way by using scenarios.",
+      "revId": "0ddc4c7e91bf9c444f0ab5746a4d80e71446f1b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
