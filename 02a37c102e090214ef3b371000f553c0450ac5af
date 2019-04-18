@@ -16,6 +16,24 @@
       "revId": "02a37c102e090214ef3b371000f553c0450ac5af",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b5a01ab5_b16cd25d",
+        "filename": "build/data_lists/onap_3.0.2-docker_images.list",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-18T18:24:08Z",
+      "side": 1,
+      "message": "Yeah, I don\u0027t have a problem to remove it here, but I\u0027m interested in the bug in the download script. Could you raise a ticket for that, pls? I think it should be solved in the download-docker-images.sh",
+      "parentUuid": "9f5f4583_869d5547",
+      "revId": "02a37c102e090214ef3b371000f553c0450ac5af",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
