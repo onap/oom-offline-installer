@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9a908189_ea3b570e",
+        "filename": "ansible/test/play-resources/molecule/default/playbook.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-18T12:49:07Z",
+      "side": 1,
+      "message": "yes, I know.\nI just had it like that. I will change it to two separate scenarios, actually just forgot.",
+      "parentUuid": "f138e469_064df929",
+      "revId": "0ddc4c7e91bf9c444f0ab5746a4d80e71446f1b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a7b0cbef_00cf75a9",
         "filename": "ansible/test/play-resources/molecule/default/playbook.yml",
         "patchSetId": 1
