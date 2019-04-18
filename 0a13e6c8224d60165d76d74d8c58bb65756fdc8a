@@ -34,6 +34,24 @@
       "revId": "0a13e6c8224d60165d76d74d8c58bb65756fdc8a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffcc181_46b8b322",
+        "filename": "ansible/test/molecule-docker/Dockerfile",
+        "patchSetId": 4
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-18T05:53:53Z",
+      "side": 1,
+      "message": "I was thinking about, I decided not to, as it does not matter outside of the docker and it could crash the build if user already exists (like guest, nobody) - but anyway the chances are minimal that those users will be allowed to run docker build anyway, so be it:)",
+      "parentUuid": "87735acc_9ca2aab9",
+      "revId": "0a13e6c8224d60165d76d74d8c58bb65756fdc8a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
