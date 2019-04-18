@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f138e469_064df929",
+        "filename": "ansible/test/play-resources/molecule/default/playbook.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-18T12:17:25Z",
+      "side": 1,
+      "message": "Personally i see an opportunity here for two separate scenarios. \u0027ssh\u0027 and \u0027nfs\u0027 transfer are mutually exclusive options so they rather need testing in separate scenarios not to bother each other. Prior testing both of them should have uniform initial configuration whereas here nfs transfer happens on containers converged with \u0027ssh\u0027 scenario. I see a risk for unreliable testing results here. What\u0027s your opinion on that?",
+      "revId": "0ddc4c7e91bf9c444f0ab5746a4d80e71446f1b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
