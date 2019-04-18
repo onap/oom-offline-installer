@@ -1,0 +1,7 @@
+---
+- name: Remove directories/files
+  file:
+    path: "{{ item }}"
+    state: absent
+  become: true
+  loop: "{{ directories_files_list_to_remove }}"

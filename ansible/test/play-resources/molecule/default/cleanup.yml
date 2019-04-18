@@ -1,0 +1,23 @@
+---
+- name: Cleanup data from instance (doing it from hosts requires root access).
+  hosts: resources
+  gather_facts: false
+  ignore_unreachable: true
+  pre_tasks:
+    - name: Find files and dirs to delete
+      find:
+        paths: /data/  # Only deleting content not dir itself as we get "Device or resource busy" error as it's mounted to container doing the deletion
+        patterns: "*"
+        recurse: true
+        file_type: any
+      register: files_to_delete
+    - name: Make file/dir path list
+      set_fact:
+        to_delete_paths: "{{ to_delete_paths | default([]) + [item.path] }}"
+      loop: "{{ files_to_delete.files }}"
+      when: files_to_delete.files is defined
+  roles:
+    - role: cleanup-directories
+      vars:
+        directories_files_list_to_remove: "{{ to_delete_paths }}"
+      when: to_delete_paths is defined
