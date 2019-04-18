@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f5f4583_869d5547",
+        "filename": "build/data_lists/onap_3.0.2-docker_images.list",
+        "patchSetId": 1
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 4411
+      },
+      "writtenOn": "2019-04-18T14:01:18Z",
+      "side": 1,
+      "message": "I\u0027ve seen an issue where a blank line at the end caused a problem. Prob should be handled in the download_offline_data_by_lists.sh script but no harm to remove here also.",
+      "revId": "02a37c102e090214ef3b371000f553c0450ac5af",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
