@@ -1,0 +1,46 @@
+---
+#Note that we do not actually use this user for ssh at the moment.
+#But it can be used if infra will host some rke components. Currently
+#we use this user as an excuse to autogenerate a rke ssh key that can
+#then be distributed and used by workers.
+- name: Create a rke user for ssh
+  user:
+    name: "{{ rke_username }}"
+    groups: docker
+    password_lock: yes
+    generate_ssh_key: yes
+    ssh_key_bits: 4096
+    ssh_key_file: .ssh/id_rsa
+  register: new_rke_user
+
+- name: "Ensure the .ssh directory exists"
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    mode: 0700
+    state: directory
+
+- name: Add kubernetes nodes host keys to known_hosts file
+  known_hosts:
+    name: "{{ hostvars[item].cluster_ip }}"
+    key: "{{ hostvars[item].cluster_ip }} ssh-rsa {{ hostvars[item].ansible_ssh_host_key_rsa_public }}"
+    hash_host: true
+    state: present
+  loop: "{{ groups['kubernetes'] }}"
+
+- name: "Ensure {{ cluster_config_dir }} is present"
+  file:
+    path: "{{ cluster_config_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Prepare rke cluster.yml
+  template:
+    src: cluster.yml.j2
+    dest: "{{ cluster_config_dir }}/cluster.yml"
+
+- name: Install rke cli tool
+  copy:
+    src: "{{ app_data_path }}/downloads/{{ rke_binary }}"
+    dest: "{{ rke_bin_dir }}/rke"
+    remote_src: true
+    mode: 0755
