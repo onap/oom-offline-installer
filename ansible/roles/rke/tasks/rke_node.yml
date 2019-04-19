@@ -1,0 +1,11 @@
+---
+- name: Create a rke user on the node
+  user:
+    name: "{{ rke_username }}"
+    groups: docker
+    password_lock: yes
+
+- name: Distribute rke user ssh public key
+  authorized_key:
+    user: "{{ rke_username }}"
+    key: "{{ hostvars[groups['infrastructure'][0]].new_rke_user.ssh_public_key }}"

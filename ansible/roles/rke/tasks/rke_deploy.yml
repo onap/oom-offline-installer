@@ -1,0 +1,5 @@
+---
+- name: Run rke up
+  command: "{{ rke_bin_dir }}/rke up --config cluster.yml"
+  args:
+    chdir: "{{ cluster_config_dir }}"
