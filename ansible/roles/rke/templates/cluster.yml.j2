@@ -1,0 +1,152 @@
+nodes:
+{#
+This is a jinja hack... (╯°□°）╯︵ ┻━┻
+reference:
+https://stackoverflow.com/questions/4870346
+
+Can be solved with namespaces since jinja 2.10 - not sure if this version
+is provided everywhere:
+http://jinja.pocoo.org/docs/2.10/templates/#namespace
+#}
+{% set controlplane = [] %}
+{% for node in groups['kubernetes'] %}
+- address: "{{ hostvars[node].cluster_ip }}"
+  port: "22"
+  internal_address: "{{ hostvars[node].cluster_ip }}"
+  role:
+{% if not 1 in controlplane %}
+  - controlplane
+{% endif %}
+{% if controlplane.append(1) %}{% endif %}
+  - worker
+  - etcd
+  hostname_override: ""
+  user: "{{ rke_username }}"
+  docker_socket: /var/run/docker.sock
+  ssh_key: ""
+  ssh_key_path: "{{ new_rke_user.ssh_key_file }}"
+  ssh_cert: ""
+  ssh_cert_path: ""
+  labels: {}
+{% endfor %}
+services:
+  etcd:
+    image: ""
+    extra_args: {}
+    extra_binds: []
+    extra_env: []
+    external_urls: []
+    ca_cert: ""
+    cert: ""
+    key: ""
+    path: ""
+    snapshot: null
+    retention: ""
+    creation: ""
+    backup_config: null
+  kube-api:
+    image: ""
+    extra_args: {}
+    extra_binds: []
+    extra_env: []
+    service_cluster_ip_range: 10.43.0.0/16
+    service_node_port_range: ""
+    pod_security_policy: false
+    always_pull_images: false
+  kube-controller:
+    image: ""
+    extra_args: {}
+    extra_binds: []
+    extra_env: []
+    cluster_cidr: 10.42.0.0/16
+    service_cluster_ip_range: 10.43.0.0/16
+  scheduler:
+    image: ""
+    extra_args: {}
+    extra_binds: []
+    extra_env: []
+  kubelet:
+    image: ""
+    extra_args: {}
+    extra_binds: []
+    extra_env: []
+    cluster_domain: cluster.local
+    infra_container_image: ""
+    cluster_dns_server: 10.43.0.10
+    fail_swap_on: false
+  kubeproxy:
+    image: ""
+    extra_args: {}
+    extra_binds: []
+    extra_env: []
+network:
+  plugin: canal
+  options: {}
+authentication:
+  strategy: x509
+  sans: []
+  webhook: null
+addons: ""
+addons_include: []
+system_images:
+  etcd: "{{ rke.etcd }}"
+  alpine: "{{ rke.alpine }}"
+  nginx_proxy: "{{ rke.nginx_proxy }}"
+  cert_downloader: "{{ rke.cert_downloader }}"
+  kubernetes_services_sidecar: "{{ rke.kubernetes_services_sidecar }}"
+  kubedns: "{{ rke.kubedns }}"
+  dnsmasq: "{{ rke.dnsmasq }}"
+  kubedns_sidecar: "{{ rke.kubedns_sidecar }}"
+  kubedns_autoscaler: "{{ rke.kubedns_autoscaler }}"
+  coredns: "{{ rke.coredns }}"
+  coredns_autoscaler: "{{ rke.coredns_autoscaler }}"
+  kubernetes: "{{ rke.kubernetes }}"
+  flannel: "{{ rke.flannel }}"
+  flannel_cni: "{{ rke.flannel_cni }}"
+  calico_node: "{{ rke.calico_node }}"
+  calico_cni: "{{ rke.calico_cni }}"
+  calico_controllers: ""
+  calico_ctl: "{{ rke.calico_ctl }}"
+  canal_node: "{{ rke.canal_node }}"
+  canal_cni: "{{ rke.canal_cni }}"
+  canal_flannel: "{{ rke.canal_flannel }}"
+  weave_node: "{{ rke.weave_node }}"
+  weave_cni: "{{ rke.weave_cni }}"
+  pod_infra_container: "{{ rke.pod_infra_container }}"
+  ingress: "{{ rke.ingress }}"
+  ingress_backend: "{{ rke.ingress_backend }}"
+  metrics_server: "{{ rke.metrics_server }}"
+ssh_key_path: "{{ new_rke_user.ssh_key_file }}"
+ssh_cert_path: ""
+ssh_agent_auth: false
+authorization:
+  mode: none
+  options: {}
+ignore_docker_version: false
+kubernetes_version: ""
+private_registries: []
+ingress:
+  provider: ""
+  options: {}
+  node_selector: {}
+  extra_args: {}
+cluster_name: ""
+cloud_provider:
+  name: ""
+prefix_path: ""
+addon_job_timeout: 0
+bastion_host:
+  address: ""
+  port: ""
+  user: ""
+  ssh_key: ""
+  ssh_key_path: ""
+  ssh_cert: ""
+  ssh_cert_path: ""
+monitoring:
+  provider: ""
+  options: {}
+restore:
+  restore: false
+  snapshot_name: ""
+dns: null
