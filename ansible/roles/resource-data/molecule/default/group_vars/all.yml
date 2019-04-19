@@ -1,5 +1,5 @@
 ---
-app_data_path: /opt/myleculeapp
+app_data_path: /opt/moleculeapp
 aux_data_path: "{{ app_data_path }}/runtime_images_source_dir"
 resources_dir: /data
 resources_filename: resources_package.tar

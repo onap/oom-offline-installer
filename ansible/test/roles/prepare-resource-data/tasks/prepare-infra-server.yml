@@ -12,5 +12,4 @@
     name: nfs-utils
     state: present
   when:
-    - resources_on_nfs is defined
     - resources_on_nfs
