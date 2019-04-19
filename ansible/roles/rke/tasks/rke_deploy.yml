@@ -1,0 +1,7 @@
+---
+- name: Run rke up
+  command: "{{ new_rke_user.home }}/bin/rke up --config {{ new_rke_user.home }}/cluster.yml"
+  args:
+    chdir: "{{ new_rke_user.home }}"
+  become: yes
+  become_user: "{{ rke_username }}"

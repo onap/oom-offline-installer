@@ -1,0 +1,35 @@
+---
+- name: Create a rke user for running rke cli tool and ssh
+  user:
+    name: "{{ rke_username }}"
+    password_lock: yes
+    generate_ssh_key: yes
+    ssh_key_bits: 4096
+    ssh_key_file: .ssh/id_rsa
+  register: new_rke_user
+
+- name: Prefetch kubernetes nodes host keys
+  command: "sh -c 'ssh-keyscan -H {{ hostvars[item].ansible_host }} >> {{ new_rke_user.home }}/.ssh/known_hosts'"
+  with_items:
+    - "{{ groups['kubernetes'] }}"
+  changed_when: false
+
+- name: Prepare rke cluster.yml
+  template:
+    src: cluster.yml.j2
+    dest: "{{ new_rke_user.home }}/cluster.yml"
+    owner: "{{ rke_username }}"
+
+- name: Create bin directory for the rke user
+  file:
+    path: "{{ new_rke_user.home }}/bin"
+    state: directory
+    owner: "{{ rke_username }}"
+
+- name: Install rke cli tool
+  copy:
+    src: "{{ app_data_path }}/downloads/{{ rke_binary }}"
+    dest: "{{ new_rke_user.home }}/bin/rke"
+    remote_src: true
+    mode: 0755
+    owner: "{{ rke_username }}"
