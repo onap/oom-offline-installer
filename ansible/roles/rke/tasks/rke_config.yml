@@ -38,6 +38,16 @@
     src: cluster.yml.j2
     dest: "{{ cluster_config_dir }}/cluster.yml"
 
+- name: Prepare rke addon manifest (dashboard)
+  template:
+    src: kubernetes-dashboard.yaml.j2
+    dest: "{{ cluster_config_dir }}/kubernetes-dashboard.yml"
+
+- name: Prepare rke addon manifest (dashboard user)
+  template:
+    src: k8s-dashboard-user.yml.j2
+    dest: "{{ cluster_config_dir }}/k8s-dashboard-user.yml"
+
 - name: Install rke cli tool
   copy:
     src: "{{ app_data_path }}/downloads/{{ rke_binary }}"
