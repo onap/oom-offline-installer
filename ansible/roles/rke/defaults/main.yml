@@ -2,6 +2,7 @@
 rke_binary: rke_linux-amd64
 rke_username: rke
 rke_kubectl_enabled: yes # for the privileged user (rke user has always)
+rke_dashboard_exposed: yes # dashboard is reachable via NodePort
 rke:
   kubectl_bin_dir: /usr/local/bin
   kube_directory: ~/.kube

@@ -20,6 +20,18 @@
     dest: "{{ new_rke_user.home }}/cluster.yml"
     owner: "{{ rke_username }}"
 
+- name: Prepare rke addon manifest (dashboard)
+  template:
+    src: kubernetes-dashboard.yaml.j2
+    dest: "{{ new_rke_user.home }}/kubernetes-dashboard.yml"
+    owner: "{{ rke_username }}"
+
+- name: Prepare rke addon manifest (dashboard user)
+  template:
+    src: k8s-dashboard-user.yml.j2
+    dest: "{{ new_rke_user.home }}/k8s-dashboard-user.yml"
+    owner: "{{ rke_username }}"
+
 - name: Create bin directory for the rke user
   file:
     path: "{{ new_rke_user.home }}/bin"

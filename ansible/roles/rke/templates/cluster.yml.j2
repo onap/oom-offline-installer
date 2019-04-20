@@ -87,7 +87,9 @@ authentication:
   sans: []
   webhook: null
 addons: ""
-addons_include: []
+addons_include:
+- "{{ new_rke_user.home }}/kubernetes-dashboard.yml"
+- "{{ new_rke_user.home }}/k8s-dashboard-user.yml"
 system_images:
   etcd: "{{ rke.etcd }}"
   alpine: "{{ rke.alpine }}"
