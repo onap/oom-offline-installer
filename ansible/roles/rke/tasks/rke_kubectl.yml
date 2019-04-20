@@ -1,0 +1,41 @@
+---
+- name: Install kubectl for rke user
+  copy:
+    src: "{{ app_data_path }}/downloads/kubectl"
+    dest: "{{ new_rke_user.home }}/bin/kubectl"
+    remote_src: true
+    mode: 0755
+    owner: "{{ rke_username }}"
+
+- name: Create .kube directory for rke user
+  file:
+    path: "{{ new_rke_user.home }}/.kube"
+    state: directory
+    owner: "{{ rke_username }}"
+
+- name: Setup kubeconfig for rke user
+  copy:
+    src: "{{ new_rke_user.home }}/kube_config_cluster.yml"
+    dest: "{{ new_rke_user.home }}/.kube/config"
+    remote_src: true
+
+- name: Install kubectl for the privileged user
+  copy:
+    src: "{{ app_data_path }}/downloads/kubectl"
+    dest: "{{ rke.kubectl_bin_dir }}/kubectl"
+    remote_src: true
+    mode: 0755
+  when: rke_kubectl_enabled
+
+- name: Create .kube directory for the privileged user
+  file:
+    path: "{{ rke.kube_directory }}"
+    state: directory
+  when: rke_kubectl_enabled
+
+- name: Setup kubeconfig for the privileged user
+  copy:
+    src: "{{ new_rke_user.home }}/kube_config_cluster.yml"
+    dest: "{{ rke.kube_directory }}/config"
+    remote_src: true
+  when: rke_kubectl_enabled
