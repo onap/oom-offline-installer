@@ -1,0 +1,12 @@
+---
+- name: Add trusted root certificates
+  include_tasks: "ca-store-{{ localhost_ansible_os_family }}.yml"
+
+- name: restart docker (this will prevent running molecule in docker)
+  systemd:
+    name: docker
+    state: restarted
+  become: true
+  delegate_to: localhost
+  when:
+    - localhost_ansible_os_family == 'Debian'
