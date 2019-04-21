@@ -36,7 +36,7 @@
     password: admin123
     force_basic_auth: true
     method: GET
-  retries: 30
+  retries: "{{ nexus_come_up_wait_retries }}"
   delay: 10
   register: nexus_wait
   until: not nexus_wait.failed
