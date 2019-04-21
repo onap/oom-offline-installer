@@ -1,0 +1,38 @@
+---
+- name: Get localhost facts
+  hosts: localhost
+
+- name: Perform common environment setup for nodes
+  hosts: infrastructure, kubernetes
+  roles:
+    - package-repository
+    - firewall
+
+- name: Converge
+  hosts: infrastructure
+  roles:
+    - prepare-common  # molecule test related
+    - prepare-docker  # molecule test related, needed again to enable repos after package-repository
+    - chrony
+    - package-repository-check
+    - certificates
+    - post-certificates  # molecule test related
+    - docker
+    - dns
+    - vncserver
+    - nginx
+    - nexus
+
+- name: Setup base for Kubernetes nodes
+  hosts: kubernetes
+  roles:
+    - prepare-docker  # molecule test related
+    - chrony
+    - package-repository-check
+    - docker
+  tasks:
+    - include_role:
+        name: certificates
+        tasks_from: upload_root_ca.yml
+      vars:
+        certificates_local_dir: "{{ playbook_dir }}/certs"
