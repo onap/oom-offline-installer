@@ -13,16 +13,13 @@
   get_url:
     url: https://cbs.centos.org/kojifiles/packages/python-docker/2.5.1/2.el7/noarch/python2-docker-2.5.1-2.el7.noarch.rpm
     dest: /root/own-repo/
-  register: rpm
+  notify:
+    - Run createrepo
 
 - name: Install createrepo
   package:
     name: createrepo
     state: present
-
-- name: Run createrepo
-  command: createrepo /root/own-repo/
-  when: rpm.changed
 
 - name: Create own-repo
   yum_repository:
@@ -31,6 +28,9 @@
     baseurl: file:///root/own-repo
     enabled: true
     gpgcheck: false
+
+- name: Force notified handlers to run at this point
+  meta: flush_handlers
 
 - name: Install docker python module
   package:
