@@ -1,0 +1,25 @@
+---
+- name: Get localhost facts
+  hosts: localhost
+  tasks:
+    - debug:
+        msg: ""
+
+- name: Prepare infra
+  hosts: infrastructure
+  roles:
+    - prepare-common
+    - prepare-chrony
+    - prepare-firewall
+    - prepare-docker
+    - prepare-vncserver
+    - prepare-nginx
+    - prepare-nexus
+    - prepare-dns
+
+- name: Prepare kubernetes
+  hosts: kubernetes
+  roles:
+    - prepare-chrony
+    - prepare-firewall
+    - prepare-docker
