@@ -1,0 +1,73 @@
+---
+vnc_passwd: molecule
+certificates:
+  organization_name: Molecule Testers
+  state_or_province_name: Finland
+  country_name: FI
+  locality_name: Tampere
+app_name: onap
+app_data_path: "/opt/{{ app_name }}"
+
+populate_nexus: true  # Different from default, molecule tests also nexus's configure.yml
+
+molecule_test_registry: nexus3.onap.org:10001
+# Different from default i.e. also additional images population is tested with molecule
+runtime_images:
+# busybox:
+#   registry: "{{ molecule_test_registry }}"
+#   path: "/onap/components/busybox"
+#   tag: "latest"
+# aaionap-haproxy:
+#   registry: "{{ molecule_test_registry }}"
+#   path: "/onap/components/aaionap/haproxy"
+#   tag: "1.2.4"
+# TODO: runtime_images disabled for now
+# TODO: investigate why it went broken in molecule (worked previously). NOTE: in real deployements this also by default false, but would be good to test it with molecule.
+
+
+# Need to copy-paste variables here that are available on ../../../../group_vars/
+# because:
+#   1) molecule do not substitute ENV variables defined in group_vars/host_vars files and we would need LOCALHOST_ANSIBLE_SUDO_PASS and LOCALHOST_ANSIBLE_PASSWORD to be substituted from host_vars/all.yml file.
+#   2) because of 1) we need to define host_vars section directly in molecule.yml file
+#   3) because of 2) we cannot use inventory/link option to link these variables as molecule link option is mutually exclusive with the group/host vars defined in molecule.yml
+# Start of unwanted copy-paste
+aux_data_path: "{{ app_data_path }}/runtime_images_source_dir"
+infra_images_path: "{{ app_data_path }}/offline_data/docker_images_infra"
+rancher_server_image: rancher/server:v1.6.22
+vnc_server_image: consol/centos-icewm-vnc:1.4.0
+nexus3_image: sonatype/nexus3:3.15.2
+dns_server_image: andyshinn/dnsmasq:2.76
+nginx_server_image: own_nginx:2.0.0
+
+simulated_hosts:
+  git:
+    - gerrit.onap.org
+    - git.rancher.io
+    - github.com
+  http:
+    - git.onap.org
+    - nexus.onap.org
+    - repo.infra-server
+    - www.getcloudify.org
+    - www.springframework.org
+    - repo.maven.apache.org
+    - repo1.maven.org
+  nexus:
+    - docker.elastic.co
+    - docker.io
+    - gcr.io
+    - nexus.{{ ansible_nodename }}
+    - nexus3.onap.org
+    - registry-1.docker.io
+    - registry.hub.docker.com
+    - registry.npmjs.org
+all_simulated_hosts:
+  "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
+# End of unwanted copy-paste
+
+# Have to repeate some variables defined in role's defaults
+nginx_server_image_tar: "{{ nginx_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+nexus3_image_tar: "{{ nexus3_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+vnc_server_image_tar: "{{ vnc_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+dns_server_image_tar: "{{ dns_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+# End of role defaults copy-paste
