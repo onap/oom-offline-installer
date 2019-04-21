@@ -1,0 +1,24 @@
+---
+vnc_passwd: molecule
+certificates:
+  organization_name: Molecule Testers
+  state_or_province_name: Finland
+  country_name: FI
+  locality_name: Tampere
+app_name: onap
+app_data_path: "/opt/{{ app_name }}"
+
+nexus_come_up_wait_retries: 60
+populate_nexus: true  # Different from default, molecule tests also nexus's configure.yml
+
+molecule_test_registry: nexus3.onap.org:10001
+# Different from default i.e. also additional images population is tested with molecule
+runtime_images:
+  busybox:
+    registry: "{{ molecule_test_registry }}"
+    path: "/onap/components/busybox"
+    tag: "latest"
+  aaionap-haproxy:
+    registry: "{{ molecule_test_registry }}"
+    path: "/onap/components/aaionap/haproxy"
+    tag: "1.2.4"
