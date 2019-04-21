@@ -1,0 +1,5 @@
+---
+- name: Update CA store
+  command: update-ca-certificates
+  become: true
+  delegate_to: localhost

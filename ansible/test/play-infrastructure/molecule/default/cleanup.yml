@@ -1,0 +1,24 @@
+---
+- name: Get localhost facts
+  hosts: localhost
+  tasks:
+    - debug:
+        msg: ""
+
+- name: Cleanup host
+  hosts: localhost
+  roles:
+    - prepare-common
+    - role: cleanup-containers
+      vars:
+        container_list:
+          - nexus
+          - nginx-server
+          - dns-server
+          - vnc-server
+    - role: cleanup-directories
+      vars:
+        directories_files_list_to_remove:
+          - "{{ app_data_path }}"
+          - /var/log/nginx
+    - cleanup-dns

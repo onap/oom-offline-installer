@@ -1,0 +1,2 @@
+---
+source_cert_file: "{{ playbook_dir }}/certs/rootCA.crt"

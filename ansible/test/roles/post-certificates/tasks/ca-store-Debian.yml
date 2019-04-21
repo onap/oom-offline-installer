@@ -1,0 +1,9 @@
+---
+- name: Copy cert file
+  copy:
+    src: "{{ source_cert_file }}"
+    dest: /usr/local/share/ca-certificates/
+  become: true
+  delegate_to: localhost
+  notify:
+    - Update CA store

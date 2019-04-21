@@ -1,0 +1,25 @@
+---
+- name: "Create needed dirs for dns role"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: "u+rw,g+wx,o+rwx"
+    recurse: true
+  loop:
+    - "{{ app_data_path }}/cfg"
+    - "{{ infra_images_path }}"
+
+- name: Download and archive dnsmasq docker image for the dns role to use
+  docker_image:
+    name: andyshinn/dnsmasq
+    tag: 2.76
+    archive_path: "{{ infra_images_path }}/{{ dns_server_image_tar }}"
+
+- name: Stop default DNS on host if dind/dood
+  systemd:
+    name: systemd-resolved
+    state: stopped
+  become: true
+  delegate_to: localhost
+  when:
+    - localhost_ansible_os_family == 'Debian'
