@@ -1,0 +1,26 @@
+---
+- name: "Create needed dirs for nginx role"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: "u+rw,g+wx,o+rwx"
+    recurse: true
+  loop:
+    - "{{ infra_images_path }}"
+
+- name: Copy nginx Dockerfile to node
+  copy:
+    src: ../../../../../build/creating_data/create_nginx_image/
+    dest: /tmp/build_nginx
+
+- name: Build nginx docker image
+  docker_image:
+    path: /tmp/build_nginx
+    name: own_nginx
+    tag: 2.0.0
+
+- name: Archive nginx docker image for the nginx role to use
+  docker_image:
+    name: own_nginx
+    tag: 2.0.0
+    archive_path: "{{ infra_images_path }}/{{ nginx_server_image_tar }}"

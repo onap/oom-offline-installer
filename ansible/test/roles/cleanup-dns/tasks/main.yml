@@ -1,0 +1,9 @@
+---
+- name: Start default DNS back again on host if dind/dood (Ubuntu 18.04)
+  systemd:
+    name: systemd-resolved
+    state: started
+  become: true
+  delegate_to: localhost
+  when:
+    - localhost_ansible_os_family == 'Debian'
