@@ -10,6 +10,7 @@
   file:
     state: absent
     path: /var/run/docker.sock
+  when: ansible_env.container != 'docker'
 
 - name: Starting docker systemd service
   systemd:
