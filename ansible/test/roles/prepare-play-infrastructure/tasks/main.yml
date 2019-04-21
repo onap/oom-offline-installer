@@ -1,0 +1,8 @@
+---
+- name: Add hosts to /etc/hosts
+  lineinfile:
+    regexp: "^{{ ansible_default_ipv4.address | regex_escape() }} {{ etc_hosts | join(' ') | regex_escape() }}$"
+    line: "{{ ansible_default_ipv4.address }} {{ etc_hosts | join(' ') }}"
+    insertafter: EOF
+    path: /etc/hosts
+    unsafe_writes: true

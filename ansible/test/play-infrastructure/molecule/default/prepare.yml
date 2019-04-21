@@ -1,0 +1,26 @@
+---
+- name: Prepare infra
+  hosts: infrastructure
+  roles:
+    - prepare-play-infrastructure
+    - prepare-package-repository
+    - prepare-chrony
+    - prepare-vncserver
+    - prepare-nginx
+    - prepare-nexus
+    - prepare-dns
+    - prepare-firewall
+  vars_files:
+    - vars.yml
+    - ../../../../roles/nginx/defaults/main.yml
+    - ../../../../roles/vncserver/defaults/main.yml
+    - ../../../../roles/nexus/defaults/main.yml
+    - ../../../../roles/dns/defaults/main.yml
+
+- name: Prepare kubernetes
+  hosts: kubernetes
+  roles:
+    - prepare-chrony
+    - prepare-firewall
+  vars_files:
+    - vars.yml

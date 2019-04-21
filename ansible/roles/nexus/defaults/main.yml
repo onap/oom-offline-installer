@@ -1,4 +1,5 @@
 ---
+nexus_come_up_wait_retries: 30
 # By default prepopulated nexus binary blob used.
 populate_nexus: false
 # By dafault no additional docker images pushed to nexus at runtime
