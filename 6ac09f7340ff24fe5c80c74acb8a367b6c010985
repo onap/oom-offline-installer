@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "95cceaa0_c4323211",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 17
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 4411
+      },
+      "writtenOn": "2019-04-23T08:51:01Z",
+      "side": 1,
+      "message": "Should this be \"onap-offline/resources/offline_data\"?",
+      "range": {
+        "startLine": 259,
+        "startChar": 16,
+        "endLine": 259,
+        "endChar": 28
+      },
+      "revId": "6ac09f7340ff24fe5c80c74acb8a367b6c010985",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
