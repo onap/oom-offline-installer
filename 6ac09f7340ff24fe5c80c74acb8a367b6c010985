@@ -46,6 +46,29 @@
       "revId": "6ac09f7340ff24fe5c80c74acb8a367b6c010985",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "892169df_d72ed493",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 17
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 4411
+      },
+      "writtenOn": "2019-04-23T09:35:38Z",
+      "side": 1,
+      "message": "build_nexus_blob.sh is no longer creating a tar archive of the resources. Is this intentional as it appears that build contents are deleted by these lines before the package.sh script packages the contents?",
+      "range": {
+        "startLine": 257,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 33
+      },
+      "revId": "6ac09f7340ff24fe5c80c74acb8a367b6c010985",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
