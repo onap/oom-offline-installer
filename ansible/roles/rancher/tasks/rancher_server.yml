@@ -93,3 +93,13 @@
         data:
           option: audit_log.purge.after.seconds
           value: "{{ rancher.audit_log_purge_after_seconds }}"
+
+- name: Ensure .kube directory exists
+  file:
+    path: "{{ kube_directory }}"
+    state: directory
+
+- name: Create kube config
+  template:
+    src: kube_config.j2
+    dest: "{{ kube_directory }}/config"
