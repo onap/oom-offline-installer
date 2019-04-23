@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "210df878_72123ba2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-23T12:39:02Z",
+      "side": 1,
+      "message": "I do not propose anything, I am just trying to understand this part of commit message.",
+      "parentUuid": "da21e914_b44cc2d4",
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "909e2899_6bf2eb85",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2019-04-23T11:53:53Z",
       "side": 1,
       "message": "is there a way to avoid there shell commands?",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "999df07c_280984da",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-23T12:39:02Z",
+      "side": 1,
+      "message": "nope. if you do not assume known_hosts for infra is already valid (note ansible is run from a different host so it is not necessarily valid) then you need ssh-keyscan.",
+      "parentUuid": "909e2899_6bf2eb85",
       "range": {
         "startLine": 12,
         "startChar": 2,
@@ -88,6 +130,24 @@
       "writtenOn": "2019-04-23T11:53:53Z",
       "side": 1,
       "message": "Some follow up should be here, right? E.g. ensure with kubectl that deployment is working.\n\nkubectl --kubeconfig .kube_config_cluster.yml get all --all-namespaces",
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5d99363_7c79163a",
+        "filename": "ansible/roles/rke/tasks/rke_deploy.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-23T12:39:02Z",
+      "side": 1,
+      "message": "Not sure. Actually what rke does is performing health checks on everything it runs, so I believe that if it finished normally, we have some kind of guarantee that the deployment is successful. The only thing is for example, that it doesn\u0027t quite fail if it fails to connect to some node, it just skips it, not sure if this can be changed.",
+      "parentUuid": "bb0271f7_911f3426",
       "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
