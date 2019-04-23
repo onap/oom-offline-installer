@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ad3fa08_c1c660c8",
+        "filename": "ansible/library/rancher1_api.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-23T05:41:05Z",
+      "side": 1,
+      "message": "when this will be refactored? Refactoring means, removing those sleeps?",
+      "range": {
+        "startLine": 370,
+        "startChar": 20,
+        "endLine": 370,
+        "endChar": 34
+      },
+      "revId": "9f8b13b38fc3a25931bd80f7ab46b61e4199e4f4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
