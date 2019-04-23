@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd924f1f_0b3dda7f",
+        "filename": "ansible/rke.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-23T11:02:29Z",
+      "side": 1,
+      "message": "Wondering if it makes sense to separate that out, but leaving it for others to consider.",
+      "revId": "d9feb0201d572344e4336f468e969035c7eeb22a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6c16ac9_54a8d161",
+        "filename": "ansible/roles/rke/tasks/rke_kubectl.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-23T11:02:29Z",
+      "side": 1,
+      "message": "I believe kubectl tool itself can be copied by kubectl role that already exists.",
+      "revId": "d9feb0201d572344e4336f468e969035c7eeb22a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
