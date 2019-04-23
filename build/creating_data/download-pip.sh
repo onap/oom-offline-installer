@@ -16,6 +16,15 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
+
+# boilerplate
+RELATIVE_PATH=../ # relative path from this script to 'common-functions.sh'
+if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
+    SCRIPT_DIR=$(dirname "${0}")
+    LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
+    . "${LOCAL_PATH}"/"${RELATIVE_PATH}"/common-functions.sh
+fi
+
 LIST_FILE="$1"
 if [[ -z "$LIST_FILE" ]]; then
     echo "Missing list file"
@@ -30,16 +39,15 @@ if [[ -z "$outdir" ]]; then
     exit 1
 fi
 
-lines=$(cat "$LIST_FILE" | wc -l)
+lines=$(clean_list "$LIST_FILE" | wc -l)
 cnt=1
 
 # create output dir if not exists
 mkdir -p "$outdir"
 
 cd "$outdir"
-while read -r line; do
+for line in $(clean_list "$LIST_FILE)"; do
     echo "Downloading $cnt / $lines: $line"
     pip download $line
     cnt=$((cnt+1))
-
-done < "$LIST_FILE"
+done

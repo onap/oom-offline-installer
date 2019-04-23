@@ -90,3 +90,9 @@ retry() {
     done
 }
 
+clean_list() {
+    sed -e 's/\s*#.*$//' \
+        -e '/^\s*$/d' ${1} |
+    tr -d '\r' |
+    awk '{ print $1 }'
+}
