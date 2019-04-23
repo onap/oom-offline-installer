@@ -22,6 +22,30 @@
       "revId": "6ac09f7340ff24fe5c80c74acb8a367b6c010985",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4181662_88d93a10",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 17
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-23T09:24:12Z",
+      "side": 1,
+      "message": "Yes, copy paste error. Will fix it",
+      "parentUuid": "95cceaa0_c4323211",
+      "range": {
+        "startLine": 259,
+        "startChar": 16,
+        "endLine": 259,
+        "endChar": 28
+      },
+      "revId": "6ac09f7340ff24fe5c80c74acb8a367b6c010985",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
