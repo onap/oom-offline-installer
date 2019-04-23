@@ -3,3 +3,15 @@
   command: "{{ rke_bin_dir }}/rke up --config cluster.yml"
   args:
     chdir: "{{ cluster_config_dir }}"
+
+- name: Ensure .kube directory is present
+  file:
+    path: "{{ kube_config_dir }}"
+    state: directory
+
+- name: Setup kubeconfig
+  copy:
+    src: "{{ cluster_config_dir }}/kube_config_cluster.yml"
+    dest: "{{ kube_config_dir }}/config"
+    remote_src: true
+    mode: 0755
