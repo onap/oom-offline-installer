@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "da21e914_b44cc2d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-23T11:35:46Z",
+      "side": 1,
+      "message": "About the last sentence, do you propose we run etcd on offline-infra node? Should\u0027t we still keep offline installer nodes (infra) out of Kubernetes nodes?",
+      "parentUuid": "fe5afe7c_b7a39438",
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65dc28c0_ae914bd7",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 1
