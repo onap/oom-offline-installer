@@ -24,3 +24,5 @@
     - role: rke
       vars:
         mode: deploy
+    - kubectl
+    - helm
