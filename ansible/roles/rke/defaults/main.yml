@@ -2,8 +2,10 @@
 rke_binary: rke
 rke_username: rke
 rke_bin_dir: /usr/local/bin
+kube_config_dir: "{{ ansible_env.HOME }}/.kube"
 cluster_config_dir: "{{ app_data_path }}/cluster"
 rke:
+  # rke (rancher) images
   etcd: rancher/coreos-etcd:v3.2.24-rancher1
   alpine: rancher/rke-tools:v0.1.27
   nginx_proxy: rancher/rke-tools:v0.1.27
