@@ -16,7 +16,16 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-LIST_FILE="$1"
+
+# boilerplate
+RELATIVE_PATH=../ # relative path from this script to 'common-functions.sh'
+if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
+    SCRIPT_DIR=$(dirname "${0}")
+    LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
+    . "${LOCAL_PATH}"/"${RELATIVE_PATH}"/common-functions.sh
+fi
+
+LIST_FILE="${1}"
 if [[ -z "$LIST_FILE" ]]; then
     echo "Missing list file"
     exit 1
@@ -28,13 +37,13 @@ if [[ -z "$outdir" ]]; then
     exit 1
 fi
 
-lines=$(cat "$LIST_FILE" | wc -l)
+lines=$(clean_list "$LIST_FILE" | wc -l)
 cnt=1
 
 # create output dir if not exists
 mkdir -p "$outdir"
 
-while read -r line; do
+for line in $(clean_list "$LIST_FILE"); do
     # www.springframework.org/schema/tool/spring-tool-4.3.xsd
     file="${line%%\?*}"
     filename=$(basename "$file")
@@ -43,5 +52,4 @@ while read -r line; do
     # drop below 10b/10s
     curl --retry 5 -y 10 -Y 10 --location  "$line" -o "$outdir/$filename" &>/dev/null
     cnt=$((cnt+1))
-
-done < "$LIST_FILE"
+done
