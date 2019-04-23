@@ -19,35 +19,21 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 
-# boilerplate
-RELATIVE_PATH=../ # relative path from this script to 'common-functions.sh'
-if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
-    SCRIPT_DIR=$(dirname "${0}")
-    LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
-    . "${LOCAL_PATH}"/"${RELATIVE_PATH}"/common-functions.sh
-fi
+# Load common-functions library
+. $(dirname ${0})/../common-functions.sh
 
-SRC_IMAGE_LIST=$1
-if [[ -z "$SRC_IMAGE_LIST" ]]; then
-    SRC_IMAGE_LIST="docker_image_list.txt"
+LIST_FILE="${1}"
+if [[ -z "$LIST_FILE" ]]; then
+    LIST_FILE="docker_image_list.txt"
 fi
 
 echo "Download all images"
 
-lines=$(cat $SRC_IMAGE_LIST | wc -l)
+lines=$(clean_list "$LIST_FILE" | wc -l)
 line=1
-while read -r image; do
+for image in $(clean_list "$LIST_FILE"); do
     echo "== pkg #$line of $lines =="
-
-    name=$(echo $image|awk '{print $1}')
-    digest=$(echo $image|awk '{print $2}')
-
-    echo "$name digest:$digest"
-    if [[ "$digest" == "<none>" ]]; then
-        retry docker -l error pull "$name"
-    else
-        retry docker -l error pull "$name"
-    fi
+    echo "$image"
+    retry docker -l error pull "$image"
     line=$((line+1))
-
-done < "$SRC_IMAGE_LIST"
+done

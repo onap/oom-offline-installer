@@ -16,7 +16,10 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-LIST_FILE="$1"
+# Load common-functions library
+. $(dirname ${0})/../common-functions.sh
+
+LIST_FILE="${1}"
 
 if [[ -z "$LIST_FILE" ]]; then
     LIST_FILE="all_npm_list.txt"
@@ -30,12 +33,10 @@ fi
 
 mkdir -p "$outdir"
 cd "$outdir"
-lines=$(cat "$LIST_FILE" | wc -l)
+lines=$(clean_list "$LIST_FILE" | wc -l)
 cnt=1
-while read -r line; do
+for line in $(clean_list "$LIST_FILE"); do
     echo "== pkg #$cnt of $lines =="
-    # yallist@2.1.2
     npm pack $line
     cnt=$((cnt+1))
-
-done < "$LIST_FILE"
+done
