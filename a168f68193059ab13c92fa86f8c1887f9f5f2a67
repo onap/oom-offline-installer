@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c9596693_91e47d4b",
+        "filename": "ansible/roles/rancher/tasks/rancher_server.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-23T05:44:29Z",
+      "side": 1,
+      "message": "I would not comment like this. Rancher is not replaced but just RKE is added and rancher play can stay.",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "a168f68193059ab13c92fa86f8c1887f9f5f2a67",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
