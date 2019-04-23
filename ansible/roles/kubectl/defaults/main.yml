@@ -1,5 +1,2 @@
 ---
 kubectl_bin_dir: /usr/local/bin
-kube_directory: ~/.kube
-# Defaulting to rancher setup
-kube_server: "https://{{ ansible_host }}:8080/r/projects/{{ k8s_env_id | mandatory }}/kubernetes:6443"
