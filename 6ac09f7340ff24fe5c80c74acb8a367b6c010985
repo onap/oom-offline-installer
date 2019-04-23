@@ -69,6 +69,30 @@
       "revId": "6ac09f7340ff24fe5c80c74acb8a367b6c010985",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56def701_66f914f4",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 17
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-23T10:15:15Z",
+      "side": 1,
+      "message": "Yes, it\u0027s intentional. The nexus_data dir is added to the resources package during the packaging and we suppose that it\u0027s ran on the same machine and it\u0027s not necessary to tar it and during packaging untar it and add to resources tar",
+      "parentUuid": "892169df_d72ed493",
+      "range": {
+        "startLine": 257,
+        "startChar": 3,
+        "endLine": 259,
+        "endChar": 33
+      },
+      "revId": "6ac09f7340ff24fe5c80c74acb8a367b6c010985",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
