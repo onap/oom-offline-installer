@@ -5,13 +5,3 @@
     dest: "{{ kubectl_bin_dir }}/kubectl"
     remote_src: true
     mode: 0755
-
-- name: Ensure .kube directory exists
-  file:
-    path: "{{ kube_directory }}"
-    state: directory
-
-- name: Create kube config
-  template:
-    src: kube_config.j2
-    dest: "{{ kube_directory }}/config"

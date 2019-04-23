@@ -39,3 +39,13 @@
     key_private: "{{ env.data.apikey.private }}"
     rancher_agent_image: "{{ env.data.registration_tokens.image }}"
     rancher_agent_reg_url: "{{ env.data.registration_tokens.reg_url }}"
+
+- name: Ensure .kube directory exists
+  file:
+    path: "{{ kube_directory }}"
+    state: directory
+
+- name: Create kube config
+  template:
+    src: kube_config.j2
+    dest: "{{ kube_directory }}/config"
