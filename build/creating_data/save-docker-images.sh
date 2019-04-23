@@ -27,7 +27,7 @@ if [ "$IS_COMMON_FUNCTIONS_SOURCED" != YES ] ; then
     . "${LOCAL_PATH}"/"${RELATIVE_PATH}"/common-functions.sh
 fi
 
-LIST="${1}"
+LIST_FILE="${1}"
 IMG_DIR="${2}"
 
 if [[ -z "$IMG_DIR" ]]; then
@@ -56,11 +56,9 @@ save_image() {
 
 echo "Save all images"
 line=1
-lines=$(wc -l ${LIST})
-while read -r image; do
+lines=$(clean_list "$LIST_FILE" | wc -l)
+for image in $(clean_list "$LIST_FILE"); do
     echo "== pkg #$line of $lines =="
-
     save_image "${image}"
     line=$((line+1))
-
-done < "${LIST}"
+done
