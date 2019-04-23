@@ -34,7 +34,7 @@ fi
 
 echo "Download all images"
 
-lines=$(cat $SRC_IMAGE_LIST | wc -l)
+lines=$(sed $'s/\r// ; /^$/d' "${SRC_IMAGE_LIST}" | awk '{ print $1 }' | wc -l)
 line=1
 while read -r image; do
     echo "== pkg #$line of $lines =="
@@ -50,4 +50,4 @@ while read -r image; do
     fi
     line=$((line+1))
 
-done < "$SRC_IMAGE_LIST"
+done <<< "$(sed $'s/\r// ; /^$/d' "${SRC_IMAGE_LIST}" | awk '{ print $1 }')"

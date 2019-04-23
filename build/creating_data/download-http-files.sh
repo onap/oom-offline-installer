@@ -28,7 +28,7 @@ if [[ -z "$outdir" ]]; then
     exit 1
 fi
 
-lines=$(cat "$LIST_FILE" | wc -l)
+lines=$(sed $'s/\r// ; /^$/d' "${LIST_FILE}" | awk '{ print $1 }' | wc -l)
 cnt=1
 
 # create output dir if not exists
@@ -45,4 +45,4 @@ while read -r line; do
     curl --retry 5 -y 10 -Y 10 --location  "$line" -o "$outdir/$file" &>/dev/null
     cnt=$((cnt+1))
 
-done < "$LIST_FILE"
+done <<< $(sed $'s/\r// ; /^$/d' "${LIST_FILE}" | awk '{ print $1 }' | wc -l)

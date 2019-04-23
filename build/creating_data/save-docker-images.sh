@@ -56,11 +56,11 @@ save_image() {
 
 echo "Save all images"
 line=1
-lines=$(wc -l ${LIST})
+lines=$(sed $'s/\r// ; /^$/d' "${LIST}" | awk '{ print $1 }' | wc -l)
 while read -r image; do
     echo "== pkg #$line of $lines =="
 
     save_image "${image}"
     line=$((line+1))
 
-done < "${LIST}"
+done <<< "$(sed $'s/\r// ; /^$/d' "${LIST}" | awk '{ print $1 }')"
