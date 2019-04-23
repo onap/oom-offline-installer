@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe5afe7c_b7a39438",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-23T10:52:09Z",
+      "side": 1,
+      "message": "Ok, i do not understand that paragraph. Do you mean you cannot put control plane on more than one node, or cannot put a control plane on nodes with etcd if there is more than one control plane, or what? Any links/references?\nAlso, isn\u0027t it the case that etcd in general should not be put on workers, at least not on these running workloads, because of performance implications? That is what i\u0027ve once heard/read in openshift docs, and openshift is indeed enhanced kubernetes. In that case we could go with one etcd on infra + control plane also on infra. Any clue?",
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65dc28c0_ae914bd7",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-23T10:52:09Z",
+      "side": 1,
+      "message": "Ok. not sure why rke is copied to user homedir as opposed to copying it just to /usr/local/bin? not every distribution has $HOME/bin in default $PATH so you cannot rely on that being true... I will probably change that behavior.",
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
