@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "909e2899_6bf2eb85",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-23T11:53:53Z",
+      "side": 1,
+      "message": "is there a way to avoid there shell commands?",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 37
+      },
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "65dc28c0_ae914bd7",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 1
@@ -48,6 +71,23 @@
       "writtenOn": "2019-04-23T10:52:09Z",
       "side": 1,
       "message": "Ok. not sure why rke is copied to user homedir as opposed to copying it just to /usr/local/bin? not every distribution has $HOME/bin in default $PATH so you cannot rely on that being true... I will probably change that behavior.",
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb0271f7_911f3426",
+        "filename": "ansible/roles/rke/tasks/rke_deploy.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-23T11:53:53Z",
+      "side": 1,
+      "message": "Some follow up should be here, right? E.g. ensure with kubectl that deployment is working.\n\nkubectl --kubeconfig .kube_config_cluster.yml get all --all-namespaces",
       "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
