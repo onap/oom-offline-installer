@@ -22,6 +22,30 @@
       "revId": "a168f68193059ab13c92fa86f8c1887f9f5f2a67",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae35d4c1_c442af6b",
+        "filename": "ansible/roles/rancher/tasks/rancher_server.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-04-24T14:02:27Z",
+      "side": 1,
+      "message": "will change this comment a bit",
+      "parentUuid": "c9596693_91e47d4b",
+      "range": {
+        "startLine": 36,
+        "startChar": 54,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "a168f68193059ab13c92fa86f8c1887f9f5f2a67",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
