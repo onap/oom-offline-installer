@@ -249,7 +249,7 @@ There are mandatory parameters need to be set in configuration file:
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_SRC\_NPM\_DIR           | resource directory of npm packages                                                       |
 +------------------------------+------------------------------------------------------------------------------------------+
-| NXS\_SRC\_PYPI\_DIR          | resource directory of npm packages                                                       |
+| NXS\_SRC\_PYPI\_DIR          | resource directory of pypi packages                                                       |
 +------------------------------+------------------------------------------------------------------------------------------+
 | NXS\_DOCKER\_IMG\_LIST       | list of docker images to be pushed to Nexus repository                                   |
 +------------------------------+------------------------------------------------------------------------------------------+
@@ -290,10 +290,7 @@ Example of the configuration file:
     NXS_SRC_NPM_DIR="/tmp/onap-offline/resources/offline_data/npm_tar"
     NXS_DOCKER_IMG_LIST="/tmp/onap-me-data_lists/docker_img.list"
     NXS_DOCKER_WO_LIST="/tmp/onap-me-data_lists/docker_no_registry.list"
-    NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/npm_list.txt"
     NXS_SRC_PYPI_DIR="/tmp/onap-offline/resources/offline_data/pypi"
-    NXS_DOCKER_IMG_LIST="/tmp/onap-me-data_lists/docker_img.list"
-    NXS_DOCKER_WO_LIST="/tmp/onap-me-data_lists/docker_no_registry.list"
     NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/onap_3.0.0-npm.list"
     NEXUS_DATA_TAR="/root/nexus_data.tar"
     NEXUS_DATA_DIR="/tmp/onap-offline/resources/nexus_data"
@@ -333,7 +330,7 @@ For example:
 
 ::
 
-  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/offline-installer/patches/casablanca.patch /tmp/oom-clone
+  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/onap-offline/patches/casablanca.patch /tmp/oom-clone
 
 Part 5. Creating offline installation package
 ---------------------------------------------
@@ -358,8 +355,8 @@ Example values below are setup according to steps done in this guide to package 
 |                                       | Example::                                                                    |
 |                                       |                                                                              |
 |                                       |  APP_CONFIGURATION=(                                                         |
-|                                       |     /tmp/offline-installer/config/application_configuration.yml              |
-|                                       |     /tmp/offline-installer/patches/onap-casablanca-patch-role                |
+|                                       |     /tmp/onap-offline/config/application_configuration.yml              |
+|                                       |     /tmp/onap-offline/patches/onap-casablanca-patch-role                |
 |                                       |  )                                                                           |
 |                                       |                                                                              |
 +---------------------------------------+------------------------------------------------------------------------------+
@@ -371,7 +368,7 @@ Example values below are setup according to steps done in this guide to package 
 +---------------------------------------+------------------------------------------------------------------------------+
 
 Offline installer packages are created with prepopulated data via
-following command run from offline-installer directory
+following command run from onap-offline directory
 
 ::
 
