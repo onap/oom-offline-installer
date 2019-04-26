@@ -55,7 +55,7 @@
     account_key: "{{ key_public }}:{{ key_private }}"
     mode: access_control
     data:
-      account_id: 1a1 # default rancher admin account
+      account_id: 1a1  # default rancher admin account
       password: "{{ rancher.admin_password }}"
   when: "rancher.auth_enabled is defined and rancher.auth_enabled"
 
