@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14cc1f52_041ea578",
+        "filename": "ansible/test/roles/cleanup-containers/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-26T13:12:51Z",
+      "side": 1,
+      "message": "this cleanup-containers and all test/roles are commonly used, so doing some rancher specific here is not good.\nE.g. playbook-infrastructure (in review) is using this role.",
+      "range": {
+        "startLine": 2,
+        "startChar": 1,
+        "endLine": 25,
+        "endChar": 35
+      },
+      "revId": "eb4ad3f94c714cbe496c6b0306b916f582ffaa2c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
