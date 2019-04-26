@@ -7,8 +7,6 @@
         container_list:
           - rancher-agent
           - rancher-server
-          # For some reason getting error "Device busy error" when trying to delete directory with root privileges and rancher-containers not anymore running.
-          # - role: cleanup-directories
-          #  vars:
-          #    directories_files_list_to_remove:
-          #      - /var/lib/rancher/
+        container_list_by_label:
+          - { 'label':'io.rancher.project.name', 'value':'healthcheck'}
+          - { 'label':'io.rancher.project.name', 'value':'kubernetes'}
