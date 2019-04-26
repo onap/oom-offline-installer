@@ -14,3 +14,4 @@ chrony:
     Debian:
       config_file: /etc/chrony/chrony.conf
       driftfile: /var/lib/chrony/chrony.drift
+
