@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d90c526c_92e02764",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-04-26T09:31:29Z",
+      "side": 0,
+      "message": "I don\u0027t understand the removal of those lines - in the current script are required",
+      "revId": "8cbef61dee77ba2a77120b9b512e4e6971fa2af9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
