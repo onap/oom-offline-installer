@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7793fe3_73ed4e62",
+        "filename": "ansible/test/roles/prepare-docker/vars/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-29T14:31:29Z",
+      "side": 1,
+      "message": "Moved all file/dir/package names to variables to have everything in one place for clear picture.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 64
+      },
+      "revId": "429b409b513e8bce294beda40de8b806f5470191",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
