@@ -4,35 +4,13 @@
     name: docker-python
     state: absent
 
-- name: Create own-repo dir
-  file:
-    path: /root/own-repo
-    state: directory
-
 - name: Download python2-docker rpm for Ansible (docker_container module dep)
   get_url:
-    url: https://cbs.centos.org/kojifiles/packages/python-docker/2.5.1/2.el7/noarch/python2-docker-2.5.1-2.el7.noarch.rpm
-    dest: /root/own-repo/
+    url: "{{ python2_docker_rpm_url }}"
+    dest: "{{ rpm_dir }}"
   register: rpm
-
-- name: Install createrepo
-  package:
-    name: createrepo
-    state: present
-
-- name: Run createrepo
-  command: createrepo /root/own-repo/
-  when: rpm.changed
-
-- name: Create own-repo
-  yum_repository:
-    name: own-repo
-    description: Own repo for ansible deps
-    baseurl: file:///root/own-repo
-    enabled: true
-    gpgcheck: false
 
 - name: Install docker python module
   package:
-    name: python2-docker
+    name: "{{ rpm_dir + '/' + python2_docker_rpm }}"
     state: present

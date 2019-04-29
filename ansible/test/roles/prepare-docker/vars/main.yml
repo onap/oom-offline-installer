@@ -2,6 +2,9 @@
 docker_needed_repos:
   - /etc/yum.repos.d/CentOS-Base.repo.disabled
   - /etc/yum.repos.d/docker-ce.repo.disabled
-  - /etc/yum.repos.d/own-repo.repo.disabled
-
 offline_repo_file: /etc/yum.repos.d/onap.repo
+rpm_dir: /root/rpm 
+python2_docker_rpm: python2-docker-2.5.1-2.el7.noarch.rpm
+python2_docker_rpm_url: "https://cbs.centos.org/kojifiles/packages/python-docker/2.5.1/2.el7/noarch/{{ python2_docker_rpm }}"
+docker_ce_rpm: docker-ce-17.03.2.ce-1.el7.centos.x86_64
+docker_ce_selinux_rpm: docker-ce-selinux-17.03.3.ce-1.el7.noarch
