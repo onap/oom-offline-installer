@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "0d7baabf_572fb785",
+        "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-29T18:35:01Z",
+      "side": 0,
+      "message": "what playbook? Not in this commit?",
+      "parentUuid": "2e4c1359_996a3494",
+      "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2419d583_3af1e6b1",
         "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
         "patchSetId": 1
@@ -47,6 +65,30 @@
       "writtenOn": "2019-04-29T14:31:29Z",
       "side": 0,
       "message": "Removed it as creating a full blown repo is not necessary, a local dir with rpms plus calling yum module to install rpms from files is faster and sufficient.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d0ab639_5812d050",
+        "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-29T18:35:01Z",
+      "side": 0,
+      "message": "yes if it was something installed in this prepare role. But not if it\u0027s something the tested role should install.",
+      "parentUuid": "2419d583_3af1e6b1",
       "range": {
         "startLine": 17,
         "startChar": 0,
