@@ -1,0 +1,8 @@
+---
+
+- name: Download docker related packages
+  command: yumdownloader --destdir="{{ rpm_dir }}" "{{ docker_ce_rpm }}" "{{ docker_ce_selinux_rpm }}"
+
+- name: Install docker related packages
+  yum:
+    name: "{{ rpm_dir + '/' + docker_ce_rpm + '.rpm'}},{{ rpm_dir + '/' + docker_ce_selinux_rpm + '.rpm' }}"

@@ -1,3 +1,0 @@
----
-- name: Handle python2-docker dependency needed by Ansible's docker_* modules
-  import_tasks: python2-docker.yml
