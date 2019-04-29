@@ -69,6 +69,30 @@
       "revId": "824734cc9e8200c0ac8a64cd42ccc16188e2d839",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ff3d034_36c932db",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-29T10:29:02Z",
+      "side": 1,
+      "message": "you mean variable \"rke_dashboard_exposed\" is always true?",
+      "parentUuid": "a55f74aa_78f83f0a",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 59
+      },
+      "revId": "824734cc9e8200c0ac8a64cd42ccc16188e2d839",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
