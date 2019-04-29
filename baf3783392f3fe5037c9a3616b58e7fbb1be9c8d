@@ -260,6 +260,30 @@
       "revId": "baf3783392f3fe5037c9a3616b58e7fbb1be9c8d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3c4f1ee_1bfacb44",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-29T11:10:24Z",
+      "side": 1,
+      "message": "look at the variable name. it means it decides about dashboard being *exposed* to the public, not *enabled*. :)",
+      "parentUuid": "d1d991e4_87597445",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 50
+      },
+      "revId": "baf3783392f3fe5037c9a3616b58e7fbb1be9c8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
