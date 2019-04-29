@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "876da5bd_3dd5f3dd",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-29T10:29:02Z",
+      "side": 1,
+      "message": "here basically would be just many different lists. No other explanations needed.\n\nAnd (not related to this commit) e.g. entry \"repo.infra-server\" is special and should not be in this simulated -host list at all as it\u0027s our own internal stuff.",
+      "parentUuid": "39ce2697_acea0ff2",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "baf3783392f3fe5037c9a3616b58e7fbb1be9c8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb9fd034_6b242e42",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 1
@@ -203,6 +227,30 @@
       "side": 1,
       "message": "the thing is completely unrelated. This variable is not there to enable or disable dashboard, unless you want a separate one for this case. This variable only modifies the way dashboard service is created.",
       "parentUuid": "6064cf34_ff9c8286",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 50
+      },
+      "revId": "baf3783392f3fe5037c9a3616b58e7fbb1be9c8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1d991e4_87597445",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-29T10:29:02Z",
+      "side": 1,
+      "message": "if so got me at least confused.",
+      "parentUuid": "16c28338_427e889a",
       "range": {
         "startLine": 91,
         "startChar": 0,
