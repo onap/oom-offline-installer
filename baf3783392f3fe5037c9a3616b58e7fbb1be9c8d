@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "39ce2697_acea0ff2",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-29T09:37:37Z",
+      "side": 1,
+      "message": "well not quite. do we actually explain every host? they are just simulated. I still do not think we need to do anything specific here and conditionalize this list.",
+      "parentUuid": "786cb835_54f862ba",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 20,
+        "endChar": 16
+      },
+      "revId": "baf3783392f3fe5037c9a3616b58e7fbb1be9c8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb9fd034_6b242e42",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 1
@@ -155,6 +179,30 @@
       "side": 1,
       "message": "sure. Just for clarity, but not so important.",
       "parentUuid": "4a2de9c0_ef0f2faf",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 50
+      },
+      "revId": "baf3783392f3fe5037c9a3616b58e7fbb1be9c8d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16c28338_427e889a",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-04-29T09:37:37Z",
+      "side": 1,
+      "message": "the thing is completely unrelated. This variable is not there to enable or disable dashboard, unless you want a separate one for this case. This variable only modifies the way dashboard service is created.",
+      "parentUuid": "6064cf34_ff9c8286",
       "range": {
         "startLine": 91,
         "startChar": 0,
