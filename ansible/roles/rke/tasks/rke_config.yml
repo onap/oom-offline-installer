@@ -37,6 +37,7 @@
   template:
     src: cluster.yml.j2
     dest: "{{ cluster_config_dir }}/cluster.yml"
+  register: cluster_yml
 
 - name: Prepare rke addon manifest (dashboard)
   template:
