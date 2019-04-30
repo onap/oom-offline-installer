@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8e18eb36_273b009d",
+        "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-30T06:44:33Z",
+      "side": 0,
+      "message": "Calling task file i meant.",
+      "parentUuid": "0d7baabf_572fb785",
+      "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2419d583_3af1e6b1",
         "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
         "patchSetId": 1
@@ -89,6 +107,30 @@
       "side": 0,
       "message": "yes if it was something installed in this prepare role. But not if it\u0027s something the tested role should install.",
       "parentUuid": "2419d583_3af1e6b1",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8deeb6c7_3a4d2251",
+        "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-30T06:44:33Z",
+      "side": 0,
+      "message": "If the tested role needs something from our offline repo then \u0027package-repository\u0027 role should set it up and certain prepare playbook put relevant packages in there.",
+      "parentUuid": "0d0ab639_5812d050",
       "range": {
         "startLine": 17,
         "startChar": 0,
