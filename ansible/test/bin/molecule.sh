@@ -42,7 +42,7 @@ MOLECULE_IMAGE=${MOLECULE_IMAGE:-molecule-dev}
 MOLECULE_IMAGE_VERSION=${MOLECULE_IMAGE_VERSION:-2.20.0}
 echo "Running molecule image: ${MOLECULE_IMAGE}:${MOLECULE_IMAGE_VERSION}"
 MOLECULE_CMD=${MOLECULE_CMD:-molecule}
-docker run --rm -it \
+docker run --rm  \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v ${ROOT_DIR}:${CONTAINER_ROOT}:rw \
     -w ${CONTAINER_ROOT}/${PROJECT_ROOT_IN_CONTAINER} \
