@@ -164,6 +164,30 @@
       "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f640800_34ca569c",
+        "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-30T07:03:00Z",
+      "side": 0,
+      "message": "How come? On target env we are offline so all packages ansible installs MUST come from \u0027onap\u0027 offline repo, so in what case would ansible need packages from upstream repos?",
+      "parentUuid": "48898425_ca51b364",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
