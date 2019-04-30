@@ -16,6 +16,24 @@
       "revId": "979888ac9c7cbaf17f94298d41255751222a31b5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7423854b_05919cc3",
+        "filename": "ansible/test/images/docker/build-all.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-04-30T13:02:53Z",
+      "side": 1,
+      "message": "yes and no, this is a standard move in case of the symlink. pwd -P - gives us back real path. I would like to keep it as it is",
+      "parentUuid": "8ab93cdf_a43599ce",
+      "revId": "979888ac9c7cbaf17f94298d41255751222a31b5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
