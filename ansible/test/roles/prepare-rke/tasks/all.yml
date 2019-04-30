@@ -1,0 +1,14 @@
+#This is needed because login from non root is blocked by default.
+- name: "Allow non root logins"
+  service:
+    name: systemd-user-sessions
+    state: started
+
+#This is needed because kubelet will cry if we don't do this, maybe something else also will.
+#Note that mounts are private by default, and that by
+#making them shared we actually do not tie them with parent
+#namespace again.
+- name: "Make all mounts shared"
+  command: "mount --make-rshared /"
+  args:
+    warn: false

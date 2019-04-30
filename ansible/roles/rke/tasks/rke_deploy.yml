@@ -1,8 +1,17 @@
 ---
+- name: "Check if rke is deployed"
+  command: "rke version"
+  args:
+    chdir: "{{ cluster_config_dir }}"
+  failed_when: false
+  changed_when: false
+  register: rke_deployed
+
 - name: Run rke up
   command: "{{ rke_bin_dir }}/rke up --config cluster.yml"
   args:
     chdir: "{{ cluster_config_dir }}"
+  when: rke_deployed.rc != 0 or cluster_yml.changed  # noqa 503
 
 - name: Ensure .kube directory is present
   file:

@@ -1,8 +1,8 @@
 ---
-#Note that we do not actually use this user for ssh at the moment.
-#But it can be used if infra will host some rke components. Currently
-#we use this user as an excuse to autogenerate a rke ssh key that can
-#then be distributed and used by workers.
+# Note that we do not actually use this user for ssh at the moment.
+# But it can be used if infra will host some rke components. Currently
+# we use this user as an excuse to autogenerate a rke ssh key that can
+# then be distributed and used by workers.
 - name: Create a rke user for ssh
   user:
     name: "{{ rke_username }}"
@@ -37,6 +37,7 @@
   template:
     src: cluster.yml.j2
     dest: "{{ cluster_config_dir }}/cluster.yml"
+  register: cluster_yml
 
 - name: Prepare rke addon manifest (dashboard)
   template:
