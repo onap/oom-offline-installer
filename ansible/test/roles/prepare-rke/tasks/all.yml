@@ -1,0 +1,6 @@
+#This is needed because login from non root is blocked by default.
+- name: "Allow non root logins"
+  service:
+    name: systemd-user-sessions
+    state: started
+
