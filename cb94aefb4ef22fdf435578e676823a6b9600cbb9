@@ -188,6 +188,30 @@
       "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80a3ed66_00d60231",
+        "filename": "ansible/test/roles/prepare-docker/tasks/python2-docker.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-04-30T07:25:53Z",
+      "side": 0,
+      "message": "only for those roles needs rpm installations and there is just few, docker, nfs.\n\nBut also with those we can simulate the offline. \n\nThe molecule ENV is a development env, laptop or CI with internet connection. To test certain role isolated is made by simulating offline i.e. downloading needed stuff from internet.\n\nAnd actually I would like to change (remove) the offline repo from simulation and simulate the real targets e.g. epel repo etc. in offline installer. And then all the ansible roles could be run fully online way and tested online way with molecule. That would support whole offline installer ansible roles to work as online too (and that\u0027s not the case now).\nThat has been my long term target, but RM team not yet understood or taken that target to implementation. This will also support the longer term target to drop simulation need gradually.",
+      "parentUuid": "1f640800_34ca569c",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "cb94aefb4ef22fdf435578e676823a6b9600cbb9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
