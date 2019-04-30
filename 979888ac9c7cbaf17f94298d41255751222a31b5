@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8ab93cdf_a43599ce",
+        "filename": "ansible/test/images/docker/build-all.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-04-30T08:42:29Z",
+      "side": 1,
+      "message": "No need to change directory, this will suffice:\n\nSCRIPTPATH\u003d$(dirname $0)",
+      "revId": "979888ac9c7cbaf17f94298d41255751222a31b5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
