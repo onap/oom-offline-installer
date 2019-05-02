@@ -121,6 +121,24 @@
     },
     {
       "key": {
+        "uuid": "88fae429_d592f29c",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-02T08:59:52Z",
+      "side": 1,
+      "message": "we never have fixed the amount of infra servers to one.",
+      "parentUuid": "209a8bfe_68b016b4",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
@@ -149,6 +167,24 @@
       "writtenOn": "2019-05-02T08:45:46Z",
       "side": 1,
       "message": "why? because onap is broken? rbac is standard k8s policy framework and it was said that we want to make onap more securish",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d7ecbcc_fc59d8de",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-02T08:59:52Z",
+      "side": 1,
+      "message": "onap does not take any role for underlay Kubernetes cluster. It\u0027s totally upto onap users (vendors and operators) how thay want to deploy Kubernetes.\n\nI guess this is default value that can be overriden in any deployment?",
+      "parentUuid": "82242f58_fec0e841",
       "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
