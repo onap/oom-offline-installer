@@ -193,6 +193,24 @@
     },
     {
       "key": {
+        "uuid": "06f6d4a5_f81d5e17",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-02T11:45:36Z",
+      "side": 1,
+      "message": "that should be changed in all places as there are many places in offline-installer where we index with first server in the group.",
+      "parentUuid": "87b7052e_f8ed0d2d",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
