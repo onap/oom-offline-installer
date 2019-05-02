@@ -7,8 +7,16 @@
     gpgcheck: true
     gpgkey: https://download.docker.com/linux/centos/gpg
 
-- name: Install docker python bindings
-  import_tasks: python-bindings.yml
+- name: Create rpm dir
+  file:
+    path: "{{ rpm_dir }}"
+    state: directory
+
+- name: Handle python2-docker dependency needed by Ansible's docker_* modules
+  import_tasks: python2-docker.yml
+
+- name: Handle docker-ce packages
+  import_tasks: docker-packages.yml
 
 - name: Fake dockerd on container
   import_tasks: docker-socket-override.yml
