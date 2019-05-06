@@ -354,6 +354,24 @@
     },
     {
       "key": {
+        "uuid": "1a83a63c_8e139201",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-06T10:49:17Z",
+      "side": 1,
+      "message": "I\u0027m glad someone else also fit this problem. I.e. in molecule context ansible_host is not used/filled as it\u0027s our own addition to inventory not there by default.",
+      "parentUuid": "3f14af51_0f996b1e",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82242f58_fec0e841",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
