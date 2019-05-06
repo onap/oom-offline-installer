@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8103745_c6db1309",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-06T11:40:33Z",
+      "side": 1,
+      "message": "I dont want to be PITA, but what it is meant by this? In last patchset it seems that it expects only two arguments and one of them is not mandatory - judging from the help function.",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
