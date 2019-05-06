@@ -355,6 +355,24 @@
     },
     {
       "key": {
+        "uuid": "23c82aa3_077f4ff7",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T12:28:10Z",
+      "side": 1,
+      "message": "it is the ansible visible name of the host (the dict key). but I believe normal ansible practice is to lookup hosts from groups. that previous version would force me to name this key \"infrastructure-server\". however in any case, infrastructure group does exist and there is one host there.",
+      "parentUuid": "a8d3ea27_5573365f",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
@@ -438,6 +456,24 @@
       "side": 1,
       "message": "I dont follow at all. If this is needed for that molecule to work then that is sad, but ok then. Otherwise - this address is address which rke uses to connect over ssh...from install server/ansible and that can be special management network with restrictions. But I already explained this so many times before, that I dont want to repeat it again.",
       "parentUuid": "0dfa3276_9d75ff3b",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b05a93aa_122a3750",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T12:28:10Z",
+      "side": 1,
+      "message": "sure. but I do not see any alternative, using ansible_host for ssh in case of molecule is asking for trouble, because the docker connection plugin will interpret it as a docker container name. Using cluster_ip would require ssh to be exposed also on the internal cluster network, but at least it works now. Not sure if we have any viable alternative. You rather cannot use docker container names as dns names to ssh to the containers, so...",
+      "parentUuid": "c354146f_5dcbf558",
       "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
