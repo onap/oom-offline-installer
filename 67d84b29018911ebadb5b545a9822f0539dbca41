@@ -22,6 +22,30 @@
       "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c70f43f2_9d9ce5fd",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T13:46:56Z",
+      "side": 1,
+      "message": "I didn\u0027t even know that module exists, however it seems like it couldn\u0027t apply here. We don\u0027t only add known hosts entries, we also ask the respective hosts for their public keys. It seems like known_hosts module can only use predetermined public keys.",
+      "parentUuid": "d3872785_15020ed3",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 77
+      },
+      "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
