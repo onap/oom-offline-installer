@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "2503eb70_cf8cebd3",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-06T11:24:24Z",
+      "side": 1,
+      "message": "Ok, that \"become\" point seems valid",
+      "parentUuid": "58a09d0c_f57236d2",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd7993c3_3b08fc22",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 3
@@ -319,6 +337,24 @@
     },
     {
       "key": {
+        "uuid": "a8d3ea27_5573365f",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-06T11:24:24Z",
+      "side": 1,
+      "message": "This maybe my insufficient knowledge of ansible but when I look at infrastructer-server in hosts.yaml then it does not look like name of the host but as a dictionary and host is defined below...",
+      "parentUuid": "1214d974_0ce5a6f8",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
@@ -384,6 +420,24 @@
       "side": 1,
       "message": "well actually ansible_host is used and it is the worst. if you set it then it is treated as container name.",
       "parentUuid": "1a83a63c_8e139201",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c354146f_5dcbf558",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-06T11:24:24Z",
+      "side": 1,
+      "message": "I dont follow at all. If this is needed for that molecule to work then that is sad, but ok then. Otherwise - this address is address which rke uses to connect over ssh...from install server/ansible and that can be special management network with restrictions. But I already explained this so many times before, that I dont want to repeat it again.",
+      "parentUuid": "0dfa3276_9d75ff3b",
       "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
