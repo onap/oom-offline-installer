@@ -391,6 +391,24 @@
     },
     {
       "key": {
+        "uuid": "7455281c_0471c019",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-06T14:09:40Z",
+      "side": 1,
+      "message": "I dont get it. In ansible parlance it may be called host, but when I say host I mean it :) Host \"infrastructure-server\" is not resolvable - that means we must subtitute it with a real host or an ip address.\n\nSo why:\n\ninfrastructure: \u003c\u003c\u003c\u003c\u003c This is predetermined\n      hosts:\n        infrastructure-server: \u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c\u003c and this is arbitrary\n\nInfrastructure-server here is not a hostname nor a variable containing a hostname or an ip. It is just dict with, as you wrote, properties...\n\nI just dont get your point guys...both of them are just dicts - with only one difference - one is inside the other. Why one name is hardwired and other is volatile.",
+      "parentUuid": "22d35964_d254ae40",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
