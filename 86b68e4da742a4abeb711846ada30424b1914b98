@@ -373,6 +373,24 @@
     },
     {
       "key": {
+        "uuid": "22d35964_d254ae40",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-06T13:39:35Z",
+      "side": 1,
+      "message": "Anyone using offline-installer is free to put arbitrary names in inventory that\u0027s why we can\u0027t fix those names in tasks and have to rely on indices.\n\nPetr: That dictionary element you mentioned is indeed host name, what you refer with \"host defined below\" is it\u0027s property and you either interpolate it by \"hostvars[groups[\u0027infrastructure\u0027][\u0027infrastructure-server\u0027][\u0027ansible_host\u0027]] by which you hardcode the host name or by index \"hostvars[groups[\u0027infrastructure\u0027][0][\u0027ansible_host\u0027]] where the host name doesn\u0027t matter.",
+      "parentUuid": "23c82aa3_077f4ff7",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
