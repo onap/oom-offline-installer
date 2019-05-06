@@ -145,6 +145,30 @@
     },
     {
       "key": {
+        "uuid": "96fc0ee5_1b377b3f",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T14:23:18Z",
+      "side": 1,
+      "message": "Ok. It seems that you cannot easily get /etc/ssh/*.pub because it has a different format, known_hosts module expects keys with known_hosts format. also keyscan works by getting keys of all types, and you need one known_hosts call per specific key per host. Of course doable, just a note.",
+      "parentUuid": "c11dc300_c90de408",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 77
+      },
+      "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a2f402a_ff1f92e4",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 6
