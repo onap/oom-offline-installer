@@ -46,6 +46,53 @@
       "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cd8f00e_3d100427",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-06T14:06:06Z",
+      "side": 1,
+      "message": "How come? Define two tasks: one that produces facts with gathered keys from relevant hosts and second one that uses \u0027known_hosts\u0027 module to inject them. Dead simple and idempotent TMK.",
+      "parentUuid": "c70f43f2_9d9ce5fd",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 77
+      },
+      "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a2f402a_ff1f92e4",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-06T14:06:06Z",
+      "side": 1,
+      "message": "\u0027with_items\u0027 is deprecated, \u0027loop\u0027 is the future-proof.",
+      "range": {
+        "startLine": 27,
+        "startChar": 2,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
