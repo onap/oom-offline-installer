@@ -121,6 +121,30 @@
     },
     {
       "key": {
+        "uuid": "c11dc300_c90de408",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T14:15:44Z",
+      "side": 1,
+      "message": "Well, may be done. keyscan seems easier, but... will see",
+      "parentUuid": "e3b5d986_9d6b356c",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 77
+      },
+      "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4a2f402a_ff1f92e4",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 6
