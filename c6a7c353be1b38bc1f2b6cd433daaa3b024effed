@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "cbc60f0a_f8151567",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "Well, considering that kubectl and helm are in /usr/local/bin, it is inconsistent if rke is suddenly placed somewhere else. We rather do not change more of the installer in similar ways.",
+      "parentUuid": "39d2208a_7636d9f6",
+      "revId": "c6a7c353be1b38bc1f2b6cd433daaa3b024effed",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bb0271f7_911f3426",
         "filename": "ansible/roles/rke/tasks/rke_deploy.yml",
         "patchSetId": 1
