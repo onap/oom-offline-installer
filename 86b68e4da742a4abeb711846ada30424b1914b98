@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "58a09d0c_f57236d2",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "Yes, the intention is for rke to run as root, but to ssh to stuff as rke. I left the rke user on infra mainly because we may want/will want? to move for example control plane to infra, so it will just work without having to do some unusual things.\nAs for why you would run rke as root: I believe we are not testing offline installer running as different users with become: yes, but we really shouldn\u0027t block this usage. In that case using become like in previous patchsets would introduce another hidden requirement that the user that ansible connects as must have sudo rights for root and also for rke, without a password. Another way would be to use sudo from root context, but that seems a bad idea/bad practice. So the most clean way to handle this was to just run rke as root, and create the rke user mostly just to distribute ssh keys and in case some components would be moved to infra. Also it would be consistent with all other roles that run everything as root (helm/etc).",
+      "parentUuid": "7459e248_934f730c",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd7993c3_3b08fc22",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 3
@@ -89,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "fb30bd84_e263b1a0",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "mostly consistency and, see comment for line #5 for why it is better for rke to run as root.",
+      "parentUuid": "176a06e9_e8f20fc1",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ebcd03d_9ef72d89",
         "filename": "ansible/roles/rke/tasks/rke_config.yml",
         "patchSetId": 3
@@ -100,6 +136,24 @@
       "writtenOn": "2019-05-02T08:45:46Z",
       "side": 1,
       "message": "yes, I am aware of that - it was the simplest solution and \"grow without bounds\" is kind of overstatement - how many times this playbook will be run? Once?",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bda8085_661d75c9",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "let\u0027s not assume users will not do stupid things if fixing that is not difficult. :) generally you\u0027re right, but we should still try to make stuff idempotent and this wouldn\u0027t be quite idempotent if it didn\u0027t handle that case.",
+      "parentUuid": "5ebcd03d_9ef72d89",
       "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -123,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "6ad7c70d_7b96a31f",
+        "filename": "ansible/roles/rke/tasks/rke_deploy.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "from root (either over become or normally/directly).",
+      "parentUuid": "3f7c58a2_65e47104",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aa5b9713_a260028e",
         "filename": "ansible/roles/rke/tasks/rke_node.yml",
         "patchSetId": 3
@@ -134,6 +206,24 @@
       "writtenOn": "2019-05-02T08:45:46Z",
       "side": 1,
       "message": "why you removed the default gid? what is default now - it is platform specific, it could be users now or whatnot",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d256cb5_e0dab098",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "well i believe for all newer systems it is not users but the group named after the user, but the reason was:\n1- do we actually care about this group? we don\u0027t use it for anything.\n2-I don\u0027t remember what was the exact reason but I believe something has failed because of this...",
+      "parentUuid": "aa5b9713_a260028e",
       "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -211,6 +301,24 @@
     },
     {
       "key": {
+        "uuid": "1214d974_0ce5a6f8",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "the reason is that you should not rely on name of hosts in inventory, only on names of groups. As in, using hostname directly would not work for cicdansible generated inventory without changing cicdansible.",
+      "parentUuid": "06f6d4a5_f81d5e17",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
@@ -222,6 +330,24 @@
       "writtenOn": "2019-05-02T08:45:46Z",
       "side": 1,
       "message": "wrong, since the beginning when I proposed to add cluster_ip, it was due to multiple network interfaces, asnible is connecting to some network interface and the cluster runs on another and both of them can be mutually unreachable...",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f14af51_0f996b1e",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "Well, they may be mutually unreachable, but I am not sure if you are going to set up ssh not to run on the internal cluster network. I assumed it can run on internal cluster network too.\nThe reason for this change was molecule, because it doesn\u0027t use the ssh connection driver, it uses the docker connection driver, where ansible_host seems to be container name. So, using ansible_host had bad side effects, because it was invalid in molecule context.",
+      "parentUuid": "47a66a7c_50f61f6b",
       "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -257,6 +383,24 @@
       "side": 1,
       "message": "onap does not take any role for underlay Kubernetes cluster. It\u0027s totally upto onap users (vendors and operators) how thay want to deploy Kubernetes.\n\nI guess this is default value that can be overriden in any deployment?",
       "parentUuid": "82242f58_fec0e841",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fedddb8_c0e92856",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T09:11:03Z",
+      "side": 1,
+      "message": "1. I assumed it is better not to introduce additional problems because of rbac, and\n2. using rbac would require modifications to helm init usage, you would need a service account for helm, I once tried that when I was playing with kubeadm long ago (amsterdam times) and it needed permissions that it did not have by default. So using none here was just easier than doing more extensive changes (at least for this initial release of rke role).",
+      "parentUuid": "3d7ecbcc_fc59d8de",
       "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
