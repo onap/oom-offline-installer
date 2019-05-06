@@ -22,6 +22,46 @@
       "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0649d682_6caf5272",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-06T12:44:42Z",
+      "side": 1,
+      "message": "This sentence suggests that this script installs those dependencies, \"Script requires following dependencies are installed\" would be less ambiguous IMHO.",
+      "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f33ddf5_64efff81",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-06T12:44:42Z",
+      "side": 1,
+      "message": "You\u0027re saving backup files with ${TIMESTAMP} in their names so probably this \"ls ... | tail -1\" bash magic is not needed.",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 2
+      },
+      "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
