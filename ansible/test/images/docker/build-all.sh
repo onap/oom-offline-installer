@@ -19,9 +19,9 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 BUILD_SCRIPT=${1:-build.sh}
-
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 # Run all build scripts in direct subdirectories
-for buildfile in $(find -mindepth 2 -maxdepth 2 -name ${BUILD_SCRIPT});
+for buildfile in $(find ${SCRIPTPATH} -mindepth 2 -maxdepth 2 -name ${BUILD_SCRIPT});
 do
   pushd $(dirname ${buildfile})
   . ${BUILD_SCRIPT}
