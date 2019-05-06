@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3872785_15020ed3",
+        "filename": "ansible/roles/rke/tasks/rke_config.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-06T13:29:44Z",
+      "side": 1,
+      "message": "Can\u0027t you just use native \"known_hosts\" ansible module to make it really idempotent and avoid using \u0027shell\u0027 module?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 77
+      },
+      "revId": "67d84b29018911ebadb5b545a9822f0539dbca41",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
