@@ -372,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "0dfa3276_9d75ff3b",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-06T10:56:44Z",
+      "side": 1,
+      "message": "well actually ansible_host is used and it is the worst. if you set it then it is treated as container name.",
+      "parentUuid": "1a83a63c_8e139201",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "82242f58_fec0e841",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
