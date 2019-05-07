@@ -100,16 +100,16 @@ Installer packages
 
 As was stated above you must have prepared the installer packages (names will differ - check out the `Build Guide`_):
 
-- offline-onap-3.0.1-resources.tar
-- offline-onap-3.0.1-aux-resources.tar
-- offline-onap-3.0.1-sw.tar
+- offline-onap-3.0.2-resources.tar
+- offline-onap-3.0.2-aux-resources.tar
+- offline-onap-3.0.2-sw.tar
 
-**NOTE:** ``'offline-onap-3.0.1-aux-resources.tar'`` is optional and if you don't have use for it, you can ignore it.
+**NOTE:** ``'offline-onap-3.0.2-aux-resources.tar'`` is optional and if you don't have use for it, you can ignore it.
 
 We will store them in the ``/data`` directory on the *install-server* and then we will unpack the ``'sw'`` package to your home directory for example::
 
     $ mkdir ~/onap-offline-installer
-    $ tar -C ~/onap-offline-installer -xf /data/offline-onap-3.0.1-sw.tar
+    $ tar -C ~/onap-offline-installer -xf /data/offline-onap-3.0.2-sw.tar
 
 .. _oooi_installguide_config_app:
 
@@ -254,9 +254,9 @@ Here, we will be interested in the following variables:
 
 ``'resource_dir'``, ``'resources_filename'`` and ``'aux_resources_filename'`` must correspond to the file paths on the *resource-host* (variable ``'resource_host'``), which is in our case the *install-server*.
 
-The ``'resource_dir'`` should be set to ``'/data'``, ``'resources_filename'`` to ``'offline-onap-3.0.1-resources.tar'`` and ``'aux_resources_filename'`` to ``'offline-onap-3.0.1-aux-resources.tar'``. The values should be the same as are in the `Installer packages`_ section.
+The ``'resource_dir'`` should be set to ``'/data'``, ``'resources_filename'`` to ``'offline-onap-3.0.2-resources.tar'`` and ``'aux_resources_filename'`` to ``'offline-onap-3.0.2-aux-resources.tar'``. The values should be the same as are in the `Installer packages`_ section.
 
-``'app_data_path'`` is the absolute path on the *infra-node* to where the package ``'offline-onap-3.0.1-resources.tar'`` will be extracted and similarly ``'aux_data_path'`` is another absolute path for ``'offline-onap-3.0.1-aux-resources.tar'``. Both the paths are fully arbitrary, but they should point to the filesystem with enough space - the storage requirement in `Overview table of the kubernetes cluster`_.
+``'app_data_path'`` is the absolute path on the *infra-node* to where the package ``'offline-onap-3.0.2-resources.tar'`` will be extracted and similarly ``'aux_data_path'`` is another absolute path for ``'offline-onap-3.0.2-aux-resources.tar'``. Both the paths are fully arbitrary, but they should point to the filesystem with enough space - the storage requirement in `Overview table of the kubernetes cluster`_.
 
 **NOTE:** As we mentioned in `Installer packages`_ - the auxiliary package is not mandatory and we will not utilize it in here either.
 
@@ -288,7 +288,7 @@ Second one controls time zone setting on host. It's value should be time zone na
 Final configuration can resemble the following::
 
     resources_dir: /data
-    resources_filename: offline-onap-3.0.1-resources.tar
+    resources_filename: offline-onap-3.0.2-resources.tar
     app_data_path: /opt/onap
     app_name: onap
     timesync:

@@ -25,11 +25,12 @@ set -e
 usage () {
     echo "Usage:"
     echo -e "./$(basename $0) <project version>\n"
-    echo "onap_3.0.0 for casablanca                     (sign-off 30/11/2018)"
-    echo "onap_3.0.1 for casablanca maintenance release (sign-off 10/12/2018)"
+    echo "onap_3.0.0 for casablanca                                (sign-off 30/11/2018)"
+    echo "onap_3.0.1 for casablanca maintenance release            (sign-off 10/12/2018)"
+    echo "onap_3.0.2 for latest casablanca with fixed certificates (sign-off 25/04/2019)"
     echo ""
     echo "Example:"
-    echo "  ./$(basename $0) onap_3.0.1"
+    echo "  ./$(basename $0) onap_3.0.2"
 }
 
 # boilerplate
