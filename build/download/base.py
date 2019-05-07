@@ -20,8 +20,11 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 
-import progressbar
 import concurrent.futures
+import os
+import progressbar
+import prettytable
+import requests
 
 progressbar.streams.wrap_stdout()
 progressbar.streams.wrap_stderr()
@@ -80,4 +83,29 @@ def run_concurrent(workers, progress, fn, iterable, *args):
 def finish_progress(progress, error_count, log):
     progress.finish(dirty=error_count > 0)
     log.info('Download ended. Elapsed time {}'.format(progress.data()['time_elapsed']))
+
+
+def save_to_file(dst, content):
+    """
+    Save downloaded byte content to file
+    :param dst: path to file to save content to
+    :param content: byte content of file
+    """
+    dst_dir = os.path.dirname(dst)
+    if not os.path.exists(dst_dir):
+        os.makedirs(dst_dir)
+    with open(dst, 'wb') as dst_file:
+        dst_file.write(content)
+
+def make_get_request(url):
+    req = requests.get(url)
+    req.raise_for_status()
+    return req
+
+def simple_check_table(target, missing):
+    table = prettytable.PrettyTable(['Name', 'Downloaded'])
+    table.align['Name'] = 'l'
+    for item in sorted(target):
+        table.add_row([item, item not in missing])
+    return table
 
