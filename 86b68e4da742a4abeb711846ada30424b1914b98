@@ -535,6 +535,24 @@
     },
     {
       "key": {
+        "uuid": "9d21d93d_37d368db",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-07T11:10:00Z",
+      "side": 1,
+      "message": "Oh, also note that... if you do not set ansible_host, then this... host alias is used as actual hostname to connect to. imagine you would require users to have their host named infrastructure-server. if they didn\u0027t set ansible_host (in cases we didn\u0027t use ansible_host ourselves for other purposes), then ansible would try to connect to host named infrastructure-server. It looks a little weird.",
+      "parentUuid": "06aa66df_a1108203",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
