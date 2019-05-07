@@ -427,6 +427,24 @@
     },
     {
       "key": {
+        "uuid": "3a5d91da_8ed398e4",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-07T07:51:12Z",
+      "side": 1,
+      "message": "infrastructure-server here can be also called as host alias and as mentioned it can be any string.\nYes the main point is that in code we use group names.",
+      "parentUuid": "03f5e67f_4ddbf3c0",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
