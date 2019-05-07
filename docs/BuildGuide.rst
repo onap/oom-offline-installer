@@ -99,10 +99,11 @@ For example:
 
 ::
 
-  # onap_3.0.0 for casablanca                     (sign-off 30/11/2018)
-  # onap_3.0.1 for casablanca maintenance release (sign-off 10/12/2018)
+  # onap_3.0.0 for casablanca                                (sign-off 30/11/2018)
+  # onap_3.0.1 for casablanca maintenance release            (sign-off 10/12/2018)
+  # onap_3.0.2 for latest casablanca with fixed certificates (sign-off 16/04/2019)
 
-  $ ./build/download_offline_data_by_lists.sh onap_3.0.1
+  $ ./build/download_offline_data_by_lists.sh onap_3.0.2
 
 Download is as reliable as network connectivity to internet, it is highly recommended to run it in screen and save log file from this script execution for checking if all artifacts were successfully collected. Each start and end of script call should contain timestamp in console output. Downloading consists of 10 steps, which should be checked at the end one-by-one.
 
@@ -277,8 +278,8 @@ e.g.
 
 ::
 
-    sed -n '/\.[^/].*\//p'  onap_3.0.1-docker_images.list > /tmp/onap-me-data_lists/docker_img.list
-    sed -n '/\.[^/].*\//!p' onap_3.0.1-docker_images.list > /tmp/onap-me-data_lists/docker_no_registry.list
+    sed -n '/\.[^/].*\//p'  onap_3.0.2-docker_images.list > /tmp/onap-me-data_lists/docker_img.list
+    sed -n '/\.[^/].*\//!p' onap_3.0.2-docker_images.list > /tmp/onap-me-data_lists/docker_no_registry.list
 
 .. note:: It's recomended to use abolute paths in the configuration file for the current script
 
