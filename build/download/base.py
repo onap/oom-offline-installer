@@ -20,7 +20,10 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 
+import concurrent.futures
 import progressbar
+import os
+import requests
 
 progressbar.streams.wrap_stdout()
 progressbar.streams.wrap_stderr()
@@ -47,7 +50,54 @@ def init_progress(items_name):
                                        redirect_stdout=True)
     return progress
 
+
+def start_progress(progress, target_count, skipping, log):
+    log_skipping(skipping, log)
+    log.info("Initializing download. Takes a while.")
+
+    progress.max_value = target_count
+    progress.start()
+    progress.update(len(skipping))
+
+
 def log_skipping(skipping_iterable, logger):
     for skipped in skipping_iterable:
         logger.info('Skipping: {}'.format(skipped))
 
+def run_concurrent(workers, fn, iterable, *args):
+    with concurrent.futures.ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = [executor.submit(fn, item, *args) for item in iterable]
+    return futures
+
+def concurrent_wait(futures, progress):
+    error_count = 0
+    for future in concurrent.futures.as_completed(futures):
+        error = future.exception()
+        if error:
+            error_count += 1
+            progress.update()
+        else:
+            progress.update(progress.value +1)
+    return error_count
+
+def finish_progress(progress, error_count, log):
+    progress.finish(dirty=error_count > 0)
+    log.info('Download ended. Elapsed time {}'.format(progress.data()['time_elapsed']))
+
+
+def save_to_file(dst, content):
+    """
+    Save downloaded byte content to file
+    :param dst: path to file to save content to
+    :param content: byte content of file
+    """
+    dst_dir = os.path.dirname(dst)
+    if not os.path.exists(dst_dir):
+        os.makedirs(dst_dir)
+    with open(dst, 'wb') as dst_file:
+        dst_file.write(content)
+
+def make_get_request(url):
+    req = requests.get(url)
+    req.raise_for_status()
+    return req
