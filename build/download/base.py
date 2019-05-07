@@ -21,6 +21,7 @@
 
 
 import progressbar
+import os
 
 progressbar.streams.wrap_stderr()
 
@@ -46,4 +47,16 @@ def init_progress(items_name):
                                        redirect_stdout=True)
     return progress
 
+
+def save_to_file(dst, content):
+    """
+    Save downloaded byte content to file
+    :param dst: path to file to save content to
+    :param content: byte content of file
+    """
+    dst_dir = os.path.dirname(dst)
+    if not os.path.exists(dst_dir):
+        os.makedirs(dst_dir)
+    with open(dst, 'wb') as dst_file:
+        dst_file.write(content)
 
