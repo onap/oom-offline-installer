@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bd302d03_8aa609fc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 20
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-07T13:16:40Z",
+      "side": 1,
+      "message": "\u003e I dont want to be PITA, but what it is meant by this? In last\n \u003e patchset it seems that it expects only two arguments and one of\n \u003e them is not mandatory - judging from the help function.\n\nOh, I probably misunderstood this sentence. I take it back",
+      "parentUuid": "d8103745_c6db1309",
+      "range": {
+        "startLine": 9,
+        "startChar": 50,
+        "endLine": 9,
+        "endChar": 56
+      },
+      "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0649d682_6caf5272",
         "filename": "build/build_nexus_blob.sh",
         "patchSetId": 20
@@ -36,6 +60,24 @@
       "writtenOn": "2019-05-06T12:44:42Z",
       "side": 1,
       "message": "This sentence suggests that this script installs those dependencies, \"Script requires following dependencies are installed\" would be less ambiguous IMHO.",
+      "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124a970e_41fb9dc3",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-07T13:16:40Z",
+      "side": 1,
+      "message": "I agree, that maybe it would help to use different wording here and there. And it would benefit from adding this info to help function? So user of this script knows how to use it and what is target and what preconditions are needed?",
+      "parentUuid": "0649d682_6caf5272",
       "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
