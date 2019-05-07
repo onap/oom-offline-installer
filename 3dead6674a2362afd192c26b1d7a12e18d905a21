@@ -63,6 +63,30 @@
       "revId": "3dead6674a2362afd192c26b1d7a12e18d905a21",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3915e9ed_43454033",
+        "filename": "build/creating_data/download-files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-07T15:53:56Z",
+      "side": 1,
+      "message": "ok, so let\u0027s source it normally now in each script.",
+      "parentUuid": "5c01853c_6d83fe21",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "3dead6674a2362afd192c26b1d7a12e18d905a21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
