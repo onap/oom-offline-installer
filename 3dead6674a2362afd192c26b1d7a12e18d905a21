@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62d82175_a2b39de4",
+        "filename": "build/common-functions.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-07T12:59:45Z",
+      "side": 1,
+      "message": "dont use windows and no dos endline will end up there ;)",
+      "revId": "3dead6674a2362afd192c26b1d7a12e18d905a21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
