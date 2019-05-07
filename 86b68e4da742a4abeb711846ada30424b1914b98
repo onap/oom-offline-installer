@@ -499,6 +499,24 @@
     },
     {
       "key": {
+        "uuid": "0e8c1e85_fbe785b4",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-07T08:57:05Z",
+      "side": 1,
+      "message": "yes intermediate variables we can create, but it will be still same solution. I meant if there\u0027s some other solution.\n\nI agree with solution where we instantiate a variable from \"hostvars[groups[\u0027infrastructure\u0027][0]]\" and use that variable everywhere and indexing is only one line in the whole codebase. And we do not need to pretend that we support multiple infra servers in the places where it will be visible. Now it\u0027s very clearly visible there\u0027s only one.",
+      "parentUuid": "bdae5a8f_b27592cb",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
