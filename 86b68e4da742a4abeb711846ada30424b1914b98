@@ -481,6 +481,24 @@
     },
     {
       "key": {
+        "uuid": "bdae5a8f_b27592cb",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-07T08:41:03Z",
+      "side": 1,
+      "message": "Since the dark times, the great forefathers gave us means to abstract values via variables :) So yeah, intuitive name is always better than some random number. And if we consistently set that number to zero, then we elevated that one \"infra\" server to be something more, right? As of now we pretend we support multiple of infra servers, but we actually dont and what would that actually meant? One infra will be solely nexus server, for example? So why not call it nexus-server and not the index 1, 3 or whatnot? And ansible may call \"infrastructer-server\" a hostname, but it is not, period. It is just a label and if we forced upon the user the group infrastructure, then we can force on him the \"infrastructure-server\" name. It is just label for his machine with actual hostname and ip address, which he will manage. I just try to find some love to ansible, you are making it hard for me :)",
+      "parentUuid": "81ebed6b_243dba90",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
