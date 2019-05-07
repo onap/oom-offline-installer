@@ -553,6 +553,24 @@
     },
     {
       "key": {
+        "uuid": "e26ccd33_9b8530f4",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-07T11:56:27Z",
+      "side": 1,
+      "message": "I did not proposed any such thing... This is obviously just yet another dumb ansible stuff, that some key in inventory is overloaded. So instead of using that key as hostname we use its property and we expect that from the user - if we did not provide these properties then ansible and kubernetes and everything would have to do with one address.\n\nWe are using ansible_host and cluster_ip so we dont force one interface on users machines (I am repeating myself again). And that is fine, that is sensible. We drew line what user cannot change - what must be there: infrastructure group, ansible_host (property), cluster_ip (property) etc. But because for some completely elusive reason to me, we are giving the user option to change the name of this parent key...so we can hardwire number zero everywhere...\n\nMy point since the beginning of this thread is: why we are depending on some names (which we do) and yet leave other name to whatever and because of that we must keep referencing by index?? Does that make sense to you? It seems it does. For me it does not at all. Howgh, I am leaving this matter.",
+      "parentUuid": "9d21d93d_37d368db",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
