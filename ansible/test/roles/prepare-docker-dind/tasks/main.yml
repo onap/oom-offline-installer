@@ -1,0 +1,15 @@
+---
+- name: "Enable docker repository"
+  yum_repository:
+    name: "Docker"
+    description: Docker-ce repository
+    enabled: yes
+    baseurl: "https://download.docker.com/linux/centos/7/$basearch/stable"
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+- name: "Install docker"
+  package:
+    name: "docker-ce-{{ docker_version }}"
+    state: present
+  notify: Restart docker
