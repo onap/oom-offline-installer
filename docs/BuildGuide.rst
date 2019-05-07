@@ -99,9 +99,9 @@ For example:
 
 ::
 
-  # onap_3.0.0 for casablanca                     (sign-off 30/11/2018)
-  # onap_3.0.1 for casablanca maintenance release (sign-off 10/12/2018)
-  # onap_3.0.2 for casablanca 2nd maintenance release (sign-off 04/25/2019)
+  # onap_3.0.0 for casablanca                                (sign-off 30/11/2018)
+  # onap_3.0.1 for casablanca maintenance release            (sign-off 10/12/2018)
+  # onap_3.0.2 for latest casablanca with fixed certificates (sign-off 25/04/2019)
 
   $ ./build/download_offline_data_by_lists.sh onap_3.0.2
 

@@ -25,11 +25,12 @@ set -e
 usage () {
     echo "Usage:"
     echo -e "./$(basename $0) <project version>\n"
-    echo "onap_3.0.0 for casablanca                     (sign-off 30/11/2018)"
-    echo "onap_3.0.1 for casablanca maintenance release (sign-off 10/12/2018)"
+    echo "onap_3.0.0 for casablanca                                (sign-off 30/11/2018)"
+    echo "onap_3.0.1 for casablanca maintenance release            (sign-off 10/12/2018)"
+    echo "onap_3.0.2 for latest casablanca with fixed certificates (sign-off 25/04/2019)"
     echo ""
     echo "Example:"
-    echo "  ./$(basename $0) onap_3.0.1"
+    echo "  ./$(basename $0) onap_3.0.2"
 }
 
 # boilerplate
@@ -56,40 +57,40 @@ CURR=1
 message info "Downloading started: $(date)"
 
 echo "[Step $((CURR++))/$TOTAL Download collected docker images]"
-$CTOOLS/download-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list"
+#$CTOOLS/download-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list"
 
 echo "[Step $((CURR++))/$TOTAL Download docker images for infra-server]"
-$CTOOLS/download-docker-images.sh "${LISTS_DIR}/infra_docker_images.list"
+#$CTOOLS/download-docker-images.sh "${LISTS_DIR}/infra_docker_images.list"
 
 echo "[Step $((CURR++))/$TOTAL Build own nginx image]"
-$CTOOLS/create_nginx_image/01create-image.sh "${DATA_DIR}/offline_data/docker_images_infra"
+#$CTOOLS/create_nginx_image/01create-image.sh "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Save docker images from docker cache to tarfiles]"
-$CTOOLS/save-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list" "${DATA_DIR}/offline_data/docker_images_for_nexus"
+#$CTOOLS/save-docker-images.sh "${LISTS_DIR}/${TAG}-docker_images.list" "${DATA_DIR}/offline_data/docker_images_for_nexus"
 
 echo "[Step $((CURR++))/$TOTAL Prepare infra related images to infra folder]"
-$CTOOLS/save-docker-images.sh "${LISTS_DIR}/infra_docker_images.list" "${DATA_DIR}/offline_data/docker_images_infra"
+#$CTOOLS/save-docker-images.sh "${LISTS_DIR}/infra_docker_images.list" "${DATA_DIR}/offline_data/docker_images_infra"
 
 echo "[Step $((CURR++))/$TOTAL Download git repos]"
-$CTOOLS/download-git-repos.sh "${LISTS_DIR}/onap_3.0.x-git_repos.list" "${DATA_DIR}/git-repo"
+#$CTOOLS/download-git-repos.sh "${LISTS_DIR}/onap_3.0.x-git_repos.list" "${DATA_DIR}/git-repo"
 
 echo "[Step $((CURR++))/$TOTAL Download http files]"
 $CTOOLS/download-http-files.sh "${LISTS_DIR}/onap_3.0.x-http_files.list" "${DATA_DIR}/http"
 
 echo "[Step $((CURR++))/$TOTAL Download npm pkgs]"
-$CTOOLS/download-npm-pkgs.sh "${LISTS_DIR}/onap_3.0.x-npm.list" "${DATA_DIR}/offline_data/npm_tar"
+#$CTOOLS/download-npm-pkgs.sh "${LISTS_DIR}/onap_3.0.x-npm.list" "${DATA_DIR}/offline_data/npm_tar"
 
 echo "[Step $((CURR++))/$TOTAL Download bin tools]"
-$CTOOLS/download-bin-tools.sh "${DATA_DIR}/downloads"
+#$CTOOLS/download-bin-tools.sh "${DATA_DIR}/downloads"
 
 echo "[Step $((CURR++))/$TOTAL Create RHEL repository]"
-$CTOOLS/create-rhel-repo.sh "${DATA_DIR}/pkg/rhel"
+#$CTOOLS/create-rhel-repo.sh "${DATA_DIR}/pkg/rhel"
 
 echo "[Step $((CURR++))/$TOTAL Download sdnc-ansible-server packages]"
-$CTOOLS/download-pip.sh "${LISTS_DIR}/onap_3.0.x-pip_packages.list" "${DATA_DIR}/offline_data/pypi"
-$CTOOLS/download-files.sh "${LISTS_DIR}/deb_packages.list" "${DATA_DIR}/pkg/ubuntu/xenial"
+#$CTOOLS/download-pip.sh "${LISTS_DIR}/onap_3.0.x-pip_packages.list" "${DATA_DIR}/offline_data/pypi"
+#$CTOOLS/download-files.sh "${LISTS_DIR}/deb_packages.list" "${DATA_DIR}/pkg/ubuntu/xenial"
 
 echo "[Step $((CURR++))/$TOTAL Create APT repository]"
-$CTOOLS/create-ubuntu-repo.sh "${DATA_DIR}/pkg/ubuntu/xenial"
+#$CTOOLS/create-ubuntu-repo.sh "${DATA_DIR}/pkg/ubuntu/xenial"
 
 message info "Downloading finished: $(date)"
