@@ -24,6 +24,8 @@
 # Molecule can be adjusted in this script independently.
 #
 
+set -e
+
 SCRIPT_DIR=$(dirname "${0}")
 LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
 
@@ -45,8 +47,8 @@ else # Install Molecule natively in the target platform
     MOLECULE_BINARY=molecule
 fi
 
-${MOLECULE_BINARY} --version
-
 cd ${ROLE_PATH}
+${MOLECULE_BINARY} --version
 ${MOLECULE_BINARY} test --all
 cd -
+
