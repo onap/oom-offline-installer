@@ -463,6 +463,24 @@
     },
     {
       "key": {
+        "uuid": "81ebed6b_243dba90",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-07T08:31:10Z",
+      "side": 1,
+      "message": "Normally only group name used everywhere i.e. all actions always done for all hosts in the group. But there are few places where code needs to point only to one host in the group. In that case it should not matter which one it is, first one, last one or randomly selected host in the group. We mostly have just used the first host in the group.\n\nAny proposal to do it differently/better?",
+      "parentUuid": "036b8d73_51558b36",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
