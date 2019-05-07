@@ -409,6 +409,24 @@
     },
     {
       "key": {
+        "uuid": "03f5e67f_4ddbf3c0",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-07T06:21:05Z",
+      "side": 1,
+      "message": "\u0027infrastructure-server\u0027 here is ansible_hostname which is a property set up at inventory level, it doesn\u0027t even have to resemble real hostname. And whether we allow to change ansible_hostname and not group name is just a matter of convention not a technical limitation. Currently documented convention is that user can set arbitrary ansible_hostname but not group name so the code has to align with it.",
+      "parentUuid": "7455281c_0471c019",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
