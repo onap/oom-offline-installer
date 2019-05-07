@@ -20,8 +20,11 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 
-import progressbar
 import concurrent.futures
+import os
+import progressbar
+import prettytable
+import requests
 from distutils.spawn import find_executable
 
 progressbar.streams.wrap_stdout()
@@ -84,3 +87,28 @@ def finish_progress(progress, error_count, log):
 
 def check_tool(name):
     return find_executable(name)
+
+def save_to_file(dst, content):
+    """
+    Save downloaded byte content to file
+    :param dst: path to file to save content to
+    :param content: byte content of file
+    """
+    dst_dir = os.path.dirname(dst)
+    if not os.path.exists(dst_dir):
+        os.makedirs(dst_dir)
+    with open(dst, 'wb') as dst_file:
+        dst_file.write(content)
+
+def make_get_request(url):
+    req = requests.get(url)
+    req.raise_for_status()
+    return req
+
+def simple_check_table(target, missing):
+    table = prettytable.PrettyTable(['Name', 'Downloaded'])
+    table.align['Name'] = 'l'
+    for item in sorted(target):
+        table.add_row([item, item not in missing])
+    return table
+
