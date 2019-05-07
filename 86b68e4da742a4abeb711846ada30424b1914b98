@@ -517,6 +517,24 @@
     },
     {
       "key": {
+        "uuid": "06aa66df_a1108203",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-07T11:05:30Z",
+      "side": 1,
+      "message": "well the convention is probably to *always* use group names even if you really intent to have only one host in a group and don\u0027t support more. especially that in inventory files, all hosts are in groups, like you actually cannot declare a top level host. you could do something similar if you declare it in the \"all\" group, but still...",
+      "parentUuid": "0e8c1e85_fbe785b4",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
