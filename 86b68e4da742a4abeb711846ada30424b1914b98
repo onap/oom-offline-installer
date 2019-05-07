@@ -445,6 +445,24 @@
     },
     {
       "key": {
+        "uuid": "036b8d73_51558b36",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-05-07T08:12:49Z",
+      "side": 1,
+      "message": "Ok, so instead of a nice reference (like name/label) we are using a number, an index and the code is aligned to expect precisely one only with number zero :) great stuff",
+      "parentUuid": "3a5d91da_8ed398e4",
+      "revId": "86b68e4da742a4abeb711846ada30424b1914b98",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "47a66a7c_50f61f6b",
         "filename": "ansible/roles/rke/templates/cluster.yml.j2",
         "patchSetId": 3
