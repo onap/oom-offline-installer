@@ -101,8 +101,9 @@ For example:
 
   # onap_3.0.0 for casablanca                     (sign-off 30/11/2018)
   # onap_3.0.1 for casablanca maintenance release (sign-off 10/12/2018)
+  # onap_3.0.2 for casablanca 2nd maintenance release (sign-off 04/25/2019)
 
-  $ ./build/download_offline_data_by_lists.sh onap_3.0.1
+  $ ./build/download_offline_data_by_lists.sh onap_3.0.2
 
 Download is as reliable as network connectivity to internet, it is highly recommended to run it in screen and save log file from this script execution for checking if all artifacts were successfully collected. Each start and end of script call should contain timestamp in console output. Downloading consists of 10 steps, which should be checked at the end one-by-one.
 
@@ -231,7 +232,7 @@ Prerequisites:
 - Following ports are not occupied buy another service: 80, 8081, 8082, 10001
 - There's no docker container called "nexus"
 
-.. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the copy of resources data are untarred in *./install/onap-offline/resources/*
+.. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the copy of resources data are untarred in *./onap-offline/../resources/*
 
 Whole nexus blob data tarball will be created by running script
 build\_nexus\_blob.sh. It will load the listed docker images, run the
@@ -277,8 +278,8 @@ e.g.
 
 ::
 
-    sed -n '/\.[^/].*\//p'  onap_3.0.1-docker_images.list > /tmp/onap-me-data_lists/docker_img.list
-    sed -n '/\.[^/].*\//!p' onap_3.0.1-docker_images.list > /tmp/onap-me-data_lists/docker_no_registry.list
+    sed -n '/\.[^/].*\//p'  onap_3.0.2-docker_images.list > /tmp/onap-me-data_lists/docker_img.list
+    sed -n '/\.[^/].*\//!p' onap_3.0.2-docker_images.list > /tmp/onap-me-data_lists/docker_no_registry.list
 
 .. note:: It's recomended to use abolute paths in the configuration file for the current script
 
@@ -288,20 +289,18 @@ Example of the configuration file:
 
     NXS_SRC_DOCKER_IMG_DIR="/tmp/onap-offline/resources/offline_data/docker_images_for_nexus"
     NXS_SRC_NPM_DIR="/tmp/onap-offline/resources/offline_data/npm_tar"
-    NXS_DOCKER_IMG_LIST="/tmp/onap-me-data_lists/docker_img.list"
-    NXS_DOCKER_WO_LIST="/tmp/onap-me-data_lists/docker_no_registry.list"
-    NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/npm_list.txt"
     NXS_SRC_PYPI_DIR="/tmp/onap-offline/resources/offline_data/pypi"
     NXS_DOCKER_IMG_LIST="/tmp/onap-me-data_lists/docker_img.list"
     NXS_DOCKER_WO_LIST="/tmp/onap-me-data_lists/docker_no_registry.list"
-    NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/onap_3.0.0-npm.list"
+    NXS_NPM_LIST="/tmp/onap-offline/bash/tools/data_list/onap_3.0.x-npm_list.txt"
+    NXS_PYPI_LIST="/tmp/onap-offline/bash/tools/data_list/onap_3.0.x-pypi.list"
     NEXUS_DATA_TAR="/root/nexus_data.tar"
     NEXUS_DATA_DIR="/tmp/onap-offline/resources/nexus_data"
-    NEXUS_IMAGE="/tmp/onap-offline/resources/offline_data/docker_images_infra/sonatype_nexus3_latest.tar"
+    NEXUS_IMAGE="/tmp/onap-offline/resources/offline_data/docker_images_infra/sonatype_nexus3_3.15.2.tar"
 
 Once everything is ready you can run the script as following example:
 
-``$ ./install/onap-offline/build_nexus_blob.sh /root/nexus_build.conf``
+``$ ./onap-offline/build/build_nexus_blob.sh /root/nexus_build.conf``
 
 Where the nexus\_build.conf is the configuration file and the
 /root/nexus\_data.tar is the destination tarball
@@ -318,6 +317,7 @@ E.g.
 
     rm -f /tmp/onap-offline/resources/offline_data/docker_images_for_nexus/*
     rm -rf /tmp/onap-offline/resources/offline_data/npm_tar
+    rm -rf /tmp/onap-offline/resources/offline_data/pypi
 
 Part 4. Application helm charts preparation and patching
 --------------------------------------------------------
@@ -333,7 +333,7 @@ For example:
 
 ::
 
-  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.0-ONAP /tmp/offline-installer/patches/casablanca.patch /tmp/oom-clone
+  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.2-ONAP /tmp/onap-offline/patches/casablanca.patch /tmp/oom-clone
 
 Part 5. Creating offline installation package
 ---------------------------------------------
@@ -358,8 +358,8 @@ Example values below are setup according to steps done in this guide to package 
 |                                       | Example::                                                                    |
 |                                       |                                                                              |
 |                                       |  APP_CONFIGURATION=(                                                         |
-|                                       |     /tmp/offline-installer/config/application_configuration.yml              |
-|                                       |     /tmp/offline-installer/patches/onap-casablanca-patch-role                |
+|                                       |     /tmp/onap-offline/config/application_configuration.yml              |
+|                                       |     /tmp/onap-offline/patches/onap-casablanca-patch-role                |
 |                                       |  )                                                                           |
 |                                       |                                                                              |
 +---------------------------------------+------------------------------------------------------------------------------+
@@ -371,7 +371,7 @@ Example values below are setup according to steps done in this guide to package 
 +---------------------------------------+------------------------------------------------------------------------------+
 
 Offline installer packages are created with prepopulated data via
-following command run from offline-installer directory
+following command run from onap-offline directory
 
 ::
 
@@ -381,7 +381,7 @@ E.g.
 
 ::
 
-  ./build/package.sh onap 1.0.1 /tmp/package
+  ./build/package.sh onap 3.0.2 /tmp/package
 
 
 So in the target directory you should find tar files with
