@@ -1,5 +1,4 @@
 #! /usr/bin/env bash
-
 #   COPYRIGHT NOTICE STARTS HERE
 #
 #   Copyright 2018 © Samsung Electronics Co., Ltd.
@@ -17,45 +16,73 @@
 #   limitations under the License.
 #
 #   COPYRIGHT NOTICE ENDS HERE
-
-### This script performs Jenkins Change Verification for ONAP Offline Installer
-# No parameters are expected
-###
+###############################################################################
+# This script performs Jenkins Change Verification for ONAP Offline Installer #
+# No parameters are expected                                                  #
+###############################################################################
 #######################################################################
 #                           MAIN                                      #
 #######################################################################
+#if ansible role was changed
+ROLE_CHANGES=(`git diff  HEAD^ HEAD --name-only | grep "ansible/role" | cut -f 1-3 -d "/" | sort | uniq`)
+FAILED_ROLES=()
+
+if [ -z "${ROLE_CHANGES}" ];  then
+  echo "NO ANSIBLE ROLE TESTS REQUIRED"
+else
+  for i in ${ROLE_CHANGES[@]}
+    do
+      if `find ${i} -name molecule.yml |  grep -q '.*'`; then
+        sudo ./ansible/test/bin/ci-molecule.sh ${i}
+        MOLECULE_RC=$?
+        if [ ${MOLECULE_RC} -ne "0" ]; then FAILED_ROLES+=(${i}); fi
+      else
+        echo "[WARNING] ---------- THERE ARE NO TESTS DEFINED FOR ROLE ${i} ---------- "
+      fi
+  done
+fi
+
 #if ansible was changed
 
-    if `git diff  HEAD^ HEAD --name-only | grep -q "ansible/test"`;
-        then echo "TO DO: FULL ANSIBLE TEST" ;
-    else
-      ROLE_CHANGES=(`git diff  HEAD^ HEAD --name-only | grep "ansible/role" | cut -f 1-3 -d "/" | sort | uniq`)
-      if [ -z "${ROLE_CHANGES}" ];  then
-        echo "NO ANSIBLE TESTS REQUIRED"
+if `git diff  HEAD^ HEAD --name-only | grep -q "ansible/test"`; then
+  PLAYBOOKS=(`find ansible/test -name "play-*"`)
+  FAILED_PLAYBOOKS=()
+  for i in ${PLAYBOOKS[@]}
+    do
+      if `find ${i} -name molecule.yml |  grep -q '.*'`; then
+        sudo ./ansible/test/bin/ci-molecule.sh ${i}
+        MOLECULE_RC=$?
+        if [ ${MOLECULE_RC} -ne "0" ]; then FAILED_PLAYBOOKS+=(${i}); fi
       else
-        for i in ${ROLE_CHANGES[@]}
-        do
-          sudo ./ansible/test/bin/ci-molecule.sh ${i}
-          MOLECULE_RC=$?
-          if [ ${MOLECULE_RC} -ne "0" ]; then echo "MOLECULE TEST FAILED FOR ${i};";exit 1; fi
-        done
+        echo "[WARNING] ---------- THERE ARE NO TESTS DEFINED FOR PLAY ${i} ---------- "
       fi
-    fi
-
+  done
+else
+  echo "NO FULL ANSIBLE TEST REQUIRED" ;
+fi
 
 #if build was changed
 
-    if `git diff  HEAD^ HEAD --name-only | grep -q "build"`;
-        then echo "TO DO: BUILD TEST" ;
-    else
-        echo "NO BUILD TEST REQUIRED"
-    fi
+if `git diff  HEAD^ HEAD --name-only | grep -q "build"`; then
+  echo "TO DO: BUILD TEST" ;
+else
+  echo "NO BUILD TEST REQUIRED"
+fi
 
 #if documentation was changed
 
-    if `git diff  HEAD^ HEAD --name-only | grep -q "docs"`;
-        then echo "TO DO: DOC TEST";
-    else
-        echo "NO DOC TEST REQUIRED"
-    fi
+if `git diff  HEAD^ HEAD --name-only | grep -q "docs"`; then
+  echo "TO DO: DOC TEST";
+else
+  echo "NO DOC TEST REQUIRED"
+fi
+
+#SUMMARY RESULTS
+
+if [ -z ${FAILED_ROLES}  ] && [ -z ${FAILED_PLAYBOOKS} ]; then
+  echo "All verification steps passed"
+else
+  echo "Verification failed for ${FAILED_ROLES[*]} ${FAILED_PLAYBOOKS[*]}"
+  exit 1
+fi
 
