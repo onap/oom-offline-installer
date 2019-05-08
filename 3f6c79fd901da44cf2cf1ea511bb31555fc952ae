@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "02c2e8cd_4a273660",
+        "filename": "offline-installer-review.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-08T13:17:28Z",
+      "side": 1,
+      "message": "It has to be. Molecule image can not be created as other user. We already talked about it: docker user group on community vm has group id 999, on molecule base image this group id is already used.",
+      "parentUuid": "038c0273_000d345e",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "3f6c79fd901da44cf2cf1ea511bb31555fc952ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3079e37_705088a2",
         "filename": "offline-installer-review.sh",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-08T11:46:22Z",
       "side": 1,
       "message": "make a function out of this as exactly the same code is now copy-pasted below to run play-xxx",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "3f6c79fd901da44cf2cf1ea511bb31555fc952ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e76fe0c_2db0c1d2",
+        "filename": "offline-installer-review.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-08T13:17:28Z",
+      "side": 1,
+      "message": "fixed",
+      "parentUuid": "c3079e37_705088a2",
       "range": {
         "startLine": 33,
         "startChar": 0,
