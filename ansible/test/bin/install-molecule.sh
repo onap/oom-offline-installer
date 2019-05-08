@@ -33,7 +33,7 @@
 VENV_PATH=${VENV_PATH:-~/molecule_venv}
 
 # Create virtual env
-python3 -m venv ${VENV_PATH}
+python3.6 -m venv ${VENV_PATH}
 
 # Activate virtual env
 source ${VENV_PATH}/bin/activate
