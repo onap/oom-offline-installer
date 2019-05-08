@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f4787e4_554c662f",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-08T14:49:27Z",
+      "side": 1,
+      "message": "Is there a reason you set this env in most of the role\u0027s molecule.yml? It\u0027s superfluous as it\u0027s already set in the source image we use in our Dockerfile:\n\n# docker history centos/systemd | grep docker\n\u003cmissing\u003e           4 months ago        /bin/sh -c #(nop)  ENV container\u003ddocker         0B",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "5891a78b8c48be100130c017d99bbabb9b2c12bc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
