@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "69addc02_d420667f",
+        "filename": "build/common-functions.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-09T06:43:43Z",
+      "side": 1,
+      "message": "Exactly, but the carriage return was probably the first thing I saw in data lists when I joined the team :)",
+      "parentUuid": "62d82175_a2b39de4",
+      "revId": "3dead6674a2362afd192c26b1d7a12e18d905a21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b21ee0f_ba3b603a",
         "filename": "build/creating_data/download-files.sh",
         "patchSetId": 5
@@ -78,6 +96,30 @@
       "side": 1,
       "message": "ok, so let\u0027s source it normally now in each script.",
       "parentUuid": "5c01853c_6d83fe21",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 2
+      },
+      "revId": "3dead6674a2362afd192c26b1d7a12e18d905a21",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8831dcdf_77901d7d",
+        "filename": "build/creating_data/download-files.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-09T06:43:43Z",
+      "side": 1,
+      "message": "Maybe it just don\u0027t need to be sourced as this is subscript of the download_offline_data_by_lists.sh which is sourcing the common-functions.sh library",
+      "parentUuid": "3915e9ed_43454033",
       "range": {
         "startLine": 21,
         "startChar": 0,
