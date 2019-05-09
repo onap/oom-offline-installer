@@ -12,8 +12,6 @@ platforms:
     privileged: true
     override_command: false
     restart_policy: unless-stopped
-    env:
-      container: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/rancher:/var/lib/rancher:ro
@@ -28,8 +26,6 @@ platforms:
     privileged: true
     override_command: false
     restart_policy: unless-stopped
-    env:
-      container: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /var/lib/rancher:/var/lib/rancher:ro
