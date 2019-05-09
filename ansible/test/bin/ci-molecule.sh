@@ -30,7 +30,7 @@ SCRIPT_DIR=$(dirname "${0}")
 LOCAL_PATH=$(readlink -f "$SCRIPT_DIR")
 
 ROLE_PATH=$1
-MOLECULE_CONTAINER=${MOLECULE_CONTAINER:-true}
+MOLECULE_CONTAINER=${MOLECULE_CONTAINER:-false}
 
 echo "Build all pre-build images"
 ${LOCAL_PATH}/../images/docker/build-all.sh

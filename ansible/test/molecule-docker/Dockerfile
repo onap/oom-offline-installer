@@ -14,7 +14,7 @@ RUN if [ ${USER_ID:-0} -ne 0 ] && [ ${GROUP_ID:-0} -ne 0 ]; then \
     addgroup -g ${GROUP_ID} ${DOCKER_USER} && \
     adduser -D -u ${USER_ID} -G ${DOCKER_USER} ${DOCKER_USER} && \
     # Add user to same docker group as in docker_host to be able to use docker driver as sudo
-    groupadd docker-host -g ${DOCKER_GROUP_ID} && \
+    groupadd docker-host -f -g ${DOCKER_GROUP_ID} && \
     usermod -aG ${DOCKER_GROUP_ID} ${DOCKER_USER} \
 ;fi
 
