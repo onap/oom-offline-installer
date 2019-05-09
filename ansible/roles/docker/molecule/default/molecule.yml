@@ -13,8 +13,6 @@ platforms:
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     groups:
       - infrastructure
-    env:
-      container: docker
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /dev:/dev:ro
