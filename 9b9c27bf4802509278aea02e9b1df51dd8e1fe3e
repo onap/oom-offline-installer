@@ -104,6 +104,30 @@
       "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2147275_654d65d5",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 20
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-09T08:02:21Z",
+      "side": 1,
+      "message": "It\u0027s a leftover I kept after the TIMESTAMP implementation. Will fix it in next patch set",
+      "parentUuid": "9f33ddf5_64efff81",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 314,
+        "endChar": 2
+      },
+      "revId": "9b9c27bf4802509278aea02e9b1df51dd8e1fe3e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
