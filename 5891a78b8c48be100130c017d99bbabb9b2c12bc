@@ -46,6 +46,30 @@
       "revId": "5891a78b8c48be100130c017d99bbabb9b2c12bc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67bfe5b1_87c940c9",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-09T06:15:12Z",
+      "side": 1,
+      "message": "No we can\u0027t remove it from image because it\u0027s not in our dockerfile, it\u0027s embedded in centos/systemd image, that\u0027s why i showed history for that image, not ours. So can i remove it from those roles that use pre-built images and leave it elsewhere? I think the less code and more defaults the better readability.",
+      "parentUuid": "d925b423_19c2bdc4",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "5891a78b8c48be100130c017d99bbabb9b2c12bc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
