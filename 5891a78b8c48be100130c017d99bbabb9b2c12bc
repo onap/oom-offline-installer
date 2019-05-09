@@ -141,6 +141,30 @@
       "revId": "5891a78b8c48be100130c017d99bbabb9b2c12bc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8636131_267bd8bb",
+        "filename": "ansible/test/play-infrastructure/molecule/default/playbook.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-09T13:30:25Z",
+      "side": 1,
+      "message": "I didn\u0027t ask about the play but about the highlighted text :) I guess it\u0027s leftover from debugs, should be cleaned up, i see it in several places.",
+      "parentUuid": "10d58d7c_f99b2523",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 15
+      },
+      "revId": "5891a78b8c48be100130c017d99bbabb9b2c12bc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
