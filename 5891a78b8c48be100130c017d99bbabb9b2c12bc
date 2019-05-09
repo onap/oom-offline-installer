@@ -70,6 +70,30 @@
       "revId": "5891a78b8c48be100130c017d99bbabb9b2c12bc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "affc8c76_7c08d05e",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-09T06:35:06Z",
+      "side": 1,
+      "message": "ah ok. It really does not matter much. I would keep those, but it\u0027s ok if you want to remove those.",
+      "parentUuid": "67bfe5b1_87c940c9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 23
+      },
+      "revId": "5891a78b8c48be100130c017d99bbabb9b2c12bc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
