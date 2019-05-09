@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c5d37dbc_6ff3115a",
+        "filename": "offline-installer-review.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-09T07:58:09Z",
+      "side": 1,
+      "message": "1) can be done however as this vms are gone right after the build we do not care, do we?\n2) On the community jenkins slave docker group has: \"docker:x:999:jenkins\"\nWhen running base image for molecule-dev docker: cat /etc/group | grep 999 outcome is :\"ping:x:999:\"\nThen when trying to build image, at the step of adding new group there is an error : \"groupadd: GID \u0027999\u0027 already exists\" \u003e\u003e\u003e I will make small adjustment to Dockerfile that will fix it.\n3) this makes case 2) sort of irrelevant. I started to work on virtenv option but it was taking much more to set up environment before running any test.",
+      "parentUuid": "d9a31ce6_21494d1e",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 12
+      },
+      "revId": "3f6c79fd901da44cf2cf1ea511bb31555fc952ae",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3079e37_705088a2",
         "filename": "offline-installer-review.sh",
         "patchSetId": 1
