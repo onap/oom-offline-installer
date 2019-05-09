@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a9e2b2f_1aa09c89",
+        "filename": "build/download_offline_data_by_lists.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-09T10:07:55Z",
+      "side": 1,
+      "message": "Is that the correct sign-off date? There\u0027s 25/04 in the BuildGuide",
+      "range": {
+        "startLine": 30,
+        "startChar": 77,
+        "endLine": 30,
+        "endChar": 87
+      },
+      "revId": "36af79a7d97cd738e9dd2996307c75b2956ce0c5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
