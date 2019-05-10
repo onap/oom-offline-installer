@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "35dfd569_e553a498",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-10T12:03:42Z",
+      "side": 1,
+      "message": "Well, if overriding is needed then no go on that - if you symlink group_vars and try override a variable in molecule.yml it won\u0027t work, var will still be interpolated to it\u0027s value from group_vars from what i recall, needs testing.",
+      "parentUuid": "5ccd77a3_21d49dcf",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc662f07_6630c844",
         "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Yes definetly, that\u0027s why I commented this here. I never copy-paste anything if possible.\nGreat we have a solution now!",
       "parentUuid": "bc662f07_6630c844",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 84
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52dabeb7_a0aa90e8",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-10T12:03:42Z",
+      "side": 1,
+      "message": "We do have or not, depends on use case, see comment above.",
+      "parentUuid": "8b6bd971_b3c0ab5b",
       "range": {
         "startLine": 66,
         "startChar": 0,
