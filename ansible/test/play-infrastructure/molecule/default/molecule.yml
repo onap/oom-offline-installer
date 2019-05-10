@@ -12,8 +12,6 @@ platforms:
     privileged: true
     override_command: false
     restart_policy: unless-stopped
-    env:
-      container: docker
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${APP_DATA_PATH}:${APP_DATA_PATH}
@@ -41,8 +39,6 @@ platforms:
     privileged: true
     override_command: false
     restart_policy: unless-stopped
-    env:
-      container: docker
     groups:
       - kubernetes
     # By design certain file like /etc/resolv.conf cannot be edited in docker

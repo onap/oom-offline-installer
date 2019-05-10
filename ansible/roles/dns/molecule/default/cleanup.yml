@@ -1,0 +1,8 @@
+---
+- name: Cleanup
+  hosts: localhost
+  roles:
+    - role: cleanup-containers
+      vars:
+        container_list:
+          - dns-server
