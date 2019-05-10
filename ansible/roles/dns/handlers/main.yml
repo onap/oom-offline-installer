@@ -1,12 +1,12 @@
 ---
-- name: Restart dns server container
+- name: Run dns server container
   docker_container:
     name: dns-server
     image: "{{ dns_server_image }}"
     command: -H /simulated_hosts --log-facility=-
     capabilities: NET_ADMIN
     volumes:
-      - "{{ app_data_path }}/cfg/simulated_hosts:/simulated_hosts:ro"
+      - "{{ app_data_path }}/cfg/simulated_hosts:/simulated_hosts"
     ports:
       - "53:53/tcp"
       - "53:53/udp"
