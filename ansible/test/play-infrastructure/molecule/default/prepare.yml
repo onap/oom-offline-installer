@@ -1,9 +1,6 @@
 ---
 - name: Get localhost facts
   hosts: localhost
-  tasks:
-    - debug:
-        msg: ""
 
 - name: Prepare infra
   hosts: infrastructure

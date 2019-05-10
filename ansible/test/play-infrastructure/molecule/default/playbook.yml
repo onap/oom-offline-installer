@@ -1,9 +1,6 @@
 ---
 - name: Get localhost facts
   hosts: localhost
-  tasks:
-    - debug:
-        msg: ""
 
 - name: Perform common environment setup for nodes
   hosts: infrastructure, kubernetes
