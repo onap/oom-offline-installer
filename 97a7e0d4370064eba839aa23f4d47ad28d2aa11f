@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "c6a681ba_fd63480c",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-10T12:07:54Z",
+      "side": 1,
+      "message": "yes I have been tested. Won\u0027t work. I was planning to contribute to molecule itself but it was implemented too messy there. But would be good commit to molecule to improve this.",
+      "parentUuid": "35dfd569_e553a498",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc662f07_6630c844",
         "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
         "patchSetId": 5
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "We do have or not, depends on use case, see comment above.",
       "parentUuid": "8b6bd971_b3c0ab5b",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 84
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a43c049_a0953a1e",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-10T12:07:54Z",
+      "side": 1,
+      "message": "indeed",
+      "parentUuid": "52dabeb7_a0aa90e8",
       "range": {
         "startLine": 66,
         "startChar": 0,
