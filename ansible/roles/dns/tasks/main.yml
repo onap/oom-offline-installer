@@ -8,7 +8,7 @@
   template:
     src: simulated_hosts.j2
     dest: "{{ app_data_path }}/cfg/simulated_hosts"
-  notify: Restart dns server container
+  notify: Run dns server container
 
 - name: Load dns server container
   docker_image:
@@ -16,21 +16,6 @@
     load_path: "{{ infra_images_path }}/{{ dns_server_image_tar }}"
     state: present
     timeout: 120
-  notify: Restart dns server container
+  notify: Run dns server container
 
-- name: Start dns server container
-  docker_container:
-    name: dns-server
-    network_mode: host
-    image: "{{ dns_server_image }}"
-    command: -H /simulated_hosts --log-facility=-
-    capabilities: NET_ADMIN
-    dns_servers:
-      - 127.0.0.1
-    volumes:
-      - "{{ app_data_path }}/cfg/simulated_hosts:/simulated_hosts"
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
-    state: started
-    restart_policy: unless-stopped
+- import_tasks: ../handlers/main.yml
