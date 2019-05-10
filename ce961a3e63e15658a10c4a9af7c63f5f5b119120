@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "503dde5e_894ec846",
+        "filename": "ansible/roles/certificates/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-10T13:31:02Z",
+      "side": 1,
+      "message": "is extra space needed?",
+      "range": {
+        "startLine": 4,
+        "startChar": 21,
+        "endLine": 4,
+        "endChar": 22
+      },
+      "revId": "ce961a3e63e15658a10c4a9af7c63f5f5b119120",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
