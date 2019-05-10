@@ -22,6 +22,30 @@
       "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d928898_bc5576ad",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-10T08:09:56Z",
+      "side": 1,
+      "message": "Because if for some reason the docker container is not running and above tasks don\u0027t report \u0027changed\u0027 on second run the container wouldn\u0027t be running. And we don\u0027t want to have same docker_container module call to create dns container here and in handlers because if it was here and you altered it then it didn\u0027t have any effect because what\u0027s in the handlers is run at the end.",
+      "parentUuid": "a9af0e8c_aca11793",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
