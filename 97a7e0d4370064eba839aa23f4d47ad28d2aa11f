@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5ccd77a3_21d49dcf",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-10T11:42:46Z",
+      "side": 1,
+      "message": "ok that would be great. However we need to be able to override some variables that are empty in default group_vars.",
+      "parentUuid": "b1f60b6d_a2b1f841",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bc662f07_6630c844",
         "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-10T11:37:02Z",
       "side": 1,
       "message": "This isn\u0027t the best idea, once changed in role defaults no one will be aware of a need to change it here also. See https://gerrit.onap.org/r/c/87448/1/ansible/test/roles/prepare-dns/defaults",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 84
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b6bd971_b3c0ab5b",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-10T11:42:46Z",
+      "side": 1,
+      "message": "Yes definetly, that\u0027s why I commented this here. I never copy-paste anything if possible.\nGreat we have a solution now!",
+      "parentUuid": "bc662f07_6630c844",
       "range": {
         "startLine": 66,
         "startChar": 0,
