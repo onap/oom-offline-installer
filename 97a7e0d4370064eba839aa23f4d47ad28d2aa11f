@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1f60b6d_a2b1f841",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-10T11:37:02Z",
+      "side": 1,
+      "message": "This doesn\u0027t have to be the case, i think it can be avoided with filesystem symlinks for group_vars, see below. Only issue us that you can\u0027t override variables from group_vars in molecule.yml then, but there shouldn\u0027t be a need for that. For example you\u0027ve overridden \u0027vnc_passwd\u0027 which for me isn\u0027t necessary.\n\nAbove statement is just an assumption, not sure it can work. Once we merge this one i\u0027ll try to improve on that.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 30
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc662f07_6630c844",
+        "filename": "ansible/test/play-infrastructure/molecule/default/group_vars/all.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-10T11:37:02Z",
+      "side": 1,
+      "message": "This isn\u0027t the best idea, once changed in role defaults no one will be aware of a need to change it here also. See https://gerrit.onap.org/r/c/87448/1/ansible/test/roles/prepare-dns/defaults",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 84
+      },
+      "revId": "97a7e0d4370064eba839aa23f4d47ad28d2aa11f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
