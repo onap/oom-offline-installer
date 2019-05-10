@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "790c8893_0961fe71",
+        "filename": "ansible/test/roles/prepare-application/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-10T12:16:08Z",
+      "side": 1,
+      "message": "Please symlink this file to application role\u0027s defaults and define simulate_helm and helm_simulation_output_file in molecule.yml.",
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
