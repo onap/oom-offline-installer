@@ -27,8 +27,6 @@ platforms:
     privileged: true
     override_command: false
     restart_policy: unless-stopped
-    env:
-      container: docker
     volumes:
       - /var/lib/docker
     groups:
