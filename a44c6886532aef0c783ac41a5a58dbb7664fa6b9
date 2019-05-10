@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9af0e8c_aca11793",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-10T08:03:07Z",
+      "side": 1,
+      "message": "why this import is needed?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
