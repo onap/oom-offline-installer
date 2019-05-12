@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "88f4465f_6ec25d43",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-12T08:53:43Z",
+      "side": 1,
+      "message": "having handler for starting \"dns container\" sounds a bit strange to me. It sounds like just one time operation, not something we need to have in handler for repeatable task. Wouldn\u0027t be better to remove that \"handler\" and add just task instead of this handler logic ? I also did not find any other place in the code from where this handler is called",
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e74b1563_71c51ed1",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-12T08:53:43Z",
+      "side": 1,
+      "message": "we have this :ro in many other places, it\u0027s safer, why did you remove it ? do we expect someone to write into that file ?",
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9af0e8c_aca11793",
         "filename": "ansible/roles/dns/tasks/main.yml",
         "patchSetId": 2
@@ -37,6 +71,30 @@
       "side": 1,
       "message": "Because if for some reason the docker container is not running and above tasks don\u0027t report \u0027changed\u0027 on second run the container wouldn\u0027t be running. And we don\u0027t want to have same docker_container module call to create dns container here and in handlers because if it was here and you altered it then it didn\u0027t have any effect because what\u0027s in the handlers is run at the end.",
       "parentUuid": "a9af0e8c_aca11793",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e90bb96d_989ba360",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-12T08:53:43Z",
+      "side": 1,
+      "message": "is it really a handler what we need for this \"docker run\" command ?",
+      "parentUuid": "5d928898_bc5576ad",
       "range": {
         "startLine": 21,
         "startChar": 0,
