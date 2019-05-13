@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc657aa4_f459c637",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-13T14:25:32Z",
+      "side": 1,
+      "message": "Does it make sense to add restart and optionally recreate params here? if handler *does* run it should always cause container restart, othervise the only condition for restart is the params of handler being different",
+      "revId": "68ad6507ab1743e58a6657506afd3cc02d69cb80",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "38f6c609_6f0f81a2",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-13T14:25:32Z",
+      "side": 1,
+      "message": "is it doable without this command module? not objecting, just not sure",
+      "revId": "68ad6507ab1743e58a6657506afd3cc02d69cb80",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
