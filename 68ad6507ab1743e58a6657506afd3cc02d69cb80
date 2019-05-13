@@ -33,6 +33,24 @@
       "revId": "68ad6507ab1743e58a6657506afd3cc02d69cb80",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bac9e420_4d5e386a",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-13T14:40:43Z",
+      "side": 1,
+      "message": "Don\u0027t know of an alternative approach. This one\u0027s idempotent at least.",
+      "parentUuid": "38f6c609_6f0f81a2",
+      "revId": "68ad6507ab1743e58a6657506afd3cc02d69cb80",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
