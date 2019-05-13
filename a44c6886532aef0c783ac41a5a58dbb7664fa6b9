@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "936a5bb7_b60c5e84",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-13T07:54:10Z",
+      "side": 1,
+      "message": "This change was just a follow up on https://gerrit.onap.org/r/c/85907/7/ansible/roles/dns/tasks/main.yml (this patch removes the task in which this change was done so had to include it here)\nSo Samuli is to explain the reason.",
+      "parentUuid": "e74b1563_71c51ed1",
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9af0e8c_aca11793",
         "filename": "ansible/roles/dns/tasks/main.yml",
         "patchSetId": 2
