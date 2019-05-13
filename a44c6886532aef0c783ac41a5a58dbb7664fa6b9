@@ -104,6 +104,30 @@
       "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dbe55bc5_d22df2ba",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-13T05:58:28Z",
+      "side": 1,
+      "message": "I\u0027m also confused with this commit. And usage of handler and still importing the same tasks.",
+      "parentUuid": "e90bb96d_989ba360",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 36
+      },
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
