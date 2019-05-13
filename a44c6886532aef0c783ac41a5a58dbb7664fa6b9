@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "8caa3164_61e2d38c",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-13T08:01:20Z",
+      "side": 1,
+      "message": "and I don\u0027t remember the reason, except it did not worked without this change.",
+      "parentUuid": "936a5bb7_b60c5e84",
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9af0e8c_aca11793",
         "filename": "ansible/roles/dns/tasks/main.yml",
         "patchSetId": 2
