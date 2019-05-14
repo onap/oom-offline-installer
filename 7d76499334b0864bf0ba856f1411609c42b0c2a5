@@ -46,6 +46,30 @@
       "revId": "7d76499334b0864bf0ba856f1411609c42b0c2a5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e099b4d_0f885ff2",
+        "filename": "ansible/inventory/hosts.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-14T17:39:26Z",
+      "side": 1,
+      "message": "would not like to remove rancher. People may be using it, like Italian guys from where the separation of rancher to own group request came.\n\nAnd btw. does rancher playbook break when all your RKE commits are merged? At the moment we do not molecule play-level test for rancher playbook (that would tell it already now in CI).",
+      "parentUuid": "8f0fd61f_e2076d26",
+      "range": {
+        "startLine": 34,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "7d76499334b0864bf0ba856f1411609c42b0c2a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
