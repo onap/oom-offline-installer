@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "79f8cfc0_63f568f3",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-14T07:50:19Z",
+      "side": 1,
+      "message": "Got your point, added \u0027recreate\u0027 param to always recreate container whenever handler is called. So caller decides on the condition of recreating the container and the handler itself always recreates it whenever called.",
+      "parentUuid": "dc657aa4_f459c637",
+      "revId": "68ad6507ab1743e58a6657506afd3cc02d69cb80",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "38f6c609_6f0f81a2",
         "filename": "ansible/roles/dns/tasks/main.yml",
         "patchSetId": 5
