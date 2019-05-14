@@ -46,6 +46,30 @@
       "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd493823_d5ea8be7",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-14T13:12:10Z",
+      "side": 1,
+      "message": "It\u0027s working correctly outside of the scope of this commit because in docker/molecule/default/molecule.yml there is no mount bind for /var/run/docker.sock, it\u0027s only here in your commit so effectively you\u0027re trying to use unsupported \u0027mode\u0027 here (running \u0027docker\u0027 role in a container with mount binded /var/run/docker.sock).",
+      "parentUuid": "ce20a747_8a682bc6",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
