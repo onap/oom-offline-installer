@@ -46,6 +46,30 @@
       "revId": "f606c11845e77d5915fe92f11b2e0e40cdf4711e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37f1f3bf_418092d1",
+        "filename": "ansible/test/play-infrastructure/molecule/default/playbook.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-14T10:22:18Z",
+      "side": 1,
+      "message": "If you invent another solution, let me know.",
+      "parentUuid": "f467ac8f_3f96d72a",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 100
+      },
+      "revId": "f606c11845e77d5915fe92f11b2e0e40cdf4711e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
