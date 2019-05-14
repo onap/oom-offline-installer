@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "151f0405_08674827",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-14T14:11:59Z",
+      "side": 1,
+      "message": "This message is also misleading - it suggests this commit introduces a preparation role for \u0027docker\u0027 role, and what it really does is preparing for playing rke role.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "d7de3319257247b56e739b2169e0f5127ac25e44",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
