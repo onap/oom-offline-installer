@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c2eeb19_4f037277",
+        "filename": "ansible/inventory/hosts.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-14T17:23:06Z",
+      "side": 1,
+      "message": "can you mention also rancher here?",
+      "range": {
+        "startLine": 34,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "7d76499334b0864bf0ba856f1411609c42b0c2a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
