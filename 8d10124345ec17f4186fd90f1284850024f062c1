@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34f94303_79f82db1",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-14T12:53:32Z",
+      "side": 1,
+      "message": "This is the direct reason tests fail for this commit - docker role tests are natively run without this mount bind and it (docker role tests) doesn\u0027t support being run with socket mounted from outside. Trying to find a fix/workaround for that in docker role itself (OO-1852)",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
