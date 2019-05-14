@@ -9,3 +9,4 @@ OOM offline-installer
    BuildGuide.rst
    InstallGuide.rst
    TestingGuide.rst
+   vFWCL-casablanca.rst
