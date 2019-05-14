@@ -22,6 +22,30 @@
       "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce20a747_8a682bc6",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-14T13:01:23Z",
+      "side": 1,
+      "message": "yes also noticed this. But it was working fine already long time. So what commit broke it?",
+      "parentUuid": "34f94303_79f82db1",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
