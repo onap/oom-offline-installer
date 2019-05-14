@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd506899_a30b4874",
+        "filename": "ansible/test/play-infrastructure/molecule/default/playbook.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-14T09:35:31Z",
+      "side": 1,
+      "message": "This shouldn\u0027t happen and is a symptom of issues with logic in prepare-docker - anything with \"prepare-*\" in it\u0027s name should be in prepare.yml, not here. With this included here you a side effects can happen.\n\nWhile i understand inclusion of \u0027prepare-docker\u0027 here due to it\u0027s design, why it\u0027s the case with \u0027prepare-common\u0027?\n\nI\u0027m hesitating between -1 on this or leaving it for improvement is separate commit.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 100
+      },
+      "revId": "f606c11845e77d5915fe92f11b2e0e40cdf4711e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
