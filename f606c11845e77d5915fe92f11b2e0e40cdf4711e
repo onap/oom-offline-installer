@@ -22,6 +22,30 @@
       "revId": "f606c11845e77d5915fe92f11b2e0e40cdf4711e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f467ac8f_3f96d72a",
+        "filename": "ansible/test/play-infrastructure/molecule/default/playbook.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-14T09:51:21Z",
+      "side": 1,
+      "message": "Ok i just realized why are we having test failing due to linting issues in _molecule_internal_role_, not oom tested role - it\u0027s because of this inclusion. So far we did nowhere came upon issues with linting prepare-docker role because natively it\u0027s out of scope of tested roles, and once you included it here it is... And that is the reason for https://jira.onap.org/browse/OOM-1850 And another reason for what i wrote above - molecule roles should not be put into test scope.",
+      "parentUuid": "cd506899_a30b4874",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 100
+      },
+      "revId": "f606c11845e77d5915fe92f11b2e0e40cdf4711e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
