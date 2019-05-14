@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b30080b_89dad295",
+        "filename": "build/creating_data/create-http-list.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-14T11:35:50Z",
+      "side": 1,
+      "message": "running maven build and grepping log output is quite dummy way to detect these.\n\nMore correct would be prob. using Maven dependency plugin and output results to some structured file e.g. xml format that can be further parsed with code.\n\nE.g. something like this:\nmvn dependency:tree -DoutputFile\u003dfile.graphml -DoutputType\u003dgraphml",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 99
+      },
+      "revId": "a5c2148fdab82ae9f77cdef5a19adbd472172908",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
