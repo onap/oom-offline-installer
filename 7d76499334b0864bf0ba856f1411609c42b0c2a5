@@ -70,6 +70,30 @@
       "revId": "7d76499334b0864bf0ba856f1411609c42b0c2a5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c266189_3fe09591",
+        "filename": "ansible/inventory/hosts.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-14T17:44:30Z",
+      "side": 1,
+      "message": "Well I didn\u0027t test that. but it shouldn\u0027t affect it.\nStill I believe mentions of rancher should be added when rancher role will be updated accordingly to comply. And only if we know how to do it, but this is another task.",
+      "parentUuid": "3e099b4d_0f885ff2",
+      "range": {
+        "startLine": 34,
+        "startChar": 13,
+        "endLine": 38,
+        "endChar": 46
+      },
+      "revId": "7d76499334b0864bf0ba856f1411609c42b0c2a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
