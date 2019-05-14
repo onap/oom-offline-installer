@@ -70,6 +70,30 @@
       "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a80a2e2f_feabdc37",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-14T16:59:04Z",
+      "side": 1,
+      "message": "and it worked fine. I have been running this test quite long time with success. And Michal\u0027s commit (he changed docker restarted to docker stop, remove socket file, docker start) broke it but then I introduced the https://gerrit.onap.org/r/#/c/85907/8/ansible/roles/docker/handlers/docker_restart.yml fix for it.\nAnd I\u0027m quite sure I also tested it. But now I\u0027m not sure..",
+      "parentUuid": "dd493823_d5ea8be7",
+      "range": {
+        "startLine": 18,
+        "startChar": 6,
+        "endLine": 18,
+        "endChar": 49
+      },
+      "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
