@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "578e1e8e_3f3edeed",
+        "filename": "ansible/test/roles/prepare-docker-dind/vars/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-15T06:08:20Z",
+      "side": 1,
+      "message": "Are you sure this is the correct version? Unless i\u0027m not well informed i haven\u0027t heard of any upgrade of docker-ce version on target. Please refer to this file\u0027s commit: https://gerrit.onap.org/r/c/86528/3/ansible/test/roles/prepare-docker/vars/main.yml#9",
+      "revId": "78b5c01e24aee1fcf7310f6c50ca8780d0b133d0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
