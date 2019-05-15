@@ -1,6 +1,6 @@
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2018 © Samsung Electronics Co., Ltd.
+#   Copyright 2018-2019 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -36,11 +36,9 @@ fi
 
 # this exact docker version is required by ONAP/beijing
 # it should be available in centos docker repo
-yumdownloader --resolve --destdir="${OUTDIR}" docker-ce-17.03.2.ce libtool-ltdl docker-ce-selinux nfs-utils python-jsonpointer
-
-wget https://cbs.centos.org/kojifiles/packages/python-docker/2.5.1/2.el7/noarch/python2-docker-2.5.1-2.el7.noarch.rpm -P "${OUTDIR}"
-
-yum install --downloadonly --downloaddir="${OUTDIR}" "${OUTDIR}/python2-docker-2.5.1-2.el7.noarch.rpm"
+yumdownloader --resolve --destdir="${OUTDIR}" docker-ce-18.09.5 container-selinux docker-ce-cli \
+containerd.io nfs-utils python-jsonpointer python-docker-py python-docker-pycreds python-ipaddress \
+python-websocket-client
 
 createrepo "${OUTDIR}"
 
