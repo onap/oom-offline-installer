@@ -108,6 +108,30 @@
     },
     {
       "key": {
+        "uuid": "b9d6fb60_9e5f636c",
+        "filename": "ansible/roles/application/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-15T10:49:53Z",
+      "side": 1,
+      "message": "1) idenpotence test is commented out here and reasons mentioned.\n\n2) not getting this. There\u0027s no idempotence test at all as it\u0027s commented out. But all tasks are run and tested that way.",
+      "parentUuid": "8430d2ef_2d7ff6cd",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b9c6a27_988da03e",
         "filename": "ansible/roles/application/molecule/default/tests/test_default.py",
         "patchSetId": 3
