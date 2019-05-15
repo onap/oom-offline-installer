@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "89afbbbb_934a2eba",
+        "filename": "ansible/roles/application/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-15T10:21:59Z",
+      "side": 1,
+      "message": "no reason. Maybe prepare- role was done later and this inventory here was here from the start.",
+      "parentUuid": "ca813b38_639e8535",
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "38739230_526263b8",
         "filename": "ansible/roles/application/molecule/default/molecule.yml",
         "patchSetId": 3
