@@ -1,5 +1,5 @@
 ---
-- name: Restart dns server container
+- name: Run dns server container
   docker_container:
     name: dns-server
     image: "{{ dns_server_image }}"
@@ -12,3 +12,4 @@
       - "53:53/udp"
     state: started
     restart_policy: unless-stopped
+    recreate: true
