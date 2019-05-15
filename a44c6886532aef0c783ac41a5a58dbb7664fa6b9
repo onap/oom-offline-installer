@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "2f8b88b8_c36dc070",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-15T09:19:50Z",
+      "side": 1,
+      "message": "now I see the point, thx",
+      "parentUuid": "812728e5_2d059e5a",
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e74b1563_71c51ed1",
         "filename": "ansible/roles/dns/handlers/main.yml",
         "patchSetId": 2
@@ -84,6 +102,24 @@
       "side": 1,
       "message": "and I don\u0027t remember the reason, except it did not worked without this change.",
       "parentUuid": "936a5bb7_b60c5e84",
+      "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b8e92c84_9dc51415",
+        "filename": "ansible/roles/dns/handlers/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-15T09:19:50Z",
+      "side": 1,
+      "message": "so it\u0027s something molecule related, but we should not have it here ..... please add ro back, if there is a real reason to change it, we should have it in respective commit to see why",
+      "parentUuid": "8caa3164_61e2d38c",
       "revId": "a44c6886532aef0c783ac41a5a58dbb7664fa6b9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
