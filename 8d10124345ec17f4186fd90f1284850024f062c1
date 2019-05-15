@@ -147,6 +147,24 @@
       "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7238c4ad_4e9c7172",
+        "filename": "ansible/test/roles/post-certificates/tasks/main.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-15T10:24:53Z",
+      "side": 1,
+      "message": "join the club.\n\nI did this quite long time ago and spend quite some time.\nTelling you exact issues here is not going to work.\nAs I mentioned certificates need to be setup on local host so that it\u0027s trusted by nexus and docker client on host can push images to nexus. That required docker restart.",
+      "parentUuid": "22a9e397_48ee0e05",
+      "revId": "8d10124345ec17f4186fd90f1284850024f062c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
