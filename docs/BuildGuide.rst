@@ -29,7 +29,7 @@ More-over following sw packages has to be installed:
 * for the Download artifacts for offline installer (Part 2) and the Populate local nexus (Part 3)
     -  nodejs
     -  jq
-    -  docker (exact version docker-ce-17.03.2)
+    -  docker (exact version docker-ce-18.09.6)
 
 * for the Download artifacts for offline installer (Part 2) and for the Application helm charts preparation and patching (Part 4)
     -  patch
@@ -75,7 +75,7 @@ Subsequent steps are the same on both platforms:
     pip install twine
 
     # install docker
-    curl https://releases.rancher.com/install-docker/17.03.sh | sh
+    curl https://releases.rancher.com/install-docker/18.09.sh | sh
 
 Then it is necessary to clone all installer and build related repositories and prepare the directory structure.
 
