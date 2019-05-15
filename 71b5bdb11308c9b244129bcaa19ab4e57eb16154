@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12a4a9b7_545fb477",
+        "filename": "build/download/requirements.txt",
+        "patchSetId": 21
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-15T07:37:03Z",
+      "side": 1,
+      "message": "I am deeply saddened to inform you that our dear friend python2.7 has only 6 more months to live.",
+      "range": {
+        "startLine": 2,
+        "startChar": 34,
+        "endLine": 2,
+        "endChar": 39
+      },
+      "revId": "71b5bdb11308c9b244129bcaa19ab4e57eb16154",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
