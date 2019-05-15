@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "484c7cd9_d6626622",
+        "filename": "ansible/roles/application/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-15T09:11:58Z",
+      "side": 1,
+      "message": "not getting the point",
+      "parentUuid": "38739230_526263b8",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b9c6a27_988da03e",
         "filename": "ansible/roles/application/molecule/default/tests/test_default.py",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "63cbe432_77b639ce",
+        "filename": "ansible/roles/application/molecule/default/tests/test_default.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-15T09:11:58Z",
+      "side": 1,
+      "message": "yes and no.\nMost say no, and should repeate the same here.\n\nAnd infratest does not native support it. But access to those variables can be hacked (used in some other tests we have), just did not bothered to do it here.",
+      "parentUuid": "5b9c6a27_988da03e",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9afb004c_bf847d8b",
         "filename": "ansible/roles/application/tasks/install.yml",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2019-05-15T07:11:34Z",
       "side": 1,
       "message": "so how is it with idempotency?",
+      "range": {
+        "startLine": 17,
+        "startChar": 23,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9a02083c_d7687a29",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-15T09:11:58Z",
+      "side": 1,
+      "message": "old commit, ask Michal :)\nWell it\u0027s hack for command module.",
+      "parentUuid": "9afb004c_bf847d8b",
       "range": {
         "startLine": 17,
         "startChar": 23,
