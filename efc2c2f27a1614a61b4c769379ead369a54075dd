@@ -132,6 +132,30 @@
     },
     {
       "key": {
+        "uuid": "b07e554b_040dda12",
+        "filename": "ansible/roles/application/molecule/default/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-15T11:53:43Z",
+      "side": 1,
+      "message": "1) ok, \n2) at covrage level yes, idempotence no, but I am fine with that. There is a task in main.yml \"Check if application Helm charts exist and install is even needed\" when role is played second time on the same environment, it  should set install_needed flag to false and playbook should be finished without actually doing anything?",
+      "parentUuid": "b9d6fb60_9e5f636c",
+      "range": {
+        "startLine": 45,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 76
+      },
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b9c6a27_988da03e",
         "filename": "ansible/roles/application/molecule/default/tests/test_default.py",
         "patchSetId": 3
