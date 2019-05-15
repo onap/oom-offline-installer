@@ -16,6 +16,24 @@
       "revId": "78b5c01e24aee1fcf7310f6c50ca8780d0b133d0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2aaef581_4b9cabdd",
+        "filename": "ansible/test/roles/prepare-docker-dind/vars/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-15T08:50:22Z",
+      "side": 1,
+      "message": "It needs to be updated. Actually there\u0027s 18.09.6 downloaded in case of you will try install the 18.09.5. And the dependencies are different.",
+      "parentUuid": "578e1e8e_3f3edeed",
+      "revId": "78b5c01e24aee1fcf7310f6c50ca8780d0b133d0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
