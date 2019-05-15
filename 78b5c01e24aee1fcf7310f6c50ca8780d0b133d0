@@ -34,6 +34,24 @@
       "revId": "78b5c01e24aee1fcf7310f6c50ca8780d0b133d0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5acdc50b_575be0ae",
+        "filename": "ansible/test/roles/prepare-docker-dind/vars/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-15T09:12:41Z",
+      "side": 1,
+      "message": "It\u0027s not precisely what i had on my mind, for me it should be _downgraded_ to the version we use for target env. That was the point of the commit i pointed at (17.03.2)",
+      "parentUuid": "2aaef581_4b9cabdd",
+      "revId": "78b5c01e24aee1fcf7310f6c50ca8780d0b133d0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
