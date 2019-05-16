@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac474838_18885c21",
+        "filename": "build/creating_data/create-rhel-repo.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-16T09:21:33Z",
+      "side": 0,
+      "message": "And this will fail:\n\nroles/docker/tasks/main.yml\n\n- name: Install docker python module\n  package:\n    name: \u0027python2-docker\u0027\n    state: present\n\nBut i will upload fix for that soon since i\u0027m changing things in this playbook anyway. However this can be merged only once my commit gets to master. Will get back with relevant info here once it happens.",
+      "revId": "280ef8da90cf2bab9ddf7b3df78b12a3b2cf6040",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
