@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e57ce86_ba376872",
+        "filename": "ansible/roles/docker/handlers/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-16T11:57:43Z",
+      "side": 1,
+      "message": "This is to avoid docker restart in case Molecule tests run docker container with /var/run/docker.sock mount binded from host.",
+      "revId": "583016ee21f7b4a1601011da03cb7bfc433c455f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
