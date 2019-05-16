@@ -116,6 +116,30 @@
       "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e86f3a47_c074d128",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-16T10:25:53Z",
+      "side": 1,
+      "message": "don\u0027t understand your comment?\n\nbut I guess if could be:\nif progress:\n  xxx",
+      "parentUuid": "aab763cd_9be4682a",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
