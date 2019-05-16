@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98b44416_11be7279",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 14
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-16T13:59:49Z",
+      "side": 1,
+      "message": "I will remove this import with changes based on another comments.",
+      "range": {
+        "startLine": 28,
+        "startChar": 7,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "3c58fe3d1a37f3a947ec5857f8652cafbb6400dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
