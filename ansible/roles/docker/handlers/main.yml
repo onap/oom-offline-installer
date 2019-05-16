@@ -1,3 +1,6 @@
 ---
 - name: Restart Docker
   import_tasks: docker_restart.yml
+  when:
+    - ansible_env.container is defined
+    - ansible_env.container != 'docker'
