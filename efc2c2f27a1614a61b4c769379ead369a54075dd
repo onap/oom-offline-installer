@@ -438,6 +438,24 @@
       "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f5232ec_92fa0839",
+        "filename": "ansible/test/roles/prepare-application/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-16T11:38:19Z",
+      "side": 1,
+      "message": "checked. Actually it does not matter. In prepare-role it\u0027s default value. group_vars will override it. So in this case as value is same it\u0027s just some kind of beauty issue. But cannot remove it from molecule.yml as test fails as variable used also elsewhere.",
+      "parentUuid": "64cea0c3_4fa40034",
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
