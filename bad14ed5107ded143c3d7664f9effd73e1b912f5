@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef773c4_0153fec5",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-16T08:01:40Z",
+      "side": 1,
+      "message": "should be at the end, seperated by empty line",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1e933036_901e9ff3",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-16T08:01:40Z",
+      "side": 1,
+      "message": "why this is an argument for this function. it seams to be a \"fixed\" entity",
+      "range": {
+        "startLine": 86,
+        "startChar": 40,
+        "endLine": 86,
+        "endChar": 53
+      },
+      "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aab763cd_9be4682a",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-16T08:01:40Z",
+      "side": 1,
+      "message": "all this conditions will never be false",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
