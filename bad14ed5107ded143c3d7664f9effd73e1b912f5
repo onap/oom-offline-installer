@@ -164,6 +164,30 @@
       "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34e0c1f9_11096124",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-16T12:13:12Z",
+      "side": 1,
+      "message": "yes but I will remove it after all. also there was supposed to be condition to set progress to none during init if script is running in check mode but it somehow didn\u0027t get in. In any case I solved that differently now so I don\u0027t need progress condition",
+      "parentUuid": "978d33de_3b2dae1f",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 27
+      },
+      "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
