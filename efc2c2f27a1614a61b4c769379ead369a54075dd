@@ -251,6 +251,30 @@
     },
     {
       "key": {
+        "uuid": "73dfabbf_b6deabfc",
+        "filename": "ansible/roles/application/molecule/default/tests/test_default.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-16T11:00:34Z",
+      "side": 1,
+      "message": "This is test code, do not mix that with tested code itself. It\u0027s completely ok to do this in testing code.\nAnd if somebody changes the value in actual code, it will be revealed immediately as this test wont let commit in.\n\nAnd exactly this reason some burist says it\u0027s the only way to do and in test code we should never use actual code\u0027s variables dynamically.",
+      "parentUuid": "ff59552a_e04f072f",
+      "range": {
+        "startLine": 10,
+        "startChar": 20,
+        "endLine": 10,
+        "endChar": 42
+      },
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9afb004c_bf847d8b",
         "filename": "ansible/roles/application/tasks/install.yml",
         "patchSetId": 3
@@ -322,6 +346,30 @@
     },
     {
       "key": {
+        "uuid": "d4c72650_8277fb91",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-16T11:00:34Z",
+      "side": 1,
+      "message": "it\u0027s well visible in molecule.yml and this role is famous for it anyway.",
+      "parentUuid": "2b35410b_b2b5854c",
+      "range": {
+        "startLine": 17,
+        "startChar": 23,
+        "endLine": 17,
+        "endChar": 40
+      },
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "790c8893_0961fe71",
         "filename": "ansible/test/roles/prepare-application/defaults/main.yml",
         "patchSetId": 3
@@ -369,6 +417,24 @@
       "side": 1,
       "message": "Ok, you\u0027re right, i incorrectly took roles/application/molecule/default/molecule.yml for roles/application/defaults/main.yml.\n\nUpdate: The simulate_helm and helm_simulation_output_file can stay here as they\u0027re prepare-application role specific. BUT app_helm_charts_install_directory shouldn\u0027t be overridden from group_vars/all.yml as you\u0027re assigning it with same value as default one (in gropu_vars). Same issue in roles/application/molecule/default/molecule.ym, why reassigning the same default value to it in line of 22 in that file?",
       "parentUuid": "83e2909d_45ae3e32",
+      "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64cea0c3_4fa40034",
+        "filename": "ansible/test/roles/prepare-application/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-16T11:00:34Z",
+      "side": 1,
+      "message": "yes, will check this.",
+      "parentUuid": "f4ec7d19_31a8310a",
       "revId": "efc2c2f27a1614a61b4c769379ead369a54075dd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
