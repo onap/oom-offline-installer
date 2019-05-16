@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "503c2131_efbb38a7",
+        "filename": "build/download/npm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-16T12:47:59Z",
+      "side": 1,
+      "message": "should be at the end, separated by empty line",
+      "range": {
+        "startLine": 23,
+        "startChar": 7,
+        "endLine": 23,
+        "endChar": 11
+      },
+      "revId": "6b5a1d7f01fb23d5ba9e2b110319e6da18e8b752",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f2279d8_daeccd65",
+        "filename": "build/download/npm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-16T12:47:59Z",
+      "side": 1,
+      "message": "missing_npms",
+      "range": {
+        "startLine": 78,
+        "startChar": 38,
+        "endLine": 78,
+        "endChar": 45
+      },
+      "revId": "6b5a1d7f01fb23d5ba9e2b110319e6da18e8b752",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e807c64_0dd2eab2",
+        "filename": "build/download/npm.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-16T12:47:59Z",
+      "side": 1,
+      "message": "is there some -s somewhere? or will be added?",
+      "range": {
+        "startLine": 123,
+        "startChar": 51,
+        "endLine": 123,
+        "endChar": 58
+      },
+      "revId": "6b5a1d7f01fb23d5ba9e2b110319e6da18e8b752",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
