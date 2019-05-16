@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd3d2c5a_c4f447bd",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-16T12:04:38Z",
+      "side": 0,
+      "message": "we still need to instal python module for docker. but it won\u0027t be from community build but it should be possible to use something from rhel/centos repositories.\nIt should be python-docker-py (or python-docker should work as well). \nIf we would drop support for rancher from casablanca then only infra-server needs it.",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 24
+      },
+      "revId": "b6266b4ee6363a2f7516f4d532c154206a1b34d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
