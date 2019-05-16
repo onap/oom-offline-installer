@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b43280bd_ebc4acc4",
+        "filename": "build/download/npm.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-16T14:00:15Z",
+      "side": 1,
+      "message": "I will remove this import with changes based on another comments.",
+      "range": {
+        "startLine": 27,
+        "startChar": 7,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "59a11ef0ac287f7750ce18185a3ee58b5f5149de",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
