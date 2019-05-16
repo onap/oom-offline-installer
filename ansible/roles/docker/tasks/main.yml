@@ -6,11 +6,6 @@
   notify:
     - Restart Docker
 
-- name: Install docker python module
-  package:
-    name: 'python2-docker'
-    state: present
-
 - name: Install python jsonpointer module
   package:
     name: 'python-jsonpointer'
