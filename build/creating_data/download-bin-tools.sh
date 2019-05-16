@@ -33,6 +33,7 @@ fi
 # we are keeping just dublin support in dublin branch
 KUBECTL_VERSION=${KUBECTL_VERSION:-1.13.5}
 HELM_VERSION=${HELM_VERSION:-2.12.3}
+RKE_VERSION=${RKE_VERSION:-0.2.1}
 
 mkdir -p "$OUTDIR"
 cd "$OUTDIR"
@@ -51,6 +52,9 @@ download "https://storage.googleapis.com/kubernetes-helm/helm-v${HELM_VERSION}-l
 tar -xf ./helm-v${HELM_VERSION}-linux-amd64.tar.gz linux-amd64/helm -O > helm
 rm -f ./helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
-chmod a+x ./helm ./kubectl
+download "https://github.com/rancher/rke/releases/download/v0.2.1/rke_linux-amd64"
+mv rke_linux-amd64 rke
+
+chmod a+x ./helm ./kubectl ./rke
 
 exit 0
