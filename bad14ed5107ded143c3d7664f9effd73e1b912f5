@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0bbaea57_7d1d46c2",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-16T08:30:54Z",
+      "side": 1,
+      "message": "will do",
+      "parentUuid": "9ef773c4_0153fec5",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 11
+      },
+      "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e933036_901e9ff3",
         "filename": "build/download/http_files.py",
         "patchSetId": 10
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-16T08:01:40Z",
       "side": 1,
       "message": "why this is an argument for this function. it seams to be a \"fixed\" entity",
+      "range": {
+        "startLine": 86,
+        "startChar": 40,
+        "endLine": 86,
+        "endChar": 53
+      },
+      "revId": "bad14ed5107ded143c3d7664f9effd73e1b912f5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43247db6_a28b2a22",
+        "filename": "build/download/http_files.py",
+        "patchSetId": 10
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-16T08:30:54Z",
+      "side": 1,
+      "message": "for the legacy/convenience. In the end I will create script that will use these modules to \u0027glue\u0027 them together and I wanted to keep option to not use progressbar without touching something that is already working",
+      "parentUuid": "1e933036_901e9ff3",
       "range": {
         "startLine": 86,
         "startChar": 40,
