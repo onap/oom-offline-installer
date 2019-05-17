@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "59b1bce1_cb46db8f",
+        "filename": "build/download/docker_images.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-17T09:18:42Z",
+      "side": 1,
+      "message": "I tried it. In our lab it took 9 minutes when there was everything present (245 images) and I have no way to check if it was updated so I can\u0027t decide what should be \"re-saved\". So I would rather check like it is in this version",
+      "parentUuid": "f17cd407_78ff92eb",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "283623d2b6176284030154c2ded0f51d9541ba95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e8b4080_5fa766ae",
         "filename": "build/download/docker_images.py",
         "patchSetId": 25
