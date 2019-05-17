@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4dae78c3_4423f90d",
+        "filename": "build/download/docker_images.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-17T10:07:11Z",
+      "side": 1,
+      "message": "So 9 minutes just to check if \"what I have is what is out there\", i had a look at this module, shame that it does not return if image was pulled or not. I am ok with how it is now.",
+      "parentUuid": "59b1bce1_cb46db8f",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "283623d2b6176284030154c2ded0f51d9541ba95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e8b4080_5fa766ae",
         "filename": "build/download/docker_images.py",
         "patchSetId": 25
