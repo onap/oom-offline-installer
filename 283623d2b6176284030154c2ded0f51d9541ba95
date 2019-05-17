@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d5b0df3_917f70ce",
+        "filename": "build/download/docker_images.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-17T07:26:30Z",
+      "side": 1,
+      "message": "have you considered just allowing docker client to do pulling for every image or every not saved? in form stated in the file, docker client does not care if you have repository name with or without registry. if yes was it taking much more time?",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 15
+      },
+      "revId": "283623d2b6176284030154c2ded0f51d9541ba95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e8b4080_5fa766ae",
+        "filename": "build/download/docker_images.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-17T07:26:30Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 72,
+        "startChar": 27,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "283623d2b6176284030154c2ded0f51d9541ba95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cf44c48_b24fd260",
+        "filename": "build/download/docker_images.py",
+        "patchSetId": 25
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-17T07:26:30Z",
+      "side": 1,
+      "message": "I think it should be treated as output not as log (log returns to stderr), simple print() would do.",
+      "range": {
+        "startLine": 183,
+        "startChar": 8,
+        "endLine": 183,
+        "endChar": 47
+      },
+      "revId": "283623d2b6176284030154c2ded0f51d9541ba95",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
