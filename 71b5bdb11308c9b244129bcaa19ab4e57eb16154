@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "268c2477_8c459bc5",
+        "filename": "build/download/docker_images.py",
+        "patchSetId": 21
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-17T07:26:30Z",
+      "side": 1,
+      "message": "are",
+      "range": {
+        "startLine": 73,
+        "startChar": 26,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "71b5bdb11308c9b244129bcaa19ab4e57eb16154",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12a4a9b7_545fb477",
         "filename": "build/download/requirements.txt",
         "patchSetId": 21
