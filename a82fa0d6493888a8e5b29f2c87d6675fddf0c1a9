@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "55793a52_34512dcd",
+        "filename": "build/creating_data/create-rhel-repo.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-20T12:34:32Z",
+      "side": 1,
+      "message": "we are in Dublin these days",
+      "revId": "a82fa0d6493888a8e5b29f2c87d6675fddf0c1a9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
