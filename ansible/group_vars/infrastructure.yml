@@ -20,6 +20,8 @@ simulated_hosts:
     - k8s.gcr.io
     - nexus.{{ ansible_nodename }}
     - nexus3.onap.org
+    - pndareg.ctao6.net
+    - quay.io
     - registry-1.docker.io
     - registry.hub.docker.com
     - registry.npmjs.org
