@@ -22,6 +22,7 @@
 
 import progressbar
 import concurrent.futures
+from distutils.spawn import find_executable
 
 progressbar.streams.wrap_stdout()
 progressbar.streams.wrap_stderr()
@@ -81,3 +82,5 @@ def finish_progress(progress, error_count, log):
     progress.finish(dirty=error_count > 0)
     log.info('Download ended. Elapsed time {}'.format(progress.data()['time_elapsed']))
 
+def check_tool(name):
+    return find_executable(name)
