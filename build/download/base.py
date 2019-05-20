@@ -22,6 +22,7 @@
 
 import progressbar
 
+progressbar.streams.wrap_stdout()
 progressbar.streams.wrap_stderr()
 
 
