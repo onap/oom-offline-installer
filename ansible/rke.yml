@@ -1,0 +1,28 @@
+---
+- name: Gather facts for all hosts
+  hosts: all
+
+- name: Configure kubernetes cluster (RKE)
+  hosts: infrastructure
+  roles:
+    - role: rke
+      vars:
+        mode: config
+
+- name: Prepare kubernetes nodes (RKE)
+  hosts:
+  - kubernetes
+  - kubernetes-control-plane
+  roles:
+    - role: rke
+      vars:
+        mode: node
+
+- name: Deploy kubernetes cluster (RKE)
+  hosts: infrastructure
+  roles:
+    - role: rke
+      vars:
+        mode: deploy
+    - kubectl
+    - helm

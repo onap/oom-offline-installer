@@ -1,0 +1,46 @@
+---
+- name: "Ensure the .ssh directory exists"
+  file:
+    path: "{{ ansible_env.HOME }}/.ssh"
+    mode: 0700
+    state: directory
+
+- name: Add kubernetes nodes host keys to known_hosts file
+  known_hosts:
+    name: "{{ hostvars[item].cluster_ip }}"
+    key: "{{ hostvars[item].cluster_ip }} ssh-rsa {{ hostvars[item].ansible_ssh_host_key_rsa_public }}"
+    hash_host: true
+    state: present
+  loop: "{{ groups['kubernetes'] }}"
+
+- name: "Ensure {{ cluster_config_dir }} is present"
+  file:
+    path: "{{ cluster_config_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Generate cluster wide ssh key pair
+  command: "ssh-keygen -q -b 4096 -t rsa -N '' -f {{ cluster_config_dir }}/cluster_key"
+  args:
+    creates: "{{ cluster_config_dir }}/cluster_key"
+
+- name: Get ssh public key
+  slurp:
+    src: "{{ cluster_config_dir }}/cluster_key.pub"
+  register: cluster_public_key_out
+
+- name: Decode ssh public key
+  set_fact:
+    cluster_public_key: "{{ cluster_public_key_out.content | b64decode }}"
+
+- name: Prepare rke cluster.yml
+  template:
+    src: cluster.yml.j2
+    dest: "{{ cluster_config_dir }}/cluster.yml"
+
+- name: Install rke cli tool
+  copy:
+    src: "{{ app_data_path }}/downloads/{{ rke_binary }}"
+    dest: "{{ rke_bin_dir }}/rke"
+    remote_src: true
+    mode: 0755

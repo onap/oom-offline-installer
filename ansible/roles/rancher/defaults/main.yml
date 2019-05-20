@@ -4,6 +4,8 @@ rancher_remove_other_env: true
 rancher_redeploy_k8s_env: true
 rancher_cluster_health_state: healthy
 rancher_cluster_health_check_retries: 30
+kube_directory: ~/.kube
+kube_server: "https://{{ ansible_host }}:8080/r/projects/{{ k8s_env_id | mandatory }}/kubernetes:6443"
 rancher:
   # The following variables can be set via the UI under advanced/settings.
   # All of these affect tables in the cattle db and are uninteresting
