@@ -5,6 +5,8 @@
     image: "{{ dns_server_image }}"
     command: -H /simulated_hosts --log-facility=-
     capabilities: NET_ADMIN
+    dns_servers:
+      - 127.0.0.1
     volumes:
       - "{{ app_data_path }}/cfg/simulated_hosts:/simulated_hosts:ro"
     ports:
