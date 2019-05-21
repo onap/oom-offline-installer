@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50c741da_73751101",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-21T10:59:13Z",
+      "side": 1,
+      "message": "This message does not describe the nature of the bug precisely - container was started, but too late (at the end of the playbook)",
+      "revId": "b1fe78553ea7d1caf90c1d52e195cd8f2a082008",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "175f5a9a_4fec1c8a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-21T10:59:13Z",
+      "side": 1,
+      "message": "Like i wrote in the comment - it _was_ triggered but at the end of the playbook, so this description should rather state that \u0027handler was not flushed\u0027. \"Dnsmasq is not started\" is a false statement.",
+      "revId": "b1fe78553ea7d1caf90c1d52e195cd8f2a082008",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
