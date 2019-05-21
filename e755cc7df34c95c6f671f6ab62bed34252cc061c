@@ -88,6 +88,24 @@
       "revId": "e755cc7df34c95c6f671f6ab62bed34252cc061c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90873b88_5fb107ab",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-21T09:51:39Z",
+      "side": 1,
+      "message": "cool, sounds right. So infra-play would have detected this.",
+      "parentUuid": "e6585b63_3df7bafa",
+      "revId": "e755cc7df34c95c6f671f6ab62bed34252cc061c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
