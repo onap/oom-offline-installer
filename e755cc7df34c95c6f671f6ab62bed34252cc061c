@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e78f494c_d898037d",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-21T08:16:02Z",
+      "side": 1,
+      "message": "Which of the roles included after \u0027dns\u0027 role fails due to lack of dns container before the ond of the playbook? vncserver nginx or nexus?\n\nansible$ grep -A 5 -B 7 dns infrastructure.yml\n- name: Setup infrastructure servers\n  hosts: infrastructure\n  roles:\n    - chrony\n    - package-repository-check\n    - certificates\n    - docker\n    - dns\n    - vncserver\n    - nginx\n    - nexus\n\n- name: Setup base for Kubernetes nodes",
+      "revId": "e755cc7df34c95c6f671f6ab62bed34252cc061c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
