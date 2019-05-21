@@ -70,6 +70,24 @@
       "revId": "e755cc7df34c95c6f671f6ab62bed34252cc061c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6585b63_3df7bafa",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-21T09:03:00Z",
+      "side": 1,
+      "message": "No, the issue was not that handler was not _triggered_ but that it was not _flushed_. It was indeed triggered but at the end of the playbook, which is too late.\n\nSamuli: This bug is a regression introduced by 87422 and play-infra tests in 85907 didn\u0027t detect that because they were not rebased since 87422 got into master.\n\nRole tests are not able to detect integration level issues that\u0027s why \u0027dns\u0027 role tests are unable to detect that kind of issues, but that\u0027s obvious i think.",
+      "parentUuid": "afa93895_f27eb2f9",
+      "revId": "e755cc7df34c95c6f671f6ab62bed34252cc061c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
