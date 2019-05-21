@@ -3,7 +3,7 @@
   docker_container:
     name: dns-server
     image: "{{ dns_server_image }}"
-    command: -H /simulated_hosts --log-facility=-
+    command: -H /simulated_hosts --log-facility=- --dns-loop-detect
     capabilities: NET_ADMIN
     volumes:
       - "{{ app_data_path }}/cfg/simulated_hosts:/simulated_hosts:ro"

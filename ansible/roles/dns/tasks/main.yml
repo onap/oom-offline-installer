@@ -26,3 +26,6 @@
   command: /bin/true
   notify: Run dns server container
   when: "'dns-server' not in containers_list.containers"
+
+- name: Force notified handlers to run at this point
+  meta: flush_handlers
