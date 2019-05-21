@@ -51,6 +51,24 @@
       "revId": "b1fe78553ea7d1caf90c1d52e195cd8f2a082008",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d1425f_f94c982a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-21T11:32:54Z",
+      "side": 1,
+      "message": "fatal: [infra_host]: FAILED! \u003d\u003e {\"attempts\": 30, \"changed\": false, \"msg\": \"Failed to connect to nexus.infra.novalocal at port 443: [Errno -2] Name or service not known\"}\n\nRUNNING HANDLER [dns : Run dns server container] *******************************\n\nLog explains my statement precisely.",
+      "parentUuid": "d1973887_d11dbd0b",
+      "revId": "b1fe78553ea7d1caf90c1d52e195cd8f2a082008",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
