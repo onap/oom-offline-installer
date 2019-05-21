@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7182d6b_c0c74180",
+        "filename": "build/download/git_repos.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-21T20:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1715d8b0_1034bd07",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "ed0dedff79eddf16e73002f97ebee3502ce12f77",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8092894a_3b26b4b7",
         "filename": "build/download/git_repos.py",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-21T14:29:20Z",
       "side": 1,
       "message": "RPM list?",
+      "range": {
+        "startLine": 74,
+        "startChar": 27,
+        "endLine": 74,
+        "endChar": 35
+      },
+      "revId": "ed0dedff79eddf16e73002f97ebee3502ce12f77",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "df1fd510_66fc159c",
+        "filename": "build/download/git_repos.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-05-21T20:09:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8092894a_3b26b4b7",
       "range": {
         "startLine": 74,
         "startChar": 27,
