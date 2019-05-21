@@ -52,6 +52,24 @@
       "revId": "e755cc7df34c95c6f671f6ab62bed34252cc061c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afa93895_f27eb2f9",
+        "filename": "ansible/roles/dns/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-21T08:55:04Z",
+      "side": 1,
+      "message": "there were 2 issues: 1) handler not triggered, 2) dnsmasq container is in the loop w/o setting-up dns directly in task (or handler newly) - issue was detected on \"Wait for nexus to come-up\" due to not working dns resolving\n\ninfrastructure playbook test is not yet available for molecule as per OOM-1816 ?",
+      "parentUuid": "16109756_2bcaa6c7",
+      "revId": "e755cc7df34c95c6f671f6ab62bed34252cc061c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
