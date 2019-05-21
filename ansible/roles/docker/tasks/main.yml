@@ -8,8 +8,9 @@
 
 - name: Install docker python module
   package:
-    name: 'python2-docker'
+    name: 'python-docker-py'
     state: present
+
 
 - name: Install python jsonpointer module
   package:
