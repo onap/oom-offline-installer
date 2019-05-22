@@ -51,6 +51,24 @@
       "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f0c6e039_415e464f",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-22T16:41:51Z",
+      "side": 0,
+      "message": "\u003e well localhost_ansible_os_family variable is used somewhere (maybe infra-play?) \n\u003e But prob it will re not relevant if this dind thing going to work there also. But currently it can break it.\n\nReally? so I could just put that cluster_ip thing directly in playbook.yml and revert the prepare-common to original state. For curiosity, what is that weird localhost variable being used for?",
+      "parentUuid": "077ed753_dc7817e0",
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
