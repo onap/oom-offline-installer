@@ -21,3 +21,4 @@
     name: "docker-ce-{{ docker_version }}"
     state: present
   notify: Restart docker
+  when: install_docker == true

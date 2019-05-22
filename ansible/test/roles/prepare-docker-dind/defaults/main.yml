@@ -1,0 +1,3 @@
+---
+# Variable specifying if we should install docker, or only prepare for it
+install_docker: true
