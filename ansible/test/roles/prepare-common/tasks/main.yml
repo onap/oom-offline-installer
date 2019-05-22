@@ -1,31 +1,4 @@
 ---
-- name: Fetch docker host ip
-  block:
-    - name: Get docker host ip to access host where container running (as dood)
-      shell: |
-        set -o pipefail
-        ip route | awk '/default/ { print $3 }'
-      args:
-        executable: /bin/bash
-      register: ip
-      changed_when: false
-
-    - name: "set docker host ip {{ ip.stdout }} for cluster_ip"
-      set_fact:
-        cluster_ip: "{{ ip.stdout }}"
-  when: inventory_hostname != 'localhost'
-
-- name: Set fact for localhost OS
-  block:
-    - name: set localhost fact
-      set_fact:
-        localhost_ansible_os_family: "{{ hostvars['localhost'].ansible_os_family }}"
-
-    - name: debug
-      debug:
-        var: localhost_ansible_os_family
-  when: hostvars['localhost'].ansible_os_family is defined
-
-- name: debug
-  debug:
-    var: ansible_os_family
+- name: "Set cluster_ip fact"
+  set_fact:
+    cluster_ip: "{{ ansible_default_ipv4.address }}"

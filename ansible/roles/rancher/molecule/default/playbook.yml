@@ -2,7 +2,7 @@
 - name: Converge rancher master
   hosts: infrastructure
   roles:
-    - prepare-common  # molecule specific role needed here to populate cluster_ip
+    - prepare-common
     - role: rancher
       vars:
         mode: server
