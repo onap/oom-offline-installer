@@ -1,14 +1,17 @@
 ---
 - name: Infra
   hosts: infrastructure
+  handlers:
+    - name: Restart Docker
+      debug: msg="Docker restart called"
   roles:
     - certificates
-    - docker  # docker role needed here just because of docker restart handler
 
 - name: Kube
   hosts: kubernetes
-  roles:
-    - docker  # docker role needed here just because of docker restart handler
+  handlers:
+    - name: Restart Docker
+      debug: msg="Docker restart called"
   tasks:
     - include_role:
         name: certificates
