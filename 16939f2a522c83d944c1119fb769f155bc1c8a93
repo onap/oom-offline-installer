@@ -22,6 +22,30 @@
       "revId": "16939f2a522c83d944c1119fb769f155bc1c8a93",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49cc04f1_1655b25b",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-22T14:25:10Z",
+      "side": 1,
+      "message": "prepare-docker-dind prepares docker for use by *any* role needing docker.\nThe docker role doesn\u0027t need docker, just a way to install it. but all other roles like rke do need docker itself to be up and running, and this is a common task.",
+      "parentUuid": "299cea7b_bdf324d6",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "16939f2a522c83d944c1119fb769f155bc1c8a93",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
