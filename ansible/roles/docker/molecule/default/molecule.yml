@@ -13,9 +13,11 @@ platforms:
     command: ${MOLECULE_DOCKER_COMMAND:-""}
     groups:
       - infrastructure
+    networks:
+      - name: docker_install
+    purge_networks: true
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /dev:/dev:ro
+      - /var/lib/docker
 provisioner:
   name: ansible
   lint:
