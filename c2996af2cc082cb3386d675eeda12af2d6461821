@@ -69,6 +69,24 @@
       "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96574d6_d4e29865",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-22T16:48:43Z",
+      "side": 0,
+      "message": "well maybe this common role is good to keep?\nlocalhost was to skip it in the case molecule docker is used if I remember right.",
+      "parentUuid": "f0c6e039_415e464f",
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
