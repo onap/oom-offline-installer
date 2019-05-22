@@ -13,8 +13,7 @@ platforms:
     override_command: false
     restart_policy: unless-stopped
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/rancher:/var/lib/rancher:ro
+      - /var/lib/docker
     groups:
       - infrastructure
     networks:
@@ -27,12 +26,14 @@ platforms:
     override_command: false
     restart_policy: unless-stopped
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /var/lib/rancher:/var/lib/rancher:ro
+      - /var/lib/docker
+      - /var/lib/rancher
+      - /var/lib/kubelet
     groups:
       - kubernetes
     networks:
       - name: rancher
+    purge_networks: true
 
 provisioner:
   name: ansible
