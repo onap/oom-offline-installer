@@ -7,7 +7,6 @@
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/rancher:/var/lib/rancher"
-    auto_remove: true
     privileged: true
   vars:
     server_hostvars: "{{ hostvars[groups.infrastructure.0] }}"
