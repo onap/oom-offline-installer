@@ -46,6 +46,30 @@
       "revId": "16939f2a522c83d944c1119fb769f155bc1c8a93",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae100a55_a0b7c3c9",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-22T16:31:18Z",
+      "side": 1,
+      "message": "ok in the case testing single role in isolation (needing docker as prerequisite) but not for playbooks as production ansible code must handle docker installation in the play.",
+      "parentUuid": "49cc04f1_1655b25b",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "16939f2a522c83d944c1119fb769f155bc1c8a93",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
