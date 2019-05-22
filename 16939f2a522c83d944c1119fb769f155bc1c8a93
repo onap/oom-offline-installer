@@ -70,6 +70,30 @@
       "revId": "16939f2a522c83d944c1119fb769f155bc1c8a93",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a5cbad_7eca9e95",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-22T16:38:53Z",
+      "side": 1,
+      "message": "Not quite. This role is useful in any case where you test a playbook that doesn\u0027t itself install docker. for example for rke.yml, application.yml etc, this role may be useful. But not for infrastructure playbook... although prepare-docker is already used there from what I remember",
+      "parentUuid": "ae100a55_a0b7c3c9",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 24
+      },
+      "revId": "16939f2a522c83d944c1119fb769f155bc1c8a93",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
