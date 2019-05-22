@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff695110_7718b2b3",
+        "filename": "ansible/roles/rancher/tasks/rancher_agent.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-22T16:04:21Z",
+      "side": 0,
+      "message": "I decided to remove this line.\nReason: the only thing it does is ensuring container being removed on stop, however we don\u0027t actually do it anywhere else explicitly, so I don\u0027t see it causing problems.\nNamely rancher server itself is not running with --rm. why this one should?\nOf course what caused this line to be removed was the fact that python-docker in the version shipped in rhel does not support auto_remove. It is easier to remove the line if it is not really needed, than\nto upgrade python-docker to newer version, especially that this updating code was removed.",
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c86f7d1_6346889d",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-22T16:04:21Z",
+      "side": 0,
+      "message": "Verified that this role is not used by anything else.\nIf I am not right, please tell me. In general rke is doing the same and needs to be switched to use this specific role.",
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
