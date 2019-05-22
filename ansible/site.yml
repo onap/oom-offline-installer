@@ -15,6 +15,6 @@
 #    installer
 - import_playbook: resources.yml
 - import_playbook: infrastructure.yml
-- import_playbook: rancher_kubernetes.yml
+- import_playbook: rke.yml
 - import_playbook: application.yml
 

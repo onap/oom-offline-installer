@@ -113,7 +113,7 @@ This playbook contains imports for all the other playbooks needed to deploy
 wanted Kubernetes application:
   - `upload_resources.yml`
   - `infrastructure.yml`
-  - `rancher_kubernetes.yml`
+  - `rke.yml`
   - `application.yml` - this is an application related playbook
 
 ### Resource upload
@@ -139,7 +139,7 @@ Infrastructure setup is handled by `infrastructure.yml` playbook.
 
 ### Kubernetes cluster deployment
 
-Kubernetes cluster is deployment is handled by `rancher_kubernetes.yml` playbook.
+Kubernetes cluster deployment is handled by `rke.yml` playbook.
 
 **Preconditions**:
   - infrastructure deployed by running `infrastructure.yml` playbook
@@ -162,7 +162,7 @@ copied there after installer package is deployed and before installing the appli
 Application Helm charts and configuration is better described in [application/README.md](./application/README.md)
 
 **Preconditions**:
-  - Kubernetes cluster must be up and running i.e. `rancher_kubernetes.yml` playbook has been run.
+  - Kubernetes cluster must be up and running i.e. `rke.yml` playbook has been run.
 
 ## Running playbooks
 To run ansible playbook call `run_playbook.sh` with same arguments as you would
@@ -222,12 +222,25 @@ parts.
           hosts:
             infrastructure-server:
               ansible_host: 10.8.8.9
+              #IP used for communication between infra and kubernetes nodes, must be specified.
+              cluster_ip: 10.8.8.9
 
         # This is group of hosts which are/will be part of Kubernetes cluster.
         kubernetes:
           hosts:
             kubernetes-node-1:
               ansible_host: 10.8.8.13
+              #ip of the node that it uses for communication with k8s cluster.
+              cluster_ip: 10.8.8.13
+
+        # This is a group of hosts that are to be used as kubernetes control plane nodes.
+        # This means they host kubernetes api server, controller manager and scheduler.
+        # This example uses infra for this purpose, however note that any
+        # other host could be used including kubernetes nodes.
+        # cluster_ip needs to be set for hosts used as control planes.
+        kubernetes-control-plane:
+          hosts:
+            infrastructure-server
 
         nfs-server:
           hosts:

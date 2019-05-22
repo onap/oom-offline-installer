@@ -174,6 +174,15 @@ We need to setup the ``'hosts.yml'`` first, the template looks like this::
               #ip of the node that it uses for communication with k8s cluster.
               cluster_ip: 10.8.8.19
 
+        # This is a group of hosts that are to be used as kubernetes control plane nodes.
+        # This means they host kubernetes api server, controller manager and scheduler.
+        # This example uses infra for this purpose, however note that any
+        # other host could be used including kubernetes nodes.
+        # cluster_ip needs to be set for hosts used as control planes.
+        kubernetes-control-plane:
+          hosts:
+            infrastructure-server
+
         nfs-server:
           hosts:
             kubernetes-node-1
@@ -232,6 +241,18 @@ After all the changes, the ``'hosts.yml'`` should look similar to this::
               ansible_host: 10.8.8.103
               #ip of the node that it uses for communication with k8s cluster.
               cluster_ip: 10.8.8.103
+
+        # This is a group of hosts that are to be used as kubernetes control plane nodes.
+        # This means they host kubernetes api server, controller manager and scheduler.
+        # This example uses infra for this purpose, however note that any
+        # other host could be used including kubernetes nodes.
+        # cluster_ip needs to be set for hosts used as control planes.
+        kubernetes-control-plane:
+          hosts:
+            infrastructure-server
+              ansible_host: 10.8.8.100
+              #IP used for communication between infra and kubernetes nodes, must be specified.
+              cluster_ip: 10.8.8.100
 
         nfs-server:
           hosts:
@@ -378,7 +399,7 @@ This will take a while so be patient.
 
 - ``upload_resources.yml``
 - ``infrastructure.yml``
-- ``rancher_kubernetes.yml``
+- ``rke.yml``
 - ``application.yml``
 
 ----
