@@ -41,7 +41,7 @@ cnt=1
 mkdir -p "$outdir"
 
 cd "$outdir"
-for line in $(clean_list "$LIST_FILE)"; do
+for line in $(clean_list "$LIST_FILE"); do
     echo "Downloading $cnt / $lines: $line"
     pip download $line
     cnt=$((cnt+1))
