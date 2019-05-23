@@ -33,7 +33,7 @@ log = logging.getLogger(name=__name__)
 def download(rpm_list, dst_dir):
     if not base.check_tool('yumdownloader'):
         log.error('ERROR: yumdownloader is not installed')
-        return 1
+        raise RuntimeError('yumdownloader missing')
 
     rpm_set = base.load_list(rpm_list)
 
@@ -41,11 +41,10 @@ def download(rpm_list, dst_dir):
     log.info('Running command: {}'.format(command))
     try:
         subprocess.check_call(command.split())
-        log.info('Downloaded')
     except subprocess.CalledProcessError as err:
-        log.error(err.output)
-        return err.returncode
-
+        log.exception(err.output)
+        raise err
+    log.info('Downloaded')
 
 
 def run_cli():
@@ -59,7 +58,11 @@ def run_cli():
 
     logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(message)s')
 
-    sys.exit(download(args.rpm_list, args.output_dir))
+    try:
+        download(args.rpm_list, args.output_dir)
+    except (subprocess.CalledProcessError, RuntimeError):
+        sys.exit(1)
+
 
 
 if __name__ == '__main__':
