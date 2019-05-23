@@ -57,7 +57,7 @@ def download_npm(npm, registry, dst_dir):
     except Exception as err:
         if os.path.isfile(dst_path):
             os.remove(dst_path)
-        log.error('Failed: {}: {}'.format(npm, err))
+        log.exception('Failed: {}'.format(npm))
         raise err
     log.info('Downloaded: {}'.format(npm))
 
@@ -81,12 +81,10 @@ def download(npm_list, registry, dst_dir, check_mode, progress=None, workers=Non
     base.start_progress(progress, len(npm_set), skipping, log)
     error_count = base.run_concurrent(workers, progress, download_npm, missing_npms, registry, dst_dir)
 
+    base.finish_progress(progress, error_count, log)
     if error_count > 0:
         log.error('{} packages were not downloaded. Check log for specific failures.'.format(error_count))
-
-    base.finish_progress(progress, error_count, log)
-
-    return error_count
+        raise RuntimeError()
 
 
 def run_cli():
