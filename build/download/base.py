@@ -38,7 +38,8 @@ def load_list(item_list):
     :return: set of items from file
     """
     with open(item_list, 'r') as f:
-        return {item for item in (line.strip() for line in f) if item}
+        return {item for item in (line.strip() for line in f)
+                if item and not item.startswith('#')}
 
 
 def init_progress(items_name):

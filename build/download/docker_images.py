@@ -228,7 +228,8 @@ def download(image_list, save, output_dir, check_mode, progress, workers=3):
 
     base.finish_progress(progress, error_count, log)
 
-    return error_count
+    if error_count > 0:
+        raise RuntimeError()
 
 
 def run_cli():

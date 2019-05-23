@@ -42,6 +42,7 @@ def download(rpm_list, dst_dir):
     try:
         subprocess.check_call(command.split())
         log.info('Downloaded')
+        return 0
     except subprocess.CalledProcessError as err:
         log.error(err.output)
         return err.returncode
