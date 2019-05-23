@@ -83,7 +83,7 @@ def download(data_list, dst_dir, check, progress, workers=None):
 
     if check:
         log.info(base.simple_check_table(file_set, missing_files))
-        return 0
+        return
 
     skipping = file_set - missing_files
 
@@ -91,12 +91,11 @@ def download(data_list, dst_dir, check, progress, workers=None):
 
     error_count = base.run_concurrent(workers, progress, download_file, missing_files, dst_dir)
 
+    base.finish_progress(progress, error_count, log)
     if error_count > 0:
         log.error('{} files were not downloaded. Check log for specific failures.'.format(error_count))
+        raise RuntimeError()
 
-    base.finish_progress(progress, error_count, log)
-
-    return error_count
 
 def run_cli():
     """
@@ -123,7 +122,10 @@ def run_cli():
 
     progress = base.init_progress('http files') if not args.check else None
 
-    sys.exit(download(args.file_list, args.output_dir, args.check, progress, args.workers))
+    try:
+        download(args.file_list, args.output_dir, args.check, progress, args.workers)
+    except RuntimeError:
+        sys.exit(1)
 
 
 if __name__ == '__main__':

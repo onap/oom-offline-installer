@@ -45,10 +45,9 @@ def download(git_list, dst_dir, progress):
     if not base.check_tool('git'):
         log.error('ERROR: git is not installed')
         progress.finish(dirty=True)
-        return 1
+        raise RuntimeError('git missing')
 
-    git_set = {tuple(item.split()) for item in base.load_list(git_list)
-               if not item.startswith('#')}
+    git_set = {tuple(item.split()) for item in base.load_list(git_list)}
 
     error_count = 0
 
@@ -64,14 +63,13 @@ def download(git_list, dst_dir, progress):
             clone_repo(dst, *repo)
             progress.update(progress.value + 1)
         except subprocess.CalledProcessError as err:
-            log.error(err.output.decode())
+            log.exception(err.output.decode())
             error_count += 1
 
     base.finish_progress(progress, error_count, log)
     if error_count > 0:
         log.error('{} were not downloaded. Check logs for details'.format(error_count))
-    return error_count
-
+        raise RuntimeError('Download unsuccesfull')
 
 def run_cli():
     parser = argparse.ArgumentParser(description='Download git repositories from list')
@@ -85,8 +83,11 @@ def run_cli():
     logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(message)s')
 
     progress = base.init_progress('git repositories')
-
-    sys.exit(download(args.git_list, args.output_dir, progress))
+    try:
+        download(args.git_list, args.output_dir, progress)
+    except RuntimeError as err:
+        log.exception(err)
+        sys.exit(1)
 
 
 if __name__ == '__main__':
