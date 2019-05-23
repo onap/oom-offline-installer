@@ -311,10 +311,10 @@ echo "Stopping Nexus and returning backups"
 docker stop ${NEXUS_CONT_ID} > /dev/null
 
 # Return backed up configuration files
-mv -f "${HOSTS_BACKUP}" /etc/hosts
+mv -f "/etc/${HOSTS_BACKUP}" /etc/hosts
 
 if [ -f "~/.docker/${DOCKER_CONF_BACKUP}" ]; then
-    mv -f "${DOCKER_CONF_BACKUP}" ~/.docker/config.json
+    mv -f "~/.docker/${DOCKER_CONF_BACKUP}" ~/.docker/config.json
 fi
 
 # Return default settings
