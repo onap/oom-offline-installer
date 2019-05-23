@@ -1,4 +1,4 @@
-#! /usr/bin/env bash
+#! /bin/bash
 
 #   COPYRIGHT NOTICE STARTS HERE
 #
@@ -32,19 +32,7 @@ TIMESTAMP="date +'%Y-%m-%d_%H-%M-%S'"
 SCRIPT_LOG="/tmp/$(basename $0)_$(eval ${TIMESTAMP}).log"
 
 # Log everything
-exec &> >(tee -a "${SCRIPT_LOG}")
-
-usage () {
-    echo "  This script is preparing Nexus data blob from docker images and npm and pypi packages"
-    echo "      Usage:"
-    echo "        ./$(basename $0) <project version> [<target>]"
-    echo "      "
-    echo "      Example: ./$(basename $0) onap_3.0.1 /root/nexus_data"
-    echo "      "
-    echo "      Dependencies: nodejs, jq, docker"
-    echo "      "
-    exit 1
-}
+#exec &> >(tee -a "${SCRIPT_LOG}")
 
 # Nexus repository location
 NEXUS_DOMAIN="nexus"
@@ -60,24 +48,52 @@ NEXUS_USERNAME=admin
 NEXUS_PASSWORD=admin123
 NEXUS_EMAIL=admin@example.org
 
-if [ "${1}" == "-h" ] || [ "${1}" == "--help"  ] || [ $# -eq 0 ]; then
-    usage
-else
-    TAG="${1}"
-fi
-
 # Setting paths
 LOCAL_PATH="$(readlink -f $(dirname ${0}))"
+
+#Defaults
 DATA_DIR="$(realpath ${LOCAL_PATH}/../../resources)"
-
-if [ -z "${2}" ]; then
-    NEXUS_DATA_DIR="${DATA_DIR}/nexus_data"
-else
-    NEXUS_DATA_DIR="${2}"
-fi
-
-# Setup directory with resources lists
+NEXUS_DATA_DIR="${DATA_DIR}/nexus_data"
 LISTS_DIR="${LOCAL_PATH}/data_lists"
+
+usage () {
+    echo "   Example usage: build_nexus_blob.sh -t onap_3.0.2
+
+     -t | --tag realse tag, taken from avalaible on git or placed by data generating script (mandatory)
+     -i | --input-directory directory containing file needed to creat nexus blob. The structure of this directory must be properly organized
+     -o | --output-directory
+    -rl | --resource-list-directory directory with 3 files containing docker, pypi and rpm list
+    "
+    exit 1
+}
+
+while [ "$1" != "" ]; do
+    case $1 in
+        -t | --tag )                       shift
+                                           TAG=$1
+                                           ;;
+        -i | --input-directory )           shift
+                                           DATA_DIR=$1
+                                           ;;
+        -o | --output-directory )          shift
+                                           NEXUS_DATA_DIR=$1
+                                           ;;
+        -rl | --resource-list-directory )  shift
+                                           LISTS_DIR=$1
+                                           ;;
+        -h | --help )                      usage
+                                           ;;
+        *)                                 usage
+    esac
+    shift
+done
+
+
+# exit if no tag given
+if [ -z ${TAG} ]; then
+    usage
+    exit 1
+fi
 
 # Setup directories with resources for docker, npm and pypi
 NXS_SRC_DOCKER_IMG_DIR="${DATA_DIR}/offline_data/docker_images_for_nexus"
@@ -284,7 +300,7 @@ for IMAGE in $(sed $'s/\r// ; /^#/d' ${NXS_DOCKER_IMG_LIST} | awk '{ print $1 }'
     if [[ ${IMAGE} != *"/"* ]]; then
         PUSH="${DOCKER_REGISTRY}/library/${IMAGE}"
     elif [[ ${IMAGE} == *"${DEFAULT_REGISTRY}"* ]]; then
-	if [[ ${IMAGE} == *"/"*"/"* ]]; then
+        if [[ ${IMAGE} == *"/"*"/"* ]]; then
             PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'/' <<< ${IMAGE})"
         else
             PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'\/library/' <<< ${IMAGE})"
@@ -322,3 +338,4 @@ npm config set registry "https://registry.npmjs.org"
 
 echo "Nexus blob is built"
 exit 0
+
