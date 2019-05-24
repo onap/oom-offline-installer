@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7189f29e_37f0d368",
+        "filename": "patches/dublin.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-24T12:22:14Z",
+      "side": 1,
+      "message": "why cannot we just talk to this project and fix it there? Why we still drag these here? Do the project know?",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 60
+      },
+      "revId": "84617e8184fbb4a722a1bd7f273696cec5e85c17",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
