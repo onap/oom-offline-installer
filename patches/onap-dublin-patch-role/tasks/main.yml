@@ -1,0 +1,20 @@
+---
+# This role contains patching logic for OOM charts
+# and is valid until OOM-1610 is implemented
+- name: Check presence of files for NPM patching
+  stat:
+    path: "{{ app_helm_charts_infra_directory }}/{{ item }}"
+  with_items:
+    - common/dgbuilder/templates/deployment.yaml
+  register: npm_files_check
+
+- name: Patch OOM - set npm registry
+  lineinfile:
+    path: "{{ item.stat.path }}"
+    regexp: '^(.*)NPM_REGISTRY_RECORD'
+    line: '\g<1>npm set registry "http://nexus.{{ ansible_nodename }}/repository/npm-private/";'
+    backrefs: yes
+    state: present
+  with_items: "{{ npm_files_check.results }}"
+  when: item.stat.exists
+
