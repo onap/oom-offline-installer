@@ -105,6 +105,24 @@
       "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9713962b_4c397c4d",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-24T10:01:04Z",
+      "side": 0,
+      "message": "https://gerrit.onap.org/r/c/oom/offline-installer/+/85907/13/ansible/test/roles/post-certificates/tasks/main.yml#12",
+      "parentUuid": "e23cd294_1f87febb",
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
