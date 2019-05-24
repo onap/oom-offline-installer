@@ -123,6 +123,24 @@
       "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c181172c_451f3952",
+        "filename": "ansible/test/roles/prepare-common/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-24T10:25:59Z",
+      "side": 0,
+      "message": "Like you restart docker when not in molecule container? ok.",
+      "parentUuid": "9713962b_4c397c4d",
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
