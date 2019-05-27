@@ -1,0 +1,32 @@
+From 03304478e972bec1ae0a4310330eb196558c07d4 Mon Sep 17 00:00:00 2001
+From: Michal Ptacek <m.ptacek@partner.samsung.com>
+Date: Fri, 24 May 2019 11:20:02 +0000
+Subject: [PATCH] Adding patch for dgbuilder
+
+Change-Id: Ic4bef7c611d0b7d5559fdc84ccf43214437c40ed
+---
+ kubernetes/common/dgbuilder/templates/deployment.yaml | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/kubernetes/common/dgbuilder/templates/deployment.yaml b/kubernetes/common/dgbuilder/templates/deployment.yaml
+index 353c231..cf38409 100644
+--- a/kubernetes/common/dgbuilder/templates/deployment.yaml
++++ b/kubernetes/common/dgbuilder/templates/deployment.yaml
+@@ -49,8 +49,12 @@ spec:
+         - name: {{ include "common.name" . }}
+           image: "{{ include "common.repository" . }}/{{ .Values.image }}"
+           imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+-          command: ["/bin/bash"]
+-          args: ["-c", "cd /opt/onap/ccsdk/dgbuilder/ && ./start.sh sdnc1.0 && wait"]
++          command:
++          - /bin/bash
++          - -c
++          - >
++            NPM_REGISTRY_RECORD;
++            cd /opt/onap/ccsdk/dgbuilder/ && ./start.sh sdnc1.0 && wait
+           ports:
+           - containerPort: {{ .Values.service.internalPort }}
+           readinessProbe:
+-- 
+1.8.3.1
+
