@@ -32,6 +32,8 @@ from os.path import expanduser
 from itertools import chain
 import csv
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+from base64 import b64decode
+from tempfile import NamedTemporaryFile
 
 def add_resource_kind(resources, kind):
     for item in resources:
@@ -186,6 +188,8 @@ def parse_args():
             help='run check loop only once')
     parser.add_argument('-v', dest='verbosity', action='count', default=0,
             help='increase output verbosity, e.g. -vv is more verbose than -v')
+    parser.add_argument('--no-ssl-auth', action='store_true',
+            help='Disable SSL certificate based authentication while connecting to server')
 
     return parser.parse_args()
 
@@ -201,13 +205,23 @@ class Kubernetes:
         self.config = args.kubeconfig
         self.url = args.server if args.server is not None else \
                    self._get_k8s_url()
+        self.no_ssl_auth = args.no_ssl_auth
+        self.certs = self._get_k8s_certs() if not self.no_ssl_auth else {}
         self.namespace = args.namespace
+
+        # Setup tmp file with ca chain only if certs were gathered successfully
+        # and --no-ssl-auth wasn't set
+        if self.certs and not self.no_ssl_auth:
+            self._setup_cert_files()
 
     def get_resources(self, api, kind):
         '''Performs actual API call'''
         url = '/'.join([self.url, api, 'namespaces', self.namespace, kind])
         try:
-            req = requests.get(url, verify=False)
+            if self.no_ssl_auth:
+                req = requests.get(url, verify=False)
+            else:
+                req = requests.get(url, verify=self.crt_tmp_file.name, cert=self.crt_tmp_file.name)
         except requests.exceptions.ConnectionError as err:
             sys.exit('Error: Could not connect to {}'.format(self.url))
         if req.status_code == 200:
@@ -219,12 +233,40 @@ class Kubernetes:
         else:
             sys.exit("Error: There's been an unspecified issue while making a request to the API")
 
+    def _setup_cert_files(self):
+        '''Helper funtion to setup named file for requests.get() call
+           in self.get_resources() which is able read certificate only
+           from file'''
+        ca_chain = NamedTemporaryFile()
+        for crt in self.certs.values():
+            ca_chain.write(crt)
+        ca_chain.read() # flush the file buffer
+        self.crt_tmp_file = ca_chain
+
     def _get_k8s_url(self):
         # TODO: Get login info
         with open(self.config) as f:
             config = yaml.load(f)
         # TODO: Support cluster by name
         return config['clusters'][0]['cluster']['server']
+
+    def _get_k8s_certs(self):
+        '''Helper function to read and decode certificates from kube config'''
+        with open(self.config) as f:
+            config = yaml.load(f)
+        certs = {}
+        try:
+            certs.update(dict(ca_cert=b64decode(
+              config['clusters'][0]['cluster']['certificate-authority-data'])))
+            certs.update(dict(client_cert=b64decode(
+              config['users'][0]['user']['client-certificate-data'])))
+            certs.update(dict(client_key=b64decode(
+              config['users'][0]['user']['client-key-data'])))
+        except KeyError as err:
+            print('Warning: could not get Kubernetes config for certificates. ' \
+                      'Turning off SSL authentication.')
+            self.no_ssl_auth = True
+        return certs
 
 def main():
     args = parse_args()
