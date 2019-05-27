@@ -1,0 +1,12 @@
+---
+rhel_pkg_dir: "{{ app_data_path }}/pkg/rhel"
+packages:
+- "docker-ce-18.09.5"
+- container-selinux
+- docker-ce-cli
+- containerd.io
+- python-jsonpointer
+- python-docker-py
+- python-docker-pycreds
+- python-ipaddress
+- python-websocket-client

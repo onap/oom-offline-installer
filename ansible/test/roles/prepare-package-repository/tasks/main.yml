@@ -1,0 +1,26 @@
+---
+- name: Add Docker-CE repo
+  yum_repository:
+    name: docker-ce
+    description: Docker-ce YUM repo
+    baseurl: https://download.docker.com/linux/centos/7/x86_64/stable/
+    gpgcheck: true
+    gpgkey: https://download.docker.com/linux/centos/gpg
+
+- name: Install createrepo
+  yum:
+    name: createrepo
+    state: present
+
+- name: "Ensure {{ rhel_pkg_dir }} exists"
+  file:
+    path: "{{ rhel_pkg_dir }}"
+    state: directory
+
+- name: Download rpm packages
+  command: "yumdownloader --destdir={{ rhel_pkg_dir }} --resolve {{ packages | join(' ') }}"
+
+- name: Index repository
+  command: "createrepo {{ rhel_pkg_dir }}"
+  args:
+    creates: "{{ rhel_pkg_dir }}/repodata"
