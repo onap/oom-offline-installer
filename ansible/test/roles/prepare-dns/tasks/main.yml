@@ -1,0 +1,22 @@
+---
+- name: "Create needed dirs for dns role"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: "u+rw,g+wx,o+rwx"
+    recurse: true
+  loop:
+    - "{{ app_data_path }}/cfg"
+    - "{{ infra_images_path }}"
+
+- name: Download and archive dnsmasq docker image for the dns role to use
+  delegate_to: localhost
+  docker_image:
+    name: andyshinn/dnsmasq
+    tag: 2.76
+    archive_path: /tmp/dnsmasq.tar
+
+- name: Copy dnsmasq image to node
+  copy:
+    src: /tmp/dnsmasq.tar
+    dest: "{{ infra_images_path }}/{{ dns_server_image_tar }}"
