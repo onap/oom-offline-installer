@@ -1,9 +1,0 @@
-#repo                                                        branch
-gerrit.onap.org/r/aaf/authz.git                             casablanca
-gerrit.onap.org/r/demo.git                                  casablanca
-gerrit.onap.org/r/dmaap/messagerouter/messageservice.git    casablanca
-gerrit.onap.org/r/so/docker-config.git                      casablanca
-github.com/rancher/community-catalog.git
-git.rancher.io/rancher-catalog.git
-gerrit.onap.org/r/testsuite/properties.git                  casablanca
-gerrit.onap.org/r/portal.git                                casablanca
