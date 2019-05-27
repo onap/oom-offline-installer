@@ -1,0 +1,5 @@
+---
+# Hosts to be added to /etc/hosts file.
+etc_hosts:
+  - nexus.infrastructure-server
+  - nexus3.onap.org
