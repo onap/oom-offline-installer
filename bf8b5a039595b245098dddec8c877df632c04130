@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d15dabeb_76e4b1f3",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-27T07:11:14Z",
+      "side": 1,
+      "message": "if I would have know this, many days work would be saved.",
+      "range": {
+        "startLine": 8,
+        "startChar": 4,
+        "endLine": 8,
+        "endChar": 23
+      },
+      "revId": "bf8b5a039595b245098dddec8c877df632c04130",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dfa165a_87777711",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-27T07:11:14Z",
+      "side": 1,
+      "message": "is this still needed even if dind?",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "bf8b5a039595b245098dddec8c877df632c04130",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a23be29_d99ab26f",
+        "filename": "ansible/test/play-infrastructure/molecule/default/playbook.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-27T07:11:14Z",
+      "side": 1,
+      "message": "this is so cool!",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 49
+      },
+      "revId": "bf8b5a039595b245098dddec8c877df632c04130",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "747a4219_643bca3b",
+        "filename": "ansible/test/play-infrastructure/molecule/default/prepare.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-27T07:11:14Z",
+      "side": 1,
+      "message": "how did not think about this.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 45
+      },
+      "revId": "bf8b5a039595b245098dddec8c877df632c04130",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0374f397_658281bd",
+        "filename": "ansible/test/roles/cleanup-dns/tasks/main.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-27T07:11:14Z",
+      "side": 1,
+      "message": "this task now never executed? As where this var is set?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "bf8b5a039595b245098dddec8c877df632c04130",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
