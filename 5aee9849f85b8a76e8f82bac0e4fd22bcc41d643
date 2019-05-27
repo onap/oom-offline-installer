@@ -39,6 +39,24 @@
       "revId": "5aee9849f85b8a76e8f82bac0e4fd22bcc41d643",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c665d44_bc1bdd63",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-27T11:35:56Z",
+      "side": 1,
+      "message": "I am not sure where is it coming from, I have just one empty line when editing the file under vi",
+      "parentUuid": "f0f9919b_e592bce4",
+      "revId": "5aee9849f85b8a76e8f82bac0e4fd22bcc41d643",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
