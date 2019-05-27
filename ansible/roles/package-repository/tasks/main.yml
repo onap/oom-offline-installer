@@ -5,6 +5,7 @@
     path: /etc/resolv.conf
     state: present
     insertbefore: BOF
+    unsafe_writes: true
 
 - name: Disable all OS default repositories
   block:
