@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "844fbaf6_d14b578f",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-27T14:07:43Z",
+      "side": 1,
+      "message": "For me it doesn\u0027t look straightforward, order of list elements shouldn\u0027t matter which is not the case here. \n\nWouldn\u0027t:\nhelm_extra_install_options:\n - { optname: \u0027--timeout\u0027, val: \u00271800\u0027}\nbe less ambiguous?",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "faf40af2e7864a2ece365090e425af5fe816dd33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
