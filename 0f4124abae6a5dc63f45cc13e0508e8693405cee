@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d6d9ced_5775a863",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-27T11:42:46Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 24,
+        "startChar": 76,
+        "endLine": 24,
+        "endChar": 77
+      },
+      "revId": "0f4124abae6a5dc63f45cc13e0508e8693405cee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1f45bc5_9b6bad9d",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-27T11:42:46Z",
+      "side": 1,
+      "message": "whitespace",
+      "range": {
+        "startLine": 27,
+        "startChar": 31,
+        "endLine": 27,
+        "endChar": 32
+      },
+      "revId": "0f4124abae6a5dc63f45cc13e0508e8693405cee",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
