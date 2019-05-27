@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1874a07_2aed575a",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-27T09:29:20Z",
+      "side": 1,
+      "message": "Unnecessary space",
+      "range": {
+        "startLine": 61,
+        "startChar": 126,
+        "endLine": 61,
+        "endChar": 127
+      },
+      "revId": "5aee9849f85b8a76e8f82bac0e4fd22bcc41d643",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0f9919b_e592bce4",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-27T09:29:20Z",
+      "side": 1,
+      "message": "Additional line",
+      "revId": "5aee9849f85b8a76e8f82bac0e4fd22bcc41d643",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
