@@ -1,0 +1,21 @@
+---
+- name: "Create needed dirs for vncserver role"
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: "u+rw,g+wx,o+rwx"
+    recurse: true
+  loop:
+    - "{{ infra_images_path }}"
+
+- name: Download and archive vncserver docker image for the vncserver role to use
+  delegate_to: localhost
+  docker_image:
+    name: "{{ vnc_server_image }}"
+    state: present
+    archive_path: /tmp/vncserver.tar
+
+- name: Copy vnc server image to node
+  copy:
+    src: /tmp/vncserver.tar
+    dest: "{{ infra_images_path }}/{{ vnc_server_image_tar }}"
