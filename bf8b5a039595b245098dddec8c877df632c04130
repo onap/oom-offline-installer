@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "c8591cbb_e26da841",
+        "filename": "ansible/test/play-infrastructure/molecule/default/molecule.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-27T08:22:59Z",
+      "side": 1,
+      "message": "note that I don\u0027t do \"/opt/onap:/opt/onap\"... It is an anonymous volume created only because I expect much data, especially rpms, to land there, not because I strictly need a volume.",
+      "parentUuid": "4dfa165a_87777711",
+      "range": {
+        "startLine": 19,
+        "startChar": 8,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "bf8b5a039595b245098dddec8c877df632c04130",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1a23be29_d99ab26f",
         "filename": "ansible/test/play-infrastructure/molecule/default/playbook.yml",
         "patchSetId": 15
@@ -105,6 +129,30 @@
       "writtenOn": "2019-05-27T07:11:14Z",
       "side": 1,
       "message": "this task now never executed? As where this var is set?",
+      "range": {
+        "startLine": 9,
+        "startChar": 4,
+        "endLine": 9,
+        "endChar": 45
+      },
+      "revId": "bf8b5a039595b245098dddec8c877df632c04130",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fe740d8f_34988ef3",
+        "filename": "ansible/test/roles/cleanup-dns/tasks/main.yml",
+        "patchSetId": 15
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-27T08:22:59Z",
+      "side": 1,
+      "message": "it never executes. not sure how I forgot to remove this role.",
+      "parentUuid": "0374f397_658281bd",
       "range": {
         "startLine": 9,
         "startChar": 4,
