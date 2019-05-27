@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "440b791b_90389852",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-27T13:27:17Z",
+      "side": 1,
+      "message": "instead vague \"properly organized\" what about \"organized as described in build guide\" ... hope we have it described there",
+      "revId": "545da130ab8e6444604a0ea4117ff8d7795bdebd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "effc285d_68fb21cc",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-27T13:27:17Z",
+      "side": 1,
+      "message": "I think we won\u0027t be having tag soon, so this has to be redesigned, but maybe in later commits. the plan is to keep just a single refference/verified data list for ONAP release",
+      "revId": "545da130ab8e6444604a0ea4117ff8d7795bdebd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
