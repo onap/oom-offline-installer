@@ -46,6 +46,30 @@
       "revId": "84617e8184fbb4a722a1bd7f273696cec5e85c17",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e5dcca_658e97fc",
+        "filename": "patches/dublin.patch",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-05-27T06:31:52Z",
+      "side": 1,
+      "message": "spendid, there\u0027s a jira!",
+      "parentUuid": "76b915aa_64d34ba5",
+      "range": {
+        "startLine": 26,
+        "startChar": 19,
+        "endLine": 26,
+        "endChar": 60
+      },
+      "revId": "84617e8184fbb4a722a1bd7f273696cec5e85c17",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
