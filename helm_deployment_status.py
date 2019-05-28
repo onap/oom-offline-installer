@@ -101,10 +101,10 @@ def get_k8s_controllers(k8s):
 
     return k8s_controllers, list(not_ready_controllers)
 
-def exec_healthcheck(hp_script, namespace):
+def exec_healthcheck(hp_script, namespace, hp_mode):
     try:
         hc = subprocess.check_output(
-                ['sh', hp_script, namespace, 'health'],
+                ['sh', hp_script, namespace, hp_mode],
                 stderr=subprocess.STDOUT)
         return 0, hc
     except subprocess.CalledProcessError as err:
@@ -171,7 +171,8 @@ def print_status(verbosity, resources, not_ready_pods):
     print('\n'.join(status_strings), '\n')
 
 def parse_args():
-    parser = argparse.ArgumentParser(description='Monitor ONAP deployment progress')
+    parser = argparse.ArgumentParser(description='Monitor ONAP deployment progress',
+            formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--namespace', '-n', default='onap',
             help='Kubernetes namespace of ONAP')
     parser.add_argument('--server', '-s', help='address of Kubernetes cluster')
@@ -179,6 +180,9 @@ def parse_args():
             default=expanduser('~') + '/.kube/config',
             help='path to .kube/config file')
     parser.add_argument('--health-path', '-hp', help='path to ONAP robot ete-k8s.sh')
+    parser.add_argument('--health-mode', default='health', help='healthcheck mode',
+            choices=('health','healthdist','distribute','instantiate','instantiateVFWCL',
+                     'instantiateDemoVFWCL','portal'))
     parser.add_argument('--no-helm', action='store_true', help='Do not check Helm')
     parser.add_argument('--check-frequency', '-w', default=300, type=int,
             help='time between readiness checks in seconds')
@@ -294,7 +298,7 @@ def main():
 
     if args.health_path is not None:
         try:
-            hc_rc, hc_output = exec_healthcheck(args.health_path, args.namespace)
+            hc_rc, hc_output = exec_healthcheck(args.health_path, args.namespace, args.health_mode)
         except IOError as err:
             sys.exit(err.strerror)
         print(hc_output.decode('utf-8'))
