@@ -61,10 +61,10 @@ usage () {
     echo "   Example usage: build_nexus_blob.sh -t <tag> --input-directory </path/to/downloaded/files/dir>  --output-directory
            </path/to/output/dir> --resource-list-directory </path/to/dir/with/resource/list>
 
-     -t | --tag release tag, taken from available on git or placed by data generating script (mandatory) must fallow scheme onap_<semver>
+     -t | --tag release tag, taken from available on git or placed by data generating script (mandatory) must follow scheme onap_<semver>
      -i | --input-directory directory containing file needed to create nexus blob. The structure of this directory must organized as described in build guide
      -o | --output-directory
-    -rl | --resource-list-directory directory with files containing docker, pypi and rpm lists
+    -rl | --resource-list-directory directory with files containing docker, pypi and npm lists
     "
     exit 1
 }
