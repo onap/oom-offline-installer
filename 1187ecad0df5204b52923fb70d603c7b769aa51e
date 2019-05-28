@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca5c2fec_0be46e2d",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-28T14:18:12Z",
+      "side": 1,
+      "message": "val can be empty I suppose",
+      "parentUuid": "c3d32236_e7c194cd",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a75a8707_161ef269",
         "filename": "ansible/roles/application/tasks/install.yml",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2019-05-28T11:09:49Z",
       "side": 1,
       "message": "Hmm, didn\u0027t even know you can do for here, on the other hand isn\u0027t it possible/better to use some kind of mapping filter here instead? just asking.",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3841db9_90849f8a",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-28T14:18:12Z",
+      "side": 1,
+      "message": "do you have some concrete filter in mind ?",
+      "parentUuid": "a75a8707_161ef269",
       "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
