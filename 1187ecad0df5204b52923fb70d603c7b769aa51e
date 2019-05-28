@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3d32236_e7c194cd",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-28T11:09:49Z",
+      "side": 1,
+      "message": "Actually what happens if you would like helm option that has no argument? like --wait or some other things like that?",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a75a8707_161ef269",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-28T11:09:49Z",
+      "side": 1,
+      "message": "Hmm, didn\u0027t even know you can do for here, on the other hand isn\u0027t it possible/better to use some kind of mapping filter here instead? just asking.",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
