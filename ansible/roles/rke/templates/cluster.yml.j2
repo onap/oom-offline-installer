@@ -1,7 +1,5 @@
 nodes:
-{# Note that we iterate through all nodes in relevant groups.
-We check which groups they belong to exactly later to determine roles. #}
-{% for node in groups['kubernetes'] | union(groups['kubernetes-control-plane']) %}
+{% for node in groups['kubernetes'] %}
 - address: "{{ hostvars[node].cluster_ip }}"
   port: "22"
   internal_address: "{{ hostvars[node].cluster_ip }}"
@@ -9,7 +7,7 @@ We check which groups they belong to exactly later to determine roles. #}
 {% if node in groups['kubernetes-control-plane'] %}
   - controlplane
 {% endif %}
-{% if node in groups['kubernetes'] %}
+{% if node in groups['kubernetes-node'] %}
   - worker
   - etcd
 {% endif %}
