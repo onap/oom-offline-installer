@@ -111,6 +111,24 @@
       "revId": "faf40af2e7864a2ece365090e425af5fe816dd33",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dec059d3_a59062a0",
+        "filename": "ansible/roles/application/molecule/default/tests/test_default.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-28T06:40:33Z",
+      "side": 1,
+      "message": "Well the PEP8 poses a line length limit of 79 and gives a thorough justification on that: https://www.python.org/dev/peps/pep-0008/#maximum-line-length",
+      "parentUuid": "493bfc9c_e9eda84f",
+      "revId": "faf40af2e7864a2ece365090e425af5fe816dd33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
