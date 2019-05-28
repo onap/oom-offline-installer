@@ -106,7 +106,7 @@ def exec_healthcheck(hp_script, namespace):
         hc = subprocess.check_output(
                 ['sh', hp_script, namespace, 'health'],
                 stderr=subprocess.STDOUT)
-        return 0, hc.output
+        return 0, hc
     except subprocess.CalledProcessError as err:
         return err.returncode, err.output
 
@@ -297,8 +297,7 @@ def main():
             hc_rc, hc_output = exec_healthcheck(args.health_path, args.namespace)
         except IOError as err:
             sys.exit(err.strerror)
-        if args.verbosity > 1 or hc_rc > 0:
-            print(hc_output.decode('utf-8'))
+        print(hc_output.decode('utf-8'))
         sys.exit(hc_rc)
 
     if not ready:
