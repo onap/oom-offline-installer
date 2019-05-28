@@ -1,3 +1,4 @@
+# generated from OOM commit 94664fb4457c61076cc7e65ed40dda5cf696bcbe
 alpine:3.6
 busybox
 crunchydata/crunchy-pgpool:centos7-10.4-2.0.0
