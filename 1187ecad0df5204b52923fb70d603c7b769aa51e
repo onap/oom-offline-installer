@@ -69,6 +69,23 @@
       "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d33a1459_b84afb4c",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-28T14:23:01Z",
+      "side": 1,
+      "message": "not yet, but seems like using for and other block constructs of jinja is an antipattern as I cited in my last comment, so... hmm",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
