@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ac25fe33_d99d9eba",
+        "filename": "build/creating_data/create-http-list.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-28T11:37:06Z",
+      "side": 1,
+      "message": "Why? I mean the file should be created if it doesn\u0027t exist at later stages. Unless your intention was to fail early if it would fail creation.",
+      "revId": "a5c2148fdab82ae9f77cdef5a19adbd472172908",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3b30080b_89dad295",
         "filename": "build/creating_data/create-http-list.sh",
         "patchSetId": 1
@@ -37,6 +54,30 @@
       "side": 1,
       "message": "yeah it is dummy, but works. I tested all dependency options, vide jira. None of them works for numerous reasons. The example you have prepared would fail because: internal dependencies (one project depends on other project in the same pom), projects using plugins \"execute bash\" - my favorite!, projects where dynamic dependencies are used and finally for some reason dependency plugin does not collect all the plugins in all needed versions. My conclusion is:  to build offline first you have to have correct online build",
       "parentUuid": "3b30080b_89dad295",
+      "range": {
+        "startLine": 89,
+        "startChar": 1,
+        "endLine": 89,
+        "endChar": 99
+      },
+      "revId": "a5c2148fdab82ae9f77cdef5a19adbd472172908",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b99d070e_fa0b80e8",
+        "filename": "build/creating_data/create-http-list.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-28T11:37:06Z",
+      "side": 1,
+      "message": "really no better way? hmmm",
+      "parentUuid": "777add11_2f92c6d2",
       "range": {
         "startLine": 89,
         "startChar": 1,
