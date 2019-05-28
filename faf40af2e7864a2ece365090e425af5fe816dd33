@@ -46,6 +46,71 @@
       "revId": "faf40af2e7864a2ece365090e425af5fe816dd33",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed4e03e5_65d569d9",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-28T05:25:04Z",
+      "side": 1,
+      "message": "this looks nicer, let me check that as Petr is out this week",
+      "parentUuid": "844fbaf6_d14b578f",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "faf40af2e7864a2ece365090e425af5fe816dd33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ce5ad5b_1f68896e",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-28T05:25:04Z",
+      "side": 1,
+      "message": "we discussed that on Friday, but this looks to be a proper place for all helm defaults not supposed to be changed that frequently ... so we don\u0027t need to promote it to application_config variables.",
+      "parentUuid": "13ec7752_dd7026c7",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 8
+      },
+      "revId": "faf40af2e7864a2ece365090e425af5fe816dd33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "493bfc9c_e9eda84f",
+        "filename": "ansible/roles/application/molecule/default/tests/test_default.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-28T05:25:04Z",
+      "side": 1,
+      "message": "it\u0027s really too long so row has to be splitted ?",
+      "revId": "faf40af2e7864a2ece365090e425af5fe816dd33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
