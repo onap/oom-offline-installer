@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9c760126_807da4d2",
+        "filename": "patches/onap-dublin-patch-role/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-28T15:31:27Z",
+      "side": 1,
+      "message": "thanks, good catch. this pattern is used in 4 different files, it would be better in my opinion if we have it sorted out in separated commit",
+      "parentUuid": "862b31cd_7fc5f1dc",
+      "range": {
+        "startLine": 14,
+        "startChar": 2,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "fff4f53c26495d75682e3d80c4dc0a8686f5e0c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "887b5e9b_9dd517fd",
         "filename": "patches/onap-dublin-patch-role/tasks/main.yml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-05-28T14:23:13Z",
       "side": 1,
       "message": "I suspect we can try optimising it in separate commit to one task (\u0027result\u0027 in tasks with a \u0027loop\u0027 is an array then)",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "fff4f53c26495d75682e3d80c4dc0a8686f5e0c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18f767be_8020cfd3",
+        "filename": "patches/onap-dublin-patch-role/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-28T15:31:27Z",
+      "side": 1,
+      "message": "same as above, I raised OOM-1887 for that. Can you handle that ? If you don\u0027t have time ping it back ....",
+      "parentUuid": "887b5e9b_9dd517fd",
       "range": {
         "startLine": 4,
         "startChar": 0,
