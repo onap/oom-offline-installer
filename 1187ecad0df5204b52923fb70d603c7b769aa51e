@@ -104,6 +104,24 @@
       "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f888ca81_256ffcd6",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-28T16:28:27Z",
+      "side": 1,
+      "message": "From what I\u0027ve read so far, I didn\u0027t find our exact case, but it seems you should always use ansible loop constructs for looping.\nThat means using set_fact + variable concatenation, it seems.\n\n- name: Build extra options\n  set_fact:\n    extra_opts: \"{{ extra_opts }} {{ item.optname }} {{ item.optval }}\"\n  loop: \"{{ helm_install_extra_options }}\"\n\nAnd then you would use command with the new var. Alternatively, change format of helm_install_extra_opts to be either plain string or plain list of strings, then you can use nothing or a simple join filter.",
+      "parentUuid": "0f63dce6_56a9d607",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
