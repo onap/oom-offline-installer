@@ -1,12 +1,21 @@
-From 03304478e972bec1ae0a4310330eb196558c07d4 Mon Sep 17 00:00:00 2001
-From: Michal Ptacek <m.ptacek@partner.samsung.com>
-Date: Fri, 24 May 2019 11:20:02 +0000
-Subject: [PATCH] Adding patch for dgbuilder
-
-Change-Id: Ic4bef7c611d0b7d5559fdc84ccf43214437c40ed
----
- kubernetes/common/dgbuilder/templates/deployment.yaml | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+diff --git a/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh b/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh
+index c87a26b..79ad921 100644
+--- a/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh
++++ b/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh
+@@ -1,4 +1,10 @@
+ #!/bin/sh
+-pip install flask
+-pip install requests
++
++# for some reason DNS is not working properly on this pod
++# therefore we need to explicitly add record just for
++# the purpose of this script
++HOSTS_FILE_RECORD >> /etc/hosts
++
++pip install -i https://nexus3.onap.org/repository/pypi-private/simple/ --trusted-host nexus3.onap.org flask
++pip install -i https://nexus3.onap.org/repository/pypi-private/simple/ --trusted-host nexus3.onap.org requests
+ python /share/etc/config/mock.py
+--
 
 diff --git a/kubernetes/common/dgbuilder/templates/deployment.yaml b/kubernetes/common/dgbuilder/templates/deployment.yaml
 index 353c231..cf38409 100644
