@@ -86,6 +86,24 @@
       "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0f63dce6_56a9d607",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-28T14:55:35Z",
+      "side": 1,
+      "message": "Ok. I believe the json_query filter may be advanced enough, othervise it is going to be a pain. ofc combined with other filters like join, if you would turn each option into a list [name, value] then flatten it and join with spaces, or something like this.",
+      "parentUuid": "f3841db9_90849f8a",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
