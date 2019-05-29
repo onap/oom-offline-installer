@@ -158,6 +158,24 @@
       "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e00e2158_3bada75d",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-29T10:38:08Z",
+      "side": 1,
+      "message": "guys, what about new patch 4?  I think it\u0027s not necessary to keep value argument there if it\u0027s optional. Even the original will work if value is set to empty string .... we should close this discussion soon, this is important commit to be merged",
+      "parentUuid": "fcbd640d_da85ee49",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
