@@ -273,7 +273,7 @@ For example:
 
 ::
 
-  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 3.0.2-ONAP /tmp/onap-offline/patches/casablanca.patch /tmp/oom-clone
+  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom master /tmp/onap-offline/patches/onap.patch /tmp/oom-clone
 
 Part 5. Creating offline installation package
 ---------------------------------------------
@@ -298,8 +298,8 @@ Example values below are setup according to steps done in this guide to package 
 |                                       | Example::                                                                    |
 |                                       |                                                                              |
 |                                       |  APP_CONFIGURATION=(                                                         |
-|                                       |     /tmp/onap-offline/config/application_configuration.yml              |
-|                                       |     /tmp/onap-offline/patches/onap-casablanca-patch-role                |
+|                                       |     /tmp/onap-offline/config/application_configuration.yml                   |
+|                                       |     /tmp/onap-offline/patches/onap-patch-role                                |
 |                                       |  )                                                                           |
 |                                       |                                                                              |
 +---------------------------------------+------------------------------------------------------------------------------+

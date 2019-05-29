@@ -37,7 +37,7 @@ C_='\033[0m'            #Color off
 usage () {
     echo "Usage:"
     echo -e "./$(basename $0) <helm charts repo> <commit/tag/branch> <patchfile> <target_dir>\n"
-    echo "Example: ./$(basename $0) https://gerrit.onap.org/r/oom 3.0.2-ONAP /root/offline-installer/patches/casablanca.patch /root/offline-installer/ansible/application/helm_charts"
+    echo "Example: ./$(basename $0) https://gerrit.onap.org/r/oom master /root/offline-installer/patches/onap.patch /root/offline-installer/ansible/application/helm_charts"
 }
 
 if [ "$#" -ne 4 ]; then
