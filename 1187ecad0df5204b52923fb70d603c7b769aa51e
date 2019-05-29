@@ -140,6 +140,24 @@
       "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcbd640d_da85ee49",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-05-29T09:10:50Z",
+      "side": 1,
+      "message": "\u003e Could you please provide some link to doc to advocate that statement?\nFirst, it is written here https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#id23\nSecond, i saw an issue where it was explicitly stated: https://github.com/ansible/ansible/issues/17704\n\u003e \n\u003e \"Arg.val\" can be set empty as stated in https://gerrit.onap.org/r/c/oom/offline-installer/+/88348/3/ansible/roles/application/defaults/main.yml#4 so it does the trick as of me.",
+      "parentUuid": "f637ab45_762d4dcd",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
