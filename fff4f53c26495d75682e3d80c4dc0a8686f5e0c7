@@ -93,6 +93,30 @@
       "revId": "fff4f53c26495d75682e3d80c4dc0a8686f5e0c7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e48deaa_16fc65f2",
+        "filename": "patches/onap-dublin-patch-role/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-29T07:29:41Z",
+      "side": 1,
+      "message": "No problemo, will handle that.",
+      "parentUuid": "18f767be_8020cfd3",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 29
+      },
+      "revId": "fff4f53c26495d75682e3d80c4dc0a8686f5e0c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
