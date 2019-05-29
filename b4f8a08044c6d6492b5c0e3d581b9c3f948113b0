@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "020b58fc_4f500f8e",
+        "filename": "build/download/download.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-05-29T11:19:01Z",
+      "side": 1,
+      "message": "Why is the dir name required here in case I don\u0027t wanna save it?",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "b4f8a08044c6d6492b5c0e3d581b9c3f948113b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
