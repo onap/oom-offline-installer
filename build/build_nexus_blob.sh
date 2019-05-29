@@ -20,7 +20,7 @@
 
 ### This script prepares Nexus repositories data blobs for ONAP
 
-## The script requires following dependencies are installed: nodejs, jq, docker
+## The script requires following dependencies are installed: nodejs, jq, docker, twine
 ## All required resources are expected in the upper directory created during
 ## download procedure as DATA_DIR or in the directory given as --input-directory
 ## All lists used must be in project data_lists directory or in the directory given
@@ -58,10 +58,9 @@ NEXUS_DATA_DIR="${DATA_DIR}/nexus_data"
 LISTS_DIR="${LOCAL_PATH}/data_lists"
 
 usage () {
-    echo "   Example usage: build_nexus_blob.sh -t <tag> --input-directory </path/to/downloaded/files/dir>  --output-directory
+    echo "   Example usage: build_nexus_blob.sh --input-directory </path/to/downloaded/files/dir> --output-directory
            </path/to/output/dir> --resource-list-directory </path/to/dir/with/resource/list>
 
-     -t | --tag release tag, taken from available on git or placed by data generating script (mandatory) must follow scheme onap_<semver>
      -i | --input-directory directory containing file needed to create nexus blob. The structure of this directory must organized as described in build guide
      -o | --output-directory
     -rl | --resource-list-directory directory with files containing docker, pypi and npm lists
@@ -71,9 +70,6 @@ usage () {
 
 while [ "$1" != "" ]; do
     case $1 in
-        -t | --tag )                       shift
-                                           TAG=$1
-                                           ;;
         -i | --input-directory )           shift
                                            DATA_DIR=$1
                                            ;;
@@ -90,22 +86,15 @@ while [ "$1" != "" ]; do
     shift
 done
 
-
-# exit if no tag given
-if [ -z ${TAG} ]; then
-    usage
-    exit 1
-fi
-
 # Setup directories with resources for docker, npm and pypi
 NXS_SRC_DOCKER_IMG_DIR="${DATA_DIR}/offline_data/docker_images_for_nexus"
 NXS_SRC_NPM_DIR="${DATA_DIR}/offline_data/npm_tar"
 NXS_SRC_PYPI_DIR="${DATA_DIR}/offline_data/pypi"
 
-# Setup specific resources list based on the tag provided
-NXS_DOCKER_IMG_LIST="${LISTS_DIR}/${TAG}-docker_images.list"
-NXS_NPM_LIST="${LISTS_DIR}/$(sed 's/.$/x/' <<< ${TAG})-npm.list"
-NXS_PYPI_LIST="${LISTS_DIR}/$(sed 's/.$/x/' <<< ${TAG})-pip_packages.list"
+# Setup specific resources lists
+NXS_DOCKER_IMG_LIST="${LISTS_DIR}/onap_docker_images.list"
+NXS_NPM_LIST="${LISTS_DIR}/onap_npm.list"
+NXS_PYPI_LIST="${LISTS_DIR}/onap_pip_packages.list"
 
 # Setup Nexus image used for build and install infra
 INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
@@ -340,4 +329,3 @@ npm config set registry "https://registry.npmjs.org"
 
 echo "Nexus blob is built"
 exit 0
-
