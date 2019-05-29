@@ -122,6 +122,24 @@
       "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f637ab45_762d4dcd",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-05-29T08:31:49Z",
+      "side": 1,
+      "message": "Could you please provide some link to doc to advocate that statement?\n\n\"Arg.val\" can be set empty as stated in https://gerrit.onap.org/r/c/oom/offline-installer/+/88348/3/ansible/roles/application/defaults/main.yml#4 so it does the trick as of me.",
+      "parentUuid": "d33a1459_b84afb4c",
+      "revId": "1187ecad0df5204b52923fb70d603c7b769aa51e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
