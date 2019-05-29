@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9acdd523_b477d44c",
+        "filename": "ansible/roles/rancher/molecule/default/cleanup.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-29T10:34:19Z",
+      "side": 0,
+      "message": "Seams like this \"support\" role will not be used by anything else.",
+      "range": {
+        "startLine": 5,
+        "startChar": 12,
+        "endLine": 5,
+        "endChar": 30
+      },
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1b51a86_42865d5f",
+        "filename": "ansible/roles/rancher/molecule/default/cleanup.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-05-29T10:34:19Z",
+      "side": 0,
+      "message": "Seams like this \"support\" role will not be used by anything else.",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "c2996af2cc082cb3386d675eeda12af2d6461821",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ff695110_7718b2b3",
         "filename": "ansible/roles/rancher/tasks/rancher_agent.yml",
         "patchSetId": 1
