@@ -3,3 +3,4 @@
     name: docker
     enabled: true
     state: restarted
+  when: start_docker == true
