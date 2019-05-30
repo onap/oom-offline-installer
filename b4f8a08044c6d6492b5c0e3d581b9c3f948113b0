@@ -39,6 +39,47 @@
       "revId": "b4f8a08044c6d6492b5c0e3d581b9c3f948113b0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4035982f_ef91fb49",
+        "filename": "build/download/download.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-30T13:07:00Z",
+      "side": 1,
+      "message": "dir-name is valid when docker-save flag is enabled, it took me a while to understand it, maybe we should describe it better.",
+      "parentUuid": "020b58fc_4f500f8e",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "b4f8a08044c6d6492b5c0e3d581b9c3f948113b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "908e8151_82a09852",
+        "filename": "build/download/download.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-30T13:07:00Z",
+      "side": 1,
+      "message": "help\u003d\u0027Enabling saving of docker images. Should be used together with --docker\u0027",
+      "revId": "b4f8a08044c6d6492b5c0e3d581b9c3f948113b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
