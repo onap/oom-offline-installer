@@ -106,12 +106,17 @@ popd
 # Create the list from all enabled subsystems
 echo "Creating the list..."
 if [ "${PROJECT}" == "onap" ]; then
+    COMMENT="OOM commit $(git --git-dir="${PROJECT_DIR}/../../.git" rev-parse HEAD)"
     for subsystem in `parse_yaml "${PROJECT_DIR}/values.yaml"`; do
         create_list ${subsystem}
-    done
+    done | sort -u > ${LIST}
 else
-    create_list ${PROJECT}
-fi | sort -u > ${LIST}
+    COMMENT="${PROJECT}"
+    create_list ${PROJECT} | sort -u > ${LIST}
+fi
+
+# Add comment reffering to the project
+sed -i "1i# generated from ${COMMENT}" "${LIST}"
 
 echo -e ${MSG}
 echo -e 'The list has been created:\n '"${LIST}"
