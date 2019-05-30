@@ -30,9 +30,9 @@ usage () {
     echo "      "
     echo "  This script is preparing docker images list based on kubernetes project"
     echo "      Usage:"
-    echo "        ./$(basename $0) <project version> <path to project> [<output list file>]"
+    echo "        ./$(basename $0) <path to project> [<output list file>]"
     echo "      "
-    echo "      Example: ./$(basename $0) onap_3.0.2 /root/oom/kubernetes/onap"
+    echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
     echo "      Dependencies: helm, python-yaml, make"
     echo "      "
@@ -67,14 +67,14 @@ LIST="${3}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
 HELM_REPO="local http://127.0.0.1:8879"
 
-if [ "${1}" == "-h" ] || [ "${1}" == "--help" ] || [ $# -lt 2 ]; then
+if [ "${1}" == "-h" ] || [ "${1}" == "--help" ] || [ $# -lt 1 ]; then
     usage
 elif [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
     echo "Wrong path to project directory entered"
     exit 1
 elif [ -z "${LIST}" ]; then
     mkdir -p ${LISTS_DIR}
-    LIST="${LISTS_DIR}/${TAG}-docker_images.list"
+    LIST="${LISTS_DIR}/onap_docker_images.list"
 fi
 
 if [ -e "${LIST}" ]; then
