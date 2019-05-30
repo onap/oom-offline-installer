@@ -2,4 +2,6 @@
 - name: Prepare infra
   hosts: all
   roles:
-    - prepare-docker
+    - role: prepare-docker-dind
+      vars:
+        start_docker: false
