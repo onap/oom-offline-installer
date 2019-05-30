@@ -25,7 +25,7 @@ import sys
 import argparse
 import yaml
 import requests
-import subprocess
+from subprocess import Popen,STDOUT,PIPE
 import datetime
 from time import sleep
 from os.path import expanduser
@@ -102,13 +102,13 @@ def get_k8s_controllers(k8s):
     return k8s_controllers, list(not_ready_controllers)
 
 def exec_healthcheck(hp_script, namespace, hp_mode):
-    try:
-        hc = subprocess.check_output(
-                ['sh', hp_script, namespace, hp_mode],
-                stderr=subprocess.STDOUT)
-        return 0, hc
-    except subprocess.CalledProcessError as err:
-        return err.returncode, err.output
+    # spawn healthcheck script and redirect it's stderr to stdout
+    hc = Popen(['sh',hp_script,namespace,hp_mode],stdout=PIPE,stderr=STDOUT)
+    # Trace the output of subprocess until it has finished
+    for line in iter(hc.stdout.readline, ''):
+        print(line.strip())
+    hc.poll() # set returncode in Popen object
+    return hc.returncode
 
 def check_readiness(k8s, verbosity):
         k8s_controllers, not_ready_controllers = get_k8s_controllers(k8s)
@@ -297,12 +297,9 @@ def main():
             ready = check_readiness(k8s, 2)
 
     if args.health_path is not None:
-        try:
-            hc_rc, hc_output = exec_healthcheck(args.health_path, args.namespace, args.health_mode)
-        except IOError as err:
-            sys.exit(err.strerror)
-        print(hc_output.decode('utf-8'))
-        sys.exit(hc_rc)
+        hc_rc = exec_healthcheck(args.health_path, args.namespace, args.health_mode)
+        if hc_rc:
+            sys.exit(hc_rc)
 
     if not ready:
         sys.exit('Deployment is not ready')
