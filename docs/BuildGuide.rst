@@ -15,29 +15,9 @@ Part 1. Preparations
 
 We assume that procedure is executed on RHEL 7.6 server with \~300G disc space, 16G+ RAM and internet connectivity
 
-More-over following sw packages has to be installed:
+Some additional sw packages are required by ONAP Offline platform building tooling. in order to install them
+following repos has to be configured for RHEL 7.6 platform.
 
-* for the Preparation (Part 1), the Download artifacts for offline installer (Part 2) and the application helm charts preparation and patching (Part 4)
-    -  git
-    -  wget
-
-* for the Download artifacts for offline installer (Part 2) only
-    -  createrepo
-    -  dpkg-dev
-    -  python2-pip
-
-* for the Download artifacts for offline installer (Part 2) and the Populate local nexus (Part 3)
-    -  nodejs
-    -  jq
-    -  docker (exact version docker-ce-18.09.5)
-
-* for the Download artifacts for offline installer (Part 2) and for the Application helm charts preparation and patching (Part 4)
-    -  patch
-
-* for the Populate local nexus (Part 3)
-    -  twine
-
-Configure repos for downloading all needed rpms for download/packaging tooling:
 
 
 ::
@@ -49,18 +29,27 @@ Configure repos for downloading all needed rpms for download/packaging tooling:
     # Register server
     subscription-manager register --username <rhel licence name> --password <password> --auto-attach
 
-    # enable epel for npm and jq
-    rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    # required by special centos docker recommended by ONAP
+    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
-    # enable rhel-7-server-e4s-optional-rpms in /etc/yum.repos.d/redhat.repo
+    # required by docker dependencies i.e. docker-selinux
+    subscription-manager repos --enable=rhel-7-server-extras-rpms
+
+    # epel is required by npm within blob build
+    rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
 Alternatively
 
 ::
 
+   ToDo: newer download scripts needs to be verified on Centos with ONAP Dublin
+
    ##############
    # Centos 7.6 #
    ##############
+
+   # required by special centos docker recommended by ONAP
+   yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
    # enable epel repo for npm and jq
    yum install -y epel-release
@@ -70,12 +59,13 @@ Subsequent steps are the same on both platforms:
 ::
 
     # install following packages
-    yum install -y expect nodejs git wget createrepo python2-pip jq patch dpkg-dev
+    yum install -y docker-ce-18.09.5 python-pip git createrepo expect nodejs npm jq
 
+    # twine package is needed by nexus blob build script
     pip install twine
 
-    # install docker
-    curl https://releases.rancher.com/install-docker/18.09.sh | sh
+    # docker daemon must be running on host
+    service docker start
 
 Then it is necessary to clone all installer and build related repositories and prepare the directory structure.
 
@@ -86,142 +76,71 @@ Then it is necessary to clone all installer and build related repositories and p
     git clone https://gerrit.onap.org/r/oom/offline-installer onap-offline
     cd onap-offline
 
+    # install required pip packages for download scripts
+    pip install -r ./build/download/requirements.txt
+
 Part 2. Download artifacts for offline installer
 ------------------------------------------------
 
 .. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
 
-All artifacts should be downloaded by running the download script as follows:
+It's possible to download all artifacts in single ./download.py execution. Recently we improved reliability of download scripts
+so one might try following command to download most of the required artifacts in single shot.
 
-./build/download_offline_data_by_lists.sh <project>
-
-For example:
-
-::
-
-  # onap_3.0.0 for casablanca                                (sign-off 30/11/2018)
-  # onap_3.0.1 for casablanca maintenance release            (sign-off 10/12/2018)
-  # onap_3.0.2 for latest casablanca with fixed certificates (sign-off 25/04/2019)
-
-  $ ./build/download_offline_data_by_lists.sh onap_3.0.2
-
-Download is as reliable as network connectivity to internet, it is highly recommended to run it in screen and save log file from this script execution for checking if all artifacts were successfully collected. Each start and end of script call should contain timestamp in console output. Downloading consists of 10 steps, which should be checked at the end one-by-one.
-
-**Verify:** *Please take a look on following comments to respective
-parts of download script*
-
-[Step 1/10 Download collected docker images]
-
-=> image download step is quite reliable and contain retry logic
-
-E.g
+**Step1 - download wrapper script execution**
 
 ::
 
-    == pkg #143 of 163 ==
-    rancher/etc-host-updater:v0.0.3
-    digest:sha256:bc156a5ae480d6d6d536aa454a9cc2a88385988617a388808b271e06dc309ce8
-    Error response from daemon: Get https://registry-1.docker.io/v2/rancher/etc-host-updater/manifests/v0.0.3: Get
-    https://auth.docker.io/token?scope=repository%3Arancher%2Fetc-host-updater%3Apull&service=registry.docker.io: net/http: TLS handshake timeout
-    WARNING [!]: warning Command docker -l error pull rancher/etc-host-updater:v0.0.3 failed.
-    Attempt: 2/5
-    INFO: info waiting 10s for another try...
-    v0.0.3: Pulling from rancher/etc-host-updater
-    b3e1c725a85f: Already exists
-    6a710864a9fc: Already exists
-    d0ac3b234321: Already exists
-    87f567b5cf58: Already exists
-    16914729cfd3: Already exists
-    83c2da5790af: Pulling fs layer
-    83c2da5790af: Verifying Checksum
-    83c2da5790af: Download complete
-    83c2da5790af: Pull complete
+        # following arguments are provided
+        # all data lists are taken in ./build/data_lists/ folder
+        # all resources will be stored in expected folder structure within ../resources folder
+        # for more details refer to Appendix 1.
 
-[Step 2/10 Build own nginx image]
+        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus --git ./build/data_lists/onap_git_repos.list ../resources/git-repo --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel
 
-=> there is no hardening in this step, if it fails it needs to be
-retriggered. It should end with
+
+Alternatively, step-by-step procedure is described in Appendix 1.
+
+Following steps are still required and are not supported by current version of download.py script.
+
+**Step 2 - Building own dns image**
 
 ::
 
-  Successfully built <id>
+        # We are building our own dns image within our offline infrastructure
+        ./build/creating_data/create_nginx_image/01create-image.sh /tmp/resources/offline_data/docker_images_infra
 
-[Step 3/10 Save docker images from docker cache to tarfiles]
 
-=> quite reliable, retry logic in place
+**Step 3 - Http files**
 
-[Step 4/10 move infra related images to infra folder]
+ToDo: complete and verified list of http files will come just during/after vFWCL testcase
 
-=> should be safe, precondition is not failing step(3)
 
-[Step 5/10 Download git repos]
-
-=> potentially unsafe, no hardening in place. If it not download all git repos. It has to be executed again. Easiest way is probably to comment-out other steps in load script and run it again.
-
-E.g.
+**Step 4 - Binaries**
 
 ::
 
-    Cloning into bare repository
-    'github.com/rancher/community-catalog.git'...
-    error: RPC failed; result=28, HTTP code = 0
-    fatal: The remote end hung up unexpectedly
-    Cloning into bare repository 'git.rancher.io/rancher-catalog.git'...
-    Cloning into bare repository
-    'gerrit.onap.org/r/testsuite/properties.git'...
-    Cloning into bare repository 'gerrit.onap.org/r/portal.git'...
-    Cloning into bare repository 'gerrit.onap.org/r/aaf/authz.git'...
-    Cloning into bare repository 'gerrit.onap.org/r/demo.git'...
-    Cloning into bare repository
-    'gerrit.onap.org/r/dmaap/messagerouter/messageservice.git'...
-    Cloning into bare repository 'gerrit.onap.org/r/so/docker-config.git'...
+       # Following step will download and prepare rke, kubectl and helm binaries
+       # there is some post-processing needed therefore its not very convenient to add support for this step into main download.py script
+       ./build/download/download-bin-tools.sh ../resources/downloads
 
-[Step 6/10 Download http files]
-
-[Step 7/10 Download npm pkgs]
-
-[Step 8/10 Download bin tools]
-
-=> work quite reliably, If it not download all artifacts. Easiest way is probably to comment-out other steps in load script and run it again.
-
-[Step 9/10 Download rhel pkgs]
-
-=> this is the step which will work on rhel only, for other platform different packages has to be downloaded.
-
-Following is considered as sucessfull run of this part:
+**Step 5 - Create repo**
 
 ::
 
-      Available: 1:net-snmp-devel-5.7.2-32.el7.i686 (rhel-7-server-rpms)
-        net-snmp-devel = 1:5.7.2-32.el7
-      Available: 1:net-snmp-devel-5.7.2-33.el7_5.2.i686 (rhel-7-server-rpms)
-        net-snmp-devel = 1:5.7.2-33.el7_5.2
-    Dependency resolution failed, some packages will not be downloaded.
-    No Presto metadata available for rhel-7-server-rpms
-    https://ftp.icm.edu.pl/pub/Linux/fedora/linux/epel/7/x86_64/Packages/p/perl-CDB_File-0.98-9.el7.x86_64.rpm:
-    [Errno 12\] Timeout on
-    https://ftp.icm.edu.pl/pub/Linux/fedora/linux/epel/7/x86_64/Packages/p/perl-CDB_File-0.98-9.el7.x86_64.rpm:
-    (28, 'Operation timed out after 30001 milliseconds with 0 out of 0 bytes
-    received')
-    Trying other mirror.
-    Spawning worker 0 with 230 pkgs
-    Spawning worker 1 with 230 pkgs
-    Spawning worker 2 with 230 pkgs
-    Spawning worker 3 with 230 pkgs
-    Spawning worker 4 with 229 pkgs
-    Spawning worker 5 with 229 pkgs
-    Spawning worker 6 with 229 pkgs
-    Spawning worker 7 with 229 pkgs
-    Workers Finished
-    Saving Primary metadata
-    Saving file lists metadata
-    Saving other metadata
-    Generating sqlite DBs
-    Sqlite DBs complete
+      createrepo ../resources/pkg/rhel
 
-[Step 10/10 Download sdnc-ansible-server packages]
+**Step 6 - pip packages**
 
-=> there is again no retry logic in this part, it is collecting packages for sdnc-ansible-server in the exactly same way how that container is doing it, however there is a bug in upstream that image in place will not work with those packages as old ones are not available and newer are not compatible with other stuff inside that image
+Todo: will be incorporated into download.py in near future
+
+::
+
+      # Following step will download all pip packages
+      ./build/download/download-pip.sh ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi
+
+
+This concludes SW download part required for ONAP offline platform creating.
 
 Part 3. Populate local nexus
 ----------------------------
@@ -234,18 +153,23 @@ Prerequisites:
 
 .. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the copy of resources data are untarred in *./onap-offline/../resources/*
 
-Whole nexus blob data will be created by running script build\_nexus\_blob.sh.
+Whole nexus blob data will be created by running script build_nexus_blob.sh.
 It will load the listed docker images, run the Nexus, configure it as npm, pypi
 and docker repositories. Then it will push all listed npm and pypi packages and
 docker images to the repositories. After all is done the repository container
 is stopped.
 
+.. note:: build_nexus_blob.sh script is using docker, npm and pip data lists for building nexus blob. Unfortunatelly we now have 2 different docker data lists (RKE & ONAP). So we need to merge them as visible from following snippet. This problem will be fixed in OOM-1890
+
 You can run the script as following example:
 
-``$ ./install/onap-offline/build_nexus_blob.sh onap_3.0.2``
+::
+        # merge RKE and ONAP app data lists
+        cat ./build/data_lists/rke_docker_images.list >> ./build/data_lists/onap_docker_images.list
 
-Where the onap_3.0.2 is the tag to specify which lists will be used for the
-resources
+        ./build/build_nexus_blob.sh
+
+.. note:: in current release scope we aim to maintain just single example data lists set, tags used in previous releases are not needed. Datalists are also covering latest versions verified by us despite user is allowed to build data lists on his own.
 
 Once the Nexus data blob is created, the docker images and npm and pypi
 packages can be deleted to reduce the package size as they won't be needed in
@@ -255,9 +179,9 @@ E.g.
 
 ::
 
-    rm -f /tmp/onap-offline/resources/offline_data/docker_images_for_nexus/*
-    rm -rf /tmp/onap-offline/resources/offline_data/npm_tar
-    rm -rf /tmp/onap-offline/resources/offline_data/pypi
+    rm -f /tmp/resources/offline_data/docker_images_for_nexus/*
+    rm -rf /tmp/resources/offline_data/npm_tar
+    rm -rf /tmp/resources/offline_data/pypi
 
 Part 4. Application helm charts preparation and patching
 --------------------------------------------------------
@@ -267,13 +191,13 @@ offline. Use the following command:
 
 ::
 
-  ./build/fetch\_and\_patch\_charts.sh <helm charts repo> <commit/tag/branch> <patchfile> <target\_dir>
+  ./build/fetch_and_patch_charts.sh <helm charts repo> <commit/tag/branch> <patchfile> <target\_dir>
 
 For example:
 
 ::
 
-  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom master /tmp/onap-offline/patches/onap.patch /tmp/oom-clone
+  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 0b904977dde761d189874d6dc6c527cd45928 /tmp/onap-offline/patches/onap.patch /tmp/oom-clone
 
 Part 5. Creating offline installation package
 ---------------------------------------------
@@ -288,11 +212,11 @@ Example values below are setup according to steps done in this guide to package 
 +---------------------------------------+------------------------------------------------------------------------------+
 | Parameter                             | Description                                                                  |
 +=======================================+==============================================================================+
-| HELM\_CHARTS\_DIR                     | directory with Helm charts for the application                               |
+| HELM_CHARTS_DIR                       | directory with Helm charts for the application                               |
 |                                       |                                                                              |
 |                                       | Example: /tmp/oom-clone/kubernetes                                           |
 +---------------------------------------+------------------------------------------------------------------------------+
-| APP\_CONFIGURATION                    | application install configuration (application_configuration.yml) for        |
+| APP_CONFIGURATION                     | application install configuration (application_configuration.yml) for        |
 |                                       | ansible installer and custom ansible role code directories if any.           |
 |                                       |                                                                              |
 |                                       | Example::                                                                    |
@@ -303,11 +227,11 @@ Example values below are setup according to steps done in this guide to package 
 |                                       |  )                                                                           |
 |                                       |                                                                              |
 +---------------------------------------+------------------------------------------------------------------------------+
-| APP\_BINARY\_RESOURCES\_DIR           | directory with all (binary) resources for offline infra and application      |
+| APP_BINARY_RESOURCES_DIR              | directory with all (binary) resources for offline infra and application      |
 |                                       |                                                                              |
-|                                       | Example: /tmp/onap-offline/resources                                         |
+|                                       | Example: /tmp/resources                                                      |
 +---------------------------------------+------------------------------------------------------------------------------+
-| APP\_AUX\_BINARIES                    | additional binaries such as docker images loaded during runtime   [optional] |
+| APP_AUX_BINARIES                      | additional binaries such as docker images loaded during runtime   [optional] |
 +---------------------------------------+------------------------------------------------------------------------------+
 
 Offline installer packages are created with prepopulated data via
@@ -321,13 +245,78 @@ E.g.
 
 ::
 
-  ./build/package.sh onap 3.0.2 /tmp/package
+  ./build/package.sh onap 4.0.0 /tmp/package
 
 
 So in the target directory you should find tar files with
 
 ::
 
-  offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-sw.tar
-  offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-resources.tar
-  offline-<PROJECT\_NAME>-<PROJECT\_VERSION>-aux-resources.tar
+  offline-<PROJECT_NAME>-<PROJECT_VERSION>-sw.tar
+  offline-<PROJECT_NAME>-<PROJECT_VERSION>-resources.tar
+  offline-<PROJECT_NAME>-<PROJECT_VERSION>-aux-resources.tar
+
+
+Appendix 1. Step-by-step download procedure
+-------------------------------------------
+
+**Step 1 - docker images**
+
+::
+
+        # This step will parse all 3 docker datalists (offline infrastructure images, rke k8s images & onap images)
+        # and start building onap offline platform in /tmp/resources folder
+
+        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus
+
+
+**Step 2 - building own dns image**
+
+::
+
+        # We are building our own dns image within our offline infrastructure
+        ./build/creating_data/create_nginx_image/01create-image.sh /tmp/resources/offline_data/docker_images_infra
+
+**Step 3 - git repos**
+
+::
+
+        # Following step will download all git repos
+        ./build/download/download.py --git ./build/data_lists/onap_git_repos.list ../resources/git-repo
+
+**Step 4 - http files**
+
+ToDo: complete and verified list of http files will come just during/after vFWCL testcase
+
+**Step 5 - npm packages**
+
+::
+
+        # Following step will download all npm packages
+        ./build/download/download.py --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar
+
+**Step 6 - binaries**
+
+::
+
+       # Following step will download and prepare rke, kubectl and helm binaries
+       ./build/download/download-bin-tools.sh ../resources/downloads
+
+**Step 7 - rpms**
+
+::
+
+      # Following step will download all rpms and create repo
+      ./build/download/download.py --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel
+
+      createrepo ../resources/pkg/rhel
+
+**Step 8 - pip packages**
+
+Todo: new python script might be created for that part as well
+
+::
+
+      # Following step will download all pip packages
+      ./build/download/download-pip.sh ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi
+
