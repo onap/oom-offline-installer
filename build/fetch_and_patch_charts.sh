@@ -54,7 +54,7 @@ TOTAL=5
 PATCH_FILE=$(realpath "${3}")
 
 echo -e "${_G}[Step $((CURR++))/${TOTAL} cloning repo with charts to be patched]${C_}"
-git clone "${1}" "${4}"
+git clone --recurse-submodules "${1}" "${4}"
 
 echo -e "${_G}[Step $((CURR++))/${TOTAL} setting working dir to ${4}]${C_}"
 pushd "${4}"
