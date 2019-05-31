@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be7e57a0_f044de6c",
+        "filename": "build/download/rpm_packages.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-05-31T10:00:48Z",
+      "side": 1,
+      "message": "othewise following error is visible from download.py\n\n  File \"./download.py\", line 101, in run_cli\n    error_count +\u003d rpm_packages.download(rpm_list[0], rpm_list[1])\nTypeError: unsupported operand type(s) for +\u003d: \u0027int\u0027 and \u0027NoneType\u0027",
+      "revId": "a20b142214a62eda633a38900cbc37269af63c38",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
