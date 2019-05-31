@@ -55,7 +55,14 @@ PYP
 }
 
 create_list() {
-    helm template "${PROJECT_DIR}/../${1}" | grep 'image:\ \|tag_version:\ \|h._image' |
+    if [ -d "${PROJECT_DIR}/../${1}" ]; then
+        SUBSYS_DIR="${PROJECT_DIR}/../${1}"
+    elif [ -d "${PROJECT_DIR}/../common/${1}" ]; then
+        SUBSYS_DIR="${PROJECT_DIR}/../common/${1}"
+    else
+        >&2 echo -e \n"    !!! ${1} sybsystem does not exist !!!"\n
+    fi
+    helm template "${SUBSYS_DIR}" | grep 'image:\ \|tag_version:\ \|h._image' |
         sed -e 's/^.*\"h._image\"\ :\ //; s/^.*\"\(.*\)\".*$/\1/' \
             -e 's/\x27\|,//g; s/^.*\(image\|tag_version\):\ //' | tr -d '\r'
 }
