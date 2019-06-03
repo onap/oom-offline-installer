@@ -9,6 +9,8 @@ nodes:
 {% endif %}
 {% if node in groups['kubernetes-node'] %}
   - worker
+{% endif %}
+{% if node in groups['kubernetes-etcd'] %}
   - etcd
 {% endif %}
   hostname_override: ""
