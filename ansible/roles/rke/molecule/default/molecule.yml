@@ -19,6 +19,7 @@ platforms:
       container: docker
     groups:
       - infrastructure
+      - kubernetes-etcd
       - kubernetes-control-plane
       - kubernetes
     networks:
