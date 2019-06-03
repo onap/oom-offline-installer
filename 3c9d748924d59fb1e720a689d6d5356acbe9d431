@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78027dfa_170560ef",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-03T11:13:31Z",
+      "side": 1,
+      "message": "This conditional can be optimised, \u0027else\u0027 clause is not necessary:\n\n{% if not app_skip_helm_override %}{% for arg in helm_overide_files %} {{ \u0027-f \u0027 + arg }} {% endfor %}{% endif %}",
+      "revId": "3c9d748924d59fb1e720a689d6d5356acbe9d431",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
