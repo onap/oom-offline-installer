@@ -406,23 +406,23 @@ This will take a while so be patient.
 
 .. _oooi_installguide_postinstall:
 
-Part 4. Postinstallation and troubleshooting
---------------------------------------------
+Part 4. Post-installation and troubleshooting
+---------------------------------------------
 
-After all the playbooks are finished, it will still take a lot of time until all pods will be up and running. You can monitor your newly created kubernetes cluster for example like this::
+After all of the playbooks are run successfully, it will still take a lot of time until all pods are up and running. You can monitor your newly created kubernetes cluster for example like this::
 
     $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.4 # tailor this command to connect to your infra-node
     $ watch -d -n 5 'kubectl get pods --all-namespaces'
 
-Alternatively you can monitor progress with ``helm_deployment_status.py`` script located in offline-installer directory. While on infra-node this can be achieved like this::
+Alternatively you can monitor progress with ``helm_deployment_status.py`` script located in offline-installer directory. Transfer it to infra-node and run::
 
     $ python helm_deployment_status.py -n <namespace_name> # namespace defaults to onap
 
-To automatically verify functionality, after deployment becomes ready or after timeout period expires, add path to healthcheck scripts::
+To automatically verify functionality with healthchecks after deployment becomes ready or after timeout period expires, append ``-hp`` switch followed by the full path to the healthcheck script and ``--health-mode`` optional switch with appropriate mode supported by that script (``health`` by default, ``--help`` displays available modes)::
 
-    $ python helm_deployment_status.py -hp <app_data_path>/<app_name>/helm_charts/robot/ete-k8s.sh
+    $ python helm_deployment_status.py -hp <app_data_path>/<app_name>/helm_charts/robot/ete-k8s.sh --health-mode <healthcheck mode>
 
-It is strongly recommended to check help for ``helm_deployment_status.py`` to be able to tailor monitoring to your needs since default values might not be what you are looking for.
+It is strongly recommended to tailor ``helm_deployment_status.py`` to your needs since default values might not be what you'd expect. The defaults can be displayed with ``--help`` switch.
 
 Final result of installation varies based on number of k8s nodes used and distribution of pods. In some dev envs we quite frequently hit problems with not all pods properly deployed. In successful deployments all jobs should be in successful state.
 This can be verified using ::
