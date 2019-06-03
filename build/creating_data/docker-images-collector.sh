@@ -30,9 +30,9 @@ usage () {
     echo "      "
     echo "  This script is preparing docker images list based on kubernetes project"
     echo "      Usage:"
-    echo "        ./$(basename $0) <project version> <path to project> [<output list file>]"
+    echo "        ./$(basename $0) <path to project> [<output list file>]"
     echo "      "
-    echo "      Example: ./$(basename $0) onap_3.0.2 /root/oom/kubernetes/onap"
+    echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
     echo "      Dependencies: helm, python-yaml, make"
     echo "      "
@@ -55,34 +55,41 @@ PYP
 }
 
 create_list() {
-    helm template "${PROJECT_DIR}/../${1}" | grep 'image:\ \|tag_version:\ \|h._image' |
+    if [ -d "${PROJECT_DIR}/../${1}" ]; then
+        SUBSYS_DIR="${PROJECT_DIR}/../${1}"
+    elif [ -d "${PROJECT_DIR}/../common/${1}" ]; then
+        SUBSYS_DIR="${PROJECT_DIR}/../common/${1}"
+    else
+        >&2 echo -e \n"    !!! ${1} sybsystem does not exist !!!"\n
+    fi
+    helm template "${SUBSYS_DIR}" | grep 'image:\ \|tag_version:\ \|h._image' |
         sed -e 's/^.*\"h._image\"\ :\ //; s/^.*\"\(.*\)\".*$/\1/' \
             -e 's/\x27\|,//g; s/^.*\(image\|tag_version\):\ //' | tr -d '\r'
 }
 
 # Configuration
-TAG="${1}"
-PROJECT_DIR="${2}"
-LIST="${3}"
+if [ "${1}" == "-h" ] || [ "${1}" == "--help" ] || [ $# -lt 1 ]; then
+    usage
+fi
+
+PROJECT_DIR="${1}"
+LIST="${2}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
 HELM_REPO="local http://127.0.0.1:8879"
+PROJECT="$(basename ${1})"
 
-if [ "${1}" == "-h" ] || [ "${1}" == "--help" ] || [ $# -lt 2 ]; then
-    usage
-elif [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
+if [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
     echo "Wrong path to project directory entered"
     exit 1
 elif [ -z "${LIST}" ]; then
     mkdir -p ${LISTS_DIR}
-    LIST="${LISTS_DIR}/${TAG}-docker_images.list"
+    LIST="${LISTS_DIR}/${PROJECT}_docker_images.list"
 fi
 
 if [ -e "${LIST}" ]; then
     mv -f "${LIST}" "${LIST}.bk"
     MSG="$(realpath ${LIST}) already existed\nCreated backup $(realpath ${LIST}).bk\n"
 fi
-
-PROJECT="$(basename ${2})"
 
 # Setup helm
 if pgrep -x "helm" > /dev/null; then
@@ -106,12 +113,17 @@ popd
 # Create the list from all enabled subsystems
 echo "Creating the list..."
 if [ "${PROJECT}" == "onap" ]; then
+    COMMENT="OOM commit $(git --git-dir="${PROJECT_DIR}/../../.git" rev-parse HEAD)"
     for subsystem in `parse_yaml "${PROJECT_DIR}/values.yaml"`; do
         create_list ${subsystem}
-    done
+    done | sort -u > ${LIST}
 else
-    create_list ${PROJECT}
-fi | sort -u > ${LIST}
+    COMMENT="${PROJECT}"
+    create_list ${PROJECT} | sort -u > ${LIST}
+fi
+
+# Add comment reffering to the project
+sed -i "1i# generated from ${COMMENT}" "${LIST}"
 
 echo -e ${MSG}
 echo -e 'The list has been created:\n '"${LIST}"
