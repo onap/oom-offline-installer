@@ -16,6 +16,7 @@ simulated_hosts:
   nexus:
     - docker.elastic.co
     - docker.io
+    - index.docker.io
     - gcr.io
     - k8s.gcr.io
     - nexus.{{ ansible_nodename }}
