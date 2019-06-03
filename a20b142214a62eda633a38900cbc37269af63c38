@@ -16,6 +16,24 @@
       "revId": "a20b142214a62eda633a38900cbc37269af63c38",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82810cc9_338ad880",
+        "filename": "build/download/rpm_packages.py",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-03T06:51:57Z",
+      "side": 1,
+      "message": "I think this code construct is cumbersome - log.info and return are rather not raising any exceptions so they should be put out of \u0027try\u0027 statement. This is how i think it should look like:\n\ntry:\n  subprocess.check_call(command.split())\nexcept subprocess.CalledProcessError as err:\n  log.error(err.output)\n  return err.returncode\nelse:\n  log.info(\u0027Downloaded\u0027)\n\nreturn 0",
+      "parentUuid": "be7e57a0_f044de6c",
+      "revId": "a20b142214a62eda633a38900cbc37269af63c38",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
