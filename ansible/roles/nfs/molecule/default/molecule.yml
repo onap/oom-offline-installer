@@ -19,7 +19,7 @@ platforms:
       - name: nfs-net
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ${HOME}/data:/dockerdata-nfs:rw
+      - /dockerdata-nfs
 
   - name: kubernetes-node-2
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}

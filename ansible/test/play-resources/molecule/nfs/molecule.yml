@@ -13,7 +13,7 @@ platforms:
     override_command: false
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - ${HOME}/data:/data:rw  # mount fs from host to get nfs exportfs task working
+      - /data
     groups:
       - resources
     networks:
