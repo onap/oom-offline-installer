@@ -1,9 +1,13 @@
 ---
-- name: Create Application helm charts directory
+- name: Create application role mocked artifacts directories
   file:
-    path: "{{ app_helm_charts_install_directory }}"
+    path: "{{ item }}"
     state: directory
   delegate_to: localhost
+  loop:
+    - "{{ app_helm_charts_install_directory }}"
+    - certs
+    - application/test-patch-role/tasks/
 
 - name: Create Makefile to simulate helm charts dir and make building
   copy:
@@ -33,15 +37,19 @@
     name: make
     state: present
 
-- name: Create local certs dir for dummy certs
-  file:
-    path: certs
-    state: directory
-  delegate_to: localhost
-
 - name: Create dummy cert file to simulate offline server certificates in helm install with override.yml file
   copy:
     content: |
       this is dummy server certificate value
     dest: certs/rootCA.crt
+  delegate_to: localhost
+
+- name: Create test patch role files
+  copy:
+    content: |
+      ---
+      - name: Mocked up patch role
+        debug:
+          msg: "Noop task to mock up patch role"
+    dest: application/test-patch-role/tasks/main.yml
   delegate_to: localhost
