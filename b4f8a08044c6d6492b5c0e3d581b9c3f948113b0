@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "b74e306c_808c4603",
+        "filename": "build/download/download.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-06-04T13:47:06Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "4035982f_ef91fb49",
+      "range": {
+        "startLine": 40,
+        "startChar": 24,
+        "endLine": 40,
+        "endChar": 52
+      },
+      "revId": "b4f8a08044c6d6492b5c0e3d581b9c3f948113b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "908e8151_82a09852",
         "filename": "build/download/download.py",
         "patchSetId": 4
@@ -77,6 +101,24 @@
       "writtenOn": "2019-05-30T13:07:00Z",
       "side": 1,
       "message": "help\u003d\u0027Enabling saving of docker images. Should be used together with --docker\u0027",
+      "revId": "b4f8a08044c6d6492b5c0e3d581b9c3f948113b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c1684d8_98abb2b6",
+        "filename": "build/download/download.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-06-04T13:47:06Z",
+      "side": 1,
+      "message": "I removed it in the end. If docker has 2 arguments second one is implicating save\u003dtrue",
+      "parentUuid": "908e8151_82a09852",
       "revId": "b4f8a08044c6d6492b5c0e3d581b9c3f948113b0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
