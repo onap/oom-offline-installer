@@ -124,6 +124,24 @@
       "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f687c0_b1cd2623",
+        "filename": "build/download/download.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-04T08:19:25Z",
+      "side": 1,
+      "message": "additional comment",
+      "parentUuid": "378e0b02_62dbcbbb",
+      "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
