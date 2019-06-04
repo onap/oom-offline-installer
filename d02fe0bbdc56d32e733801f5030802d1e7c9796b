@@ -70,6 +70,24 @@
       "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7a42e0c_9180546f",
+        "filename": "build/download/download.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-04T08:09:58Z",
+      "side": 1,
+      "message": "Samuli this is new file, no unittest are present. It\u0027s not straightforward to mock docker. I would expect this to be running on daily basis in CI loop quite soon. I dont see a big need for any mock tests ...",
+      "parentUuid": "106c5b08_095e4c41",
+      "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
