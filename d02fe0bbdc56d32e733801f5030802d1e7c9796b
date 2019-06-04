@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "68914c9f_bd3df7c3",
+        "filename": "build/download/download.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-04T05:31:54Z",
+      "side": 1,
+      "message": "syntax error (one bracket missing)",
+      "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
