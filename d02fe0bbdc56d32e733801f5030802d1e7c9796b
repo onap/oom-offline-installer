@@ -52,6 +52,24 @@
       "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "106c5b08_095e4c41",
+        "filename": "build/download/download.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-06-04T07:15:16Z",
+      "side": 1,
+      "message": "sorry, could not help myself. There is none, and I\u0027am afraid all these python script are actually developed in lab environment that can partly explain those were written quite long time.",
+      "parentUuid": "aae1c4db_8ddf50f6",
+      "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
