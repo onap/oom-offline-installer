@@ -3,8 +3,6 @@ vnc_passwd: samsung
 simulated_hosts:
   git:
     - gerrit.onap.org
-    - git.rancher.io
-    - github.com
   http:
     - git.onap.org
     - nexus.onap.org
