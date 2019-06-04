@@ -16,6 +16,24 @@
       "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b22cb6b3_5a7231fd",
+        "filename": "build/download/download.py",
+        "patchSetId": 11
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-06-04T05:41:18Z",
+      "side": 1,
+      "message": "impossible error at this stage as code has been run locally in laptop with unittest",
+      "parentUuid": "68914c9f_bd3df7c3",
+      "revId": "d02fe0bbdc56d32e733801f5030802d1e7c9796b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
