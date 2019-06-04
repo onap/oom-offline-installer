@@ -1,11 +1,11 @@
 ---
 #
-# Wrapper to pass through following variables
+# Wrapper to pass through following variables:
 #   resources_source_host
 #   resources_dir
 #   resource_source_filename
 #   resource_destination_directory
-# And handling target directory creation and possible removal on failure.
+# and handle target directory creation and eventual removal on failure.
 # Idempotence is also handled here as nothing is done if resource_destination_directory
 # was already created.
 #
@@ -48,9 +48,12 @@
 
     - name: "Cleanup the destination directory {{ resource_destination_directory }} on error"
       file:
-        path: "{{ item.path }}"
+        path: "{{ files_item.path }}"
         state: absent
-      with_items: "{{ files_after_fail.files | difference(original_files.files) }}"
+      loop: "{{ files_after_fail.files | difference(original_files.files) }}"
+      loop_control:
+        label: "{{ files_item.path }}"
+        loop_var: files_item
       when: files_after_fail is defined
 
     - name: "Report failure of upload operation"

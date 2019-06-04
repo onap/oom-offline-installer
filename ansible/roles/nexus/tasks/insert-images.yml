@@ -18,4 +18,4 @@
         push: true
         load_path: "{{ item.path }}"
         timeout: 120
-      changed_when: false  # for idenpotence
+      changed_when: false  # for idempotence

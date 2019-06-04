@@ -40,5 +40,5 @@
         dest: "{{ helm_home_dir.stdout }}/plugins"
         directory_mode: true
         mode: 0755
-      with_items: "{{ list_of_plugins.files }}"
+      loop: "{{ list_of_plugins.files }}"
   when: app_helm_plugins_directory is defined and app_helm_plugins_directory is not none
