@@ -1,0 +1,5 @@
+---
+- name: Prepare for kubectl tests
+  hosts: all
+  roles:
+    - prepare-kubectl
