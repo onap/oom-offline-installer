@@ -1,0 +1,18 @@
+---
+- name: "Ensure {{ app_data_path }}/downloads directory exists"
+  file:
+    path: "{{ app_data_path }}/downloads"
+    recurse: true
+    state: directory
+
+- name: "Download and unarchive helm-{{ helm_version }}"
+  unarchive:
+    src: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    dest: "/tmp"
+    remote_src: true
+
+- name: "Copy helm binary"
+  copy:
+    src: /tmp/linux-amd64/helm
+    dest: "{{ app_data_path }}/downloads/helm"
+    remote_src: true
