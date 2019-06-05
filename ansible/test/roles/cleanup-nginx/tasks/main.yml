@@ -1,0 +1,6 @@
+---
+- name: Remove saved nginx docker image
+  delegate_to: localhost
+  file:
+    path: /tmp/nginx.tar
+    state: absent
