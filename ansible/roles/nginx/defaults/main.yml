@@ -4,7 +4,7 @@ simulated_hosts:
   http:
   nexus:
 all_simulated_hosts:
-    "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
+  "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
 
 nginx:
   ports:
