@@ -1,0 +1,7 @@
+---
+# Set to false to download kubectl in preparation for kubectl role that
+# needs to install it, set to true to immediately install (needed for
+# cases where it is used by verification tests of other roles).
+kubectl_install: false
+# Kubectl version.
+kubectl_version: 1.13.5
