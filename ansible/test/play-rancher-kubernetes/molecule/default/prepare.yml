@@ -1,0 +1,22 @@
+---
+- name: Prepare for all
+  hosts: all
+  tasks:
+    # Needed because rancher agent is picky.
+    - name: Rewrite /etc/resolv.conf
+      copy:
+        content: "nameserver 8.8.8.8"
+        dest: /etc/resolv.conf
+        unsafe_writes: true
+  roles:
+    - role: prepare-docker-dind
+      vars:
+        docker_version: 18.06.3.ce
+
+- name: Prepare infra
+  hosts: infrastructure
+  roles:
+    - prepare-kubectl
+    - prepare-helm
+  vars_files:
+    vars.yml
