@@ -180,7 +180,7 @@ def download_docker_image(image, save, output_dir, docker_client):
         if save:
             save_image(image, pulled_image, output_dir)
     except Exception as err:
-        log.error('Error downloading {}: {}'.format(image, err))
+        log.exception('Error downloading {}: {}'.format(image, err))
         raise err
 
 
@@ -195,10 +195,10 @@ def download(image_list, save, output_dir, check_mode, progress, workers=3):
     :return: None
     """
     try:
-        docker_client = docker.client.DockerClient(version='auto')
+        # big timeout in case of massive images like pnda-mirror-container:5.0.0 (11.4GB)
+        docker_client = docker.client.DockerClient(version='auto', timeout=300)
     except docker.errors.DockerException as err:
-        log.error(err)
-        log.error('Error creating docker client. Check if is docker installed and running'
+        log.exception('Error creating docker client. Check if is docker installed and running'
                   ' or if you have right permissions.')
         raise err
 
@@ -221,14 +221,12 @@ def download(image_list, save, output_dir, check_mode, progress, workers=3):
                                        missing_images['not_saved'] - missing_images['not_pulled'],
                                        None, output_dir, docker_client)
 
+    base.finish_progress(progress, error_count, log)
     if error_count > 0:
         log.error('{} images were not downloaded'.format(error_count))
         missing_images = missing(docker_client, target_images, save, output_dir)
         log.info(check_table(merge_dict_sets(missing_images), missing_images, save))
-
-    base.finish_progress(progress, error_count, log)
-
-    return error_count
+        raise RuntimeError()
 
 
 def run_cli():
@@ -256,11 +254,13 @@ def run_cli():
 
     progress = base.init_progress('Docker images') if not args.check else None
     try:
-        sys.exit(download(args.image_list, args.save, args.output_dir, args.check,
-                 progress, args.workers))
+        download(args.image_list, args.save, args.output_dir, args.check,
+                 progress, args.workers)
     except docker.errors.DockerException:
-        log.error('Irrecoverable error detected.')
+        log.exception('Irrecoverable error detected.')
         sys.exit(1)
+    except RuntimeError as err:
+        log.exception(err)
 
 
 if __name__ == '__main__':
