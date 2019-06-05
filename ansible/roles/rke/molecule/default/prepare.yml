@@ -13,3 +13,6 @@
     - role: prepare-rke
       vars:
         mode: infra
+    - role: prepare-kubectl
+      vars:
+        kubectl_install: true
