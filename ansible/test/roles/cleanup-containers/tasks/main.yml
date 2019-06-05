@@ -1,6 +1,0 @@
----
-- name: Remove containers
-  docker_container:
-    name: "{{ item }}"
-    state: absent
-  loop: "{{ container_list }}"
