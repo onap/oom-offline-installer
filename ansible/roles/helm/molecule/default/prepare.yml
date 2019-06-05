@@ -1,0 +1,5 @@
+---
+- name: Prepare for helm tests
+  hosts: all
+  roles:
+    - prepare-helm
