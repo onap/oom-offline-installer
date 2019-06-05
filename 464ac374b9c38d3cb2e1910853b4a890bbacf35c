@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd4295b9_b4b1ec0c",
+        "filename": "ansible/test/roles/prepare-application/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-05T07:51:59Z",
+      "side": 1,
+      "message": "No idea why this empty line is here, in cloned repo there is none.",
+      "revId": "464ac374b9c38d3cb2e1910853b4a890bbacf35c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
