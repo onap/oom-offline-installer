@@ -96,7 +96,13 @@ so one might try following command to download most of the required artifacts in
         # all resources will be stored in expected folder structure within ../resources folder
         # for more details refer to Appendix 1.
 
-        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus --git ./build/data_lists/onap_git_repos.list ../resources/git-repo --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel
+        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
+        --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus \
+        --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus \
+        --git ./build/data_lists/onap_git_repos.list ../resources/git-repo \
+        --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar \
+        --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel \
+        --pypi ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi
 
 
 Alternatively, step-by-step procedure is described in Appendix 1.
@@ -129,15 +135,6 @@ ToDo: complete and verified list of http files will come just during/after vFWCL
 ::
 
       createrepo ../resources/pkg/rhel
-
-**Step 6 - pip packages**
-
-Todo: will be incorporated into download.py in near future
-
-::
-
-      # Following step will download all pip packages
-      ./build/download/download-pip.sh ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi
 
 
 This concludes SW download part required for ONAP offline platform creating.
@@ -268,7 +265,9 @@ Appendix 1. Step-by-step download procedure
         # This step will parse all 3 docker datalists (offline infrastructure images, rke k8s images & onap images)
         # and start building onap offline platform in /tmp/resources folder
 
-        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus
+        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
+        --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus \
+        --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus
 
 
 **Step 2 - building own dns image**
@@ -314,10 +313,8 @@ ToDo: complete and verified list of http files will come just during/after vFWCL
 
 **Step 8 - pip packages**
 
-Todo: new python script might be created for that part as well
-
 ::
 
       # Following step will download all pip packages
-      ./build/download/download-pip.sh ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi
+      ./build/download/download.py --pypi ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi
 
