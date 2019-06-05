@@ -30,6 +30,7 @@ import docker_images
 import git_repos
 import http_files
 import npm_packages
+import pypi_packages
 import rpm_packages
 
 log = logging.getLogger(name=__name__)
@@ -54,6 +55,9 @@ def parse_args():
     list_group.add_argument('--git', action='append', nargs=2, default=[],
                         metavar=('list', 'dir-name'),
                         help='git repo type list and directory to save downloaded files')
+    list_group.add_argument('--pypi', action='append', nargs=2, default=[],
+                        metavar=('list', 'dir-name'),
+                        help='pypi packages type list and directory to save downloaded files')
     parser.add_argument('--npm-registry', default='https://registry.npmjs.org',
                         help='npm registry to use (default: https://registry.npmjs.org)')
     parser.add_argument('--check', '-c', action='store_true', default=False,
@@ -63,7 +67,7 @@ def parse_args():
 
     args = parser.parse_args()
 
-    for arg in ('docker', 'npm', 'http', 'rpm', 'git'):
+    for arg in ('docker', 'npm', 'http', 'rpm', 'git', 'pypi'):
         if getattr(args, arg):
             return args
 
@@ -142,6 +146,17 @@ def run_cli():
             git_repos.download(git_list[0], git_list[1], progress)
         except RuntimeError:
             list_with_errors.append(git_list[0])
+
+    for pypi_list in args.pypi:
+        if args.check:
+            log.info('Check mode for pypi packages is not implemented')
+            break
+        progress = None if args.check else base.init_progress('pypi packages')
+        log.info('Processing {}.'.format(pypi_list[0]))
+        try:
+            pypi_packages.download(pypi_list[0], pypi_list[1], progress)
+        except RuntimeError:
+            list_with_errors.append(pypi_list[0])
 
     e_time = datetime.timedelta(seconds=timeit.default_timer() - timer_start)
     log.info(timeit.default_timer() - timer_start)
