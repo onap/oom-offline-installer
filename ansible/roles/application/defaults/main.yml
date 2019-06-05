@@ -11,5 +11,7 @@ helm_extra_install_options:
 app_skip_helm_override: false
 app_helm_override_role: application-override
 app_helm_override_file: "{{ app_data_path }}/override.yaml"
-helm_override_files:
-  - "{{ app_helm_override_file }}"
+# This list specifies additional static helm override files that are
+# passed to helm.
+# Values in app helm override file override all of these.
+additional_helm_override_files: []

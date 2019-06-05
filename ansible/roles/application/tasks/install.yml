@@ -71,7 +71,7 @@
           {{ app_helm_release_name }}
           {{ helm_repository_name }}/{{ app_helm_chart_name }}
           --namespace {{ app_kubernetes_namespace }}
-          {{ helm_override_files | map('regex_replace', '^', '-f ') | join(' ') if not app_skip_helm_override }}
+          {{ additional_helm_override_files | map('regex_replace', '^', '-f ') | join(' ') }}
           {{ helm_extra_install_options | map(attribute='opt') | join(' ') }}
   changed_when: true  # when executed its a changed type of action
   register: helm_install

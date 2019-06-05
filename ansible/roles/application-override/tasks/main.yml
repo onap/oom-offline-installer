@@ -14,3 +14,7 @@
   copy:
     dest: "{{ app_helm_override_file }}"
     content: "{{ merged_overrides | to_nice_yaml }}"
+
+- name: "Add {{ app_helm_override_file }} to the overrides list"
+  set_fact:
+    additional_helm_override_files: "{{ (additional_helm_override_files | default([])) + [app_helm_override_file] }}"
