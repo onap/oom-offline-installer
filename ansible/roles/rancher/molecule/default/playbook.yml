@@ -6,7 +6,6 @@
     - role: rancher
       vars:
         mode: server
-        rancher_server_url: "http://{{ cluster_ip }}:8080"
 
 - name: Converge rancher agent
   hosts: kubernetes
