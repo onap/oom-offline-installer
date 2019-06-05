@@ -32,13 +32,8 @@ platforms:
       - name: resource-data
 provisioner:
   name: ansible
-  playbooks:
-    cleanup: ../default/cleanup.yml
   env:
     ANSIBLE_ROLES_PATH: ../../../../roles:../../../roles
-  inventory:
-    links:
-      group_vars: ../default/group_vars
   lint:
     name: ansible-lint
 verifier:

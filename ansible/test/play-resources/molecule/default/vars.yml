@@ -1,0 +1,7 @@
+---
+app_data_path: /opt/moleculeapp
+aux_data_path: "{{ app_data_path }}/runtime_images_source_dir"
+resources_dir: /data
+resources_filename: resources_package.tar
+aux_resources_filename: aux_resources_package.tar
+ansible_ssh_private_key_file: ~/.ssh/offline_ssh_key

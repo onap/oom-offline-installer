@@ -1,7 +1,7 @@
 ---
-- name: Prepare resource-data
+- name: Prepare
   hosts: all
   roles:
-    - role: prepare-resource-data
-      vars:
-        resources_on_nfs: true
+    - prepare-resource-data
+  vars_files:
+    - vars.yml

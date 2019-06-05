@@ -1,8 +1,8 @@
 ---
-- name: Test resource transfer with nfs
+- name: Initialize
   hosts: all
-  roles:
-    - setup
-    - role: resource-data
-      vars:
-        resources_on_nfs: true
+  tasks:
+    - name: Include variables
+      include_vars: vars.yml
+
+- import_playbook: ../../../../resources.yml

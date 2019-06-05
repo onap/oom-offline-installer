@@ -2,4 +2,7 @@
 - name: Prepare resource-data
   hosts: all
   roles:
+    - setup
     - prepare-resource-data
+  vars_files:
+    - vars.yml
