@@ -16,6 +16,23 @@
       "revId": "b4110df1efc1bf1af9e85d3309a59dec2f03cba2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de61c253_66c114cc",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-06-05T12:35:41Z",
+      "side": 1,
+      "message": "Didn\u0027t notice that mispell. Anyway it was consumed in the install.yml",
+      "revId": "b4110df1efc1bf1af9e85d3309a59dec2f03cba2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
