@@ -2,6 +2,7 @@
 - name: Run dns server container
   docker_container:
     name: dns-server
+    network_mode: host
     image: "{{ dns_server_image }}"
     command: -H /simulated_hosts --log-facility=- --dns-loop-detect
     capabilities: NET_ADMIN
