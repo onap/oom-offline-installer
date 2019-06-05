@@ -34,6 +34,7 @@ provisioner:
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml
+    cleanup: ../default/cleanup.yml
 scenario:
   name: custom_role
   test_sequence:
