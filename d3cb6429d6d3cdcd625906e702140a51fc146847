@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0a52805_73654e91",
+        "filename": "ansible/test/play-infrastructure/molecule/default/cleanup.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-06-05T12:06:51Z",
+      "side": 0,
+      "message": "In my opinion this could be a separate commit, because it is actually unrelated to the role level test.",
+      "revId": "d3cb6429d6d3cdcd625906e702140a51fc146847",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46742ea2_084401fa",
+        "filename": "ansible/test/roles/cleanup-nginx/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-06-05T12:06:51Z",
+      "side": 0,
+      "message": "Well I didn\u0027t have any kind of image cleanup because I decided to rely upon systemd cleaning temporary directories. But maybe...\nAnyway, shouldn\u0027t this cleanup role be split into a separate commit?",
+      "revId": "d3cb6429d6d3cdcd625906e702140a51fc146847",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
