@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "0a35049c_93ef0b3a",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 5
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-06-05T07:51:51Z",
+      "side": 1,
+      "message": "this can be done with new download script. Just create data list and use --http",
+      "range": {
+        "startLine": 130,
+        "startChar": 7,
+        "endLine": 130,
+        "endChar": 68
+      },
+      "revId": "c5886d1655ef274f5d41771448e2365a00562f16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd4a62e5_20fbaa51",
         "filename": "docs/BuildGuide.rst",
         "patchSetId": 5
