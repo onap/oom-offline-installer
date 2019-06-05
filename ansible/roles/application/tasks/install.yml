@@ -71,7 +71,7 @@
           {{ app_helm_release_name }}
           {{ helm_repository_name }}/{{ app_helm_chart_name }}
           --namespace {{ app_kubernetes_namespace }}
-          {{ '' if app_skip_helm_override else '-f ' + app_helm_override_file }}
+          {% if not app_skip_helm_override %} {% for arg in helm_overide_files %} {{ '-f ' + arg }} {% endfor %} {% endif %}
           {% for arg in helm_extra_install_options %} {{ arg.opt }} {% endfor %}
   changed_when: true  # when executed its a changed type of action
   register: helm_install
