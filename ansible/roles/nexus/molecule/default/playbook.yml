@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    nexus_port: ":8081"
+    nexus3_published_ports:
+      - "{{ '8081' + nexus_port }}"
+    nexus_url_scheme: http
+  roles:
+    - nexus
