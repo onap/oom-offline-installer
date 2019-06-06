@@ -24,6 +24,7 @@
     image: "{{ nexus3_image }}"
     networks:
       - name: nexus_network
+    published_ports: "{{ nexus3_published_ports }}"
     volumes:
       - "{{ app_data_path }}/nexus_data:/nexus-data:rw"
     state: started
