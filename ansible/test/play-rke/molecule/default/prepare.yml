@@ -1,0 +1,19 @@
+---
+- name: Prepare for all
+  hosts: all
+  roles:
+    - prepare-docker-dind
+    - role: prepare-rke
+      vars:
+        mode: all
+
+- name: Prepare infra
+  hosts: infrastructure
+  roles:
+    - role: prepare-rke
+      vars:
+        mode: infra
+    - prepare-kubectl
+    - prepare-helm
+  vars_files:
+    vars.yml
