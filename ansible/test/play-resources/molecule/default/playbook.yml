@@ -1,6 +1,8 @@
 ---
-- name: Test resource transfer with ssh
+- name: Initialize
   hosts: all
-  roles:
-    - setup
-    - resource-data
+  tasks:
+    - name: Include variables
+      include_vars: vars.yml
+
+- import_playbook: ../../../../resources.yml
