@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cfe15d9_ac9d11b2",
+        "filename": "build/download/download-bin-tools.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-10T11:36:58Z",
+      "side": 1,
+      "message": "Why not leaving this script in place until there\u0027s a final solution? Iterating over a infra_bin_utils.list file with list would be rather a trivial patch.",
+      "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
