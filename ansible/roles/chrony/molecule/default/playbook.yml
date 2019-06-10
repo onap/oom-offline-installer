@@ -1,6 +1,10 @@
 ---
 - name: Converge infrastructure hosts
   hosts: infrastructure
+  tasks:
+    - name: Set cluster_ip fact
+      set_fact:
+        cluster_ip: "{{ ansible_default_ipv4.address }}"
   roles:
     - chrony
 
