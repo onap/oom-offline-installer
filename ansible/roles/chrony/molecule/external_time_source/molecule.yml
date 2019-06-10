@@ -1,0 +1,48 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infra_host
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: True
+    privileged: true
+    volume_mounts:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    override_command: False
+    groups:
+      - infrastructure
+  - name: node0
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: True
+    privileged: true
+    volume_mounts:
+      - "/sys/fs/cgroup:/sys/fs/cgroup:ro"
+    override_command: False
+    groups:
+      - kubernetes
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+  inventory:
+    group_vars:
+      all:
+        timesync:
+          servers:
+            - 0.pool.ntp.org
+            - 1.pool.ntp.org
+          timezone: Europe/Warsaw
+  playbooks:
+    prepare: ../default/prepare.yml
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+  options:
+    v: 1
