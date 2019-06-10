@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "11d20ed3_c29c60fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-06-10T08:32:28Z",
+      "side": 1,
+      "message": "what reason you need? It\u0027s just text output",
+      "parentUuid": "0fb3bf1b_f4183205",
+      "revId": "1918f052a41b778ac8435a87bc9bd6169d36dea0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "123c3347_fc4316a4",
         "filename": "ansible/ansible.cfg",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-10T07:05:36Z",
       "side": 1,
       "message": "Why do we need that? What is the benefit?",
+      "revId": "1918f052a41b778ac8435a87bc9bd6169d36dea0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f042114_b1d5b5c1",
+        "filename": "ansible/ansible.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-06-10T08:32:28Z",
+      "side": 1,
+      "message": "Well we see how much time each step of the play takes. I can upload that text to commit message. I cannot think of any other benefits.",
+      "parentUuid": "123c3347_fc4316a4",
       "revId": "1918f052a41b778ac8435a87bc9bd6169d36dea0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
