@@ -96,7 +96,7 @@ so one might try following command to download most of the required artifacts in
         # all resources will be stored in expected folder structure within ../resources folder
         # for more details refer to Appendix 1.
 
-        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus --git ./build/data_lists/onap_git_repos.list ../resources/git-repo --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel
+        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus --git ./build/data_lists/onap_git_repos.list ../resources/git-repo --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
 
 
 Alternatively, step-by-step procedure is described in Appendix 1.
@@ -120,9 +120,13 @@ ToDo: complete and verified list of http files will come just during/after vFWCL
 
 ::
 
-       # Following step will download and prepare rke, kubectl and helm binaries
-       # there is some post-processing needed therefore its not very convenient to add support for this step into main download.py script
-       ./build/download/download-bin-tools.sh ../resources/downloads
+       # Binaries are downloaded in step one but some post processing is still needed.
+       # This will be improved in future in installer itself
+
+       tar -xf ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz linux-amd64/helm -O > ../resources/downloads/helm
+       rm -f ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz
+       mv ../resources/downloads/rke_linux-amd64 rke
+
 
 **Step 5 - Create repo**
 
@@ -301,7 +305,10 @@ ToDo: complete and verified list of http files will come just during/after vFWCL
 ::
 
        # Following step will download and prepare rke, kubectl and helm binaries
-       ./build/download/download-bin-tools.sh ../resources/downloads
+       ./build/download/download.py --http ./build/data_lists/infra_bin_utils.sh ../resources/downloads
+       tar -xf ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz linux-amd64/helm -O > ../resources/downloads/helm
+       rm -f ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz
+       mv ../resources/downloads/rke_linux-amd64 rke
 
 **Step 7 - rpms**
 
