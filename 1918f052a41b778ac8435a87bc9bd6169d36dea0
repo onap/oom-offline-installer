@@ -69,6 +69,24 @@
       "revId": "1918f052a41b778ac8435a87bc9bd6169d36dea0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03d235f3_64e37e8a",
+        "filename": "ansible/ansible.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-10T08:46:32Z",
+      "side": 1,
+      "message": "Well i don\u0027t find it a benefit. It\u0027s good for testing purposes like benchmarking but from user perspective it\u0027s just making output messier.",
+      "parentUuid": "7f042114_b1d5b5c1",
+      "revId": "1918f052a41b778ac8435a87bc9bd6169d36dea0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
