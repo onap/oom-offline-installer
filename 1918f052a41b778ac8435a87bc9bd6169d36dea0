@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0fb3bf1b_f4183205",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-10T07:05:36Z",
+      "side": 1,
+      "message": "Commit message lacks any reasoning for this change.",
+      "revId": "1918f052a41b778ac8435a87bc9bd6169d36dea0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "123c3347_fc4316a4",
+        "filename": "ansible/ansible.cfg",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-10T07:05:36Z",
+      "side": 1,
+      "message": "Why do we need that? What is the benefit?",
+      "revId": "1918f052a41b778ac8435a87bc9bd6169d36dea0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
