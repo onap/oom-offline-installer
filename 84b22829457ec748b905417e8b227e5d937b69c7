@@ -16,6 +16,24 @@
       "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed730ab7_87d820a2",
+        "filename": "build/download/download-bin-tools.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-06-12T08:56:43Z",
+      "side": 1,
+      "message": "we don\u0027t want to touch shell in this place anymore and we want to have it consistent.\nalso we want to clean up download from actions there are not really download but data manipulation.",
+      "parentUuid": "7cfe15d9_ac9d11b2",
+      "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
