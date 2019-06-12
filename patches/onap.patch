@@ -1,20 +1,29 @@
 diff --git a/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh b/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh
-index c87a26b..79ad921 100644
+index c87a26b..4212c96 100644
 --- a/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh
 +++ b/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/resources/config/msosimulator.sh
-@@ -1,4 +1,10 @@
+@@ -1,4 +1,4 @@
  #!/bin/sh
 -pip install flask
 -pip install requests
-+
-+# for some reason DNS is not working properly on this pod
-+# therefore we need to explicitly add record just for
-+# the purpose of this script
-+HOSTS_FILE_RECORD >> /etc/hosts
-+
 +pip install -i https://nexus3.onap.org/repository/pypi-private/simple/ --trusted-host nexus3.onap.org flask
 +pip install -i https://nexus3.onap.org/repository/pypi-private/simple/ --trusted-host nexus3.onap.org requests
  python /share/etc/config/mock.py
+diff --git a/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/templates/deployment.yaml b/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/templates/deployment.yaml
+index b26f6dd..2d31aad 100644
+--- a/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/templates/deployment.yaml
++++ b/kubernetes/oof/charts/oof-cmso/charts/oof-cmso-service/templates/deployment.yaml
+@@ -30,6 +30,10 @@ spec:
+         app: {{ include "common.name" . }}
+         release: {{ .Release.Name }}
+     spec:
++      hostAliases:
++      - ip: INFRA_CLUSTER_IP
++        hostnames:
++        - nexus3.onap.org
+       initContainers:
+       - command:
+         - /root/ready.py
 --
 
 diff --git a/kubernetes/common/dgbuilder/templates/deployment.yaml b/kubernetes/common/dgbuilder/templates/deployment.yaml
@@ -36,6 +45,6 @@ index 353c231..cf38409 100644
            ports:
            - containerPort: {{ .Values.service.internalPort }}
            readinessProbe:
--- 
+--
 1.8.3.1
 
