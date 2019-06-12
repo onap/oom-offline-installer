@@ -1,0 +1,8 @@
+---
+- name: Prepare
+  hosts: all
+  vars_files:
+    - ../../defaults/main.yml
+  roles:
+    - prepare-docker-dind
+    - prepare-vncserver

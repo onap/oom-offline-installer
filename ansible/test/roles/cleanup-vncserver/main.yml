@@ -1,0 +1,6 @@
+---
+- name: Remove saved vncserver docker image
+  delegate_to: localhost
+  file:
+    path: /tmp/vncserver.tar
+    state: absent
