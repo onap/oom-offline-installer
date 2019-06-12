@@ -57,6 +57,30 @@
       "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f6122d_398edbbb",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-06-12T11:24:23Z",
+      "side": 1,
+      "message": "The plan is to do that in installation step. We were searching for the optimal way of installation through package manager, but it\u0027s not possible in RHEL, so decided to keep this way of installation and in the same step do the move/rename/extract actions. It\u0027s still 3 separated steps for the 3 binaries.",
+      "parentUuid": "b410c575_44d35471",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 52
+      },
+      "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
