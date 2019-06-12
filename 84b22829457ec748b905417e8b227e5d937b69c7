@@ -81,6 +81,30 @@
       "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a56936_e56a3259",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-12T11:43:11Z",
+      "side": 1,
+      "message": "Ok so i assume that for e.g. \u0027rke\u0027 binary this will happen somewhere here (change rke_binary to \u0027rke_linux-amd64\u0027):\n\n$ tail -6 ansible/roles/rke/tasks/rke_config.yml\n- name: Install rke cli tool\n  copy:\n    src: \"{{ app_data_path }}/downloads/{{ rke_binary }}\"\n    dest: \"{{ rke_bin_dir }}/rke\"\n    remote_src: true\n    mode: 0755\n\nI didn\u0027t see a ticket for that that\u0027s why i was confused. Can we create one or it will happen in one of the existing?",
+      "parentUuid": "b4f6122d_398edbbb",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 52
+      },
+      "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
