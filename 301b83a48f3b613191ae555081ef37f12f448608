@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e14fad80_23b8b2d4",
+        "filename": "build/download/git_repos.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-12T14:01:54Z",
+      "side": 1,
+      "message": "I think that this logic is slightly too naive - even when directory for repo exists we can still recover from this state prior to force checking out of the content not to blindly assume existence of the clone by just the presence of dir for it. Will propose a patch for that with my proposal of improvement at will.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "301b83a48f3b613191ae555081ef37f12f448608",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
