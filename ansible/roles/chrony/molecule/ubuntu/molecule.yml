@@ -37,3 +37,6 @@ verifier:
   name: testinfra
   lint:
     name: flake8
+  options:
+    v: 1
+  directory: ../default/tests/
