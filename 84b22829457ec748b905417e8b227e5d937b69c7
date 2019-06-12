@@ -105,6 +105,30 @@
       "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4e25888_91278cd2",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-06-12T13:25:13Z",
+      "side": 1,
+      "message": "I created OOM-1925 - should be all three in the same issue id",
+      "parentUuid": "d7a56936_e56a3259",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 311,
+        "endChar": 52
+      },
+      "revId": "84b22829457ec748b905417e8b227e5d937b69c7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
