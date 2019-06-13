@@ -1,7 +1,10 @@
 ---
 - name: Cleanup
-  hosts: all
+  hosts: infrastructure
   ignore_unreachable: true
+  vars_files:
+    - ../../../../roles/nexus/defaults/main.yml
   roles:
     - cleanup-nginx
+    - cleanup-nexus
     - cleanup-vncserver
