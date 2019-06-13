@@ -25,7 +25,7 @@ import sys
 import argparse
 import yaml
 import requests
-from subprocess import Popen,STDOUT,PIPE
+from subprocess import Popen,STDOUT,PIPE,check_output
 import datetime
 from time import sleep
 from os.path import expanduser
@@ -137,7 +137,7 @@ def check_in_loop(k8s, max_time, sleep_time, verbosity):
     return ready
 
 def check_helm_releases():
-    helm = subprocess.check_output(['helm', 'ls'])
+    helm = check_output(['helm', 'ls'])
     if helm == '':
         sys.exit('No Helm releases detected.')
     helm_releases = csv.DictReader(
