@@ -59,25 +59,34 @@ LISTS_DIR="${LOCAL_PATH}/data_lists"
 
 usage () {
     echo "   Example usage: build_nexus_blob.sh --input-directory </path/to/downloaded/files/dir> --output-directory
-           </path/to/output/dir> --resource-list-directory </path/to/dir/with/resource/list>
+           </path/to/output/dir> --resource-list-directory </path/to/dir/with/resource/list> --load-docker-images
 
-     -i | --input-directory directory containing file needed to create nexus blob. The structure of this directory must organized as described in build guide
-     -o | --output-directory
-    -rl | --resource-list-directory directory with files containing docker, pypi and npm lists
+     -i  | --input-directory directory containing file needed to create nexus blob. The structure of this directory must organized as described in build guide
+     -ld | --load-docker-images load docker images from stored files in the input directory
+     -o  | --output-directory
+     -rl | --resource-list-directory directory with files containing docker, pypi and npm lists
     "
     exit 1
 }
 
-while [ "$1" != "" ]; do
-    case $1 in
+load_docker_images () {
+    for ARCHIVE in $(sed $'s/\r// ; /^#/d ; s/\:/\_/g ; s/\//\_/g ; s/$/\.tar/g' ${1} | awk '{ print $1 }'); do
+        docker load -i ${NXS_SRC_DOCKER_IMG_DIR}/${ARCHIVE}
+    done
+}
+
+while [ "${1}" != "" ]; do
+    case ${1} in
         -i | --input-directory )           shift
-                                           DATA_DIR=$1
+                                           DATA_DIR="${1}"
+                                           ;;
+        -ld | --load-docker-images )       DOCKER_LOAD="true"
                                            ;;
         -o | --output-directory )          shift
-                                           NEXUS_DATA_DIR=$1
+                                           NEXUS_DATA_DIR="${1}"
                                            ;;
         -rl | --resource-list-directory )  shift
-                                           LISTS_DIR=$1
+                                           LISTS_DIR="${1}"
                                            ;;
         -h | --help )                      usage
                                            ;;
@@ -179,13 +188,12 @@ fi
 # Docker repository preparation #
 #################################
 
-# Load predefined Nexus image
-docker load -i ${NEXUS_IMAGE_TAR}
-
-# Load all necessary images
-for ARCHIVE in $(sed $'s/\r// ; /^#/d ; s/\:/\_/g ; s/\//\_/g ; s/$/\.tar/g' ${NXS_DOCKER_IMG_LIST} | awk '{ print $1 }'); do
-   docker load -i ${NXS_SRC_DOCKER_IMG_DIR}/${ARCHIVE}
-done
+if [ ${DOCKER_LOAD} == "true" ]; then
+    # Load predefined Nexus image
+    docker load -i ${NEXUS_IMAGE_TAR}
+    # Load all necessary images
+    load_docker_images ${NXS_DOCKER_IMG_LIST}
+fi
 
 ################################
 # Nexus repository preparation #
