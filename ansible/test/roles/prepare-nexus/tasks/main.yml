@@ -24,34 +24,18 @@
     name: "{{ nexus3_image }}"
     archive_path: /tmp/nexus.tar
 
-- name: Download and tag additional (busybox) docker image for the nexus role to populate into
-  delegate_to: localhost
-  docker_image:
-    name: busybox
-    tag: latest
-    repository: nexus3.onap.org:10001/busybox
-
 - name: Save busybox image
   delegate_to: localhost
   docker_image:
     name: nexus3.onap.org:10001/busybox
     tag: latest
-    pull: false
     archive_path: /tmp/busybox.tar
-
-- name: Download and tag additional (aaionap/haproxy) docker image for the nexus role to populate into nexus
-  delegate_to: localhost
-  docker_image:
-    name: aaionap/haproxy
-    tag: 1.2.4
-    repository: nexus3.onap.org:10001/aaionap/haproxy
 
 - name: Save haproxy image
   delegate_to: localhost
   docker_image:
     name: nexus3.onap.org:10001/aaionap/haproxy
     tag: 1.2.4
-    pull: false
     archive_path: /tmp/haproxy.tar
 
 - name: Copy nexus image to node
