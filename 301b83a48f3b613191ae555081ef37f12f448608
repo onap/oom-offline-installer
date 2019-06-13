@@ -22,6 +22,30 @@
       "revId": "301b83a48f3b613191ae555081ef37f12f448608",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26308244_ef25c532",
+        "filename": "build/download/git_repos.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-06-13T13:16:36Z",
+      "side": 1,
+      "message": "If the git repo is cloned, it should deleted or updated by pull",
+      "parentUuid": "e14fad80_23b8b2d4",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "301b83a48f3b613191ae555081ef37f12f448608",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
