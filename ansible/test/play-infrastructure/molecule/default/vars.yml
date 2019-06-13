@@ -16,9 +16,9 @@ molecule_test_registry: nexus3.onap.org:10001
 runtime_images:
   busybox:
     registry: "{{ molecule_test_registry }}"
-    path: "/onap/components/busybox"
+    path: "/busybox"
     tag: "latest"
   aaionap-haproxy:
     registry: "{{ molecule_test_registry }}"
-    path: "/onap/components/aaionap/haproxy"
+    path: "/aaionap/haproxy"
     tag: "1.2.4"

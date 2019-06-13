@@ -1,0 +1,10 @@
+---
+- name: Remove saved nginx docker image
+  delegate_to: localhost
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /tmp/nexus.tar
+    - /tmp/busybox.tar
+    - /tmp/haproxy.tar
