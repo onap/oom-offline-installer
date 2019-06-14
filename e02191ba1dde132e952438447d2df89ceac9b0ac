@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "780cfcf9_12ec91dc",
+        "filename": "ansible/roles/helm/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-14T10:35:29Z",
+      "side": 1,
+      "message": "tests here ansible/test/roles/prepare-helm/tasks/main.yml need updating to reflect those changes",
+      "revId": "e02191ba1dde132e952438447d2df89ceac9b0ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad2bb602_1b2d0c56",
+        "filename": "ansible/roles/rke/defaults/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-14T10:35:29Z",
+      "side": 1,
+      "message": "This change needs to be reflected here ansible/test/roles/prepare-rke/tasks/infra.yml",
+      "revId": "e02191ba1dde132e952438447d2df89ceac9b0ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
