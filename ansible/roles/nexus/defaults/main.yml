@@ -6,4 +6,6 @@ populate_nexus: false
 # but all images are pre-populated either at buildtime or at install time (populate_nexus).
 runtime_images: {}
 # Default rule for tarball naming translation
+nexus_url: "{{ nexus_url_scheme | default('https') }}://nexus.{{ hostvars[groups.infrastructure[0]].ansible_nodename }}{{ nexus_port | default('') }}"
 nexus3_image_tar: "{{ nexus3_image | regex_replace('(\\/|\\:)', '_') }}.tar"
+nexus3_published_ports: []
