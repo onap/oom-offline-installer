@@ -94,6 +94,30 @@
       "revId": "301b83a48f3b613191ae555081ef37f12f448608",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e11ddf80_f232f48f",
+        "filename": "build/download/git_repos.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-14T07:28:01Z",
+      "side": 1,
+      "message": "Ack, i haven\u0027t done anything in this scope yet. Will be tracked in OOM-1928.",
+      "parentUuid": "ae859cee_2a5fe230",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "301b83a48f3b613191ae555081ef37f12f448608",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
