@@ -25,7 +25,7 @@ import sys
 import argparse
 import yaml
 import requests
-from subprocess import Popen,STDOUT,PIPE
+from subprocess import Popen,STDOUT,PIPE,check_output
 import datetime
 from time import sleep
 from os.path import expanduser
@@ -137,7 +137,7 @@ def check_in_loop(k8s, max_time, sleep_time, verbosity):
     return ready
 
 def check_helm_releases():
-    helm = subprocess.check_output(['helm', 'ls'])
+    helm = check_output(['helm', 'ls'])
     if helm == '':
         sys.exit('No Helm releases detected.')
     helm_releases = csv.DictReader(
@@ -180,9 +180,7 @@ def parse_args():
             default=expanduser('~') + '/.kube/config',
             help='path to .kube/config file')
     parser.add_argument('--health-path', '-hp', help='path to ONAP robot ete-k8s.sh')
-    parser.add_argument('--health-mode', default='health', help='healthcheck mode',
-            choices=('health','healthdist','distribute','instantiate','instantiateVFWCL',
-                     'instantiateDemoVFWCL','portal'))
+    parser.add_argument('--health-mode', '-hm', default='health', help='healthcheck mode')
     parser.add_argument('--no-helm', action='store_true', help='Do not check Helm')
     parser.add_argument('--check-frequency', '-w', default=300, type=int,
             help='time between readiness checks in seconds')
