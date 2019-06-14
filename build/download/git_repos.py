@@ -21,6 +21,7 @@
 
 import argparse
 import subprocess
+import shutil
 import logging
 import sys
 import os
@@ -63,18 +64,20 @@ def download(git_list, dst_dir, progress):
             clone_repo(dst, *repo)
             progress.update(progress.value + 1)
         except subprocess.CalledProcessError as err:
+            if os.path.isdir(dst):
+                shutil.rmtree(dst)
             log.exception(err.output.decode())
             error_count += 1
 
     base.finish_progress(progress, error_count, log)
     if error_count > 0:
         log.error('{} were not downloaded. Check logs for details'.format(error_count))
-        raise RuntimeError('Download unsuccesfull')
+        raise RuntimeError('Download unsuccessful')
 
 def run_cli():
     parser = argparse.ArgumentParser(description='Download git repositories from list')
     parser.add_argument('git_list', metavar='git-list',
-                        help='File with list of npm packages to download.')
+                        help='File with list of git repos to download.')
     parser.add_argument('--output-dir', '-o', default=os.getcwd(),
                         help='Download destination')
 
