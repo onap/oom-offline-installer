@@ -27,10 +27,16 @@ provisioner:
           - all
           - onap
         app_helm_chart_name: "{{ app_name }}"
+        application_pre_install_role: application/test-patch-role
+        application_post_install_role: application/test-patch-role
   lint:
     name: ansible-lint
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+    cleanup: ../default/cleanup.yml
 scenario:
-  name: default
+  name: custom_role
   test_sequence:
     - lint
     - cleanup
@@ -40,15 +46,6 @@ scenario:
     - create
     - prepare
     - converge
-    # - idempotence
-    # --> Action: 'idempotence'
-    # ERROR: Idempotence test failed because of the following tasks:
-    # * [instance] => application : Get helm dir
-    # * [instance] => application : Helm init and upgrade
-    # * [instance] => application : Helm Serve
-    # * [instance] => application : Helm Add Repo
-    # * [instance] => application : Helm Install application moleculetestapp
-    - side_effect
     - verify
     - cleanup
     - destroy

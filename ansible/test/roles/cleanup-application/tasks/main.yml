@@ -1,0 +1,9 @@
+---
+- name: Clean application role mocked artifacts directories
+  file:
+    path: "{{ item }}"
+    state: absent
+  delegate_to: localhost
+  loop:
+    - certs
+    - application

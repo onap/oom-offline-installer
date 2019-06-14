@@ -2,3 +2,5 @@
 simulate_helm: true
 app_helm_charts_install_directory: application/helm_charts
 helm_simulation_output_file: /tmp/helm_simu_output
+application_pre_install_role: application/test-patch-role
+application_post_install_role: application/test-patch-role
