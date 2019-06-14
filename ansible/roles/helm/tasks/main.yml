@@ -1,7 +1,7 @@
 ---
 - name: Install Helm
-  copy:
-    src: "{{ app_data_path }}/downloads/helm"
+  unarchive:
+    src: "{{ app_data_path }}/downloads/helm-{{ helm_version }}-linux-amd64.tar.gz"
     dest: "{{ helm_bin_dir }}"
     remote_src: true
     mode: 0755
