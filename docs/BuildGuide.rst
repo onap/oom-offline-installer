@@ -122,20 +122,7 @@ Following steps are still required and are not supported by current version of d
 
 ToDo: complete and verified list of http files will come just during/after vFWCL testcase
 
-
-**Step 4 - Binaries**
-
-::
-
-       # Binaries are downloaded in step one but some post processing is still needed.
-       # This will be improved in future in installer itself
-
-       tar -xf ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz linux-amd64/helm -O > ../resources/downloads/helm
-       rm -f ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz
-       mv ../resources/downloads/rke_linux-amd64 rke
-
-
-**Step 5 - Create repo**
+**Step 4 - Create repo**
 
 ::
 
@@ -306,9 +293,6 @@ ToDo: complete and verified list of http files will come just during/after vFWCL
 
        # Following step will download and prepare rke, kubectl and helm binaries
        ./build/download/download.py --http ./build/data_lists/infra_bin_utils.sh ../resources/downloads
-       tar -xf ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz linux-amd64/helm -O > ../resources/downloads/helm
-       rm -f ../resources/downloads/helm-v2.12.3-linux-amd64.tar.gz
-       mv ../resources/downloads/rke_linux-amd64 rke
 
 **Step 7 - rpms**
 
