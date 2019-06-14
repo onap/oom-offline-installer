@@ -47,7 +47,7 @@ import yaml
 import sys
 
 with open("${1}", 'r') as f:
-    values = yaml.load(f)
+    values = yaml.load(f, Loader=yaml.SafeLoader)
 
     enabled = filter(lambda x: values[x].get('enabled', False) == True, values)
     print(' '.join(enabled))
