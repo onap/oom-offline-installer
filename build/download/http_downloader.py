@@ -35,8 +35,8 @@ log = logging.getLogger(__name__)
 
 
 class HttpDownloader(ConcurrentDownloader):
-    def __init__(self, *list_args, workers=None):
-        super().__init__('http files', *list_args, workers=workers)
+    def __init__(self, *list_args, list_type='http_files', workers=None):
+        super().__init__(list_type, *list_args, workers=workers)
 
     @property
     def check_table(self):
