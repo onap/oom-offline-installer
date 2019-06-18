@@ -100,7 +100,9 @@ class AbstractDownloader(ABC):
         Log items that are already downloaded.
         """
         for item in self._merged_lists():
-            if item not in self._missing:
+            if type(self).__name__ == 'DockerDownloader':
+                log.info('Docker image present: {}'.format(item))
+            else:
                 log.info('File or directory present: {}'.format(item))
 
     def _merged_lists(self):
@@ -124,3 +126,4 @@ class AbstractDownloader(ABC):
         log.info('{}: Initializing download {} {} are not present.'.format(class_name, items_left,
                                                                            self._list_type))
         return True
+
