@@ -101,7 +101,10 @@ class AbstractDownloader(ABC):
         """
         for item in self._merged_lists():
             if item not in self._missing:
-                log.info('File or directory present: {}'.format(item))
+                if type(self).__name__ == 'DockerDownloader':
+                    log.info('Docker image present: {}'.format(item))
+                else:
+                    log.info('File or directory present: {}'.format(item))
 
     def _merged_lists(self):
         """
