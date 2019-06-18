@@ -20,44 +20,48 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 import argparse
-import logging
-import sys
 import datetime
+import logging
+import subprocess
+import sys
 import timeit
 
-import base
-import docker_images
-import git_repos
-import http_files
-import npm_packages
-import pypi_packages
-import rpm_packages
+import docker_downloader
+import git_downloader
+import http_downloader
+import npm_downloader
+import pypi_downloader
+import rpm_downloader
 
 log = logging.getLogger(name=__name__)
 
+
 def parse_args():
-    parser=argparse.ArgumentParser(description='Download data from lists')
+    parser = argparse.ArgumentParser(description='Download data from lists')
     list_group = parser.add_argument_group()
     list_group.add_argument('--docker', action='append', nargs='+', default=[],
-                        metavar=('list', 'dir-name'),
-                        help='Docker type list. If second argument is specified '
-                             'it is treated as directory where images will be saved '
-                             'otherwise only pull operation is executed')
+                            metavar=('list', 'dir-name'),
+                            help='Docker type list. If second argument is specified '
+                                 'it is treated as directory where images will be saved '
+                                 'otherwise only pull operation is executed this can\'t '
+                                 'be mixed between multiple docker list specifications. '
+                                 'if one of the list does not have directory specified '
+                                 'all lists are only pulled!!!')
     list_group.add_argument('--http', action='append', nargs=2, default=[],
-                        metavar=('list', 'dir-name'),
-                        help='Http type list and directory to save downloaded files')
+                            metavar=('list', 'dir-name'),
+                            help='Http type list and directory to save downloaded files')
     list_group.add_argument('--npm', action='append', nargs=2, default=[],
-                        metavar=('list', 'dir-name'),
-                        help='npm type list and directory to save downloaded files')
+                            metavar=('list', 'dir-name'),
+                            help='npm type list and directory to save downloaded files')
     list_group.add_argument('--rpm', action='append', nargs=2, default=[],
-                        metavar=('list', 'dir-name'),
-                        help='rpm type list and directory to save downloaded files')
+                            metavar=('list', 'dir-name'),
+                            help='rpm type list and directory to save downloaded files')
     list_group.add_argument('--git', action='append', nargs=2, default=[],
-                        metavar=('list', 'dir-name'),
-                        help='git repo type list and directory to save downloaded files')
+                            metavar=('list', 'dir-name'),
+                            help='git repo type list and directory to save downloaded files')
     list_group.add_argument('--pypi', action='append', nargs=2, default=[],
-                        metavar=('list', 'dir-name'),
-                        help='pypi packages type list and directory to save downloaded files')
+                            metavar=('list', 'dir-name'),
+                            help='pypi packages type list and directory to save downloaded files')
     parser.add_argument('--npm-registry', default='https://registry.npmjs.org',
                         help='npm registry to use (default: https://registry.npmjs.org)')
     parser.add_argument('--check', '-c', action='store_true', default=False,
@@ -72,6 +76,42 @@ def parse_args():
             return args
 
     parser.error('One of --docker, --npm, --http, --rpm, --git must be specified')
+
+
+def log_start(item_type):
+    log.info('Starting download of {}.'.format(item_type))
+
+
+def handle_download(downloader, check_mode, errorred_lists, start_time):
+    if check_mode:
+        print(downloader.check_table)
+    else:
+        log_start(downloader.list_type)
+        try:
+            downloader.download()
+        except RuntimeError:
+            errorred_lists.append(downloader.list_type)
+    return log_time_interval(start_time, downloader.list_type)
+
+
+def handle_command_download(downloader_class, check_mode, errorred_lists, start_time, *args):
+    try:
+        downloader = downloader_class(*args)
+        return handle_download(downloader, check_mode, errorred_lists, start_time)
+    except FileNotFoundError as err:
+        classname = type(downloader_class).__name__
+        log.exception('Error initializing: {}: {}'.format(classname, err))
+    return timeit.default_timer()
+
+
+def log_time_interval(start, type=''):
+    e_time = datetime.timedelta(seconds=timeit.default_timer() - start)
+    if type:
+        msg = 'Download of {} took {}\n'.format(type, e_time)
+    else:
+        msg = 'Execution ended. Total elapsed time {}'.format(e_time)
+    log.info(msg)
+    return timeit.default_timer()
 
 
 def run_cli():
@@ -91,82 +131,42 @@ def run_cli():
     root_logger = logging.getLogger()
     root_logger.addHandler(console_handler)
 
-    list_with_errors = []
-    timer_start = timeit.default_timer()
+    errorred_lists = []
+    timer_start = interval_start = timeit.default_timer()
 
-    for docker_list in args.docker:
-        log.info('Processing {}.'.format(docker_list[0]))
-        progress = None if args.check else base.init_progress('docker images')
-        save = False
-        if len(docker_list) > 1:
-            save = True
-        else:
-            docker_list.append(None)
-        try:
-            docker_images.download(docker_list[0], save,
-                                   docker_list[1], args.check, progress)
-        except RuntimeError:
-            list_with_errors.append(docker_list[0])
+    if args.check:
+        log.info('Check mode. No download will be executed.')
 
-    for http_list in args.http:
-        progress = None if args.check else base.init_progress('http files')
-        log.info('Processing {}.'.format(http_list[0]))
-        try:
-            http_files.download(http_list[0], http_list[1], args.check,
-                                progress)
-        except RuntimeError:
-            list_with_errors.append(http_list[0])
+    if args.docker:
+        save = True if len(list(filter(lambda x: len(x) == 2, args.docker))) == len(args.docker) else False
+        docker = docker_downloader.DockerDownloader(save, *args.docker, workers=3)
+        interval_start = handle_download(docker, args.check, errorred_lists, interval_start)
 
-    for npm_list in args.npm:
-        progress = None if args.check else base.init_progress('npm packages')
-        log.info('Processing {}.'.format(npm_list[0]))
-        try:
-            npm_packages.download(npm_list[0], args.npm_registry, npm_list[1],
-                                  args.check, progress)
-        except RuntimeError:
-            list_with_errors.append(npm_list[0])
+    if args.http:
+        http = http_downloader.HttpDownloader(*args.http)
+        interval_start = handle_download(http, args.check, errorred_lists, interval_start)
 
-    for rpm_list in args.rpm:
-        if args.check:
-            log.info('Check mode for rpm packages is not implemented')
-            break
-        log.info('Processing {}.'.format(rpm_list[0]))
-        try:
-            rpm_packages.download(rpm_list[0], rpm_list[1])
-        except RuntimeError:
-            list_with_errors.append(rpm_list[0])
+    if args.npm:
+        npm = npm_downloader.NpmDownloader(args.npm_registry, *args.npm)
+        interval_start = handle_download(npm, args.check, errorred_lists, interval_start)
 
-    for git_list in args.git:
-        if args.check:
-            log.info('Check mode for git repositories is not implemented')
-            break
-        progress = None if args.check else base.init_progress('git repositories')
-        log.info('Processing {}.'.format(git_list[0]))
-        try:
-            git_repos.download(git_list[0], git_list[1], progress)
-        except RuntimeError:
-            list_with_errors.append(git_list[0])
+    if args.rpm:
+        interval_start = handle_command_download(rpm_downloader.RpmDownloader, args.check, errorred_lists, interval_start, *args.rpm)
 
-    for pypi_list in args.pypi:
-        if args.check:
-            log.info('Check mode for pypi packages is not implemented')
-            break
-        progress = None if args.check else base.init_progress('pypi packages')
-        log.info('Processing {}.'.format(pypi_list[0]))
-        try:
-            pypi_packages.download(pypi_list[0], pypi_list[1], progress)
-        except RuntimeError:
-            list_with_errors.append(pypi_list[0])
+    if args.git:
+        interval_start = handle_command_download(git_downloader.GitDownloader, args.check, errorred_lists, interval_start, *args.git)
 
-    e_time = datetime.timedelta(seconds=timeit.default_timer() - timer_start)
-    log.info(timeit.default_timer() - timer_start)
-    log.info('Execution ended. Total elapsed time {}'.format(e_time))
+    if args.pypi:
+        handle_command_download(pypi_downloader.PyPiDownloader, args.check, errorred_lists,
+                                                 interval_start, *args.pypi)
 
-    if list_with_errors:
-        log.error('Errors encountered while processing these lists:'
-                  '\n{}'.format('\n'.join(list_with_errors)))
+    if not args.check:
+        log_time_interval(timer_start)
+
+    if errorred_lists:
+        log.error('Errors encountered while processing these types:'
+                  '\n{}'.format('\n'.join(errorred_lists)))
         sys.exit(1)
-
 
 
 if __name__ == '__main__':
