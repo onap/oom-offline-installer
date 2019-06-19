@@ -10,6 +10,7 @@
 - name: Converge rancher agent
   hosts: kubernetes
   roles:
+    - prepare-common
     - role: rancher
       vars:
         mode: agent

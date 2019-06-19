@@ -4,6 +4,8 @@
     name: rancher_agent
     image: "{{ server_hostvars.rancher_agent_image }}"
     command: "{{ server_hostvars.rancher_agent_reg_url }}"
+    env:
+      CATTLE_AGENT_IP: "{{ cluster_ip }}"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/rancher:/var/lib/rancher"
