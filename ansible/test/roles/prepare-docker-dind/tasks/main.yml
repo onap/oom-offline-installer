@@ -20,4 +20,5 @@
   package:
     name: "docker-ce-{{ docker_version }}"
     state: present
+    allow_downgrade: true
   notify: Restart docker
