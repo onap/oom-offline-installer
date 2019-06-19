@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "262d12ca_2ee13ac6",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-06-19T12:43:31Z",
+      "side": 1,
+      "message": "put it in some requirements.txt or document dependency",
+      "revId": "c6363bdffafaf7955e06f6d8f8d80cb6cacd5166",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
