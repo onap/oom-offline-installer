@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "371d7d6f_94d20d12",
+        "filename": "ansible/roles/vncserver/molecule/default/cleanup.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-24T07:57:51Z",
+      "side": 1,
+      "message": "What do you mean \u0027hide\u0027? This is cleanup task, look at the test matrix, it\u0027s run before containers are created so it has to succeed nevertheless.",
+      "parentUuid": "a35c248b_f62523e4",
+      "revId": "5f6e33397ce71d9731d330778402220b44cf96a9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b2df3efb_5b0af28d",
         "filename": "ansible/roles/vncserver/molecule/default/molecule.yml",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2019-06-24T07:50:51Z",
       "side": 1,
       "message": "additional online dependency ?",
+      "revId": "5f6e33397ce71d9731d330778402220b44cf96a9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "785ee3ee_a9318ff9",
+        "filename": "ansible/roles/vncserver/molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-24T07:57:51Z",
+      "side": 1,
+      "message": "It\u0027s standard molecule config file with some common content.",
+      "parentUuid": "b2df3efb_5b0af28d",
       "revId": "5f6e33397ce71d9731d330778402220b44cf96a9",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
