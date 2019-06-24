@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a35c248b_f62523e4",
+        "filename": "ansible/roles/vncserver/molecule/default/cleanup.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-24T07:50:51Z",
+      "side": 1,
+      "message": "why to hide this kind of problems ?",
+      "revId": "5f6e33397ce71d9731d330778402220b44cf96a9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2df3efb_5b0af28d",
+        "filename": "ansible/roles/vncserver/molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-24T07:50:51Z",
+      "side": 1,
+      "message": "additional online dependency ?",
+      "revId": "5f6e33397ce71d9731d330778402220b44cf96a9",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
