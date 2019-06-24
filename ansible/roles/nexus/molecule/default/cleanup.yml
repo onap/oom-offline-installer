@@ -1,0 +1,8 @@
+---
+- name: Cleanup
+  hosts: all
+  ignore_unreachable: true
+  vars_files:
+    - ../../defaults/main.yml
+  roles:
+    - cleanup-nexus

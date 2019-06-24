@@ -18,53 +18,16 @@
     - "{{ infra_images_path }}"
     - "{{ aux_data_path }}"
 
-- name: Download and archive nexus docker image for the nexus role to use
+- name: Download and archive docker images for the nexus role to use
   delegate_to: localhost
   docker_image:
-    name: "{{ nexus3_image }}"
-    archive_path: /tmp/nexus.tar
+    name: "{{ item.name }}"
+    tag: "{{ item.tag | default('latest') }}"  # Tag given in 'name' has precedence over the one declared here
+    archive_path: "{{ item.archive_path }}"
+  loop: "{{ prepare_nexus_images }}"
 
-- name: Download and tag additional (busybox) docker image for the nexus role to populate into
-  delegate_to: localhost
-  docker_image:
-    name: busybox
-    tag: latest
-    repository: nexus3.onap.org:10001/busybox
-
-- name: Save busybox image
-  delegate_to: localhost
-  docker_image:
-    name: nexus3.onap.org:10001/busybox
-    tag: latest
-    pull: false
-    archive_path: /tmp/busybox.tar
-
-- name: Download and tag additional (aaionap/haproxy) docker image for the nexus role to populate into nexus
-  delegate_to: localhost
-  docker_image:
-    name: aaionap/haproxy
-    tag: 1.2.4
-    repository: nexus3.onap.org:10001/aaionap/haproxy
-
-- name: Save haproxy image
-  delegate_to: localhost
-  docker_image:
-    name: nexus3.onap.org:10001/aaionap/haproxy
-    tag: 1.2.4
-    pull: false
-    archive_path: /tmp/haproxy.tar
-
-- name: Copy nexus image to node
+- name: Copy docker images to node
   copy:
-    src: /tmp/nexus.tar
-    dest: "{{ infra_images_path }}/{{ nexus3_image_tar }}"
-
-- name: Copy busybox image to node
-  copy:
-    src: /tmp/busybox.tar
-    dest: "{{ aux_data_path }}/busybox.tar"
-
-- name: Copy haproxy image to node
-  copy:
-    src: /tmp/haproxy.tar
-    dest: "{{ aux_data_path }}/aaionap-haproxy.tar"
+    src: "{{ item.archive_path }}"
+    dest: "{{ item.dest }}"
+  loop: "{{ prepare_nexus_images }}"

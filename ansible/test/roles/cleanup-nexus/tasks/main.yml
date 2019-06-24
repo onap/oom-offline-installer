@@ -1,0 +1,7 @@
+---
+- name: Remove saved docker images
+  delegate_to: localhost
+  file:
+    path: "{{ item.archive_path }}"
+    state: absent
+  loop: "{{ prepare_nexus_images }}"

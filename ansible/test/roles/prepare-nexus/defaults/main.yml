@@ -1,0 +1,13 @@
+---
+prepare_nexus_images:
+  - name: "{{ nexus3_image }}"  # name already contains tag so it's ommited in this list element
+    archive_path: /tmp/nexus.tar
+    dest: "{{ infra_images_path }}/{{ nexus3_image_tar }}"
+  - name: nexus3.onap.org:10001/busybox
+    tag: latest
+    archive_path: /tmp/busybox.tar
+    dest: "{{ aux_data_path }}/busybox.tar"
+  - name: nexus3.onap.org:10001/aaionap/haproxy
+    tag: 1.2.4
+    archive_path: /tmp/haproxy.tar
+    dest: "{{ aux_data_path }}/aaionap-haproxy.tar"
