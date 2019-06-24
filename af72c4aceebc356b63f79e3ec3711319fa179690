@@ -157,6 +157,24 @@
       "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f1a21fc_0926e00c",
+        "filename": "ansible/roles/chrony/molecule/external_time_source_ubuntu/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-06-24T08:11:25Z",
+      "side": 1,
+      "message": "he ment file name prb. As it\u0027s ubuntu. But that is correct as this scenario is for Ubuntu.",
+      "parentUuid": "f09b8a71_47bc110f",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
