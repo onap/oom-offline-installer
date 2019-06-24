@@ -9,10 +9,8 @@
       vars:
         mode: config
 
-- name: Prepare kubernetes nodes (RKE)
-  hosts:
-  - kubernetes
-  - kubernetes-control-plane
+- name: Prepare kubernetes hosts (RKE)
+  hosts: kubernetes
   roles:
     - role: rke
       vars:

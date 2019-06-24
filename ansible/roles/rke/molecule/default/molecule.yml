@@ -19,7 +19,9 @@ platforms:
       container: docker
     groups:
       - infrastructure
+      - kubernetes-etcd
       - kubernetes-control-plane
+      - kubernetes
     networks:
       - name: rke
     purge_networks: true
@@ -37,6 +39,7 @@ platforms:
       - /var/lib/docker
     groups:
       - kubernetes
+      - kubernetes-node
     networks:
       - name: rke
     purge_networks: true
@@ -54,6 +57,7 @@ platforms:
       - /var/lib/docker
     groups:
       - kubernetes
+      - kubernetes-node
     networks:
       - name: rke
     purge_networks: true

@@ -18,7 +18,7 @@
     - nexus
 
 - name: Setup base for Kubernetes nodes
-  hosts: kubernetes
+  hosts: kubernetes:!infrastructure
   roles:
     - chrony
     - package-repository-check
