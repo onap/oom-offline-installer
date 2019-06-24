@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "73bf12d9_04441d08",
+        "filename": "ansible/test/roles/prepare-nexus/defaults/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-06-24T15:01:00Z",
+      "side": 1,
+      "message": "Could be something a bit smaller than 139MB?",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "7238ccf32f392fb7805e1ae2f3f951c39237de57",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
