@@ -175,6 +175,24 @@
       "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f32185a_58ed87be",
+        "filename": "ansible/roles/chrony/molecule/external_time_source_ubuntu/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-24T08:20:01Z",
+      "side": 1,
+      "message": "Yes, it\u0027s used in the context of scenario so it\u0027s correct as you stated.",
+      "parentUuid": "4f1a21fc_0926e00c",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
