@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e31765b3_73be7bf5",
+        "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-06-24T07:51:45Z",
+      "side": 1,
+      "message": "molecule tests are run with internet connection, they are normal CI tests. They do not need to work offline.",
+      "parentUuid": "58f4511d_7374caba",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1f727f9_cccd2bc5",
         "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
         "patchSetId": 2
