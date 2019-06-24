@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "c849aee1_68d36440",
+        "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-24T08:01:59Z",
+      "side": 1,
+      "message": "We are using molecule for testing like this for couple of month now, strange question...",
+      "parentUuid": "e31765b3_73be7bf5",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1f727f9_cccd2bc5",
         "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
         "patchSetId": 2
@@ -48,6 +66,24 @@
       "writtenOn": "2019-06-24T07:49:09Z",
       "side": 1,
       "message": "isn\u0027t it defined elsewhere already ?",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "35c87fdb_49a8a797",
+        "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-24T08:01:59Z",
+      "side": 1,
+      "message": "It\u0027s a config definition for test scenario, it can\u0027t be elsewhere.",
+      "parentUuid": "e1f727f9_cccd2bc5",
       "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
@@ -71,6 +107,24 @@
     },
     {
       "key": {
+        "uuid": "4f216f92_6f3da3c9",
+        "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-24T08:01:59Z",
+      "side": 1,
+      "message": "It\u0027s in every molecule file.",
+      "parentUuid": "87a75cdf_f85aa4e1",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4bb565c_f7bcd0ad",
         "filename": "ansible/roles/chrony/molecule/external_time_source_ubuntu/molecule.yml",
         "patchSetId": 2
@@ -82,6 +136,24 @@
       "writtenOn": "2019-06-24T07:49:09Z",
       "side": 1,
       "message": "ideally we should not be using distro specific version of tasks rather use platform agnostic ansible modules with proper arguments",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f09b8a71_47bc110f",
+        "filename": "ansible/roles/chrony/molecule/external_time_source_ubuntu/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-24T08:01:59Z",
+      "side": 1,
+      "message": "What are \"distro specific version of tasks\"? This file is test scenario definition, there are no distro specific tasks anywhere.",
+      "parentUuid": "e4bb565c_f7bcd0ad",
       "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
