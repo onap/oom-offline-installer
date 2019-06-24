@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58f4511d_7374caba",
+        "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-24T07:49:09Z",
+      "side": 1,
+      "message": "how this will work offline ? or our molecule testing is supposed to run with any online dependencies ?",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1f727f9_cccd2bc5",
+        "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-24T07:49:09Z",
+      "side": 1,
+      "message": "isn\u0027t it defined elsewhere already ?",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87a75cdf_f85aa4e1",
+        "filename": "ansible/roles/chrony/molecule/external_time_source/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-24T07:49:09Z",
+      "side": 1,
+      "message": "this looks like strange name",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4bb565c_f7bcd0ad",
+        "filename": "ansible/roles/chrony/molecule/external_time_source_ubuntu/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-06-24T07:49:09Z",
+      "side": 1,
+      "message": "ideally we should not be using distro specific version of tasks rather use platform agnostic ansible modules with proper arguments",
+      "revId": "af72c4aceebc356b63f79e3ec3711319fa179690",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
