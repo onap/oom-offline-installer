@@ -1,0 +1,10 @@
+---
+- name: Converge infrastructure hosts
+  hosts: infrastructure
+  roles:
+    - chrony
+
+- name: Converge kubernetes hosts
+  hosts: kubernetes
+  roles:
+    - chrony
