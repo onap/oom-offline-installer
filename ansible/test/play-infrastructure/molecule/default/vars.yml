@@ -18,7 +18,7 @@ runtime_images:
     registry: "{{ molecule_test_registry }}"
     path: "/busybox"
     tag: "latest"
-  aaionap-haproxy:
+  alpine:
     registry: "{{ molecule_test_registry }}"
-    path: "/aaionap/haproxy"
-    tag: "1.2.4"
+    path: "/library/alpine"
+    tag: "latest"
