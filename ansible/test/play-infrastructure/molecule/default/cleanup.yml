@@ -7,4 +7,5 @@
   roles:
     - cleanup-nginx
     - cleanup-nexus
+    - cleanup-dns
     - cleanup-vncserver

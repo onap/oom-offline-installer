@@ -1,0 +1,6 @@
+---
+- name: Remove saved dnsmasq image
+  delegate_to: localhost
+  file:
+    path: /tmp/dnsmasq.tar
+    state: absent
