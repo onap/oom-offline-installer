@@ -20,5 +20,5 @@ runtime_images:
     tag: "latest"
   aaionap-haproxy:
     registry: "{{ molecule_test_registry }}"
-    path: "/aaionap/haproxy"
-    tag: "1.2.4"
+    path: "/alpine"
+    tag: "latest"
