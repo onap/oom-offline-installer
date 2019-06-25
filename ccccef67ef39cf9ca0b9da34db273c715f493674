@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c0ce432_a4ef8a36",
+        "filename": "build/download/git_downloader.py",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-25T13:42:59Z",
+      "side": 1,
+      "message": "So we are interpolating binary logic here? This made my day:)",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 26
+      },
+      "revId": "ccccef67ef39cf9ca0b9da34db273c715f493674",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
