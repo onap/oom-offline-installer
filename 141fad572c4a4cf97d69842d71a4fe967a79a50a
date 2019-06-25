@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fec84119_7380e2cd",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-06-25T13:26:18Z",
+      "side": 1,
+      "message": "Expect different hosts than the first one",
+      "range": {
+        "startLine": 248,
+        "startChar": 0,
+        "endLine": 255,
+        "endChar": 40
+      },
+      "revId": "141fad572c4a4cf97d69842d71a4fe967a79a50a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
