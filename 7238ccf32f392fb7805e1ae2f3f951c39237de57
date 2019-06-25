@@ -22,6 +22,30 @@
       "revId": "7238ccf32f392fb7805e1ae2f3f951c39237de57",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2868e0c_08c0f601",
+        "filename": "ansible/test/roles/prepare-nexus/defaults/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-25T13:47:31Z",
+      "side": 1,
+      "message": "Done in OOM-1942 (https://gerrit.onap.org/r/c/oom/offline-installer/+/90431)",
+      "parentUuid": "73bf12d9_04441d08",
+      "range": {
+        "startLine": 10,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "7238ccf32f392fb7805e1ae2f3f951c39237de57",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
