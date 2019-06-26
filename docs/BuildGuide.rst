@@ -118,11 +118,7 @@ Following steps are still required and are not supported by current version of d
         ./build/creating_data/create_nginx_image/01create-image.sh /tmp/resources/offline_data/docker_images_infra
 
 
-**Step 3 - Http files**
-
-ToDo: complete and verified list of http files will come just during/after vFWCL testcase
-
-**Step 4 - Create repo**
+**Step 3 - Create repo**
 
 ::
 
@@ -276,25 +272,22 @@ Appendix 1. Step-by-step download procedure
         # Following step will download all git repos
         ./build/download/download.py --git ./build/data_lists/onap_git_repos.list ../resources/git-repo
 
-**Step 4 - http files**
 
-ToDo: complete and verified list of http files will come just during/after vFWCL testcase
-
-**Step 5 - npm packages**
+**Step 4 - npm packages**
 
 ::
 
         # Following step will download all npm packages
         ./build/download/download.py --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar
 
-**Step 6 - binaries**
+**Step 5 - binaries**
 
 ::
 
        # Following step will download rke, kubectl and helm binaries
        ./build/download/download.py --http ./build/data_lists/infra_bin_utils.sh ../resources/downloads
 
-**Step 7 - rpms**
+**Step 6 - rpms**
 
 ::
 
@@ -303,7 +296,7 @@ ToDo: complete and verified list of http files will come just during/after vFWCL
 
       createrepo ../resources/pkg/rhel
 
-**Step 8 - pip packages**
+**Step 7 - pip packages**
 
 ::
 
