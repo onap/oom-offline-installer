@@ -7,7 +7,6 @@ prepare_nexus_images:
     tag: latest
     archive_path: /tmp/busybox.tar
     dest: "{{ aux_data_path }}/busybox.tar"
-  - name: nexus3.onap.org:10001/aaionap/haproxy
-    tag: 1.2.4
-    archive_path: /tmp/haproxy.tar
-    dest: "{{ aux_data_path }}/aaionap-haproxy.tar"
+  - name: nexus3.onap.org:10001/library/alpine
+    archive_path: /tmp/alpine.tar
+    dest: "{{ aux_data_path }}/alpine.tar"
