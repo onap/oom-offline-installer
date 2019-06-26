@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e17369ed_013c4d24",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-26T08:51:03Z",
+      "side": 1,
+      "message": "Linter complained about too many spaces.",
+      "revId": "61d7bfee9cf357ee4846ea2839d2be9aab2aa253",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d98ba8a_1b793f11",
+        "filename": "ansible/roles/helm/molecule/default/prepare.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-26T08:51:03Z",
+      "side": 1,
+      "message": "This is included so that prepare stage can use \u0027helm_version\u0027 without need to redefine that var in test config.",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 61
+      },
+      "revId": "61d7bfee9cf357ee4846ea2839d2be9aab2aa253",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}

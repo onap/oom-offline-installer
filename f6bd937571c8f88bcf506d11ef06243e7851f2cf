@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbb1f004_0bb32887",
+        "filename": "ansible/test/roles/prepare-helm/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-26T08:51:03Z",
+      "side": 0,
+      "message": "A good practice is not to redefine such vars in test config.",
+      "revId": "f6bd937571c8f88bcf506d11ef06243e7851f2cf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
