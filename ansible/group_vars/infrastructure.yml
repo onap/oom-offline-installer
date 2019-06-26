@@ -25,7 +25,7 @@ simulated_hosts:
     - registry.hub.docker.com
     - registry.npmjs.org
 all_simulated_hosts:
-    "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
+  "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
 populate_nexus: false
 helm_bin_dir: /usr/local/bin
 helm_version: v2.12.3

@@ -7,6 +7,6 @@
 
 - name: "Download helm-{{ helm_version }}"
   get_url:
-    url: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
+    url: "https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz"
     dest: "{{ app_data_path }}/downloads"
     remote_src: true
