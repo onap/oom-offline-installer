@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "324a3461_105b65fd",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-06-26T07:24:50Z",
+      "side": 1,
+      "message": "My understanding of the patch is that --load-docker-images is optional, if it is so then i would put in in brackets in \u0027usage\u0027, i.e. \"[ --load-docker-images ]\"",
+      "revId": "f1242de9809d8dda476d51e1af15341a8d261721",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
