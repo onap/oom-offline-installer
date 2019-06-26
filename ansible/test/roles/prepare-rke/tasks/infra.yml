@@ -7,7 +7,7 @@
 - name: "Install rke-{{ rke_version }}"
   get_url:
     url: "https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_linux-amd64"
-    dest: "{{ app_data_path }}/downloads/rke"
+    dest: "{{ app_data_path }}/downloads/rke_linux-amd64"
 
 - name: "Install kubectl-{{ kubectl_version }}"
   get_url:

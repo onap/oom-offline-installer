@@ -1,5 +1,5 @@
 ---
-rke_binary: rke
+rke_binary: rke_linux-amd64
 rke_username: rke
 rke_bin_dir: /usr/local/bin
 kube_config_dir: "{{ ansible_env.HOME }}/.kube"

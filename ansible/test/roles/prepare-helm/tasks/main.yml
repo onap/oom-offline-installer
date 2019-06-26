@@ -5,14 +5,8 @@
     recurse: true
     state: directory
 
-- name: "Download and unarchive helm-{{ helm_version }}"
-  unarchive:
-    src: "https://get.helm.sh/helm-v{{ helm_version }}-linux-amd64.tar.gz"
-    dest: "/tmp"
-    remote_src: true
-
-- name: "Copy helm binary"
-  copy:
-    src: /tmp/linux-amd64/helm
-    dest: "{{ app_data_path }}/downloads/helm"
+- name: "Download helm-{{ helm_version }}"
+  get_url:
+    url: "https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz"
+    dest: "{{ app_data_path }}/downloads"
     remote_src: true
