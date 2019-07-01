@@ -59,6 +59,16 @@
     name: "{{ app_helm_override_role }}"
   when: not app_skip_helm_override
 
+# The generated override file is added to override list unless skipped.
+- name: Add application helm override file to list of overrides unless skipped
+  set_fact:
+    helm_override_files: "{{ (helm_override_files | default([])) + [app_helm_override_file] }}"
+  when: not app_skip_helm_override
+
+- name: Print final list of override files
+  debug:
+    var: helm_override_files
+
 - name: Check for deploy plugin presence
   stat:
     path: '{{ helm_home_dir.stdout }}/plugins/deploy/deploy.sh'
@@ -71,7 +81,7 @@
           {{ app_helm_release_name }}
           {{ helm_repository_name }}/{{ app_helm_chart_name }}
           --namespace {{ app_kubernetes_namespace }}
-          {% if not app_skip_helm_override %} {% for arg in helm_overide_files %} {{ '-f ' + arg }} {% endfor %} {% endif %}
+          {% for arg in helm_override_files %} {{ '-f ' + arg }} {% endfor %}
           {% for arg in helm_extra_install_options %} {{ arg.opt }} {% endfor %}
   changed_when: true  # when executed its a changed type of action
   register: helm_install
