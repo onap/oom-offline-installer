@@ -11,5 +11,6 @@ helm_extra_install_options:
 app_skip_helm_override: false
 app_helm_override_role: application-override
 app_helm_override_file: "{{ app_data_path }}/override.yaml"
-helm_overide_files:
-  - "{{ app_helm_override_file }}"
+# List of additional helm override files, the generated one above overrides all of them.
+additional_helm_override_files:
+  - onap/resources/onap-all.yaml
