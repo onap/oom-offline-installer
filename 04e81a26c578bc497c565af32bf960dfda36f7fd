@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3808081b_50262421",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-02T07:57:56Z",
+      "side": 1,
+      "message": "utilized tools",
+      "range": {
+        "startLine": 9,
+        "startChar": 20,
+        "endLine": 9,
+        "endChar": 37
+      },
+      "revId": "04e81a26c578bc497c565af32bf960dfda36f7fd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ae49c08_5a250ede",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-02T07:57:56Z",
+      "side": 1,
+      "message": "script",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 5
+      },
+      "revId": "04e81a26c578bc497c565af32bf960dfda36f7fd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e8f1330_ecae1435",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-02T07:57:56Z",
+      "side": 1,
+      "message": "global scope, capital letters ?",
+      "revId": "04e81a26c578bc497c565af32bf960dfda36f7fd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f009437f_afc10c61",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-02T07:57:56Z",
+      "side": 1,
+      "message": "rather move to function",
+      "revId": "04e81a26c578bc497c565af32bf960dfda36f7fd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
