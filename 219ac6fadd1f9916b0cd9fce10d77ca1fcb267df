@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64eea66d_849cb828",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-02T07:51:42Z",
+      "side": 1,
+      "message": "why introduce additional array ? I think we can rather rename \"app_helm_override_file\" to \"app_helm_override_files\" and append our override with certificate in application-override file",
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
