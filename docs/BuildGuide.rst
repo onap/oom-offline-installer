@@ -61,6 +61,9 @@ Subsequent steps are the same on both platforms:
     # install following packages
     yum install -y docker-ce-18.09.5 python-pip git createrepo expect nodejs npm jq
 
+    # install Python 3 (download scripts don't support Python 2 anymore)
+    yum install -y python36
+
     # twine package is needed by nexus blob build script
     pip install twine
 
@@ -77,7 +80,7 @@ Then it is necessary to clone all installer and build related repositories and p
     cd onap-offline
 
     # install required pip packages for download scripts
-    pip install -r ./build/download/requirements.txt
+    pip3 install -r ./build/download/requirements.txt
 
 Part 2. Download artifacts for offline installer
 ------------------------------------------------
