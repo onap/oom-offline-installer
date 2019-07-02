@@ -20,7 +20,7 @@
 
 ### This script prepares Nexus repositories data blobs for ONAP
 
-## The script requires following dependencies are installed: nodejs, jq, docker, twine
+## The script requires following dependencies are installed: nodejs, jq, docker, twine, expect
 ## All required resources are expected in the upper directory created during
 ## download procedure as DATA_DIR or in the directory given as --input-directory
 ## All lists used must be in project data_lists directory or in the directory given
@@ -52,10 +52,13 @@ NEXUS_EMAIL=admin@example.org
 # Setting paths
 LOCAL_PATH="$(readlink -f $(dirname ${0}))"
 
-#Defaults
+# Defaults
 DATA_DIR="$(realpath ${LOCAL_PATH}/../../resources)"
 NEXUS_DATA_DIR="${DATA_DIR}/nexus_data"
 LISTS_DIR="${LOCAL_PATH}/data_lists"
+
+# Required dependencies
+COMMANDS=(jq docker expect npm twine)
 
 usage () {
     echo "   Example usage: build_nexus_blob.sh --input-directory </path/to/downloaded/files/dir> --output-directory
@@ -67,6 +70,20 @@ usage () {
     "
     exit 1
 }
+
+# Verify all dependencies are available in PATH
+FAILED_COMMANDS=()
+for cmd in ${COMMANDS[*]};
+do
+    command -v $cmd >/dev/null 2>&1 || FAILED_COMMANDS+=($cmd)
+done
+if [ ${#FAILED_COMMANDS[*]} -gt 0 ];
+then
+    echo "Following commands where not found in PATH and are required:"
+    echo ${FAILED_COMMANDS[*]}
+    echo "Aborting."
+    exit 1
+fi
 
 while [ "$1" != "" ]; do
     case $1 in
