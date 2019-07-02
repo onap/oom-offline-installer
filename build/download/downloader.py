@@ -32,7 +32,7 @@ class AbstractDownloader(ABC):
     def __init__(self, list_type, *list_args):
         self._list_type = list_type
         self._data_list = {item: list_arg[1] for list_arg in list_args
-                           for item in self._load_list(list_arg[0])}
+                           for item in self.load_list(list_arg[0])}
         self._missing = self.missing()
 
     @property
@@ -43,7 +43,7 @@ class AbstractDownloader(ABC):
         return self._list_type
 
     @staticmethod
-    def _load_list(path):
+    def load_list(path):
         """
         Load list from file.
         :param path: path to file
