@@ -79,6 +79,24 @@
       "revId": "04e81a26c578bc497c565af32bf960dfda36f7fd",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8f77fddd_1fa925d4",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-07-02T08:10:26Z",
+      "side": 1,
+      "message": "This code is used once so that\u0027d be of no use.",
+      "parentUuid": "f009437f_afc10c61",
+      "revId": "04e81a26c578bc497c565af32bf960dfda36f7fd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
