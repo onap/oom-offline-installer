@@ -51,6 +51,24 @@
       "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4e2b46d5_14122f60",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-03T12:13:03Z",
+      "side": 1,
+      "message": "Well it has it\u0027s reasoning. Normally when you override a variable in ansible like list, then you don\u0027t append to it, but replace it. In this case it is for example cicdansible where you give your own list of overrides, you also need to remember to give the full path to override.yml file, and you need to remember you can\u0027t even use any ansible variables there.\nEven more, because the app overridefile should override everything else, so if it is put at the end of the list, then it wouldn\u0027t work even if you could append instead of replacing.\nFor that reason the app override is in a separate variable, additional overrides are in a separate variable, and they are merged, with relative paths apsolutized, to make it easier to actually change the defaults.",
+      "parentUuid": "05750966_fcf36cb4",
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
