@@ -69,6 +69,29 @@
       "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1d0c9d6_373bf832",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-07-03T14:43:30Z",
+      "side": 1,
+      "message": "The initial idea with this lists was that when executing installation multiple files can be used as override (basically that is the way of supplying configuration to onap at deployment time). Michal did not create a new variable array, he has renamed previous one (I think the old name was better - but that is just a name).\n\nIn base version if user sets \"app_skip_helm_override \u003d false\" there is no way to supply custom override files. In his change he:\n - allowed user to set path to multiple override files that can be supplied in two ways. In helm charts during packaging (relative path) or manually loaded on to infra node before starting installer (absolute path).\n - separated dynamically generated file from manually inserted files\n\nThe thing I miss in this change is a \"good documentation\", mentioning way of supplying files and importance of their order.",
+      "range": {
+        "startLine": 15,
+        "startChar": 5345,
+        "endLine": 15,
+        "endChar": 5348
+      },
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
