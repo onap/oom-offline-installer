@@ -16,6 +16,23 @@
       "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1184245_ebd27363",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-03T08:49:54Z",
+      "side": 1,
+      "message": "It is probably mostly because this file with certificates is generated, and it\u0027s name is not hardcoded, so is put into a variable. that is why there is still app_helm_override_file.",
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
