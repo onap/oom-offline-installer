@@ -33,6 +33,24 @@
       "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05750966_fcf36cb4",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-03T11:47:07Z",
+      "side": 1,
+      "message": "But what is the reason to create another variable \"additional_helm_override_files\" as there is already the \"helm_over(r)ide_file\" array where should be placed all override files and does not matter if it\u0027s the one with our own certificate or what. In the helm_override_files should be list of all files needed (e.g. onap/resources/overrides/onap-all.yaml; onap/resources/overrides/environment.yaml; onap/resources/overrides/openstack.yaml etc.). Just need to be careful about the path...",
+      "parentUuid": "a1184245_ebd27363",
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
