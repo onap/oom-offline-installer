@@ -170,6 +170,24 @@
       "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82097173_9bb4dabd",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-04T12:46:18Z",
+      "side": 1,
+      "message": "\u003e my opinion is still the same, typical handling in OOM is that we have a one but typically more override files, I assume we can have in single array. User is responsible for not having overlaping overrides so we dont care about order of them. Our original and only override is probably not even needed with new Dublin policy, or at least I dont see any place which will justify certificate distribution but this we can cover in additional commit. I was expecting from this commit to extend providing of single/our override with more overrides. Maybe if we can just remove the original one after some testing, it will be accepted more easily. I dont get why we should care that certificate is generated or not.\n\nYou still miss the ability to pass single override variables. you can pass things like\noverride:\n    some_var: some_value\nwhen running offline installer, without creating your own override file on infra, so this is actually more user friendly. And in that role it needs to override all previous override files.",
+      "parentUuid": "1f4334c4_32d6108e",
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
