@@ -152,6 +152,24 @@
       "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4334c4_32d6108e",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-04T12:04:43Z",
+      "side": 1,
+      "message": "my opinion is still the same, typical handling in OOM is that we have a one but typically more override files, I assume we can have in single array. User is responsible for not having overlaping overrides so we dont care about order of them. Our original and only override is probably not even needed with new Dublin policy, or at least I dont see any place which will justify certificate distribution but this we can cover in additional commit. I was expecting from this commit to extend providing of single/our override with more overrides. Maybe if we can just remove the original one after some testing, it will be accepted more easily. I dont get why we should care that certificate is generated or not.",
+      "parentUuid": "fa27aaa2_a361da25",
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
