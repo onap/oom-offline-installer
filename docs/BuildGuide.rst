@@ -90,7 +90,7 @@ Part 2. Download artifacts for offline installer
 It's possible to download all artifacts in single ./download.py execution. Recently we improved reliability of download scripts
 so one might try following command to download most of the required artifacts in single shot.
 
-**Step1 - download wrapper script execution**
+**Step 1 - download wrapper script execution**
 
 ::
 
@@ -113,7 +113,19 @@ Alternatively, step-by-step procedure is described in Appendix 1.
 
 Following steps are still required and are not supported by current version of download.py script.
 
-**Step 2 - Building own dns image**
+**Step 2 - Preparing downloaded binaries as required by installer**
+
+The current download script is downloading all http files including binaries to directories path same as the server path address,
+but the installer expects them as files directly in the downloads directory. So it's necessary to get rid of the directories as
+in the following example:
+
+::
+
+        find ../resources/downloads/ -type f -exec mv -t ../resources/downloads/ '{}' \;
+        find ../resources/downloads/ -maxdepth 1 -mindepth 1 -type d -exec rm -rf '{}' \;
+
+
+**Step3 - Building own dns image**
 
 ::
 
@@ -121,7 +133,7 @@ Following steps are still required and are not supported by current version of d
         ./build/creating_data/create_nginx_image/01create-image.sh /tmp/resources/offline_data/docker_images_infra
 
 
-**Step 3 - Create repo**
+**Step 4 - Create repo**
 
 ::
 
