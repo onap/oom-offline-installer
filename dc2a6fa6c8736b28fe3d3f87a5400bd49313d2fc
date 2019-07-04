@@ -22,6 +22,30 @@
       "revId": "dc2a6fa6c8736b28fe3d3f87a5400bd49313d2fc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8bbd3b_0cace9d5",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-04T11:13:52Z",
+      "side": 1,
+      "message": "First, the primary use of this feature is to specify those override files that are in charts, to set onap flavor.\nSecond, user has another way to specify his own modifications, by the override key in ansible variables, that is a dict containing helm overrides.",
+      "parentUuid": "ef9f9d59_54d6c9b2",
+      "range": {
+        "startLine": 67,
+        "startChar": 95,
+        "endLine": 67,
+        "endChar": 126
+      },
+      "revId": "dc2a6fa6c8736b28fe3d3f87a5400bd49313d2fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
