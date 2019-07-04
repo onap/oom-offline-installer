@@ -135,6 +135,30 @@
       "revId": "dc2a6fa6c8736b28fe3d3f87a5400bd49313d2fc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa16b0c4_c18778be",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-04T13:59:25Z",
+      "side": 1,
+      "message": "Well in general the app override generation allows people to specify overrides themselves in extravars. for example you have application_configuration.yml and there you do:\noverrides:\n  aai:\n    enabled: false\nand aai should be disabled.\nThe additional_helm_override_files is for preexisting override files that you want to inject, given by path. and they have lower priority. Users could provide their own by uploading them to infra, but for small modifications or cases where you want to modify overrides for a single run, it is easier to provide them directly.",
+      "parentUuid": "6a588133_78fa2c88",
+      "range": {
+        "startLine": 67,
+        "startChar": 95,
+        "endLine": 67,
+        "endChar": 126
+      },
+      "revId": "dc2a6fa6c8736b28fe3d3f87a5400bd49313d2fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
