@@ -1,0 +1,259 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
+
+#   COPYRIGHT NOTICE STARTS HERE
+
+#   Copyright 2019 . Samsung Electronics Co., Ltd.
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+
+#   COPYRIGHT NOTICE ENDS HERE
+
+from datetime import datetime
+import subprocess
+import argparse
+import logging
+import shutil
+import glob
+import json
+import sys
+import os
+
+import tarfile
+import git
+
+log = logging.getLogger(__name__)
+script_location = os.path.dirname(os.path.realpath(__file__))
+
+
+def prepare_application_repository(directory, url, refspec, patch_path):
+    """
+    Downloads git repository according to refspec, applies patch if provided
+    :param directory: path to repository
+    :param url: url to repository
+    :param refspec: refspec to fetch
+    :param patch_path: path git patch to be applied over repository
+    :return: repository - git repository object
+    """
+
+    try:
+        shutil.rmtree(directory)
+    except FileNotFoundError:
+        pass
+
+    log.info('Cloning {} with refspec {} '.format(url, refspec))
+    repository = git.Repo.init(directory)
+    origin = repository.create_remote('origin', url)
+    origin.pull(refspec)
+    repository.git.submodule('update', '--init')
+
+    if patch_path:
+        log.info('Applying {} over {} {}'.format(patch_path,
+                                                 url,
+                                                 refspec))
+        repository.git.apply(patch_path)
+    else:
+        log.info('No patch file provided, skipping patching')
+
+    return repository
+
+
+def create_package_info_file(output_file, repository_list):
+    """
+    Generates text file in json format containing basic information about the build
+    :param output_file:
+    :param repository_list: list of repositories to be included in package info
+    :return:
+    """
+    log.info('Generating package.info file')
+    build_info = {
+        'Build_info': {
+            'build_date': datetime.now().strftime('%Y-%m-%d_%H-%M')
+        }
+    }
+    for repository in repository_list:
+        build_info['Build_info'][
+            repository.config_reader().get_value('remote "origin"', 'url')] = repository.head.commit.hexsha
+
+    with open(output_file, 'w') as outfile:
+        json.dump(build_info, outfile, indent=4)
+
+
+def create_package(tar_content, file_name):
+    """
+    Creates packages
+    :param tar_content: list of dictionaries defining src file and destination tar file
+    :param file_name: output file
+    """
+    log.info('Creating package {}'.format(file_name))
+    with tarfile.open(file_name, 'w') as output_tar_file:
+        for src, dst in tar_content.items():
+            output_tar_file.add(src, dst)
+
+
+def build_offline_deliverables(application_repository_url,
+                               application_repository_reference,
+                               application_patch_file,
+                               output_dir,
+                               resources_directory,
+                               skip_sw,
+                               skip_resources,
+                               skip_aux,
+                               overwrite):
+    """
+    Prepares offline deliverables
+    :param application_repository_url: git repository hosting application helm charts
+    :param application_repository_reference: git refspec for repository hosting application helm charts
+    :param application_patch_file: git patch file to be applied over application repository
+    :param output_dir: Destination directory for saving packages
+    :param resources_directory: Path to resource directory
+    :param skip_sw: skip sw package generation
+    :param skip_resources: skip resources package generation
+    :param skip_aux: skip aux package generation
+    :param overwrite: overwrite files in output directory
+    :return:
+    """
+
+    if os.path.exists(output_dir) and os.listdir(output_dir):
+        if not overwrite:
+            log.error('Output directory is not empty, use overwrite to force build')
+            raise FileExistsError
+
+    # Git
+    offline_repository_dir = os.path.join(script_location, '..')
+    offline_repository = git.Repo(offline_repository_dir)
+
+    application_dir = os.path.join(output_dir, 'application_repository')
+    application_repository = prepare_application_repository(application_dir,
+                                                            application_repository_url,
+                                                            application_repository_reference,
+                                                            application_patch_file)
+
+    # Package info
+    info_file = os.path.join(output_dir, 'package.info')
+    create_package_info_file(info_file, [application_repository, offline_repository])
+
+    # packages layout as dictionaries. <file> : <file location under tar archive>
+    sw_content = {
+        os.path.join(offline_repository_dir, 'ansible'): 'ansible',
+        os.path.join(offline_repository_dir, 'config',
+                     'application_configuration.yml'): 'ansible/application/application_configuration.yml',
+        os.path.join(offline_repository_dir, 'patches', 'onap-patch-role'): 'ansible/application/onap-patch-role',
+        os.path.join(application_dir, 'kubernetes'): 'ansible/application/helm_charts',
+        info_file: 'packge.info'
+    }
+    resources_content = {
+        resources_directory: '',
+        info_file: 'packge.info'
+    }
+    aux_content = {
+        info_file: 'packge.info'
+    }
+
+    if not skip_sw:
+        log.info('Building offline installer')
+        os.chdir(os.path.join(offline_repository_dir, 'ansible', 'docker'))
+        installer_build = subprocess.run(
+            os.path.join(offline_repository_dir, 'ansible', 'docker', 'build_ansible_image.sh'))
+        installer_build.check_returncode()
+        os.chdir(script_location)
+        sw_package_tar_path = os.path.join(output_dir, 'sw_package.tar')
+        create_package(sw_content, sw_package_tar_path)
+
+    if not skip_resources:
+        log.info('Building own dns image')
+        dns_build = subprocess.run([
+            os.path.join(offline_repository_dir, 'build', 'creating_data', 'create_nginx_image', '01create-image.sh'),
+            os.path.join(resources_directory, 'offline_data', 'docker_images_infra')])
+        dns_build.check_returncode()
+
+        # Workaround for downloading without "flat" option
+        log.info('Binaries - workaround')
+        download_dir_path = os.path.join(resources_directory, 'downloads')
+        os.chdir(download_dir_path)
+        for file in os.listdir():
+            if os.path.islink(file):
+                os.unlink(file)
+
+        rke_files = glob.glob(os.path.join('.', '**/rke_linux-amd64'), recursive=True)
+        os.symlink(rke_files[0], os.path.join(download_dir_path, rke_files[0].split('/')[-1]))
+
+        helm_tar_files = glob.glob(os.path.join('.', '**/helm-*-linux-amd64.tar.gz'), recursive=True)
+        os.symlink(helm_tar_files[0], os.path.join(download_dir_path, helm_tar_files[0].split('/')[-1]))
+
+        kubectl_files = glob.glob(os.path.join('.', '**/kubectl'), recursive=True)
+        os.symlink(kubectl_files[0], os.path.join(download_dir_path, kubectl_files[0].split('/')[-1]))
+
+        os.chdir(script_location)
+        # End of workaround
+
+        log.info('Create rhel repo')
+        createrepo = subprocess.run(['createrepo', os.path.join(resources_directory, 'pkg', 'rhel')])
+        createrepo.check_returncode()
+
+        resources_package_tar_path = os.path.join(output_dir, 'resources_package.tar')
+        create_package(resources_content, resources_package_tar_path)
+
+    if not skip_aux:
+        aux_package_tar_path = os.path.join(output_dir, 'aux_package.tar')
+        create_package(aux_content, aux_package_tar_path)
+
+    shutil.rmtree(application_dir)
+
+
+def run_cli():
+    """
+    Run as cli tool
+    """
+    parser = argparse.ArgumentParser(description='Create Package For Offline Installer')
+    parser.add_argument('application_repository_url', metavar='application-repository-url',
+                        help='git repository hosting application helm charts')
+    parser.add_argument('--application-repository_reference', default='master',
+                        help='git refspec for repository hosting application helm charts')
+    parser.add_argument('--application-patch_file',
+                        help='git patch file to be applied over application repository', default='')
+    parser.add_argument('--output-dir', '-o', default=os.path.join(script_location, '..', '..'),
+                        help='Destination directory for saving packages')
+    parser.add_argument('--resources-directory',
+                        help='Path to resource directory')
+    parser.add_argument('--skip-sw', action='store_true', default=False,
+                        help='Set to skip sw package generation')
+    parser.add_argument('--skip-resources', action='store_true', default=False,
+                        help='Set to skip resources package generation')
+    parser.add_argument('--skip-aux', action='store_true', default=False,
+                        help='Set to skip aux package generation')
+    parser.add_argument('--overwrite', action='store_true', default=False,
+                        help='overwrite files in output directory')
+    parser.add_argument('--debug', action='store_true', default=False,
+                        help='Turn on debug output')
+    args = parser.parse_args()
+
+    if args.debug:
+        logging.basicConfig(stream=sys.stdout, level=logging.DEBUG)
+    else:
+        logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(message)s')
+
+    build_offline_deliverables(args.application_repository_url,
+                               args.application_repository_reference,
+                               args.application_patch_file,
+                               args.output_dir,
+                               args.resources_directory,
+                               args.skip_sw,
+                               args.skip_resources,
+                               args.skip_aux,
+                               args.overwrite)
+
+
+if __name__ == '__main__':
+    run_cli()
+
