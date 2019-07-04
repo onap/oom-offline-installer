@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef9f9d59_54d6c9b2",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5052
+      },
+      "writtenOn": "2019-07-04T10:51:04Z",
+      "side": 1,
+      "message": "you can\u0027t know that relative path user will specify is relative to app_helm_charts_infra_directory",
+      "range": {
+        "startLine": 67,
+        "startChar": 95,
+        "endLine": 67,
+        "endChar": 126
+      },
+      "revId": "dc2a6fa6c8736b28fe3d3f87a5400bd49313d2fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
