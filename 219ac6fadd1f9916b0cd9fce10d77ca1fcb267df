@@ -134,6 +134,24 @@
       "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa27aaa2_a361da25",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-04T11:13:52Z",
+      "side": 1,
+      "message": "because the app override also contains user specified override variables. that is the reasoning for it being last.",
+      "parentUuid": "77854505_f0ddee8c",
+      "revId": "219ac6fadd1f9916b0cd9fce10d77ca1fcb267df",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
