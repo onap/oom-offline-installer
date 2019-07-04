@@ -70,6 +70,30 @@
       "revId": "dc2a6fa6c8736b28fe3d3f87a5400bd49313d2fc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df92b347_0ffac933",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-04T12:46:18Z",
+      "side": 1,
+      "message": "\u003e this looks like hacky approach, I can expect that user will have own override files outside OOM so each attempt for settign relative path will lead to error. He should always use absolute path, it will be more readable and less error-prone. If the reason of allowing relative path is to make less typing, we can use app_helm_charts_infra_directory variable in path.\n\nCan you use jinja in extravars? the thing was that I assumed that you cannot use variables when, for example, doing things like placing override file paths in the current environment cfg. If I am wrong then we could use the variable, but in the other case, the only way to make paths relative would be the current hack.",
+      "parentUuid": "717e51a3_db6ed979",
+      "range": {
+        "startLine": 67,
+        "startChar": 95,
+        "endLine": 67,
+        "endChar": 126
+      },
+      "revId": "dc2a6fa6c8736b28fe3d3f87a5400bd49313d2fc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
