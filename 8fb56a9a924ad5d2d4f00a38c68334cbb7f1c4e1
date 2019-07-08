@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "104be780_9cb80f3e",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-08T15:25:42Z",
+      "side": 1,
+      "message": "I see that in this change we align it with latest package.py script however some version in package names is good in my opinion",
+      "revId": "8fb56a9a924ad5d2d4f00a38c68334cbb7f1c4e1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
