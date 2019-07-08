@@ -79,7 +79,8 @@ Then it is necessary to clone all installer and build related repositories and p
     git clone https://gerrit.onap.org/r/oom/offline-installer onap-offline
     cd onap-offline
 
-    # install required pip packages for download scripts
+    # install required pip packages for build and download scripts
+    pip3 install -r ./build/requirements.txt
     pip3 install -r ./build/download/requirements.txt
 
 Part 2. Download artifacts for offline installer
@@ -110,23 +111,6 @@ so one might try following command to download most of the required artifacts in
 
 
 Alternatively, step-by-step procedure is described in Appendix 1.
-
-Following steps are still required and are not supported by current version of download.py script.
-
-**Step 2 - Building own dns image**
-
-::
-
-        # We are building our own dns image within our offline infrastructure
-        ./build/creating_data/create_nginx_image/01create-image.sh /tmp/resources/offline_data/docker_images_infra
-
-
-**Step 3 - Create repo**
-
-::
-
-      createrepo ../resources/pkg/rhel
-
 
 This concludes SW download part required for ONAP offline platform creating.
 
@@ -172,78 +156,43 @@ E.g.
     rm -rf /tmp/resources/offline_data/npm_tar
     rm -rf /tmp/resources/offline_data/pypi
 
-Part 4. Application helm charts preparation and patching
+Part 4. Packages preparation
 --------------------------------------------------------
 
-This is about to clone oom repository and patch it to be able to use it
-offline. Use the following command:
+ONAP offline deliverable consist of 3 packages:
+
++---------------------------------------+------------------------------------------------------------------------------+
+| Package                               | Description                                                                  |
++=======================================+==============================================================================+
+| sw_package.tar                        | Contains installation software and configuration for infrastructure and ONAP |
++---------------------------------------+------------------------------------------------------------------------------+
+| resources_package.tar                 | Contains all input files  needed to deploy infrastructure and ONAP           |
++---------------------------------------+------------------------------------------------------------------------------+
+| aux_package.tar                       | Contains auxiliary input files that can be added to ONAP                     |
++---------------------------------------+------------------------------------------------------------------------------+
+
+All packages can be created using script build/package.py. Beside of archiving files gathered in the previous steps, script also builds installer software and apply patch over application repository to make it usable without internet access.
+
+From onap-offline directory run:
 
 ::
 
-  ./build/fetch_and_patch_charts.sh <helm charts repo> <commit/tag/branch> <patchfile> <target\_dir>
+  ./build/package.py <helm charts repo> --application-repository_reference <commit/tag/branch> --application-patch_file <patchfile> --output-dir <target\_dir> --resources-directory <target\_dir>
 
 For example:
 
 ::
 
-  ./build/fetch_and_patch_charts.sh https://gerrit.onap.org/r/oom 0b904977dde761d189874d6dc6c527cd45928 /tmp/onap-offline/patches/onap.patch /tmp/oom-clone
+  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference master --application-patch_file ./patches/onap.patch --output-dir ../packages --resources-directory ../resources
 
-Part 5. Creating offline installation package
----------------------------------------------
 
-For the packagin itself it's necessary to prepare configuration. You can
-use ./build/package.conf as template or
-directly modify it.
-
-There are some parameters needs to be set in configuration file.
-Example values below are setup according to steps done in this guide to package ONAP.
-
-+---------------------------------------+------------------------------------------------------------------------------+
-| Parameter                             | Description                                                                  |
-+=======================================+==============================================================================+
-| HELM_CHARTS_DIR                       | directory with Helm charts for the application                               |
-|                                       |                                                                              |
-|                                       | Example: /tmp/oom-clone/kubernetes                                           |
-+---------------------------------------+------------------------------------------------------------------------------+
-| APP_CONFIGURATION                     | application install configuration (application_configuration.yml) for        |
-|                                       | ansible installer and custom ansible role code directories if any.           |
-|                                       |                                                                              |
-|                                       | Example::                                                                    |
-|                                       |                                                                              |
-|                                       |  APP_CONFIGURATION=(                                                         |
-|                                       |     /tmp/onap-offline/config/application_configuration.yml                   |
-|                                       |     /tmp/onap-offline/patches/onap-patch-role                                |
-|                                       |  )                                                                           |
-|                                       |                                                                              |
-+---------------------------------------+------------------------------------------------------------------------------+
-| APP_BINARY_RESOURCES_DIR              | directory with all (binary) resources for offline infra and application      |
-|                                       |                                                                              |
-|                                       | Example: /tmp/resources                                                      |
-+---------------------------------------+------------------------------------------------------------------------------+
-| APP_AUX_BINARIES                      | additional binaries such as docker images loaded during runtime   [optional] |
-+---------------------------------------+------------------------------------------------------------------------------+
-
-Offline installer packages are created with prepopulated data via
-following command run from onap-offline directory
+In the target directory you should find tar files:
 
 ::
 
-  ./build/package.sh <project> <version> <packaging target directory>
-
-E.g.
-
-::
-
-  ./build/package.sh onap 4.0.0 /tmp/package
-
-
-So in the target directory you should find tar files with
-
-::
-
-  offline-<PROJECT_NAME>-<PROJECT_VERSION>-sw.tar
-  offline-<PROJECT_NAME>-<PROJECT_VERSION>-resources.tar
-  offline-<PROJECT_NAME>-<PROJECT_VERSION>-aux-resources.tar
+  sw_package.tar
+  resources_package.tar
+  aux_package.tar
 
 
 Appendix 1. Step-by-step download procedure
@@ -261,14 +210,7 @@ Appendix 1. Step-by-step download procedure
         --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus
 
 
-**Step 2 - building own dns image**
-
-::
-
-        # We are building our own dns image within our offline infrastructure
-        ./build/creating_data/create_nginx_image/01create-image.sh /tmp/resources/offline_data/docker_images_infra
-
-**Step 3 - git repos**
+**Step 2 - git repos**
 
 ::
 
@@ -276,21 +218,21 @@ Appendix 1. Step-by-step download procedure
         ./build/download/download.py --git ./build/data_lists/onap_git_repos.list ../resources/git-repo
 
 
-**Step 4 - npm packages**
+**Step 3 - npm packages**
 
 ::
 
         # Following step will download all npm packages
         ./build/download/download.py --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar
 
-**Step 5 - binaries**
+**Step 4 - binaries**
 
 ::
 
        # Following step will download rke, kubectl and helm binaries
        ./build/download/download.py --http ./build/data_lists/infra_bin_utils.sh ../resources/downloads
 
-**Step 6 - rpms**
+**Step 5 - rpms**
 
 ::
 
@@ -299,7 +241,7 @@ Appendix 1. Step-by-step download procedure
 
       createrepo ../resources/pkg/rhel
 
-**Step 7 - pip packages**
+**Step 6 - pip packages**
 
 ::
 
