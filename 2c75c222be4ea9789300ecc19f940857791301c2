@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86cce375_1ec7c5e2",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-08T11:13:11Z",
+      "side": 1,
+      "message": "please add space around \"+\"",
+      "range": {
+        "startLine": 65,
+        "startChar": 64,
+        "endLine": 65,
+        "endChar": 65
+      },
+      "revId": "2c75c222be4ea9789300ecc19f940857791301c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1a45538_a4af4225",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-07-08T11:13:11Z",
+      "side": 1,
+      "message": "I am not sure if we need to print this info every time, but it\u0027s probably ok",
+      "revId": "2c75c222be4ea9789300ecc19f940857791301c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
