@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "724ac1a7_984b42ec",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-08T12:50:03Z",
+      "side": 1,
+      "message": "There are no other steps, so this is not needed anymore",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 45
+      },
+      "revId": "f7396abb2c34255c85d9362f40153c7dac514840",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
