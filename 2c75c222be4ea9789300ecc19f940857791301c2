@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "021f810b_87ff0c0a",
+        "filename": "ansible/roles/application/defaults/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-07-08T11:18:53Z",
+      "side": 1,
+      "message": "\"the one generated\" would be better I think",
+      "range": {
+        "startLine": 14,
+        "startChar": 46,
+        "endLine": 14,
+        "endChar": 60
+      },
+      "revId": "2c75c222be4ea9789300ecc19f940857791301c2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "86cce375_1ec7c5e2",
         "filename": "ansible/roles/application/tasks/install.yml",
         "patchSetId": 6
