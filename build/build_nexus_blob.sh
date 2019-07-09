@@ -174,7 +174,7 @@ NEXUS_CONFIG=$(echo "${NEXUS_CONFIG_GROOVY}" | jq -Rsc  '{"name":"configure", "t
 
 # Add simulated domain names to /etc/hosts
 HOSTS_BACKUP="$(eval ${TIMESTAMP}_hosts.bk)"
-cp /etc/hosts "/etc/${HOSTS_BACKUP}"
+cp /etc/hosts /etc/${HOSTS_BACKUP}
 for DNS in ${SIMUL_HOSTS}; do
     echo "127.0.0.1 ${DNS}" >> /etc/hosts
 done
@@ -182,7 +182,7 @@ done
 # Backup the current docker registry settings
 if [ -f ~/.docker/config.json ]; then
     DOCKER_CONF_BACKUP="$(eval ${TIMESTAMP}_config.json.bk)"
-    mv ~/.docker/config.json "~/.docker/${DOCKER_CONF_BACKUP}"
+    mv ~/.docker/config.json ~/.docker/${DOCKER_CONF_BACKUP}
 fi
 
 #################################
@@ -218,7 +218,12 @@ chown 200:200 ${NEXUS_DATA_DIR}
 chmod 777 ${NEXUS_DATA_DIR}
 
 # Save Nexus version to prevent/catch data incompatibility
-docker images --no-trunc | grep sonatype/nexus3 | awk '{ print $1":"$2" "$3}' > ${NEXUS_DATA_DIR}/nexus.ver
+# Adding commit informations to have link to data from which the blob was built
+cat >> ${NEXUS_DATA_DIR}/nexus.ver << INFO
+Created using Nexus image $(docker image ls ${NEXUS_IMAGE} --no-trunc --format "{{.Repository}}:{{.Tag}}\t{{.ID}}")
+Used onap docker image list $(sed -n -e 's/^.*\(generated\ from\)/\1/p' ${NXS_DOCKER_IMG_LIST})
+Based on oom/offline-installer commit $(git --git-dir="${LOCAL_PATH}/../.git" rev-parse HEAD)
+INFO
 
 # Start the Nexus
 NEXUS_CONT_ID=$(docker run -d --rm -v ${NEXUS_DATA_DIR}:/nexus-data:rw --name ${NEXUS_DOMAIN} ${PUBLISHED_PORTS} ${NEXUS_IMAGE})
@@ -327,10 +332,10 @@ echo "Stopping Nexus and returning backups"
 docker stop ${NEXUS_CONT_ID} > /dev/null
 
 # Return backed up configuration files
-mv -f "/etc/${HOSTS_BACKUP}" /etc/hosts
+mv -f /etc/${HOSTS_BACKUP} /etc/hosts
 
-if [ -f "~/.docker/${DOCKER_CONF_BACKUP}" ]; then
-    mv -f "~/.docker/${DOCKER_CONF_BACKUP}" ~/.docker/config.json
+if [ -f ~/.docker/${DOCKER_CONF_BACKUP} ]; then
+    mv -f ~/.docker/${DOCKER_CONF_BACKUP} ~/.docker/config.json
 fi
 
 # Return default settings
