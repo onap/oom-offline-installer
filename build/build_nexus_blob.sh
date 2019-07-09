@@ -174,7 +174,7 @@ NEXUS_CONFIG=$(echo "${NEXUS_CONFIG_GROOVY}" | jq -Rsc  '{"name":"configure", "t
 
 # Add simulated domain names to /etc/hosts
 HOSTS_BACKUP="$(eval ${TIMESTAMP}_hosts.bk)"
-cp /etc/hosts "/etc/${HOSTS_BACKUP}"
+cp /etc/hosts /etc/${HOSTS_BACKUP}
 for DNS in ${SIMUL_HOSTS}; do
     echo "127.0.0.1 ${DNS}" >> /etc/hosts
 done
@@ -182,7 +182,7 @@ done
 # Backup the current docker registry settings
 if [ -f ~/.docker/config.json ]; then
     DOCKER_CONF_BACKUP="$(eval ${TIMESTAMP}_config.json.bk)"
-    mv ~/.docker/config.json "~/.docker/${DOCKER_CONF_BACKUP}"
+    mv ~/.docker/config.json ~/.docker/${DOCKER_CONF_BACKUP}
 fi
 
 #################################
@@ -327,10 +327,10 @@ echo "Stopping Nexus and returning backups"
 docker stop ${NEXUS_CONT_ID} > /dev/null
 
 # Return backed up configuration files
-mv -f "/etc/${HOSTS_BACKUP}" /etc/hosts
+mv -f /etc/${HOSTS_BACKUP} /etc/hosts
 
-if [ -f "~/.docker/${DOCKER_CONF_BACKUP}" ]; then
-    mv -f "~/.docker/${DOCKER_CONF_BACKUP}" ~/.docker/config.json
+if [ -f ~/.docker/${DOCKER_CONF_BACKUP} ]; then
+    mv -f ~/.docker/${DOCKER_CONF_BACKUP} ~/.docker/config.json
 fi
 
 # Return default settings
