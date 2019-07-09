@@ -11,7 +11,7 @@ This document describes the correct offline installation procedure for `OOM ONAP
 
 Before you dive into the installation you should prepare the offline installer itself - the installer consists of at least two packages/resources. You can read about it in the `Build Guide`_, which provides the instructions for creating them.
 
-This current version of the *Installation Guide* supports `Casablanca release`_.
+This current version of the *Installation Guide* supports `Dublin release`_.
 
 -----
 
@@ -20,12 +20,9 @@ This current version of the *Installation Guide* supports `Casablanca release`_.
 Part 1. Prerequisites
 ---------------------
 
-OOM ONAP deployment has certain hardware resource requirements - `Casablanca requirements`_:
+OOM ONAP deployment has certain hardware resource requirements - `Dublin requirements`_:
 
-- 14 VM (1 Rancher, 13 K8s nodes) - 8 vCPU - 16 GB RAM
-- 160 GB Storage
-
-That means the full deployment footprint is about ``224 GB RAM`` and ``112 vCPUs``. We will not follow strictly this setup due to such demanding resource consumption and so we will deploy our installation across four nodes (VMs) instead of fourteen. Our simplified setup is definitively not supported or recommended - you are free to diverge - you can follow the official guidelines or make completely different layout, but the minimal count of nodes should not drop below three - otherwise you may have to do some tweaking to make it work, which is not covered here (there is a pod count limit for a single kubernetes node - you can read more about it in this `discussion <https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556>`_).
+Community recommended footprint from `Dublin requirements`_ page is 16 VMs ``224 GB RAM`` and ``112 vCPUs``. We will not follow strictly this setup due to such demanding resource consumption and so we will deploy our installation across four nodes (VMs) instead of sixteen. Our simplified setup is definitively not supported or recommended - you are free to diverge - you can follow the official guidelines or make completely different layout, but the minimal count of nodes should not drop below three - otherwise you may have to do some tweaking to make it work, which is not covered here (there is a pod count limit for a single kubernetes node - you can read more about it in this `discussion <https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556>`_).
 
 .. _oooi_installguide_preparations_k8s_cluster:
 
@@ -39,11 +36,14 @@ The four nodes/VMs will be running these services:
     - nexus
     - nginx proxy
     - dns
-    - rancher server
+    - kubernetes-etcd
+    - kubernetes-control-plane
+
+**NOTE:** kubernetes-* roles can be collocated directly with kubernetes nodes and not necessarily on infra node. 
 
 - **kubernetes node 1-3**::
 
-    - rancher agent
+    - kubernetes worker
 
 You don't need to care about these services now - that is the responsibility of the installer (described below). Just start four VMs as seen in this table (or according to your needs as we hinted above):
 
@@ -52,14 +52,16 @@ You don't need to care about these services now - that is the responsibility of 
 Kubernetes cluster overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+In Dublin we are using RKE as k8s orchestrator method, however everyone is free to diverge from this example and can set it up in own way omitting our rke playbook execution. 
+
 =================== ========= ==================== ============== ============ ===============
 KUBERNETES NODE     OS        NETWORK              CPU            RAM          STORAGE
 =================== ========= ==================== ============== ============ ===============
 **infra-node**      RHEL 7    ``10.8.8.100/24``    ``8 vCPUs``    ``8 GB``     ``100 GB``
-**kube-node1**      RHEL 7    ``10.8.8.101/24``    ``16 vCPUs``   ``48+ GB``   ``100 GB``
-**kube-node2**      RHEL 7    ``10.8.8.102/24``    ``16 vCPUs``   ``48+ GB``   ``100 GB``
-**kube-node3**      RHEL 7    ``10.8.8.103/24``    ``16 vCPUs``   ``48+ GB``   ``100 GB``
-SUM                                                ``56 vCPUs``   ``152+ GB``  ``400 GB``
+**kube-node1**      RHEL 7    ``10.8.8.101/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+**kube-node2**      RHEL 7    ``10.8.8.102/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+**kube-node3**      RHEL 7    ``10.8.8.103/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+SUM                                                ``56 vCPUs``   ``176+ GB``  ``400 GB``
 ================================================== ============== ============ ===============
 
 Unfortunately, the offline installer supports only **RHEL 7.x** distribution as of now. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing. It is also worth knowing that the exact RHEL version (major and minor number - 7.6 for example) should match for the package build procedure and the target installation. That means: if you are building packages on RHEL 7.6 release your VMs should be RHEL 7.6 too.
@@ -100,16 +102,16 @@ Installer packages
 
 As was stated above you must have prepared the installer packages (names will differ - check out the `Build Guide`_):
 
-- offline-onap-3.0.2-resources.tar
-- offline-onap-3.0.2-aux-resources.tar
-- offline-onap-3.0.2-sw.tar
+- sw_package.tar
+- resources_package.tar
+- aux_package.tar
 
-**NOTE:** ``'offline-onap-3.0.2-aux-resources.tar'`` is optional and if you don't have use for it, you can ignore it.
+**NOTE:** ``'aux_package.tar'`` is optional and if you don't have use for it, you can ignore it.
 
 We will store them in the ``/data`` directory on the *install-server* and then we will unpack the ``'sw'`` package to your home directory for example::
 
     $ mkdir ~/onap-offline-installer
-    $ tar -C ~/onap-offline-installer -xf /data/offline-onap-3.0.2-sw.tar
+    $ tar -C ~/onap-offline-installer -xf /data/sw_package.tar
 
 .. _oooi_installguide_config_app:
 
@@ -290,9 +292,9 @@ Here, we will be interested in the following variables:
 
 ``'resource_dir'``, ``'resources_filename'`` and ``'aux_resources_filename'`` must correspond to the file paths on the *resource-host* (variable ``'resource_host'``), which is in our case the *install-server*.
 
-The ``'resource_dir'`` should be set to ``'/data'``, ``'resources_filename'`` to ``'offline-onap-3.0.2-resources.tar'`` and ``'aux_resources_filename'`` to ``'offline-onap-3.0.2-aux-resources.tar'``. The values should be the same as are in the `Installer packages`_ section.
+The ``'resource_dir'`` should be set to ``'/data'``, ``'resources_filename'`` to ``'resources-package.tar'`` and ``'aux_resources_filename'`` to ``'aux_package.tar'``. The values should be the same as are in the `Installer packages`_ section.
 
-``'app_data_path'`` is the absolute path on the *infra-node* to where the package ``'offline-onap-3.0.2-resources.tar'`` will be extracted and similarly ``'aux_data_path'`` is another absolute path for ``'offline-onap-3.0.2-aux-resources.tar'``. Both the paths are fully arbitrary, but they should point to the filesystem with enough space - the storage requirement in `Overview table of the kubernetes cluster`_.
+``'app_data_path'`` is the absolute path on the *infra-node* to where the package ``'resources-package.tar'`` will be extracted and similarly ``'aux_data_path'`` is another absolute path for ``'aux_package.tar'``. Both the paths are fully arbitrary, but they should point to the filesystem with enough space - the storage requirement in `Overview table of the kubernetes cluster`_.
 
 **NOTE:** As we mentioned in `Installer packages`_ - the auxiliary package is not mandatory and we will not utilize it in here either.
 
@@ -324,7 +326,7 @@ Second one controls time zone setting on host. It's value should be time zone na
 Final configuration can resemble the following::
 
     resources_dir: /data
-    resources_filename: offline-onap-3.0.2-resources.tar
+    resources_filename: resources-package.tar
     app_data_path: /opt/onap
     app_name: onap
     timesync:
@@ -339,7 +341,9 @@ Final configuration can resemble the following::
 Helm chart value overrides
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If there is a need to change onap settings such as managed openstack credentials, service ports, or even docker image versions used, you can do this by putting settings under the ``overrides`` key in ``application_configuration.yml``.
+In Dublin OOM charts are coming with all ONAP components disabled, this setting is also prepackaged within our sw_package.tar. Luckily there are multiple ways supported how to override this setting. It's also necessary for setting-up VIM specific entries and basically to configure any stuff with non default values.
+
+First option is to use ``overrides`` key in ``application_configuration.yml``.
 These settings will override helm values originally stored in ``values.yaml`` files in helm chart directories.
 
 For example, the following lines could be appended to ``application_configuration.yml`` to set up managed openstack credentials for onap's so component::
@@ -351,6 +355,8 @@ For example, the following lines could be appended to ``application_configuratio
           openStackRegion: "region_name"
           openStackKeyStoneUrl: "keystone_url"
           openStackEncryptedPasswordHere: "encrypted_password"
+
+In addition or alternatively to that one can configre ``helm_override_files`` key, which is new feature implemented in Change-Id: I8b8ded38b39aa9a75e55fc63fa0e11b986556cb8.
 
 .. _oooi_installguide_config_ssh:
 
@@ -539,6 +545,6 @@ Usage is basically the same as with the default chroot way - the only difference
 -----
 
 .. _Build Guide: ./BuildGuide.rst
-.. _Casablanca requirements: https://onap.readthedocs.io/en/casablanca/guides/onap-developer/settingup/index.html#installing-onap
-.. _Casablanca release: https://docs.onap.org/en/casablanca/release/
+.. _Dublin requirements: https://onap.readthedocs.io/en/dublin/guides/onap-developer/settingup/index.html#installing-onap
+.. _Dublin release: https://docs.onap.org/en/dublin/release/
 .. _OOM ONAP: https://wiki.onap.org/display/DW/ONAP+Operations+Manager+Project
