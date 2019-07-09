@@ -333,7 +333,13 @@ chown 200:200 ${NEXUS_DATA_DIR}
 chmod 777 ${NEXUS_DATA_DIR}
 
 # Save Nexus version to prevent/catch data incompatibility
-docker images --no-trunc | grep sonatype/nexus3 | awk '{ print $1":"$2" "$3}' > ${NEXUS_DATA_DIR}/nexus.ver
+# Adding commit informations to have link to data from which the blob was built
+cat >> ${NEXUS_DATA_DIR}/nexus.ver << INFO
+nexus_image=$(docker image ls ${NEXUS_IMAGE} --no-trunc --format "{{.Repository}}:{{.Tag}}\nnexus_image_digest={{.ID}}")
+$(for INDEX in ${!NXS_DOCKER_IMG_LISTS[@]}; do printf 'used_image_list%s=%s\n' "$INDEX" "$(sed 's/^.*\/\(.*\)$/\1/' <<< ${NXS_DOCKER_IMG_LISTS[$INDEX]})"; done)
+$(sed -n 's/^.*OOM\ commit\ /oom_repo_commit=/p' ${NXS_DOCKER_IMG_LISTS[@]})
+installer_repo_commit=$(git --git-dir="${LOCAL_PATH}/../.git" rev-parse HEAD)
+INFO
 
 # Start the Nexus
 NEXUS_CONT_ID=$(docker run -d --rm -v ${NEXUS_DATA_DIR}:/nexus-data:rw --name ${NEXUS_DOMAIN} ${PUBLISHED_PORTS} ${NEXUS_IMAGE})
