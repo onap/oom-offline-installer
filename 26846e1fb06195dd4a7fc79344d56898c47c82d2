@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f8f27a0_5101d751",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 329,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-07-09T11:01:33Z",
+      "side": 1,
+      "message": "shouldn\u0027t be _ ?",
+      "range": {
+        "startLine": 329,
+        "startChar": 33,
+        "endLine": 329,
+        "endChar": 34
+      },
+      "revId": "26846e1fb06195dd4a7fc79344d56898c47c82d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
