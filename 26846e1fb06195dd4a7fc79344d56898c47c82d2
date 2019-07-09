@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9b854fb5_f977d389",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-09T11:05:54Z",
+      "side": 1,
+      "message": "blank space",
+      "range": {
+        "startLine": 42,
+        "startChar": 112,
+        "endLine": 42,
+        "endChar": 113
+      },
+      "revId": "26846e1fb06195dd4a7fc79344d56898c47c82d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ca55dd_81d6846c",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-09T11:05:54Z",
+      "side": 1,
+      "message": "blank space",
+      "range": {
+        "startLine": 55,
+        "startChar": 174,
+        "endLine": 55,
+        "endChar": 175
+      },
+      "revId": "26846e1fb06195dd4a7fc79344d56898c47c82d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6f8f27a0_5101d751",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 2
@@ -18,6 +64,29 @@
         "startChar": 33,
         "endLine": 329,
         "endChar": 34
+      },
+      "revId": "26846e1fb06195dd4a7fc79344d56898c47c82d2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d76b0cf_ad10966c",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-09T11:05:54Z",
+      "side": 1,
+      "message": "configure",
+      "range": {
+        "startLine": 359,
+        "startChar": 45,
+        "endLine": 359,
+        "endChar": 54
       },
       "revId": "26846e1fb06195dd4a7fc79344d56898c47c82d2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
