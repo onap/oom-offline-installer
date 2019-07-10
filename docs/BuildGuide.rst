@@ -86,6 +86,28 @@ Then it is necessary to clone all installer and build related repositories and p
 Part 2. Download artifacts for offline installer
 ------------------------------------------------
 
+.. note::
+   It is possible to generate actual list of docker images using docker-images-collector.sh (helm is required) from cloned OOM directory
+   based on enabled subsystems.
+
+   In the beginning of the generated list is written commit number from which it was created - the same commit number should be used
+   in Part 4. Packages preparation.
+
+   Following example will create the list to the default path:
+   ::
+
+    # clone the OOM repository
+    git clone https://gerrit.onap.org/r/oom -b master /tmp/oom
+
+    # enable subsystems in oom/kubernetes/onap/values.yaml as required
+
+    #run the collector providing path the the project
+    ./build/creating_data/docker-images-collector.sh /tmp/oom/kubernetes/onap
+
+   If the list does not contain any image, no subsystem is enabled in the oom/kubernetes/onap/values.yaml
+
+   For the other options check the usage of the script.
+
 .. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
 
 It's possible to download all artifacts in single ./download.py execution. Recently we improved reliability of download scripts
