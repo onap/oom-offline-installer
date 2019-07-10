@@ -62,7 +62,7 @@ Subsequent steps are the same on both platforms:
     yum install -y docker-ce-18.09.5 python-pip git createrepo expect nodejs npm jq
 
     # install Python 3 (download scripts don't support Python 2 anymore)
-    yum install -y python36
+    yum install -y python36 python36-pip
 
     # twine package is needed by nexus blob build script
     pip install twine
