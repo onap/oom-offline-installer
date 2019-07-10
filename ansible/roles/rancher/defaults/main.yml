@@ -1,5 +1,5 @@
 ---
-rancher_server_url: "http://{{ hostvars[groups.infrastructure.0].ansible_host }}:8080"
+rancher_server_url: "http://{{ hostvars[groups.infrastructure.0].cluster_ip }}:8080"
 rancher_remove_other_env: true
 rancher_redeploy_k8s_env: true
 rancher_cluster_health_state: healthy
