@@ -1,7 +1,7 @@
 # Application specific configuration
 
 This directory is **empty** on purpose in git. Content in this folder is
-populated packaging time (see package.sh/package.conf) and can be modified if needed
+populated in packaging time by build/package.py and can be modified if needed
 also on target server where package is installed.
 
 ## Application configuration
@@ -29,8 +29,6 @@ Helm charts transfer from packaging up to the target infra server.
 Installer supports optional custom pre and post install roles. Custom roles' code folders
 are placed into this directory at packaging time and names of those folders shall be configured in
 application_configuration.yml with variable `application_pre_install_role` and `application_post_install_role`.
-Note that these directory names must correspond to those configured in APP_CONFIGURATION inside package.conf
-during package build time.
 
 Example:
 ```
@@ -44,7 +42,7 @@ inventory file in git ansible/inventory/hosts.yml cannot be directly used anyway
 and at least ip addresses need to be changed according to target servers after
 installer installation and before starting installer execution.
 
-So it's better to place also hosts.yml to this application directory and edit it here.
-That can be done either at packaging time same way as application_configuration.yml
-or after package has been installed to server where ansible process are run just
-before lauching any playbooks.
+So it's better to place also hosts.yml to this application directory and edit it there.
+That can be done either at packaging time same way as in application_configuration.yml
+or after package has been installed to the install server where ansible process are run just
+before launching any playbooks.
