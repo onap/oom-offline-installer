@@ -62,13 +62,39 @@ LISTS_DIR="${LOCAL_PATH}/data_lists"
 COMMANDS=(jq docker expect npm twine)
 
 usage () {
-    echo "   Example usage: build_nexus_blob.sh --input-directory </path/to/downloaded/files/dir> --output-directory
-           </path/to/output/dir> --resource-list-directory </path/to/dir/with/resource/list> [--load-docker-images]
+    echo "
+    Usage: $(basename $0) [OPTION...] [FILE]...
 
-     -i  | --input-directory directory containing file needed to create nexus blob. The structure of this directory must organized as described in build guide
-     -ld | --load-docker-images load docker images from stored files in the input directory
-     -o  | --output-directory
-     -rl | --resource-list-directory directory with files containing docker, pypi and npm lists
+    This script prepares Nexus repositories data blobs for ONAP
+
+    Following dependencies are required: nodejs, jq, docker, twine, expect
+    By default, without any lists or dirs provided, the resources are expected as downloaded
+    during download process and default lists will be used to build the Nexus blob in the same
+    resources dir
+
+    Examples:
+        $(basename $0) --input-directory </path/to/downloaded/files/dir> -ld --output-directory
+           </path/to/output/dir> --resource-list-directory </path/to/dir/with/resource/list>
+           # Docker images, npms and pypi packages will be loaded from specified directory
+           # and the blob is created
+        $(basename $0) -d </path/to/docker/images/list> -d </path/to/another/docker/images/list>
+        -n </path/to/npm/list> -p </path/to/pip/list>
+           # Docker images, npms and pypi packages will be pushed to Nexus based and provided data
+           # lists (multiple lists can be provided)
+
+     -d  | --docker                     use specific list of docker images to be pushed into Nexus
+                                        (in case of -ld used, this list will be used for loading of
+                                        the images)
+     -h  | --help                       print this usage
+     -i  | --input-directory            use specific directory containing resources needed to
+                                        create nexus blob
+                                        The structure of this directory must organized as described
+                                        in build guide
+     -ld | --load-docker-images         load docker images from resource directory
+     -n  | --npm                        list of npm packages to be pushed into Nexus
+     -o  | --output-directory           use specific directory for the target blob
+     -p  | --pypi                       use specific list of pypi packages to be pushed into Nexus
+     -rl | --resource-list-directory    use specific directory with docker, pypi and npm lists
     "
     exit 1
 }
@@ -114,14 +140,16 @@ push_pip () {
     for PACKAGE in $(sed $'s/\r//; s/==/-/' ${NXS_PYPI_LIST}); do
         twine upload -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" --repository-url ${PYPI_REGISTRY} ${PACKAGE}*
         echo "PYPI ${PACKAGE} pushed to Nexus"
-done
+    done
 }
 
 docker_login () {
     for REGISTRY in $(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY}) ${DOCKER_REGISTRY}; do
-        echo "Docker login to ${REGISTRY}"
-        docker login -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" ${REGISTRY} > /dev/null
-done
+        if ! grep -wq ${REGISTRY} ~/.docker/config.json; then
+	        echo "Docker login to ${REGISTRY}"
+            docker login -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" ${REGISTRY} > /dev/null
+	    fi
+    done
 }
 
 push_docker () {
@@ -150,12 +178,11 @@ push_docker () {
 
 # Verify all dependencies are available in PATH
 FAILED_COMMANDS=()
-for cmd in ${COMMANDS[*]};
-do
+for cmd in ${COMMANDS[*]}; do
     command -v $cmd >/dev/null 2>&1 || FAILED_COMMANDS+=($cmd)
 done
-if [ ${#FAILED_COMMANDS[*]} -gt 0 ];
-then
+
+if [ ${#FAILED_COMMANDS[*]} -gt 0 ]; then
     echo "Following commands where not found in PATH and are required:"
     echo ${FAILED_COMMANDS[*]}
     echo "Aborting."
@@ -164,13 +191,22 @@ fi
 
 while [ "${1}" != "" ]; do
     case ${1} in
+        -d | --docker )                    shift
+                                           NXS_DOCKER_IMG_LISTS+=("${1}")
+                                           ;;
         -i | --input-directory )           shift
                                            DATA_DIR="${1}"
                                            ;;
         -ld | --load-docker-images )       DOCKER_LOAD="true"
                                            ;;
+        -n | --npm )                       shift
+                                           NXS_NPM_LISTS+=("${1}")
+                                           ;;
         -o | --output-directory )          shift
                                            NEXUS_DATA_DIR="${1}"
+                                           ;;
+        -p | --pypi )                      shift
+                                           NXS_PYPI_LISTS+=("${1}")
                                            ;;
         -rl | --resource-list-directory )  shift
                                            LISTS_DIR="${1}"
@@ -188,14 +224,22 @@ NXS_SRC_NPM_DIR="${DATA_DIR}/offline_data/npm_tar"
 NXS_SRC_PYPI_DIR="${DATA_DIR}/offline_data/pypi"
 
 # Setup specific resources lists
+NXS_INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
 NXS_DOCKER_IMG_LIST="${LISTS_DIR}/onap_docker_images.list"
+NXS_RKE_DOCKER_IMG_LIST="${LISTS_DIR}/rke_docker_images.list"
 NXS_NPM_LIST="${LISTS_DIR}/onap_npm.list"
 NXS_PYPI_LIST="${LISTS_DIR}/onap_pip_packages.list"
 
 # Setup Nexus image used for build and install infra
-INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
-NEXUS_IMAGE="$(grep sonatype/nexus3 ${INFRA_LIST})"
+NEXUS_IMAGE="$(grep sonatype/nexus3 ${NXS_INFRA_LIST})"
 NEXUS_IMAGE_TAR="${DATA_DIR}/offline_data/docker_images_infra/$(sed 's/\//\_/ ; s/$/\.tar/ ; s/\:/\_/' <<< ${NEXUS_IMAGE})"
+
+# Set default lists if nothing specific defined by user
+if [ $((${#NXS_DOCKER_IMG_LISTS[@]} + ${#NXS_NPM_LISTS[@]} + ${#NXS_PYPI_LISTS[@]})) -eq 0 ]; then
+    NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}")
+    NXS_NPM_IMG_LISTS[0]="${NXS_NPM_IMG_LIST}"
+    NXS_PYPI_LISTS[0]="${NXS_PYPI_IMG_LIST}"
+fi
 
 # Backup /etc/hosts
 HOSTS_BACKUP="$(eval ${TIMESTAMP}_hosts.bk)"
@@ -211,10 +255,11 @@ fi
 PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_PORT}"
 
 # Setup additional ports published to host based on simulated docker registries
-publish_ports "${NXS_DOCKER_IMG_LIST}"
-
 # Setup simulated domain names to be able to push all to private Nexus repository
-simulated_hosts "${NXS_DOCKER_IMG_LIST}"
+for DOCKER_IMG_LIST in "${NXS_DOCKER_IMG_LISTS[@]}"; do
+    publish_ports "${DOCKER_IMG_LIST}"
+    simulated_hosts "${DOCKER_IMG_LIST}"
+done
 
 # Nexus repository configuration setup
 NEXUS_CONFIG_GROOVY='import org.sonatype.nexus.security.realm.RealmManager
@@ -261,7 +306,9 @@ if [ "${DOCKER_LOAD}" == "true" ]; then
     # Load predefined Nexus image
     docker load -i ${NEXUS_IMAGE_TAR}
     # Load all necessary images
-    load_docker_images ${NXS_DOCKER_IMG_LIST}
+    for DOCKER_IMG_LIST in "${NXS_DOCKER_IMG_LISTS[@]}"; do
+        load_docker_images "${DOCKER_IMG_LIST}"
+    done
 fi
 
 ################################
@@ -333,7 +380,9 @@ if [[ ! -z "${PATCHED_NPM}" ]] && ! zgrep -aq "${NPM_REGISTRY}" "${PATCHED_NPM}"
 fi
 
 # Push NPM packages to Nexus repository
-push_npm "${NXS_NPM_LIST}"
+for NPM_LIST in "${NXS_NPM_LISTS[@]}"; do
+    push_npm "${NPM_LIST}"
+done
 popd
 
 ###############################
@@ -341,7 +390,9 @@ popd
 ###############################
 
 pushd ${NXS_SRC_PYPI_DIR}
-push_pip "${NXS_PYPI_LIST}"
+for PYPI_LIST in "${NXS_PYPI_LISTS[@]}"; do
+    push_pip "${PYPI_LIST}"
+done
 popd
 
 ###############################
@@ -352,8 +403,10 @@ popd
 # Push images to private nexus based on the list
 # Images from default registry need to be tagged to private registry
 # and those without defined repository in tag uses default repository 'library'
-docker_login "${NXS_DOCKER_IMG_LIST}"
-push_docker "${NXS_DOCKER_IMG_LIST}"
+for DOCKER_IMG_LIST in "${NXS_DOCKER_IMG_LISTS[@]}"; do
+    docker_login "${DOCKER_IMG_LIST}"
+    push_docker "${DOCKER_IMG_LIST}"
+done
 
 ##############################
 # Stop the Nexus and cleanup #
