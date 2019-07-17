@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a780c9e_9d7ebe0b",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-07-17T13:16:18Z",
+      "side": 1,
+      "message": "wouldn\u0027t you want to make it a parameter? with default value \"onap_docker_images.list\"",
+      "range": {
+        "startLine": 191,
+        "startChar": 34,
+        "endLine": 191,
+        "endChar": 52
+      },
+      "revId": "8059407c2402b6e12276a87dcb46df01c17745c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
