@@ -22,6 +22,30 @@
       "revId": "8059407c2402b6e12276a87dcb46df01c17745c8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6e887c_01f17ca1",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-17T13:58:14Z",
+      "side": 1,
+      "message": "Yes, it\u0027s gonna be the part of OOM-1890",
+      "parentUuid": "6a780c9e_9d7ebe0b",
+      "range": {
+        "startLine": 191,
+        "startChar": 34,
+        "endLine": 191,
+        "endChar": 52
+      },
+      "revId": "8059407c2402b6e12276a87dcb46df01c17745c8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
