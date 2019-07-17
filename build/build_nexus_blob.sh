@@ -73,9 +73,78 @@ usage () {
     exit 1
 }
 
+publish_ports () {
+    for REGISTRY in $(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true) ${NEXUS_PORT}; do
+        if [[ ${REGISTRY} != *":"* ]]; then
+            if [[ ${PUBLISHED_PORTS} != *"80:${NEXUS_DOCKER_PORT}"* ]]; then
+                PUBLISHED_PORTS="${PUBLISHED_PORTS} -p 80:${NEXUS_DOCKER_PORT}"
+            fi
+        else
+            REGISTRY_PORT="$(sed 's/^.*\:\([[:digit:]]*\)$/\1/' <<< ${REGISTRY})"
+            if [[ ${PUBLISHED_PORTS} != *"${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"* ]]; then
+                PUBLISHED_PORTS="${PUBLISHED_PORTS} -p ${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"
+            fi
+        fi
+    done
+}
+
+simulated_hosts () {
+    SIMUL_HOSTS=($(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$// ; s/:.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true ) ${NEXUS_DOMAIN})
+    for HOST in "${SIMUL_HOSTS[@]}"; do
+        if ! grep -wq ${HOST} /etc/hosts; then
+            echo "127.0.0.1 ${HOST}" >> /etc/hosts
+        fi
+    done
+}
+
 load_docker_images () {
     for ARCHIVE in $(sed $'s/\r// ; /^#/d ; s/\:/\_/g ; s/\//\_/g ; s/$/\.tar/g' ${1} | awk '{ print $1 }'); do
         docker load -i ${NXS_SRC_DOCKER_IMG_DIR}/${ARCHIVE}
+    done
+}
+
+push_npm () {
+    for ARCHIVE in $(sed $'s/\r// ; s/\\@/\-/g ; s/$/\.tgz/g' ${1}); do
+        npm publish --access public ${ARCHIVE} > /dev/null
+        echo "NPM ${ARCHIVE} pushed to Nexus"
+    done
+}
+
+push_pip () {
+    for PACKAGE in $(sed $'s/\r//; s/==/-/' ${NXS_PYPI_LIST}); do
+        twine upload -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" --repository-url ${PYPI_REGISTRY} ${PACKAGE}*
+        echo "PYPI ${PACKAGE} pushed to Nexus"
+done
+}
+
+docker_login () {
+    for REGISTRY in $(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY}) ${DOCKER_REGISTRY}; do
+        echo "Docker login to ${REGISTRY}"
+        docker login -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" ${REGISTRY} > /dev/null
+done
+}
+
+push_docker () {
+    for IMAGE in $(sed $'s/\r// ; /^#/d' ${1} | awk '{ print $1 }'); do
+        PUSH=""
+        if [[ ${IMAGE} != *"/"* ]]; then
+            PUSH="${DOCKER_REGISTRY}/library/${IMAGE}"
+        elif [[ ${IMAGE} == *"${DEFAULT_REGISTRY}"* ]]; then
+            if [[ ${IMAGE} == *"/"*"/"* ]]; then
+                PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'/' <<< ${IMAGE})"
+            else
+                PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'\/library/' <<< ${IMAGE})"
+            fi
+        elif [[ -z $(sed -n '/\.[^/].*\//p' <<< ${IMAGE}) ]]; then
+            PUSH="${DOCKER_REGISTRY}/${IMAGE}"
+        fi
+        if [[ ! -z ${PUSH} ]]; then
+            docker tag ${IMAGE} ${PUSH}
+        else
+            PUSH="${IMAGE}"
+        fi
+            docker push ${PUSH}
+        echo "${IMAGE} pushed as ${PUSH} to Nexus"
     done
 }
 
@@ -128,25 +197,24 @@ INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
 NEXUS_IMAGE="$(grep sonatype/nexus3 ${INFRA_LIST})"
 NEXUS_IMAGE_TAR="${DATA_DIR}/offline_data/docker_images_infra/$(sed 's/\//\_/ ; s/$/\.tar/ ; s/\:/\_/' <<< ${NEXUS_IMAGE})"
 
+# Backup /etc/hosts
+HOSTS_BACKUP="$(eval ${TIMESTAMP}_hosts.bk)"
+cp /etc/hosts /etc/${HOSTS_BACKUP}
+
+# Backup the current docker registry settings
+if [ -f ~/.docker/config.json ]; then
+    DOCKER_CONF_BACKUP="$(eval ${TIMESTAMP}_config.json.bk)"
+    mv ~/.docker/config.json ~/.docker/${DOCKER_CONF_BACKUP}
+fi
+
 # Setup default ports published to host as docker registry
 PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_PORT}"
 
 # Setup additional ports published to host based on simulated docker registries
-for REGISTRY in $(sed -n '/\.[^/].*\//p' ${NXS_DOCKER_IMG_LIST} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true); do
-    if [[ ${REGISTRY} != *":"* ]]; then
-        if [[ ${PUBLISHED_PORTS} != *"80:${NEXUS_DOCKER_PORT}"* ]]; then
-            PUBLISHED_PORTS="${PUBLISHED_PORTS} -p 80:${NEXUS_DOCKER_PORT}"
-        fi
-    else
-        REGISTRY_PORT="$(sed 's/^.*\:\([[:digit:]]*\)$/\1/' <<< ${REGISTRY})"
-        if [[ ${PUBLISHED_PORTS} != *"${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"* ]]; then
-            PUBLISHED_PORTS="${PUBLISHED_PORTS} -p ${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"
-        fi
-    fi
-done
+publish_ports "${NXS_DOCKER_IMG_LIST}"
 
 # Setup simulated domain names to be able to push all to private Nexus repository
-SIMUL_HOSTS="$(sed -n '/\.[^/].*\//p' ${NXS_DOCKER_IMG_LIST} | sed -e 's/\/.*$// ; s/:.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true) ${NEXUS_DOMAIN}"
+simulated_hosts "${NXS_DOCKER_IMG_LIST}"
 
 # Nexus repository configuration setup
 NEXUS_CONFIG_GROOVY='import org.sonatype.nexus.security.realm.RealmManager
@@ -184,23 +252,6 @@ repositoryManager.update(conf)'
 
 # Prepare the Nexus configuration
 NEXUS_CONFIG=$(echo "${NEXUS_CONFIG_GROOVY}" | jq -Rsc  '{"name":"configure", "type":"groovy", "content":.}')
-
-#################################
-# Prepare the local environment #
-#################################
-
-# Add simulated domain names to /etc/hosts
-HOSTS_BACKUP="$(eval ${TIMESTAMP}_hosts.bk)"
-cp /etc/hosts /etc/${HOSTS_BACKUP}
-for DNS in ${SIMUL_HOSTS}; do
-    echo "127.0.0.1 ${DNS}" >> /etc/hosts
-done
-
-# Backup the current docker registry settings
-if [ -f ~/.docker/config.json ]; then
-    DOCKER_CONF_BACKUP="$(eval ${TIMESTAMP}_config.json.bk)"
-    mv ~/.docker/config.json ~/.docker/${DOCKER_CONF_BACKUP}
-fi
 
 #################################
 # Docker repository preparation #
@@ -282,10 +333,7 @@ if [[ ! -z "${PATCHED_NPM}" ]] && ! zgrep -aq "${NPM_REGISTRY}" "${PATCHED_NPM}"
 fi
 
 # Push NPM packages to Nexus repository
-for ARCHIVE in $(sed $'s/\r// ; s/\\@/\-/g ; s/$/\.tgz/g' ${NXS_NPM_LIST});do
-   npm publish --access public ${ARCHIVE} > /dev/null
-   echo "NPM ${ARCHIVE} pushed to Nexus"
-done
+push_npm "${NXS_NPM_LIST}"
 popd
 
 ###############################
@@ -293,10 +341,7 @@ popd
 ###############################
 
 pushd ${NXS_SRC_PYPI_DIR}
-for PACKAGE in $(sed $'s/\r//; s/==/-/' ${NXS_PYPI_LIST}); do
-   twine upload -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" --repository-url ${PYPI_REGISTRY} ${PACKAGE}*
-   echo "PYPI ${PACKAGE} pushed to Nexus"
-done
+push_pip "${NXS_PYPI_LIST}"
 popd
 
 ###############################
@@ -304,35 +349,11 @@ popd
 ###############################
 
 # Login to simulated docker registries
-for REGISTRY in $(sed -n '/\.[^/].*\//p' ${NXS_DOCKER_IMG_LIST} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY}) ${DOCKER_REGISTRY}; do
-   echo "Docker login to ${REGISTRY}"
-   docker login -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" ${REGISTRY} > /dev/null
-done
-
 # Push images to private nexus based on the list
 # Images from default registry need to be tagged to private registry
 # and those without defined repository in tag uses default repository 'library'
-for IMAGE in $(sed $'s/\r// ; /^#/d' ${NXS_DOCKER_IMG_LIST} | awk '{ print $1 }'); do
-    PUSH=""
-    if [[ ${IMAGE} != *"/"* ]]; then
-        PUSH="${DOCKER_REGISTRY}/library/${IMAGE}"
-    elif [[ ${IMAGE} == *"${DEFAULT_REGISTRY}"* ]]; then
-        if [[ ${IMAGE} == *"/"*"/"* ]]; then
-            PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'/' <<< ${IMAGE})"
-        else
-            PUSH="$(sed 's/'"${DEFAULT_REGISTRY}"'/'"${DOCKER_REGISTRY}"'\/library/' <<< ${IMAGE})"
-        fi
-    elif [[ -z $(sed -n '/\.[^/].*\//p' <<< ${IMAGE}) ]]; then
-        PUSH="${DOCKER_REGISTRY}/${IMAGE}"
-    fi
-    if [[ ! -z ${PUSH} ]]; then
-        docker tag ${IMAGE} ${PUSH}
-    else
-        PUSH="${IMAGE}"
-    fi
-    docker push ${PUSH}
-    echo "${IMAGE} pushed as ${PUSH} to Nexus"
-done
+docker_login "${NXS_DOCKER_IMG_LIST}"
+push_docker "${NXS_DOCKER_IMG_LIST}"
 
 ##############################
 # Stop the Nexus and cleanup #
@@ -344,7 +365,7 @@ echo "Stopping Nexus and returning backups"
 docker stop ${NEXUS_CONT_ID} > /dev/null
 
 # Return backed up configuration files
-mv -f /etc/${HOSTS_BACKUP} /etc/hosts
+mv -f "/etc/${HOSTS_BACKUP}" /etc/hosts
 
 if [ -f ~/.docker/${DOCKER_CONF_BACKUP} ]; then
     mv -f ~/.docker/${DOCKER_CONF_BACKUP} ~/.docker/config.json
