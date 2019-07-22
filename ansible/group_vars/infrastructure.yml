@@ -4,13 +4,7 @@ simulated_hosts:
   git:
     - gerrit.onap.org
   http:
-    - git.onap.org
-    - nexus.onap.org
     - repo.infra-server
-    - www.getcloudify.org
-    - www.springframework.org
-    - repo.maven.apache.org
-    - repo1.maven.org
   nexus:
     - docker.elastic.co
     - docker.io
