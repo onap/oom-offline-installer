@@ -1,0 +1,143 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - shell: |-
+        if [ "${SKIP_SW}" = "true" ] ; then FLAGS+=" --skip-sw" ; fi
+        if [ "${SKIP_RESOURCES}" = "true" ]; then FLAGS+=" --skip-resources" ; fi
+        if [ "${SKIP_AUX}" = "true" ]; then FLAGS+=" --skip-aux" ; fi
+        if [ "${OVERWRITE}" = "true" ]; then FLAGS+=" --overwrite"; fi
+
+
+
+        python3 build/package.py ${APPLICATION_REPOSITORY_URL} \
+        --application-repository_reference ${APPLICATION_REPOSITORY_REFSPEC} \
+        --application-patch_file ${APPLICATION_PATCH_FILE} \
+        --output-dir ${PACKAGE_DIRECTORY} \
+        --resources-directory ${RESOURCE_DIRECTORY} \
+        ${FLAGS[*]}
+
+        #extra line at the end of file
+    concurrent: true
+    description: "Job builds Offline Installer and packages it with ONAP artifacts\
+      \ for offline installation\r\n"
+    disabled: false
+    display-name: Step 4 Prepare Packages
+    name: prepare_package
+    node: rhel_build_server
+    parameters:
+    - string:
+        default: master
+        description: 'GERRIT_REFSPEC for the https://gerrit.onap.org/r/oom/offline-installer
+          repo
+
+          '
+        name: GERRIT_REFSPEC
+        trim: 'false'
+    - string:
+        default: https://gerrit.onap.org/r/oom
+        description: git repository hosting application helm charts
+        name: APPLICATION_REPOSITORY_URL
+        trim: 'false'
+    - string:
+        default: master
+        description: git refspec for repository hosting application helm charts
+        name: APPLICATION_REPOSITORY_REFSPEC
+        trim: 'false'
+    - string:
+        default: $WORKSPACE/patches/onap.patch
+        description: git patch file to be applied over application repository
+        name: APPLICATION_PATCH_FILE
+        trim: 'false'
+    - string:
+        default: $WORKSPACE/package
+        description: Destination directory for saving packages
+        name: PACKAGE_DIRECTORY
+        trim: 'false'
+    - string:
+        default: $WORKSPACE/../download_artifacts/resources/
+        description: Path to resource directory containing prepared  files to be added
+          to resource tar
+        name: RESOURCE_DIRECTORY
+        trim: 'false'
+    - bool:
+        default: false
+        description: Set to skip sw package generation
+        name: SKIP_SW
+    - bool:
+        default: false
+        description: Set to skip resources package generation
+        name: SKIP_RESOURCES
+    - bool:
+        default: false
+        description: Set to skip aux package generation
+        name: SKIP_AUX
+    - bool:
+        default: false
+        description: overwrite files in output directory
+        name: OVERWRITE
+    project-type: freestyle
+    properties:
+    - raw:
+        xml: |
+          <hudson.plugins.buildblocker.BuildBlockerProperty plugin="build-blocker-plugin@1.7.3">
+          <useBuildBlocker>false</useBuildBlocker>
+          <blockLevel>GLOBAL</blockLevel>
+          <scanQueueFor>DISABLED</scanQueueFor>
+          <blockingJobs />
+          </hudson.plugins.buildblocker.BuildBlockerProperty>
+    - build-discarder:
+        artifact-days-to-keep: -1
+        artifact-num-to-keep: 5
+        days-to-keep: 30
+        num-to-keep: 20
+    - raw:
+        xml: |
+          <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.29">
+          <autoRebuild>false</autoRebuild>
+          <rebuildDisabled>false</rebuildDisabled>
+          </com.sonyericsson.rebuild.RebuildSettings>
+    publishers: []
+    scm:
+    - raw:
+        xml: |
+          <scm class="hudson.plugins.git.GitSCM" plugin="git@3.9.1">
+          <configVersion>2</configVersion>
+          <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+          <name>origin</name>
+          <refspec>$GERRIT_REFSPEC</refspec>
+          <url>https://gerrit.onap.org/r/oom/offline-installer</url>
+          <credentialsId>78b2131a-18c7-43e4-b25c-05ce673c8a0c</credentialsId>
+          </hudson.plugins.git.UserRemoteConfig>
+          </userRemoteConfigs>
+          <branches>
+          <hudson.plugins.git.BranchSpec>
+          <name>*/master</name>
+          </hudson.plugins.git.BranchSpec>
+          </branches>
+          <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+          <submoduleCfg class="list" />
+          <extensions>
+          <hudson.plugins.git.extensions.impl.BuildChooserSetting>
+          <buildChooser class="com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.GerritTriggerBuildChooser" plugin="gerrit-trigger@2.28.0">
+          <separator>#</separator>
+          </buildChooser>
+          </hudson.plugins.git.extensions.impl.BuildChooserSetting>
+          <hudson.plugins.git.extensions.impl.CloneOption>
+          <shallow>false</shallow>
+          <noTags>false</noTags>
+          <reference />
+          <timeout>30</timeout>
+          <depth>0</depth>
+          <honorRefspec>false</honorRefspec>
+          </hudson.plugins.git.extensions.impl.CloneOption>
+          <hudson.plugins.git.extensions.impl.CheckoutOption>
+          <timeout>30</timeout>
+          </hudson.plugins.git.extensions.impl.CheckoutOption>
+          <hudson.plugins.git.extensions.impl.WipeWorkspace />
+          </extensions>
+          </scm>
+    triggers: []
+    wrappers:
+    - credentials-binding: []
