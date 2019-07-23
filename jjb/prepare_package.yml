@@ -1,0 +1,106 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - shell: |-
+        if [ "${SKIP_SW}" = "true" ] ; then FLAGS+=" --skip-sw" ; fi
+        if [ "${SKIP_RESOURCES}" = "true" ]; then FLAGS+=" --skip-resources" ; fi
+        if [ "${SKIP_AUX}" = "true" ]; then FLAGS+=" --skip-aux" ; fi
+        if [ "${OVERWRITE}" = "true" ]; then FLAGS+=" --overwrite"; fi
+
+
+
+        python3 build/package.py ${APPLICATION_REPOSITORY_URL} \
+        --application-repository_reference ${APPLICATION_REPOSITORY_REFSPEC} \
+        --application-patch_file ${APPLICATION_PATCH_FILE} \
+        --output-dir ${PACKAGE_DIRECTORY} \
+        --resources-directory ${RESOURCE_DIRECTORY} \
+        ${FLAGS[*]}
+
+        #extra line at the end of file
+    concurrent: true
+    description: "Job builds Offline Installer and packages it with ONAP artifacts\
+      \ for offline installation\r\n"
+    disabled: false
+    display-name: Step 4 Prepare Packages
+    name: prepare_package
+    node: rhel_build_server
+    parameters:
+    - string:
+        default: master
+        description: 'GERRIT_REFSPEC for the https://gerrit.onap.org/r/oom/offline-installer
+          repo
+
+          '
+        name: GERRIT_REFSPEC
+        trim: 'false'
+    - string:
+        default: https://gerrit.onap.org/r/oom
+        description: git repository hosting application helm charts
+        name: APPLICATION_REPOSITORY_URL
+        trim: 'false'
+    - string:
+        default: master
+        description: git refspec for repository hosting application helm charts
+        name: APPLICATION_REPOSITORY_REFSPEC
+        trim: 'false'
+    - string:
+        default: $WORKSPACE/patches/onap.patch
+        description: git patch file to be applied over application repository
+        name: APPLICATION_PATCH_FILE
+        trim: 'false'
+    - string:
+        default: $WORKSPACE/package
+        description: Destination directory for saving packages
+        name: PACKAGE_DIRECTORY
+        trim: 'false'
+    - string:
+        default: $WORKSPACE/../download_artifacts/resources/
+        description: Path to resource directory containing prepared  files to be added
+          to resource tar
+        name: RESOURCE_DIRECTORY
+        trim: 'false'
+    - bool:
+        default: false
+        description: Set to skip sw package generation
+        name: SKIP_SW
+    - bool:
+        default: false
+        description: Set to skip resources package generation
+        name: SKIP_RESOURCES
+    - bool:
+        default: false
+        description: Set to skip aux package generation
+        name: SKIP_AUX
+    - bool:
+        default: false
+        description: overwrite files in output directory
+        name: OVERWRITE
+    project-type: freestyle
+    properties:
+    - build-blocker:
+        use-build-blocker: false
+        block-level: 'GLOBAL'
+        queue-scanning: 'DISABLED'
+        blocking-jobs: []
+    - build-discarder:
+        artifact-days-to-keep: -1
+        artifact-num-to-keep: 5
+        days-to-keep: 30
+        num-to-keep: 20
+    - rebuild:
+        auto-rebuild: false
+        rebuild-disabled: false
+    publishers: []
+    scm:
+    - git:
+        refspec: $GERRIT_REFSPEC
+        url: https://gerrit.onap.org/r/oom/offline-installer
+        branches:
+          - master
+        extensions:
+          - basedir: offline-installer
+    triggers: []
+    triggers: []
+    wrappers:
+    - credentials-binding: []

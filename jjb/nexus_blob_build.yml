@@ -1,0 +1,86 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - shell: |-
+        # Delete OUTPUT_DIRECTORY if exists to prevent backup and save space
+        rm -rf ${OUTPUT_DIRECTORY}
+
+        # Remove docker settings for sure
+        rm -rf ~/.docker
+
+        # Replace docker image list by the generated one
+        sed -i 's|NXS_DOCKER_IMG_LIST=.*|NXS_DOCKER_IMG_LIST=\"'"${GENERATED_DOCKER_LIST}"'\"|' ./build/build_nexus_blob.sh
+
+        # Add RKE images to the generated list if required
+        if [ "$ADD_RKE" == "true" ]; then
+        cat ./build/data_lists/rke_docker_images.list >> ${GENERATED_DOCKER_LIST}
+        fi
+
+        # Build the blob
+        ./build/build_nexus_blob.sh --input-directory ${LOCAL_RESOURCES_FOLDER} --output-directory ${OUTPUT_DIRECTORY} --resource-list-directory ${RESOURCES_LIST_DIRECTORY}
+
+        # Remove docker settings for sure -- should be fixed by #91085
+        rm -rf ~/.docker
+    concurrent: false
+    description: |-
+      This job builds nexus blob script:
+
+      ## The script requires following dependencies are installed: nodejs, jq, docker, twine
+    disabled: false
+    display-name: Step 3 Build Nexus Blob
+    name: nexus_blob_build
+    node: rhel_build_server
+    parameters:
+    - string:
+        default: master
+        description: ''
+        name: GERRIT_REFSPEC
+        trim: 'false'
+    - string:
+        default: /build_workspace/workspace/download_artifacts/resources/nexus_data
+        description: ''
+        name: OUTPUT_DIRECTORY
+        trim: 'false'
+    - string:
+        default: /build_workspace/workspace/download_artifacts/resources
+        description: directory containing file needed to create nexus blob. The structure
+          of this directory must organized as described in build guide
+        name: LOCAL_RESOURCES_FOLDER
+        trim: 'false'
+    - string:
+        default: /build_workspace/workspace/nexus_blob_build/build/data_lists
+        description: ' directory with files containing docker, pypi and rpm lists'
+        name: RESOURCES_LIST_DIRECTORY
+        trim: 'false'
+    - string:
+        default: /root/onap_generated_docker_images.list
+        description: ''
+        name: GENERATED_DOCKER_LIST
+        trim: 'false'
+    - string:
+        default: 'true'
+        description: Add RKE related images to the generated list file
+        name: ADD_RKE
+        trim: 'false'
+    project-type: freestyle
+    properties:
+     - build-blocker:
+        use-build-blocker: false
+        block-level: 'GLOBAL'
+        queue-scanning: 'DISABLED'
+        blocking-jobs: []
+    - rebuild:
+        auto-rebuild: false
+        rebuild-disabled: false
+    publishers: []
+    scm:
+    - git:
+        refspec: $GERRIT_REFSPEC
+        url: https://gerrit.onap.org/r/oom/offline-installer
+        branches:
+          - master
+        extensions:
+          - basedir: offline-installer
+    triggers: []
+    wrappers: []

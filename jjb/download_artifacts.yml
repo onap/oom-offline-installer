@@ -1,0 +1,68 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - shell: |-
+        python3 -m venv ./venv --clear
+        source ./venv/bin/activate
+        pip install -r ./offline-installer/build/download/requirements.txt
+        ./offline-installer/build/download/download.py \
+        --docker ${RESOURCES_LIST_DIRECTORY}/rke_docker_images.list \
+        --docker ${OOM_DATALIST_FILE} \
+        --http ${RESOURCES_LIST_DIRECTORY}/infra_bin_utils.list ${LOCAL_RESOURCES_FOLDER}/downloads \
+        --git ${RESOURCES_LIST_DIRECTORY}/onap_git_repos.list ${LOCAL_RESOURCES_FOLDER}/git-repo \
+        --npm ${RESOURCES_LIST_DIRECTORY}/onap_npm.list ${LOCAL_RESOURCES_FOLDER}/offline_data/npm_tar \
+        --rpm ${RESOURCES_LIST_DIRECTORY}/onap_rpm.list ${LOCAL_RESOURCES_FOLDER}/pkg/rhel \
+        --pypi ${RESOURCES_LIST_DIRECTORY}/onap_pip_packages.list ${LOCAL_RESOURCES_FOLDER}/offline_data/pypi
+
+        ./offline-installer/build/download/download.py \
+        --docker ${RESOURCES_LIST_DIRECTORY}/infra_docker_images.list ${LOCAL_RESOURCES_FOLDER}/offline_data/docker_images_infra/
+        deactivate
+    concurrent: false
+    description: This job downloads all artifacts based on provided lists
+    disabled: false
+    display-name: Step 2 Download Artifacts
+    name: download_artifacts
+    node: rhel_build_server
+    parameters:
+    - string:
+        default: master
+        description: ''
+        name: GERRIT_REFSPEC
+        trim: 'false'
+    - string:
+        default: /root/onap_generated_docker_images.list
+        description: Generated list file of docker images
+        name: OOM_DATALIST_FILE
+        trim: 'false'
+    - string:
+        default: ${WORKSPACE}/offline-installer/build/data_lists
+        description: ''
+        name: RESOURCES_LIST_DIRECTORY
+        trim: 'false'
+    - string:
+        default: ${WORKSPACE}/resources
+        description: ''
+        name: LOCAL_RESOURCES_FOLDER
+        trim: 'false'
+    project-type: freestyle
+    properties:
+    - build-blocker:
+        use-build-blocker: false
+        block-level: 'GLOBAL'
+        queue-scanning: 'DISABLED'
+        blocking-jobs: []
+    - rebuild:
+        auto-rebuild: false
+        rebuild-disabled: false
+    publishers: []
+    scm:
+    - git:
+        refspec: $GERRIT_REFSPEC
+        url: https://gerrit.onap.org/r/oom/offline-installer
+        branches:
+          - master
+        extensions:
+          - basedir: offline-installer
+    triggers: []
+    wrappers: []

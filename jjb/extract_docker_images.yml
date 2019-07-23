@@ -1,0 +1,85 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - shell: |-
+        WORKDIR=/build_workspace/workspace/extract_docker_images/
+        OOM_DIR=$WORKDIR/oom
+        #INSTALLER_DIR=$WORKDIR/offline-installer
+        ONAP_DIR=$OOM_DIR/kubernetes/onap
+
+        # Cleanup
+        rm -rf $OOM_DIR $INSTALLER_DIR
+
+        # Clone OOM
+        git clone -b $HELM_CHARTS_BRANCH --recurse-submodules $HELM_CHARTS_REPO $OOM_DIR
+        pushd $OOM_DIR
+        if [[ ! -z "$HELM_CHARTS_GERRIT_REFSPEC" ]]; then
+        git fetch $HELM_CHARTS_REPO $HELM_CHARTS_GERRIT_REFSPEC
+        fi
+        popd
+
+        # Enable all in onap/values.yaml from AAF to the end of file
+        sed -i "$(grep -n aaf $ONAP_DIR/values.yaml | cut -f1 -d:),$ s/false/true/g" $ONAP_DIR/values.yaml
+
+        # Generate image list
+        ./build/creating_data/docker-images-collector.sh $ONAP_DIR $OOM_DATALIST_FILE
+    concurrent: false
+    description: |-
+      This job generates onap_docker_images.list based on oom master charts
+
+      ## The script requires following dependencies are installed: make, python-yaml, helm
+    disabled: false
+    display-name: Step 1 Extract Docker Images
+    name: extract_docker_images
+    node: rhel_build_server
+    parameters:
+    - string:
+        default: master
+        description: Gerrit refspec for offline-installer
+        name: GERRIT_REFSPEC
+        trim: 'false'
+    - string:
+        default: https://gerrit.onap.org/r/oom
+        description: OOM repository
+        name: HELM_CHARTS_REPO
+        trim: 'false'
+    - string:
+        default: master
+        description: OOM repository branch
+        name: HELM_CHARTS_BRANCH
+        trim: 'false'
+    - string:
+        default: ''
+        description: |-
+          OOM repository refspec
+
+          (last used f889e6a0004b3153c8cafffc6c8489729d7d9fd3)
+        name: HELM_CHARTS_GERRIT_REFSPEC
+        trim: 'false'
+    - string:
+        default: /root/onap_generated_docker_images.list
+        description: Generated list file of docker images
+        name: OOM_DATALIST_FILE
+        trim: 'false'
+    project-type: freestyle
+    properties:
+    - build-blocker:
+        use-build-blocker: false
+        block-level: 'GLOBAL'
+        queue-scanning: 'DISABLED'
+        blocking-jobs: []
+    - rebuild:
+        auto-rebuild: false
+        rebuild-disabled: false
+    publishers: []
+    scm:
+    - git:
+        refspec: $GERRIT_REFSPEC
+        url: https://gerrit.onap.org/r/oom/offline-installer
+        branches:
+          - master
+        extensions:
+          - basedir: offline-installer
+    triggers: []
+    wrappers: []
