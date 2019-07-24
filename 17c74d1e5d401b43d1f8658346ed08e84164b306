@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f68fe2_91592611",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-24T13:44:39Z",
+      "side": 1,
+      "message": "Aren\u0027t variable names wrong here? actually not sure",
+      "revId": "17c74d1e5d401b43d1f8658346ed08e84164b306",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
