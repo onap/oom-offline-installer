@@ -39,6 +39,24 @@
       "revId": "17c74d1e5d401b43d1f8658346ed08e84164b306",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26c2cc61_3ccfeaee",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-24T13:53:47Z",
+      "side": 1,
+      "message": "Yes, they are. I was changing that and forgot. Thx",
+      "parentUuid": "e3f68fe2_91592611",
+      "revId": "17c74d1e5d401b43d1f8658346ed08e84164b306",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
