@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c639ae5_2b852632",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-24T14:05:30Z",
+      "side": 1,
+      "message": "nxs_docker_lists or nxs_docker_img_lists? confused.\nAlso was wondering, should it work that way? or perhaps, for example, if user gives their own npm lists, shouldn\u0027t it override just npm lists but still use default docker lists? analogously for others.",
+      "revId": "a59736c143cc67890f0e2c2ec8e1ecb35375cd5e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
