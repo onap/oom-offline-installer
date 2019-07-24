@@ -16,6 +16,29 @@
       "revId": "17c74d1e5d401b43d1f8658346ed08e84164b306",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6056040_36f39e12",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-07-24T13:50:08Z",
+      "side": 1,
+      "message": "where is it comming from? where is it set?",
+      "range": {
+        "startLine": 238,
+        "startChar": 11,
+        "endLine": 238,
+        "endChar": 23
+      },
+      "revId": "17c74d1e5d401b43d1f8658346ed08e84164b306",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
