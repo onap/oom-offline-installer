@@ -16,6 +16,24 @@
       "revId": "a59736c143cc67890f0e2c2ec8e1ecb35375cd5e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11432718_f70c2d0c",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-07-24T14:27:52Z",
+      "side": 1,
+      "message": "Noticed that later, so it\u0027s fixed in the last patch. I was thinking about it, but would like to keep the default - no parameters used. But it could change once the NPMs and PYPIs will not be needed.",
+      "parentUuid": "1c639ae5_2b852632",
+      "revId": "a59736c143cc67890f0e2c2ec8e1ecb35375cd5e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
