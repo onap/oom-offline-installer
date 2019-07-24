@@ -1,0 +1,7 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Michal Zegan <m.zegan@samsung.com>
+Submitted-by: Michal Zegan <m.zegan@samsung.com>
+Submitted-at: Wed, 24 Jul 2019 14:59:16 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/oom/offline-installer/+/91651
+Project: oom/offline-installer
+Branch: refs/heads/master
