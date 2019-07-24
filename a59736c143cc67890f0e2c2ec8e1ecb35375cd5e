@@ -34,6 +34,40 @@
       "revId": "a59736c143cc67890f0e2c2ec8e1ecb35375cd5e",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01f2c7c9_13f367dd",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-24T14:32:03Z",
+      "side": 1,
+      "message": "hmm also this name is wrong",
+      "revId": "a59736c143cc67890f0e2c2ec8e1ecb35375cd5e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50909f0d_f9add0f0",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-07-24T14:32:03Z",
+      "side": 1,
+      "message": "and here wrong name after assignment...",
+      "revId": "a59736c143cc67890f0e2c2ec8e1ecb35375cd5e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
