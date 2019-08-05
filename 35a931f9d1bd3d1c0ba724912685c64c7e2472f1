@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a88bb6c_4181b972",
+        "filename": "config/application_configuration.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-08-05T08:21:00Z",
+      "side": 1,
+      "message": "in master/El-Alto we should have 5.0.0 but this we can track in different commit as more places needs to be adjusted",
+      "revId": "35a931f9d1bd3d1c0ba724912685c64c7e2472f1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
