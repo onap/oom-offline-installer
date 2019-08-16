@@ -9,14 +9,11 @@
 resources_dir:
 
 # tarfile name within resources_dir directory with offline infrastructure binaries.
-# Content of APP_BINARY_RESOURCES_DIR (defined in package.conf) packaged by package.sh to single tar file.
 resources_filename:
 
 # tarfile name within resources_dir directory with auxiliary resources.
-# Content of APP_AUX_BINARIES (defined in package.conf) packaged by package.sh to single tar file.
 # the purpose of auxiliary resources is to provide user an interface
 # to distribute to infra node tar file with application specific files.
-# Docker images in tar format are currently the only supported content of aux_resources package.
 aux_resources_filename:
 
 # resources can be exported via nfs
@@ -101,9 +98,6 @@ runtime_images: {}
 # Helm repository.
 # Content of the folder must be Helm chart directories of the app with Makefile.
 # In case of ONAP OOM it would be <oom_repo>/kubernetes folder content.
-# NOTE: This default value should not be changed if not really needed and it
-# must match with the variable "HELM_CHARTS_DIR_IN_PACKAGE" value in package.sh
-# script!
 app_helm_charts_install_directory: application/helm_charts
 
 # Specify target dir where helm charts are copied into on infra node.
