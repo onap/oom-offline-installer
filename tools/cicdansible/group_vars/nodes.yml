@@ -1,0 +1,5 @@
+#Configuration for kubernetes nodes.
+#This redirects ssh connections through the installer instance, to allow connecting via internal ip.
+#It should work even on openssh versions lacking -j option support.
+#The value is based heavily on the default from parent group.
+ansible_ssh_common_args: "{{ disable_ssh_host_auth }} -o ProxyCommand='ssh {{ disable_ssh_host_auth }} -i {{ ansible_private_key_file }} -W %h:%p root@{{ installer_ip }}'"
