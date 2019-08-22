@@ -1,0 +1,48 @@
+#Onap installation tasks
+#Copy ssh private key used for resource server access
+- name: "Copy resource server access key"
+  copy:
+    src: "{{ hostvars[groups['resources'][0]].ansible_private_key_file }}"
+    dest: "{{ ansible_user_dir }}/.ssh/res.pem"
+    mode: 0600
+#Unarchive resources.
+- name: "Ensure {{ installer_deploy_path }} directory exists"
+  file:
+    path: "{{ installer_deploy_path }}"
+    state: directory
+- name: "Extract sw resources"
+  unarchive:
+    src: "resources/{{ hostvars[groups['resources'][0]].resources_sw_filename }}"
+    dest: "{{ installer_deploy_path }}"
+#Generate ansible inventory and extra vars.
+- name: "Generate ansible inventory for installer"
+  template:
+    src: inventory.yml.j2
+    dest: "{{ installer_deploy_path }}/ansible/inventory/hosts.yml"
+- name: "generate application specific config overrides"
+  copy:
+    content: "{{ application_config | b64decode }}"
+    dest: "{{ installer_deploy_path }}/ansible/application/application_overrides.yml"
+# This generates a file with locations of resource files in resource host, we
+# do it only to allow manually running offline installer without
+# typing them by hand. We cannot use
+# inventory template because it will be overridden
+# by application_configuration.yml.
+- name: Generate resource location file
+  copy:
+    content: |
+      resources_dir: {{ resources_dir }}
+      resources_filename: {{ resources_filename }}
+      aux_resources_filename: {{ aux_resources_filename }}
+      app_data_path: /opt/onap/resources
+    dest: "{{ installer_deploy_path }}/ansible/application/resources.yml"
+#Run script.
+- name: "Execute installation"
+  shell:
+    ./run_playbook.sh
+     -e @application/application_configuration.yml -e @application/application_overrides.yml
+     -e @application/resources.yml -i inventory/hosts.yml site.yml
+  args:
+    chdir: "{{ installer_deploy_path }}/ansible"
+  async: "{{ install_timeout }}"
+  when: install_app
