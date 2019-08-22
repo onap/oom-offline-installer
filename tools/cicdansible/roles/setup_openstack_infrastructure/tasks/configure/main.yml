@@ -1,0 +1,11 @@
+#Openstack specific configuration running on instances.
+#Get volumes.
+- name: "get volume info"
+  set_fact:
+    volumes: "{{ (hostvars['localhost'].heat_stack.stack.outputs | selectattr('output_key', 'equalto', 'volumes') | list).0.output_value[inventory_hostname] | default([]) }}"
+- name: "Configure volumes"
+  include_tasks: configure/volume.yml
+  vars:
+    volume_id: "{{ item[0] }}"
+    mountpoint: "{{ item[1] }}"
+  loop: "{{ volumes }}"

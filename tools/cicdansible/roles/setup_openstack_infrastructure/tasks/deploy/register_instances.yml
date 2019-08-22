@@ -1,0 +1,9 @@
+#Register instances as hosts in inventory.
+#Installer and infra are statically registered.
+#Register node instances dynamically.
+- name: "Register node instances"
+  add_host:
+    name: "node{{ item[0] }}"
+    groups: nodes
+    ansible_host: "{{ item[1] }}"
+  loop: "{{ query('indexed_items', (heat_stack.stack.outputs | selectattr('output_key', 'equalto', 'node_ips') | list).0.output_value) }}"

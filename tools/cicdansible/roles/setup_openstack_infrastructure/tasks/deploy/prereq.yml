@@ -1,0 +1,41 @@
+#Prerequisite tasks before stack deployment.
+#Authenticate to cloud.
+- name: "authenticate to cloud"
+  os_auth:
+    auth:
+      auth_url: "{{ os_auth_url }}"
+      username: "{{ os_username }}"
+      password: "{{ os_password }}"
+      domain_name: "{{ os_domain_name }}"
+      project_name: "{{ os_project_name }}"
+      project_domain_name: "{{ os_domain_name }}"
+#Will use the token from this point on.
+- name: "set token"
+  set_fact:
+    os_auth:
+      auth_url: "{{ os_auth_url }}"
+      token: "{{ auth_token }}"
+      project_name: "{{ os_project_name }}"
+      project_domain_name: "{{ os_domain_name }}"
+#Retrieve floating ip info.
+- name: "get floating ip facts"
+  os_floating_ips_facts:
+    auth: "{{ os_auth }}"
+    auth_type: token
+    network: "{{ public_network }}"
+#Group floating ips by ip address to allow looking them up.
+- name: "group floating ips by address"
+  set_fact:
+    floating_ips_by_address: "{{ floating_ips_by_address | default({}) | combine({item.floating_ip_address: item}) }}"
+  loop: "{{ query('items', openstack_floating_ips) }}"
+- name: "fail if required floating ips do not exist"
+  fail: msg="The required floating ips do not exist"
+  when: "(not (first_node_ip in floating_ips_by_address)
+    or not (infra_ip in floating_ips_by_address)
+    or not (installer_ip in floating_ips_by_address))"
+#Get a ssh public key to be passed to heat, it requires ssh-keygen with -y option.
+- name: "Retrieve public key from ssh private key"
+  command: "ssh-keygen -y -f {{ hostvars['installer'].ansible_private_key_file }}"
+  register: public_key_generation
+- set_fact:
+    auth_public_key: "{{ public_key_generation.stdout }}"
