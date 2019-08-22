@@ -1,0 +1,10 @@
+#Configure access to cicd docker registry.
+- name: "Ensure that docker config directory exists"
+  file:
+    path: /etc/docker
+    mode: 0700
+    state: directory
+- name: "Allow insecure access to cicd docker registry"
+  template:
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json

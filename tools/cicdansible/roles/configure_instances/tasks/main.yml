@@ -1,0 +1,5 @@
+#Initial instance configuration.
+- include_tasks: general.yml
+#Configure cicd registry access, but skip installer.
+- include_tasks: cicd_registry.yml
+  when: "inventory_hostname != 'installer'"

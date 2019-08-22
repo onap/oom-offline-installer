@@ -1,0 +1,26 @@
+#General instance configuration.
+#Modify /etc/hosts on every instance to add every instance there including itself.
+- name: "Add hosts to /etc/hosts"
+  lineinfile:
+    path: /etc/hosts
+    insertafter: EOF
+    regexp: "^[^ ]+ {{ item }}$"
+    state: present
+    line: "{{ hostvars[item].ansible_default_ipv4.address }} {{ item }}"
+  loop: "{{ groups['instances'] }}"
+#Copy private ssh key to instances for easy connecting between them.
+- name: "Ensure ssh directory exists"
+  file:
+    path: /root/.ssh
+    owner: root
+    group: root
+    mode: 0700
+    state: directory
+- name: "Install ssh private key"
+  copy:
+    src: "{{ ansible_private_key_file }}"
+    dest: /root/.ssh/id_rsa
+    mode: 0400
+#Add public ssh host keys of all instances to trust them.
+- name: "Add host keys of instances to known_hosts"
+  shell: "ssh-keyscan {{ groups['instances'] | join(' ') }} > /root/.ssh/known_hosts"
