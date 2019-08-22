@@ -1,0 +1,63 @@
+---
+#General configuration, can be overridden in cmdline.
+#Authentication/keystone url.
+os_auth_url: ""
+#Openstack username.
+os_username: ""
+#Password.
+os_password: ""
+#Domain name.
+os_domain_name: "default"
+#Project name.
+os_project_name: ""
+#The name or id of public network used to communicate with instances.
+public_network: ""
+#Floating ip address for first node instance
+first_node_ip: ""
+#Floating ip of infra instance.
+infra_ip: ""
+#Floating ip of installer.
+installer_ip: ""
+#Openstack flavor name for nodes.
+node_flavor_name: ""
+#Flavor name for infra instance.
+infra_flavor_name: ""
+#Flavor name for installer instance.
+installer_flavor_name: ""
+#Name of the image for instances.
+image_name: ""
+#Cidr of private subnet where instances are connected.
+subnet_cidr: "10.1.0.0/24"
+#Start of dhcp allocation range for subnet.
+subnet_range_start: "10.1.0.4"
+#Subnet allocation range end.
+subnet_range_end: "10.1.0.254"
+#Ip address of router used as a gateway to external network.
+router_addr: "10.1.0.1"
+#Cidr of external subnet to allow access to, 0.0.0.0/0 means allow internet access.
+# For offline deployment it is recommended to set this to a cidr of intranet.
+external_subnet_cidr: ""
+#Address of cicd docker registry.
+cicd_docker_registry: ""
+#Number of nodes to deploy.
+num_nodes: "3"
+#Stack name to deploy on heat.
+stack_name: "installer-test"
+#Address of resource server with packages.
+resource_host: ""
+#Directory with all onap packages (on resource host).
+resources_dir: ""
+#Filename of software package.
+resources_sw_filename: "sw_package.tar"
+#Filename of binary resources.
+resources_filename: "resources_package.tar"
+#Filename of auxiliary resources.
+aux_resources_filename: "aux_package.tar"
+#Whether to deploy app.
+#Setting it to false will skip deployment, but instance preconfiguration
+#will still be done and sw resources uploaded to the installer host.
+install_app: true
+# This is a string containing base64-encoded yaml blob passed to offline installer via -e option.
+# You can use it to override any variable in offline installer except those
+# supported directly by cicdansible.
+application_config: ''

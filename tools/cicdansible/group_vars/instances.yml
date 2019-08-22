@@ -1,0 +1,11 @@
+#Configuration for all instances.
+#User to log in to instances as.
+ansible_user: root
+#Whether to become root using sudo or such like, no by default.
+ansible_become: no
+#Private key to use to access instances.
+ansible_private_key_file: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+#Arguments to skip host key verification for instances, modify only if you know what you are doing.
+disable_ssh_host_auth: "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+ansible_ssh_common_args: "{{ disable_ssh_host_auth }}"
+
