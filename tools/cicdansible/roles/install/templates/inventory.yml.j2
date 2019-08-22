@@ -1,0 +1,36 @@
+all:
+  vars:
+    ansible_ssh_private_key_file: /root/.ssh/id_rsa
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+  children:
+    resources:
+      vars:
+        ansible_ssh_private_key_file: /root/.ssh/res.pem
+        ansible_user: "{{ hostvars[groups['resources'][0]].ansible_user }}"
+        ansible_become: "{{ hostvars[groups['resources'][0]].ansible_become }}"
+      hosts:
+        resource_host:
+          ansible_host: {{ resource_host }}
+    infrastructure:
+      hosts:
+        infra_host:
+          ansible_host: infra
+          cluster_ip: {{ hostvars['infra'].ansible_default_ipv4.address }}
+    kubernetes:
+      children:
+        kubernetes-node:
+          hosts:
+{% for h in groups['nodes'] %}
+            {{ h }}:
+              ansible_host: "{{ hostvars[h].ansible_default_ipv4.address }}"
+              cluster_ip: "{{ hostvars[h].ansible_default_ipv4.address }}"
+{% endfor %}
+        kubernetes-control-plane:
+          hosts:
+            infra_host
+        kubernetes-etcd:
+          hosts:
+            infra_host
+    nfs-server:
+      hosts:
+        node0

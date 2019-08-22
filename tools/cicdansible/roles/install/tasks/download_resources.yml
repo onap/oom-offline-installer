@@ -1,0 +1,6 @@
+#Download resources/scripts to controller.
+- name: "Download software resources"
+  fetch:
+    src: "{{ resources_dir }}/{{ resources_sw_filename }}"
+    flat: yes
+    dest: "resources/"
