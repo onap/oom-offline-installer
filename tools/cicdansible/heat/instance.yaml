@@ -1,0 +1,58 @@
+#Template for instances.
+heat_template_version: 2017-02-24
+description: "template instantiating and configuring a single instance (any)"
+parameters:
+  instance_name:
+    type: string
+  network:
+    type: string
+  subnet:
+    type: string
+  image_name:
+    type: string
+  flavor_name:
+    type: string
+  key_name:
+    type: string
+  notify_command:
+    type: string
+  security_group:
+    type: string
+#Resources.
+resources:
+  #This is the network port to attach instance to.
+  port:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_param: network }
+      security_groups: [ { get_param: security_group } ]
+      fixed_ips:
+        - { subnet: { get_param: subnet }}
+  #cloudinit configuration stuff.
+  config:
+    type: OS::Heat::SoftwareConfig
+    properties:
+      config:
+        str_replace_strict:
+          template: { get_file: config.yaml }
+          params:
+            "%{NOTIFY_COMMAND}": { get_param: notify_command }
+  #Actual instance to create.
+  instance:
+    type: OS::Nova::Server
+    properties:
+      name: { get_param: instance_name }
+      image: { get_param: image_name }
+      flavor: { get_param: flavor_name }
+      key_name: { get_param: key_name }
+      networks:
+        - port: { get_resource: port }
+      user_data_format: SOFTWARE_CONFIG
+      user_data: { get_resource: config }
+outputs:
+  OS::stack_id:
+    value: { get_resource: instance }
+  port_id:
+    value: { get_resource: port }
+  ip:
+    value: { get_attr: ["port", "fixed_ips", 0, "ip_address"] }
