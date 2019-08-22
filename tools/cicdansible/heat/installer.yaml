@@ -1,0 +1,283 @@
+#This is the environment heat template, compatible with openstack ocata.
+heat_template_version: 2017-02-24
+description: "Heat template for deploying onap env"
+parameters:
+  auth_key:
+    label: "Auth public key"
+    description: "The public key used to authenticate to instances"
+    type: string
+  node_flavor_name:
+    label: "name of node flavor"
+    description: "The name of the flavor used to create kubernetes nodes"
+    type: string
+    constraints:
+      - custom_constraint: nova.flavor
+        description: "need to specify a valid flavor"
+  infra_flavor_name:
+    label: "name of infra flavor"
+    description: "flavor used to create infra instance"
+    type: string
+    constraints:
+      - custom_constraint: nova.flavor
+        description: "need to specify a valid flavor"
+  installer_flavor_name:
+    label: "name of installer flavor"
+    description: "flavor used to create installer instance"
+    type: string
+    constraints:
+      - custom_constraint: nova.flavor
+        description: "need to specify a valid flavor"
+  image_name:
+    label: "image name"
+    description: "name of the image from which to create all instances, should be rhel 7.6 or centos image"
+    type: string
+    constraints:
+      - custom_constraint: glance.image
+        description: "must specify a valid image name"
+  subnet_cidr:
+    label: "private subnet cidr"
+    description: "Cidr of a private subnet instances will be connected to"
+    type: string
+    constraints:
+      - custom_constraint: net_cidr
+  subnet_range_start:
+    label: "subnet dhcp allocation range start"
+    description: "Start of range of dhcp allocatable ips on private subnet"
+    type: string
+    constraints:
+      - custom_constraint: ip_addr
+  subnet_range_end:
+    label: "end of subnet dhcp allocation range"
+    description: "End of private subnet's dhcp allocation range"
+    type: string
+    constraints:
+      - custom_constraint: ip_addr
+  router_addr:
+    label: "ip address of router"
+    description: "IP address of the router allowing access to other networks incl. company network"
+    type: string
+    constraints:
+      - custom_constraint: ip_addr
+  public_network_name:
+    label: "name of the public network"
+    description: "Name of the public, internet facing network, also allowing access to company internal hosts"
+    type: string
+    constraints:
+      - custom_constraint: neutron.network
+        description: "Must specify a valid network name or id"
+  external_subnet_cidr:
+    label: "external subnet cidr"
+    description: "The CIDR of the external subnet, that should be accessible from instances, even when internet access is cut. Putting 0.0.0.0/0 here means access to internet."
+    type: string
+    constraints:
+      - custom_constraint: net_cidr
+  installer_ip:
+    label: "floating ip of the installer"
+    description: "a pre-allocated floating ip that will be associated with the installer instance"
+    type: string
+  infra_ip:
+    label: "floating ip of the infra"
+    description: "a pre-allocated floating ip that will be associated with the infrastructure instance"
+    type: string
+  node_ip:
+    label: "floating ip of the first node"
+    description: "a pre-allocated floating ip that will be associated with the first kubernetes node and allow accessing onap"
+    type: string
+  num_nodes:
+    label: "num nodes"
+    description: "the number of kubernetes nodes to create, min 1"
+    type: number
+    constraints:
+      - range: { min: 1 }
+        description: "must be a positive number"
+resources:
+  # Security group used to secure access to instances.
+  secgroup:
+    type: OS::Neutron::SecurityGroup
+    properties:
+      rules:
+        # Egress rule allowing access to external_subnet_cidr.
+        - direction: egress
+          ethertype: IPv4
+          remote_ip_prefix: { get_param: external_subnet_cidr }
+        # Ingress rule, allowing also inbound access by external network.
+        - direction: ingress
+          ethertype: IPv4
+          remote_ip_prefix: { get_param: external_subnet_cidr }
+        # Allow outbound communication with the internal subnet.
+        - direction: egress
+          ethertype: IPv4
+          remote_ip_prefix: { get_param: subnet_cidr }
+        # Allow inbound communication from internal network.
+        - direction: ingress
+          ethertype: IPv4
+          remote_ip_prefix: { get_param: subnet_cidr }
+        # Allow outbound access to 169.254.0.0/16, mainly for metadata. We do not need inbound.
+        - direction: egress
+          ethertype: IPv4
+          remote_ip_prefix: 169.254.0.0/16
+  #A network that our test environment will be connected to.
+  privnet:
+    type: OS::Neutron::Net
+  #Subnet that instances will live in.
+  privsubnet:
+    type: OS::Neutron::Subnet
+    properties:
+      network: { get_resource: privnet }
+      cidr: { get_param: subnet_cidr }
+      allocation_pools:
+        - { start: { get_param: subnet_range_start }, end: { get_param: subnet_range_end } }
+      gateway_ip: { get_param: router_addr }
+      ip_version: 4
+  #A port connected to the private network, taken by router.
+  routerport:
+    type: OS::Neutron::Port
+    properties:
+      network: { get_resource: privnet }
+      fixed_ips:
+        - { subnet: { get_resource: privsubnet }, ip_address: { get_param: router_addr } }
+      security_groups: [{ get_resource: secgroup }]
+  #This is a router, routing between us and the internet.
+  #It has an external gateway to public network.
+  router:
+    type: OS::Neutron::Router
+    properties:
+      external_gateway_info:
+        network: { get_param: public_network_name }
+  #This is a router interface connecting it to our private subnet's router port.
+  routercon:
+    type: OS::Neutron::RouterInterface
+    properties:
+      router: { get_resource: router }
+      port: { get_resource: routerport }
+
+  #Key used to authenticate to instances as root.
+  key:
+    type: OS::Nova::KeyPair
+    properties:
+      name: { get_param: "OS::stack_name" }
+      public_key: { get_param: auth_key }
+  #Handle to signal about starting up of instances.
+  instance_wait_handle:
+    type: OS::Heat::WaitConditionHandle
+  #Monitor waiting for all instances to start.
+  instance_wait:
+    type: OS::Heat::WaitCondition
+    properties:
+      handle: { get_resource: instance_wait_handle }
+      timeout: 1200
+      count:
+        yaql:
+          data: { num_nodes: { get_param: num_nodes } }
+          #This is number of all nodes + 2 (infra instance and installer)
+          expression: "$.data.num_nodes + 2"
+  #Resource group to deploy n nodes using node template for each, each node numbered starting from 0.
+  nodes:
+    type: OS::Heat::ResourceGroup
+    properties:
+      count: { get_param: num_nodes }
+      resource_def:
+        type: node.yaml
+        properties:
+          nodenum: "%index%"
+          key_name: { get_resource: key }
+          image_name: { get_param: image_name }
+          network: { get_resource: privnet }
+          subnet: { get_resource: privsubnet }
+          flavor_name: { get_param: node_flavor_name }
+          notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
+          security_group: { get_resource: secgroup }
+    depends_on: [routercon, instance_wait_handle]
+  #Nfs storage volume for first node.
+  nfs_storage:
+    type: OS::Cinder::Volume
+    properties:
+      name: nfs_storage
+      size: 50
+  #Attachment of volume to first node.
+  nfs_storage_attachment:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      instance_uuid: { get_attr: [nodes, "resource.0"] }
+      volume_id: { get_resource: nfs_storage }
+  #Floating ip association for node (first only).
+  node_fip_assoc:
+    type: OS::Neutron::FloatingIPAssociation
+    properties:
+      floatingip_id: { get_param: node_ip }
+      port_id: { get_attr: ["nodes", "resource.0.port_id"] }
+  #Openstack volume used for storing resources.
+  resources_storage:
+    type: "OS::Cinder::Volume"
+    properties:
+      name: "resources_storage"
+      size: 120
+  #Instance representing infrastructure instance, created using subtemplate.
+  infra:
+    type: "instance.yaml"
+    properties:
+      instance_name: infra
+      network: { get_resource: privnet }
+      subnet: { get_resource: privsubnet }
+      key_name: { get_resource: key }
+      flavor_name: { get_param: infra_flavor_name }
+      image_name: { get_param: image_name }
+      notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
+      security_group: { get_resource: secgroup }
+    depends_on: [instance_wait_handle]
+  #Volume attachment for infra node.
+  resources_storage_attachment:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: resources_storage }
+      instance_uuid: { get_resource: infra }
+  #Floating ip association for infra.
+  infra_fip_assoc:
+    type: OS::Neutron::FloatingIPAssociation
+    properties:
+      floatingip_id: { get_param: infra_ip }
+      port_id: { get_attr: ["infra", "port_id"] }
+  #Small installer vm having access to other instances, used to install onap.
+  installer:
+    type: "instance.yaml"
+    properties:
+      instance_name: installer
+      image_name: { get_param: image_name }
+      flavor_name: { get_param: installer_flavor_name }
+      key_name: { get_resource: key }
+      network: { get_resource: privnet }
+      subnet: { get_resource: privsubnet }
+      notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
+      security_group: { get_resource: secgroup }
+    depends_on: instance_wait_handle
+  #Floating ip for installer.
+  installer_fip_assoc:
+    type: OS::Neutron::FloatingIPAssociation
+    properties:
+      floatingip_id: { get_param: installer_ip }
+      port_id: { get_attr: [installer, port_id] }
+#Output values
+outputs:
+  installer_ip:
+    value: { get_attr: [installer, ip] }
+    description: "Internal ip of installer instance"
+  infra_ip:
+    value: { get_attr: [infra, ip] }
+    description: "Internal ip of infra instance"
+  node_ips:
+    value: { get_attr: [nodes, ip] }
+    description: "Serialized json list of node internal ips starting at node0"
+  volumes:
+    description: "map of volumes per each instance"
+    value:
+      yaql:
+        data:
+          resources_volid: { get_resource: resources_storage }
+          nfs_volid: { get_resource: nfs_storage }
+          docker_volids: { get_attr: [nodes, docker_storage_id] }
+        #This is going to create a map, where keys are instance names, and values are lists of
+        #pairs of volume ids and their mount points.
+        #This is done by merging few generated maps together, base map is taken by
+        #enumerating over docker storage volumes and transforming them into a map like
+        #{"node0"=>["volid","/var/lib/docker"],...], node1=>...}
+        expression: 'dict($.data.docker_volids.enumerate().select(["node"+str($[0]), [[$[1], "/var/lib/docker"]]])).mergeWith({"infra" => [[$.data.resources_volid, "/opt/onap"]], "node0" => [[$.data.nfs_volid, "/dockerdata-nfs"]]})'

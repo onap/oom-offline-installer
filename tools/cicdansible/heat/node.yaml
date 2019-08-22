@@ -1,0 +1,59 @@
+#This yaml template instantiates kubernetes nodes (using instance.yaml subtemplate).
+#It contains some node specific things, and has been split from main template
+#to be able to do some late evaluation tricks.
+heat_template_version: 2017-02-24
+description: "This template instantiates a single kubernetes node using the instance.yaml subtemplate"
+parameters:
+  key_name:
+    type: string
+  flavor_name:
+    type: string
+  nodenum:
+    type: number
+  image_name:
+    type: string
+  network:
+    type: string
+  subnet:
+    type: string
+  notify_command:
+    type: string
+  security_group:
+    type: string
+resources:
+  #Volume for storing /var/lib/docker for node.
+  docker_storage:
+    type: OS::Cinder::Volume
+    properties:
+      name: docker_storage
+      size: 120
+  #Call generic instance template.
+  instance:
+    type: instance.yaml
+    properties:
+      instance_name:
+        str_replace_strict:
+          template: "node%index%"
+          params: { "%index%": { get_param: nodenum } }
+      key_name: { get_param: key_name }
+      image_name: { get_param: image_name }
+      network: { get_param: network }
+      subnet: { get_param: subnet }
+      flavor_name: { get_param: flavor_name }
+      notify_command: { get_param: notify_command }
+      security_group: { get_param: security_group }
+  #Attachment of docker volume to node.
+  docker_storage_attachment:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: docker_storage }
+      instance_uuid: { get_resource: instance }
+outputs:
+  OS::stack_id:
+    value: { get_resource: instance }
+  port_id:
+    value: { get_attr: ["instance", "port_id"] }
+  ip:
+    value: { get_attr: ["instance", "ip"] }
+  docker_storage_id:
+    value: { get_resource: docker_storage }

@@ -1,0 +1,10 @@
+#cloud-config
+#Enable root login.
+disable_root: false
+#Output everything to /dev/console...
+output: { all: "/dev/console" }
+#Initialization.
+runcmd:
+  - |
+    set -efxu -o pipefail
+    %{NOTIFY_COMMAND} --data-binary '{"status": "SUCCESS", "reason": "instance started successfully"}'
