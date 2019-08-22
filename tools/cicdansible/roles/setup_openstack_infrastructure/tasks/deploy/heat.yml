@@ -1,0 +1,36 @@
+#Tasks for stack redeployment.
+#Delete the heat stack before deployment.
+- name: "delete deployment to force redeploy"
+  os_stack:
+    auth: "{{ os_auth }}"
+    auth_type: token
+    name: "{{ stack_name }}"
+    state: absent
+#Deploy heat stack with infrastructure.
+- name: "Deploy the infrastructure via heat"
+  os_stack:
+    auth: "{{ os_auth }}"
+    auth_type: token
+    name: "{{ stack_name }}"
+    template: "heat/installer.yaml"
+    state: present
+    environment:
+      - "heat/installer.env"
+    parameters:
+      num_nodes: "{{ num_nodes }}"
+      public_network_name: "{{ public_network }}"
+      external_subnet_cidr: "{{ external_subnet_cidr }}"
+      subnet_cidr: "{{ subnet_cidr }}"
+      subnet_range_start: "{{ subnet_range_start }}"
+      subnet_range_end: "{{ subnet_range_end }}"
+      router_addr: "{{ router_addr }}"
+      auth_key: "{{ auth_public_key }}"
+      image_name: "{{ image_name }}"
+      node_flavor_name: "{{ node_flavor_name }}"
+      infra_flavor_name: "{{ infra_flavor_name }}"
+      installer_flavor_name: "{{ installer_flavor_name }}"
+      node_ip: "{{ floating_ips_by_address[first_node_ip].id }}"
+      infra_ip: "{{ floating_ips_by_address[infra_ip].id }}"
+      installer_ip: "{{ floating_ips_by_address[installer_ip].id }}"
+    wait: true
+  register: heat_stack
