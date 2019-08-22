@@ -6,6 +6,46 @@ kube_config_dir: "{{ ansible_env.HOME }}/.kube"
 cluster_config_dir: "{{ app_data_path }}/cluster"
 # Whether dashboard is exposed.
 rke_dashboard_exposed: true
+rke_etcd:
+  # By default rke creates bind mount:
+  # /var/lib/etcd -> /var/lib/rancher/etcd
+  # These parameters provide means of modifying it:
+  #   - custom bind mount
+  #   - option to use volatile storage
+
+  # Custom bind mount
+  #
+  # I did not find a proper way (in the docs) how to override the
+  # defaults so I just abuse the extra_* args for the rke etcd
+  # service. It means that it will create another mount point in the
+  # container and you should use different pathnames than default...
+  #
+  # The custom bind mount is by default disabled.
+  enabled_custom_etcd_storage: false
+
+  # Applicated only if custom mount is enabled.
+  # Paths must be absolute (start with '/')
+  #
+  # Path on the kubernetes/etcd node
+  storage_path: /var/lib/etcd-custom
+  # Path inside the container where it is mounted.
+  storage_mountpoint: /var/lib/rancher/etcd-custom
+
+  # On top of it (with or without custom mount) you can use tmpfs
+  # as a volatile storage.
+  #
+  # CAUTION: This will create temporary filesystem (in the memory)
+  # so if an etcd node will be poweroff then all etcd data will be
+  # lost!!!
+  #
+  # Don't use unless you don't care about your cluster!
+  #
+  # This is intended as an attempt to make deployment little bit
+  # more faster...by default it is disabled.
+  enabled_unsafe_volatile_storage: false
+  # Size of the volatile storage - tmpfs (this will eat your RAM)
+  tmpfs_size: 5G
+
 rke:
   # rke (rancher) images
   etcd: rancher/coreos-etcd:v3.2.24-rancher1

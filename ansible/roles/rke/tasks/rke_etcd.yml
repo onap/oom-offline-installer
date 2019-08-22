@@ -1,0 +1,9 @@
+---
+- name: "Mount tmpfs as etcd storage - non-persistent data (BEWARE)"
+  mount:
+    path: "{{ rke_etcd.storage_path if rke_etcd.enabled_custom_etcd_storage else '/var/lib/etcd' }}"
+    src: tmpfs
+    fstype: tmpfs
+    opts: "defaults,size={{ rke_etcd.tmpfs_size }},mode=700"
+    state: mounted
+  when: rke_etcd.enabled_unsafe_volatile_storage
