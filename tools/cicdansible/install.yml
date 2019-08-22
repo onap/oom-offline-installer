@@ -1,0 +1,36 @@
+---
+#Installation of onap on open stack driven by ansible.
+#Default parameters are set in group_vars/*.yml.
+#Inventory is in hosts.yml, and parameters specific to instances are set there.
+#Deploy infrastructure.
+- name: "deploy infrastructure"
+  hosts: localhost
+  gather_facts: false
+  roles:
+    - role: setup_openstack_infrastructure
+      vars:
+        mode: deploy
+#Play that configures all instances.
+- name: "Instance configuration"
+  hosts: instances
+  any_errors_fatal: true
+  roles:
+    - role: setup_openstack_infrastructure
+      vars:
+        mode: configure
+    - role: configure_instances
+#Play that downloads sw resources.
+- name: "Download resources"
+  hosts: resources
+  gather_facts: false
+  roles:
+    - role: install
+      vars:
+        mode: download_resources
+#Perform installation.
+- name: "Perform installation"
+  hosts: installer
+  roles:
+    - role: install
+      vars:
+        mode: install
