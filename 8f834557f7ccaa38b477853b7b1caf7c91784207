@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf09ebca_6718b9b0",
+        "filename": "ansible/roles/rke/templates/cluster.yml.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5019
+      },
+      "writtenOn": "2019-08-26T09:17:06Z",
+      "side": 1,
+      "message": "Is this else block needed? couldn\u0027t you just go without else block? or you want to explicitly state that there are *really* no extra args?",
+      "revId": "8f834557f7ccaa38b477853b7b1caf7c91784207",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
