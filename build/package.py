@@ -68,7 +68,7 @@ def prepare_application_repository(directory, url, refspec, patch_path):
     return repository
 
 
-def create_package_info_file(output_file, repository_list):
+def create_package_info_file(output_file, repository_list, tag):
     """
     Generates text file in json format containing basic information about the build
     :param output_file:
@@ -78,7 +78,8 @@ def create_package_info_file(output_file, repository_list):
     log.info('Generating package.info file')
     build_info = {
         'Build_info': {
-            'build_date': datetime.now().strftime('%Y-%m-%d_%H-%M')
+            'build_date': datetime.now().strftime('%Y-%m-%d_%H-%M'),
+            'Version': tag
         }
     }
     for repository in repository_list:
@@ -98,25 +99,36 @@ def create_package(tar_content, file_name):
     log.info('Creating package {}'.format(file_name))
     with tarfile.open(file_name, 'w') as output_tar_file:
         for src, dst in tar_content.items():
-            output_tar_file.add(src, dst)
+            if src != '':
+              output_tar_file.add(src, dst)
 
 
-def build_offline_deliverables(application_repository_url,
+def build_offline_deliverables(build_version,
+                               application_repository_url,
                                application_repository_reference,
                                application_patch_file,
+                               application_charts_dir,
+                               application_configuration,
+                               application_patch_role,
                                output_dir,
                                resources_directory,
+                               aux_directory,
                                skip_sw,
                                skip_resources,
                                skip_aux,
                                overwrite):
     """
     Prepares offline deliverables
+    :param build_version: Version for packages tagging
     :param application_repository_url: git repository hosting application helm charts
     :param application_repository_reference: git refspec for repository hosting application helm charts
     :param application_patch_file: git patch file to be applied over application repository
+    :param application_charts_dir: path to directory under application repository containing helm charts
+    :param application_configuration:  path to application configuration file (helm override configuration)
+    :param application_patch_role: path to application patch role (executed just before helm deploy)
     :param output_dir: Destination directory for saving packages
     :param resources_directory: Path to resource directory
+    :param aux_directory: Path to aux binary directory
     :param skip_sw: skip sw package generation
     :param skip_resources: skip resources package generation
     :param skip_aux: skip aux package generation
@@ -128,6 +140,7 @@ def build_offline_deliverables(application_repository_url,
         if not overwrite:
             log.error('Output directory is not empty, use overwrite to force build')
             raise FileExistsError
+        shutil.rmtree(output_dir)
 
     # Git
     offline_repository_dir = os.path.join(script_location, '..')
@@ -141,23 +154,23 @@ def build_offline_deliverables(application_repository_url,
 
     # Package info
     info_file = os.path.join(output_dir, 'package.info')
-    create_package_info_file(info_file, [application_repository, offline_repository])
+    create_package_info_file(info_file, [application_repository, offline_repository], build_version)
 
     # packages layout as dictionaries. <file> : <file location under tar archive>
     sw_content = {
         os.path.join(offline_repository_dir, 'ansible'): 'ansible',
-        os.path.join(offline_repository_dir, 'config',
-                     'application_configuration.yml'): 'ansible/application/application_configuration.yml',
-        os.path.join(offline_repository_dir, 'patches', 'onap-patch-role'): 'ansible/application/onap-patch-role',
-        os.path.join(application_dir, 'kubernetes'): 'ansible/application/helm_charts',
-        info_file: 'packge.info'
+        application_configuration: 'ansible/application/application_configuration.yml',
+        application_patch_role: 'ansible/application/onap-patch-role',
+        os.path.join(application_dir, application_charts_dir): 'ansible/application/helm_charts',
+        info_file: 'package.info'
     }
     resources_content = {
         resources_directory: '',
-        info_file: 'packge.info'
+        info_file: 'package.info'
     }
     aux_content = {
-        info_file: 'packge.info'
+        aux_directory: '',
+        info_file: 'package.info'
     }
 
     if not skip_sw:
@@ -167,7 +180,7 @@ def build_offline_deliverables(application_repository_url,
             os.path.join(offline_repository_dir, 'ansible', 'docker', 'build_ansible_image.sh'))
         installer_build.check_returncode()
         os.chdir(script_location)
-        sw_package_tar_path = os.path.join(output_dir, 'sw_package.tar')
+        sw_package_tar_path = os.path.join(output_dir, 'sw_package' + build_version + '.tar')
         create_package(sw_content, sw_package_tar_path)
 
     if not skip_resources:
@@ -201,11 +214,11 @@ def build_offline_deliverables(application_repository_url,
         createrepo = subprocess.run(['createrepo', os.path.join(resources_directory, 'pkg', 'rhel')])
         createrepo.check_returncode()
 
-        resources_package_tar_path = os.path.join(output_dir, 'resources_package.tar')
+        resources_package_tar_path = os.path.join(output_dir, 'resources_package' + build_version + '.tar')
         create_package(resources_content, resources_package_tar_path)
 
     if not skip_aux:
-        aux_package_tar_path = os.path.join(output_dir, 'aux_package.tar')
+        aux_package_tar_path = os.path.join(output_dir, 'aux_package'+ build_version + '.tar')
         create_package(aux_content, aux_package_tar_path)
 
     shutil.rmtree(application_dir)
@@ -216,16 +229,28 @@ def run_cli():
     Run as cli tool
     """
     parser = argparse.ArgumentParser(description='Create Package For Offline Installer')
+    parser.add_argument('--build-version',
+                        help='version of the build', default='custom')
     parser.add_argument('application_repository_url', metavar='application-repository-url',
                         help='git repository hosting application helm charts')
     parser.add_argument('--application-repository_reference', default='master',
                         help='git refspec for repository hosting application helm charts')
     parser.add_argument('--application-patch_file',
                         help='git patch file to be applied over application repository', default='')
+    parser.add_argument('--application-charts_dir',
+                        help='path to directory under application repository containing helm charts ', default='kubernetes')
+    parser.add_argument('--application-configuration',
+                        help='path to application configuration file (helm override configuration)',
+                        default='')
+    parser.add_argument('--application-patch-role',
+                        help='path to application patch role file (ansible role) to be executed right before installation',
+                        default='')
     parser.add_argument('--output-dir', '-o', default=os.path.join(script_location, '..', '..'),
                         help='Destination directory for saving packages')
-    parser.add_argument('--resources-directory',
+    parser.add_argument('--resources-directory', default='',
                         help='Path to resource directory')
+    parser.add_argument('--aux-directory',
+                        help='Path to aux binary directory', default='')
     parser.add_argument('--skip-sw', action='store_true', default=False,
                         help='Set to skip sw package generation')
     parser.add_argument('--skip-resources', action='store_true', default=False,
@@ -243,11 +268,16 @@ def run_cli():
     else:
         logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(message)s')
 
-    build_offline_deliverables(args.application_repository_url,
+    build_offline_deliverables(args.build_version,
+                               args.application_repository_url,
                                args.application_repository_reference,
                                args.application_patch_file,
+                               args.application_charts_dir,
+                               args.application_configuration,
+                               args.application_patch_role,
                                args.output_dir,
                                args.resources_directory,
+                               args.aux_directory,
                                args.skip_sw,
                                args.skip_resources,
                                args.skip_aux,
@@ -256,4 +286,3 @@ def run_cli():
 
 if __name__ == '__main__':
     run_cli()
-
