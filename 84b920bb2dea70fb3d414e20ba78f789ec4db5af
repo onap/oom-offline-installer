@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "866bb3b9_169eba55",
+        "filename": "build/package.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-08-30T10:44:18Z",
+      "side": 1,
+      "message": "This is unnecessary and the last empty line, otherwise perfect",
+      "range": {
+        "startLine": 158,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 4
+      },
+      "revId": "84b920bb2dea70fb3d414e20ba78f789ec4db5af",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
