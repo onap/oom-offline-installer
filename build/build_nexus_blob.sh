@@ -145,7 +145,7 @@ push_pip () {
 
 docker_login () {
     for REGISTRY in $(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY}) ${DOCKER_REGISTRY}; do
-        if ! grep -wq ${REGISTRY} ~/.docker/config.json; then
+        if ! grep -wqs ${REGISTRY} ~/.docker/config.json; then
 	        echo "Docker login to ${REGISTRY}"
             echo -n "${NEXUS_PASSWORD}" | docker login -u "${NEXUS_USERNAME}" --password-stdin ${REGISTRY} > /dev/null
 	    fi
