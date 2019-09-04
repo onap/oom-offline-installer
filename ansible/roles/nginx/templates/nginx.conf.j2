@@ -59,43 +59,4 @@ http {
             proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         }
     }
-
-# git simulations
-    server {
-        listen 80;
-        listen 443 ssl;
-        server_name {% for host in simulated_hosts.git -%}
-                        {{ host + " " }}
-                    {%- endfor %};
-        ssl_certificate         /etc/nginx/certs/nexus_server.crt;
-        ssl_certificate_key     /etc/nginx/certs/nexus_server.key;
-
-        keepalive_timeout  5 5;
-        proxy_buffering    off;
-
-        location / {
-              try_files $uri $uri/ @git;
-        }
-
-        location @git {
-
-            # Set chunks to unlimited, as the body's can be huge
-            client_max_body_size            0;
-
-            fastcgi_param   SCRIPT_FILENAME     /usr/libexec/git-core/git-http-backend;
-            fastcgi_param   QUERY_STRING        $args;
-            fastcgi_param   HTTP_HOST           $server_name;
-            fastcgi_param   PATH_INFO           $uri;
-
-            include fastcgi_params;
-
-            fastcgi_param   GIT_HTTP_EXPORT_ALL "";
-            fastcgi_param   GIT_PROJECT_ROOT    /srv/git/$host/;
-
-            # Forward REMOTE_USER as we want to know when we are authenticated
-            fastcgi_param               REMOTE_USER $remote_user;
-
-            fastcgi_pass unix:/var/run/fcgiwrap.socket;
-        }
-    }
 }
