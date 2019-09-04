@@ -16,6 +16,24 @@
       "revId": "76831aac0b6519a075b952ca05e2a467fb755a3f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e7d24a_5281a065",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-09-04T14:24:15Z",
+      "side": 1,
+      "message": "Heh, somehow forgot to finalize the message before posting. Anyway wanted to keep it as WIP, till the other patching will be merged. Will double-check the dgbuilder, since I thought we\u0027re waiting for msosimulator only...",
+      "parentUuid": "6751d40e_88aa4c09",
+      "revId": "76831aac0b6519a075b952ca05e2a467fb755a3f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
