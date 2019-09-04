@@ -16,6 +16,24 @@
       "revId": "35b32594d917c52dfd587387ddc7bc7602061aeb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c8fede_4203131d",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-09-04T10:35:04Z",
+      "side": 1,
+      "message": "You\u0027re right. Done",
+      "parentUuid": "bac12c4d_aa76d550",
+      "revId": "35b32594d917c52dfd587387ddc7bc7602061aeb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
