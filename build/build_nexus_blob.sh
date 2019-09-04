@@ -384,6 +384,7 @@ for NPM_LIST in "${NXS_NPM_LISTS[@]}"; do
     push_npm "${NPM_LIST}"
 done
 popd
+npm logout
 
 ###############################
 ##  Populate PyPi repository  #
