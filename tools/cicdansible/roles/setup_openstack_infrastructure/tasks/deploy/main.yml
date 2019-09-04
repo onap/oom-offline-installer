@@ -1,0 +1,8 @@
+---
+#This mode expects some variables, and deploys infrastructure on open stack.
+#Execute prerequisites.
+- include_tasks: deploy/prereq.yml
+#Deploy stack.
+- include_tasks: deploy/heat.yml
+#Register instances in inventory.
+- include_tasks: deploy/register_instances.yml

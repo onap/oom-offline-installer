@@ -1,0 +1,6 @@
+#Resource host configuration.
+#Define used private key.
+ansible_private_key_file: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa"
+#User login data.
+ansible_user: root
+ansible_become: no
