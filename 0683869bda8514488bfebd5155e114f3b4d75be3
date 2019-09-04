@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75b70556_d8916d95",
+        "filename": "tools/cicdansible/heat/installer.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5626
+      },
+      "writtenOn": "2019-09-04T07:30:30Z",
+      "side": 1,
+      "message": "Shouldn\u0027t it be rhel 7.6 as per our BuildGuide documentation?",
+      "range": {
+        "startLine": 32,
+        "startChar": 87,
+        "endLine": 32,
+        "endChar": 90
+      },
+      "revId": "0683869bda8514488bfebd5155e114f3b4d75be3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
