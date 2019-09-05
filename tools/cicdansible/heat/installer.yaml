@@ -90,6 +90,13 @@ parameters:
     constraints:
       - range: { min: 1 }
         description: "must be a positive number"
+  use_volume_for_nfs:
+    type: boolean
+    label: "use volume for nfs storage"
+    description: "Indicates whether a cinder volume should be used for nfs storage or not. If not checked, the nfs would be stored in the root disk"
+conditions:
+  #Condition for nfs volume usage.
+  use_volume_for_nfs: { get_param: use_volume_for_nfs }
 resources:
   # Security group used to secure access to instances.
   secgroup:
@@ -200,12 +207,14 @@ resources:
   #Nfs storage volume for first node.
   nfs_storage:
     type: OS::Cinder::Volume
+    condition: use_volume_for_nfs
     properties:
       name: nfs_storage
       size: 50
   #Attachment of volume to first node.
   nfs_storage_attachment:
     type: OS::Cinder::VolumeAttachment
+    condition: use_volume_for_nfs
     properties:
       instance_uuid: { get_attr: [nodes, "resource.0"] }
       volume_id: { get_resource: nfs_storage }
@@ -292,8 +301,12 @@ resources:
   node0_volumes:
     type: OS::Heat::Value
     properties:
+      #Note that it returns an empty list if nfs volume is disabled.
       value:
-        - [{ get_resource: nfs_storage }, "/dockerdata-nfs"]
+        if:
+          - use_volume_for_nfs
+          - - [{ get_resource: nfs_storage }, "/dockerdata-nfs"]
+          - []
 #Output values
 outputs:
   installer_ip:
