@@ -20,6 +20,8 @@ parameters:
     type: string
   security_group:
     type: string
+  scheduler_hints:
+    type: json
 resources:
   #Volume for storing /var/lib/docker for node.
   docker_storage:
@@ -42,6 +44,7 @@ resources:
       flavor_name: { get_param: flavor_name }
       notify_command: { get_param: notify_command }
       security_group: { get_param: security_group }
+      scheduler_hints: { get_param: scheduler_hints }
   #Attachment of docker volume to node.
   docker_storage_attachment:
     type: OS::Cinder::VolumeAttachment

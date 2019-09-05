@@ -18,6 +18,9 @@ parameters:
     type: string
   security_group:
     type: string
+  scheduler_hints:
+    type: json
+    default: {}
 #Resources.
 resources:
   #This is the network port to attach instance to.
@@ -49,6 +52,7 @@ resources:
         - port: { get_resource: port }
       user_data_format: SOFTWARE_CONFIG
       user_data: { get_resource: config }
+      scheduler_hints: { get_param: scheduler_hints }
 outputs:
   OS::stack_id:
     value: { get_resource: instance }
