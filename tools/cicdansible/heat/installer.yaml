@@ -256,6 +256,33 @@ resources:
     properties:
       floatingip_id: { get_param: installer_ip }
       port_id: { get_attr: [installer, port_id] }
+  #Map of node volumes, taken from volumes output param.
+  node_volumes:
+    type: OS::Heat::Value
+    properties:
+      type: json
+      #We need yaql transformation to be done on the volume map.
+      value:
+        yaql:
+          data:
+            #This is a map of node number to value of "volumes" attribute, that contains
+            #a list of volumes written as pairs [volumeid, mountpoint].
+            volumes: { get_attr: [nodes, attributes, volumes] }
+          #We need yaql expressions to transform node numbers to node names in the form "node0" and similar.
+          #However we don't need anything more complicated.
+          expression: "$.data.volumes?.items()?.toDict('node'+str($[0]), $[1])"
+  #List of infra specific volumes (not a map as above).
+  infra_volumes:
+    type: OS::Heat::Value
+    properties:
+      value:
+        - [{ get_resource: resources_storage }, "/opt/onap"]
+  #Contains node0 specific volume list.
+  node0_volumes:
+    type: OS::Heat::Value
+    properties:
+      value:
+        - [{ get_resource: nfs_storage }, "/dockerdata-nfs"]
 #Output values
 outputs:
   installer_ip:
@@ -270,14 +297,10 @@ outputs:
   volumes:
     description: "map of volumes per each instance"
     value:
+      #Can do deep merging only with yaql.
       yaql:
         data:
-          resources_volid: { get_resource: resources_storage }
-          nfs_volid: { get_resource: nfs_storage }
-          docker_volids: { get_attr: [nodes, docker_storage_id] }
-        #This is going to create a map, where keys are instance names, and values are lists of
-        #pairs of volume ids and their mount points.
-        #This is done by merging few generated maps together, base map is taken by
-        #enumerating over docker storage volumes and transforming them into a map like
-        #{"node0"=>["volid","/var/lib/docker"],...], node1=>...}
-        expression: 'dict($.data.docker_volids.enumerate().select(["node"+str($[0]), [[$[1], "/var/lib/docker"]]])).mergeWith({"infra" => [[$.data.resources_volid, "/opt/onap"]], "node0" => [[$.data.nfs_volid, "/dockerdata-nfs"]]})'
+          node_volumes: { get_attr: [node_volumes, value]}
+          infra_volumes: { infra: { get_attr: [infra_volumes, value] }}
+          node0_volumes: {node0: { get_attr: [node0_volumes, value] }}
+        expression: "$.data.node_volumes?.mergeWith($.data.infra_volumes)?.mergeWith($.data.node0_volumes)"

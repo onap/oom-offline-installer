@@ -55,5 +55,5 @@ outputs:
     value: { get_attr: ["instance", "port_id"] }
   ip:
     value: { get_attr: ["instance", "ip"] }
-  docker_storage_id:
-    value: { get_resource: docker_storage }
+  volumes:
+    value: [[{ get_resource: docker_storage }, "/var/lib/docker"]]
