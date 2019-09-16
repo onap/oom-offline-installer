@@ -16,6 +16,7 @@ all:
         infra_host:
           ansible_host: infra
           cluster_ip: {{ hostvars['infra'].ansible_default_ipv4.address }}
+          external_ip: "{{ hostvars['infra'].ansible_host }}"
     kubernetes:
       children:
         kubernetes-node:
@@ -24,6 +25,9 @@ all:
             {{ h }}:
               ansible_host: "{{ hostvars[h].ansible_default_ipv4.address }}"
               cluster_ip: "{{ hostvars[h].ansible_default_ipv4.address }}"
+{% if h == 'node0' %}
+              external_ip: "{{ hostvars[h].first_node_ip }}"
+{% endif %}
 {% endfor %}
         kubernetes-control-plane:
           hosts:
