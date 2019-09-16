@@ -1,6 +1,6 @@
 nodes:
 {% for node in groups['kubernetes'] %}
-- address: "{{ hostvars[node].cluster_ip }}"
+- address: "{{ hostvars[node].external_ip | default(hostvars[node].cluster_ip) }}"
   port: "22"
   internal_address: "{{ hostvars[node].cluster_ip }}"
   role:
@@ -13,7 +13,7 @@ nodes:
 {% if node in groups['kubernetes-etcd'] %}
   - etcd
 {% endif %}
-  hostname_override: ""
+  hostname_override: "{{ node }}"
   user: "{{ rke_username }}"
   docker_socket: /var/run/docker.sock
   ssh_key: ""
