@@ -81,8 +81,8 @@
           {{ app_helm_release_name }}
           {{ helm_repository_name }}/{{ app_helm_chart_name }}
           --namespace {{ app_kubernetes_namespace }}
-          {% for arg in helm_override_files %} {{ '-f ' + arg }} {% endfor %}
-          {% for arg in helm_extra_install_options %} {{ arg.opt }} {% endfor %}
+          {{ helm_override_files | map('regex_replace', '^', '-f ') | join(' ') }}
+          {{ helm_extra_install_options | map(attribute='opt') | join(' ') }}
   changed_when: true  # when executed its a changed type of action
   register: helm_install
   failed_when: helm_install.stderr
