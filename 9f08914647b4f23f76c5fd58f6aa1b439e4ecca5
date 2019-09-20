@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7742ce42_2fbcaca4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-09-20T06:14:58Z",
+      "side": 1,
+      "message": "thats misleading, we dont track oom/helm charts commit. Just oom/offline-installer repo commit",
+      "revId": "9f08914647b4f23f76c5fd58f6aa1b439e4ecca5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ac5f523_61af0641",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-09-20T06:14:58Z",
+      "side": 1,
+      "message": "format is not easily parseable, agree with MichalZ.\nwhat about e.g.:\nnexus_image_ver\u003d111111\nused_image_list\u003d222222\ninstaller_repo_commit\u003d333333\n\nregarding his other point about other data lists, I dont think we need to track them, they should disappear in el-alto  (hopefully :-))",
+      "revId": "9f08914647b4f23f76c5fd58f6aa1b439e4ecca5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
