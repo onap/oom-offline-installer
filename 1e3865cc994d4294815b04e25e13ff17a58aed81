@@ -45,6 +45,30 @@
       "revId": "1e3865cc994d4294815b04e25e13ff17a58aed81",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7745fc3_c7913f7d",
+        "filename": "INFO.yaml",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-09-26T10:08:39Z",
+      "side": 1,
+      "message": "I believe those are the mails you desire:\n\nhttps://lists.onap.org/g/onap-tsc/topic/32429690\nhttps://lists.onap.org/g/onap-tsc/topic/32494221",
+      "parentUuid": "da3f6af0_694ce990",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 72,
+        "endChar": 3
+      },
+      "revId": "1e3865cc994d4294815b04e25e13ff17a58aed81",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
