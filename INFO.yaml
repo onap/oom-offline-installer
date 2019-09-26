@@ -28,9 +28,7 @@ meetings:
       repeats: 'weekly'
       time: '14:00 UTC'
 repositories:
-    - 'oom'
     - 'oom-offline-installer'
-    - 'oom-registrator'
 committers:
     - <<: *onap_releng_ptl
     - name: 'Michal Ptacek'
@@ -51,7 +49,7 @@ committers:
     - name: 'Tomas Levora'
       email: 't.levora@partner.samsung.com'
       company: 'Samsung'
-      id: 't.levora'
+      id: 'tomas.levora'
       timezone: 'Europe/Prague'
     - name: 'Milan Verespej'
       email: 'm.verespej@partner.samsung.com'
@@ -70,3 +68,7 @@ committers:
       timezone: 'Europe/Warsaw'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
+    changes:
+        - type: 'Addition'
+          name: 'Bartlomiej Grzybowski'
+          link: 'https://lists.onap.org/g/onap-tsc/topic/32429690'
