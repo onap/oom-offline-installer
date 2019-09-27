@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65604d38_ab80477c",
+        "filename": "INFO.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-09-27T06:17:40Z",
+      "side": 1,
+      "message": "Updated according to conversation in https://jira.linuxfoundation.org/servicedesk/customer/portal/2/IT-17717 (proper id in LDAP for Tomas\u0027 account is tomas.levora)",
+      "revId": "b06e96a40dd32974e3c55ab234a588a5c7a3723c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
