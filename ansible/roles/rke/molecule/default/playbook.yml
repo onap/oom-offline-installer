@@ -11,6 +11,10 @@
   roles:
     - role: rke
       vars:
+        rke_dns:
+          provider: coredns
+          upstreamnameservers:
+            - 8.8.8.8
         mode: config
 
 - name: Prepare kubernetes hosts (RKE)
