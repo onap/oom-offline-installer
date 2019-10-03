@@ -19,6 +19,18 @@
   delegate_to: localhost
   when: simulate_helm
 
+- name: Create log-kibana chart dir for workaround in application role
+  file:
+    path: "{{ app_helm_charts_install_directory }}/log/charts/log-kibana/resources/config/"
+    state: directory
+  delegate_to: localhost
+
+- name: Create kibana-onboarding.json for workaround in application role
+  copy:
+    content: ''
+    dest: "{{ app_helm_charts_install_directory }}/log/charts/log-kibana/resources/config/kibana-onboarding.json"
+  delegate_to: localhost
+
 - name: Clean previous simulation output file
   file:
     path: "{{ helm_simulation_output_file }}"
