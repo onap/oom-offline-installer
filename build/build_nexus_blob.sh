@@ -227,6 +227,7 @@ NXS_SRC_PYPI_DIR="${DATA_DIR}/offline_data/pypi"
 NXS_INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
 NXS_DOCKER_IMG_LIST="${LISTS_DIR}/onap_docker_images.list"
 NXS_RKE_DOCKER_IMG_LIST="${LISTS_DIR}/rke_docker_images.list"
+NXS_K8S_DOCKER_IMG_LIST="${LISTS_DIR}/k8s_docker_images.list"
 NXS_NPM_LIST="${LISTS_DIR}/onap_npm.list"
 NXS_PYPI_LIST="${LISTS_DIR}/onap_pip_packages.list"
 
@@ -236,7 +237,7 @@ NEXUS_IMAGE_TAR="${DATA_DIR}/offline_data/docker_images_infra/$(sed 's/\//\_/ ; 
 
 # Set default lists if nothing specific defined by user
 if [ $((${#NXS_DOCKER_IMG_LISTS[@]} + ${#NXS_NPM_LISTS[@]} + ${#NXS_PYPI_LISTS[@]})) -eq 0 ]; then
-    NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}")
+    NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}" "${NXS_K8S_DOCKER_IMG_LIST}")
     NXS_NPM_LISTS[0]="${NXS_NPM_LIST}"
     NXS_PYPI_LISTS[0]="${NXS_PYPI_LIST}"
 fi

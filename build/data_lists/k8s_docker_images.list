@@ -1,0 +1,3 @@
+gcr.io/kubernetes-helm/tiller:v2.14.2
+kubernetesui/dashboard:v2.0.0-beta4
+kubernetesui/metrics-scraper:v1.0.1
