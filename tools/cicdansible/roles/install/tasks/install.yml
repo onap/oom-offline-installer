@@ -45,4 +45,4 @@
   args:
     chdir: "{{ installer_deploy_path }}/ansible"
   async: "{{ install_timeout }}"
-  when: install_app
+  when: install_app | bool
