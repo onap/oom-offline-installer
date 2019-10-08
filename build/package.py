@@ -210,10 +210,6 @@ def build_offline_deliverables(build_version,
         os.chdir(script_location)
         # End of workaround
 
-        log.info('Create rhel repo')
-        createrepo = subprocess.run(['createrepo', os.path.join(resources_directory, 'pkg', 'rhel')])
-        createrepo.check_returncode()
-
         resources_package_tar_path = os.path.join(output_dir, 'resources_package' + build_version + '.tar')
         create_package(resources_content, resources_package_tar_path)
 
