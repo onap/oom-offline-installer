@@ -13,7 +13,7 @@ all:
           ansible_host: {{ resource_host }}
     infrastructure:
       hosts:
-        infra_host:
+        infra:
           ansible_host: infra
           cluster_ip: {{ hostvars['infra'].ansible_default_ipv4.address }}
           external_ip: "{{ hostvars['infra'].ansible_host }}"
@@ -31,10 +31,10 @@ all:
 {% endfor %}
         kubernetes-control-plane:
           hosts:
-            infra_host
+            infra
         kubernetes-etcd:
           hosts:
-            infra_host
+            infra
     nfs-server:
       hosts:
         node0
