@@ -42,8 +42,6 @@ Alternatively
 
 ::
 
-   ToDo: newer download scripts needs to be verified on Centos with ONAP Dublin
-
    ##############
    # Centos 7.6 #
    ##############
@@ -63,9 +61,6 @@ Subsequent steps are the same on both platforms:
 
     # install Python 3 (download scripts don't support Python 2 anymore)
     yum install -y python36 python36-pip
-
-    # twine package is needed by nexus blob build script
-    pip install twine
 
     # docker daemon must be running on host
     service docker start
@@ -136,10 +131,8 @@ so one might try following command to download most of the required artifacts in
 
         ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
         --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus \
+        --docker ./build/data_lists/k8s_docker_images.list ../resources/offline_data/docker_images_for_nexus \
         --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus \
-        --git ./build/data_lists/onap_git_repos.list ../resources/git-repo \
-        --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar \
-        --pypi ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi \
         --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
 
 
@@ -160,34 +153,17 @@ Prerequisites:
 
 Whole nexus blob data will be created by running script build_nexus_blob.sh.
 It will load the listed docker images, run the Nexus, configure it as npm, pypi
-and docker repositories. Then it will push all listed npm and pypi packages and
-docker images to the repositories. After all is done the repository container
-is stopped.
+and docker repositories. Then it will push all listed docker images to the repositories. After all is done the repository container is stopped.
 
-.. note:: build_nexus_blob.sh script is using docker, npm and pip data lists for building nexus blob. Unfortunatelly we now have 2 different docker data lists (RKE & ONAP). So we need to merge them as visible from following snippet. This problem will be fixed in OOM-1890
+.. note:: In the current release scope we aim to maintain just single example data lists set, tags used in previous releases are not needed. Datalists are also covering latest versions verified by us despite user is allowed to build data lists on his own.
 
-You can run the script as following example:
-
-::
-
-        # merge RKE and ONAP app data lists
-        cat ./build/data_lists/rke_docker_images.list >> ./build/data_lists/onap_docker_images.list
-
-        ./build/build_nexus_blob.sh
-
-.. note:: in current release scope we aim to maintain just single example data lists set, tags used in previous releases are not needed. Datalists are also covering latest versions verified by us despite user is allowed to build data lists on his own.
-
-Once the Nexus data blob is created, the docker images and npm and pypi
-packages can be deleted to reduce the package size as they won't be needed in
-the installation time:
+Once the Nexus data blob is created, the docker images can be deleted to reduce the package size as they won't be needed in the installation time:
 
 E.g.
 
 ::
 
     rm -f /tmp/resources/offline_data/docker_images_for_nexus/*
-    rm -rf /tmp/resources/offline_data/npm_tar
-    rm -rf /tmp/resources/offline_data/pypi
 
 Part 4. Packages preparation
 --------------------------------------------------------
@@ -240,35 +216,13 @@ Appendix 1. Step-by-step download procedure
 
         ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
         --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus \
+        --docker ./build/data_lists/k8s_docker_images.list ../resources/offline_data/docker_images_for_nexus \
         --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus
 
 
-**Step 2 - git repos**
-
-::
-
-        # Following step will download all git repos
-        ./build/download/download.py --git ./build/data_lists/onap_git_repos.list ../resources/git-repo
-
-
-**Step 3 - npm packages**
-
-::
-
-        # Following step will download all npm packages
-        ./build/download/download.py --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar
-
-**Step 4 - binaries**
+**Step 2 - binaries**
 
 ::
 
        # Following step will download rke, kubectl and helm binaries
        ./build/download/download.py --http ./build/data_lists/infra_bin_utils.sh ../resources/downloads
-
-**Step 5 - pip packages**
-
-::
-
-      # Following step will download all pip packages
-      ./build/download/download.py --pypi ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi
-

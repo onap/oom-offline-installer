@@ -11,7 +11,7 @@ This document describes the correct offline installation procedure for `OOM ONAP
 
 Before you dive into the installation you should prepare the offline installer itself - the installer consists of at least two packages/resources. You can read about it in the `Build Guide`_, which provides the instructions for creating them.
 
-This current version of the *Installation Guide* supports `Dublin release`_.
+This current version of the *Installation Guide* supports `El Alto release`_.
 
 -----
 
@@ -20,9 +20,9 @@ This current version of the *Installation Guide* supports `Dublin release`_.
 Part 1. Prerequisites
 ---------------------
 
-OOM ONAP deployment has certain hardware resource requirements - `Dublin requirements`_:
+OOM ONAP deployment has certain hardware resource requirements - `El Alto requirements`_:
 
-Community recommended footprint from `Dublin requirements`_ page is 16 VMs ``224 GB RAM`` and ``112 vCPUs``. We will not follow strictly this setup due to such demanding resource consumption and so we will deploy our installation across four nodes (VMs) instead of sixteen. Our simplified setup is definitively not supported or recommended - you are free to diverge - you can follow the official guidelines or make completely different layout, but the minimal count of nodes should not drop below three - otherwise you may have to do some tweaking to make it work, which is not covered here (there is a pod count limit for a single kubernetes node - you can read more about it in this `discussion <https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556>`_).
+Community recommended footprint from `El Alto requirements`_ page is 16 VMs ``224 GB RAM`` and ``112 vCPUs``. We will not follow strictly this setup due to such demanding resource consumption and so we will deploy our installation across four nodes (VMs) instead of sixteen. Our simplified setup is definitively not supported or recommended - you are free to diverge - you can follow the official guidelines or make completely different layout, but the minimal count of nodes should not drop below three - otherwise you may have to do some tweaking to make it work, which is not covered here (there is a pod count limit for a single kubernetes node - you can read more about it in this `discussion <https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556>`_).
 
 .. _oooi_installguide_preparations_k8s_cluster:
 
@@ -52,19 +52,19 @@ You don't need to care about these services now - that is the responsibility of 
 Kubernetes cluster overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In Dublin we are using RKE as k8s orchestrator method, however everyone is free to diverge from this example and can set it up in own way omitting our rke playbook execution. 
+In El Alto we are using RKE as k8s orchestrator method, however everyone is free to diverge from this example and can set it up in own way omitting our rke playbook execution. 
 
-=================== ========= ==================== ============== ============ ===============
-KUBERNETES NODE     OS        NETWORK              CPU            RAM          STORAGE
-=================== ========= ==================== ============== ============ ===============
-**infra-node**      RHEL 7    ``10.8.8.100/24``    ``8 vCPUs``    ``8 GB``     ``100 GB``
-**kube-node1**      RHEL 7    ``10.8.8.101/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
-**kube-node2**      RHEL 7    ``10.8.8.102/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
-**kube-node3**      RHEL 7    ``10.8.8.103/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
-SUM                                                ``56 vCPUs``   ``176+ GB``  ``400 GB``
-================================================== ============== ============ ===============
+=================== ================== ==================== ============== ============ ===============
+KUBERNETES NODE     OS                 NETWORK              CPU            RAM          STORAGE
+=================== ================== ==================== ============== ============ ===============
+**infra-node**      RHEL/CentOS 7.6    ``10.8.8.100/24``    ``8 vCPUs``    ``8 GB``     ``100 GB``
+**kube-node1**      RHEL/CentOS 7.6    ``10.8.8.101/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+**kube-node2**      RHEL/CentOS 7.6    ``10.8.8.102/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+**kube-node3**      RHEL/CentOS 7.6    ``10.8.8.103/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+SUM                                                         ``56 vCPUs``   ``176+ GB``  ``400 GB``
+=========================================================== ============== ============ ===============
 
-Unfortunately, the offline installer supports only **RHEL 7.x** distribution as of now. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing. It is also worth knowing that the exact RHEL version (major and minor number - 7.6 for example) should match for the package build procedure and the target installation. That means: if you are building packages on RHEL 7.6 release your VMs should be RHEL 7.6 too.
+Unfortunately, the offline installer supports only **RHEL 7.x** or **CentOS 7.6** distribution as of now. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing.
 
 We will expect from now on that you installed four VMs and they are connected to the shared network. All VMs must be reachable from our *install-server* (below), which can be the hypervisor, *infra-node* or completely different machine. But in either of these cases the *install-server* must be able to connect over ssh to all of these nodes.
 
@@ -341,7 +341,7 @@ Final configuration can resemble the following::
 Helm chart value overrides
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In Dublin OOM charts are coming with all ONAP components disabled, this setting is also prepackaged within our sw_package.tar. Luckily there are multiple ways supported how to override this setting. It's also necessary for setting-up VIM specific entries and basically to configure any stuff with non default values.
+In El Alto OOM charts are coming with all ONAP components disabled, this setting is also prepackaged within our sw_package.tar. Luckily there are multiple ways supported how to override this setting. It's also necessary for setting-up VIM specific entries and basically to configure any stuff with non default values.
 
 First option is to use ``overrides`` key in ``application_configuration.yml``.
 These settings will override helm values originally stored in ``values.yaml`` files in helm chart directories.
@@ -545,6 +545,6 @@ Usage is basically the same as with the default chroot way - the only difference
 -----
 
 .. _Build Guide: ./BuildGuide.rst
-.. _Dublin requirements: https://onap.readthedocs.io/en/dublin/guides/onap-developer/settingup/index.html#installing-onap
-.. _Dublin release: https://docs.onap.org/en/dublin/release/
+.. _El Alto requirements: https://onap.readthedocs.io/en/elalto/guides/onap-developer/settingup/index.html#installing-onap
+.. _El Alto release: https://docs.onap.org/en/elalto/release/
 .. _OOM ONAP: https://wiki.onap.org/display/DW/ONAP+Operations+Manager+Project
