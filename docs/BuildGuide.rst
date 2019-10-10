@@ -163,17 +163,6 @@ and docker repositories. Then it will push all listed npm and pypi packages and
 docker images to the repositories. After all is done the repository container
 is stopped.
 
-.. note:: build_nexus_blob.sh script is using docker, npm and pip data lists for building nexus blob. Unfortunatelly we now have 2 different docker data lists (RKE & ONAP). So we need to merge them as visible from following snippet. This problem will be fixed in OOM-1890
-
-You can run the script as following example:
-
-::
-
-        # merge RKE and ONAP app data lists
-        cat ./build/data_lists/rke_docker_images.list >> ./build/data_lists/onap_docker_images.list
-
-        ./build/build_nexus_blob.sh
-
 .. note:: in current release scope we aim to maintain just single example data lists set, tags used in previous releases are not needed. Datalists are also covering latest versions verified by us despite user is allowed to build data lists on his own.
 
 Once the Nexus data blob is created, the docker images and npm and pypi
