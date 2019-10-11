@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f70c423c_6a2e4ef8",
+        "filename": "build/create_repo.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-11T12:32:47Z",
+      "side": 1,
+      "message": "Change the shebang for cases the bash is not in the /bin dir (use env instead)",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "599d10ff4b83d72734d2f1974a5b86e7da54a988",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6c079db_bb57e9a9",
+        "filename": "build/create_repo.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-11T12:32:47Z",
+      "side": 1,
+      "message": "Could you change the structure for better reading?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 4
+      },
+      "revId": "599d10ff4b83d72734d2f1974a5b86e7da54a988",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b6cda86_87de6edc",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-11T12:32:47Z",
+      "side": 1,
+      "message": "Use env instead for cases when bash is not in the /bin dir",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 11
+      },
+      "revId": "599d10ff4b83d72734d2f1974a5b86e7da54a988",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b763456_117a5d5d",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-11T12:32:47Z",
+      "side": 1,
+      "message": "indent, please",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 4
+      },
+      "revId": "599d10ff4b83d72734d2f1974a5b86e7da54a988",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
