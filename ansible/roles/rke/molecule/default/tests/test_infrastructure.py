@@ -52,5 +52,5 @@ def test_pods_ready(host):
           'metadata']['ownerReferences'][0]['kind'] == 'Job':
             continue
         assert host.run(
-          'kubectl wait --timeout=120s --for=condition=' + condition + ' -n ' +
+          'kubectl wait --timeout=240s --for=condition=' + condition + ' -n ' +
           namespace + ' pods/' + podname).rc == 0
