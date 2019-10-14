@@ -16,6 +16,24 @@
       "revId": "0ba2d82c40043b6f31afb7b9584d7568071673a6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "791ae76c_09ebd629",
+        "filename": "config/application_configuration.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-14T07:03:54Z",
+      "side": 1,
+      "message": "5.0.1 actually",
+      "parentUuid": "3352cc00_1b311f86",
+      "revId": "0ba2d82c40043b6f31afb7b9584d7568071673a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
