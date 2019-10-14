@@ -46,6 +46,30 @@
       "revId": "419ae95d54a5c0f9532fb82a8a5cbc314cfd6012",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3c0904_df051be0",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-10-14T12:07:05Z",
+      "side": 1,
+      "message": "but you removed it from all_simulated_hosts?",
+      "parentUuid": "f238132c_cb6eca4c",
+      "range": {
+        "startLine": 5,
+        "startChar": 6,
+        "endLine": 5,
+        "endChar": 23
+      },
+      "revId": "419ae95d54a5c0f9532fb82a8a5cbc314cfd6012",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
