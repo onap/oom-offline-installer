@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3352cc00_1b311f86",
+        "filename": "config/application_configuration.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 4009
+      },
+      "writtenOn": "2019-10-14T06:07:05Z",
+      "side": 1,
+      "message": "El-Alto is 5.0.0, right ?",
+      "revId": "0ba2d82c40043b6f31afb7b9584d7568071673a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
