@@ -110,7 +110,20 @@ Part 2. Download artifacts for offline installer
 
 .. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
 
-It's possible to download all artifacts in single ./download.py execution. Recently we improved reliability of download scripts
+Before downloading artifacts with ./download.py script is necessary to create local repository with RPM packages.
+This repository is created with docker container where is downloaded and stored in ../resources/pkg/rhel directory.
+
+::
+    # run the docker container with actual directory of offline-installer and resources
+    ./offline-installer/build/create_repo.sh -d $(pwd)
+
+.. note::
+    If script fails with permissions, problem could be with SeLinux. Issue is possible to solve by:
+    ::
+      # Change security context of directory
+      chcon -Rt svirt_sandbox_file_t $(pwd)
+
+It's possible to download rest artifacts in single ./download.py execution. Recently we improved reliability of download scripts
 so one might try following command to download most of the required artifacts in single shot.
 
 ::
@@ -125,7 +138,6 @@ so one might try following command to download most of the required artifacts in
         --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus \
         --git ./build/data_lists/onap_git_repos.list ../resources/git-repo \
         --npm ./build/data_lists/onap_npm.list ../resources/offline_data/npm_tar \
-        --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel \
         --pypi ./build/data_lists/onap_pip_packages.list ../resources/offline_data/pypi \
         --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
 
