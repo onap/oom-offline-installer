@@ -1,10 +1,16 @@
 #!/usr/bin/env bash
 
+set -x
+
 container_name="centos_repo"
 # Path to folder with clonned offline-installer build directory with docker_entrypoint script
-volume_directory="."
-# Path inside container
-container_volume="/mnt/"
+volume_oom_directory="$(pwd)"
+# Path for directory where repository will be created
+volume_repo_directory="$(pwd)"
+# Path inside container with clonned offline-installer build directory
+container_oom_volume="/mnt/oom/"
+# Path inside container where will be created repository
+container_repo_volume="/mnt/repo/"
 # Docker image name and version
 docker_image="centos:centos7.6.1810"
 
@@ -24,10 +30,17 @@ do
             shift # past value
             exit
             ;;
-        -d|--directory)
+        -c|--clonned-directory)
             # Directory parametter
             # Sets path where is clonned offline-installer build directory
-            volume_directory="$2"
+            volume_oom_directory="$2"
+            shift # past argument
+            shift # past value
+            ;;
+        -d|--destination-repository)
+            # Repository direcotry parametter
+            # Sets path where will be repository created
+            volume_repo_directory="$2"
             shift # past argument
             shift # past value
             ;;
@@ -43,7 +56,7 @@ do
     esac
 done
 
-
+ls .
 #Check if container "centos-repo" is running
 if [ ! "$(docker ps -q -f name=$container_name)" ]; then
     if [ "$(docker ps -aq -f status=exited -f name=$container_name)" ]; then
@@ -56,10 +69,11 @@ if [ ! "$(docker ps -q -f name=$container_name)" ]; then
     #
     docker run -d \
                --name $container_name \
-               -v ${volume_directory}:${container_volume} \
-               --entrypoint="${container_volume}offline-installer/build/docker-entrypoint.sh" \
+               -v ${volume_oom_directory}:${container_oom_volume} \
+               -v ${volume_repo_directory}:${container_repo_volume} \
+               --entrypoint="${container_oom_volume}offline-installer/build/docker-entrypoint.sh" \
                -it ${docker_image} \
                --rm \
-               --directory ${container_volume}resources/pkg/rhel/ \
-               --list ${container_volume}offline-installer/build/data_lists/
+               --directory ${container_repo_volume}resources/pkg/rhel/ \
+               --list ${container_oom_volume}offline-installer/build/data_lists/
 fi

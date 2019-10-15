@@ -53,22 +53,22 @@ do
 done
 
 # Testing if directory parametter was used
-# If not variable is sets to default value /tmp/resources/pkg/rhel
+# If not variable is sets to default value /tmp/repo/resources/pkg/rhel
 if test -z "$OOM_REPO_DIR"
 then
-    OOM_REPO_DIR="/tmp/resources/pkg/rhel"
+    OOM_REPO_DIR="/tmp/repo/resources/pkg/rhel"
 fi
 
 # Testing if list parametter was used
-# If not variable is sets to default value /tmp/data-list
+# If not variable is sets to default value /tmp/oom/offline-installer/build/data-list
 if test -z "$RPM_LIST_DIR"
 then
-    RPM_LIST_DIR="/tmp/offline-installer/build/data_list/"
+    RPM_LIST_DIR="/tmp/oom/offline-installer/build/data_list/"
 
 fi
 
-# Create repo folder
-mkdir $OOM_REPO_DIR -p
+# Create repo folder if it not exists
+[ ! -d "$OOM_REPO_DIR" ] && mkdir -p $OOM_REPO_DIR
 
 # Install createrepo package for create repository in folder
 # and yum-utils due to yum-config-manager for adding docker repository

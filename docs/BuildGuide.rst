@@ -114,7 +114,7 @@ Before downloading artifacts with ./download.py script is necessary to create lo
 This repository is created with docker container where is downloaded and stored in ../resources/pkg/rhel directory.
 
 ::
-    # run the docker container with actual directory of offline-installer and resources
+    # run the docker container with -d parametter for destination directory with RPM packages and -c parametter for directory with clonned offline-installer directory
     ./offline-installer/build/create_repo.sh -d $(pwd)
 
 .. note::
