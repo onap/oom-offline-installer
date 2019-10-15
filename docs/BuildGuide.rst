@@ -110,16 +110,17 @@ Part 2. Download artifacts for offline installer
 
 .. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
 
-Before downloading artifacts with ./download.py script is necessary to create local repository with RPM packages.
-This repository is created with docker container where is downloaded and stored in ../resources/pkg/rhel directory.
+
+There need to be created RPM repository containing packages which need to be installed on all nodes.
 
 ::
-    # run the docker container with actual directory of offline-installer and resources
+
+    # run the docker container with -d parametter for destination directory with RPM packages
     ./offline-installer/build/create_repo.sh -d $(pwd)
 
-.. note::
-    If script fails with permissions, problem could be with SeLinux. Issue is possible to solve by:
+.. note:: If script fails with permissions, problem could be with SeLinux. Issue is possible to solve by:
     ::
+
       # Change security context of directory
       chcon -Rt svirt_sandbox_file_t $(pwd)
 
@@ -264,16 +265,7 @@ Appendix 1. Step-by-step download procedure
        # Following step will download rke, kubectl and helm binaries
        ./build/download/download.py --http ./build/data_lists/infra_bin_utils.sh ../resources/downloads
 
-**Step 5 - rpms**
-
-::
-
-      # Following step will download all rpms and create repo
-      ./build/download/download.py --rpm ./build/data_lists/onap_rpm.list ../resources/pkg/rhel
-
-      createrepo ../resources/pkg/rhel
-
-**Step 6 - pip packages**
+**Step 5 - pip packages**
 
 ::
 
