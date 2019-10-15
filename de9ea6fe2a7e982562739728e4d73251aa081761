@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "70b626e5_47d9ab0c",
+        "filename": "build/create_repo.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-15T11:32:34Z",
+      "side": 1,
+      "message": "Should not be used for regular use",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 6
+      },
+      "revId": "de9ea6fe2a7e982562739728e4d73251aa081761",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a0b404_b9ddff87",
+        "filename": "build/create_repo.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-15T11:32:34Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 51,
+        "startChar": 10,
+        "endLine": 51,
+        "endChar": 12
+      },
+      "revId": "de9ea6fe2a7e982562739728e4d73251aa081761",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a54cd78_7e119cd2",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-15T11:32:34Z",
+      "side": 1,
+      "message": "unnecessary",
+      "range": {
+        "startLine": 47,
+        "startChar": 10,
+        "endLine": 47,
+        "endChar": 11
+      },
+      "revId": "de9ea6fe2a7e982562739728e4d73251aa081761",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c5dee1a_e5789d51",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-15T11:32:34Z",
+      "side": 1,
+      "message": "The unknown option should print the help, not just ignore it, right?",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "de9ea6fe2a7e982562739728e4d73251aa081761",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ec45c2_e60bfba0",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-15T11:32:34Z",
+      "side": 1,
+      "message": "Simplify it for user: e.g. There need to be created RPM repository containing packages which need to be installed on all nodes.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 115
+      },
+      "revId": "de9ea6fe2a7e982562739728e4d73251aa081761",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b34d50_40bb8ef7",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-15T11:32:34Z",
+      "side": 1,
+      "message": "This is wrong format - check the result by restview. 116 is unnecessary, 120-124 is wrongly indented.\n\nSystem Message: ERROR/3 (.\\docs\\BuildGuide.rst, line 124)\n\nUnexpected indentation.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 43
+      },
+      "revId": "de9ea6fe2a7e982562739728e4d73251aa081761",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
