@@ -54,12 +54,14 @@ LOCAL_PATH="$(readlink -f $(dirname ${0}))"
 
 # Defaults
 DOCKER_LOAD="false"
+NPM_PUSH="false"
+PYPI_PUSH="false"
 DATA_DIR="$(realpath ${LOCAL_PATH}/../../resources)"
 NEXUS_DATA_DIR="${DATA_DIR}/nexus_data"
 LISTS_DIR="${LOCAL_PATH}/data_lists"
 
 # Required dependencies
-COMMANDS=(jq docker expect npm twine)
+COMMANDS=(jq docker)
 
 usage () {
     echo "
@@ -129,6 +131,37 @@ load_docker_images () {
     done
 }
 
+prepare_npm () {
+    # Configure NPM registry to our Nexus repository
+    echo "Configure NPM registry to ${NPM_REGISTRY}"
+    npm config set registry "${NPM_REGISTRY}"
+
+    # Login to NPM registry
+    /usr/bin/expect <<- EOF
+	spawn npm login
+	expect "Username:"
+	send "${NEXUS_USERNAME}\n"
+	expect "Password:"
+	send "${NEXUS_PASSWORD}\n"
+	expect Email:
+	send "${NEXUS_EMAIL}\n"
+	expect eof
+	EOF
+}
+
+patch_npm () {
+    # Patch problematic package
+    PATCHED_NPM="$(grep tsscmp ${1} | sed $'s/\r// ; s/\\@/\-/ ; s/$/\.tgz/')"
+    if [[ ! -z "${PATCHED_NPM}" ]] && ! zgrep -aq "${NPM_REGISTRY}" "${PATCHED_NPM}" 2>/dev/null
+    then
+        tar xzf "${PATCHED_NPM}"
+        rm -f "${PATCHED_NPM}"
+        sed -i 's|\"registry\":\ \".*\"|\"registry\":\ \"'"${NPM_REGISTRY}"'\"|g' package/package.json
+        tar -zcf "${PATCHED_NPM}" package
+        rm -rf package
+    fi
+}
+
 push_npm () {
     for ARCHIVE in $(sed $'s/\r// ; s/\\@/\-/g ; s/$/\.tgz/g' ${1}); do
         npm publish --access public ${ARCHIVE} > /dev/null
@@ -137,8 +170,8 @@ push_npm () {
 }
 
 push_pip () {
-    for PACKAGE in $(sed $'s/\r//; s/==/-/' ${NXS_PYPI_LIST}); do
-        twine upload -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" --repository-url ${PYPI_REGISTRY} ${PACKAGE}*
+    for PACKAGE in $(sed $'s/\r//; s/==/-/' ${1}); do
+        twine upload -u "${NEXUS_USERNAME}" -p "${NEXUS_PASSWORD}" --repository-url ${PYPI_REGISTRY} ${PACKAGE}* > /dev/null
         echo "PYPI ${PACKAGE} pushed to Nexus"
     done
 }
@@ -176,6 +209,39 @@ push_docker () {
     done
 }
 
+while [ "${1}" != "" ]; do
+    case ${1} in
+        -d | --docker )                    shift
+                                           NXS_DOCKER_IMG_LISTS+=("${1}")
+                                           ;;
+        -i | --input-directory )           shift
+                                           DATA_DIR="${1}"
+                                           ;;
+        -ld | --load-docker-images )       DOCKER_LOAD="true"
+                                           ;;
+        -n | --npm )                       NPM_PUSH="true"
+                                           COMMANDS+=(expect npm)
+                                           shift
+                                           NXS_NPM_LISTS+=("${1}")
+                                           ;;
+        -o | --output-directory )          shift
+                                           NEXUS_DATA_DIR="${1}"
+                                           ;;
+        -p | --pypi )                      PYPI_PUSH="true"
+                                           COMMANDS+=(twine)
+                                           shift
+                                           NXS_PYPI_LISTS+=("${1}")
+                                           ;;
+        -rl | --resource-list-directory )  shift
+                                           LISTS_DIR="${1}"
+                                           ;;
+        -h | --help )                      usage
+                                           ;;
+        *)                                 usage
+    esac
+    shift
+done
+
 # Verify all dependencies are available in PATH
 FAILED_COMMANDS=()
 for cmd in ${COMMANDS[*]}; do
@@ -189,35 +255,6 @@ if [ ${#FAILED_COMMANDS[*]} -gt 0 ]; then
     exit 1
 fi
 
-while [ "${1}" != "" ]; do
-    case ${1} in
-        -d | --docker )                    shift
-                                           NXS_DOCKER_IMG_LISTS+=("${1}")
-                                           ;;
-        -i | --input-directory )           shift
-                                           DATA_DIR="${1}"
-                                           ;;
-        -ld | --load-docker-images )       DOCKER_LOAD="true"
-                                           ;;
-        -n | --npm )                       shift
-                                           NXS_NPM_LISTS+=("${1}")
-                                           ;;
-        -o | --output-directory )          shift
-                                           NEXUS_DATA_DIR="${1}"
-                                           ;;
-        -p | --pypi )                      shift
-                                           NXS_PYPI_LISTS+=("${1}")
-                                           ;;
-        -rl | --resource-list-directory )  shift
-                                           LISTS_DIR="${1}"
-                                           ;;
-        -h | --help )                      usage
-                                           ;;
-        *)                                 usage
-    esac
-    shift
-done
-
 # Setup directories with resources for docker, npm and pypi
 NXS_SRC_DOCKER_IMG_DIR="${DATA_DIR}/offline_data/docker_images_for_nexus"
 NXS_SRC_NPM_DIR="${DATA_DIR}/offline_data/npm_tar"
@@ -227,18 +264,14 @@ NXS_SRC_PYPI_DIR="${DATA_DIR}/offline_data/pypi"
 NXS_INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
 NXS_DOCKER_IMG_LIST="${LISTS_DIR}/onap_docker_images.list"
 NXS_RKE_DOCKER_IMG_LIST="${LISTS_DIR}/rke_docker_images.list"
-NXS_NPM_LIST="${LISTS_DIR}/onap_npm.list"
-NXS_PYPI_LIST="${LISTS_DIR}/onap_pip_packages.list"
 
 # Setup Nexus image used for build and install infra
 NEXUS_IMAGE="$(grep sonatype/nexus3 ${NXS_INFRA_LIST})"
 NEXUS_IMAGE_TAR="${DATA_DIR}/offline_data/docker_images_infra/$(sed 's/\//\_/ ; s/$/\.tar/ ; s/\:/\_/' <<< ${NEXUS_IMAGE})"
 
 # Set default lists if nothing specific defined by user
-if [ $((${#NXS_DOCKER_IMG_LISTS[@]} + ${#NXS_NPM_LISTS[@]} + ${#NXS_PYPI_LISTS[@]})) -eq 0 ]; then
+if [ ${#NXS_DOCKER_IMG_LISTS[@]} -eq 0 ]; then
     NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}")
-    NXS_NPM_LISTS[0]="${NXS_NPM_LIST}"
-    NXS_PYPI_LISTS[0]="${NXS_PYPI_LIST}"
 fi
 
 # Backup /etc/hosts
@@ -357,57 +390,36 @@ curl -sX POST --header "Content-Type: text/plain" http://${NEXUS_USERNAME}:${NEX
 ###########################
 # Populate NPM repository #
 ###########################
-
-# Configure NPM registry to our Nexus repository
-echo "Configure NPM registry to ${NPM_REGISTRY}"
-npm config set registry "${NPM_REGISTRY}"
-
-# Login to NPM registry
-/usr/bin/expect <<EOF
-spawn npm login
-expect "Username:"
-send "${NEXUS_USERNAME}\n"
-expect "Password:"
-send "${NEXUS_PASSWORD}\n"
-expect Email:
-send "${NEXUS_EMAIL}\n"
-expect eof
-EOF
-
-# Patch problematic package
-pushd ${NXS_SRC_NPM_DIR}
-PATCHED_NPM="$(grep tsscmp ${NXS_NPM_LIST} | sed $'s/\r// ; s/\\@/\-/ ; s/$/\.tgz/')"
-if [[ ! -z "${PATCHED_NPM}" ]] && ! zgrep -aq "${NPM_REGISTRY}" "${PATCHED_NPM}" 2>/dev/null; then
-    tar xzf "${PATCHED_NPM}"
-    rm -f "${PATCHED_NPM}"
-    sed -i 's|\"registry\":\ \".*\"|\"registry\":\ \"'"${NPM_REGISTRY}"'\"|g' package/package.json
-    tar -zcf "${PATCHED_NPM}" package
-    rm -rf package
+if [ $NPM_PUSH == "true" ]; then
+    prepare_npm
+    pushd ${NXS_SRC_NPM_DIR}
+    for NPM_LIST in "${NXS_NPM_LISTS[@]}"; do
+        patch_npm "${NPM_LIST}"
+        push_npm "${NPM_LIST}"
+    done
+    popd
+    # Return default settings
+    npm logout
+    npm config set registry "https://registry.npmjs.org"
 fi
-
-# Push NPM packages to Nexus repository
-for NPM_LIST in "${NXS_NPM_LISTS[@]}"; do
-    push_npm "${NPM_LIST}"
-done
-popd
-npm logout
 
 ###############################
 ##  Populate PyPi repository  #
 ###############################
-
-pushd ${NXS_SRC_PYPI_DIR}
-for PYPI_LIST in "${NXS_PYPI_LISTS[@]}"; do
-    push_pip "${PYPI_LIST}"
-done
-popd
+if [ $PYPI_PUSH == "true" ]; then
+    pushd ${NXS_SRC_PYPI_DIR}
+    for PYPI_LIST in "${NXS_PYPI_LISTS[@]}"; do
+        push_pip "${PYPI_LIST}"
+    done
+    popd
+fi
 
 ###############################
 ## Populate Docker repository #
 ###############################
 
 # Login to simulated docker registries
-# Push images to private nexus based on the list
+# Push images to private nexus based on the lists
 # Images from default registry need to be tagged to private registry
 # and those without defined repository in tag uses default repository 'library'
 for DOCKER_IMG_LIST in "${NXS_DOCKER_IMG_LISTS[@]}"; do
@@ -430,9 +442,6 @@ mv -f "/etc/${HOSTS_BACKUP}" /etc/hosts
 if [ -f ~/.docker/${DOCKER_CONF_BACKUP} ]; then
     mv -f ~/.docker/${DOCKER_CONF_BACKUP} ~/.docker/config.json
 fi
-
-# Return default settings
-npm config set registry "https://registry.npmjs.org"
 
 echo "Nexus blob is built"
 exit 0
