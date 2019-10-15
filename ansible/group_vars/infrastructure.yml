@@ -1,8 +1,6 @@
 ---
 vnc_passwd: samsung
 simulated_hosts:
-  git:
-    - gerrit.onap.org
   http:
     - repo.infra-server
   nexus:
@@ -18,7 +16,7 @@ simulated_hosts:
     - registry-1.docker.io
     - registry.hub.docker.com
 all_simulated_hosts:
-  "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
+  "{{ simulated_hosts.http + simulated_hosts.nexus }}"
 populate_nexus: false
 helm_bin_dir: /usr/local/bin
 helm_version: v2.12.3
