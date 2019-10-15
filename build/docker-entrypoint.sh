@@ -6,22 +6,30 @@ OOM_REPO_DIR=""
 # Path where is stored onap_rpm.list file
 RPM_LIST_DIR=""
 
+help () {
+    echo -e "Docker entrypoint script for creating RPM repository\n"
+    echo "-h --help: Show this help"
+    echo "-d --directory: set path for repo directory in container"
+    echo -e "-l --list: set path where rpm list is stored in container\n"
+    echo "Both paths have to be set with shared volume between"
+    echo "container and host computer. Default path in container is: /tmp/"
+    echo "Repository will be created at: /<path>/resources/pkg/rhel/"
+    echo "RMP list is stored at: ./data_list/"
+}
+
 # Getting input parametters
 POSITIONAL=()
+if [[ $# -eq 0 ]] ; then
+    help # show help
+    exit 0
+fi
 while [[ $# -gt 0 ]]
 do
     key="$1"
     case $key in
         -h|--help)
             # Help parametter
-            echo -e "Docker entrypoint script for creating RPM repository\n"
-            echo "-h --help: Show this help"
-            echo "-d --directory: set path for repo directory in container"
-            echo -e "-l --list: set path where rpm list is stored in container\n"
-            echo "Both paths have to be set with shared volume between"
-            echo "container and host computer. Default path in container is: /tmp/"
-            echo "Repository will be created at: /<path>/resources/pkg/rhel/"
-            echo "RMP list is stored at: /<path>/offline-installer/build/data_list/"
+            help # show help 
             shift # past argument
             shift # past value
             exit
@@ -40,35 +48,29 @@ do
             shift # past argument
             shift # past value
             ;;
-        --default)
-            DEFAULT=YES
-            shift # past argument
-            ;;
         *) 
             # unknown option
-            POSITIONAL+=("$1") # save it in an array for later
+            help # show help
             shift # past argument
+            exit
             ;;
     esac
 done
 
 # Testing if directory parametter was used
-# If not variable is sets to default value /tmp/resources/pkg/rhel
+# If not variable is sets to default value /tmp/repo/resources/pkg/rhel
 if test -z "$OOM_REPO_DIR"
 then
-    OOM_REPO_DIR="/tmp/resources/pkg/rhel"
+    OOM_REPO_DIR="/tmp/repo/"
 fi
 
 # Testing if list parametter was used
-# If not variable is sets to default value /tmp/data-list
+# If not variable is sets to default value /tmp/oom/data-list
 if test -z "$RPM_LIST_DIR"
 then
-    RPM_LIST_DIR="/tmp/offline-installer/build/data_list/"
+    RPM_LIST_DIR="/tmp/oom/data_list/"
 
 fi
-
-# Create repo folder
-mkdir $OOM_REPO_DIR -p
 
 # Install createrepo package for create repository in folder
 # and yum-utils due to yum-config-manager for adding docker repository
