@@ -7,7 +7,7 @@
 #
 resources_dir: /data
 app_name: onap
-resources_filename: "offline-{{ app_name }}-4.0.0.resources.tar"
+resources_filename: "offline-{{ app_name }}-4.0.0-resources.tar"
 app_data_path: "/opt/{{ app_name }}"
 certificates:
   organization_name: Samsung
@@ -18,4 +18,3 @@ app_helm_build_targets:
   - all
   - onap
 app_helm_chart_name: onap
-application_pre_install_role: "onap-patch-role"

@@ -4,13 +4,7 @@ simulated_hosts:
   git:
     - gerrit.onap.org
   http:
-    - git.onap.org
-    - nexus.onap.org
     - repo.infra-server
-    - www.getcloudify.org
-    - www.springframework.org
-    - repo.maven.apache.org
-    - repo1.maven.org
   nexus:
     - docker.elastic.co
     - docker.io
@@ -23,7 +17,6 @@ simulated_hosts:
     - quay.io
     - registry-1.docker.io
     - registry.hub.docker.com
-    - registry.npmjs.org
 all_simulated_hosts:
   "{{ simulated_hosts.git + simulated_hosts.http + simulated_hosts.nexus }}"
 populate_nexus: false
