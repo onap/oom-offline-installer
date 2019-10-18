@@ -1,0 +1,168 @@
+pipeline {
+    agent {
+        label 'centos_build_server'
+    }
+    stages{
+        stage('checkout repositories'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'offline-installer']], submoduleCfg: [], userRemoteConfigs: [[refspec: '$GERRIT_REFSPEC', url: 'https://git.onap.org/oom/offline-installer']]])
+                checkout([$class: 'GitSCM', branches: [[name: '$HELM_CHARTS_BRANCH']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'oom']], submoduleCfg: [], userRemoteConfigs: [[refspec: '$HELM_CHARTS_GERRIT_REFSPEC', url: '$HELM_CHARTS_REPO']]])
+            }
+        }
+        stage('extract_docker_images'){
+            when {
+                expression {(params.EXTRACT_DOCKER_IMAGES)}
+            }
+            steps{
+                sh '''
+                ONAP_DIR=oom/kubernetes/onap
+
+                # Enable all in onap/values.yaml from AAF to the end of file
+                sed -i "\$(grep -n "Enable/disable and configure" $ONAP_DIR/values.yaml | cut -f1 -d:),\$ s/false/true/g" $ONAP_DIR/values.yaml
+
+                # Generate image list
+                ./offline-installer/build/creating_data/docker-images-collector.sh $ONAP_DIR $OOM_DATALIST_FILE
+                '''
+            }
+        }
+        stage('download_artifacts'){
+            when{
+                expression {(params.DOWNLOAD_ARTIFACTS)}
+            }
+            steps{
+                sh '''
+                    # Remove simulated registry, for sure
+                    sed -i '3,\$d' /etc/hosts
+
+                    # Remove docker settings for sure
+                    rm -rf ~/.docker
+
+                    python3 -m venv ./venv --clear
+                    source ./venv/bin/activate
+                    pip install -r ./offline-installer/build/download/requirements.txt
+                    ./offline-installer/build/download/download.py \
+                    --docker ${RESOURCES_LIST_DIRECTORY}/rke_docker_images.list \
+                    --docker ${OOM_DATALIST_FILE} \
+                    --docker ${RESOURCES_LIST_DIRECTORY}/k8s_docker_images.list \
+                    --http ${RESOURCES_LIST_DIRECTORY}/infra_bin_utils.list ${LOCAL_RESOURCES_FOLDER}/downloads
+
+                    ./offline-installer/build/download/download.py \
+                    --docker ${RESOURCES_LIST_DIRECTORY}/infra_docker_images.list ${LOCAL_RESOURCES_FOLDER}/offline_data/docker_images_infra/
+                    deactivate
+
+                    # Downloading rpm using below create_repo script
+                    resources_folder="\$(dirname $LOCAL_RESOURCES_FOLDER)"
+                    echo \${resources_folder}
+                    ./offline-installer/build/create_repo.sh -d \${resources_folder}
+                    '''
+            }
+        }
+        stage('nexus_blob_build'){
+            when{
+                expression {(params.BUILD_NEXUS_BLOB)}
+            }
+            steps{
+                sh '''# Delete OUTPUT_DIRECTORY if exists to prevent backup and save space
+                rm -rf ${OUTPUT_DIRECTORY}
+
+                # Remove docker settings for sure
+                rm -rf ~/.docker
+
+                # Build the blob
+                ./offline-installer/build/build_nexus_blob.sh -o ${OUTPUT_DIRECTORY} -d ${RESOURCES_LIST_DIRECTORY}/k8s_docker_images.list -d ${OOM_DATALIST_FILE} -d ${RESOURCES_LIST_DIRECTORY}/rke_docker_images.list
+                '''
+            }
+        }
+
+        stage('prepare_package'){
+            when{
+                expression {(params.PREPARE_PACKAGE)}
+            }
+            steps{
+                sh '''rm -rf /build_workspace/common/package/*
+                if [[ "${SKIP_SW}" = "true" ]]; then FLAGS+=" --skip-sw" ; fi
+                if [[ "${SKIP_RESOURCES}" = "true" ]]; then FLAGS+=" --skip-resources" ; fi
+                if [[ "${SKIP_AUX}" = "true" ]]; then FLAGS+=" --skip-aux" ; fi
+                if [[ "${OVERWRITE}" = "true" ]]; then FLAGS+=" --overwrite" ; fi
+                if [ ! -z ${APPLICATION_PATCH_FILE} ] && [ -z ${ONAP_ME_GERRIT_REFSPEC} ]; then FLAGS+=" --application-patch_file ${APPLICATION_PATCH_FILE}"; fi
+                if [[ ! -z ${APPLICATION_PATCH_ROLE} ]]; then FLAGS+=" --application-patch-role ${APPLICATION_PATCH_ROLE}"; fi
+                if [[ ! -z ${APPLICATION_CONFIGURATION_FILE} ]]; then FLAGS+=" --application-configuration ${APPLICATION_CONFIGURATION_FILE}"; fi
+                if [[ ! -z ${AUX_DIRECTORY} ]]; then FLAGS+=" --aux-directory ${AUX_DIRECTORY}"; fi
+                if [[ ! -z ${LOCAL_RESOURCES_FOLDER} ]]; then FLAGS+=" --resources-directory ${LOCAL_RESOURCES_FOLDER}"; fi
+
+
+                python3 ./offline-installer/build/package.py ${HELM_CHARTS_REPO} \
+                                         --build-version '' \
+                                         --application-repository_reference ${HELM_CHARTS_GERRIT_REFSPEC} \
+                                         --output-dir ${PACKAGE_DIRECTORY} \
+                                         \${FLAGS[*]}
+
+                #extra line at the end of the script
+                '''
+            }
+        }
+        stage('install_onap'){
+            when{
+                expression {(params.INSTALL_ONAP)}
+            }
+            steps{
+                node('master'){
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'onap']], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '78b2131a-18c7-43e4-b25c-05ce673c8a0c', url: 'ssh://jenkins@106.120.118.76:29418/onap']]])
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout'], [$class: 'RelativeTargetDirectory', relativeTargetDir: 'offline-installer']], submoduleCfg: [], userRemoteConfigs: [[refspec: '$GERRIT_REFSPEC', url: 'https://git.onap.org/oom/offline-installer']]])
+                    configFileProvider([configFile(fileId: 'envcfg', replaceTokens: true, variable: 'ENVCFG')]) {
+                        sh """# Run script to create propfile.cfg file with serialized application data for install job
+                        export PROPERTIES_FILE=${WORKSPACE}/propfile.cfg
+                        python ./onap/jenkins/nightly-serialize-app-config.py
+
+                        #empty line at the end"""
+                    }
+                    script{
+                        def props = readProperties file: "./propfile.cfg"
+                        def environmentConfig = """---
+os_auth_url: ${props.OS_AUTH_URL}
+os_domain_name: ${props.OS_DOMAIN_NAME}
+os_username: ${props.OS_USERNAME}
+os_password: ${props.OS_PASSWORD}
+os_project_name: ${props.OS_PROJECT_NAME}
+public_network: ${props.PUBLIC_NETWORK}
+stack_name: ${props.STACK_NAME}
+subnet_cidr: ${props.SUBNET_CIDR}
+subnet_range_start: ${props.SUBNET_RANGE_START}
+subnet_range_end: ${props.SUBNET_RANGE_END}
+subnet_default_route: ${props.SUBNET_DEFAULT_ROUTE}
+router_addr: ${props.ROUTER_ADDR}
+external_subnet_cidr: ${props.EXTERNAL_SUBNET_CIDR}
+cicd_docker_registry: ${props.CICD_DOCKER_REGISTRY}
+node_flavor_name: ${props.NODE_FLAVOR_NAME}
+infra_flavor_name: ${props.INFRA_FLAVOR_NAME}
+installer_flavor_name: ${props.INSTALLER_FLAVOR_NAME}
+image_name: ${props.IMAGE_NAME}
+num_nodes: ${props.NUM_NODES}
+first_node_ip: ${props.FIRST_NODE_IP}
+infra_ip: ${props.INFRA_IP}
+installer_ip: ${props.INSTALLER_IP}
+use_volume_for_nfs: ${props.USE_VOLUME_FOR_NFS}
+resource_host: ${props.RESOURCE_HOST}
+resources_dir: ${props.RESOURCES_DIR}
+resources_sw_filename: ${props.RESOURCES_SW_FILENAME}
+resources_filename: ${props.RESOURCES_FILENAME}
+aux_resources_filename: ${props.AUX_RESOURCES_FILENAME}
+application_config: ${props.APPLICATION_CONFIG}
+"""
+                        withCredentials([sshUserPrivateKey(keyFileVariable:"SSH_KEY",credentialsId:params.PRIVATE_KEY)]) {
+                          dir("offline-installer/tools/cicdansible") {
+                              writeFile(file:"environment.yml", text:environmentConfig)
+                              //Start ansible.
+                              sh """
+                                env -i ansible-playbook -e @environment.yml \
+                                -e install_app=true -e ansible_private_key_file=${env.SSH_KEY} \
+                                -i hosts.yml install.yml
+                                """
+                          }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
