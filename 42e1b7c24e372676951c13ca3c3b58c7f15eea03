@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c5d97a14_68ad8d07",
+        "filename": "tools/jenkins/Jenkinsfile_build",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-10-21T12:31:24Z",
+      "side": 1,
+      "message": "what this means: \"new features will be reviewed first before they will be propagated in Jenkins. So actually opposite as we have it now (of course except priority fixes)\"",
+      "parentUuid": "a6ae5c65_8af6b772",
+      "range": {
+        "startLine": 24,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "42e1b7c24e372676951c13ca3c3b58c7f15eea03",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3e3f0c57_044d83e6",
         "filename": "tools/jenkins/Jenkinsfile_build",
         "patchSetId": 1
