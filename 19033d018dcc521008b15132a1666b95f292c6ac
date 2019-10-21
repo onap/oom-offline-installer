@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "596bdef6_ee38d6f7",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-21T12:11:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "7a48be98_f0ff1803",
+      "revId": "19033d018dcc521008b15132a1666b95f292c6ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9537b11c_4e5828b5",
         "filename": "docs/BuildGuide.rst",
         "patchSetId": 3
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "65a6c03c_9943391a",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-21T12:11:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "9537b11c_4e5828b5",
+      "revId": "19033d018dcc521008b15132a1666b95f292c6ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ca963b8_41171f7c",
         "filename": "docs/BuildGuide.rst",
         "patchSetId": 3
@@ -47,6 +83,30 @@
       "writtenOn": "2019-10-18T09:13:42Z",
       "side": 0,
       "message": "to be removed ?",
+      "range": {
+        "startLine": 219,
+        "startChar": 138,
+        "endLine": 219,
+        "endChar": 198
+      },
+      "revId": "19033d018dcc521008b15132a1666b95f292c6ac",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06f517bb_3a7973fa",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-21T12:11:16Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "4ca963b8_41171f7c",
       "range": {
         "startLine": 219,
         "startChar": 138,
