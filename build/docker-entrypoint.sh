@@ -14,7 +14,7 @@ help () {
     echo -e "-l --list: set path where rpm list is stored in container\n"
     echo "Both paths have to be set with shared volume between"
     echo "container and host computer. Default path in container is: /tmp/"
-    echo "Repository will be created at: /<path>/resources/pkg/rhel/"
+    echo "Repository will be created at: /<path>/resources/pkg/rpm/"
     echo "RMP list is stored at: ./data_list/"
 }
 
@@ -52,7 +52,7 @@ do
 done
 
 # Testing if directory parametter was used
-# If not variable is sets to default value /tmp/repo/resources/pkg/rhel
+# If not variable is sets to default value /tmp/repo/resources/pkg/rpm
 if test -z "$OFFLINE_REPO_DIR"
 then
     OFFLINE_REPO_DIR="/tmp/repo/"
