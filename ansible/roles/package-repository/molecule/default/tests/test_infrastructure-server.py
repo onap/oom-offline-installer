@@ -9,7 +9,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 def test_onap_repo(host):
     fc = host.file('/etc/yum.repos.d/moleculetestapp.repo').content_string
     expected_content = """[moleculetestapp]
-baseurl = file:///opt/moleculetestapp/pkg/rhel
+baseurl = file:///opt/moleculetestapp/pkg/rpm
 enabled = 1
 gpgcheck = 0
 name = MOLECULETESTAPP offline repository"""
