@@ -12,7 +12,7 @@ container_repo_volume="/mnt/repo/"
 # Docker image name and version
 docker_image="centos:centos7.6.1810"
 # Expected directory for RPM packages
-expected_dir="resources/pkg/rhel"
+expected_dir="resources/pkg/rpm"
 
 help () {
     echo "Script for run docker container with RPM repository"
@@ -56,10 +56,10 @@ do
     shift;shift
 done
 
-# Check if path contains expected path "resources/pkg/rhel"
+# Check if path contains expected path "resources/pkg/rpm"
 if ! [[ "/$volume_repo_directory/" = *"/$expected_dir/"* ]]; then
     # Create repo folder if it not exists
-    volume_repo_directory="$volume_repo_directory"/resources/pkg/rhel
+    volume_repo_directory="$volume_repo_directory"/resources/pkg/rpm
     [ ! -d "$volume_repo_directory" ] && mkdir -p $volume_repo_directory
 fi
 
