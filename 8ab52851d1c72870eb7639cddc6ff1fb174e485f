@@ -22,6 +22,30 @@
       "revId": "8ab52851d1c72870eb7639cddc6ff1fb174e485f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ac43914_8d00226e",
+        "filename": "ansible/test/roles/prepare-package-repository/vars/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-10-26T06:30:15Z",
+      "side": 1,
+      "message": "just pkg_dir",
+      "parentUuid": "19a65fff_46b2b363",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 4
+      },
+      "revId": "8ab52851d1c72870eb7639cddc6ff1fb174e485f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
