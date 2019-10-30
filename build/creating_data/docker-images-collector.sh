@@ -101,7 +101,7 @@ fi
 
 # Create helm repository
 if ! helm repo list 2>&1 | awk '{ print $1, $2 }' | grep -q "$HELM_REPO" > /dev/null; then
-    helm repo add "$HELM_REPO"
+    helm repo add $HELM_REPO
 fi
 
 # Make all
