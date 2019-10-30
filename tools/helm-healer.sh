@@ -58,15 +58,15 @@ USAGE
         ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs
 
     Usage 2 (redeploy ONLY explicit listed components):
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \
+        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \\
                -c onap-aaf -c onap-sdc -c onap-portal
 
     Usage 3 (delete EVERYTHING and redeploy):
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \
+        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \\
                --delete-all
 
     Usage 4 (just clean - do not redeploy)
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \
+        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \\
                --delete-all --clean-only
 
     Namespace argument and at least one override file are mandatory
@@ -153,7 +153,6 @@ get_labels()
 
     kubectl get pods -n ${NAMESPACE} \
         --show-labels=true \
-        --include-uninitialized=true \
         ${_selector} \
         --ignore-not-found=true \
         --no-headers=true | \
@@ -183,7 +182,6 @@ delete_job()
     kubectl delete job -n ${NAMESPACE} \
         --cascade=true \
         --now=true \
-        --include-uninitialized=true \
         --wait=true \
         ${1}
 
@@ -219,7 +217,6 @@ delete_resource()
             kubectl delete ${_resource} -n ${NAMESPACE} \
                 --cascade=true \
                 --now=true \
-                --include-uninitialized=true \
                 --wait=true \
                 ${_name} \
                 2>&1 | grep -iv 'not[[:space:]]*found'
@@ -241,7 +238,6 @@ delete_namespace()
     kubectl delete namespace \
         --cascade=true \
         --now=true \
-        --include-uninitialized=true \
         --wait=true \
         "$NAMESPACE"
 
