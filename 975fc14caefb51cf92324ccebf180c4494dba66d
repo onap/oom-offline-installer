@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1c5f3d1_b9cc2ecb",
+        "filename": "tools/jenkins/Jenkinsfile",
+        "patchSetId": 7
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-10-31T13:30:42Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure we don\u0027t want to upstream that..",
+      "range": {
+        "startLine": 110,
+        "startChar": 349,
+        "endLine": 110,
+        "endChar": 369
+      },
+      "revId": "975fc14caefb51cf92324ccebf180c4494dba66d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
