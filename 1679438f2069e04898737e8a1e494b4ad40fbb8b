@@ -22,6 +22,30 @@
       "revId": "1679438f2069e04898737e8a1e494b4ad40fbb8b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60ea8dff_cabd2f44",
+        "filename": "build/data_lists/onap_docker_images.list",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-10-31T09:13:02Z",
+      "side": 1,
+      "message": "No\nkubernetes/contrib/charts/awx/charts/awx/values.yaml:29:  memcached: memcached:latest",
+      "parentUuid": "b6565ba8_6e8bcfdc",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "1679438f2069e04898737e8a1e494b4ad40fbb8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
