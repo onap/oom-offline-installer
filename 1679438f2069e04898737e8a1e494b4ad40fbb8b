@@ -46,6 +46,30 @@
       "revId": "1679438f2069e04898737e8a1e494b4ad40fbb8b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d50ff0c4_a34958e5",
+        "filename": "build/data_lists/onap_docker_images.list",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-10-31T11:38:52Z",
+      "side": 1,
+      "message": "please create a bug jira to related onap project if we can find versioned image from internet.",
+      "parentUuid": "60ea8dff_cabd2f44",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 16
+      },
+      "revId": "1679438f2069e04898737e8a1e494b4ad40fbb8b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
