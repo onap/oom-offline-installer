@@ -20,6 +20,9 @@ following repos has to be configured for RHEL 7.6 platform.
 
 
 
+.. note::
+   All comands stated in this guide are meant to be run in root shell.
+
 ::
 
     ############
@@ -92,7 +95,7 @@ Part 2. Download artifacts for offline installer
    ::
 
     # clone the OOM repository
-    git clone https://gerrit.onap.org/r/oom -b master /tmp/oom
+    git clone https://gerrit.onap.org/r/oom -b master --recurse-submodules /tmp/oom
 
     # enable subsystems in oom/kubernetes/onap/values.yaml as required
 
@@ -130,9 +133,9 @@ so one might try following command to download most of the required artifacts in
         # for more details refer to Appendix 1.
 
         ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
-        --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus \
-        --docker ./build/data_lists/k8s_docker_images.list ../resources/offline_data/docker_images_for_nexus \
-        --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus \
+        --docker ./build/data_lists/rke_docker_images.list \
+        --docker ./build/data_lists/k8s_docker_images.list \
+        --docker ./build/data_lists/onap_docker_images.list \
         --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
 
 
@@ -149,21 +152,18 @@ Prerequisites:
 - Following ports are not occupied buy another service: 80, 8081, 8082, 10001
 - There's no docker container called "nexus"
 
-.. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the copy of resources data are untarred in *./onap-offline/../resources/*
+.. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the onap docker images are cached and copy of resources data are untarred in *./onap-offline/../resources/*
 
-Whole nexus blob data will be created by running script build_nexus_blob.sh.
+::
+        
+        #Whole nexus blob data will be created by running script build_nexus_blob.sh.
+        ./onap-offline/build/build_nexus_blob.sh -o /TMP/NEXUS -d onap-offline/build/data_lists/k8s_docker_images.list -d onap-offline/build/data_lists/onap_docker_images.list -d onap-offline/build/data_lists/rke_docker_images.list        
+
 It will load the listed docker images, run the Nexus, configure it as npm, pypi
 and docker repositories. Then it will push all listed docker images to the repositories. After all is done the repository container is stopped.
 
 .. note:: In the current release scope we aim to maintain just single example data lists set, tags used in previous releases are not needed. Datalists are also covering latest versions verified by us despite user is allowed to build data lists on his own.
 
-Once the Nexus data blob is created, the docker images can be deleted to reduce the package size as they won't be needed in the installation time:
-
-E.g.
-
-::
-
-    rm -f /tmp/resources/offline_data/docker_images_for_nexus/*
 
 Part 4. Packages preparation
 --------------------------------------------------------
@@ -186,13 +186,13 @@ From onap-offline directory run:
 
 ::
 
-  ./build/package.py <helm charts repo> --application-repository_reference <commit/tag/branch> --output-dir <target\_dir> --resources-directory <target\_dir>
+  ./build/package.py <helm charts repo> --build_version "" --application-repository_reference <commit/tag/branch> --output-dir <target\_dir> --resources-directory <target\_dir>
 
 For example:
 
 ::
 
-  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference master --output-dir ../packages --resources-directory ../resources
+  ./build/package.py https://gerrit.onap.org/r/oom --build_version "" --application-repository_reference master --output-dir /tmp/packages --resources-directory /tmp/resources
 
 
 In the target directory you should find tar files:
@@ -203,26 +203,3 @@ In the target directory you should find tar files:
   resources_package.tar
   aux_package.tar
 
-
-Appendix 1. Step-by-step download procedure
--------------------------------------------
-
-**Step 1 - docker images**
-
-::
-
-        # This step will parse all 3 docker datalists (offline infrastructure images, rke k8s images & onap images)
-        # and start building onap offline platform in /tmp/resources folder
-
-        ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
-        --docker ./build/data_lists/rke_docker_images.list ../resources/offline_data/docker_images_for_nexus \
-        --docker ./build/data_lists/k8s_docker_images.list ../resources/offline_data/docker_images_for_nexus \
-        --docker ./build/data_lists/onap_docker_images.list ../resources/offline_data/docker_images_for_nexus
-
-
-**Step 2 - binaries**
-
-::
-
-       # Following step will download rke, kubectl and helm binaries
-       ./build/download/download.py --http ./build/data_lists/infra_bin_utils.sh ../resources/downloads
