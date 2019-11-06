@@ -212,32 +212,33 @@ push_docker () {
 while [ "${1}" != "" ]; do
     case ${1} in
         -d | --docker )                    shift
-                                           NXS_DOCKER_IMG_LISTS+=("${1}")
+                                           NXS_DOCKER_IMG_LISTS+=("$(realpath ${1})")
                                            ;;
         -i | --input-directory )           shift
-                                           DATA_DIR="${1}"
+                                           DATA_DIR="$(realpath ${1})"
                                            ;;
         -ld | --load-docker-images )       DOCKER_LOAD="true"
                                            ;;
         -n | --npm )                       NPM_PUSH="true"
                                            COMMANDS+=(expect npm)
                                            shift
-                                           NXS_NPM_LISTS+=("${1}")
+                                           NXS_NPM_LISTS+=("$(realpath ${1})")
                                            ;;
         -o | --output-directory )          shift
-                                           NEXUS_DATA_DIR="${1}"
+                                           NEXUS_DATA_DIR="$(realpath ${1})"
                                            ;;
         -p | --pypi )                      PYPI_PUSH="true"
                                            COMMANDS+=(twine)
                                            shift
-                                           NXS_PYPI_LISTS+=("${1}")
+                                           NXS_PYPI_LISTS+=("$(realpath ${1})")
                                            ;;
         -rl | --resource-list-directory )  shift
-                                           LISTS_DIR="${1}"
+                                           LISTS_DIR="$(realpath ${1})"
                                            ;;
         -h | --help )                      usage
                                            ;;
         *)                                 usage
+                                           ;;
     esac
     shift
 done
