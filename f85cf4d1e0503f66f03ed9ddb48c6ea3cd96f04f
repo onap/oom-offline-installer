@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "54ce8ad1_13febc31",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-06T11:34:25Z",
+      "side": 1,
+      "message": "you mean argument for each script? Scripts themselves does not expect any certain location, right?",
+      "parentUuid": "19c8b361_a9ed0d58",
+      "range": {
+        "startLine": 159,
+        "startChar": 52,
+        "endLine": 159,
+        "endChar": 62
+      },
+      "revId": "f85cf4d1e0503f66f03ed9ddb48c6ea3cd96f04f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "45267d9d_1f72709a",
         "filename": "docs/BuildGuide.rst",
         "patchSetId": 3
