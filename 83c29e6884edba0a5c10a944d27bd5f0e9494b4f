@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15c359ce_75bf1a3f",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-11T18:45:44Z",
+      "side": 1,
+      "message": "there\u0027s no optionality, it\u0027s done whatever is config.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "83c29e6884edba0a5c10a944d27bd5f0e9494b4f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
