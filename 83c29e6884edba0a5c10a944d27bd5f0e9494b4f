@@ -22,6 +22,30 @@
       "revId": "83c29e6884edba0a5c10a944d27bd5f0e9494b4f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1359dcba_3a942981",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-11-11T19:18:23Z",
+      "side": 1,
+      "message": "Indeed, it could be skipped completely, but because both defaults are defaults - (/etc/kubernetes is created regardless of this, and timeout of 2m is set also regardless of this) - and the rest of config variables is set to defaults (for obvious reasons) - I see no such problem with it - but I could make it optional and add yet again some new fancy variable or overload one of these like: if they are empty do nothing.",
+      "parentUuid": "15c359ce_75bf1a3f",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "83c29e6884edba0a5c10a944d27bd5f0e9494b4f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
