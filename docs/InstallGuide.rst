@@ -233,7 +233,7 @@ After all the changes, the ``'hosts.yml'`` should look similar to this::
         infrastructure:
           hosts:
             infrastructure-server:
-              ansible_host: 10.8.8.13
+              ansible_host: 10.8.8.100
               #IP used for communication between infra and kubernetes nodes, must be specified.
               cluster_ip: 10.8.8.100
 
@@ -326,7 +326,7 @@ Second one controls time zone setting on host. It's value should be time zone na
 Final configuration can resemble the following::
 
     resources_dir: /data
-    resources_filename: resources-package.tar
+    resources_filename: resources_package.tar
     app_data_path: /opt/onap
     app_name: onap
     timesync:
@@ -432,7 +432,7 @@ Part 4. Post-installation and troubleshooting
 
 After all of the playbooks are run successfully, it will still take a lot of time until all pods are up and running. You can monitor your newly created kubernetes cluster for example like this::
 
-    $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.4 # tailor this command to connect to your infra-node
+    $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.100 # tailor this command to connect to your infra-node
     $ watch -d -n 5 'kubectl get pods --all-namespaces'
 
 Alternatively you can monitor progress with ``helm_deployment_status.py`` script located in offline-installer directory. Transfer it to infra-node and run::
