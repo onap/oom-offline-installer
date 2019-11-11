@@ -46,6 +46,30 @@
       "revId": "83c29e6884edba0a5c10a944d27bd5f0e9494b4f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7e14a3d_238bc274",
+        "filename": "ansible/roles/rke/tasks/rke_node.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-11T19:34:47Z",
+      "side": 1,
+      "message": "Ok it would make a hell a lot more sense if documenting what you just said. I.e. these steps does not change default functionality at all. Unless user adds something into template file.\n\nWith that documented it\u0027s ok.",
+      "parentUuid": "1359dcba_3a942981",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "83c29e6884edba0a5c10a944d27bd5f0e9494b4f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
