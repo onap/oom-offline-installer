@@ -33,8 +33,7 @@ import tarfile
 import git
 
 log = logging.getLogger(__name__)
-script_location = os.path.abspath(os.path.join(__file__, '..'))
-offline_repository_dir = os.path.abspath(os.path.join(script_location, '..'))
+script_location = os.path.dirname(os.path.realpath(__file__))
 
 
 def prepare_application_repository(directory, url, refspec, patch_path):
@@ -74,7 +73,6 @@ def create_package_info_file(output_file, repository_list, tag):
     Generates text file in json format containing basic information about the build
     :param output_file:
     :param repository_list: list of repositories to be included in package info
-    :param tag: build version of packages
     :return:
     """
     log.info('Generating package.info file')
@@ -102,7 +100,7 @@ def create_package(tar_content, file_name):
     with tarfile.open(file_name, 'w') as output_tar_file:
         for src, dst in tar_content.items():
             if src != '':
-                output_tar_file.add(src, dst)
+              output_tar_file.add(src, dst)
 
 
 def build_offline_deliverables(build_version,
@@ -112,7 +110,6 @@ def build_offline_deliverables(build_version,
                                application_charts_dir,
                                application_configuration,
                                application_patch_role,
-                               inventory_file,
                                output_dir,
                                resources_directory,
                                aux_directory,
@@ -129,7 +126,6 @@ def build_offline_deliverables(build_version,
     :param application_charts_dir: path to directory under application repository containing helm charts
     :param application_configuration:  path to application configuration file (helm override configuration)
     :param application_patch_role: path to application patch role (executed just before helm deploy)
-    :param inventory_file: path to ansible inventory file
     :param output_dir: Destination directory for saving packages
     :param resources_directory: Path to resource directory
     :param aux_directory: Path to aux binary directory
@@ -143,10 +139,11 @@ def build_offline_deliverables(build_version,
     if os.path.exists(output_dir) and os.listdir(output_dir):
         if not overwrite:
             log.error('Output directory is not empty, use overwrite to force build')
-            raise FileExistsError(output_dir)
+            raise FileExistsError
         shutil.rmtree(output_dir)
 
     # Git
+    offline_repository_dir = os.path.join(script_location, '..')
     offline_repository = git.Repo(offline_repository_dir)
 
     application_dir = os.path.join(output_dir, 'application_repository')
@@ -164,7 +161,6 @@ def build_offline_deliverables(build_version,
         os.path.join(offline_repository_dir, 'ansible'): 'ansible',
         application_configuration: 'ansible/application/application_configuration.yml',
         application_patch_role: 'ansible/application/onap-patch-role',
-        inventory_file: 'ansible/application/hosts.yml',
         os.path.join(application_dir, application_charts_dir): 'ansible/application/helm_charts',
         info_file: 'package.info'
     }
@@ -176,9 +172,6 @@ def build_offline_deliverables(build_version,
         aux_directory: '',
         info_file: 'package.info'
     }
-
-    # add separator if build version not empty
-    build_version = "-" + build_version if build_version != "" else ""
 
     if not skip_sw:
         log.info('Building offline installer')
@@ -201,7 +194,7 @@ def build_offline_deliverables(build_version,
         log.info('Binaries - workaround')
         download_dir_path = os.path.join(resources_directory, 'downloads')
         os.chdir(download_dir_path)
-        for file in os.listdir(download_dir_path):
+        for file in os.listdir():
             if os.path.islink(file):
                 os.unlink(file)
 
@@ -221,7 +214,7 @@ def build_offline_deliverables(build_version,
         create_package(resources_content, resources_package_tar_path)
 
     if not skip_aux:
-        aux_package_tar_path = os.path.join(output_dir, 'aux_package' + build_version + '.tar')
+        aux_package_tar_path = os.path.join(output_dir, 'aux_package'+ build_version + '.tar')
         create_package(aux_content, aux_package_tar_path)
 
     shutil.rmtree(application_dir)
@@ -233,7 +226,7 @@ def run_cli():
     """
     parser = argparse.ArgumentParser(description='Create Package For Offline Installer')
     parser.add_argument('--build-version',
-                        help='version of the build', default='')
+                        help='version of the build', default='custom')
     parser.add_argument('application_repository_url', metavar='application-repository-url',
                         help='git repository hosting application helm charts')
     parser.add_argument('--application-repository_reference', default='master',
@@ -241,19 +234,16 @@ def run_cli():
     parser.add_argument('--application-patch_file',
                         help='git patch file to be applied over application repository', default='')
     parser.add_argument('--application-charts_dir',
-                        help='path to directory under application repository containing helm charts ',
-                        default='kubernetes')
+                        help='path to directory under application repository containing helm charts ', default='kubernetes')
     parser.add_argument('--application-configuration',
                         help='path to application configuration file (helm override configuration)',
-                        default=os.path.join(offline_repository_dir, 'ansible/config/application_configuration.yml'))
+                        default='')
     parser.add_argument('--application-patch-role',
                         help='path to application patch role file (ansible role) to be executed right before installation',
                         default='')
-    parser.add_argument('--inventory-file', help="path to ansible inventory file",
-                        default=os.path.join(offline_repository_dir, 'ansible/inventory/hosts.yml'))
-    parser.add_argument('--output-dir', '-o', default=os.path.join(offline_repository_dir, '../packages'),
+    parser.add_argument('--output-dir', '-o', default=os.path.join(script_location, '..', '..'),
                         help='Destination directory for saving packages')
-    parser.add_argument('--resources-directory', default=os.path.join(offline_repository_dir, '../resources'),
+    parser.add_argument('--resources-directory', default='',
                         help='Path to resource directory')
     parser.add_argument('--aux-directory',
                         help='Path to aux binary directory', default='')
@@ -281,7 +271,6 @@ def run_cli():
                                args.application_charts_dir,
                                args.application_configuration,
                                args.application_patch_role,
-                               args.inventory_file,
                                args.output_dir,
                                args.resources_directory,
                                args.aux_directory,
