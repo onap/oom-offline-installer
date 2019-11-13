@@ -466,6 +466,11 @@ Once all pods are properly deployed and in running state, one can verify functio
     $ cd <app_data_path>/<app_name>/helm_charts/robot
     $ ./ete-k8s.sh onap health
 
+For better work with terminal it was added packages screen and jq. It can be install from resources directory.
+
+Jq is using for beautifying JSON output.
+
+Screen can be using for SSH session management.
 
 -----
 

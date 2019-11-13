@@ -18,3 +18,6 @@ python-docker-pycreds-0.3.0-9.el7_6.noarch
 python-ipaddress-1.0.16-2.el7.noarch
 python-jsonpointer-1.9-2.el7.noarch
 python-websocket-client-0.56.0-3.git3c25814.el7.noarch
+jq-1.5-1.el7.x86_64.rpm
+oniguruma-5.9.5-3.el7.x86_64.rpm
+screen-4.1.0-0.25.20120314git3c2946.el7.x86_64.rpm
