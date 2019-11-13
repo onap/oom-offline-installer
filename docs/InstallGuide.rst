@@ -39,7 +39,7 @@ The four nodes/VMs will be running these services:
     - kubernetes-etcd
     - kubernetes-control-plane
 
-**NOTE:** kubernetes-* roles can be collocated directly with kubernetes nodes and not necessarily on infra node. 
+**NOTE:** kubernetes-* roles can be collocated directly with kubernetes nodes and not necessarily on infra node.
 
 - **kubernetes node 1-3**::
 
@@ -52,7 +52,7 @@ You don't need to care about these services now - that is the responsibility of 
 Kubernetes cluster overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In El Alto we are using RKE as k8s orchestrator method, however everyone is free to diverge from this example and can set it up in own way omitting our rke playbook execution. 
+In El Alto we are using RKE as k8s orchestrator method, however everyone is free to diverge from this example and can set it up in own way omitting our rke playbook execution.
 
 =================== ================== ==================== ============== ============ ===============
 KUBERNETES NODE     OS                 NETWORK              CPU            RAM          STORAGE
@@ -466,6 +466,13 @@ Once all pods are properly deployed and in running state, one can verify functio
     $ cd <app_data_path>/<app_name>/helm_charts/robot
     $ ./ete-k8s.sh onap health
 
+For better work with terminal screen and jq packages were added . It can be installed from resources directory.
+
+Screen is a terminal multiplexer. With screen it is possible to have more terminal instances active. Screen as well keeps active SSH connections even terminal is closed.
+
+Jq can be used for editing json data format as output of kubectl. For example jq was used to troubleshoot `SDNC-739 (UEB - Listener in Crashloopback) <https://jira.onap.org/browse/SDNC-739/>`_ ::
+
+    $ kubectl -n onap get job onap-sdc-sdc-be-config-backend -o json | jq "del(.spec.selector)" | jq "del(.spec.template.metadata.labels)" | kubectl -n onap replace --force -f -
 
 -----
 
