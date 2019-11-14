@@ -124,17 +124,12 @@ Change the current directory to the ``'ansible'``::
 
 You can see multiple files and directories inside - this is the *offline-installer*. It is implemented as a set of ansible playbooks.
 
-If you created the ``'sw'`` package according to the *Build Guide* then you should have had the ``'application'`` directory populated with at least the following files:
+If you created the ``'sw'`` package according to the *Build Guide* then you should have had the *offline-installer* populated with at least the following files:
 
-- ``application_configuration.yml``
-- ``hosts.yml``
+- ``application/application_configuration.yml``
+- ``inventory/hosts.yml``
 
-**NOTE:** The following paragraph describes a way how to create or fine-tune your own ``'application_configuration.yml'`` - we are discouraging you from executing this step. The recommended way is to use the packaged files inside the ``'application'`` directory.
-
-**NOT RECOMMENDED:** If for some reason you don't have these files inside the ``'application'`` directory or you simply want to do things the hard way then you can recreate them from their templates. It is better to keep the originals (templates) intact - so we will copy them to the ``'application'`` directory::
-
-    $ cp ../config/application_configuration.yml application/
-    $ cp inventory/hosts.yml application/
+Following paragraphs describe fine-tuning of ``'inventory.yml'`` and ``'application_configuration.yml'`` to reflect your VMs setup.
 
 .. _oooi_installguide_config_hosts:
 
@@ -233,7 +228,7 @@ After all the changes, the ``'hosts.yml'`` should look similar to this::
         infrastructure:
           hosts:
             infrastructure-server:
-              ansible_host: 10.8.8.13
+              ansible_host: 10.8.8.100
               #IP used for communication between infra and kubernetes nodes, must be specified.
               cluster_ip: 10.8.8.100
 
@@ -326,7 +321,7 @@ Second one controls time zone setting on host. It's value should be time zone na
 Final configuration can resemble the following::
 
     resources_dir: /data
-    resources_filename: resources-package.tar
+    resources_filename: resources_package.tar
     app_data_path: /opt/onap
     app_name: onap
     timesync:
@@ -367,7 +362,7 @@ We are almost finished with the configuration and we are close to start the inst
 
 You can use the ansible playbook ``'setup.yml'`` like this::
 
-    $ ./run_playbook.sh -i application/hosts.yml setup.yml -u root --ask-pass
+    $ ./run_playbook.sh -i inventory/hosts.yml setup.yml -u root --ask-pass
 
 You will be asked for password per each node and the playbook will generate a unprotected ssh key-pair ``'~/.ssh/offline_ssh_key'``, which will be distributed to the nodes.
 
@@ -383,7 +378,7 @@ This command behaves almost identically to the ``'setup.yml'`` playbook.
 
 If you generated the ssh key manually then you can now run the ``'setup.yml'`` playbook like this and achieve the same result as in the first execution::
 
-    $ ./run_playbook.sh -i application/hosts.yml setup.yml
+    $ ./run_playbook.sh -i inventory/hosts.yml setup.yml
 
 This time it should not ask you for any password - of course this is very redundant, because you just distributed two ssh keys for no good reason.
 
@@ -412,7 +407,7 @@ We will use the default chroot option so we don't need any docker service to be 
 
 Installation is actually very straightforward now::
 
-    $ ./run_playbook.sh -i application/hosts.yml -e @application/application_configuration.yml site.yml
+    $ ./run_playbook.sh -i inventory/hosts.yml -e @application/application_configuration.yml site.yml
 
 This will take a while so be patient.
 
@@ -432,7 +427,7 @@ Part 4. Post-installation and troubleshooting
 
 After all of the playbooks are run successfully, it will still take a lot of time until all pods are up and running. You can monitor your newly created kubernetes cluster for example like this::
 
-    $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.4 # tailor this command to connect to your infra-node
+    $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.100 # tailor this command to connect to your infra-node
     $ watch -d -n 5 'kubectl get pods --all-namespaces'
 
 Alternatively you can monitor progress with ``helm_deployment_status.py`` script located in offline-installer directory. Transfer it to infra-node and run::

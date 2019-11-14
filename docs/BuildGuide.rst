@@ -128,14 +128,18 @@ so one might try following command to download most of the required artifacts in
 ::
 
         # following arguments are provided
-        # all data lists are taken in ./build/data_lists/ folder
+        # all data lists are taken from ./build/data_lists/ folder
         # all resources will be stored in expected folder structure within ../resources folder
 
         ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
-        --docker ./build/data_lists/rke_docker_images.list \
+        --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
+
+        # following docker images does not neccessary need to be stored under resources as they load into repository in next part
+        # if second argument for --docker is not present, images are just pulled and cached.
+        # Warning: script must be run twice separately, for more details run download.py --help
+        ./build/download/download.py --docker ./build/data_lists/rke_docker_images.list \
         --docker ./build/data_lists/k8s_docker_images.list \
         --docker ./build/data_lists/onap_docker_images.list \
-        --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
 
 
 Alternatively, step-by-step procedure is described in Appendix 1.
@@ -148,7 +152,7 @@ Part 3. Populate local nexus
 Prerequisites:
 
 - All data lists and resources which are pushed to local nexus repository are available
-- Following ports are not occupied buy another service: 80, 8081, 8082, 10001
+- Following ports are not occupied by another service: 80, 8081, 8082, 10001
 - There's no docker container called "nexus"
 
 .. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the onap docker images are cached and copy of resources data are untarred in *./onap-offline/../resources/*
@@ -185,13 +189,13 @@ From onap-offline directory run:
 
 ::
 
-  ./build/package.py <helm charts repo> --build_version "" --application-repository_reference <commit/tag/branch> --output-dir <target\_dir> --resources-directory <target\_dir>
+  ./build/package.py <helm charts repo> --build-version <version> --application-repository_reference <commit/tag/branch> --output-dir <target\_dir> --resources-directory <target\_dir>
 
 For example:
 
 ::
 
-  ./build/package.py https://gerrit.onap.org/r/oom --build_version "" --application-repository_reference master --output-dir /tmp/packages --resources-directory /tmp/resources
+  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference master --output-dir /tmp/packages --resources-directory /tmp/resources
 
 
 In the target directory you should find tar files:
