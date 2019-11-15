@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b36b57f6_675b2a3d",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 469,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-15T13:15:22Z",
+      "side": 1,
+      "message": "\"For better terminal experience packages screen and jq can be installed from resources directory.\"",
+      "revId": "fffc50c33d6bd9fd689a317ab0c7fc819d5b50bd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad92deb1_e7c7cee4",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-15T13:15:22Z",
+      "side": 1,
+      "message": "\"Jq can be used for (...)\"",
+      "revId": "fffc50c33d6bd9fd689a317ab0c7fc819d5b50bd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e5cbc10_439cad2b",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-15T13:15:22Z",
+      "side": 1,
+      "message": "\"Screen can be used for (...)\"",
+      "revId": "fffc50c33d6bd9fd689a317ab0c7fc819d5b50bd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
