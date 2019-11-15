@@ -12,15 +12,15 @@
     name: createrepo
     state: present
 
-- name: "Ensure {{ rhel_pkg_dir }} exists"
+- name: "Ensure {{ pkg_dir }} exists"
   file:
-    path: "{{ rhel_pkg_dir }}"
+    path: "{{ pkg_dir }}"
     state: directory
 
 - name: Download rpm packages
-  command: "yumdownloader --destdir={{ rhel_pkg_dir }} --resolve {{ packages | join(' ') }}"
+  command: "yumdownloader --destdir={{ pkg_dir }} --resolve {{ packages | join(' ') }}"
 
 - name: Index repository
-  command: "createrepo {{ rhel_pkg_dir }}"
+  command: "createrepo {{ pkg_dir }}"
   args:
-    creates: "{{ rhel_pkg_dir }}/repodata"
+    creates: "{{ pkg_dir }}/repodata"

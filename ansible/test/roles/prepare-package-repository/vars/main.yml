@@ -1,5 +1,5 @@
 ---
-rhel_pkg_dir: "{{ app_data_path }}/pkg/rhel"
+pkg_dir: "{{ app_data_path }}/pkg/rpm"
 packages:
 - "docker-ce-18.09.5"
 - container-selinux
