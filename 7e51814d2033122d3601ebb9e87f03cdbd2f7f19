@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63602c68_92cec8c0",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-15T10:32:52Z",
+      "side": 1,
+      "message": "Correct phrase is \"following docker images do not necessarily need to be...\"",
+      "revId": "7e51814d2033122d3601ebb9e87f03cdbd2f7f19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
