@@ -134,6 +134,11 @@ error()
     printf "${COLOR_ON_RED}ERROR: $@ ${COLOR_OFF}\n"
 }
 
+on_exit()
+{
+    printf "$COLOR_OFF"
+}
+
 # remove all successfully completed jobs
 clean_jobs()
 {
@@ -314,6 +319,20 @@ EOF
 
     msg "We are waiting now for docker cleanup to finish on all nodes..."
     wait
+}
+
+is_helm_serve_running()
+{
+    # healthy result: HTTP/1.1 200 OK
+    _helm_serve_result=$(\
+        curl --head --silent --connect-timeout 3 http://127.0.0.1:8879 | \
+        head -n 1 | cut -d" " -f 3 | tr '[:upper:]' '[:lower:]' | tr -d '\r' )
+
+    if [ "$_helm_serve_result" == ok ] ; then
+        return 0
+    else
+        return 1
+    fi
 }
 
 # arg: <release name>
@@ -551,6 +570,22 @@ fi
 #
 # main
 #
+
+# set trap for this script cleanup
+trap on_exit INT QUIT TERM EXIT
+
+# another sanity checks
+for tool in helm kubectl curl ; do
+    if ! which "$tool" >/dev/null 2>&1 ; then
+        error "Missing '${tool}' command"
+        exit 1
+    fi
+done
+
+if ! is_helm_serve_running ; then
+    error "'helm serve' is not running (http://localhost:8879)"
+    exit 1
+fi
 
 # if --delete-all is used then redeploy all components (the current namespace is deleted)
 if [ -n "$HELM_DELETE_ALL" ] ; then
