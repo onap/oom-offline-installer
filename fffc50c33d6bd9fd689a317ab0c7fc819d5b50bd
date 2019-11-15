@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "f06def9c_13d147e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-15T13:18:37Z",
+      "side": 1,
+      "message": "\"These packages were added\" or \"They can be used to aid debugging.\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 47
+      },
+      "revId": "fffc50c33d6bd9fd689a317ab0c7fc819d5b50bd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b36b57f6_675b2a3d",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 2
