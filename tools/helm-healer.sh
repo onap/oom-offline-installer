@@ -54,72 +54,84 @@ USAGE
             (-D|--delete-all)]
            [-C|--clean-only]
 
-    Usage 1 (simple heuristics - redeploy failed components):
+EXAMPLES
+
+    Usage 1: (simple heuristics - redeploy failed components):
         ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs
 
-    Usage 2 (redeploy ONLY explicit listed components):
+    Usage 2: (redeploy ONLY explicitly listed components):
         ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \\
                -c onap-aaf -c onap-sdc -c onap-portal
 
-    Usage 3 (delete EVERYTHING and redeploy):
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \\
-               --delete-all
+    Usage 3: (delete EVERYTHING and redeploy):
+        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs --delete-all
 
-    Usage 4 (just clean - do not redeploy)
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \\
-               --delete-all --clean-only
+    Usage 4: (delete EVERYTHING and DO NOT redeploy - clean env.)
+        ${CMD} -n onap -s /dockerdata-nfs --delete-all --clean-only
 
-    Namespace argument and at least one override file are mandatory
-    for this script to execute. Also you must provide path to the
-    storage or explicitly request to not delete file storage of the
-    component.
+NOTES
 
-    Storage should be directory where persistent volume resides. It
-    will work only if component created a persistent volume with the
-    same filename as its release name. Otherwise no effect. The
-    exception is when '--delete-all' is used - in that case all
-    content of the storage is deleted (because ONAP is not consistent
-    with the volume directory names - eg.: sdnc).
+    Namespace argument (always) and at least one override file (if you don't
+    use '--delete-all') are mandatory for this script to execute. Also you must
+    provide path to the storage ('--storage') OR explicitly request to not
+    delete file storage of the component ('--no-storage-deletion').
 
-    CAUTION 1: filename of an override file cannot contain whitespace!
-    This is actually helm/onap deploy plugin issue which does not
-    handle such files. So I dropped the more complicated version of
-    this script when there is no reason to support something on what
-    will helm deploy choke anyway.
+    The storage should be a directory where persistent volume resides. It will
+    work only if the component created the persistent volume with the same
+    filename as its release name. Otherwise no files are deleted. The exception
+    is when '--delete-all' is used - in that case all content of the storage is
+    deleted (because ONAP is not consistent with the volume directory names
+    - e.g.: sdnc).
 
-    '--prefix' option is helm release argument - it is actually prefix
-    when you list the helm releases - helm is little confusing here.
+    '--file' can be used multiple of times and it is used for override files
+    which are passed on to helm. The order is significant because if two
+    override files modify one value the latest one is used. This option is
+    ignored if '--clean-only' is used.
 
-    CAUTION 2: By default release prefix is 'onap' - if you deployed
-    release 'onap' and now run this script with different prefix then
-    it will skip all 'onap-*' components and will deploy a new release
-    with new prefix - BEWARE TO USE PROPER RELEASE PREFIX!
+    CAUTION 1: filename of an override file cannot contain whitespace! This is
+    actually helm/onap deploy plugin issue which does not handle such files. So
+    I dropped the more complicated version of this script when there is no
+    reason to support something on what will helm deploy choke anyway.
 
-    Timeout set the waiting time for helm deploy per component.
+    '--prefix' option is helm release argument - it is actually prefix when you
+    list the helm releases - helm is little confusing here.
 
-    '--component' references to release name of the chart which you
-    want to redeploy excplicitly - otherwise 'ALL FAILED' components
-    will be redeployed. You can target more than one component at once
-    - just use the argument multiple times.
+    CAUTION 2: By default release prefix is 'onap' - if you deployed release
+    'onap' and now run this script with different prefix then it will skip all
+    'onap-*' components and will deploy a new release with new prefix - BEWARE
+    TO USE PROPER RELEASE PREFIX!
 
-    Component option is mutually exclusive with the '--delete-all'
-    which will delete all components - healthy or not. Actually it will
-    delete the whole NAMESPACE and everything in it.
+    Timeout sets the waiting time for helm deploy per component.
 
-    '--clean-only' can be used with any usage: heuristics, explicit
-    component list or with '--delete-all'. It basically just skips the
-    last step - the actual redeploy.
+    '--component' references to the release name of the chart which you want to
+    redeploy excplicitly - otherwise 'ALL FAILED' components will be
+    redeployed. You can target more than one component at once - just use the
+    argument multiple times.
+
+    Component option is mutually exclusive with the '--delete-all' which will
+    delete all components - healthy or not. Actually it will delete the whole
+    NAMESPACE and everything in it. Also to be sure it will cleanup all
+    orphaned images and volumes on all kubernetes nodes.
+
+    '--clean-only' can be used with any usage: heuristics, explicit component
+    list or with '--delete-all'. It basically just skips the last step - the
+    actual redeploy.
 EOF
+}
+
+use_help()
+{
+    printf "Try help: ${CMD} --help\n"
 }
 
 msg()
 {
-    echo -e "${COLOR_ON_GREEN}INFO: $@ ${COLOR_OFF}"
+    printf "${COLOR_ON_GREEN}INFO: $@ ${COLOR_OFF}\n"
 }
 
 error()
 {
-    echo -e "${COLOR_ON_RED}ERROR: $@ ${COLOR_OFF}"
+    printf "${COLOR_ON_RED}ERROR: $@ ${COLOR_OFF}\n"
 }
 
 # remove all successfully completed jobs
@@ -211,7 +223,7 @@ delete_resource()
         # this is due to missing "release" label in some pods
         # grep for the rescue...
         kubectl get ${_resource} -n ${NAMESPACE} \
-            --no-headers=true | grep "^${_release}"
+            --no-headers=true | grep "^${_release}[-]"
     } | awk '{print $1}' | sort -u | while read -r _name _rest ; do
             echo "Deleting '${_name}'"
             kubectl delete ${_resource} -n ${NAMESPACE} \
@@ -276,13 +288,53 @@ EOF
     fi
 }
 
+docker_cleanup()
+{
+    _nodes=$(kubectl get nodes \
+        --selector=node-role.kubernetes.io/worker \
+        -o wide \
+        --no-headers=true | \
+        awk '{print $6}')
+
+    if [ -z "$_nodes" ] ; then
+        error "Could not list kubernetes nodes - SKIPPING docker cleanup"
+        return
+    fi
+
+    for _node in $_nodes ; do
+        msg "Docker cleanup on $_node"
+        {
+            ssh -T $_node >/dev/null <<EOF
+if which docker >/dev/null ; then
+    docker system prune --force --all --volumes
+fi
+EOF
+        } &
+    done
+
+    msg "We are waiting now for docker cleanup to finish on all nodes..."
+    wait
+}
+
 # arg: <release name>
-redeploy_component()
+undeploy_component()
 {
     _chart=$(echo "$1" | sed 's/[^-]*-//')
     helm_undeploy ${1}
+
+    # for all kubernetes resources: kubectl api-resources
     # TODO: does deleted secret per component break something?
-    for x in jobs deployments pods pvc pv ; do
+    for x in jobs \
+        deployments \
+        services \
+        replicasets \
+        statefulsets \
+        daemonsets \
+        pods \
+        pvc \
+        pv \
+        ;
+    do
         delete_resource ${x} ${1}
     done
 
@@ -290,10 +342,15 @@ redeploy_component()
         msg "Persistent volume data deletion in directory: ${VOLUME_STORAGE}/${1}"
         delete_storage "$1"
     fi
+}
 
+# arg: <release name>
+deploy_component()
+{
     # TODO: until I can verify that this does the same for this component as helm deploy
     #msg "Redeployment of the component ${1}..."
     #helm install "local/${_chart}" --name ${1} --namespace ${NAMESPACE} --wait --timeout ${HELM_TIMEOUT}
+    error "NOT IMPLEMENTED"
 }
 
 
@@ -334,6 +391,7 @@ while [ -n "$1" ] ; do
                 --no-storage-deletion)
                     if [ -n "$arg_storage" ] ; then
                         error "Usage of storage argument together with no storage deletion option!"
+                        use_help
                         exit 1
                     elif [ -z "$arg_nostorage" ] ; then
                         arg_nostorage=nostorage
@@ -344,6 +402,7 @@ while [ -n "$1" ] ; do
                 -c|--component)
                     if [ -n "$arg_deleteall" ] ; then
                         error "'Delete all components' used already - argument mismatch"
+                        use_help
                         exit 1
                     fi
                     state=component
@@ -351,6 +410,7 @@ while [ -n "$1" ] ; do
                 -D|--delete-all)
                     if [ -n "$arg_components" ] ; then
                         error "Explicit component(s) provided already - argument mismatch"
+                        use_help
                         exit 1
                     elif [ -z "$arg_deleteall" ] ; then
                         arg_deleteall=deleteall
@@ -370,6 +430,7 @@ while [ -n "$1" ] ; do
                     ;;
                 *)
                     error "Unknown parameter: $1"
+                    use_help
                     exit 1
                     ;;
             esac
@@ -380,12 +441,14 @@ while [ -n "$1" ] ; do
                 state=nil
             else
                 error "Duplicit argument for namespace!"
+                use_help
                 exit 1
             fi
             ;;
         override)
             if ! [ -f "$1" ] ; then
                 error "Wrong filename for override file: $1"
+                use_help
                 exit 1
             fi
             arg_overrides="${arg_overrides} -f $1"
@@ -401,6 +464,7 @@ while [ -n "$1" ] ; do
                 state=nil
             else
                 error "Duplicit argument for release prefix!"
+                use_help
                 exit 1
             fi
             ;;
@@ -408,24 +472,28 @@ while [ -n "$1" ] ; do
             if [ -z "$arg_timeout" ] ; then
                 if ! echo "$1" | grep -q '^[0-9]\+$' ; then
                     error "Timeout must be an integer: $1"
+                    use_help
                     exit 1
                 fi
                 arg_timeout="$1"
                 state=nil
             else
                 error "Duplicit argument for timeout!"
+                use_help
                 exit 1
             fi
             ;;
         storage)
             if [ -n "$arg_nostorage" ] ; then
                 error "Usage of storage argument together with no storage deletion option!"
+                use_help
                 exit 1
             elif [ -z "$arg_storage" ] ; then
                 arg_storage="$1"
                 state=nil
             else
                 error "Duplicit argument for storage!"
+                use_help
                 exit 1
             fi
             ;;
@@ -433,18 +501,19 @@ while [ -n "$1" ] ; do
     shift
 done
 
-# sanity check
+# sanity checks
+
 if [ -z "$arg_namespace" ] ; then
     error "Missing namespace"
-    help
+    use_help
     exit 1
 else
     NAMESPACE="$arg_namespace"
 fi
 
-if [ -z "$arg_overrides" ] ; then
-    error "Missing override file(s)"
-    help
+if [ -z "$arg_overrides" ] && [ -z "$arg_cleanonly" ] ; then
+    error "Missing override file(s) or use '--clean-only'"
+    use_help
     exit 1
 else
     OVERRIDES="$arg_overrides"
@@ -462,6 +531,7 @@ if [ -n "$arg_storage" ] ; then
     VOLUME_STORAGE="$arg_storage"
 elif [ -z "$arg_nostorage" ] ; then
     error "Missing storage argument! If it is intended then use '--no-storage-deletion' option"
+    use_help
     exit 1
 fi
 
@@ -490,6 +560,10 @@ if [ -n "$HELM_DELETE_ALL" ] ; then
     # we will delete the whole namespace
     delete_namespace
 
+    # we will cleanup docker on each node
+    docker_cleanup
+
+    # we will delete the content of storage (volumes)
     if [ -n "$VOLUME_STORAGE" ] ; then
         delete_storage
     fi
@@ -511,7 +585,7 @@ else
     for _component in ${_COMPONENTS} ; do
         if echo "$_component" | grep -q "^${RELEASE_PREFIX}-" ; then
             msg "Redeploy component: ${_component}"
-            redeploy_component ${_component}
+            undeploy_component ${_component}
         else
             error "Component release name '${_component}' does not match release prefix: ${RELEASE_PREFIX} (SKIP)"
         fi
