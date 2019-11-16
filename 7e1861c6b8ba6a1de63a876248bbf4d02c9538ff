@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41dbd148_42d31992",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-16T09:06:32Z",
+      "side": 1,
+      "message": "what parts are really related to onap??\n- Is the functionality expecting onap\u0027s implemented helm deploy plugin is used? Or does this work also when normal plain helm used?\n- Can this be used also with minikube?\n\nPlease do not just answer my comment, but directly improve the describtion part if feasible.",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
