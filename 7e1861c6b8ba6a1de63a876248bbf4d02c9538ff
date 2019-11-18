@@ -93,6 +93,30 @@
       "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2277affe_03188221",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-18T10:34:47Z",
+      "side": 1,
+      "message": "Ah, ok, the behaviour is different depending on opts order:\n\nThis fails as expected:\n\n/tmp/helm-healer.sh --delete-all -c\nERROR: \u0027Delete all components\u0027 used already - argument mismatch \nTry help: helm-healer.sh --help\n\nThis doesn\u0027t:\n/tmp/helm-healer.sh -c --delete-all\nINFO: Explicitly asked for component redeploy:  --delete-all \nERROR: Component release name \u0027--delete-all\u0027 does not match release prefix: onap (SKIP) \nINFO: Redeploy onap... \nINFO: helmfetching local/onap\n\nI only tested it in the latter form that\u0027s why i asked if using \"-c\" without any arg was another usecase because it doesn\u0027t fail like the former one.\n\nBut that\u0027s just the onerous way of doing input opts and args sanitization in bash right. If it\u0027s not trivial to fix it i can live with that.",
+      "parentUuid": "37f48d66_ae2b392c",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
