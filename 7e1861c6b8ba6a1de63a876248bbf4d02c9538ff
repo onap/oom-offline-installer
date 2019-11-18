@@ -117,6 +117,30 @@
       "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8794b2c2_a57df416",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-11-18T10:43:11Z",
+      "side": 1,
+      "message": "Well, I made a simple finite automata, so the argument parsing is quite simple: -c change state to component parsing and expects a component right after it.\n\nIf I had to take into account validation you proposed then if for some terrible reasons someone named onap component --delete-all then it would not ever delete it :) There is another way how to deal with it by using standardized special option \u0027--\u0027 after which no option is interpreted but that would fix only one case of -c --delete-all - the one on the very end of the command...\n\nI am maybe wrong but I think that all commands behaves in similar way:\n\n$ ssh -p -e \"ssh -p 2222\" 192.168.1.100\nBad port \u0027-e\u0027",
+      "parentUuid": "2277affe_03188221",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
