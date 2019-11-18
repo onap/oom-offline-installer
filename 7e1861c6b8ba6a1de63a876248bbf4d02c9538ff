@@ -69,6 +69,30 @@
       "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37f48d66_ae2b392c",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-11-18T10:20:39Z",
+      "side": 1,
+      "message": "I don\u0027t see the confusion - I reference here an option the syntax is stated above (-c \u003ccomponent\u003e) - this is just a bunch of more words to describe the purpose for it. Look at other paragraphs: --prefix, --file also requires value and I omitted the value in the paragraphs. Maybe my brain is just wired differently and I should rewrite this whole help if it is not clear.\n\n\"is using \"-c\" without arg an alternative usage scenario (undocumented?)\"\n\nNo, it requires value\n\n\"it\u0027s just buggy input args validation\"\n\nNo, at least the output you received is as intended after -c must follow a component name.\n\nAs you correctly wrote -c and -D are mutually exclusive and scripts handle this correctly. Or not?",
+      "parentUuid": "1c6e571f_71a793ce",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
