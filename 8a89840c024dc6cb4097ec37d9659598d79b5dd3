@@ -16,6 +16,24 @@
       "revId": "8a89840c024dc6cb4097ec37d9659598d79b5dd3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde005e9_94ccb002",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 579,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-11-18T10:10:08Z",
+      "side": 1,
+      "message": "True, \u0027type\u0027 seems to be a better alternative, although I can see that \u0027type\u0027 in bash and dash and possibly other shells behaves slightly different (different return codes and output) - so I see \u0027which\u0027 as a more reliable command. Also the performance hit here is practically non-existant. But good to know when speed will be an issue.",
+      "parentUuid": "31bbddb2_c1952096",
+      "revId": "8a89840c024dc6cb4097ec37d9659598d79b5dd3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
