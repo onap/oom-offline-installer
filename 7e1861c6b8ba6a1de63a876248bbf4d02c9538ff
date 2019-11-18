@@ -46,6 +46,29 @@
       "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c6e571f_71a793ce",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-18T10:04:21Z",
+      "side": 1,
+      "message": "To me, this help msg suggests that there\u0027s a usage scenario for \"-c\" opt without any args to it while synopsis says \"[(-c|--component \u003ccomponent release name\u003e)...|(-D|--delete-all)]\" which claims otherwise (\"-c\" always has to be followed by an arg). \n\n\"-c onap-\u003ccomponent\u003e --delete-all\" are mutually exclusive and this fails only if arg to \"-c\" is given; if i run \"/tmp/helm-healer.sh -c --delete-all\" it doesn\u0027t fail but continues just producing an error:\n\nINFO: Explicitly asked for component redeploy:  --delete-all \nERROR: Component release name \u0027--delete-all\u0027 does not match release prefix: onap (SKIP) \nINFO: Redeploy onap... \nINFO: helmfetching local/onap\n\n\nMy point here is: is using \"-c\" without arg an alternative usage scenario (undocumented?) or it\u0027s just buggy input args validation?",
+      "range": {
+        "startLine": 106,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
