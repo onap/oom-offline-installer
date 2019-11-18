@@ -22,6 +22,30 @@
       "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbf11a94_c5b5cbf3",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-11-18T08:46:05Z",
+      "side": 1,
+      "message": "@Samuli sorry :) I can improve the description, but this script is part of offline-installer and that is part of OOM and OOM uses that helm deploy plugin. That means that this script is not intended to be used outside of these constraints - it is just a tool to heal not so healthy ONAP installation. So to answer your question - as of now, this tool relies on that plugin.\n\nI will soon dig deeper to that deploy plugin and I left myself some TODOs in this script to deal with it - so in the future it can be used outside of ONAP and OOM, but then again - why would anyone want to use it? This script is just a band aid for broken ONAP installation.",
+      "parentUuid": "41dbd148_42d31992",
+      "range": {
+        "startLine": 35,
+        "startChar": 5,
+        "endLine": 43,
+        "endChar": 0
+      },
+      "revId": "7e1861c6b8ba6a1de63a876248bbf4d02c9538ff",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
