@@ -6,6 +6,13 @@
     state: present
     timeout: 120
 
+- name: Debug docker containers
+  shell: docker ps
+  register: ps_out
+
+- name: Debug docker containers
+  debug: var=ps_out.stdout
+
 - name: Start VNC server container
   docker_container:
     name: vnc-server
