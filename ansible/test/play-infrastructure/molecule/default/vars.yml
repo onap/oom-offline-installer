@@ -1,5 +1,4 @@
 ---
-vnc_passwd: molecule
 certificates:
   organization_name: Molecule Testers
   state_or_province_name: Finland
@@ -8,7 +7,7 @@ certificates:
 app_name: onap
 app_data_path: "/opt/{{ app_name }}"
 
-nexus_come_up_wait_retries: 60
+nexus_come_up_wait_retries: 180
 populate_nexus: true  # Different from default, molecule tests also nexus's configure.yml
 
 molecule_test_registry: nexus3.onap.org:10001
@@ -22,3 +21,5 @@ runtime_images:
     registry: "{{ molecule_test_registry }}"
     path: "/library/alpine"
     tag: "latest"
+
+vnc_server_image: alpine:latest
