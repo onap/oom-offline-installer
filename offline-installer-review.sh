@@ -51,18 +51,10 @@ function run_molecule() {
 #######################################################################$
 FAILED_ROLES=()
 
-#if ansible role was changed$$
-ROLE_CHANGES=(`git diff  HEAD^ HEAD --name-only | grep "ansible/role" | cut -f 1-3 -d "/" | sort -u`)
-if [ -z "${ROLE_CHANGES}" ];  then
-  echo "NO ANSIBLE ROLE TESTS REQUIRED"
-else
-  run_molecule "${ROLE_CHANGES[@]}"
-fi
-
 #if ansible was changed
 
 if `git diff  HEAD^ HEAD --name-only | grep -q "ansible/test"`; then
-  PLAYBOOKS=(`find ansible/test -name "play-*"`)
+  PLAYBOOKS=(`find ansible/test -name "play-infrastructure"`)
   run_molecule "${PLAYBOOKS[@]}"
 else
   echo "NO FULL ANSIBLE TEST REQUIRED";
