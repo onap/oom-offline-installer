@@ -4,7 +4,10 @@
     name: "{{ vnc_server_image }}"
     load_path: "{{ infra_images_path }}/{{ vnc_server_image_tar }}"
     state: present
-    timeout: 120
+
+- name: sleep
+  command: sleep 10
+  changed_when: true
 
 - name: Start VNC server container
   docker_container:
