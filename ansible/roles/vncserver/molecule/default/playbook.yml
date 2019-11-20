@@ -1,5 +1,7 @@
 ---
 - name: Converge
   hosts: infrastructure
+  vars_files:
+    - vars.yml
   roles:
     - vncserver
