@@ -50,5 +50,6 @@ fi
 cd ${ROLE_PATH}
 ${MOLECULE_BINARY} --version
 ${MOLECULE_BINARY} test --all
+docker volume prune --force
 cd -
 
