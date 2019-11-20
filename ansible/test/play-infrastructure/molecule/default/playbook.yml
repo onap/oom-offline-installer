@@ -1,5 +1,5 @@
 ---
-- name: Common setup for all hosts
+- name: Common setup for all hosts foo
   hosts: all
   tasks:
     - name: Set cluster_ip variable

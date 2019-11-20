@@ -29,6 +29,7 @@
       - "{{ app_data_path }}/nexus_data:/nexus-data:rw"
     state: started
     restart_policy: unless-stopped
+    timeout: 240
 
 - name: Wait for nexus to come up
   uri:
