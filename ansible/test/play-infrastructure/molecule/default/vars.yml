@@ -1,5 +1,4 @@
 ---
-vnc_passwd: molecule
 certificates:
   organization_name: Molecule Testers
   state_or_province_name: Finland
