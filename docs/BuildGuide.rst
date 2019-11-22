@@ -116,6 +116,12 @@ There need to be created RPM repository containing packages which need to be ins
     # run the docker container with -d parameter for destination directory with RPM packages
     ./offline-installer/build/create_repo.sh -d $(pwd)
 
+.. note:: Optionally can be use -t parameter for target platform
+       ::
+
+      # Now is support three target platforms - CentOS, Rhel and Ubuntu
+      create_repo.sh -t centos|rhel|ubuntu
+
 .. note:: If script fails with permissions, problem could be with SeLinux. Issue is possible to solve by:
     ::
 
