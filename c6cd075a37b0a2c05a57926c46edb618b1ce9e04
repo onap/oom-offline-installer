@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c147999_d9f55f0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-11-22T10:47:35Z",
+      "side": 1,
+      "message": "Looks weird, perhaps: Adding support for Ubuntu in \u003cscript name\u003e",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "c6cd075a37b0a2c05a57926c46edb618b1ce9e04",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc13cb5a_38515e50",
+        "filename": "build/create_repo.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2019-11-22T10:47:35Z",
+      "side": 1,
+      "message": "I think fedora and debian are more generic linux distributions rather than ubuntu/rhel\nit is bad idea to use do case on variable in case and the modify it\nand why to have 3 cases on the same variable? you can wrap it in one case\njoin expressions, no need to to split ubuntu and debian, they can be in same expression ubuntu|debian",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 15
+      },
+      "revId": "c6cd075a37b0a2c05a57926c46edb618b1ce9e04",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
