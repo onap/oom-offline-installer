@@ -1,21 +1,42 @@
 #!/usr/bin/env bash
 
-container_name="centos_repo"
+# Get type of distribution
+# Set Docker image name and version based on type of linux distribution
+# Set expected directory for RPM/DEB packages
+case "$(cat /etc/*-release | grep -w "ID" | awk -F'=' '{ print $2 }' | tr -d '"')" in
+    ubuntu)
+        distro_type="ubuntu"
+        docker_image="ubuntu:18.04"
+        expected_dir="resources/pkg/deb"
+    ;;
+    centos|rhel)
+        distro_type="rhel"
+        docker_image="centos:centos7.6.1810"
+        expected_dir="resources/pkg/rpm"
+    ;;
+    *)
+        echo "Unknown type of linux distribution."
+        exit 1
+    ;;
+esac
+
+# Set name of container based on type of distribution
+container_name="${distro_type}_repo"
+
 # Path to folder with cloned offline-installer build directory with docker_entrypoint script
 volume_offline_directory="$(readlink -f $(dirname ${0}))"
+
 # Path for directory where repository will be created
 volume_repo_directory="$(pwd)"
+
 # Path inside container with cloned offline-installer build directory
 container_offline_volume="/mnt/offline/"
+
 # Path inside container where will be created repository
 container_repo_volume="/mnt/repo/"
-# Docker image name and version
-docker_image="centos:centos7.6.1810"
-# Expected directory for RPM packages
-expected_dir="resources/pkg/rpm"
 
 help () {
-    echo "Script for run docker container with RPM repository"
+    echo "Script for run docker container with DEB or RPM repository based on host OS"
     echo "usage: create_repo.sh [-d|--destination-repository output directory] [-c|--cloned-directory input directory]"
     echo "-h --help: Show this help"
     echo "-d --destination-repository: set path where will be stored RPM packages. Default value is current directory"
@@ -29,6 +50,7 @@ if [[ $# -eq 0 ]] ; then
     help # show help
     exit 0
 fi
+
 while [[ $# -gt 0 ]]
 do
     case "$1" in
@@ -56,10 +78,19 @@ do
     shift;shift
 done
 
-# Check if path contains expected path "resources/pkg/rpm"
+# Check if path contains expected path:
+# "resources/pkg/rpm" for Rhel/CentOS or
+# "resources/pkg/deb" for Ubuntu/Debian
 if ! [[ "/$volume_repo_directory/" = *"/$expected_dir/"* ]]; then
     # Create repo folder if it not exists
-    volume_repo_directory="$volume_repo_directory"/resources/pkg/rpm
+    case "$distro_type" in
+        ubuntu)
+            volume_repo_directory="$volume_repo_directory"/resources/pkg/deb
+        ;;
+        rhel)
+            volume_repo_directory="$volume_repo_directory"/resources/pkg/rhel
+        ;;
+    esac
     [ ! -d "$volume_repo_directory" ] && mkdir -p $volume_repo_directory
 fi
 
@@ -82,5 +113,5 @@ if [ ! "$(docker ps -q -f name=$container_name)" ]; then
                -it ${docker_image} \
                --directory ${container_repo_volume} \
                --list ${container_offline_volume}data_lists/
-    docker logs $(docker ps --filter "name=centos_repo" --format '{{.ID}}' -a) -f
+    docker logs $(docker ps --filter "name=${container_name}" --format '{{.ID}}' -a) -f
 fi
