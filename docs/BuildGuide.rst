@@ -97,12 +97,11 @@ Part 2. Download artifacts for offline installer
     # clone the OOM repository
     git clone https://gerrit.onap.org/r/oom -b master --recurse-submodules /tmp/oom
 
-    # enable subsystems in oom/kubernetes/onap/values.yaml as required
+    # docker-images-collector.sh script uses oom/kubernetes/onap/resources/overrides/onap-all.yaml file to find what subsystems
+    are enabled. By default all subsystems are enabled there. Modify the file if want to drop some subsystems.
 
     #run the collector providing path the the project
     ./build/creating_data/docker-images-collector.sh /tmp/oom/kubernetes/onap
-
-   If the list does not contain any image, no subsystem is enabled in the oom/kubernetes/onap/values.yaml
 
    For the other options check the usage of the script.
 
