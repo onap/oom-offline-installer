@@ -40,7 +40,7 @@ class DockerDownloader(ConcurrentDownloader):
         self._save = save
         try:
             # big timeout in case of massive images like pnda-mirror-container:5.0.0 (11.4GB)
-            self._docker_client = docker.client.DockerClient(version='auto', timeout=300)
+            self._docker_client = docker.from_env(timeout=300)
         except docker.errors.DockerException as err:
             log.exception(
                 'Error creating docker client. Check if is docker installed and running'
