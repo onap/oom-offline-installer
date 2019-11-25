@@ -22,6 +22,30 @@
       "revId": "5c0c14733ba54f49376850c5a33c6b1a2e88ab47",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56efd963_a84213c8",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-25T12:28:36Z",
+      "side": 1,
+      "message": "right, ok",
+      "parentUuid": "446ce03f_3cdc68dd",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 127
+      },
+      "revId": "5c0c14733ba54f49376850c5a33c6b1a2e88ab47",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
