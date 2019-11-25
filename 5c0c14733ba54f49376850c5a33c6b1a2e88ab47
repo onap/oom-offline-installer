@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "446ce03f_3cdc68dd",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-11-25T11:13:58Z",
+      "side": 1,
+      "message": "If the onap-all.yaml should be the default, the wording here should be changed as using it without modification will not result in an empty list",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 127
+      },
+      "revId": "5c0c14733ba54f49376850c5a33c6b1a2e88ab47",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
