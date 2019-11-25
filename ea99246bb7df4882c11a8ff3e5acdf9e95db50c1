@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e7fc4f8_3d8d869a",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-11-25T08:08:20Z",
+      "side": 1,
+      "message": "This cannot work - the condition will be always true as the output will always content the grep command",
+      "revId": "ea99246bb7df4882c11a8ff3e5acdf9e95db50c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fccf786_301a43bd",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2019-11-25T08:08:20Z",
+      "side": 1,
+      "message": "What if the user would not want to use onap-all and just specific part of it? To use the override or different list would be a fine option, but I\u0027d prefer to use the default values and let the user to specify what he wants",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 88
+      },
+      "revId": "ea99246bb7df4882c11a8ff3e5acdf9e95db50c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
