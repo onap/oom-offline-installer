@@ -92,7 +92,7 @@ if [ -e "${LIST}" ]; then
 fi
 
 # Setup helm
-if pgrep -x "helm" > /dev/null; then
+if ps -eaf | grep "helm" > /dev/null; then
     echo "helm is already running"
 else
     helm init -c > /dev/null
@@ -114,7 +114,7 @@ popd
 echo "Creating the list..."
 if [ "${PROJECT}" == "onap" ]; then
     COMMENT="OOM commit $(git --git-dir="${PROJECT_DIR}/../../.git" rev-parse HEAD)"
-    for subsystem in `parse_yaml "${PROJECT_DIR}/values.yaml"`; do
+    for subsystem in `parse_yaml "${PROJECT_DIR}/resources/overrides/onap-all.yaml"`; do
         create_list ${subsystem}
     done | sort -u > ${LIST}
 else
