@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "98885bc1_a86ad0dc",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-11-25T08:16:13Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of this change?",
+      "revId": "ea99246bb7df4882c11a8ff3e5acdf9e95db50c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fccf786_301a43bd",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 1
