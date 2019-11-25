@@ -36,6 +36,42 @@
     },
     {
       "key": {
+        "uuid": "5ee1cd38_f18082bf",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-25T09:19:20Z",
+      "side": 1,
+      "message": "thanks. Actually in Windows it works, but in linux like you said.",
+      "parentUuid": "5e7fc4f8_3d8d869a",
+      "revId": "ea99246bb7df4882c11a8ff3e5acdf9e95db50c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42dd61c3_9a0f7878",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-25T09:19:20Z",
+      "side": 1,
+      "message": "Just to get this work in Windows (git bash).",
+      "parentUuid": "98885bc1_a86ad0dc",
+      "revId": "ea99246bb7df4882c11a8ff3e5acdf9e95db50c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1fccf786_301a43bd",
         "filename": "build/creating_data/docker-images-collector.sh",
         "patchSetId": 1
@@ -47,6 +83,30 @@
       "writtenOn": "2019-11-25T08:08:20Z",
       "side": 1,
       "message": "What if the user would not want to use onap-all and just specific part of it? To use the override or different list would be a fine option, but I\u0027d prefer to use the default values and let the user to specify what he wants",
+      "range": {
+        "startLine": 117,
+        "startChar": 4,
+        "endLine": 117,
+        "endChar": 88
+      },
+      "revId": "ea99246bb7df4882c11a8ff3e5acdf9e95db50c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f0286ed_b9304998",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-11-25T09:19:20Z",
+      "side": 1,
+      "message": "This change is exactly to the direction you comment here :)\nonap-all.yml just happen to have all enabled as true for all components so it\u0027s more likely to be usable than kubernetes/onap/values.yml where all enabled are false (and modify is always needed).\nUser still needs to modify onap-all.yml if something different is wanted. But at least it\u0027s in logically write file (i.e. override).",
+      "parentUuid": "1fccf786_301a43bd",
       "range": {
         "startLine": 117,
         "startChar": 4,
