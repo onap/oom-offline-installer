@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1fd942c3_e6eeadeb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5855
+      },
+      "writtenOn": "2019-11-29T09:15:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c147999_d9f55f0a",
+      "range": {
+        "startLine": 7,
+        "startChar": 7,
+        "endLine": 7,
+        "endChar": 16
+      },
+      "revId": "c6cd075a37b0a2c05a57926c46edb618b1ce9e04",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cc13cb5a_38515e50",
         "filename": "build/create_repo.sh",
         "patchSetId": 2
