@@ -22,6 +22,30 @@
       "revId": "ea3bc3f79a63fbe3247fafe22ad02a51c5ca59b8",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b5616d2b_e40a51d7",
+        "filename": "build/create_repo.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5855
+      },
+      "writtenOn": "2019-11-29T09:15:16Z",
+      "side": 1,
+      "message": "I thought about that and I decided to add a new parametter to decide what type of repository you want to generate. But I think is useless to have everything in CentOS container. Every time is downloaded only one image, not both. And I think is better to use Ubuntu for deb packages with official repository.",
+      "parentUuid": "b51c2436_74ab870b",
+      "range": {
+        "startLine": 39,
+        "startChar": 3,
+        "endLine": 39,
+        "endChar": 86
+      },
+      "revId": "ea3bc3f79a63fbe3247fafe22ad02a51c5ca59b8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
