@@ -1,0 +1,22 @@
+- name: "copy patches"
+  copy:
+    src: "{{ playbook_dir }}/../../patches"
+    dest: "/root/patches"
+    mode: preserve
+
+# key must match with public key distributed to vFWCL VMs as vnfPubKey parameter in robot
+- name: "robot patch"
+  command:
+    cmd: "./update_robot.sh"
+    chdir: "/root/patches"
+
+# usecases controller is not working - POLICY-2191
+- name: "update policy patch"
+  command:
+    cmd: "./update_policy.sh"
+    chdir: "/root/patches"
+
+# step above is also restarting policy,
+# there is some small chance that drools will be marked as sick during interval its being restarted and redeployed.
+# TODO:
+# - name: "verify policy running"

@@ -1,0 +1,49 @@
+# retrieve private ip of host running robot
+# TODO run this on infra node
+- name: "get vm running robot"
+  raw: "kubectl -n onap describe $(kubectl -n onap get pod -o name | grep robot) | grep Node: | awk '{print $2}' | cut -d "/" -f 1"
+  args:
+    executable: /bin/bash
+  register: robot
+
+#Authenticate to cloud.
+- name: "authenticate to cloud"
+  os_auth:
+    auth:
+      auth_url: "{{ os_auth_url }}"
+      username: "{{ os_username }}"
+      password: "{{ os_password }}"
+      domain_name: "{{ os_domain_name }}"
+      project_name: "{{ os_project_name }}"
+      project_domain_name: "{{ os_domain_name }}"
+#Will use the token from this point on.
+- name: "set token"
+  set_fact:
+    os_auth:
+      auth_url: "{{ os_auth_url }}"
+      token: "{{ auth_token }}"
+      project_name: "{{ os_project_name }}"
+      project_domain_name: "{{ os_domain_name }}"
+
+- name: "get instances info"
+  os_server_info:
+    auth: "{{ os_auth }}"
+    auth_type: token
+    filter:
+      key_name: "{{ stack_name }}"
+      name: "{{ item.value }}"
+  loop:
+   - "infra"
+   - "{{ robot.stdout }}"
+  register: instances
+
+- name: "Attach instances to vFWCL public net"
+  os_port:
+    state: present
+    auth: "{{ os_auth }}"
+    auth_type: token
+    network: "{{ vfwcl_public_net }}"
+    device_id: "{{ item }}"
+  loop:
+    - "{{ instances.openstack_servers[0].id }}"
+    - "{{ instances.openstack_servers[1].id }}"

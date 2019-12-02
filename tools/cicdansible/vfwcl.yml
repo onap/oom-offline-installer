@@ -1,0 +1,22 @@
+---
+#Performing of vFirewall Close Loop on deployed instance
+#Default parameters are set in group_vars/*.yml.
+#Inventory is in hosts.yml, and parameters specific to instances are set there.
+- name: "Verify Onap Health"
+  hosts: infra
+  roles:
+    - role: health_check
+
+- name: "Perform vFirewall close loop"
+  hosts: infra
+  roles:
+    - role: vfwcl
+      vars:
+        mode: perform
+
+- name: "Verify vFWCL"
+  hosts: infra
+  roles:
+    - role: vfwcl
+      vars:
+        mode: verify

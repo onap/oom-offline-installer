@@ -1,0 +1,9 @@
+- name: "init"
+  command:
+    cmd: "./demo-k8s.sh onap init"
+    chdir: "/opt/onap/resources/helm_charts/robot"
+
+- name: "instantiate VNFs"
+  command:
+    cmd: "./demo-k8s.sh onap instantiateVFW"
+    chdir: "/opt/onap/resources/helm_charts/robot"

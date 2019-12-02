@@ -2,7 +2,7 @@
 
 set -xe
 
-DROOLS_POD=`kubectl  get pods | grep drools | awk {'print $1'}`
+DROOLS_POD=`kubectl -n onap get pods | grep drools | awk {'print $1'}`
 DST_BASE="/home/policy/.m2/repository/org/onap"
 
 # WA to clean wrong _remote.repositories
@@ -23,8 +23,8 @@ patch_pom() {
     dst_path=$2
 
     kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f ${dst_path}/_remote.repositories;mkdir -p ${dst_path}"
-    kubectl cp ./POLICY-2191/${pom_name} ${DROOLS_POD}:${dst_path}/${pom_name}
-    kubectl cp ./POLICY-2191/${pom_name}.sha1 ${DROOLS_POD}:${dst_path}/${pom_name}.sha1
+    kubectl -n onap cp ./POLICY-2191/${pom_name} ${DROOLS_POD}:${dst_path}/${pom_name}
+    kubectl -n onap cp ./POLICY-2191/${pom_name}.sha1 ${DROOLS_POD}:${dst_path}/${pom_name}.sha1
 }
 
 # patch 48 files in drools

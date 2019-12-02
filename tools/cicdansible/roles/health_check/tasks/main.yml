@@ -1,0 +1,10 @@
+- name: "copy healthcheck script"
+  copy:
+    src: "{{ playbook_dir }}/../helm_deployment_status.py"
+    dest: "/root/"
+    mode: preserve
+
+- name: "run healthchecks"
+  shell:
+    chdir: "/root/"
+    cmd: "./helm_deployment_status.py -hm health -hp /opt/onap/resources/helm_charts/robot/ete-k8s.sh"

@@ -1,0 +1,5 @@
+- name: "verify vFWCL"
+  command:
+    cmd: "./demo-k8s.sh onap vfwclosedloop {{ snk_ip }}"
+    chdir: "/opt/onap/resource/helm_charts/robot"
+    when: snk_ip is defined
