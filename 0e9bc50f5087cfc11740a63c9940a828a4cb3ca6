@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab170f1c_a21c8308",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 5855
+      },
+      "writtenOn": "2019-12-03T10:25:45Z",
+      "side": 1,
+      "message": "This is the internal directory in the container where the external directory is mounted, which can be specified as relative path.",
+      "parentUuid": "bfeecec0_360a1b2b",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 33
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fc0962a_93de8be6",
         "filename": "build/docker-entrypoint.sh",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-29T13:18:44Z",
       "side": 1,
       "message": "why tmp, should it not be mnt? or better path relative to executable?",
+      "range": {
+        "startLine": 83,
+        "startChar": 19,
+        "endLine": 83,
+        "endChar": 41
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2aaff6d_cb8864e9",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 5855
+      },
+      "writtenOn": "2019-12-03T10:25:45Z",
+      "side": 1,
+      "message": "Yes, it could be in mnt but this path is in container. In this path is mounted cloned directory repo with package lists. So if path is mnt or tmp isnt affect the result beacause this directory is still in container. And in this directory is mounted external directory, where is clonned repository with all lists.",
+      "parentUuid": "6fc0962a_93de8be6",
       "range": {
         "startLine": 83,
         "startChar": 19,
