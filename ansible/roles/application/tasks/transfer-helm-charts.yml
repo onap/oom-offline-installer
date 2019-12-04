@@ -3,9 +3,12 @@
 - name: Distribute helm charts to infra node
   block:
     - name: Archive helm charts
-      archive:
-        path: "{{ app_helm_charts_install_directory }}/*"
-        dest: "{{ app_helm_charts_install_directory }}.tgz"
+      command: tar -cvzf {{ app_helm_charts_install_directory }}.tgz -C {{ app_helm_charts_install_directory }} .
+      args:
+        warn: false
+      tags:
+        - skip_ansible_lint  # Prevent '[303] tar used in place of unarchive module'
+      changed_when: false  # for idempotency
       delegate_to: localhost
     - name: Create helm charts dir on infra
       file:
