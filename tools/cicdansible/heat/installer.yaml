@@ -94,6 +94,11 @@ parameters:
     type: boolean
     label: "use volume for nfs storage"
     description: "Indicates whether a cinder volume should be used for nfs storage or not. If not checked, the nfs would be stored in the root disk"
+  demo_network:
+    label: "demo net id"
+    type: string
+    description: "specifies id of network used for demo usecases"
+    default: ""
 conditions:
   #Condition for nfs volume usage.
   use_volume_for_nfs: { get_param: use_volume_for_nfs }
@@ -201,6 +206,7 @@ resources:
           flavor_name: { get_param: node_flavor_name }
           notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
           security_group: { get_resource: secgroup }
+          demo_network: { get_param: demo_network }
           scheduler_hints:
             group: { get_resource: anti_affinity_group }
     depends_on: [routercon, instance_wait_handle]
@@ -243,6 +249,7 @@ resources:
       notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
       security_group: { get_resource: secgroup }
       scheduler_hints: {}
+      demo_network: { get_param: demo_network }
     depends_on: [instance_wait_handle]
   #Volume attachment for infra node.
   resources_storage_attachment:
@@ -309,6 +316,15 @@ resources:
           - []
 #Output values
 outputs:
+  network_name:
+    value: {get_attr: [privnet, name] }
+    description: "Name of private network"
+  network_id:
+    value: { get_resource: privnet }
+    description: "ID of private network"
+  subnet_id:
+    value: { get_resource: privsubnet }
+    description: "ID of private subnet"
   installer_ip:
     value: { get_attr: [installer, ip] }
     description: "Internal ip of installer instance"

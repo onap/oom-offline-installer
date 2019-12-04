@@ -21,6 +21,16 @@ parameters:
   scheduler_hints:
     type: json
     default: {}
+  demo_network:
+    type: string
+    default: ""
+conditions:
+  #Condition for demo network connection
+  connect_demo_net:
+    not:
+      equals:
+        - get_param: demo_network
+        - ""
 #Resources.
 resources:
   #This is the network port to attach instance to.
@@ -48,8 +58,13 @@ resources:
       image: { get_param: image_name }
       flavor: { get_param: flavor_name }
       key_name: { get_param: key_name }
+      config_drive: true
       networks:
-        - port: { get_resource: port }
+        if:
+        - "connect_demo_net"
+        - - port: { get_resource: port }
+          - network: { get_param: demo_network }
+        - - port: { get_resource: port }
       user_data_format: SOFTWARE_CONFIG
       user_data: { get_resource: config }
       scheduler_hints: { get_param: scheduler_hints }

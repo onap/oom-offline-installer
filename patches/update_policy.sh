@@ -1,20 +1,20 @@
 #!/usr/bin/env	bash
 
 set -xe
-
-DROOLS_POD=`kubectl  get pods | grep drools | awk {'print $1'}`
+NAMESPACE=$1
+DROOLS_POD=`kubectl -n ${NAMESPACE} get pods | grep drools | awk {'print $1'}`
 DST_BASE="/home/policy/.m2/repository/org/onap"
 
 # WA to clean wrong _remote.repositories
 # this/original version of files will prevent maven to find missing dependencies
 # its not an issue in online lab and those files are updated when poms are collected from internet
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/common/1.5.3/_remote.repositories"
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/controller-usecases/1.5.3/_remote.repositories"
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/database/1.5.3/_remote.repositories"
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/eventmanager/1.5.3/_remote.repositories"
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/guard/1.5.3/_remote.repositories"
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/controlloop/1.5.3/_remote.repositories"
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f $DST_BASE/policy/drools-applications/drools-applications/1.5.3/_remote.repositories"
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/common/1.5.3/_remote.repositories"
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/controller-usecases/1.5.3/_remote.repositories"
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/database/1.5.3/_remote.repositories"
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/eventmanager/1.5.3/_remote.repositories"
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/common/guard/1.5.3/_remote.repositories"
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f $DST_BASE/policy/drools-applications/controlloop/controlloop/1.5.3/_remote.repositories"
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f $DST_BASE/policy/drools-applications/drools-applications/1.5.3/_remote.repositories"
 
 # this part is for patching POLICY-2191
 
@@ -22,9 +22,9 @@ patch_pom() {
     pom_name=$1
     dst_path=$2
 
-    kubectl exec -it ${DROOLS_POD} -n onap -- bash -c "rm -f ${dst_path}/_remote.repositories;mkdir -p ${dst_path}"
-    kubectl cp ./POLICY-2191/${pom_name} ${DROOLS_POD}:${dst_path}/${pom_name}
-    kubectl cp ./POLICY-2191/${pom_name}.sha1 ${DROOLS_POD}:${dst_path}/${pom_name}.sha1
+    kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c "rm -f ${dst_path}/_remote.repositories;mkdir -p ${dst_path}"
+    kubectl -n ${NAMESPACE} cp ./POLICY-2191/${pom_name} ${DROOLS_POD}:${dst_path}/${pom_name}
+    kubectl -n ${NAMESPACE} cp ./POLICY-2191/${pom_name}.sha1 ${DROOLS_POD}:${dst_path}/${pom_name}.sha1
 }
 
 # patch 48 files in drools
@@ -54,4 +54,4 @@ patch_pom policy-models-pdp-2.1.3.pom ${DST_BASE}/policy/models/policy-models-pd
 patch_pom policy-models-tosca-2.1.3.pom ${DST_BASE}/policy/models/policy-models-tosca/2.1.3/
 
 # restart policy
-kubectl exec -it ${DROOLS_POD} -n onap -- bash -c '/opt/app/policy/bin/policy stop;/opt/app/policy/bin/policy start'
+kubectl -n ${NAMESPACE} exec -it ${DROOLS_POD} -- bash -c '/opt/app/policy/bin/policy stop;/opt/app/policy/bin/policy start'
