@@ -309,6 +309,12 @@ resources:
           - []
 #Output values
 outputs:
+  network_id:
+    value: { get_resource: privnet }
+    description: "ID of private network"
+  subnet_id:
+    value: { get_resource: privsubnet }
+    description: "ID of private subnet"
   installer_ip:
     value: { get_attr: [installer, ip] }
     description: "Internal ip of installer instance"
