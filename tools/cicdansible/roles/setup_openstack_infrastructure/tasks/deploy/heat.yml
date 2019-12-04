@@ -33,5 +33,6 @@
       infra_ip: "{{ floating_ips_by_address[infra_ip].id }}"
       installer_ip: "{{ floating_ips_by_address[installer_ip].id }}"
       use_volume_for_nfs: "{{ use_volume_for_nfs }}"
+      demo_network: "{{ demo_network_id }}"
     wait: true
   register: heat_stack
