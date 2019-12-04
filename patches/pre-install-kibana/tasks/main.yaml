@@ -1,0 +1,4 @@
+- name: "WA: Transfer log/charts/log-kibana/resources/config/kibana-onboarding.json to infra"
+  copy:
+    src: "{{ app_helm_charts_install_directory }}/log/charts/log-kibana/resources/config/kibana-onboarding.json"
+    dest: "{{ app_helm_charts_infra_directory }}/log/charts/log-kibana/resources/config/"
