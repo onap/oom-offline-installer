@@ -23,6 +23,19 @@
   copy:
     content: "{{ application_config | b64decode }}"
     dest: "{{ installer_deploy_path }}/ansible/application/application_overrides.yml"
+  # add onap network configuration to overrides
+  - name: "inject onap network information to config overrides"
+    replace:
+      path: "{{ installer_deploy_path }}/ansible/application/application_overrides.yml"
+      regexp: '({{ item.key }}:)\s?.*'
+      replace: '\1 {{ item.value }}'
+    loop: "{{ lines|dict2items }}"
+    vars:
+      lines:
+        openStackPrivateNetId: "{{ (hostvars['localhost'].heat_stack.stack.outputs | selectattr('output_key', 'equalto', 'network_id') | list).0.output_value }}"
+        openStackPrivateSubnetId: "{{ (hostvars['localhost'].heat_stack.stack.outputs | selectattr('output_key', 'equalto', 'subnet_id') | list).0.output_value }}"
+        openStackPublicNetId: "{{ (hostvars['localhost'].heat_stack.stack.outputs | selectattr('output_key', 'equalto', 'network_id') | list).0.output_value }}"
+        openStackPublicNetworkName: "{{ (hostvars['localhost'].heat_stack.stack.outputs | selectattr('output_key', 'equalto', 'network_name') | list).0.output_value }}"
 # This generates a file with locations of resource files in resource host, we
 # do it only to allow manually running offline installer without
 # typing them by hand. We cannot use

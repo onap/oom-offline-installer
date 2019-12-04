@@ -319,8 +319,8 @@ resources:
 
             # nasty hack to bypass cloud-init issues
             sed  -i '1i nameserver 8.8.8.8' /etc/resolv.conf
-            iface_correct=`ip a | grep 10.8.8 | awk {'print $7'}`
-            route add default gw 10.8.8.1 ${iface_correct} 
+            iface_correct=`ip a | grep 10.1.0 | awk {'print $7'}`
+            route add default gw 10.1.0.1 ${iface_correct} 
 
             # Create configuration files
             mkdir /opt/config
@@ -401,8 +401,8 @@ resources:
 
             # nasty hack to bypass cloud-init issues
             sed  -i '1i nameserver 8.8.8.8' /etc/resolv.conf
-            iface_correct=`ip a | grep 10.8.8 | awk {'print $7'}`
-            route add default gw 10.8.8.1 ${iface_correct}
+            iface_correct=`ip a | grep 10.1.0 | awk {'print $7'}`
+            route add default gw 10.1.0.1 ${iface_correct}
 
             # Create configuration files
             mkdir /opt/config
@@ -480,8 +480,8 @@ resources:
 
             # nasty hack to bypass cloud-init issues
             sed  -i '1i nameserver 8.8.8.8' /etc/resolv.conf
-            iface_correct=`ip a | grep 10.8.8 | awk {'print $7'}`
-            route add default gw 10.8.8.1 ${iface_correct}
+            iface_correct=`ip a | grep 10.1.0 | awk {'print $7'}`
+            route add default gw 10.1.0.1 ${iface_correct}
 
             # Create configuration files
             mkdir /opt/config
