@@ -22,6 +22,9 @@ parameters:
     type: string
   scheduler_hints:
     type: json
+  demo_network:
+    type: string
+    default: ""
 resources:
   #Volume for storing /var/lib/docker for node.
   docker_storage:
@@ -45,6 +48,7 @@ resources:
       notify_command: { get_param: notify_command }
       security_group: { get_param: security_group }
       scheduler_hints: { get_param: scheduler_hints }
+      demo_network: { get_param: demo_network }
   #Attachment of docker volume to node.
   docker_storage_attachment:
     type: OS::Cinder::VolumeAttachment

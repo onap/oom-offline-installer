@@ -148,9 +148,10 @@ for this reason we are patching *base_vfw.yaml* for all vFW VMs with following c
 
     # nasty hack to bypass cloud-init issues
     sed  -i '1i nameserver 8.8.8.8' /etc/resolv.conf
-    iface_correct=`ip a | grep 10.8.8 | awk {'print $7'}`
-    route add default gw 10.8.8.1 ${iface_correct}
+    iface_correct=`ip a | grep <network_prefix> | awk {'print $7'}`
+    route add default gw <network_prefix>.1 ${iface_correct}
 
+Network prefix variable is in our case "10.8.8".
 
 Lets treat it as an example of how these two problems can be fixed. Feel free to adjust private/public key and skip cloud-init problem if you don't have it.
 Our helping script with above setting is fixing both issues (a) and (b) for us.
@@ -158,7 +159,7 @@ Our helping script with above setting is fixing both issues (a) and (b) for us.
 ::
 
     # copy offline-installer repo into infra node and run following script from patches folder
-    ./update_robot.sh
+    ./update_robot.sh <namespace> <network_prefix>
 
 
 **drools**
@@ -170,7 +171,7 @@ One can fix it by running following script.
 ::
 
     # copy offline-installer repo into infra node and run following script from patches folder
-    ./update_policy.sh
+    ./update_policy.sh <namespace>
 
 .. note:: This script is also restarting policy, there is some small chance that drools will be marked as sick during interval its being restarted and redeployed. If it happens, just try again.
 

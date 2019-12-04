@@ -30,7 +30,7 @@ image_name: ""
 #True by default, most openstack providers offer ssd volumes probably.
 use_volume_for_nfs: true
 #Cidr of private subnet where instances are connected.
-subnet_cidr: "10.1.0.0/24"
+subnet_cidr: "10.1.0.0/16"
 #Start of dhcp allocation range for subnet.
 subnet_range_start: "10.1.0.4"
 #Subnet allocation range end.
@@ -64,3 +64,5 @@ install_app: true
 # You can use it to override any variable in offline installer except those
 # supported directly by cicdansible.
 application_config: ''
+# Id of the network for demo usecases
+demo_network_id: ""
