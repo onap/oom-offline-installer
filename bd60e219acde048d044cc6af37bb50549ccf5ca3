@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "240a4c96_c6bdcd20",
+        "filename": "ansible/roles/application/tasks/transfer-helm-charts.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2019-12-05T12:34:02Z",
+      "side": 1,
+      "message": "With this command files are tarred with \"application/\" path prepended so they\u0027ll get extracted to wrong dir on dest.\n\n\nTASK [application : Archive helm charts] *********************************************************************************************************************************************\n [WARNING]: Consider using the unarchive module rather than running \u0027tar\u0027.  If you need to use command because unarchive is insufficient you can add \u0027warn: false\u0027 to this command\ntask or set \u0027command_warnings\u003dFalse\u0027 in ansible.cfg to get rid of this message.\n\n\nAdd \"warn: false\" to \"command\" args to suppress that warning.\n\nAlso add linter exception for this task to suppress this:\n\n--\u003e Executing Ansible Lint on /w/workspace/offline-installer-master-review/ansible/roles/application/molecule/default/playbook.yml...\n    [303] tar used in place of unarchive module\n    tasks/transfer-helm-charts.yml:5\n    Task/Handler: Archive helm charts",
+      "revId": "bd60e219acde048d044cc6af37bb50549ccf5ca3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
