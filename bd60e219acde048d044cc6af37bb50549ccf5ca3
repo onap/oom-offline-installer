@@ -16,6 +16,24 @@
       "revId": "bd60e219acde048d044cc6af37bb50549ccf5ca3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9611d162_b411eb28",
+        "filename": "ansible/roles/application/tasks/transfer-helm-charts.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-05T12:59:34Z",
+      "side": 1,
+      "message": "does this pass idempotency test of molecule?",
+      "parentUuid": "240a4c96_c6bdcd20",
+      "revId": "bd60e219acde048d044cc6af37bb50549ccf5ca3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
