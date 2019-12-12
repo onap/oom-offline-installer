@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b75748e0_3fb8f412",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-12T14:34:00Z",
+      "side": 1,
+      "message": "you want to update these in each release?\nText can be made without release names.",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 11
+      },
+      "revId": "1b1bd649fc1002d3a519c4eac6fcb8d1298e61d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
