@@ -93,6 +93,144 @@
       "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "82b7e877_02dc29fe",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 7
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-13T07:40:05Z",
+      "side": 1,
+      "message": "TABS",
+      "range": {
+        "startLine": 87,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "424bfbb1_36675478",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-13T07:40:05Z",
+      "side": 1,
+      "message": "package repository",
+      "range": {
+        "startLine": 112,
+        "startChar": 25,
+        "endLine": 112,
+        "endChar": 40
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "507583cc_1cb34312",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-13T07:40:05Z",
+      "side": 1,
+      "message": "and optionally use -t parameter for target platform. Supported target platforms are centos|rhel|ubuntu. If -t parameter is not given, default platform is rhel.",
+      "range": {
+        "startLine": 116,
+        "startChar": 91,
+        "endLine": 116,
+        "endChar": 92
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1b332cd_cc3b4b59",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-13T07:40:05Z",
+      "side": 1,
+      "message": "and is the default rhel? I think default should by centos.",
+      "range": {
+        "startLine": 117,
+        "startChar": 25,
+        "endLine": 117,
+        "endChar": 48
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c2aba06_6d1c8727",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-13T07:40:05Z",
+      "side": 1,
+      "message": "no need to describe it here as a side note.",
+      "range": {
+        "startLine": 119,
+        "startChar": 1,
+        "endLine": 120,
+        "endChar": 9
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79800e83_6632859f",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 7
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2019-12-13T07:40:05Z",
+      "side": 1,
+      "message": "something wrong with this sentence?",
+      "range": {
+        "startLine": 122,
+        "startChar": 8,
+        "endLine": 122,
+        "endChar": 45
+      },
+      "revId": "0e9bc50f5087cfc11740a63c9940a828a4cb3ca6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
