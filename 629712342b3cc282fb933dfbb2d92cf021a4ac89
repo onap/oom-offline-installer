@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3084a2ad_0dd412a6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-12-18T10:03:46Z",
+      "side": 1,
+      "message": "long commit message line?",
+      "revId": "629712342b3cc282fb933dfbb2d92cf021a4ac89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75a03b38_cdf0ae4d",
+        "filename": "tools/cicdansible/heat/installer.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 4886
+      },
+      "writtenOn": "2019-12-18T10:03:46Z",
+      "side": 1,
+      "message": "typo: demoo",
+      "revId": "629712342b3cc282fb933dfbb2d92cf021a4ac89",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
