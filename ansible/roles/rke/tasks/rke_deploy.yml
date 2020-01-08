@@ -24,3 +24,15 @@
     dest: "{{ kube_config_dir }}/config"
     remote_src: true
     mode: 0755
+
+- name: pause
+  pause:
+    minutes: 15
+
+- name: debug
+  command: kubectl get pods --all-namespaces
+  changed_when: false
+  register: d1
+
+- name: debug
+  debug: var=d1.stdout
