@@ -6,6 +6,13 @@
       set_fact:
         cluster_ip: "{{ ansible_default_ipv4.address }}"
 
+- name: Configure etcd (RKE)
+  hosts: kubernetes-etcd
+  roles:
+    - role: rke
+      vars:
+        mode: etcd
+
 - name: Configure kubernetes cluster (RKE)
   hosts: infrastructure
   roles:
