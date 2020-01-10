@@ -49,9 +49,6 @@ provisioner:
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
-  inventory:
-    links:
-      group_vars: ../../../../group_vars
   options:
     e: "app_data_path=/opt/onap"
   lint:
