@@ -1,0 +1,74 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    restart_policy: unless-stopped
+    volumes:
+      - /var/lib/kubelet
+      - /var/lib/docker
+    env:
+      container: docker
+    groups:
+      - infrastructure
+      - kubernetes-etcd
+      - kubernetes-control-plane
+      - kubernetes
+    networks:
+      - name: rke
+    purge_networks: true
+
+  - name: kubernetes-node-1
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    restart_policy: unless-stopped
+    env:
+      container: docker
+    volumes:
+      - /var/lib/kubelet
+      - /var/lib/docker
+    groups:
+      - kubernetes
+      - kubernetes-node
+    networks:
+      - name: rke
+    purge_networks: true
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        rke_etcd:
+          enabled_custom_etcd_storage: false
+          storage_path: /var/lib/etcd-custom
+          storage_mountpoint: /var/lib/rancher/etcd-custom
+          enabled_unsafe_volatile_storage: true
+          tmpfs_size: 5G
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+    destroy: ../default/destroy.yml
+  options:
+    e: "app_data_path=/opt/onap"
+  lint:
+    name: ansible-lint
+scenario:
+  name: etcd_storage
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
