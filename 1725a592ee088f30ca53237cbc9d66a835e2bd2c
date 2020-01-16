@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2e43d7cb_4c182818",
+        "filename": "ansible/test/bin/ci-molecule.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-01-16T11:15:45Z",
+      "side": 1,
+      "message": "As it\u0027s not new file, it should be 2019-2020",
+      "range": {
+        "startLine": 5,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 18
+      },
+      "revId": "1725a592ee088f30ca53237cbc9d66a835e2bd2c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
