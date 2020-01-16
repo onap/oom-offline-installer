@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 
-#   Copyright 2019 © Samsung Electronics Co., Ltd.
+#   Copyright 2019-2020 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -19,8 +19,8 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 #
-# This is a main wrapper script to run Molecule tests
-# Main usage is for the CI usage to keep interface stable and the way to call
+# This is a main wrapper script to run Molecule tests.
+# Main usage is for the CI to keep interface stable and the way to call
 # Molecule can be adjusted in this script independently.
 #
 
@@ -40,7 +40,6 @@ if [ "${MOLECULE_CONTAINER}" == "true" ]; then
     echo "Build Molecule-dev docker container"
     ${LOCAL_PATH}/../molecule-docker/build.sh
     MOLECULE_BINARY=${LOCAL_PATH}/../bin/molecule.sh
-
 else # Install Molecule natively in the target platform
     echo "Install Molecule with virtualenv"
     source ${LOCAL_PATH}/../bin/install-molecule.sh
@@ -50,5 +49,5 @@ fi
 cd ${ROLE_PATH}
 ${MOLECULE_BINARY} --version
 ${MOLECULE_BINARY} test --all
+docker volume prune --force
 cd -
-
