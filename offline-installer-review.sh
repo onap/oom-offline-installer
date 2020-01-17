@@ -36,7 +36,7 @@ function run_molecule() {
   local MOLECULE_RC
   for role in ${roles[@]}
     do
-      if `find ${role} -name molecule.yml | grep -q '.*'`; then
+      if [ -f ${role}/molecule/default/molecule.yml ]; then
         ./ansible/test/bin/ci-molecule.sh ${role}
         MOLECULE_RC=$?
         if [ ${MOLECULE_RC} -ne "0" ]; then FAILED_ROLES+=(${role}); fi
