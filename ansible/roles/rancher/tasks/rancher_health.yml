@@ -1,8 +1,0 @@
----
-- name: Check cluster health
-  uri:
-    url: "{{ rancher_server_url }}/v2-beta/projects/{{ k8s_env_id }}"
-  register: env_info
-  retries: "{{ rancher_cluster_health_check_retries }}"
-  delay: 15
-  until: env_info.json.healthState == rancher_cluster_health_state

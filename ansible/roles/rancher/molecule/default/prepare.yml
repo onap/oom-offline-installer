@@ -1,5 +1,0 @@
----
-- name: Prepare hosts
-  hosts: all
-  roles:
-    - prepare-docker-dind
