@@ -1,2 +1,0 @@
----
-- include_tasks: "rancher_{{ mode }}.yml"
