@@ -108,14 +108,14 @@ Part 2. Download artifacts for offline installer
 .. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
 
 
-There need to be created RPM repository containing packages which need to be installed on all nodes.
+A RPM repository containing packages to be installed on all nodes needs to be created:
 
 ::
 
     # run the docker container with -d parameter for destination directory with RPM packages
     ./offline-installer/build/create_repo.sh -d $(pwd)
 
-.. note:: If script fails with permissions, problem could be with SeLinux. Issue is possible to solve by:
+.. note:: If script fails due to permissions issue, it could be a problem with SeLinux. It can be fixed by running:
     ::
 
       # Change security context of directory
@@ -140,8 +140,6 @@ so one might try following command to download most of the required artifacts in
         --docker ./build/data_lists/k8s_docker_images.list \
         --docker ./build/data_lists/onap_docker_images.list \
 
-
-Alternatively, step-by-step procedure is described in Appendix 1.
 
 This concludes SW download part required for ONAP offline platform creating.
 
