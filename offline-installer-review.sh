@@ -31,12 +31,11 @@ function prep_ubuntu_16_04_for_molecule() {
 }
 
 function run_molecule() {
-  prep_ubuntu_16_04_for_molecule
   local roles=("$@")
   local MOLECULE_RC
   for role in ${roles[@]}
     do
-      if `find ${role} -name molecule.yml | grep -q '.*'`; then
+      if [ -f ${role}/molecule/default/molecule.yml ]; then
         ./ansible/test/bin/ci-molecule.sh ${role}
         MOLECULE_RC=$?
         if [ ${MOLECULE_RC} -ne "0" ]; then FAILED_ROLES+=(${role}); fi
@@ -51,6 +50,8 @@ function run_molecule() {
 #######################################################################$
 FAILED_ROLES=()
 ALL_PLAYBOOKS=(`ls -d ansible/test/play-*`) # enumerate all playbook tests for later usage
+# Setup environment
+prep_ubuntu_16_04_for_molecule
 
 # Check for changes in Ansible roles
 ROLE_CHANGES=(`git diff HEAD^ HEAD --name-only ansible/roles | cut -f 1-3 -d "/" | sort -u`)
