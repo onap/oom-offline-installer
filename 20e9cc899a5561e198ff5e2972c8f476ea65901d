@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7db3bf01_0e8e6164",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-01-22T07:36:06Z",
+      "side": 1,
+      "message": "The overall idea is ok but this code could fail with KeyError due to lack of input data validation. I\u0027d suggest two options:\n\n1.enclose this section in \u0027try\u0027 clause and catch KeyError exception and produce error msg and fail\n\n2.(preferred by me) add \"nargs\" parameter to \"parser.add_argument(\u0027--add-metadata\u0027,(...)\" call with value of 2; then parse_args() will succeed only if \"--add-metadata key val\" is passed failing fast if only key will be passed (so early data validation); it will also produce list for you automatically so no splitting needed afterwards. Just adjust \u0027default\u0027 accordingly then and the condition in 92.",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 61
+      },
+      "revId": "20e9cc899a5561e198ff5e2972c8f476ea65901d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
