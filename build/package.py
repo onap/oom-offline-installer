@@ -69,12 +69,13 @@ def prepare_application_repository(directory, url, refspec, patch_path):
     return repository
 
 
-def create_package_info_file(output_file, repository_list, tag):
+def create_package_info_file(output_file, repository_list, tag, metadata):
     """
     Generates text file in json format containing basic information about the build
     :param output_file:
     :param repository_list: list of repositories to be included in package info
     :param tag: build version of packages
+    :param metadata: additional metadata into package.info
     :return:
     """
     log.info('Generating package.info file')
@@ -87,6 +88,10 @@ def create_package_info_file(output_file, repository_list, tag):
     for repository in repository_list:
         build_info['Build_info'][
             repository.config_reader().get_value('remote "origin"', 'url')] = repository.head.commit.hexsha
+
+    if metadata != '':
+        key_value = metadata.split(',')
+        build_info['Build_info'][key_value[0]] = key_value[1]
 
     with open(output_file, 'w') as outfile:
         json.dump(build_info, outfile, indent=4)
@@ -118,7 +123,8 @@ def build_offline_deliverables(build_version,
                                skip_sw,
                                skip_resources,
                                skip_aux,
-                               overwrite):
+                               overwrite,
+                               metadata):
     """
     Prepares offline deliverables
     :param build_version: Version for packages tagging
@@ -135,6 +141,7 @@ def build_offline_deliverables(build_version,
     :param skip_resources: skip resources package generation
     :param skip_aux: skip aux package generation
     :param overwrite: overwrite files in output directory
+    :param metadata: add metadata info into package.info
     :return:
     """
 
@@ -155,7 +162,7 @@ def build_offline_deliverables(build_version,
 
     # Package info
     info_file = os.path.join(output_dir, 'package.info')
-    create_package_info_file(info_file, [application_repository, offline_repository], build_version)
+    create_package_info_file(info_file, [application_repository, offline_repository], build_version, metadata)
 
     # packages layout as dictionaries. <file> : <file location under tar archive>
     sw_content = {
@@ -262,6 +269,8 @@ def run_cli():
                         help='overwrite files in output directory')
     parser.add_argument('--debug', action='store_true', default=False,
                         help='Turn on debug output')
+    parser.add_argument('--add-metadata',
+                        help='additional metadata added into package.info, format: key,value', default='')
     args = parser.parse_args()
 
     if args.debug:
@@ -282,7 +291,8 @@ def run_cli():
                                args.skip_sw,
                                args.skip_resources,
                                args.skip_aux,
-                               args.overwrite)
+                               args.overwrite,
+                               args.add_metadata)
 
 
 if __name__ == '__main__':
