@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96c45504_72a64856",
+        "filename": "build/package.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-01-22T09:17:02Z",
+      "side": 1,
+      "message": "Even prettier would be\n\n    if len(metadata):\n        build_info[\u0027Build_info\u0027].update({[metadata[0]]: metadata[1]})\n\nbut it\u0027s ok :)",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 59
+      },
+      "revId": "6e5944123a88f62c5adda619cf258700146e85d1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
