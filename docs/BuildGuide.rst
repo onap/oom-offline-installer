@@ -97,7 +97,7 @@ Part 2. Download artifacts for offline installer
    ::
 
     # clone the OOM repository
-    git clone https://gerrit.onap.org/r/oom -b master /tmp/oom
+    git clone https://gerrit.onap.org/r/oom -b dublin /tmp/oom
 
     # enable subsystems in oom/kubernetes/onap/values.yaml as required
 
@@ -203,7 +203,7 @@ For example:
 
 ::
 
-  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference master --application-patch_file ./patches/onap.patch --output-dir ../packages --resources-directory ../resources
+  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference dublin --application-patch_file ./patches/onap.patch --output-dir ../packages --resources-directory ../resources
 
 
 In the target directory you should find tar files:
