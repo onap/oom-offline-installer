@@ -22,6 +22,30 @@
       "revId": "20e9cc899a5561e198ff5e2972c8f476ea65901d",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb45f0d4_2045c15f",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 5626
+      },
+      "writtenOn": "2020-01-22T08:11:57Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7db3bf01_0e8e6164",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 61
+      },
+      "revId": "20e9cc899a5561e198ff5e2972c8f476ea65901d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
