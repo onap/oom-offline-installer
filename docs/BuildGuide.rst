@@ -95,7 +95,7 @@ Part 2. Download artifacts for offline installer
    ::
 
     # clone the OOM repository
-    git clone https://gerrit.onap.org/r/oom -b master --recurse-submodules /tmp/oom
+    git clone https://gerrit.onap.org/r/oom -b elalto --recurse-submodules /tmp/oom
 
     # docker-images-collector.sh script uses oom/kubernetes/onap/resources/overrides/onap-all.yaml file to find what subsystems
     are enabled. By default all subsystems are enabled there. Modify the file if want to drop some subsystems.
@@ -194,7 +194,7 @@ For example:
 
 ::
 
-  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference master --output-dir /tmp/packages --resources-directory /tmp/resources
+  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference elalto --output-dir /tmp/packages --resources-directory /tmp/resources
 
 
 In the target directory you should find tar files:
