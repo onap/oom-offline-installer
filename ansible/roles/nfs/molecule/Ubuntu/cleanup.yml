@@ -1,0 +1,6 @@
+---
+- name: Cleanup
+  hosts: all:!nfs-server
+  ignore_unreachable: true
+  roles:
+    - cleanup-nfs

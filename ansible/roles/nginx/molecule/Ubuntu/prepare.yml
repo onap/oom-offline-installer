@@ -1,0 +1,8 @@
+---
+- name: Prepare
+  hosts: all
+  vars_files:
+    - ../../../../roles/nginx/defaults/main.yml
+  roles:
+    - prepare-docker-dind
+    - prepare-nginx

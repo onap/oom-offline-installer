@@ -1,0 +1,6 @@
+---
+- name: Cleanup infra
+  hosts: all
+  ignore_unreachable: true
+  roles:
+    - cleanup-application

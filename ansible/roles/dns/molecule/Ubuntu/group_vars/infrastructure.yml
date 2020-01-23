@@ -1,0 +1,27 @@
+---
+vnc_passwd: samsung
+simulated_hosts:
+  http:
+    - repo.infra-server
+  nexus:
+    - docker.elastic.co
+    - docker.io
+    - index.docker.io
+    - gcr.io
+    - k8s.gcr.io
+    - nexus.{{ ansible_nodename }}
+    - nexus3.onap.org
+    - pndareg.ctao6.net
+    - quay.io
+    - registry-1.docker.io
+    - registry.hub.docker.com
+all_simulated_hosts:
+  "{{ simulated_hosts.http + simulated_hosts.nexus }}"
+populate_nexus: false
+helm_bin_dir: /usr/local/bin
+helm_version: v2.14.2
+rancher_server_image: rancher/server:v1.6.22
+vnc_server_image: consol/ubuntu-icewm-vnc:1.4.0
+nexus3_image: sonatype/nexus3:3.15.2
+dns_server_image: andyshinn/dnsmasq:2.76
+nginx_server_image: own_nginx:2.0.0

@@ -44,11 +44,32 @@ platforms:
       - name: rke
     purge_networks: true
 
+  - name: kubernetes-node-2
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    restart_policy: unless-stopped
+    env:
+      container: docker
+    volumes:
+      - /var/lib/kubelet
+      - /var/lib/docker
+    groups:
+      - kubernetes
+      - kubernetes-node
+    networks:
+      - name: rke
+    purge_networks: true
+
 provisioner:
   name: ansible
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    links:
+      group_vars: ../../../../group_vars
   options:
     e: "app_data_path=/opt/onap"
   lint:

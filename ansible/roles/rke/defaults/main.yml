@@ -3,10 +3,6 @@ rke_binary: rke_linux-amd64
 rke_username: rke
 rke_bin_dir: /usr/local/bin
 kube_config_dir: "{{ ansible_env.HOME }}/.kube"
-kubernetes_config_dir: "/etc/kubernetes"
-kubelet:
-  static_config: "kubelet-static-config.yml"
-  runtime_request_timeout: "2m0s"
 cluster_config_dir: "{{ app_data_path }}/cluster"
 # Whether dashboard is exposed.
 rke_dashboard_exposed: true

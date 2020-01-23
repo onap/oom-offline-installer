@@ -26,6 +26,8 @@ provisioner:
         app_name: onap
         app_data_path: "/opt/{{ app_name }}"
         helm_bin_dir: /usr/local/bin
+scenario:
+  name: default
 verifier:
   name: testinfra
   lint:

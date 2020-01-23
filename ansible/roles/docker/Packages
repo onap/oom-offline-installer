@@ -1,0 +1,1309 @@
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.0-1
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 59869
+Provides: containerd
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd
+Replaces: containerd
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.0-1_arm64.deb
+Size: 11405866
+MD5sum: 5e18d1d83b25037cf00228dbc9af2c08
+SHA1: ed38617f75c2cd294d3dab00f5da714ae67b46ef
+SHA256: fe3b8354597b210d10454a42f2736906c315085781b6c43b5dc1dfc45f50848b
+SHA512: a9d23ec168aa4d9495f6a00cb2fe74d3818f2be1c1c6a53fb53bc9ec3b10fbf0526889d0e9400ec6360194d6135b4e3ac185625949c0fc889b02c3712c3a9a52
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.0~beta.2-1
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 65329
+Provides: containerd
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.1.0)
+Conflicts: containerd
+Replaces: containerd
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.0~beta.2-1_arm64.deb
+Size: 15418222
+MD5sum: 7eee72bdb58f010bda8a58b6ba21997f
+SHA1: 114456164a4364fbbd86abfa7592cc6ba768da15
+SHA256: cb26fdf561b33a2c48fffd4e76fe7933fa8e5fd199f15e7cefcfdc091da2b770
+SHA512: d0a4d9bfc3b9633bc1a6397e5660397faa3f525dfe55a8076615a8f4372bddf11c9773a4e0c06f35767d10e28629e8be6aa92079c431d65ae1a32523a21cc15a
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.0~rc.0-1
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 59833
+Provides: containerd
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd
+Replaces: containerd
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.0~rc.0-1_arm64.deb
+Size: 11421590
+MD5sum: 0530aaa7fa01343707b5f1f0f99daf73
+SHA1: 30e9c88a92e7e1f81381783c9606c50dc3661a82
+SHA256: 6768a21d0b4a15b21ff0f04d4fedd0fd169c7be41236d3789a355a3545251dff
+SHA512: e4064689be3675244ea3a8c4f3b425738e5321d06af9541355f7663b856c0af1162e76e2b2525ebee35549e2c8964103712203a07638cb327661d7160b2c433e
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.0~rc.2-1
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 59865
+Provides: containerd
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd
+Replaces: containerd
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.0~rc.2-1_arm64.deb
+Size: 11408822
+MD5sum: 902f617716768156649ab734120748c7
+SHA1: 03fb6c49001ec65531574c2e75721b7b821eb973
+SHA256: 1d40a65285449289dd4d2dd31e28778d72eff66e8172a6fc809f3c1bac21a2f0
+SHA512: cf65a0ae7a10eeeb6d51b80dc9edbb73a017b1d3368b398d2d5c174816363a3f84f81c6651d98cba16ba11c6bb08428d010061db1583df2719d5e861fb180c78
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.10-2
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 75129
+Provides: containerd, runc
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.4.0)
+Conflicts: containerd, runc
+Replaces: containerd, runc
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.10-2_arm64.deb
+Size: 14847226
+MD5sum: dcc9e0fa18bc6427b9094881b49c4961
+SHA1: 343f1d2f76f212e30b1b9ccfa2d4acf9fcfc71e8
+SHA256: 05b40aa622d9633527af93fb687ce76f8e5d02e31d025ed0befd9eedcb106b08
+SHA512: e84d2ebb3e7dff7b4900603eed9bc8d9f3007e291af15cd8c650d8be77f65324e9647852265982ed6545cd55ed7abb6345f5cef469f6fa4db673cb9b217d913b
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.10-3
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 75129
+Provides: containerd, runc
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.4.0)
+Conflicts: containerd, runc
+Replaces: containerd, runc
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.10-3_arm64.deb
+Size: 14835682
+MD5sum: bafa19073d15cd9fc5894ec6f62b4345
+SHA1: d8960bc11a38c3e5b0ea4051d6a3a07f673c9fc4
+SHA256: 1858e825e85a40adf5ba61a326435246f83c882f209e73959ae54928d305c43f
+SHA512: c671a0e052da47e7af155877a1071cefe2c081ddc04a4b8fa14590db7ec7e0833d0c756a4c720aea8532565ca93ee5e2a63ff99a8d21fffaf8b8d76201311090
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.2-1
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 59821
+Provides: containerd, runc
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd, runc
+Replaces: containerd, runc
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.2-1_arm64.deb
+Size: 11385318
+MD5sum: 7baf18c0de9bd8b1a5f246428d896d06
+SHA1: 2a955786105eb8a9671c741bd4fcbccd8d333b75
+SHA256: 125bc04199842322974e9e6cf09840fef1974e1f01cee4a78f534503025846e8
+SHA512: ab4edfb65e0c7671aa31099e5568c9e86e5fb5dc5da96420b6c421bde47efb25fc7323ac01b7ff1359813ca899a308fb1c104402a4ab458ac580b0f6cd899607
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.2-3
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 59821
+Provides: containerd, runc
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd, runc
+Replaces: containerd, runc
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.2-3_arm64.deb
+Size: 11382286
+MD5sum: 48d6beb777df83a40cfed52a47b34926
+SHA1: 2144aed71cb316ed1c96d32b0c37a4c3432be044
+SHA256: 928f0e24944b5cac1c024f113eee40f9d2ea5e7a5b660d539d462609e9a36fce
+SHA512: 46c434926ee389d235b6b2e47b65e9b0b986fdd0487f2dcc4ff0ff6790c0dbd72ce71d06c3f1f2803594b23fa984f724c0c40cb2d8295de8cd9a2e7e39d91a31
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.4-1
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 59921
+Provides: containerd, runc
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd, runc
+Replaces: containerd, runc
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.4-1_arm64.deb
+Size: 11428358
+MD5sum: b75e87d2e69c98c06dc2605582c189dd
+SHA1: 7ca734dc960f0218c83dc7328c005ea5c6abcfac
+SHA256: 948ba6989819063f0b642af4db1341c970a936b5a8d4f5f9197bbf1d448e7540
+SHA512: cf7483cb5f6ee57587da45ee0ddb22d268434e6a364bf578e13b44cfc54e5d11d57fe3e9c5fe34e6d80baf3fa826d762ceaf092041f4819fe4c6d6c679789439
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.5-1
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 59938
+Provides: containerd, runc
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd, runc
+Replaces: containerd, runc
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.5-1_arm64.deb
+Size: 11405070
+MD5sum: fa39525fe47624a56a9eb56b632be318
+SHA1: 060d0b3b5573c7b4cb26873ae7fb267e7be5ecaa
+SHA256: eb63ed9774d680be7034a4c0b90f13b67165b658c51bd5f75ebdd79b9770f2d1
+SHA512: def0276447de61b8935518166021047ada6d318c867f32185c9dac91bc791a72b3bb395f08bb8dd7ebdcd52433c4b304c839ac6a67b91b108406d3b818fc0787
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: containerd.io
+Architecture: arm64
+Version: 1.2.6-3
+Priority: optional
+Section: devel
+Maintainer: Containerd team <help@containerd.io>
+Installed-Size: 68524
+Provides: containerd, runc
+Depends: libc6 (>= 2.17), libseccomp2 (>= 2.3.0)
+Conflicts: containerd, runc
+Replaces: containerd, runc
+Filename: dists/bionic/pool/stable/arm64/containerd.io_1.2.6-3_arm64.deb
+Size: 13674306
+MD5sum: d239fb425daf2b79a40f31c16e8dcec3
+SHA1: 22cbc53158b2c994d05159a60fd5cb085881a7f9
+SHA256: 331557932f9e2c22dab53d2556c88237bf23739f17f7e46b6612cce8a9a16721
+SHA512: 60053cbfbcfd62a358df961cc01b23f1c1b1c8b9aaa630a768d7e6214c8dc61911bd5471b66c417c0496685dfe15d1e859e28cfeeab2b5d2f6787e8f09487b6d
+Homepage: https://containerd.io
+Description: An open and reliable container runtime
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.0~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51726
+Depends: libc6 (>= 2.17), libltdl7 (>= 2.4.6)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:18.09)
+Replaces: docker-ce (<< 5:18.09)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.0~3-0~ubuntu-bionic_arm64.deb
+Size: 8311170
+MD5sum: ae10c4c67a27b071ffff4a39b6627371
+SHA1: 5d43e989ce8b0772558916c5795b8d42380b2cbd
+SHA256: bdee3d7c5949367a15a76e1cf803ea743d1cff0a146a99fc948b960d78ed5ab3
+SHA512: 29bea29887c5843cba6fc76645acde34cd0f2f0d5a025b39d6443d8cf59cc7eb0f31e574b0b0acccb9075b81cf7faf7816b04f76c1d4eb19f91a3dd8c0f84b03
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.1~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51733
+Depends: libc6 (>= 2.17), libltdl7 (>= 2.4.6)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.1~3-0~ubuntu-bionic_arm64.deb
+Size: 8310130
+MD5sum: 088936eca29bc24598ea2a1901ff8d94
+SHA1: 48f3ba2d8d5b191749535010aaa6dcd035061e66
+SHA256: a2c54b39fdd64554bffea40d2215292133dea45722e67c8d215dc2e497ae34d2
+SHA512: 15e903b0c69b39ab5abb530b49d6e16cb825e8e772816a54cb62aca24e36bd3bcdb703271a8a100cb75e2e197666a0b4339be608cd1eb145d03c512db53be2f6
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.2~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51734
+Depends: libc6 (>= 2.17), libltdl7 (>= 2.4.6)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.2~3-0~ubuntu-bionic_arm64.deb
+Size: 8319006
+MD5sum: ffa0f31c725825967ed0e5f27916dcbd
+SHA1: d03e03290fcb4f9bcfab2644cf67e2498857e0f8
+SHA256: 9a797a429d17d56192e6690ccd96b6421d8dc4e8be603401a4661c1ce72733e9
+SHA512: 22a9213edcff0dcc005af52cd7f57c880e7b46e888a453c73962c66e28bcfcbc9e9fa1a1666b3e67327ef7440285208421c84013dda8e4c5e09234dd958b9937
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.3~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51755
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.3~3-0~ubuntu-bionic_arm64.deb
+Size: 8304490
+MD5sum: d5a2f21c3be8e66e6b90f3223f57a2a5
+SHA1: 810bd9966452efb8cf9991ea5ef46587cc027671
+SHA256: 390948dbe402e338f4a77df084acc14a05649c3c389c96e75cad738cbdd8e809
+SHA512: 5e3af863ab482289f28600538d2ec596c173f868267cfb86ea49871209864ee579c012b07b6dfd347e5668ca0ebf67b43fa0e15418f345951b22b8f4b4ba9ab4
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.4~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51764
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.4~3-0~ubuntu-bionic_arm64.deb
+Size: 8303314
+MD5sum: 63e96353cc4fb11e67a2442e60d0c105
+SHA1: 7275e0b51f421a56639d624dd922c4a0f5e12faa
+SHA256: b8d7ed453513ffca26c111db5738afb4e872fb73880adfcb4643e3a67fd9849d
+SHA512: 882e43985fe365c178090efe98acf12864ab3e67771be944a03ead6edaa65686054da22c245a66e0347755ad824f11b01c6ed93fee9b70ed00e49dbf168e9126
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.5~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51764
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.5~3-0~ubuntu-bionic_arm64.deb
+Size: 8309342
+MD5sum: 6fcb364456729cd399bc6a24f223c9c5
+SHA1: 80740ec79751c402cd19b5d0ba17e0a0ce12c28d
+SHA256: c996ceba69475a3e4500792b5fb74e365a44f829137d158caef1e3dc467a2f21
+SHA512: 7ca0daa1c21c5ff63269f5e867545a9586fd78940ab0470c54b98be3d51cc7c76fe3e4af1ff7915f3aab1cbe953b522dc18caef07f0473d7be3c300fabf23edf
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.6~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51765
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.6~3-0~ubuntu-bionic_arm64.deb
+Size: 8295266
+MD5sum: 8530f7f64615cabcf7631ea8e3580a12
+SHA1: 8e34557d405882dac492372762c184120d210481
+SHA256: 7ba0138a39343073a5335869a715c5e1fa9559969748208a4c4e8f9e5834f7be
+SHA512: 699e923be363faddaa1a395b7770d99f6543ee56f099c3cf5e9085d5a9086aa0529395bf520d94b6fa39d6b8850fe76f1e2c55379271af734e3f08a07f4a9186
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.7~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51769
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.7~3-0~ubuntu-bionic_arm64.deb
+Size: 8312198
+MD5sum: 0d3289e080f9849d89fe9bbc18a0dd03
+SHA1: ed8df2994f59ca17b966712482d335de24e81554
+SHA256: 97836d8720c59aa228644c3c6ab663b4ac7f241f7b219e899032b829276be725
+SHA512: 5348aa8aea6a13b0e353360c64d9c92fac357df53a1be8199034eacda04f94c1a3d91cd3d1271761fc6e19850bcc124e96ddf9116511cadfadbb17a43dc8267d
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.8~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 51769
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.8~3-0~ubuntu-bionic_arm64.deb
+Size: 8293710
+MD5sum: ee781a267eac075b4de24ef5b90d3ca2
+SHA1: 1364f2027372526e332679fe90435ab3e3c92aeb
+SHA256: 694e1b6205095f8efce50dbf3761d2a6fa73dfe18263911804ef158a415d9315
+SHA512: a65d2d18c719a76c1f134960c003ec588611c1c298a18f83f57acb26b853f2d25b57cc1bc5ff5758f9332db3db9238418874c1ea711695275b00c98f934ce8e1
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:18.09.9~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 57668
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_18.09.9~3-0~ubuntu-bionic_arm64.deb
+Size: 9549178
+MD5sum: 0ea04cdd32b61e695da4cbe203b717ac
+SHA1: 8fd86b2760f0eed7670bba96af6e1f86a43c0c36
+SHA256: 59091c6d0f27b81a6f902109531f4859a7df729cef1db00c0ae9c0ee7162b7bf
+SHA512: 076b6b29ebfdc2839824b1f0d8b1cea74bd12babc73ba8d1e54890f79cc0170d09a77e624d122d4260653ad557f60b1d1fd08299323e3fce0faed08b3cf97aa0
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:19.03.0~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 139573
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_19.03.0~3-0~ubuntu-bionic_arm64.deb
+Size: 30017434
+MD5sum: c413a636cdee8d1b31c3c925592e10bb
+SHA1: 17ca14a66bac44749ca1245e623cf03b0cd8effc
+SHA256: d8a8f1aa02fc1c8592c3abdad09926d1b42a4434a4a3434665f9840258c5b5ed
+SHA512: 2bf54f4285220bfe0f16724837cbcbcf48e1b582c32f43c30002f7eadbcad65485440cc555697ad47eaffbb341f21c7fe43281c0c82243053896a822c8041716
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:19.03.1~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 139573
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_19.03.1~3-0~ubuntu-bionic_arm64.deb
+Size: 30005326
+MD5sum: cee21a9bd5f2be37c5b26bd67b73ecbb
+SHA1: 17fd6713b73618d98d0da7281cdaa414457ae6aa
+SHA256: 07fcf601334db034c65d5a61aaf3897f90258712843a82d80d11c882d3fab6f5
+SHA512: b604d016ae6d6b6da6cdfeed166308cc0576ff400d4465f44329d7e72898a46627b1e99f2ad7c1f758a86200925a79a66159f05de51392661672876d7ecf4731
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:19.03.2~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 139594
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_19.03.2~3-0~ubuntu-bionic_arm64.deb
+Size: 30024386
+MD5sum: 20640a1323db93b4b80c3cfdd086ca75
+SHA1: 7e52da17e7572fc10f9c182b2825c0239d6bcbd4
+SHA256: cd547f82a86a0db8f5b52a23197f87dc44d114a8ab97ed3c4051b437828a0efe
+SHA512: 16e3022c9e97779e9845c4f2f95d81638c93bedb7c3b912695940e02e902a8e483f3458e5e071ff1765022406bae4c90233582b6aac5c674bc9a07b569893552
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:19.03.3~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 139612
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_19.03.3~3-0~ubuntu-bionic_arm64.deb
+Size: 29986798
+MD5sum: d88e9b684a8113b9bdc3e0d62aa1617c
+SHA1: 8302c6b314ea79077e35580e19cc574e176ac291
+SHA256: 3ed837941df372bce9c3c9274fc0c4ace66c409412cf6a774331e425fd5dc0db
+SHA512: 1874cab5abf7b639c4e236aa8e04817442d2fa0ae08d9fd6431494221e4b020dabd5cb153b1f2738ae0fae97fca979ab5498946eda676b44d4d5086f7d3d8ebe
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:19.03.4~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 139612
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_19.03.4~3-0~ubuntu-bionic_arm64.deb
+Size: 30025106
+MD5sum: 16a5f52f878fba8105eb89134b67851c
+SHA1: a0107bb77c723e630d304058f371cb889dd35f05
+SHA256: 1fa0966f69e24a6a3522de4dcccafb927705626f8d17b03b47473a2d468992e2
+SHA512: 6530ac3176d50e2186b883167af0a1e7a34fa41eef3806c9045273d3e0cb1c4a146b3b805b5abe3c39abd6f369713fe68d18464c6812caee3cfe6462a423e82d
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce-cli
+Architecture: arm64
+Version: 5:19.03.5~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Source: docker-ce
+Maintainer: Docker <support@docker.com>
+Installed-Size: 139619
+Depends: libc6 (>= 2.17)
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Breaks: docker-ce (<< 5:0)
+Replaces: docker-ce (<< 5:0)
+Filename: dists/bionic/pool/stable/arm64/docker-ce-cli_19.03.5~3-0~ubuntu-bionic_arm64.deb
+Size: 30002466
+MD5sum: f2146f17d07146df71d89abd68d71281
+SHA1: d74d32159992f23cbd4eee187cc16461e78e2e7f
+SHA256: d3dd9e215e0dd64fa90b9cd83e4b8c65931eddb3dc451ab7924926bd1667ffb5
+SHA512: eab1af74db32f31c39cc092992b4145d02ca0ddfb142d64b44cca505ce828e40239700a2d8f863d26e147ef79fd369a1f81bef9129ba06f2cd8fbf0c52e8b98a
+Homepage: https://www.docker.com
+Description: Docker CLI: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 18.03.1~ce~3-0~ubuntu
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 134735
+Depends: iptables, libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libltdl7 (>= 2.4.6), libseccomp2 (>= 2.3.0), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, apparmor
+Conflicts: docker (<< 1.5~), docker-ee, docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.03.1~ce~3-0~ubuntu_arm64.deb
+Size: 24579666
+MD5sum: 5480821188bd5d3b31c9b2cfecb0744c
+SHA1: 1d1f961006e1a62ceb59cc5b199ad4f67003137b
+SHA256: 261096020398035ef4839aa4ff2bd521c43f332b570fb0fe62b22c7559183646
+SHA512: 118892d336e015ae3cdba2f31b85807d3f3d1f6338878fe6e3b33f652a60e922b5c084fde50b2eeb123d07aa5299329684cbf778a76564cf3fd5f91c16225e62
+Homepage: https://dockerproject.org
+Description: Docker: the open-source application container engine
+ Docker is an open source project to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest EC2 compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 18.06.0~ce~3-0~ubuntu
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 158594
+Depends: iptables, libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libltdl7 (>= 2.4.6), libseccomp2 (>= 2.3.0), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, apparmor
+Conflicts: docker (<< 1.5~), docker-ee, docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.06.0~ce~3-0~ubuntu_arm64.deb
+Size: 28807674
+MD5sum: b577071baf9c4fa4838dbffa69e717a3
+SHA1: 386bc9b634fa4e09870b1523148b08181f490cbf
+SHA256: cbd1ad6f2c45eda61c0c9e44bdfd5b3363c792b794b3c34b6e7d9b71bd67bce4
+SHA512: 8c26a6ed8c89c6748155c5ed554d63709b49a1e0f51839691d90572912b5212021e8bd995ecbdd3028a18ad8ca8c88a2b864e43f1b669835cbe7889d423e1d00
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is an open source project to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 18.06.1~ce~3-0~ubuntu
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 158729
+Depends: iptables, libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libltdl7 (>= 2.4.6), libseccomp2 (>= 2.3.0), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, apparmor
+Conflicts: docker (<< 1.5~), docker-ee, docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.06.1~ce~3-0~ubuntu_arm64.deb
+Size: 28847066
+MD5sum: 66f5c4f5c96caeec3fb3e369b086e8e5
+SHA1: 2478b1292ef05628c65fedba806f6f86267a3aa2
+SHA256: a7c95b706ef3e458df84e0a3d9c244714b70f2f795d9e2b1d8c45a9976fc4876
+SHA512: c01932dbebad43af65695da39ab8383795e81883aa66605379a1dfd202c4723a841a2628a1af3a884779ecf05ec0b09f907a83fd7f40f59c014080810f76889b
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is an open source project to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 18.06.2~ce~3-0~ubuntu
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 158753
+Depends: iptables, libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libltdl7 (>= 2.4.6), libseccomp2 (>= 2.3.0), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, apparmor
+Conflicts: docker (<< 1.5~), docker-ee, docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.06.2~ce~3-0~ubuntu_arm64.deb
+Size: 28816902
+MD5sum: b68fd9fc43e7d706b9d35ae941d38ffb
+SHA1: 74bba148465e38d4c69aa0469eec1d0da934094a
+SHA256: 30c9944e69cc853b7cbf8fda2ccc95faaa4bc733cf3f3dc0b956ff3bdbf6f595
+SHA512: 2abdf5e37505c94ed10600bc074ae1ea74e1e3ed8574294d3e2301d390b2efe71323d809bb2d330c854a8bd39c54681c74a6b34f1d835441fab0d24a9b3461a3
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is an open source project to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 18.06.3~ce~3-0~ubuntu
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 158753
+Depends: iptables, libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libltdl7 (>= 2.4.6), libseccomp2 (>= 2.3.0), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, apparmor
+Conflicts: docker (<< 1.5~), docker-ee, docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.06.3~ce~3-0~ubuntu_arm64.deb
+Size: 28829042
+MD5sum: 243c7170305f7c143c406534c6c3f652
+SHA1: e5cb1a2f613a1c8c69992e8c1253d551045a4c4b
+SHA256: c6388272862242b9997103dca64f9d38da46aaa7935ba795fc9b99d668a972ba
+SHA512: 16c3e740877e4c2f486071dd13d45670cfa22f24e64a59d55d28f05efab555231da0f482f89ca9ad354923bc17c9e5467cc962196028fb2a6dc81bf0df1b0fe8
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is an open source project to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.0~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63631
+Depends: docker-ce-cli, containerd.io, iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.0~3-0~ubuntu-bionic_arm64.deb
+Size: 11282430
+MD5sum: 29746606171b1f1e47e33df077d02726
+SHA1: e8e1c11ea3d86531fb8a3f4cda4cc7c36c77cd28
+SHA256: 850cd194a225a839f3cc5b294e5077c37f63f7101818d73d94f84e99adf1809d
+SHA512: 48cda023ed681f524661445d082f460148f64e64222b132a3e44bba4993bb36fca0a90233229d40db6ccdb4b9e84cd7567b212185b58b796ef884f418231acc5
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.1~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63658
+Depends: docker-ce-cli, containerd.io, iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.1~3-0~ubuntu-bionic_arm64.deb
+Size: 11332026
+MD5sum: 06e275b83051faf43e129871d7c85a0d
+SHA1: 2be7c2ca41d0909530390aa50b079a9a51c55e14
+SHA256: 291ff7444937047ef7747e82afc4dc1418019c03a856e27420834da57b9d9560
+SHA512: 42d41217869f53d95c6df4ee605c15703166a5448b872d4c0cbd1a2f8803b32c88ac922482a18c846933f146ae917721ce9561c3ec082eff55ae034ab2319083
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.2~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63658
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.2~3-0~ubuntu-bionic_arm64.deb
+Size: 11317694
+MD5sum: 12c23a2cd21687c6db2e812935c9b931
+SHA1: 3bbe64c72a9b5e6a3e985b925ca60458e2b1e95d
+SHA256: 9debe8ed3ce9cb00bb521f831018d0503b3724118a6b073e6e68d7b73129d8ef
+SHA512: 6876d111c1b23fbce1d9b1d3ecd5a15878dfc04c00273736f69fa721f6bbb50001ed9e4ddad2e654a58bf18eecce3e50f7a059574a475e001bb1e821fa8ede28
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.3~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63666
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.3~3-0~ubuntu-bionic_arm64.deb
+Size: 11365482
+MD5sum: 1dc4f41064703be5d30f380a898dc0b7
+SHA1: 2187a11936169284fd7150efd7daee0b02b39af2
+SHA256: eed9bbeee1d1d4b8463783aef4d2c4719779996a80932220bd872afd96c713f7
+SHA512: 21420333d2619ac78f1f3898fb3eaa8a95db64a5940660f2782d04acacc2369db9f52cecaa4b5de3416b0522c713b2c4a844495e4cc09f30cc7ec51064988402
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.4~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63679
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.4~3-0~ubuntu-bionic_arm64.deb
+Size: 11318874
+MD5sum: ca29424538e1a9a93d4c5ebda37450fa
+SHA1: 63e180f58a2eafe06979f51953fc74d097da3465
+SHA256: 7db93c13f11be3018317e987b22074546cb4abf0311965564a6d59d22f3001ae
+SHA512: d7e3990ada75c009da46383e5c9281de3a1c045a8e8b7052da5bb7f15b3453c5382fe96265ea0dc4a6c0b550f9068f4a74c58f6b7c57197643b05e8890ba4430
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.5~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63680
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.5~3-0~ubuntu-bionic_arm64.deb
+Size: 11311798
+MD5sum: 4c1e023333aa32f9e2ebce4cc79737b9
+SHA1: 93417207cd56109d0df7ba67c00459672b5f338b
+SHA256: 7c1a028761912c7976cc3880bf460fa398a2655f0296c257534a694031b7884a
+SHA512: 7f5a5c800932ac36b15f173c3eb7ce89c08dd04b10d7b5e8bf201c777fca78c38718b2270e06e41871d8d88a7e88bca865e602aed0bf0a5f727cb406411f5ad7
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.6~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63684
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.6~3-0~ubuntu-bionic_arm64.deb
+Size: 11278070
+MD5sum: 121ac65d54eef033d7d56957f1f45cd7
+SHA1: 4a30968a966f6a695b4719855b75be86aceb7387
+SHA256: dfeb7171bee2a12272b4c244f9815f21ac793fa89d56c4f8ff28d99d9f33c6d9
+SHA512: 481ab22957c09f92c7e9310fdbc1d56303a87c3a16bfa295e3681119eef834d2fd40d1f9b9456ef567f861528924b1a32808fc1a3ed2d313e8a1f0119ddf161b
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.7~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63707
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.7~3-0~ubuntu-bionic_arm64.deb
+Size: 11320102
+MD5sum: 6d8d766d9d4e4a1ec08b8e17a885496a
+SHA1: c58ae9cfe4939b48e35924b17e36814a58886d30
+SHA256: 306e6782e273b0a4fc6cbb9a29e114de048498c75ce8891aa5f36a90676510f9
+SHA512: 45feee1c059bc6af1f30cbd5e9e949392af9aa1170fad35433bb714fd1b634610d7d3f9b7e4816db0beb3e61a9ee35bccceeef2c0cdaec96c6a7f5417b3a3ac2
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.8~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 63707
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.8~3-0~ubuntu-bionic_arm64.deb
+Size: 11271294
+MD5sum: 891ee0cc238f28346f01130aa08145fc
+SHA1: 0e08b45e3a522775b402e8a434e3da355e1b7b41
+SHA256: 02294dccdba5848eaec2621d3c6993fd723c31ca9299830644dc1950dc859f35
+SHA512: 1b9ee88b87b4924bb68da5a2319c0b154e2dedd478a815c2799196687fffa0a38ed1b6e0db8edc2fa5f80473f022fe7403e102f50c3b06585bc47ecf77a167f1
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:18.09.9~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 71896
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_18.09.9~3-0~ubuntu-bionic_arm64.deb
+Size: 13410022
+MD5sum: b42b75d66d98102395ff1ab9f101d9a5
+SHA1: 93df0e53ad4ea7af611c1efd8f7e381099f88119
+SHA256: 212e836d448e3f87fba252f1ba7d8d67d3e3eaa1c4a554d0bf7fb2b604eed1c0
+SHA512: 308875c5950bf51dada47d23c6a7068940fcf325efc0ec849b25e7820639c430d3087c714b05501cfa0216c412ad4a8567032d5956599ceafa80688d66fad35b
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:19.03.0~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 84647
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_19.03.0~3-0~ubuntu-bionic_arm64.deb
+Size: 15418662
+MD5sum: 534d4f1d66a6aa59ba69b220c1cd1cdc
+SHA1: 6c0ae2882e8bb510ed63c5bdc263c78326c22a72
+SHA256: b35315048a3be4ed7e76635cbcdca366785626961318bbd68a1ca38f7d4919cc
+SHA512: 2c8c0341b5b3bc7ce3c218fc2772483553b2c85a97b0c7cb6b6cd267c4f54d760feca1aff81791480ddb4e5729461d1b946abc6e8d90396ff9cf48966f892f04
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:19.03.1~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 84651
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_19.03.1~3-0~ubuntu-bionic_arm64.deb
+Size: 15438834
+MD5sum: 8d73b8135157d9a231db3f3d37a7e14f
+SHA1: 148fef69936af106e5ea334d433631e6d9152237
+SHA256: 1ee0f2ff640dcb180954784d93cf585b1c2282ea584fd4150273fcfbf297a3de
+SHA512: ebd7d01951520272ccdb38cae6e9fc0557963a498be572d4ad0f2120cebd8becb3c0c4e64750ff836ffe765e0b46e7e292c3c52ab157dd3753dafde346f2a160
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:19.03.2~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 84725
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_19.03.2~3-0~ubuntu-bionic_arm64.deb
+Size: 15453402
+MD5sum: ad2c81180f44425b80367949e30395ee
+SHA1: 756f5d04bb569ac37ce963e7a7407ee71ee11e0c
+SHA256: 9a792c5289d2962ea3076e2d39e2186a3df1d0ce8a3f3afaf7aef9ca69e00b78
+SHA512: 226cc33880509b6483067e731b1b95d9518f0b4ec9559771bffc31449f4f90f795dd7527ddf425ac2d14e16426f3f78cb7a562948f8f72bc29136d33e403a476
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:19.03.3~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 85146
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_19.03.3~3-0~ubuntu-bionic_arm64.deb
+Size: 15622286
+MD5sum: 733858af9b16b54d68dde973529cb886
+SHA1: 79e6ba69835408dba033650c0e591057b15f0294
+SHA256: 172eb202bed5d79dcab4056dd8cb32c3a48b419b9c4e79b27e3d04cee6d73d93
+SHA512: 2ec99119048f522d188a4d97d02a3d54ad3cec0751fd26963d8e3403ddfc75e8cc9bf0cdc185dfcf7f49b9f1e3da3d8b0f67f4061387aabac006ec970f725af2
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:19.03.4~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 85142
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_19.03.4~3-0~ubuntu-bionic_arm64.deb
+Size: 15545542
+MD5sum: 4033ef83558367c9c6885df6c7296758
+SHA1: c5eb32d617171d21b8a3434b37b4df67dc11078b
+SHA256: 984ef769184800182a70e7ddbf66a498d57f2e11cb44731dbe2819d636a4abcc
+SHA512: 98a8522916543e85875a2d0ca905871f91344e423868081a5b25646d4e76a645781c69d160fa51b44cfb7cd72c23363f1fa536bac8780e5a167c87af3807c22b
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+
+Package: docker-ce
+Architecture: arm64
+Version: 5:19.03.5~3-0~ubuntu-bionic
+Priority: optional
+Section: admin
+Maintainer: Docker <support@docker.com>
+Installed-Size: 85169
+Depends: docker-ce-cli, containerd.io (>= 1.2.2-3), iptables, libseccomp2 (>= 2.3.0), libc6 (>= 2.17), libdevmapper1.02.1 (>= 2:1.02.97), libsystemd0
+Recommends: aufs-tools, ca-certificates, cgroupfs-mount | cgroup-lite, git, pigz, xz-utils, libltdl7, apparmor
+Conflicts: docker (<< 1.5~), docker-engine, docker-engine-cs, docker.io, lxc-docker, lxc-docker-virtual-package
+Replaces: docker-engine
+Filename: dists/bionic/pool/stable/arm64/docker-ce_19.03.5~3-0~ubuntu-bionic_arm64.deb
+Size: 15559770
+MD5sum: 5832ef059241bb27355822a2491aff8d
+SHA1: 8296e7dab939771245e155c71fccc0c755d739ea
+SHA256: dfb165f2f414f4d4ba09c00c0c9979a0b155daa01342200a828a9a41e65d46ca
+SHA512: 8aee2e6f73426ded51e677a1021d01be061b6fa28f6fcbbc95f9132e7f2f0169cb1602f114f4926ef228f5e4aba4b6f47c83987b8f4bd9839e01499398317801
+Homepage: https://www.docker.com
+Description: Docker: the open-source application container engine
+ Docker is a product for you to build, ship and run any application as a
+ lightweight container
+ .
+ Docker containers are both hardware-agnostic and platform-agnostic. This means
+ they can run anywhere, from your laptop to the largest cloud compute instance and
+ everything in between - and they don't require you to use a particular
+ language, framework or packaging system. That makes them great building blocks
+ for deploying and scaling web apps, databases, and backend services without
+ depending on a particular stack or provider.
+

@@ -1,0 +1,38 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: True
+    privileged: true
+    override_command: False
+    groups:
+      - infrastructure
+    volumes:
+      - /var/lib/docker
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    host_vars:
+      infrastructure-server:
+        cluster_ip: 127.0.0.1
+    group_vars:
+      all:
+        app_name: onap
+        app_data_path: "/opt/{{ app_name }}"
+scenario:
+  name: ubuntu
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

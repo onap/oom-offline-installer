@@ -7,7 +7,7 @@
   args:
     warn: false
 
-- name: "Enable docker repository"
+- name: "Enable docker repository - yum"
   yum_repository:
     name: "Docker"
     description: Docker-ce repository
@@ -15,10 +15,41 @@
     baseurl: "https://download.docker.com/linux/centos/7/$basearch/stable"
     gpgcheck: yes
     gpgkey: https://download.docker.com/linux/centos/gpg
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: "Install GNUPG for apt-key"
+  package:
+    name: "gnupg"
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Add an apt key"
+  apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      id: 9DC858229FC7DD38854AE2D88D81803C0EBFCD88
+      state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Enable docker repository - apt"
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+    state: present
+    validate_certs: true
+    filename: "Docker"
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Install docker - apt"
+  apt:
+    name: "docker-ce"
+    state: present
+    update_cache: true
+  notify: Restart docker
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: "Install docker"
   package:
     name: "docker-ce-{{ docker_version }}"
     state: present
-    allow_downgrade: true
+    # allow_downgrade: true
   notify: Restart docker
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

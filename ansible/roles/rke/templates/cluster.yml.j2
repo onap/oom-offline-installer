@@ -67,11 +67,8 @@ services:
     extra_env: []
   kubelet:
     image: ""
-    extra_args:
-        dynamic-config-dir: "/kubelet-dynamic-config-dir"
-        config: "/kubelet-static-config.yml"
-    extra_binds:
-        - "{{ kubernetes_config_dir }}/{{ kubelet.static_config }}:/kubelet-static-config.yml:ro"
+    extra_args: {}
+    extra_binds: []
     extra_env: []
     cluster_domain: cluster.local
     infra_container_image: ""

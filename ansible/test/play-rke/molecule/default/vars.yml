@@ -1,3 +1,0 @@
----
-app_name: moleculeapp
-app_data_path: "/opt/{{ app_name }}"

@@ -6,16 +6,34 @@
   notify:
     - Restart Docker
 
-- name: Install docker python module
+- name: Install docker python module - CentOS/Rhel
   package:
     name: 'python-docker-py'
     state: present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 
+- name: Install docker python module - Ubuntu
+  pip:
+    name: 'docker-py'
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+- name: "Install iproute2 - Ubuntu"
+  package:
+    name: "iproute2"
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Install python jsonpointer module
   package:
     name: 'python-jsonpointer'
     state: present
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Install docker python module - Ubuntu
+  package:
+    name: 'python-json-pointer'
+    state: present
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Ensure /etc/docker exists
   file:

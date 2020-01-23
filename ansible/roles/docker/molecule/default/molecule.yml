@@ -29,6 +29,8 @@ provisioner:
     host_vars:
       infrastructure-server:
         cluster_ip: 1.2.3.4
+scenario:
+  name: default
 verifier:
   name: testinfra
   options:

@@ -1,0 +1,7 @@
+---
+certificates:
+  organization_name: MoleculeTesters
+  state_or_province_name: Poland
+  country_name: PL
+  locality_name: Krakow
+app_data_path: /opt/moleculetestapp

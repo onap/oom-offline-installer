@@ -1,0 +1,51 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: kubernetes-node-1
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - kubernetes
+      - nfs-server
+    purge_networks: true
+    networks:
+      - name: nfs-net
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /dockerdata-nfs
+
+  - name: kubernetes-node-2
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - kubernetes
+    purge_networks: true
+    networks:
+      - name: nfs-net
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: "../../../../test/roles"
+  inventory:
+    links:
+      group_vars: ../../../../group_vars
+      host_vars: host_vars
+  lint:
+    name: ansible-lint
+scenario:
+  name: ubuntu
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

@@ -36,6 +36,7 @@ provisioner:
       all:
         app_name: moleculetestapp
         app_data_path: "/opt/{{ app_name }}"
+        package_type: rpm
 scenario:
   name: default
 verifier:

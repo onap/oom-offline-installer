@@ -9,14 +9,3 @@
   authorized_key:
     user: "{{ rke_username }}"
     key: "{{ hostvars[groups['infrastructure'][0]].cluster_public_key }}"
-
-- name: "Ensure that '{{ kubernetes_config_dir }}' is present"
-  file:
-    path: "{{ kubernetes_config_dir }}"
-    state: directory
-    mode: 0755
-
-- name: Prepare kubelet static config
-  template:
-    src: "kubelet-static-config.yml.j2"
-    dest: "{{ kubernetes_config_dir }}/{{ kubelet.static_config }}"
