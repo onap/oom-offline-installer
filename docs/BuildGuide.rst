@@ -10,6 +10,8 @@ This document is describing procedure for building offline installer packages. I
 Procedure was completely tested on RHEL 7.6 as it’s tested target platform, however with small adaptations it should be applicable also for other platforms.
 Some discrepancies when Centos 7.6 is used are described below as well.
 
+.. note:: In this doc <branch> version for oom repository is elalto
+
 Part 1. Preparations
 --------------------
 
@@ -95,7 +97,7 @@ Part 2. Download artifacts for offline installer
    ::
 
     # clone the OOM repository
-    git clone https://gerrit.onap.org/r/oom -b master --recurse-submodules /tmp/oom
+    git clone https://gerrit.onap.org/r/oom -b <branch> --recurse-submodules /tmp/oom
 
     # docker-images-collector.sh script uses oom/kubernetes/onap/resources/overrides/onap-all.yaml file to find what subsystems
     are enabled. By default all subsystems are enabled there. Modify the file if want to drop some subsystems.
@@ -194,7 +196,7 @@ For example:
 
 ::
 
-  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference master --output-dir /tmp/packages --resources-directory /tmp/resources
+  ./build/package.py https://gerrit.onap.org/r/oom --application-repository_reference <branch> --output-dir /tmp/packages --resources-directory /tmp/resources
 
 
 In the target directory you should find tar files:
