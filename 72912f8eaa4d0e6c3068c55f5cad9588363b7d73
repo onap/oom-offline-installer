@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a158e07_c44b11b0",
+        "filename": "ansible/roles/application/tasks/transfer-helm-charts.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2020-01-24T08:31:12Z",
+      "side": 1,
+      "message": "it was like this before and it\u0027s generally correct and better this way. It was changed explicitly to shell command way because of some problem... Consult Ondrej and Mateuz what was the thing.",
+      "range": {
+        "startLine": 6,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 59
+      },
+      "revId": "72912f8eaa4d0e6c3068c55f5cad9588363b7d73",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b663e0b0_aeb2b8f7",
+        "filename": "ansible/roles/dns/molecule/Ubuntu/group_vars/all.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2020-01-24T08:31:12Z",
+      "side": 1,
+      "message": "let\u0027s investigate a way to share these files in molecule.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "72912f8eaa4d0e6c3068c55f5cad9588363b7d73",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
