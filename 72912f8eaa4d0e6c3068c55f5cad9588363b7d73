@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b60801de_bcaaf6bb",
+        "filename": "ansible/roles/application/tasks/transfer-helm-charts.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2020-01-24T09:58:21Z",
+      "side": 1,
+      "message": "it\u0027s not, but also there was some other reasons why we cannot do this.",
+      "parentUuid": "7563c4c8_6dd32a53",
+      "range": {
+        "startLine": 6,
+        "startChar": 6,
+        "endLine": 8,
+        "endChar": 59
+      },
+      "revId": "72912f8eaa4d0e6c3068c55f5cad9588363b7d73",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b663e0b0_aeb2b8f7",
         "filename": "ansible/roles/dns/molecule/Ubuntu/group_vars/all.yml",
         "patchSetId": 1
