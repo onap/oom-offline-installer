@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18ff3165_b41614af",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-01-29T14:47:36Z",
+      "side": 1,
+      "message": "you can replace \"len(metadata)!\u003d0\" with simple \"metadata\", empty list evaluates to False not empty to True",
+      "range": {
+        "startLine": 92,
+        "startChar": 7,
+        "endLine": 92,
+        "endChar": 25
+      },
+      "revId": "61e3e308ad214ecaf37764492d462b8b3f64c4dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6266d29d_94a34ac6",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-01-29T14:47:36Z",
+      "side": 1,
+      "message": "I wonder if it is good to limit metadata to just one argument? \nperhaps action\u003d\u0027append\u0027. so it could be used multiple times. \nOR\nmore user friendly: make it a an infinite list (nargs\u003d\"+\")and allow format key\u003dvalue (or key:value). So it would look like --add-metadata owner\u003dOndrej project\u003donap day\u003dmonday. So you get is as a list and right away change into dictionary before even leaving run_cli. then you just append it to build info.",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 272,
+        "endChar": 99
+      },
+      "revId": "61e3e308ad214ecaf37764492d462b8b3f64c4dc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
