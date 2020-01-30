@@ -180,9 +180,6 @@ def build_offline_deliverables(build_version,
         info_file: 'package.info'
     }
 
-    # add separator if build version not empty
-    build_version = "-" + build_version if build_version != "" else ""
-
     if not skip_sw:
         log.info('Building offline installer')
         os.chdir(os.path.join(offline_repository_dir, 'ansible', 'docker'))
@@ -190,7 +187,7 @@ def build_offline_deliverables(build_version,
             os.path.join(offline_repository_dir, 'ansible', 'docker', 'build_ansible_image.sh'))
         installer_build.check_returncode()
         os.chdir(script_location)
-        sw_package_tar_path = os.path.join(output_dir, 'sw_package' + build_version + '.tar')
+        sw_package_tar_path = os.path.join(output_dir, 'sw_package.tar')
         create_package(sw_content, sw_package_tar_path)
 
     if not skip_resources:
@@ -220,11 +217,11 @@ def build_offline_deliverables(build_version,
         os.chdir(script_location)
         # End of workaround
 
-        resources_package_tar_path = os.path.join(output_dir, 'resources_package' + build_version + '.tar')
+        resources_package_tar_path = os.path.join(output_dir, 'resources_package.tar')
         create_package(resources_content, resources_package_tar_path)
 
     if not skip_aux:
-        aux_package_tar_path = os.path.join(output_dir, 'aux_package' + build_version + '.tar')
+        aux_package_tar_path = os.path.join(output_dir, 'aux_package.tar')
         create_package(aux_content, aux_package_tar_path)
 
     shutil.rmtree(application_dir)
