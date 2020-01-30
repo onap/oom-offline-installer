@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ce61c83_aff5cb56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-01-30T09:50:28Z",
+      "side": 1,
+      "message": "Please add short description why it was removed, neither commit msg nor Jira ticket explains it TBH.",
+      "revId": "be5311e64a34cc689351739d1786c2e865cee83f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
