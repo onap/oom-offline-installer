@@ -28,6 +28,7 @@ import glob
 import json
 import sys
 import os
+import hashlib
 
 import tarfile
 import git
@@ -82,18 +83,39 @@ def create_package_info_file(output_file, repository_list, tag, metadata):
     build_info = {
         'Build_info': {
             'build_date': datetime.now().strftime('%Y-%m-%d_%H-%M'),
-            'Version': tag
+            'Version': tag,
+            'Packages': {}
         }
     }
     for repository in repository_list:
         build_info['Build_info'][
             repository.config_reader().get_value('remote "origin"', 'url')] = repository.head.commit.hexsha
 
-    if len(metadata) != 0:
-        build_info['Build_info'][metadata[0]] = metadata[1]
+    if metadata:
+        for meta in metadata:
+            build_info['Build_info'].update(meta)
 
     with open(output_file, 'w') as outfile:
         json.dump(build_info, outfile, indent=4)
+
+
+def add_checksum_info(output_dir):
+    """
+    Add checksum information into package.info file
+    :param output_dir: directory where are packages
+    """
+    tar_files = ['resources_package.tar', 'aux_package.tar', 'sw_package.tar']
+    for tar_file in tar_files:
+        try:
+            data = os.path.join(output_dir, tar_file)
+            cksum = hashlib.md5(open(data, 'rb').read()).hexdigest()
+            with open(os.path.join(output_dir, 'package.info'), 'r') as f:
+                json_data = json.load(f)
+                json_data['Build_info']['Packages'].update({tar_file: cksum})
+            with open(os.path.join(output_dir, 'package.info'), 'w') as f:
+                json.dump(json_data, f, indent=4)
+        except FileNotFoundError:
+            pass
 
 
 def create_package(tar_content, file_name):
@@ -107,6 +129,21 @@ def create_package(tar_content, file_name):
         for src, dst in tar_content.items():
             if src != '':
                 output_tar_file.add(src, dst)
+
+
+def metadata_validation(param):
+    """
+    Validation of metadata parameters
+    :param param: parameter to be checked needs to be in format key=value
+    """
+    try:
+        key, value = param.split('=')
+        if not value:
+            raise ValueError
+        return {key: value}
+    except ValueError:
+        msg = "%r is not a valid parameter. Needs to be in format key=value" % param
+        raise argparse.ArgumentTypeError(msg)
 
 
 def build_offline_deliverables(build_version,
@@ -224,6 +261,7 @@ def build_offline_deliverables(build_version,
         aux_package_tar_path = os.path.join(output_dir, 'aux_package.tar')
         create_package(aux_content, aux_package_tar_path)
 
+    add_checksum_info(output_dir)
     shutil.rmtree(application_dir)
 
 
@@ -265,8 +303,8 @@ def run_cli():
                         help='overwrite files in output directory')
     parser.add_argument('--debug', action='store_true', default=False,
                         help='Turn on debug output')
-    parser.add_argument('--add-metadata', nargs=2,
-                        help='additional metadata added into package.info, format: key value', default=[])
+    parser.add_argument('--add-metadata', nargs="+", type=metadata_validation,
+                        help='additional metadata added into package.info, format: key=value')
     args = parser.parse_args()
 
     if args.debug:
