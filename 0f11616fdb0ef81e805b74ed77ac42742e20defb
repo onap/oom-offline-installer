@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7ac90128_5b80d4ce",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5626
+      },
+      "writtenOn": "2020-02-05T14:31:26Z",
+      "side": 1,
+      "message": "yea, my fault. It was work in progress name and I forget to change it.\n\nif metadata:\n   build_info[\u0027Build_info\u0027].update(metadata)\n\nproblem with this is that argparse returns more then one parameter as list so metadata on that place: \n[{\u0027key\u0027: \u0027value\u0027}, {\u0027key\u0027: \u0027value\u0027}]",
+      "parentUuid": "1f1e0b24_ac7685ba",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "0f11616fdb0ef81e805b74ed77ac42742e20defb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fb2f9da_e0b62ae3",
         "filename": "build/package.py",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "0f11616fdb0ef81e805b74ed77ac42742e20defb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "68caa0c0_fbc6bfff",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5626
+      },
+      "writtenOn": "2020-02-05T14:31:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6fb2f9da_e0b62ae3",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 58
+      },
+      "revId": "0f11616fdb0ef81e805b74ed77ac42742e20defb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
