@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f1e0b24_ac7685ba",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-02-05T10:15:02Z",
+      "side": 1,
+      "message": "you should not use use built in types as variable name\n\nwhy not:\nif metadata:\n   build_info[\u0027Build_info\u0027].update(metadata)\n\nor even(as default metadata is empty dict):\nbuild_info[\u0027Build_info\u0027].update(metadata)",
+      "range": {
+        "startLine": 95,
+        "startChar": 12,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "0f11616fdb0ef81e805b74ed77ac42742e20defb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb2f9da_e0b62ae3",
+        "filename": "build/package.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-02-05T10:15:02Z",
+      "side": 1,
+      "message": "it woule also accept --add-metadata key\u003dcalu\u003dvalue\u003dkey\nMore Python way would be\n    try:\n        key,value \u003d param.split(\u0027\u003d\u0027)\n        return {key: value}\n    exept",
+      "range": {
+        "startLine": 140,
+        "startChar": 3,
+        "endLine": 143,
+        "endChar": 58
+      },
+      "revId": "0f11616fdb0ef81e805b74ed77ac42742e20defb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
