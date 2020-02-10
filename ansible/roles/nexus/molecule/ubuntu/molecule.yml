@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: infrastructure-server
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
     pre_build_image: true
     privileged: true
     override_command: false
@@ -24,8 +24,12 @@ provisioner:
       group_vars: ../../../../group_vars
   lint:
     name: ansible-lint
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+    cleanup: ../default/cleanup.yml
 scenario:
-  name: default
+  name: ubuntu
 verifier:
   name: testinfra
   lint:
