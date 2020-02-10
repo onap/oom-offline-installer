@@ -1,0 +1,34 @@
+---
+- name: verify
+  block:
+    # Clean cache prior to refreshing
+    - name: Clean apt cache
+      command: apt clean && apt autoclean
+      args:
+        warn: false
+    # Refresh cache to ensure repo is reachable
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        state: latest
+      tags:
+        - skip_ansible_lint # Prevent '[403] Package installs should not use latest' ansible lint task rule
+  rescue:
+    - name: Fail if apt cache updating failed
+      fail:
+        msg: "Couldn't refresh apt cache, repositories not configured properly. Check ansible logs for details."
+  become: true
+
+- name: Instal resolvconf
+  package:
+    name: resolvconf
+    state: present
+
+- name: Add a line to a file if the file does not exist, without passing regexp
+  lineinfile:
+    path: /etc/resolvconf/resolv.conf.d/head
+    line: "nameserver {{ hostvars[groups.infrastructure[0]].cluster_ip }}"
+    create: yes
+
+- name: Make DNS settings permanent
+  command: service resolvconf restart
