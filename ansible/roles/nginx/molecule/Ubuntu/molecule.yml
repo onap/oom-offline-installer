@@ -24,8 +24,12 @@ provisioner:
       group_vars: ../../../../group_vars
   lint:
     name: ansible-lint
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+    cleanup: ../default/cleanup.yml
 scenario:
-  name: default
+  name: ubuntu
 verifier:
   name: testinfra
   lint:
