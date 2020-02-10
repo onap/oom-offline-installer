@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: infrastructure-server
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
     pre_build_image: true
     privileged: true
     command: ${MOLECULE_DOCKER_COMMAND:-""}
@@ -30,7 +30,7 @@ provisioner:
       infrastructure-server:
         cluster_ip: 1.2.3.4
 scenario:
-  name: default
+  name: ubuntu
 verifier:
   name: testinfra
   options:

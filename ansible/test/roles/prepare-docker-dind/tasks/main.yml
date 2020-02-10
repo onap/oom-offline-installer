@@ -1,24 +1,6 @@
 ---
-# Needed because host system has all mounts by default to shared, and
-# some things may depend on mounts being shared if we run docker inside
-# test env.
-- name: "Make all mounts shared"
-  command: "mount --make-rshared /"
-  args:
-    warn: false
+- include: rhel.yml
+  when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
 
-- name: "Enable docker repository"
-  yum_repository:
-    name: "Docker"
-    description: Docker-ce repository
-    enabled: yes
-    baseurl: "https://download.docker.com/linux/centos/7/$basearch/stable"
-    gpgcheck: yes
-    gpgkey: https://download.docker.com/linux/centos/gpg
-
-- name: "Install docker"
-  package:
-    name: "docker-ce-{{ docker_version }}"
-    state: present
-    allow_downgrade: true
-  notify: Restart docker
+- include: ubuntu.yml
+  when: ansible_distribution in ["Ubuntu","Debian"]
