@@ -1,4 +1,11 @@
 ---
+# Make package in missing in Ubuntu distribution so is necessary to install it
+- name: Install build-essential
+  package:
+    name: build-essential
+    state: present
+  when: ansible_distribution in ["Ubuntu","Debian"]
+
 - name: Install Helm
   unarchive:
     src: "{{ app_data_path }}/downloads/helm-{{ helm_version }}-linux-amd64.tar.gz"
