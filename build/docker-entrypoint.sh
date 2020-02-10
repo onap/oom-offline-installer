@@ -1,21 +1,36 @@
 #!/usr/bin/env bash
 
+# Set type of distribution where script is running
+distro_type=$(cat /etc/*-release | grep -w "ID" | awk -F'=' '{ print $2 }' | tr -d '"')
+case "$distro_type" in
+        ubuntu)
+                distro_type="ubuntu"
+        ;;
+        rhel|centos)
+                distro_type="rhel"
+        ;;
+        *)
+                echo "Unknown type of linux distribution."
+                exit 1
+        ;;
+esac
+
 # Path where will be created repository (in container)
 OFFLINE_REPO_DIR=""
 
-# Path where is stored onap_rpm.list file
-RPM_LIST_DIR=""
+# Path where is stored onap_rpm.list and onap_deb.list file
+PCKG_LIST_DIR=""
 
 help () {
-    echo -e "Docker entrypoint script for creating RPM repository\n"
-    echo "usage: create-repo.sh [-d|--directory output directory] [-l|--list input rpm list directory]"
+    echo -e "Docker entrypoint script for creating RPM/DEB repository based on linux distribution where script is running\n"
+    echo "usage: create-repo.sh [-d|--directory output directory] [-l|--list input rpm/deb list directory]"
     echo "-h --help: Show this help"
     echo "-d --directory: set path for repo directory in container"
-    echo -e "-l --list: set path where rpm list is stored in container\n"
+    echo -e "-l --list: set path where rpm or deb list is stored in container\n"
     echo "Both paths have to be set with shared volume between"
     echo "container and host computer. Default path in container is: /tmp/"
-    echo "Repository will be created at: /<path>/resources/pkg/rpm/"
-    echo "RMP list is stored at: ./data_list/"
+    echo "Repository will be created at: /<path>/resources/pkg/rhel/"
+    echo "RMP/DEB list is stored at: ./data_list/"
 }
 
 # Getting input parametters
@@ -39,8 +54,8 @@ do
             ;;
         -l|--list)
             # List parametter
-            # Sets path where is stored onap_rpm.list file
-            RPM_LIST_DIR="$2"
+            # Sets path where is stored onap_rpm.list or onap_deb.list file
+            PCKG_LIST_DIR="$2"
             ;;
         *)
             # unknown option
@@ -52,7 +67,10 @@ do
 done
 
 # Testing if directory parametter was used
-# If not variable is sets to default value /tmp/repo/resources/pkg/rpm
+# If not variable is sets to default value:
+# /tmp/repo/resources/pkg/rpm
+# or
+# /tmp/repo/resources/pkg/deb
 if test -z "$OFFLINE_REPO_DIR"
 then
     OFFLINE_REPO_DIR="/tmp/repo/"
@@ -60,21 +78,57 @@ fi
 
 # Testing if list parametter was used
 # If not variable is sets to default value /tmp/offline/data-list
-if test -z "$RPM_LIST_DIR"
+if test -z "$PCKG_LIST_DIR"
 then
-    RPM_LIST_DIR="/tmp/offline/data_list/"
-
+    PCKG_LIST_DIR="/tmp/offline/data_list/"
 fi
 
-# Install createrepo package for create repository in folder
-# and yum-utils due to yum-config-manager for adding docker repository
-yum install createrepo yum-utils -y
+case "$distro_type" in
+    ubuntu)
+        # Change current working dir
+        pushd $OFFLINE_REPO_DIR
 
-# Add official docker repository
-yum-config-manager --add-repo=https://download.docker.com/linux/centos/7/x86_64/stable/
+        # Install dpkg-deb package for create repository in folder
+        # Install software-properties-common to get add-apt-repository command
+        # Install apt-transport-https, ca-certificates, curl and gnupg-agent allowing apt to use a repository over HTTPS
+        apt-get update -y
+        apt-get install dpkg-dev apt-transport-https ca-certificates curl gnupg-agent software-properties-common -y
 
-# Download all packages from onap_rpm.list via yumdownloader to repository folder
-for i in $(cat ${RPM_LIST_DIR}onap_rpm.list | awk '{print $1}');do yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y; done
+        # Add Docker's official GPG key:
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+        apt-key fingerprint 0EBFCD88
 
-# In repository folder create repository
-createrepo $OFFLINE_REPO_DIR
+        # Add docker repository
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+        # Temp fix of known bug
+        # https://bugs.launchpad.net/ubuntu/+source/aptitude/+bug/1543280
+        chown _apt $OFFLINE_REPO_DIR
+
+        # Download all packages from onap_deb.list via apt-get to repository folder
+        for i in $(cat ${PCKG_LIST_DIR}onap_deb.list | awk '{print $1}');do apt-get download $i -y; done
+
+        # In repository folder create gz package with deb packages
+        dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz
+    ;;
+
+    rhel)
+        # Install createrepo package for create repository in folder
+        # and yum-utils due to yum-config-manager for adding docker repository
+        yum install createrepo yum-utils -y
+
+        # Add official docker repository
+        yum-config-manager --add-repo=https://download.docker.com/linux/centos/7/x86_64/stable/
+
+        # Download all packages from onap_rpm.list via yumdownloader to repository folder
+        for i in $(cat ${PCKG_LIST_DIR}onap_rpm.list | awk '{print $1}');do yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y; done
+
+        # In repository folder create repositor
+        createrepo $OFFLINE_REPO_DIR
+    ;;
+
+    *)
+        echo "Unknown type of linux distribution."
+        exit 1
+    ;;
+esac
