@@ -1,0 +1,6 @@
+---
+- name: Find repo files names - CentOS
+  find:
+    paths: /etc/yum.repos.d
+    pattern: '*.repo'
+  register: repo_files

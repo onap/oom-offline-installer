@@ -1,0 +1,11 @@
+---
+- name: Add application offline package repository
+  yum_repository:
+    name: "{{ item.name }}"
+    file: "{{ item.file }}"
+    description: "{{ item.description | default('') }}"
+    baseurl: "{{ item.baseurl | default('') }}"
+    gpgcheck: "{{ item.gpgcheck | default(true) }}"
+    enabled: "{{ item.enabled | default(false) }}"
+    state: "{{ item.state | default('present') }}"
+  loop: "{{ package_repositories }}"

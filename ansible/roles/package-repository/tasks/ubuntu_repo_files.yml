@@ -1,0 +1,6 @@
+---
+- name: Find repo files names - Ubuntu
+  find:
+    paths: /etc/apt/
+    pattern: '*.list'
+  register: repo_files
