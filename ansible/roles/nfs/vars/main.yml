@@ -1,0 +1,2 @@
+---
+nfs_destination: "{% if ansible_distribution in ['Ubuntu','Debian'] %}/etc/exports{% elif ansible_distribution in ['CentOS','Red Hat Enterprise Linux'] %}/etc/exports.d/dockerdata-nfs.exports{% endif %}"
