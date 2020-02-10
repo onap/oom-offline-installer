@@ -8,5 +8,13 @@
 # is prerequisite for playing this one on 'kubernetes' group.
 
 #Set of tasks designated to failing fast if configured repos are not functioning properly
+debug:
+  msg: {{ ansible_os_family }}
 - include_tasks: "{{ ansible_os_family }}.yml"
+  debug:
+    msg: {{ ansible_os_family }}
   when: ansible_os_family == 'RedHat'
+- include_tasks: "{{ ansible_os_family }}.yml"
+  debug:
+    msg: {{ ansible_os_family }}
+  when: ansible_os_family == 'Ubuntu'
