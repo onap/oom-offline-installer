@@ -1,5 +1,5 @@
 ---
 - name: Extract root certificate
-  command: /usr/bin/update-ca-trust extract
+  command: "{{ extract_root_cert[ansible_os_family].update_command }}"
   changed_when: true  # this handler is executed just when there is a new cert
   notify: Restart Docker

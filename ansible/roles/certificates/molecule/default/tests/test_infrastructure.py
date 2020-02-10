@@ -27,7 +27,13 @@ def test_generated_cert_files_copied_to_infra(host, cert_file, group_vars):
     assert f.user == 'root'
     assert f.group == 'root'
 
+    os = host.system_info.distribution
+    if (os == "centos"):
+        node_directory = "certs/"
+    elif (os == "ubuntu"):
+        node_directory = "../default/certs/"
+
     # Verify cert files content locally is as in node
-    with open("certs/" + cert_file) as local_cert_file:
+    with open(node_directory + cert_file) as local_cert_file:
         local_content = local_cert_file.read().strip()
     assert local_content == f.content_string
