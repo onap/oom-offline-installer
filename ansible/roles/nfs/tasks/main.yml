@@ -23,7 +23,8 @@
     - name: Add hosts to exports
       template:
         src: exports.j2
-        dest: /etc/exports.d/dockerdata-nfs.exports
+        dest: "{{ item }}"
+      loop: "{{ nfs_destination[ansible_os_family] }}"
       notify:
         - reload nfs
   when:
