@@ -1,0 +1,69 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - infrastructure
+  - name: kubernetes-node-1
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - kubernetes
+provisioner:
+  name: ansible
+  log: true
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  playbooks:
+    converge: ../default/playbook.yml
+  inventory:
+    links:
+      group_vars: ../../../../group_vars/
+scenario:
+  name: ubuntu
+  test_sequence:
+    - lint
+    - cleanup
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    # - idempotence
+    #  --> Action: 'idempotence'
+    #  ERROR: Idempotence test failed because of the following tasks:
+    #  * [infrastructure-server -> localhost] => certificates : Generate an OpenSSL CSR.
+    #  * [infrastructure-server -> localhost] => certificates : Generate root CA certificate
+    #  * [infrastructure-server] => certificates : Upload certificates to infrastructure server
+    #  * [infrastructure-server] => certificates : Copy root certificate
+    #  * [infrastructure-server] => certificates : Extract root certificate
+    #  * [infrastructure-server] => docker : Setup docker dns settings
+    #  * [kubernetes-node-1] => certificates : Copy root certificate
+    #  * [kubernetes-node-1] => certificates : Extract root certificate
+    #  * [kubernetes-node-1] => certificates : Extract root certificate
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
+verifier:
+  name: testinfra
+  options:
+    verbose: true
+  lint:
+    name: flake8
+  directory: ../default/tests
