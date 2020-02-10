@@ -12,8 +12,10 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 ])
 def test_cert_file_installed(host, cert_file):
     os = host.system_info.distribution
-    if os == "centos":
+    if (os == "centos"):
         f = host.file('/etc/pki/ca-trust/source/anchors/' + cert_file)
+    if (os == "ubuntu"):
+        f = host.file('/usr/local/share/ca-certificates/' + cert_file)
 
     assert f.exists
     assert f.user == 'root'

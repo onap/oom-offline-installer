@@ -2,3 +2,13 @@
 # Generate certs to local current dir where ansible in run (= playbook_dir)
 # After ansible run, dir can be deleted but idempotence is lost and certs are re-generated in next run
 certificates_local_dir: "{{ playbook_dir }}/certs"
+root_ca_path:
+  RedHat:
+    - "/etc/pki/ca-trust/source/anchors/"
+  Debian:
+    - "/usr/local/share/ca-certificates/"
+extract_root_cert:
+  RedHat:
+    update_command: /usr/bin/update-ca-trust extract
+  Debian:
+    update_command: update-ca-certificates
