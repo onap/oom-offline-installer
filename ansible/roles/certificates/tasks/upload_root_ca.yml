@@ -4,4 +4,13 @@
     src: "{{ certificates_local_dir }}/rootCA.crt"
     dest: /etc/pki/ca-trust/source/anchors/
   notify:  # handler is triggered just when file is changed
-    - Extract root certificate
+    - Extract root certificate - Rhel/CentOS
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: Copy root certificate
+  copy:
+    src: "{{ certificates_local_dir }}/rootCA.crt"
+    dest: /usr/local/share/ca-certificates/
+  notify:  # handler is triggered just when file is changed
+    - Extract root certificate - Ubuntu
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

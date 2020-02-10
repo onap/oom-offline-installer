@@ -1,0 +1,20 @@
+---
+- name: Infra
+  hosts: infrastructure
+  handlers:
+    - name: Restart Docker
+      debug: msg="Docker restart called"
+  roles:
+    - certificates
+
+- name: Kube
+  hosts: kubernetes
+  handlers:
+    - name: Restart Docker
+      debug: msg="Docker restart called"
+  tasks:
+    - include_role:
+        name: certificates
+        tasks_from: upload_root_ca.yml
+      vars:
+        certificates_local_dir: certs
