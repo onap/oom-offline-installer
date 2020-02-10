@@ -1,0 +1,4 @@
+---
+package_type: "{% if ansible_distribution in ['Ubuntu','Debian'] %}deb{% elif ansible_distribution in ['CentOS','Red Hat Enterprise Linux'] %}rpm{% endif %}"
+repo_patern: "{% if ansible_distribution in ['Ubuntu','Debian'] %}'*.repo'{% elif ansible_distribution in ['CentOS','Red Hat Enterprise Linux'] %}'*.list'{% endif %}"
+repo_path: "{% if ansible_distribution in ['Ubuntu','Debian'] %}/etc/yum.repos.d{% elif ansible_distribution in ['CentOS','Red Hat Enterprise Linux'] %}/etc/apt/{% endif %}"
