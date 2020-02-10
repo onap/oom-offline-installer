@@ -14,6 +14,7 @@
     name: "{{ vnc_server_image }}"
     state: present
     archive_path: /tmp/vncserver.tar
+    timeout: 240
 
 - name: Copy vnc server image to node
   copy:
