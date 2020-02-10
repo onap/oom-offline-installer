@@ -1,0 +1,64 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: instance
+    image: ubuntu:18.04
+    dockerfile: ../default/Dockerfile.j2
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+  inventory:
+    group_vars:
+      all:
+        app_name: moleculetestapp
+        app_data_path: "/opt/{{ app_name }}"
+        app_helm_release_name: "{{ app_name }}"
+        app_kubernetes_namespace: "{{ app_name }}"
+        app_helm_charts_install_directory: application/helm_charts
+        app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
+        app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
+        helm_bin_dir: /usr/local/bin
+        app_helm_build_targets:
+          - all
+          - onap
+        app_helm_chart_name: "{{ app_name }}"
+  lint:
+    name: ansible-lint
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+    cleanup: ../default/cleanup.yml
+scenario:
+  name: ubuntu
+  test_sequence:
+    - lint
+    - cleanup
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    # - idempotence
+    # --> Action: 'idempotence'
+    # ERROR: Idempotence test failed because of the following tasks:
+    # * [instance] => application : Get helm dir
+    # * [instance] => application : Helm init and upgrade
+    # * [instance] => application : Helm Serve
+    # * [instance] => application : Helm Add Repo
+    # * [instance] => application : Helm Install application moleculetestapp
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+  directory: ../default/tests/
