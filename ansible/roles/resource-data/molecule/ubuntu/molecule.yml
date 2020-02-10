@@ -1,0 +1,52 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+
+  - name: resource-host
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - resources
+    networks:
+      - name: resource-data
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      #  - ${HOME}/resource-data:/data:rw  # mount fs from host to get nfs exportfs task working
+
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    command: ${MOLECULE_DOCKER_COMMAND:-""}
+    groups:
+      - infrastructure
+    networks:
+      - name: resource-data
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+provisioner:
+  name: ansible
+  log: true
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles/
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+scenario:
+  name: ubuntu
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+  directory: ../default/tests
+
