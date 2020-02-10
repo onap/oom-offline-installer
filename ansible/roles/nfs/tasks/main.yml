@@ -20,12 +20,11 @@
         enabled: true
       loop: "{{ nfs_services[ansible_os_family] }}"
 
-    - name: Add hosts to exports
-      template:
-        src: exports.j2
-        dest: /etc/exports.d/dockerdata-nfs.exports
-      notify:
-        - reload nfs
+    - include_tasks: rhel.yml
+      when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
+
+    - include_tasks: ubuntu.yml
+      when: ansible_distribution in ["Ubuntu","Debian"]
   when:
     - "'nfs-server' in group_names"
 
