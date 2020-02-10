@@ -8,5 +8,8 @@
 # is prerequisite for playing this one on 'kubernetes' group.
 
 #Set of tasks designated to failing fast if configured repos are not functioning properly
-- include_tasks: "{{ ansible_os_family }}.yml"
-  when: ansible_os_family == 'RedHat'
+- include_tasks: rhel.yml
+  when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
+
+- include_tasks: ubuntu.yml
+  when: ansible_distribution in ["Ubuntu","Debian"]
