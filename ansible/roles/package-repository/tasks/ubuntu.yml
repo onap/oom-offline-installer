@@ -1,0 +1,40 @@
+---
+- name: Disable all Ubuntu OS default repositories
+  block:
+    - name: Find repo files names
+      find:
+        paths: /etc/apt/
+        pattern: '*.list'
+      register: repo_files
+
+    - name: Get all defined offline repo names
+      set_fact: package_repositories_names="{{ package_repositories | selectattr('name', 'defined') | map(attribute='name') | list  }}"
+
+    - name: Backup repo files
+      copy:
+        remote_src: true
+        src: "{{ item.path }}"
+        dest: "{{ item.path }}.disabled"
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+
+    - name: Remove disabled repo files
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+
+- name: Add application offline package repository
+  apt_repository:
+    repo: "deb [trusted=yes] {{ item.baseurl | default('') }} ./"
+    state: "{{ item.state | default('present') }}"
+    filename: "{{ item.file }}"
+    update_cache: false
+  loop: "{{ package_repositories }}"
+
+- name: Update offline package repository
+  tags: notest
+  apt:
+    update_cache: true
+  loop: "{{ package_repositories }}"
