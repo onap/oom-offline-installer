@@ -17,7 +17,7 @@ nginx:
     - "{{ app_data_path }}/git-repo:/srv/git:rw"
     - "{{ app_data_path }}/http:/srv/http:rw"
     - "{{ app_data_path }}/pkg/rpm:/srv/http/repo.infra-server/rpm:rw"
-    - "{{ app_data_path }}/pkg/ubuntu/xenial:/srv/http/repo.infra-server/ubuntu/xenial:rw"
+    - "{{ app_data_path }}/pkg/{{ package_type }}:/srv/http/repo.infra-server/{{ package_type }}:rw"
     - /var/log/nginx:/var/log/nginx:rw
 # Default rule for tarball naming translation
 nginx_server_image_tar: "{{ nginx_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
