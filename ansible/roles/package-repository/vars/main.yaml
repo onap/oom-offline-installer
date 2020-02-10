@@ -1,0 +1,2 @@
+---
+package_type: "{% if ansible_distribution in ['Ubuntu','Debian'] %}deb{% elif ansible_distribution in ['CentOS','Red Hat Enterprise Linux'] %}rpm{% endif %}"

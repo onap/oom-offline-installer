@@ -1,0 +1,43 @@
+---
+- name: Setup resolv.conf for node to find package repository by name from infra
+  lineinfile:
+    line: "nameserver {{ hostvars[groups.infrastructure[0]].cluster_ip }}"
+    path: /etc/resolv.conf
+    state: present
+    insertbefore: BOF
+    unsafe_writes: true
+
+- name: Disable all Ubuntu OS default repositories
+  block:
+    - name: Find repo files names
+      find:
+        paths: /etc/apt/
+        pattern: '*.list'
+      register: repo_files
+
+    - name: Get all defined offline repo names
+      set_fact: package_repositories_names="{{ package_repositories | selectattr('name', 'defined') | map(attribute='name') | list  }}"
+
+    - name: Backup repo files
+      copy:
+        remote_src: true
+        src: "{{ item.path }}"
+        dest: "{{ item.path }}.disabled"
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+
+    - name: Remove disabled repo files
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+
+- name: Add application offline package repository
+  apt_repository:
+    repo: "deb [trusted=yes] {{ item.baseurl | default('') }} stable main"
+    state: "{{ item.state | default('present') }}"
+    validate_certs: true
+    filename: "{{ item.file }}"
+    update_cache: false
+  loop: "{{ package_repositories }}"

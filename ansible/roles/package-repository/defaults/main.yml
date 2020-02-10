@@ -3,6 +3,6 @@ package_repositories:
   - name: "{{ app_name }}"
     file: "{{ app_name | lower }}"
     description: "{{ app_name | upper }} offline repository"
-    baseurl: "{{ 'http://repo.infra-server/rpm' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rpm' }}"
+    baseurl: "{{ 'http://repo.infra-server/' + package_type if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/' + package_type }}"
     gpgcheck: false
     enabled: true

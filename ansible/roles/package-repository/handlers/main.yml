@@ -1,6 +1,0 @@
----
-- name: Restart NetworkManager
-  systemd:
-    name: NetworkManager
-    state: restarted
-  when: ansible_connection != 'docker'
