@@ -1,0 +1,10 @@
+---
+- name: Get localhost facts
+  hosts: localhost
+
+- name: Setup all hosts for playing dns role
+  hosts: all
+  roles:
+    - prepare-common
+    - prepare-docker-dind
+    - prepare-dns

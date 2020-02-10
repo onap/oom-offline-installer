@@ -1,0 +1,155 @@
+---
+###################################
+# Resources configuration entries #
+###################################
+
+# Resource host information
+
+# Directory on resource host where tars with resources are present
+resources_dir:
+
+# tarfile name within resources_dir directory with offline infrastructure binaries.
+resources_filename:
+
+# tarfile name within resources_dir directory with auxiliary resources.
+# the purpose of auxiliary resources is to provide user an interface
+# to distribute to infra node tar file with application specific files.
+aux_resources_filename:
+
+# resources can be exported via nfs
+# default is no - client will use ssh
+# if set yes but nfs-utils is missing then fallback to ssh
+resources_on_nfs: no
+
+# Infra node specific information
+
+# Offline solution source data binaries (resources_filename tar) will be
+# decompressed in this directory on target infra server.
+# e.g. app_data_path: /opt/onap
+app_data_path:
+
+# Path for tarballs with images loaded on infrastructure server
+infra_images_path: "{{ app_data_path }}/offline_data/docker_images_infra"
+
+# Path for auxiliary data in target infra server.
+# Data from resource host defined by aux_resources_filename variable is placed to this directory.
+# Currently docker images in tar format are supported (see runtime_images parameter).
+# Could be used for other kind of application specific data also.
+# e.g. aux_data_path: /opt/onap/my_extra_pods_docker_images
+aux_data_path: "{{ app_data_path }}/runtime_images_source_dir"
+
+
+##########################################
+# Offline Infrastructure specific params #
+##########################################
+
+# information from which rootCA is created
+# e.g.
+# organization_name: Samsung
+# state_or_province_name: Poland
+# country_name: PL
+# locality_name: Krakow
+certificates:
+  organization_name:
+  state_or_province_name:
+  country_name:
+  locality_name:
+
+# Force k8s cluster redeploy if it exists already
+# Default value is to allow redeploy
+redeploy_k8s_env: yes
+
+# Offline solution is deploying app specific rpm repository and requires some name
+# also for k8s cluster
+# e.g. app_name: onap
+app_name:
+
+# runtime_images provides an way to insert docker images
+# into nexus during infrastructure playbook execution (populated to nexus at runtime).
+# images specified must be available inside aux_resources_filename
+# tar file that is extracted by installer into aux_data_path directory in infra server.
+# Source format of an image is .tar file in aux_data_path directory and all .tar
+# files in that dir are checked to match runtime_images definition.
+# if runtime_images are not specified nothing is inserted on top of existing
+# prebuilt nexus blob in installation time.
+# Component name must match with tar filename!
+# e.g.
+# aaa/bbb-component-0.0.1.tar are expected in aux_data_path for component images.
+# runtime_images:
+#  aaa-component-0.0.1:
+#    registry: "nexus3.onap.org:10001"
+#    path:     "/onap/components/aaa-component"
+#    tag:      "latest"
+#  bbb-component-0.0.1:
+#    registry: "nexus3.onap.org:10001"
+#    path:     "/onap/components/bbb-component"
+#    tag:      "latest"
+runtime_images: {}
+
+###############################
+# Application specific params #
+###############################
+
+# App Helm charts directory location in installation package
+# (local path for the ansible process).
+# The path locates relative inside of this sw package
+# installation folder and must be visible for ansible docker/chroot
+# process to find directory and to transfer it into machine (infra node) running
+# Helm repository.
+# Content of the folder must be Helm chart directories of the app with Makefile.
+# In case of ONAP OOM it would be <oom_repo>/kubernetes folder content.
+app_helm_charts_install_directory: application/helm_charts
+
+# Specify target dir where helm charts are copied into on infra node.
+# (same as content of "app_helm_charts_install_directory" copied by installer to this dir.)
+# This must be directory with all charts and Makefile.
+# e.g. app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
+app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
+
+# Main Helm chart to install
+# e.g. app_helm_chart_name: onap
+app_helm_chart_name:
+
+# Targets for helm charts repository build
+# e.g. for ONAP Casablanca
+# app_helm_build_targets:
+#   - all
+#   - onap
+app_helm_build_targets:
+
+# Directory with helm plugins
+# It's an optional parameter used e.g. in OOM Casablanca
+# app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
+app_helm_plugins_directory: "{{ app_helm_charts_install_directory}}/helm/plugins/"
+
+# Helm release name (visible in POD names) used by Helm
+# e.g. app_helm_release_name: onap
+app_helm_release_name: "{{ app_name }}"
+
+# Kubernetes namespace where application is installed
+# e.g. app_kubernetes_namespace: onap
+app_kubernetes_namespace: "{{ app_name }}"
+
+# Optional application custom Ansible roles name for pre and post install logic.
+# Location of additional custom roles is defined in ansible.cfg with roles_path.
+# e.g. application_pre_install_role: "my-pre-install-role"
+application_pre_install_role:
+application_post_install_role:
+
+# any other application specific params can be specified in this file
+# e.g.
+# onap_values:
+#  openStackKeyStoneUrl: "http://1.2.3.4:5000"
+#  openStackServiceTenantName: "services"
+#  openStackDomain: "Default"
+#  openStackUserName: "admin"
+#  openStackEncryptedPassword: "f7920677e15e2678b0f33736189e8965"
+
+# Optional time synchronisation settings
+# timesync:
+#   servers:
+#     - <ip address of NTP_1>
+#     - <...>
+#     - <ip address of NTP_N>
+#   slewclock: false
+#   timezone: <timezone name from tz database>
