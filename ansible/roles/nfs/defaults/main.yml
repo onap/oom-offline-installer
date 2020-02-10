@@ -2,7 +2,19 @@
 nfs_packages:
   RedHat:
     - nfs-utils
+  Ubuntu:
+    - nfs-common
+    - nfs-kernel-server
+  Debian:
+    - nfs-common
+    - nfs-kernel-server
 nfs_services:
   RedHat:
     - rpcbind
     - nfs-server
+  Ubuntu:
+    - rpcbind
+    - nfs-kernel-server
+  Debian:
+    - rpcbind
+    - nfs-kernel-server

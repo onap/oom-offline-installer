@@ -1,0 +1,7 @@
+---
+- name: Add hosts to exports
+  template:
+    src: exports.j2
+    dest: /etc/exports
+  notify:
+    - reload nfs
