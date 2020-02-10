@@ -23,7 +23,7 @@
     - name: Add hosts to exports
       template:
         src: exports.j2
-        dest: /etc/exports.d/dockerdata-nfs.exports
+        dest: "{{ nfs_destination }}"
       notify:
         - reload nfs
   when:
