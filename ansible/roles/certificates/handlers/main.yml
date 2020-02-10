@@ -1,5 +1,12 @@
 ---
-- name: Extract root certificate
+- name: Extract root certificate - Rhel/CentOS
   command: /usr/bin/update-ca-trust extract
   changed_when: true  # this handler is executed just when there is a new cert
   notify: Restart Docker
+  when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
+
+- name: Extract root certificate - Ubuntu
+  command: update-ca-certificates
+  changed_when: true
+  notify: Restart Docker
+  when: ansible_distribution in ["Ubuntu","Debian"]
