@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: infrastructure-server
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
     pre_build_image: True
     privileged: true
     override_command: False
@@ -20,6 +20,9 @@ provisioner:
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
   inventory:
     group_vars:
       all:
@@ -27,8 +30,9 @@ provisioner:
         app_data_path: "/opt/{{ app_name }}"
         helm_bin_dir: /usr/local/bin
 scenario:
-  name: default
+  name: ubuntu
 verifier:
   name: testinfra
   lint:
     name: flake8
+  directory: ../default/tests
