@@ -7,7 +7,8 @@ lint:
   name: yamllint
 platforms:
   - name: infrastructure-server
-    image: ${PLATFORM_DISTRO:-centos}:${DISTRO_VERSION:-7}
+    image: ${PLATFORM_DISTRO:-ubuntu}:${ISTRO_VERSION:-18.04}
+    dockerfile: ../default/Dockerfile.j2
     groups:
       - infrastructure
     # By design certain file like /etc/resolv.conf cannot be edited in docker
@@ -16,7 +17,8 @@ platforms:
       - 6.5.4.3
 
   - name: kubernetes-node-1
-    image: ${PLATFORM_DISTRO:-centos}:${DISTRO_VERSION:-7}
+    image: ${PLATFORM_DISTRO:-ubuntu}:${ISTRO_VERSION:-18.04}
+    dockerfile: ../default/Dockerfile.j2
     groups:
       - kubernetes
     # By design certain file like /etc/resolv.conf cannot be edited in docker
@@ -28,6 +30,8 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+  playbooks:
+    converge: ../default/playbook.yml
   inventory:
     host_vars:
       infrastructure-server:
@@ -36,7 +40,9 @@ provisioner:
       all:
         app_name: moleculetestapp
         app_data_path: "/opt/{{ app_name }}"
-        package_type: rpm
+        package_type: deb
+scenario:
+  name: ubuntu
 verifier:
   name: testinfra
   options:
