@@ -1,0 +1,5 @@
+---
+- name: Converge
+  hosts: infrastructure
+  roles:
+    - vncserver
