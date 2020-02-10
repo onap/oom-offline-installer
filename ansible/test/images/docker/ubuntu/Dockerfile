@@ -5,7 +5,10 @@ FROM ubuntu:${RELEASE}
 ENV container docker
 
 # Python2.7 required by ansible
-RUN apt-get update && apt-get -y install dbus systemd python openssh-server
+RUN apt-get update && apt-get -y install dbus systemd openssh-server
+
+# Create symlink python3 to python
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 EXPOSE 22
 

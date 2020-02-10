@@ -1,5 +1,6 @@
 import os
 import pytest
+import json
 
 import testinfra.utils.ansible_runner
 
@@ -23,13 +24,9 @@ def test_docker_daemon_file(host):
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
-    assert f.content_string == """{
-    "log-opts": {
-        "max-size": "100m", 
-        "max-file": "3"
-    }, 
-    "dns": [
-        "1.2.3.4"
-    ], 
-    "log-driver": "json-file"
-}"""
+    print(f.content_string)
+    json_data = json.loads(f.content_string)
+    assert json_data["log-driver"] == "json-file"
+    assert json_data["log-opts"]["max-size"] == "100m"
+    assert json_data["log-opts"]["max-file"] == "3"
+    assert json_data["dns"][0] == "1.2.3.4"

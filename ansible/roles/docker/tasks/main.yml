@@ -1,50 +1,6 @@
 ---
-- name: Install docker
-  package:
-    name: 'docker-ce'
-    state: present
-  notify:
-    - Restart Docker
+- include: rhel.yml
+  when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
 
-- name: Install docker python module
-  package:
-    name: 'python-docker-py'
-    state: present
-
-
-- name: Install python jsonpointer module
-  package:
-    name: 'python-jsonpointer'
-    state: present
-
-- name: Ensure /etc/docker exists
-  file:
-    path: /etc/docker
-    state: directory
-
-- name: Setup docker container logging settings
-  json_mod:
-    path: /etc/docker/daemon.json
-    key: ''  # the whole JSON document per https://tools.ietf.org/html/rfc6901
-    # "value" must be wrapped in single quote "'" with extra space in front of "{" (ansible workaround)
-    # reference: https://stackoverflow.com/questions/31969872
-    value: ' { "log-driver": "json-file", "log-opts": { "max-size": "{{ docker.log_max_size }}", "max-file": "{{ docker.log_max_file }}" } }'
-
-- name: Setup docker dns settings
-  json_mod:
-    path: /etc/docker/daemon.json
-    key: dns
-    # "value" must be wrapped in single quote "'" with extra space in front of "[" (ansible workaround)
-    # reference: https://stackoverflow.com/questions/31969872
-    value: ' [ "{{ hostvars[groups.infrastructure[0]].cluster_ip }}" ]'
-  notify:
-    - Restart Docker
-
-- name: Force notified handlers to run at this point
-  meta: flush_handlers
-
-- name: Ensure docker is started
-  systemd:
-    name: docker
-    state: started
-    enabled: true
+- include: ubuntu.yml
+  when: ansible_distribution in ["Ubuntu","Debian"]
