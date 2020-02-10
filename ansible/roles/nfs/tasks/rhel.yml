@@ -1,0 +1,7 @@
+---
+- name: Add hosts to exports
+  template:
+    src: exports.j2
+    dest: /etc/exports.d/dockerdata-nfs.exports
+  notify:
+    - reload nfs
