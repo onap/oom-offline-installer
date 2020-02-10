@@ -7,9 +7,9 @@
     insertbefore: BOF
     unsafe_writes: true
 
-- name: Disable all OS default repositories
+- name: Disable all CentOS default repositories
   block:
-    - name: Find repo files names
+    - name: Find repo files names - yum
       find:
         paths: /etc/yum.repos.d
         pattern: '*.repo'
@@ -18,7 +18,7 @@
     - name: Get all defined offline repo names
       set_fact: package_repositories_names="{{ package_repositories | selectattr('name', 'defined') | map(attribute='name') | list  }}"
 
-    - name: Backup repo files
+    - name: Backup repo files - yum
       copy:
         remote_src: true
         src: "{{ item.path }}"
@@ -26,14 +26,42 @@
       loop: "{{ repo_files.files }}"
       when: "(item.path | basename | splitext)[0] not in package_repositories_names"
 
-    - name: Remove disabled repo files
+    - name: Remove disabled repo files - yum
       file:
         path: "{{ item.path }}"
         state: absent
       loop: "{{ repo_files.files }}"
       when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+  when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
 
-- name: Add application offline package repository
+- name: Disable all Ubuntu OS default repositories
+  block:
+    - name: Find repo files names - apt
+      find:
+        paths: /etc/apt/
+        pattern: '*.list'
+      register: repo_files
+
+    - name: Get all defined offline repo names - apt
+      set_fact: package_repositories_names="{{ package_repositories | selectattr('name', 'defined') | map(attribute='name') | list  }}"
+
+    - name: Backup repo files - apt
+      copy:
+        remote_src: true
+        src: "{{ item.path }}"
+        dest: "{{ item.path }}.disabled"
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+
+    - name: Remove disabled repo files - apt
+      file:
+        path: "{{ item.path }}"
+        state: absent
+      loop: "{{ repo_files.files }}"
+      when: "(item.path | basename | splitext)[0] not in package_repositories_names"
+  when: ansible_distribution in ["Ubuntu","Debian"]
+
+- name: Add application offline package repository - yum
   yum_repository:
     name: "{{ item.name }}"
     file: "{{ item.file }}"
@@ -43,3 +71,14 @@
     enabled: "{{ item.enabled | default(false) }}"
     state: "{{ item.state | default('present') }}"
   loop: "{{ package_repositories }}"
+  when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
+
+- name: Add application offline package repository - apt
+  apt_repository:
+    repo: "deb [trusted=yes] {{ item.baseurl | default('') }} stable main"
+    state: "{{ item.state | default('present') }}"
+    validate_certs: true
+    filename: "{{ item.file }}"
+    update_cache: false
+  loop: "{{ package_repositories }}"
+  when: ansible_distribution in ["Ubuntu","Debian"]
