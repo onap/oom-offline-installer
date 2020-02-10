@@ -1,0 +1,28 @@
+---
+- name: Converge rancher master
+  hosts: infrastructure
+  roles:
+    - prepare-common
+    - role: rancher
+      vars:
+        mode: server
+
+- name: Converge rancher agent
+  hosts: kubernetes
+  roles:
+    - prepare-common
+    - role: rancher
+      vars:
+        mode: agent
+
+- name: Wait for Kubernetes environment to be healthy
+  hosts: infrastructure
+  roles:
+    - role: rancher
+      vars:
+        mode: health
+        rancher_server_url: "http://{{ cluster_ip }}:8080"
+        # Do not get rancher cluster healthy in this env (to be checked),
+        # but it's enough in molecule test to verify we get this unhealthy response
+        rancher_cluster_health_state: unhealthy
+        rancher_cluster_health_check_retries: 40

@@ -1,0 +1,88 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    restart_policy: unless-stopped
+    volumes:
+      - /var/lib/docker
+    groups:
+      - infrastructure
+    networks:
+      - name: rancher
+
+  - name: kubernetes-node-1
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    restart_policy: unless-stopped
+    volumes:
+      - /var/lib/docker
+      - /var/lib/rancher
+      - /var/lib/kubelet
+    groups:
+      - kubernetes
+    networks:
+      - name: rancher
+    purge_networks: true
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    links:
+      group_vars: ../../../../group_vars
+    # 1) When running with molecule-dev container, use this definition and comment out localhost under host_vars (2)
+    hosts:
+      all:
+        hosts:
+          localhost:
+            ansible_connection: ssh
+            ansible_host: ${LOCALHOST_ANSIBLE_HOST:-""}
+            ansible_user: ${LOCALHOST_ANSIBLE_USER:-""}
+            ansible_password: ${LOCALHOST_ANSIBLE_PASSWORD:-""}
+            ansible_sudo_pass: ${LOCALHOST_ANSIBLE_SUDO_PASS:-""}
+            # end of 1)
+            # 2) When running with native molecule installation, use this definition and comment out hosts section under inventory (1)
+            # host_vars:
+            # localhost:
+            #   ansible_sudo_pass: ${LOCALHOST_ANSIBLE_SUDO_PASS:-""}
+            #   ansible_ssh_pass: ${LOCALHOST_ANSIBLE_PASSWORD:-""}
+            # End of 2)
+  lint:
+    name: ansible-lint
+scenario:
+  name: ubuntu
+  test_sequence:
+    - lint
+    - cleanup
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    # - idempotence
+    # --> Action: 'idempotence'
+    # ERROR: Idempotence test failed because of the following tasks:
+    # * [infrastructure-server] => rancher : Create rancher kubernetes environment
+    # * [kubernetes-node-1] => rancher : Add Rancher Agent
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
