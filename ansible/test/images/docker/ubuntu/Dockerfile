@@ -5,7 +5,9 @@ FROM ubuntu:${RELEASE}
 ENV container docker
 
 # Python2.7 required by ansible
-RUN apt-get update && apt-get -y install dbus systemd python openssh-server
+RUN apt-get update && apt-get -y install dbus systemd python openssh-server iproute2 python-docker
+
+# RUN pip install docker-py
 
 EXPOSE 22
 
