@@ -1,0 +1,8 @@
+---
+- name: Prepare for helm tests
+  hosts: infrastructure
+  pre_tasks:
+    - name: Include infrastructure group variables
+      include_vars: ../../../../group_vars/infrastructure.yml
+  roles:
+    - prepare-helm
