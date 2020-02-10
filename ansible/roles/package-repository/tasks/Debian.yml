@@ -1,0 +1,8 @@
+---
+- name: Add application offline package repository
+  apt_repository:
+    repo: "deb [trusted=yes] {{ item.baseurl | default('') }} ./"
+    state: "{{ item.state | default('present') }}"
+    filename: "{{ item.file }}"
+    update_cache: false
+  loop: "{{ package_repositories }}"

@@ -23,12 +23,12 @@
     insertbefore: BOF
     unsafe_writes: true
 
-- name: Disable all OS default repositories
+- name: Disable all default repositories
   block:
     - name: Find repo files names
       find:
-        paths: /etc/yum.repos.d
-        pattern: '*.repo'
+        paths: "{{ repo_path[ansible_os_family] }}"
+        pattern: "{{ repo_patern[ansible_os_family] }}"
       register: repo_files
 
     - name: Get all defined offline repo names
@@ -49,13 +49,4 @@
       loop: "{{ repo_files.files }}"
       when: "(item.path | basename | splitext)[0] not in package_repositories_names"
 
-- name: Add application offline package repository
-  yum_repository:
-    name: "{{ item.name }}"
-    file: "{{ item.file }}"
-    description: "{{ item.description | default('') }}"
-    baseurl: "{{ item.baseurl | default('') }}"
-    gpgcheck: "{{ item.gpgcheck | default(true) }}"
-    enabled: "{{ item.enabled | default(false) }}"
-    state: "{{ item.state | default('present') }}"
-  loop: "{{ package_repositories }}"
+- include_tasks: "{{ ansible_os_family }}.yml"

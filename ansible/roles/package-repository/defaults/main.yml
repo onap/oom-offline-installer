@@ -1,8 +1,17 @@
 ---
+package_type:
+  RedHat: rpm
+  Debian: deb
+repo_patern:
+  RedHat: "*.repo"
+  Debian: "*.list"
+repo_path:
+  RedHat: /etc/yum.repos.d/
+  Debian: /etc/apt/
 package_repositories:
   - name: "{{ app_name }}"
     file: "{{ app_name | lower }}"
     description: "{{ app_name | upper }} offline repository"
-    baseurl: "{{ 'http://repo.infra-server/rpm' if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/rpm' }}"
+    baseurl: "{{ 'http://repo.infra-server/' + package_type[ansible_os_family] if 'infrastructure' not in group_names else 'file://' + app_data_path + '/pkg/' + package_type[ansible_os_family] }}"
     gpgcheck: false
     enabled: true
