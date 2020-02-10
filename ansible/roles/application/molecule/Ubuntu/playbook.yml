@@ -1,0 +1,5 @@
+---
+- name: Helm charts available
+  hosts: all
+  roles:
+    - application
