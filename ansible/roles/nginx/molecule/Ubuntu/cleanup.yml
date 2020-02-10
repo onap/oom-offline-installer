@@ -1,0 +1,6 @@
+---
+- name: Cleanup
+  hosts: all
+  ignore_unreachable: true
+  roles:
+    - cleanup-nginx
