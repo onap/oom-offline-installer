@@ -6,5 +6,5 @@ output: { all: "/dev/console" }
 #Initialization.
 runcmd:
   - |
-    set -efxu -o pipefail
+    set -efxu
     %{NOTIFY_COMMAND} --data-binary '{"status": "SUCCESS", "reason": "instance started successfully"}'
