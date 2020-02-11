@@ -7,7 +7,7 @@
     partition_path: "{{ volume_path }}-part1"
 - name: "Wait for volume"
   #We do not do it normally, because we want to trigger udev (workaround for some bugs).
-  shell: "udevadm trigger && udevadm settle && [[ -b {{ volume_path }} ]]"
+  shell: "udevadm trigger && udevadm settle && [ -b {{ volume_path }} ]"
   register: result
   retries: 30
   delay: 10
