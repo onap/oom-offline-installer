@@ -1,4 +1,18 @@
 ---
+- name: Disable DNS management in Network Manager
+  ini_file:
+    path: /etc/NetworkManager/NetworkManager.conf
+    state: present
+    no_extra_spaces: true
+    section: main
+    option: dns
+    value: none
+    owner: root
+    group: root
+    mode: 0644
+    backup: false
+  when: ansible_os_family == 'RedHat'
+
 - name: Setup resolv.conf for node to find package repository by name from infra
   lineinfile:
     line: "nameserver {{ hostvars[groups.infrastructure[0]].cluster_ip }}"
