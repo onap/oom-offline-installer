@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d95aa2f6_3bb3b3f5",
+        "filename": "build/package.py",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-02-13T13:37:38Z",
+      "side": 1,
+      "message": "Better but still \"\u003dval\" passes. I\u0027d use assertion to simplify:\n\ntry:\n  key, value \u003d param.split(\u0027\u003d\u0027)\n  assert (key and value)\nexcept (ValueError, AssertionError):\n(...)",
+      "revId": "f14be1bfbdc7f98edd6ac035ff24424faf17a170",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
