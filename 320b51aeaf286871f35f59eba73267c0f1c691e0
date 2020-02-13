@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09081070_5289a6ce",
+        "filename": "build/package.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-02-13T10:25:38Z",
+      "side": 1,
+      "message": "For this case validation shouldn\u0027t pass too:\n\n\u003e\u003e\u003e \"k\u003d\".split(\"\u003d\")\n[\u0027k\u0027, \u0027\u0027]",
+      "revId": "320b51aeaf286871f35f59eba73267c0f1c691e0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05d4447e_1514ff2e",
+        "filename": "build/package.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-02-13T10:25:38Z",
+      "side": 1,
+      "message": "On param invalid format \"key, value \u003d param.split(\u0027\u003d\u0027)\" operation throws:\n\nValueError: not enough values to unpack (expected 2, got 1)\n\nnot IndexError thus \"msg\" never gets displayed, instead just:\n\npackage.py: error: argument --add-metadata: invalid metadata_validation value: \u0027k\u0027",
+      "revId": "320b51aeaf286871f35f59eba73267c0f1c691e0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
