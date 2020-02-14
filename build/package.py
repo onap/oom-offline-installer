@@ -107,11 +107,13 @@ def add_checksum_info(output_dir):
     tar_files = ['resources_package.tar', 'aux_package.tar', 'sw_package.tar']
     for tar_file in tar_files:
         try:
-            data = os.path.join(output_dir, tar_file)
-            cksum = hashlib.md5(open(data, 'rb').read()).hexdigest()
+            checksum = hashlib.md5()
+            with open(os.path.join(output_dir, tar_file), 'rb') as f:
+                for chunk in iter(lambda: f.read(4096), b""):
+                    checksum.update(chunk)
             with open(os.path.join(output_dir, 'package.info'), 'r') as f:
                 json_data = json.load(f)
-                json_data['Build_info']['Packages'].update({tar_file: cksum})
+                json_data['Build_info']['Packages'].update({tar_file: checksum.hexdigest()})
             with open(os.path.join(output_dir, 'package.info'), 'w') as f:
                 json.dump(json_data, f, indent=4)
         except FileNotFoundError:
