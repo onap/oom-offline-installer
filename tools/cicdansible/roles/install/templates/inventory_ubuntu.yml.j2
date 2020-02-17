@@ -1,0 +1,41 @@
+all:
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
+    ansible_ssh_private_key_file: /root/.ssh/id_rsa
+    ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
+  children:
+    resources:
+      vars:
+        ansible_ssh_private_key_file: /root/.ssh/res.pem
+        ansible_user: "{{ hostvars[groups['resources'][0]].ansible_user }}"
+        ansible_become: "{{ hostvars[groups['resources'][0]].ansible_become }}"
+      hosts:
+        resource_host:
+          ansible_host: {{ resource_host }}
+    infrastructure:
+      hosts:
+        infra:
+          ansible_host: infra
+          cluster_ip: {{ hostvars['infra'].ansible_default_ipv4.address }}
+          external_ip: "{{ hostvars['infra'].ansible_host }}"
+    kubernetes:
+      children:
+        kubernetes-node:
+          hosts:
+{% for h in groups['nodes'] %}
+            {{ h }}:
+              ansible_host: "{{ hostvars[h].ansible_default_ipv4.address }}"
+              cluster_ip: "{{ hostvars[h].ansible_default_ipv4.address }}"
+{% if h == 'node0' %}
+              external_ip: "{{ hostvars[h].first_node_ip }}"
+{% endif %}
+{% endfor %}
+        kubernetes-control-plane:
+          hosts:
+            infra
+        kubernetes-etcd:
+          hosts:
+            infra
+    nfs-server:
+      hosts:
+        node0
