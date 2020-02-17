@@ -1,10 +1,14 @@
 all:
   vars:
+    ansible_python_interpreter: "/usr/bin/python3"
     ansible_ssh_private_key_file: /root/.ssh/id_rsa
     ansible_ssh_common_args: "-o StrictHostKeyChecking=no"
   children:
     resources:
       vars:
+        {% if hostvars['infra'].ansible_distribution in ["Debian","Ubuntu"] %}
+          ansible_python_interpreter: /usr/bin/python3
+        {% endif %}
         ansible_ssh_private_key_file: /root/.ssh/res.pem
         ansible_user: "{{ hostvars[groups['resources'][0]].ansible_user }}"
         ansible_become: "{{ hostvars[groups['resources'][0]].ansible_become }}"
