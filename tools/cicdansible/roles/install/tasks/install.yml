@@ -14,7 +14,7 @@
   unarchive:
     src: "resources/{{ hostvars[groups['resources'][0]].resources_sw_filename }}"
     dest: "{{ installer_deploy_path }}"
-#Generate ansible inventory and extra vars.
+#Generate ansible inventory and extra vars
 - name: "Generate ansible inventory for installer"
   template:
     src: inventory.yml.j2
