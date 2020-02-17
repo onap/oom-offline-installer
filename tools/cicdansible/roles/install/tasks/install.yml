@@ -14,11 +14,18 @@
   unarchive:
     src: "resources/{{ hostvars[groups['resources'][0]].resources_sw_filename }}"
     dest: "{{ installer_deploy_path }}"
-#Generate ansible inventory and extra vars.
-- name: "Generate ansible inventory for installer"
+#Generate ansible inventory and extra vars for Ubuntu.
+- name: "Generate ansible inventory for installer - Ubuntu/Debian"
   template:
-    src: inventory.yml.j2
+    src: inventory_ubuntu.yml.j2
     dest: "{{ installer_deploy_path }}/ansible/inventory/hosts.yml"
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+#Generate ansible inventory and extra vars for CentOS and Rhel.
+- name: "Generate ansible inventory for installer - CentOS/Rhel"
+  template:
+    src: inventory_redhat.yml.j2
+    dest: "{{ installer_deploy_path }}/ansible/inventory/hosts.yml"
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
 - name: "generate application specific config overrides"
   copy:
     content: "{{ application_config | b64decode }}"
