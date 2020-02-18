@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b43ad18_c57c89af",
+        "filename": "tools/cicdansible/roles/install/tasks/install.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-02-18T12:05:02Z",
+      "side": 1,
+      "message": "could you try with \"ansible_distribution in {\"Debian\",\"Ubuntu\"}\"?",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 76
+      },
+      "revId": "7fc68b5a724ced3dbe9d91ab522b298ea53c38a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c16ab2e5_49c9d186",
+        "filename": "tools/cicdansible/roles/install/tasks/install.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-02-18T12:05:02Z",
+      "side": 1,
+      "message": "you can also change name here inventory_redhat.yml.j2",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 24
+      },
+      "revId": "7fc68b5a724ced3dbe9d91ab522b298ea53c38a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
