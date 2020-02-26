@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "585191e9_f58ce67c",
+        "filename": "tools/cicdansible/roles/install/tasks/install.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-02-26T15:51:24Z",
+      "side": 1,
+      "message": "this can be done with: ansible_distribution in [\"Debian\",\"Ubuntu\"] but that is not even the point. Please consider single template (see template comment)",
+      "range": {
+        "startLine": 22,
+        "startChar": 2,
+        "endLine": 22,
+        "endChar": 76
+      },
+      "revId": "226115dd604622e35afdd50787914facd0eaeb0d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c8a567_41f8a0b2",
+        "filename": "tools/cicdansible/roles/install/templates/inventory_redhat.yml.j2",
+        "patchSetId": 7
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-02-26T15:51:24Z",
+      "side": 1,
+      "message": "instead of copy-paste you could easily do dynamically distinguish platform installer is working on. For example:\n\nall:\n  vars:\n    ansible_ssh_private_key_file: /root/.ssh/id_rsa\n    ansible_ssh_common_args: \"-o StrictHostKeyChecking\u003dno\"\n{% if hostvars[\u0027infra\u0027].ansible_distributionin [\"Debian\",\"Ubuntu\"] %}\n    ansible_python_interpreter: \"/usr/bin/python3\"\n{% endif %}\n\n\nThat should remove the need to have two templates and two tasks with \"when\"",
+      "range": {
+        "startLine": 2,
+        "startChar": 2,
+        "endLine": 4,
+        "endChar": 58
+      },
+      "revId": "226115dd604622e35afdd50787914facd0eaeb0d",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
