@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "10183af5_1acfbdc0",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-02-27T09:29:26Z",
+      "side": 1,
+      "message": "Why to remove this?",
+      "range": {
+        "startLine": 53,
+        "startChar": 1,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "7e160a6d338bb5701860d047f6dc6e213217385c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
