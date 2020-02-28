@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6b73978_6535d72c",
+        "filename": "tools/cicdansible/roles/install/templates/inventory.yml.j2",
+        "patchSetId": 9
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-02-28T07:58:58Z",
+      "side": 1,
+      "message": "I am confused, why do you leave it here as default, does centos7 have python3 installed by default?\n\nthis {%if ...} statement should be here not bellow...\n\n\nNow how it works: set interpreter on all nodes to python3, then if distribution ON INFRA is Ubuntu then you set ON RESOURCE interpreter also to python3. (if it would not be Ubuntu on infra, then most probably interpreter on resources still would be python3 inherited from all settings).\n\nTest it and pay attention to indentations, yaml is sensitive to it, and from what I see they look wrong",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 50
+      },
+      "revId": "05a48da9aac4b32e0299bdcd1affc584d188d1d1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
