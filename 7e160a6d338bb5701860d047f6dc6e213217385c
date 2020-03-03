@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c255855e_46d5ff69",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2020-03-03T09:39:47Z",
+      "side": 1,
+      "message": "can you move into own module, like ubuntu.yml instead of condition repeating or block.",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 39,
+        "endChar": 76
+      },
+      "revId": "7e160a6d338bb5701860d047f6dc6e213217385c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10183af5_1acfbdc0",
         "filename": "ansible/test/roles/prepare-docker-dind/tasks/main.yml",
         "patchSetId": 1
@@ -22,6 +45,29 @@
       "revId": "7e160a6d338bb5701860d047f6dc6e213217385c",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00ef49a5_17d0b49b",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2020-03-03T09:39:47Z",
+      "side": 1,
+      "message": "do these tasks differ for distro?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "7e160a6d338bb5701860d047f6dc6e213217385c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
