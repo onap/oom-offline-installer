@@ -8,13 +8,13 @@
 - name: Setup infrastructure servers
   hosts: infrastructure
   roles:
-    - chrony
     - package-repository-check
     - certificates
     - docker
     - dns
     - vncserver
     - nginx
+    - chrony
     - nexus
 
 - name: Setup base for Kubernetes nodes

@@ -1,4 +1,10 @@
 ---
+- name: Install Chrony - Ubuntu
+  package:
+    name: "chrony"
+    state: present
+  when: ansible_distribution in ["Ubuntu","Debian"]
+
 - name: Check if server mode
   set_fact:
     chrony_mode: 'server'
