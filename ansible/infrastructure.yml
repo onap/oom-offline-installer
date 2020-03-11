@@ -8,20 +8,20 @@
 - name: Setup infrastructure servers
   hosts: infrastructure
   roles:
-    - chrony
     - package-repository-check
     - certificates
     - docker
     - dns
     - vncserver
     - nginx
+    - chrony
     - nexus
 
 - name: Setup base for Kubernetes nodes
   hosts: kubernetes:!infrastructure
   roles:
-    - chrony
     - package-repository-check
+    - chrony
     - docker
   tasks:
     - include_role:
