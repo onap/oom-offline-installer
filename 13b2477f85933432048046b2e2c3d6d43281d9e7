@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "53ff582c_663720c5",
+        "filename": "ansible/test/images/docker/ubuntu/Dockerfile",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-03-12T08:15:21Z",
+      "side": 1,
+      "message": "Switch to python 3 and remove unnecessary lines",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 27
+      },
+      "revId": "13b2477f85933432048046b2e2c3d6d43281d9e7",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
