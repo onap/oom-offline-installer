@@ -1,0 +1,14 @@
+---
+- name: Install docker python module
+  package:
+    name: 'python3-docker'
+
+- name: Install python jsonpointer module
+  package:
+    name: 'python3-json-pointer'
+    state: present
+
+- name: "Install iproute2"
+  package:
+    name: "iproute2"
+    state: present

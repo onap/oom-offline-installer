@@ -6,16 +6,11 @@
   notify:
     - Restart Docker
 
-- name: Install docker python module
-  package:
-    name: 'python-docker-py'
-    state: present
+- include_tasks: rhel.yml
+  when: ansible_distribution in ["CentOS","Red Hat Enterprise Linux"]
 
-
-- name: Install python jsonpointer module
-  package:
-    name: 'python-jsonpointer'
-    state: present
+- include_tasks: ubuntu.yml
+  when: ansible_distribution in ["Ubuntu","Debian"]
 
 - name: Ensure /etc/docker exists
   file:
