@@ -1,0 +1,10 @@
+---
+- name: Install docker python module
+  package:
+    name: 'python-docker-py'
+    state: present
+
+- name: Install python jsonpointer module
+  package:
+    name: 'python-jsonpointer'
+    state: present
