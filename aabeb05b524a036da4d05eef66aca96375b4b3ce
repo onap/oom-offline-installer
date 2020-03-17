@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32b37495_a9d111d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-03-17T12:14:25Z",
+      "side": 1,
+      "message": "Please fix the title - it should be \"docker-dind\" I guess.",
+      "range": {
+        "startLine": 7,
+        "startChar": 35,
+        "endLine": 7,
+        "endChar": 46
+      },
+      "revId": "aabeb05b524a036da4d05eef66aca96375b4b3ce",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
