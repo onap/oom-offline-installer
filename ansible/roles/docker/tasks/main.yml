@@ -6,16 +6,11 @@
   notify:
     - Restart Docker
 
-- name: Install docker python module
+- name: Install required packages
   package:
-    name: 'python-docker-py'
+    name: "{{ item }}"
     state: present
-
-
-- name: Install python jsonpointer module
-  package:
-    name: 'python-jsonpointer'
-    state: present
+  loop: "{{ packages[ansible_os_family] }}"
 
 - name: Ensure /etc/docker exists
   file:
