@@ -50,7 +50,7 @@
   make:
     chdir: "{{ app_helm_charts_infra_directory }}"
     params:
-      SKIP_LINT: TRUE
+      SKIP_LINT: "TRUE"
     target: "{{ item }}"
   loop: "{{ app_helm_build_targets }}"
   environment:
