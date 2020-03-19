@@ -15,16 +15,26 @@ container_offline_volume="/mnt/offline/"
 # Path inside container where will be created repository
 container_repo_volume="/mnt/repo/"
 
+# Path inside container where will be stored additional packages lists
+container_list_volume="/mnt/additional-lists/"
+
 # Show help for using this script
 help () {
-    echo "Script for run docker container creating DEB or RPM repository"
-    echo "Type of repository is created based on user input or if input is empty type of host OS"
-    echo "usage: create_repo.sh [-d|--destination-repository output directory] [-c|--cloned-directory input directory] [-t|--target-platform (ubuntu/rhel/centos) target platform for repository]"
-    echo "-h --help: Show this help"
-    echo "-d --destination-repository: set path where will be stored RPM packages. Default value is current directory"
-    echo "-c --cloned-directory: set path where is stored this script and docker-entrypoint script (offline-installer/build directory). Fill it just when you want to use different script/datalists"
-    echo "-t --target-platform: set target platform for repository"
-    echo "If build folder from offline repository is not specified will be used default path of current folder."
+cat <<EOF
+Script for run docker container creating DEB or RPM repository
+
+Type of repository is created based on user input or if input is empty type of host OS
+
+usage: create_repo.sh [-d|--destination-repository output directory] [-c|--cloned-directory input directory] [-t|--target-platform (ubuntu/rhel/centos) target platform for repository]
+-h --help: Show this help
+-d --destination-repository: set path where will be stored RPM packages. Default value is current directory
+-c --cloned-directory: set path where is stored this script and docker-entrypoint script (offline-installer/build directory). Fill it just when you want to use different script/datalists
+-t --target-platform: set target platform for repository
+-a --additional-lists: add additional packages lists in same directory as main package list
+                       can be used multiple times for more additional lists
+
+If build folder from offline repository is not specified will be used default path of current folder.
+EOF
 }
 
 # Get type of distribution
@@ -76,10 +86,15 @@ do
             # Sets path where will be repository created
             volume_repo_directory="$2"
             ;;
-        -t|--type)
+        -t|--target-platform)
             # Repository type (rpm/deb)
             # Sets target platform for repository
             target_input="$2"
+            ;;
+        -a|--additional-lists)
+            # Array with more packages lists
+            # Add more packages lists to download
+            additional_lists+=("$2")
             ;;
         *)
             # unknown option
@@ -124,15 +139,28 @@ if [ ! "$(docker ps -q -f name=$container_name)" ]; then
     # run repo container
     # name of container $container_name
     # docker entrypoint script from mounted volume
-    #
+    # with dynamic parameters
+    # mount additional packages lists to container
+    paramArray=()
+    mountedLists=()
+    paramArray+=(--directory ${container_repo_volume})
+    paramArray+=(--list ${container_offline_volume}data_lists/)
+    paramArray+=(--packages-lists-path ${container_list_volume})
+    [[ ! ${#additional_lists[@]} -eq 0 ]] && \
+        for array_list in "${additional_lists[@]}";
+        do
+            paramArray+=(--additional-lists "${array_list##*/}") && \
+            mountedLists+=(-v ${array_list}:${container_list_volume}${array_list##*/})
+        done
+
     docker run -d \
                --name $container_name \
                -v ${volume_offline_directory}:${container_offline_volume} \
                -v ${volume_repo_directory}:${container_repo_volume} \
+               "${mountedLists[@]}" \
                --rm \
                --entrypoint="${container_offline_volume}docker-entrypoint.sh" \
                     -it ${docker_image} \
-                    --directory ${container_repo_volume} \
-                    --list ${container_offline_volume}data_lists/
+                    "${paramArray[@]}"
     docker logs $(docker ps --filter "name=${container_name}" --format '{{.ID}}' -a) -f
 fi

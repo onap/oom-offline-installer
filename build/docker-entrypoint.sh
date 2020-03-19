@@ -21,16 +21,27 @@ OFFLINE_REPO_DIR=""
 # Path where is stored onap_rpm.list and onap_deb.list file
 PCKG_LIST_DIR=""
 
+# Path where is stored additional packages lists
+ADD_LIST_DIR=""
+
+# Show help for using this script
 help () {
-    echo -e "Docker entrypoint script for creating RPM/DEB repository based on linux distribution where script is running\n"
-    echo "usage: create-repo.sh [-d|--directory output directory] [-l|--list input rpm/deb list directory]"
-    echo "-h --help: Show this help"
-    echo "-d --directory: set path for repo directory in container"
-    echo -e "-l --list: set path where rpm or deb list is stored in container\n"
-    echo "Both paths have to be set with shared volume between"
-    echo "container and host computer. Default path in container is: /tmp/"
-    echo "Repository will be created at: /<path>/resources/pkg/rhel/"
-    echo "RMP/DEB list is stored at: ./data_list/"
+cat <<EOF
+Docker entrypoint script for creating RPM/DEB repository based on linux distribution where script is running
+
+usage: create-repo.sh [-d|--directory output directory] [-l|--list input rpm/deb list directory] [-a|--additional-lists list1.list]
+-h --help: Show this help
+-d --directory: set path for repo directory in container
+-l --list: set path where rpm or deb list is stored in container
+-a --additional-lists: add name of additional packages list
+                       can be used multiple times for more additional lists
+-p --packages-lists-path: set path for other additional packages lists
+
+Both paths have to be set with shared volume between
+container and host computer. Default path in container is: /tmp/
+Repository will be created at: /<path>/resources/pkg/rhel/
+RMP/DEB list is stored at: ./data_list/
+EOF
 }
 
 # Getting input parametters
@@ -56,6 +67,15 @@ do
             # List parametter
             # Sets path where is stored onap_rpm.list or onap_deb.list file
             PCKG_LIST_DIR="$2"
+            ;;
+        -p|--packages-lists-path)
+            # Path parametter
+            # Sets path where is stored additional packages lists
+            ADD_LIST_DIR="$2"
+            ;;
+        -a|--additional-lists)
+            # Array of additional packages lists
+            ADDITIONAL_LISTS+=("$2")
             ;;
         *)
             # unknown option
@@ -83,6 +103,13 @@ then
     PCKG_LIST_DIR="/tmp/offline/data_list/"
 fi
 
+# Testing if additional packages list parametter was used
+# If not variable is sets to default value /tmp/additional-lists
+if test -z "$PCKG_LIST_DIR"
+then
+    PCKG_LIST_DIR="/tmp/additional-lists/"
+fi
+
 case "$distro_type" in
     ubuntu)
         # Change current working dir
@@ -108,26 +135,49 @@ case "$distro_type" in
         # Download all packages from onap_deb.list via apt-get to repository folder
         for i in $(cat ${PCKG_LIST_DIR}onap_deb.list | awk '{print $1}');do apt-get download $i -y; done
         for i in $(cat ${PCKG_LIST_DIR}onap_deb.list | awk '{print $1}');
-        do
-            for depends in $(apt-cache depends $i | grep -E 'Depends' | cut -d ':' -f 2,3 | sed -e s/'<'/''/ -e s/'>'/''/);
-                do apt-get download $depends -y;
-            done;
-        done
+                    do
+                    for depends in $(apt-cache depends $i | grep -E 'Depends' | cut -d ':' -f 2,3 | sed -e s/'<'/''/ -e s/'>'/''/);
+                        do apt-get download $depends -y;
+                    done;
+                done
+
+        # Download all packages with dependecies from all additional packages lists via apt-get to repository folder
+        if ! [ ${#ADDITIONAL_LISTS[@]} -eq 0 ]; then
+            for list in $ADDITIONAL_LISTS
+            do
+                for i in $(cat ${ADD_LIST_DIR}$list | awk '{print $1}');do apt-get download $i -y; done
+                for i in $(cat ${ADD_LIST_DIR}$list | awk '{print $1}');
+                    do
+                    for depends in $(apt-cache depends $i | grep -E 'Depends' | cut -d ':' -f 2,3 | sed -e s/'<'/''/ -e s/'>'/''/);
+                        do apt-get download $depends -y;
+                    done;
+                done
+            done
+        fi
 
         # In repository folder create gz package with deb packages
         dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz
     ;;
 
     rhel)
-        # Install createrepo package for create repository in folder
-        # and yum-utils due to yum-config-manager for adding docker repository
-        yum install createrepo yum-utils -y
+        # Install createrepo package for create repository in folder,
+        # yum-utils due to yum-config-manager for adding docker repository
+        # and epel-release for additional packages (like jq etc.)
+        yum install createrepo yum-utils epel-release -y
 
         # Add official docker repository
         yum-config-manager --add-repo=https://download.docker.com/linux/centos/7/x86_64/stable/
 
         # Download all packages from onap_rpm.list via yumdownloader to repository folder
         for i in $(cat ${PCKG_LIST_DIR}onap_rpm.list | awk '{print $1}');do yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y; done
+
+        # Download all packages from all additional packages lists via apt-get to repository folder
+        if ! [ ${#ADDITIONAL_LISTS[@]} -eq 0 ]; then
+            for list in $ADDITIONAL_LISTS
+            do
+                for i in $(cat ${ADD_LIST_DIR}$list | awk '{print $1}');do yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y; done
+            done
+        fi
 
         # In repository folder create repositor
         createrepo $OFFLINE_REPO_DIR
