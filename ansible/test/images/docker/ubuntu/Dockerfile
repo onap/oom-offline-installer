@@ -5,7 +5,7 @@ FROM ubuntu:${RELEASE}
 ENV container docker
 
 # Install necessary packages
-RUN apt-get update && apt-get -y install dbus systemd openssh-server
+RUN apt-get update && apt-get -y install dbus systemd openssh-server iproute2 python3-docker
 
 # Create symlink python3 -> python
 RUN ln -s /usr/bin/python3 /usr/bin/python
