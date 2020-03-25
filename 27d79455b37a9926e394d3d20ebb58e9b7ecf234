@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8a4fd13_a8208853",
+        "filename": "ansible/roles/dns/molecule/default/molecule.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2020-03-25T07:23:27Z",
+      "side": 1,
+      "message": "why you need this explicitly?",
+      "range": {
+        "startLine": 32,
+        "startChar": 1,
+        "endLine": 34,
+        "endChar": 15
+      },
+      "revId": "27d79455b37a9926e394d3d20ebb58e9b7ecf234",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
