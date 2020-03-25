@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "858bddc0_bacec86e",
+        "filename": "ansible/roles/vncserver/molecule/Ubuntu/Dockerfile.j2",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-03-25T06:58:42Z",
+      "side": 1,
+      "message": "Remove the dnf, yum, apk and xbps-install. Get rid of python2",
+      "revId": "7f3e1f0cc07feaa5f9dcdb4a4e597201066c7a33",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
