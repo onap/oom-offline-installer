@@ -22,6 +22,30 @@
       "revId": "1cd55a01cfcc0bce1d4a108d133c24087034d2b2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c662bfb1_cac9d1f6",
+        "filename": "INFO.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 2319
+      },
+      "writtenOn": "2020-03-25T20:46:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f4ae69a_aac5a634",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 0
+      },
+      "revId": "1cd55a01cfcc0bce1d4a108d133c24087034d2b2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
