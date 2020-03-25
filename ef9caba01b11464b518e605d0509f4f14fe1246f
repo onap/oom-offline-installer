@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c529bf36_6f40e740",
+        "filename": "ansible/roles/nginx/molecule/default/molecule.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 3957
+      },
+      "writtenOn": "2020-03-25T07:22:06Z",
+      "side": 1,
+      "message": "default role now Ubuntu?",
+      "range": {
+        "startLine": 10,
+        "startChar": 41,
+        "endLine": 10,
+        "endChar": 54
+      },
+      "revId": "ef9caba01b11464b518e605d0509f4f14fe1246f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
