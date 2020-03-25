@@ -72,3 +72,13 @@ tsc:
         - type: 'Addition'
           name: 'Bartlomiej Grzybowski'
           link: 'https://lists.onap.org/g/onap-tsc/topic/32429690'
+        - type: 'Addition'
+          name: 'Sylvain Desbureaux'
+          # yamllint disable-line rule:line-length
+          link: 'https://lists.onap.org/g/onap-tsc/message/5177?p=,,,20,0,0,0::relevance,,committer+sylvain,20,2,0,32230994'
+        - type: 'Addition'
+          name: 'Krzysztof Opasiak'
+          # yamllint disable-line rule:line-length
+          link: 'https://lists.onap.org/g/onap-tsc/topic/committer_promotion_request/70242499?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,70242499'
+
+
