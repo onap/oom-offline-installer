@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8a4b7f6_f71728c5",
+        "filename": "ansible/roles/package-repository/molecule/default/molecule.yml",
+        "patchSetId": 10
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-03-26T09:17:04Z",
+      "side": 1,
+      "message": "Should not be here",
+      "range": {
+        "startLine": 39,
+        "startChar": 6,
+        "endLine": 39,
+        "endChar": 25
+      },
+      "revId": "5d62278104206139360088599a8b12a85f81f0e3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
