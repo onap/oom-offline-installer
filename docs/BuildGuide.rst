@@ -61,9 +61,9 @@ Subsequent steps are the same on both platforms:
 ::
 
     # install following packages
-    yum install -y docker-ce-18.09.5 python-pip git createrepo expect nodejs npm jq
+    yum install -y docker-ce-18.09.5 git createrepo expect nodejs npm jq
 
-    # install Python 3 (download scripts don't support Python 2 anymore)
+    # install Python 3
     yum install -y python36 python36-pip
 
     # docker daemon must be running on host
