@@ -66,6 +66,16 @@ committers:
       company: 'Samsung'
       id: 'm.zegan'
       timezone: 'Europe/Warsaw'
+    - name: 'Sylvain Desbureaux'
+      email: "sulvain.desbureaux@orange.com"
+      id: "sdesbure"
+      company: "Orange"
+      timezone: 'Europe/Paris'
+    - name: 'Krzysztof Opasiak'
+      email: 'k.opasiak@samsung.com'
+      company: 'Samsung'
+      id: 'kopasiak'
+      timezone: 'Europe/Warsaw'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
     changes:
