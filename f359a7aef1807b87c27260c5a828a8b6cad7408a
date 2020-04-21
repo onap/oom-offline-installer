@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05369de4_6aef52c8",
+        "filename": "ansible/roles/nginx/defaults/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-04-21T13:37:26Z",
+      "side": 0,
+      "message": "Should be mentioned in the comment why are some lines removed. For git it\u0027s SO-1917, for the xenial repo I couldn\u0027t find the dependency, but I\u0027m sure it\u0027s already obsolete",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 90
+      },
+      "revId": "f359a7aef1807b87c27260c5a828a8b6cad7408a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
