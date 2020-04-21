@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4aaeae32_372e0c49",
+        "filename": "ansible/roles/package-repository-check/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T11:36:20Z",
+      "side": 1,
+      "message": "For me it was good before - just remove the \"when\" condition and add Debian.yml.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 51
+      },
+      "revId": "5c62daef9688c6d6f816b5863d64ff500c14ed55",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9cbf36fa_28e88b8d",
+        "filename": "ansible/roles/package-repository-check/tasks/ubuntu.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T11:36:20Z",
+      "side": 1,
+      "message": "Why did you copy paste this task from roles/package-repository/tasks/main.yml to here?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 23
+      },
+      "revId": "5c62daef9688c6d6f816b5863d64ff500c14ed55",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05074d8c_65efb86e",
+        "filename": "ansible/roles/package-repository-check/tasks/ubuntu.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T11:36:20Z",
+      "side": 1,
+      "message": "I believe this code belongs to package-repository role, please see https://gerrit.onap.org/r/c/oom/offline-installer/+/101614",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 42,
+        "endChar": 37
+      },
+      "revId": "5c62daef9688c6d6f816b5863d64ff500c14ed55",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
