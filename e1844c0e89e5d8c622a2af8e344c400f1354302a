@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5545588d_3758c2f5",
+        "filename": "ansible/roles/chrony/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T11:46:56Z",
+      "side": 1,
+      "message": "This won\u0027t work since there is no offline ubuntu repository prepared, I guess there should be a relevant file in build/data_lists for debian os family with that package on the list. If it\u0027s done in some other commit then this one should be rebased.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 51
+      },
+      "revId": "e1844c0e89e5d8c622a2af8e344c400f1354302a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
