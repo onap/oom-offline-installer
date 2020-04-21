@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66ac633d_19a14bab",
+        "filename": "ansible/roles/helm/tasks/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T07:14:14Z",
+      "side": 1,
+      "message": "Is this comment valid? The package is marked \u0027present\u0027, not missing. Why this package is required at all for installing Helm binary?",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 31
+      },
+      "revId": "dd1e0abfd577ece914eb68f08a4d133717e04b6c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
