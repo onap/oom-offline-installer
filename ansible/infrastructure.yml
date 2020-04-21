@@ -29,3 +29,4 @@
         tasks_from: upload_root_ca.yml
       vars:
         certificates_local_dir: "{{ playbook_dir }}/certs"
+
