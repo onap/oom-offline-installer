@@ -1,0 +1,101 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e18880f_eb84a85f",
+        "filename": "ansible/roles/certificates/handlers/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T08:07:33Z",
+      "side": 1,
+      "message": "You don\u0027t have to define separate handlers for each distro - those handlers differ only in the command so it would suffice to parametrize it:\n\nRole defaults:\n  \u003ckeyname\u003e:\n    RedHat:\n      \u003ccmd_keyname\u003e: \u003ccustom command\u003e\n    Debian:\n      \u003ccmd_keyname\u003e: \u003ccustom command\u003e\n\nhandlers/main.yml:\n\n(...)\n command: \"{{ \u003ckeyname\u003e[ansible_os_family][\u003ccmd_keyname\u003e] }}\"\n(...)",
+      "revId": "d477c0bf9c34c454fcfecae66bf642a022d356cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "512415b0_4e37d9e4",
+        "filename": "ansible/roles/certificates/handlers/main.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T08:07:33Z",
+      "side": 1,
+      "message": "This condition and the one in line 6 shouldn\u0027t be there - that condition should appear in the caller only.",
+      "range": {
+        "startLine": 12,
+        "startChar": 2,
+        "endLine": 12,
+        "endChar": 51
+      },
+      "revId": "d477c0bf9c34c454fcfecae66bf642a022d356cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4431c4c6_e32c23a4",
+        "filename": "ansible/roles/certificates/molecule/ubuntu/certs",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T08:07:33Z",
+      "side": 1,
+      "message": "This symlink shouldn\u0027t be there, this dir is created by relevant certificate\u0027s role task.",
+      "revId": "d477c0bf9c34c454fcfecae66bf642a022d356cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1b62ccc_3ebc60b5",
+        "filename": "ansible/roles/certificates/molecule/ubuntu/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T08:07:33Z",
+      "side": 1,
+      "message": "empty line",
+      "revId": "d477c0bf9c34c454fcfecae66bf642a022d356cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04cc6c26_8f4680c4",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T08:07:33Z",
+      "side": 1,
+      "message": "I really think we should stick to ansible_os_family - it\u0027s more generic and you don\u0027t have to define a list, just \"RedHat\" or \"Debian\".",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 51
+      },
+      "revId": "d477c0bf9c34c454fcfecae66bf642a022d356cd",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
