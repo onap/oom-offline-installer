@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c516a751_e8b35dd0",
+        "filename": "ansible/roles/docker/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T11:19:15Z",
+      "side": 1,
+      "message": "Same remark as in other commits - use ansible_os_family. And then it will suffice to:\n\n- include_tasks: \"{{ ansible_os_family }}\".yml\n\nand\n ansible/roles/docker/tasks/RedHat.yml\n ansible/roles/docker/tasks/Debian.yml\n\nBut in fact include isn\u0027t needed at all, please see comments in tasks/ubuntu.yml",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 51
+      },
+      "revId": "c25cfb94d0ba6d909712697a7457665bcd0914a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "015b5a3a_1ca81b5e",
+        "filename": "ansible/roles/docker/tasks/ubuntu.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T11:19:15Z",
+      "side": 1,
+      "message": "Just define a map in role\u0027s defaults similar to:\n\npackages:\n RedHat:\n  -pkg1\n Debian:\n  -pkg1\n  -pkg2\n\nAnd then directly in main.yml loop over it:\n\n- name: Install required packages\n  package:\t\n    name: \"{{ item }}\"\n  loop: \"{{ packages[ansible_os_family] }}\"\n\nNo conditional includes and separate task files needed.",
+      "revId": "c25cfb94d0ba6d909712697a7457665bcd0914a6",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
