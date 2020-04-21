@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a0cfbf2_2f9e2eeb",
+        "filename": "ansible/roles/nfs/defaults/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T09:59:34Z",
+      "side": 1,
+      "message": "The key of this dict is referenced as \"ansible_os_family\" and there is no such value for this fact as \"Ubuntu\", I think you\u0027re mixing ansible_os_family with ansible_distribution. Please leverage ansible_os_family, it\u0027s more general and in that case only one key for Debian will be left. Same concerns nfs_services key below.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 23
+      },
+      "revId": "2619b9525d6fd3ca76dbd24e6d1bdbebdec9ffc8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16e8f3d4_02d6caf0",
+        "filename": "ansible/roles/nfs/molecule/ubuntu/molecule.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T09:59:34Z",
+      "side": 1,
+      "message": "empty line",
+      "revId": "2619b9525d6fd3ca76dbd24e6d1bdbebdec9ffc8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e723acb_3938f7cf",
+        "filename": "ansible/roles/nfs/vars/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T09:59:34Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be here but in role\u0027s default instead. Also no need for inline jinja, just do it similarly to how it\u0027s done in ansible/roles/nfs/tasks/main.yml line 21.",
+      "revId": "2619b9525d6fd3ca76dbd24e6d1bdbebdec9ffc8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
