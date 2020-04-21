@@ -7,7 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: kubernetes-node-1
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
     pre_build_image: true
     privileged: true
     command: ${MOLECULE_DOCKER_COMMAND:-""}
@@ -20,9 +20,8 @@ platforms:
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /dockerdata-nfs
-
   - name: kubernetes-node-2
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
     pre_build_image: true
     privileged: true
     command: ${MOLECULE_DOCKER_COMMAND:-""}
@@ -40,12 +39,16 @@ provisioner:
   inventory:
     links:
       group_vars: ../../../../group_vars
-      host_vars: host_vars
+      host_vars: ../default/host_vars
   lint:
     name: ansible-lint
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
 scenario:
-  name: default
+  name: ubuntu
 verifier:
   name: testinfra
   lint:
     name: flake8
+  directory: ../default/tests
