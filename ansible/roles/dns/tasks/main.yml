@@ -4,6 +4,12 @@
     path: "{{ app_data_path }}/cfg"
     state: directory
 
+- name: Stop systemd-resolved daemon - Ubuntu
+  systemd:
+    name: systemd-resolved
+    state: stopped
+  when: ansible_distribution in ["Ubuntu","Debian"]
+
 - name: Create simulated hostnames file
   template:
     src: simulated_hosts.j2
