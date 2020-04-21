@@ -22,6 +22,30 @@
       "revId": "f359a7aef1807b87c27260c5a828a8b6cad7408a",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f875034c_f56829f8",
+        "filename": "ansible/roles/nginx/defaults/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T13:39:55Z",
+      "side": 0,
+      "message": "Is the removal of those in any way related to Ubuntu porting? If no I think it should be separate commit, otherwise it\u0027s a mess.",
+      "parentUuid": "05369de4_6aef52c8",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 90
+      },
+      "revId": "f359a7aef1807b87c27260c5a828a8b6cad7408a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
