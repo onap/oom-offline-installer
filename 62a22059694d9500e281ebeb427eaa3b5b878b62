@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c46e405_a3258fef",
+        "filename": "ansible/roles/certificates/tasks/upload_root_ca.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-21T13:34:41Z",
+      "side": 1,
+      "message": "Is the looping needed here? It\u0027s only one path so wouldn\u0027t \"dest: root_ca_path[ansible_os_family]\" and redefine the defaults as\n\nroot_ca_path:\n  RedHat: \"/etc/pki/ca-trust/source/anchors/\"\t\n  Debian: \"/usr/local/share/ca-certificates/\"\n\nsuffice?",
+      "revId": "62a22059694d9500e281ebeb427eaa3b5b878b62",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
