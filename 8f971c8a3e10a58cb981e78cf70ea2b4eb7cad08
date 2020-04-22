@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15bfc879_242c8299",
+        "filename": "ansible/roles/nginx/vars/main.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-22T09:26:15Z",
+      "side": 1,
+      "message": "Is it possible to define it in role defaults and then reference it in those defaults? If yes I\u0027d for it. Also I\u0027d use ansible_os_family...",
+      "revId": "8f971c8a3e10a58cb981e78cf70ea2b4eb7cad08",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
