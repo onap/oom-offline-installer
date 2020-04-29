@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee546bd8_aae049f0",
+        "filename": "ansible/roles/package-repository-check/tasks/Debian.yml",
+        "patchSetId": 7
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-04-29T13:46:36Z",
+      "side": 1,
+      "message": "Install",
+      "range": {
+        "startLine": 22,
+        "startChar": 8,
+        "endLine": 22,
+        "endChar": 14
+      },
+      "revId": "ff46a575010724b046546a42737b88931df76945",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
