@@ -111,12 +111,12 @@ Part 2. Download artifacts for offline installer
 .. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
 
 
-A RPM repository containing packages to be installed on all nodes needs to be created:
+Repository containing packages to be installed on all nodes needs to be created:
 
 ::
 
-    # run the docker container with -d parameter for destination directory with RPM packages
-    ./offline-installer/build/create_repo.sh -d $(pwd)
+    # run the docker container with -d parameter for destination directory with RPM packages and optionally use -t parameter for target platform. Supported target platforms are centos|rhel|ubuntu. If -t parameter is not given, default platform is based on host platform where script is running.
+    ./offline-installer/build/create_repo.sh -d $(pwd) -t centos|rhel|ubuntu
 
 .. note:: If script fails due to permissions issue, it could be a problem with SeLinux. It can be fixed by running:
     ::
