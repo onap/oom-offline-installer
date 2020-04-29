@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d5d21c6_9307fcec",
+        "filename": "ansible/roles/helm/tasks/main.yml",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-04-29T12:18:28Z",
+      "side": 1,
+      "message": "rephrase - suggesting:\n# Make utility is missing in Ubuntu by default and it\u0027s necessary for building local helm repository",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 89
+      },
+      "revId": "a409c94d290e981cd9d426db65d3b5f04cdb3717",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
