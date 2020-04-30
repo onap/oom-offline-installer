@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d76313c8_0cdde375",
+        "filename": "ansible/roles/helm/tasks/main.yml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-30T09:38:14Z",
+      "side": 1,
+      "message": "In that case below task belongs to the \"application\" role as it\u0027s needed there, not here I believe.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 1
+      },
+      "revId": "bb46a5dfb9196667758f7bdb675f26f197f0a755",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
