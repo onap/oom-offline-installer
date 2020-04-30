@@ -9,4 +9,3 @@
 
 #Set of tasks designated to failing fast if configured repos are not functioning properly
 - include_tasks: "{{ ansible_os_family }}.yml"
-  when: ansible_os_family == 'RedHat'
