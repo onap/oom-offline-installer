@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0272f32a_20b812f9",
+        "filename": "ansible/roles/package-repository-check/tasks/main.yml",
+        "patchSetId": 8
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-04-30T09:50:09Z",
+      "side": 1,
+      "message": "Why not just\n\n- include_tasks: \"{{ ansible_os_family }}.yml\"\n\nleft alone without any condition?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 37
+      },
+      "revId": "206ffc50e8160b497be2aad6b67e9b5b304f078f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
