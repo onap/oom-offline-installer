@@ -46,6 +46,13 @@
   when: "'local' not in helm_repo_list.stdout"
   changed_when: true  # when executed its a changed type of action
 
+# Make utility is missing in Ubuntu by default and it's necessary for building local helm repository
+- name: Install build-essential
+  package:
+    name: build-essential
+    state: present
+  when: ansible_os_family == "Debian"
+
 - name: Build local helm repository
   make:
     chdir: "{{ app_helm_charts_infra_directory }}"
