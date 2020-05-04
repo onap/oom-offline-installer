@@ -2,7 +2,7 @@
 docker:
   log_max_size: 100m
   log_max_file: 3
-packages:
+custom_packages:
   RedHat:
     - python-docker-py
     - python-jsonpointer
