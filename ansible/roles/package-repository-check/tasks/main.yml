@@ -7,5 +7,5 @@
 # Successfull prior invocation of 'package-repository' and 'nginx' role on infrastructure hosts
 # is prerequisite for playing this one on 'kubernetes' group.
 
-#Set of tasks designated to failing fast if configured repos are not functioning properly
+# Set of tasks designated to failing fast if configured repos are not functioning properly
 - include_tasks: "{{ ansible_os_family }}.yml"

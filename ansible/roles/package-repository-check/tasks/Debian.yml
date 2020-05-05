@@ -12,7 +12,7 @@
         update_cache: yes
         state: latest
       tags:
-        - skip_ansible_lint # Prevent '[403] Package installs should not use latest' ansible lint task rule
+        - skip_ansible_lint  # Prevent '[403] Package installs should not use latest' ansible lint task rule
   rescue:
     - name: Fail if apt cache updating failed
       fail:
@@ -31,4 +31,6 @@
     create: yes
 
 - name: Make DNS settings permanent
-  command: service resolvconf restart
+  service:
+    name: resolvconf
+    state: restarted

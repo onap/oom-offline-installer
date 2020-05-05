@@ -1,0 +1,14 @@
+# Molecule managed
+
+{% if item.registry is defined %}
+FROM {{ item.registry.url }}/{{ item.image }}
+{% else %}
+FROM {{ item.image }}
+{% endif %}
+
+RUN apt-get update && apt-get install -y python sudo bash ca-certificates && apt-get clean
+
+# /etc/resolv.conf cannot be edited in docker container
+# due to cannot be installed resolvconf
+# https://github.com/moby/moby/issues/1297
+RUN echo "resolvconf resolvconf/linkify-resolvconf boolean false" | debconf-set-selections
