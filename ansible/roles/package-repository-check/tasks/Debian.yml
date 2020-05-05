@@ -31,4 +31,6 @@
     create: yes
 
 - name: Make DNS settings permanent
-  command: service resolvconf restart
+  service:
+    name: resolvconf
+    state: restarted
