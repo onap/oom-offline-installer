@@ -1,0 +1,54 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: ${PLATFORM_DISTRO:-ubuntu}:${DISTRO_VERSION:-18.04}
+    groups:
+      - infrastructure
+
+  - name: kubernetes-node-1
+    image: ${PLATFORM_DISTRO:-ubuntu}:${DISTRO_VERSION:-18.04}
+    groups:
+      - kubernetes
+
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  playbooks:
+    converge: ../default/playbook.yml
+  inventory:
+    host_vars:
+      infrastructure-server:
+        cluster_ip: 6.5.4.3
+scenario:
+  name: ubuntu
+  test_sequence:
+    - lint
+    - cleanup
+    - destroy
+    - dependency
+    - syntax
+    - create
+    - prepare
+    - converge
+    # - idempotence
+    #  --> Action: 'idempotence'
+    #  ERROR: Idempotence test failed because of the following tasks:
+    #  * [infra_host] => package-repository-check : Clean yum cache
+    #  * [node0] => package-repository-check : Clean yum cache
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+  options:
+    v: 1

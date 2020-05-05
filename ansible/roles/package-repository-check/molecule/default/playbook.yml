@@ -1,0 +1,5 @@
+---
+- name: Activate repository on node host
+  hosts: all
+  roles:
+    - package-repository-check

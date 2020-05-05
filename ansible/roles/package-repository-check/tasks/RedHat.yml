@@ -12,7 +12,7 @@
         update_cache: yes
         state: latest
       tags:
-        - skip_ansible_lint # Prevent '[403] Package installs should not use latest' ansible lint task rule
+        - skip_ansible_lint  # Prevent '[403] Package installs should not use latest' ansible lint task rule
   rescue:
     - name: Fail if yum cache updating failed
       fail:
