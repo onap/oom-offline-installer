@@ -8,7 +8,7 @@ rancher/coreos-etcd:v3.3.10-rancher1
 rancher/coreos-flannel:v0.11.0
 rancher/coreos-flannel:v0.11.0-rancher1
 rancher/flannel-cni:v0.3.0-rancher5
-rancher/hyperkube:v1.15.4-rancher1
+rancher/hyperkube:v1.15.9-rancher1
 rancher/k8s-dns-dnsmasq-nanny:1.15.0
 rancher/k8s-dns-kube-dns:1.15.0
 rancher/k8s-dns-sidecar:1.15.0
@@ -16,6 +16,6 @@ rancher/metrics-server:v0.3.3
 rancher/nginx-ingress-controller-defaultbackend:1.5-rancher1
 rancher/nginx-ingress-controller:nginx-0.25.1-rancher1
 rancher/pause:3.1
-rancher/rke-tools:v0.1.50
+rancher/rke-tools:v0.1.52
 weaveworks/weave-kube:2.5.2
 weaveworks/weave-npc:2.5.2
