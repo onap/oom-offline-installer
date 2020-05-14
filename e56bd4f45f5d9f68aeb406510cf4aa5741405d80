@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da012668_401c8780",
+        "filename": "ansible/roles/package-repository-check/molecule/ubuntu/molecule.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-05-14T08:03:58Z",
+      "side": 1,
+      "message": "cluster_ip is needed on ubuntu and not needed on rhel?",
+      "revId": "e56bd4f45f5d9f68aeb406510cf4aa5741405d80",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
