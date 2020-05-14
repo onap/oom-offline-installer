@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a14b1b32_ace9d64a",
+        "filename": "ansible/roles/package-repository-check/molecule/ubuntu/molecule.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-05-14T06:04:43Z",
+      "side": 1,
+      "message": "I believe we don\u0027t need those here for this role?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 44
+      },
+      "revId": "7e2cb5d76ac6c7ff52c0de99e29d4a676d45a179",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
