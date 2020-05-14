@@ -16,6 +16,24 @@
       "revId": "e56bd4f45f5d9f68aeb406510cf4aa5741405d80",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4619e492_d55847f7",
+        "filename": "ansible/roles/package-repository-check/molecule/ubuntu/molecule.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 5855
+      },
+      "writtenOn": "2020-05-14T08:24:45Z",
+      "side": 1,
+      "message": "Yes. There is a problem with the dns settings disappearing in ubuntu. After installing docker, the record will disappear from /etc/resolv.conf file. In this role I adding same record again. Adding record to file using host variable: \"{{ hostvars[groups.infrastructure[0]].cluster_ip }}\". This happening only in Debian.yml playbook. So in Rhel molecule test isn\u0027t necessary to have this variable.",
+      "parentUuid": "da012668_401c8780",
+      "revId": "e56bd4f45f5d9f68aeb406510cf4aa5741405d80",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
