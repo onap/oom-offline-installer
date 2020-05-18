@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e8c42c0_d827a302",
+        "filename": "ansible/roles/package-repository/tasks/main.yml",
+        "patchSetId": 17
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-05-18T06:48:00Z",
+      "side": 1,
+      "message": "There is no constraint on os family for this task so is this valid?",
+      "range": {
+        "startLine": 12,
+        "startChar": 33,
+        "endLine": 12,
+        "endChar": 42
+      },
+      "revId": "5e568ffb00ea67ce76d5644945e8368fd94cab6e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
