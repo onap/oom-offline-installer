@@ -48,10 +48,11 @@ function run_molecule() {
 #######################################################################$
 #                           MAIN                                      #$
 #######################################################################$
+echo "----------   ONAP OFFLINE INSTALLER - CHANGE VERIFICATION START   ----------"
 FAILED_ROLES=()
 ALL_PLAYBOOKS=(`ls -d ansible/test/play-*`) # enumerate all playbook tests for later usage
 # Setup environment
-prep_ubuntu_16_04_for_molecule
+prep_ubuntu_16_04_for_molecule > ubuntu_preparation.log
 
 # Check for changes in Ansible roles
 ROLE_CHANGES=(`git diff HEAD^ HEAD --name-only ansible/roles | cut -f 1-3 -d "/" | sort -u`)
@@ -135,3 +136,4 @@ else
   echo "Verification failed for ${FAILED_ROLES[*]}"
   exit 1
 fi
+echo "----------   ONAP OFFLINE INSTALLER - CHANGE VERIFICATION END   ----------"
