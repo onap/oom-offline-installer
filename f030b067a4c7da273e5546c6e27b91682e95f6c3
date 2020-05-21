@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6272a9b6_6b0de183",
+        "filename": "ansible/test/bin/ci-molecule.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-05-21T13:49:56Z",
+      "side": 1,
+      "message": "We don\u0027t want to see the output in job log?",
+      "revId": "f030b067a4c7da273e5546c6e27b91682e95f6c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148d1a40_38b6a2eb",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/rhel.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-05-21T13:49:56Z",
+      "side": 1,
+      "message": "Strange way to loop, using \"loop\" not more readable?\nIsn\u0027t docker-ce-cli installed automatically as dependency? Why is it listed here explicitly?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "f030b067a4c7da273e5546c6e27b91682e95f6c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b72add44_b9c513bd",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/rhel.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-05-21T13:49:56Z",
+      "side": 1,
+      "message": "empty line",
+      "revId": "f030b067a4c7da273e5546c6e27b91682e95f6c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69a21a54_712ddd77",
+        "filename": "offline-installer-review.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2020-05-21T13:49:56Z",
+      "side": 1,
+      "message": "same comment as in ci-molecule.sh",
+      "revId": "f030b067a4c7da273e5546c6e27b91682e95f6c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
