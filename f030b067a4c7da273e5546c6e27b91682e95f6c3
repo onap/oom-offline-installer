@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "621eb62c_12e25a78",
+        "filename": "ansible/test/bin/ci-molecule.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-05-22T09:05:40Z",
+      "side": 1,
+      "message": "Nah it makes reading the log so hard. If I had full access to this Jenkins I would place this as build artifacts. I will have a look if LFN has option to do something like this",
+      "parentUuid": "6272a9b6_6b0de183",
+      "revId": "f030b067a4c7da273e5546c6e27b91682e95f6c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "148d1a40_38b6a2eb",
         "filename": "ansible/test/roles/prepare-docker-dind/tasks/rhel.yml",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2020-05-21T13:49:56Z",
       "side": 1,
       "message": "Strange way to loop, using \"loop\" not more readable?\nIsn\u0027t docker-ce-cli installed automatically as dependency? Why is it listed here explicitly?",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 44
+      },
+      "revId": "f030b067a4c7da273e5546c6e27b91682e95f6c3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c045219_8d078d89",
+        "filename": "ansible/test/roles/prepare-docker-dind/tasks/rhel.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 5239
+      },
+      "writtenOn": "2020-05-22T09:05:40Z",
+      "side": 1,
+      "message": "Looping is done inside the module (there is such example in Ansible documentation), adding loop here might also by less efficient. We will need to call package manager twice and what is more important calling it firs time for docker-ce we will get docker-ce-cli with wrong version just to be downgraded later to desired one. The last statement also explains why I use explicit version on cli client. (See Jira, to new version of the client is installed that\u0027s why we have failures in Jenkins)",
+      "parentUuid": "148d1a40_38b6a2eb",
       "range": {
         "startLine": 22,
         "startChar": 0,
