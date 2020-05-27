@@ -18,7 +18,10 @@
 
 - name: "Install docker"
   package:
-    name: "docker-ce-{{ docker_version }}"
+    name:
+      - "docker-ce-{{ docker_version }}"
+      - "docker-ce-cli-{{ docker_version }}"
     state: present
     allow_downgrade: true
   notify: Restart docker
+

@@ -33,7 +33,7 @@ ROLE_PATH=$1
 MOLECULE_CONTAINER=${MOLECULE_CONTAINER:-false}
 
 echo "Build all pre-build images"
-${LOCAL_PATH}/../images/docker/build-all.sh
+${LOCAL_PATH}/../images/docker/build-all.sh > image_build.log
 
 # Use Molecule container
 if [ "${MOLECULE_CONTAINER}" == "true" ]; then
