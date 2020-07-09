@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -191,6 +191,7 @@ helm_undeploy()
 {
     msg "Undeploy helm release name: ${1}"
     helm undeploy ${1} --purge
+    sleep 15s
 }
 
 # arg: <job name>
@@ -212,41 +213,64 @@ delete_job()
     done
 }
 
-# arg: <resource> <release name>
+#arg: <component>
+get_resources_for_component()
+{
+
+helm status $1 | awk -f <(cat - <<-'EOD'
+BEGIN {
+  work="no"
+  kind=""
+  a["dummy"]=""
+}
+
+$1 ~ ":" {
+  if ( $1 == "RESOURCES:" ) {
+          work="yes"
+} else {
+  work="no"
+}
+
+}
+
+$1 == "==>" {
+  split($2, a, "[/(]")
+  kind=a[2]
+}
+
+$1 != "NAME" && $1 != "==>" && work == "yes" && $1 !~ ":" && $1 != "" {
+  printf "%s/%s\n", kind, $1
+}
+
+EOD
+)
+}
+
+# arg: <resource>
 delete_resource()
 {
-    _resource="$1"
-    _release="$2"
+    local _resource="$1"
+    local _kind="${_resource%/*}"
+    local _name="${_resource#*/}"
 
-    msg "Delete ${_resource} for ${_release}..."
-    {
-        kubectl get ${_resource} -n ${NAMESPACE} \
-            --ignore-not-found=true \
-            --selector="release=${_release}" \
-            --no-headers=true
 
-        # this is due to missing "release" label in some pods
-        # grep for the rescue...
-        kubectl get ${_resource} -n ${NAMESPACE} \
-            --no-headers=true | grep "^${_release}[-]"
-    } | awk '{print $1}' | sort -u | while read -r _name _rest ; do
-            echo "Deleting '${_name}'"
-            kubectl delete ${_resource} -n ${NAMESPACE} \
-                --cascade=true \
-                --now=true \
-                --wait=true \
-                ${_name} \
-                2>&1 | grep -iv 'not[[:space:]]*found'
+    if kubectl get ${_resource} >/dev/null 2>&1; then
+        msg "${_resource} has not been removed with helm undeploy, manual removal is required. Proceeding"
+        kubectl delete ${_resource} -n ${NAMESPACE} \
+            --cascade=true \
+            --now=true \
+            --wait=true \
+            2>&1 | grep -iv 'not[[:space:]]*found'
 
-            # wait for resource to be deleted
-            _output=start
-            while [ -n "$_output" ] && sleep 1 ; do
-                _output=$(kubectl get ${_resource} -n ${NAMESPACE} \
-                    --ignore-not-found=true \
-                    --no-headers=true \
-                    --field-selector="metadata.name=${_name}")
-            done
+        # wait for resource to be deleted
+        _output=start
+        while [ -n "$_output" ] && sleep 1 ; do
+            _output=$(kubectl get ${_kind} ${_name} -n ${NAMESPACE} \
+                --ignore-not-found=true \
+                --no-headers=true )
         done
+        msg "Done"
+    fi
 }
 
 delete_namespace()
@@ -267,7 +291,18 @@ delete_namespace()
     done
 }
 
-# arg: [optional: subdir]
+delete_persistent_volume()
+{
+    _persistent_volume=$1
+     if kubectl get ${_persistent_volume} >/dev/null 2>&1; then
+          msg "${_persistent_volume} has not been removed with helm undeploy, manual removal is required. Proceeding"
+          #very often k8s hangs on Terminating state for pv due to  still active pvc. It is better to delete pvc directly
+         _claim=$(kubectl get ${_persistent_volume} -o jsonpath='{ .spec.claimRef.name}')
+         delete_resource PersistentVolumeClaim/${_claim}
+     fi
+}
+
+# arg: [optional: directory]
 delete_storage()
 {
     _node=$(kubectl get nodes \
@@ -280,15 +315,11 @@ delete_storage()
         error "Could not list kubernetes nodes - SKIPPING DELETION"
     else
         if [ -n "$1" ] ; then
-            msg "Delete directory '${VOLUME_STORAGE}/${1}' on $_node"
-            ssh -T $_node <<EOF
-rm -rf "${VOLUME_STORAGE}/${1}"
-EOF
+            msg "Delete directory '${1}' on $_node"
+            ssh $_node "rm -rf '${1}'"
         else
             msg "Delete directories '${VOLUME_STORAGE}/*' on $_node"
-            ssh -T $_node <<EOF
-find "${VOLUME_STORAGE}" -maxdepth 1 -mindepth 1 -exec rm -rf '{}' \;
-EOF
+            ssh $_node "find '${VOLUME_STORAGE}' -maxdepth 1 -mindepth 1 -exec rm -rf '{}' \;"
         fi
     fi
 }
@@ -308,13 +339,7 @@ docker_cleanup()
 
     for _node in $_nodes ; do
         msg "Docker cleanup on $_node"
-        {
-            ssh -T $_node >/dev/null <<EOF
-if which docker >/dev/null ; then
-    docker system prune --force --all --volumes
-fi
-EOF
-        } &
+        ssh $_node "docker system prune --force --all --volumes" >/dev/null &
     done
 
     msg "We are waiting now for docker cleanup to finish on all nodes..."
@@ -338,28 +363,57 @@ is_helm_serve_running()
 # arg: <release name>
 undeploy_component()
 {
-    _chart=$(echo "$1" | sed 's/[^-]*-//')
-    helm_undeploy ${1}
+    local _component=$1
 
-    # for all kubernetes resources: kubectl api-resources
-    # TODO: does deleted secret per component break something?
-    for x in jobs \
-        deployments \
-        services \
-        replicasets \
-        statefulsets \
-        daemonsets \
-        pods \
-        pvc \
-        pv \
-        ;
-    do
-        delete_resource ${x} ${1}
+    #Becouse Helm undeploy is not reliable: Gathering resources assigned to componen to track and remove orphans later
+    _component_resources=($(get_resources_for_component ${_component}))
+
+    declare -a _persistent_volumes
+    declare -a _standard
+    declare -a _unknown_kinds
+
+    for resource in ${_component_resources[@]}; do
+        case $resource in
+            CronJob/* | Job/* | Secret/* | ConfigMap/* | Pod/* | Service/* | Deployment/* | StatefulSet/*)
+                _standard+=(${resource});;
+            #Ignoring PVC, they will be handled along with PV as 'helm' status does not return them for some components
+            PersistentVolumeClaim/*)
+                ;;
+            PersistentVolume/*)
+                _persistent_volumes+=(${resource});;
+            *)
+                _unknown_kinds+=(${resource})
+        esac
     done
 
-    if [ -n "$VOLUME_STORAGE" ] ; then
-        msg "Persistent volume data deletion in directory: ${VOLUME_STORAGE}/${1}"
-        delete_storage "$1"
+
+    #Gathering physical location of directories for persistent volumes to delete them after undeploy
+    declare -a _physical_locations
+    for volume in ${_persistent_volumes[@]}; do
+        _physical_locations+=($(kubectl get ${volume} -o jsonpath='{ .spec.hostPath.path}' ))
+    done
+
+    helm_undeploy ${_component}
+
+    #Manual items removal
+    for resource in ${_standard[@]}; do
+        delete_resource ${resource}
+    done
+
+    for volume in ${_persistent_volumes[@]}; do
+        delete_persistent_volume ${volume}
+    done
+
+    for subdir in ${_physical_locations[@]}; do
+        delete_storage ${subdir}
+    done
+
+    if [ "${#_unknown_kinds[@]}" -ne 0 ] ; then
+        for resource in ${_unknown_kinds[@]}; do
+            error "Untracked resource kind present: ${resource}, attempting to delete it..."
+            delete_resource ${resource}
+        done
+        return
     fi
 }
 
