@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a27692f_0225a754",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "please align indentation within awk script",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 226,
+        "endChar": 1
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebae6a9e_ed4aedc6",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "please declare vars inside function with `local` statement",
+      "range": {
+        "startLine": 253,
+        "startChar": 4,
+        "endLine": 253,
+        "endChar": 9
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e648e2c3_78d0d8e1",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "As you\u0027ve already switched from POSIX sh to bash, I\u0027d suggest to use internal string substitution operator instead of calling additional subprocess to parse variable.\nYou can achieve this and next line with following parameter substitution:\n${_resource%/*}, ${_resource#*/}",
+      "range": {
+        "startLine": 253,
+        "startChar": 32,
+        "endLine": 253,
+        "endChar": 47
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f259cb_2dc6dbd4",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "persistent*",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 24
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dcef6cab_e9846570",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "you could actually return resources to a list `x\u003d($(...))` and then later iterate in loops more robustly `for y in ${x[@]}`.",
+      "range": {
+        "startLine": 368,
+        "startChar": 0,
+        "endLine": 368,
+        "endChar": 4
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f9bdc89_e8862e76",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 372,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "local",
+      "range": {
+        "startLine": 370,
+        "startChar": 4,
+        "endLine": 372,
+        "endChar": 19
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff817706_29464b0f",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "like below, I\u0027d suggest array variable",
+      "range": {
+        "startLine": 377,
+        "startChar": 16,
+        "endLine": 377,
+        "endChar": 25
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304b3731_532677a8",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "do we want to handle PVC specially as well? Just asking",
+      "range": {
+        "startLine": 378,
+        "startChar": 12,
+        "endLine": 378,
+        "endChar": 28
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2e40c5f_102ac4f2",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "I\u0027d also suggest array variable (declare -a) and later append to array `x+\u003d(\u0027new item\u0027)`",
+      "range": {
+        "startLine": 386,
+        "startChar": 4,
+        "endLine": 386,
+        "endChar": 23
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3552e373_bf03537d",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "-n",
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43445d27_1a858ff6",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "$ missing",
+      "range": {
+        "startLine": 407,
+        "startChar": 13,
+        "endLine": 407,
+        "endChar": 27
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039a4998_3848e68d",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-07-10T08:41:42Z",
+      "side": 1,
+      "message": "Don\u0027t we want to attempt to remove it anyway, maybe with some flag? There are few more \"interesting\" k8s objects that could be defined inside helm and it would be sad if healer would fail on them.",
+      "range": {
+        "startLine": 408,
+        "startChar": 15,
+        "endLine": 408,
+        "endChar": 66
+      },
+      "revId": "ebb9792747977282b8b13e4f868aa98c70eb8992",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
