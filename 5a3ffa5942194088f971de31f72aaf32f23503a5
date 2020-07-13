@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8ef0479_ed355558",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 4
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 5000
+      },
+      "writtenOn": "2020-07-13T07:45:14Z",
+      "side": 1,
+      "message": "Because",
+      "range": {
+        "startLine": 368,
+        "startChar": 5,
+        "endLine": 368,
+        "endChar": 13
+      },
+      "revId": "5a3ffa5942194088f971de31f72aaf32f23503a5",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
