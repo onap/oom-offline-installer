@@ -16,7 +16,7 @@ REMOTE_PASSWD=
 #User and password for docker login on localhost
 LOCAL_USER=
 LOCAL_PASSWD=
-IMAGE=`sed 's/^[^/]*\///g' <<< ${1}`
+IMAGE=`sed 's/^[^.]*\.[^/]*\///g' <<< ${1}`
 
 help()
 {
