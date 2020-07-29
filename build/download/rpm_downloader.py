@@ -66,7 +66,7 @@ class RpmDownloader(CommandDownloader):
             self._missing[dst].add(item)
         return self._missing
 
-    def _is_missing(self, item):
+    def _is_missing(self, item): # pylint: disable=W0613
         """
         Check if item is missing
         :param item: item to check

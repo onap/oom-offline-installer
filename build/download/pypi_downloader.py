@@ -47,7 +47,7 @@ class PyPiDownloader(CommandDownloader):
         log.warning('Check mode for pypi is not implemented.')
         return ''
 
-    def _is_missing(self, item):
+    def _is_missing(self, item): # pylint: disable=W0613
         """
         Check if item is missing
         :param item: item to check
