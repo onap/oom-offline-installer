@@ -126,7 +126,7 @@ if ! [[ "/$volume_repo_directory/" = *"/$expected_dir/"* ]]; then
             volume_repo_directory="$volume_repo_directory"/resources/pkg/deb
         ;;
         rhel)
-            volume_repo_directory="$volume_repo_directory"/resources/pkg/rhel
+            volume_repo_directory="$volume_repo_directory"/resources/pkg/rpm
         ;;
     esac
     [ ! -d "$volume_repo_directory" ] && mkdir -p $volume_repo_directory
