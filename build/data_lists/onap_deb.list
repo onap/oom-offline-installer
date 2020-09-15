@@ -55,3 +55,4 @@ libc-dev
 make
 binutils
 resolvconf
+bash-completion
