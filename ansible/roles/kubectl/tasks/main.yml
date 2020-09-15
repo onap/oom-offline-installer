@@ -5,3 +5,25 @@
     dest: "{{ kubectl_bin_dir }}/kubectl"
     remote_src: true
     mode: 0755
+
+- name: Install completion for the bash shell
+  package:
+    name: "{{ completion_package }}"
+    state: present
+
+- name: Generate shell autocompletion code for kubectl
+  command: kubectl completion bash
+  register: kubectl_completion
+  changed_when: false
+
+- name: Ensure bash completion dir exists
+  file:
+    path: "{{ completion_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Install bash autocompletion code for kubectl
+  copy:
+    content: "{{ kubectl_completion.stdout }}"
+    dest: "{{ completion_dir }}/kubectl"
+    mode: 0644
