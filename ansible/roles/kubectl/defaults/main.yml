@@ -1,2 +1,3 @@
 ---
 kubectl_bin_dir: /usr/local/bin
+kubectl_completion_dir: /etc/bash_completion.d
