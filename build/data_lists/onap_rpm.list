@@ -1,4 +1,5 @@
 audit-libs-python-2.8.4-4.el7.x86_64
+bash-completion-2.1-8.el7.noarch
 checkpolicy-2.5-8.el7.x86_64
 containerd.io-1.2.5-3.1.el7.x86_64
 container-selinux-2.107-1.el7_6.noarch
