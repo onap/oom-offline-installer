@@ -263,7 +263,7 @@ def build_offline_deliverables(build_version,
         create_package(aux_content, aux_package_tar_path)
 
     add_checksum_info(output_dir)
-    shutil.rmtree(application_dir)
+    shutil.rmtree(application_dir, ignore_errors=True)
 
 
 def run_cli():
