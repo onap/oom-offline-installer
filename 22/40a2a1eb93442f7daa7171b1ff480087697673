@@ -1,0 +1,10 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Verified+1: Bartek Grzybowski <b.grzybowski@partner.samsung.com>
+Verified+1: Tom�? Levora <t.levora@partner.samsung.com>
+Code-Review+2: Tom�? Levora <t.levora@partner.samsung.com>
+Code-Review+1: Jan Benedikt <j.benedikt@partner.samsung.com>
+Submitted-by: Bartek Grzybowski <b.grzybowski@partner.samsung.com>
+Submitted-at: Thu, 24 Sep 2020 06:55:13 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/oom/offline-installer/+/113064
+Project: oom/offline-installer
+Branch: refs/heads/master
