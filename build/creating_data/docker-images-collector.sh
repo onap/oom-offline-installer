@@ -82,6 +82,11 @@ if [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
 elif [ -z "${LIST}" ]; then
     mkdir -p ${LISTS_DIR}
     LIST="${LISTS_DIR}/${PROJECT}_docker_images.list"
+else
+    # $2 is not empty - ensure LIST path exists
+    LIST_DIR="$(dirname ${LIST})"
+    mkdir -p "${LIST_DIR}"
+    MSG="${LIST_DIR} didn't exist, created\n"
 fi
 
 if [ -e "${LIST}" ]; then
