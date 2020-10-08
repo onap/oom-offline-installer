@@ -100,6 +100,7 @@ if ps -eaf | grep -v "grep" | grep "helm" > /dev/null; then
 else
     helm init -c > /dev/null
     helm serve &
+    helm repo remove stable
 fi
 
 # Create helm repository
