@@ -111,6 +111,7 @@ fi
 # Make all
 pushd "${PROJECT_DIR}/.."
 echo "Building project..."
+export SKIP_LINT=TRUE
 make all > /dev/null; make ${PROJECT} > /dev/null
 popd
 
