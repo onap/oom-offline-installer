@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2018-2019 Â© Samsung Electronics Co., Ltd.
+#   Copyright 2018-2020© Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -35,13 +35,10 @@ SCRIPT_LOG="/tmp/$(basename $0)_$(eval ${TIMESTAMP}).log"
 # Log everything
 exec &> >(tee -a "${SCRIPT_LOG}")
 
-# Nexus repository location
+# Nexus repository properties
 NEXUS_DOMAIN="nexus"
 NEXUS_PORT="8081"
 NEXUS_DOCKER_PORT="8082"
-NPM_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/npm-private/"
-PYPI_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/pypi-private/"
-DOCKER_REGISTRY="${NEXUS_DOMAIN}:${NEXUS_DOCKER_PORT}"
 DEFAULT_REGISTRY="docker.io"
 
 # Nexus repository credentials
@@ -97,6 +94,7 @@ usage () {
      -o  | --output-directory           use specific directory for the target blob
      -p  | --pypi                       use specific list of pypi packages to be pushed into Nexus
      -rl | --resource-list-directory    use specific directory with docker, pypi and npm lists
+     -c  | --container-name             use specific Nexus docker container name
     "
     exit 1
 }
@@ -209,6 +207,15 @@ push_docker () {
     done
 }
 
+validate_container_name () {
+    # Verify $1 is a valid hostname
+    if ! echo "${1}" | egrep -q "^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$";
+    then
+        echo "ERROR: ${1} is not a valid name!"
+        exit 1;
+    fi
+}
+
 while [ "${1}" != "" ]; do
     case ${1} in
         -d | --docker )                    shift
@@ -223,6 +230,10 @@ while [ "${1}" != "" ]; do
                                            COMMANDS+=(expect npm)
                                            shift
                                            NXS_NPM_LISTS+=("$(realpath ${1})")
+                                           ;;
+        -c | --container-name )            shift
+                                           validate_container_name "${1}"
+                                           NEXUS_DOMAIN="${1}"
                                            ;;
         -o | --output-directory )          shift
                                            NEXUS_DATA_DIR="$(realpath ${1})"
@@ -255,6 +266,11 @@ if [ ${#FAILED_COMMANDS[*]} -gt 0 ]; then
     echo "Aborting."
     exit 1
 fi
+
+# Nexus repository locations
+NPM_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/npm-private/"
+PYPI_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/pypi-private/"
+DOCKER_REGISTRY="${NEXUS_DOMAIN}:${NEXUS_DOCKER_PORT}"
 
 # Setup directories with resources for docker, npm and pypi
 NXS_SRC_DOCKER_IMG_DIR="${DATA_DIR}/offline_data/docker_images_for_nexus"
