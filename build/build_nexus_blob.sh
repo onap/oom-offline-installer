@@ -38,8 +38,10 @@ exec &> >(tee -a "${SCRIPT_LOG}")
 # Nexus repository properties
 NEXUS_DOMAIN="nexus"
 NEXUS_HOST="127.0.0.1"
-NEXUS_PORT="8081"
-NEXUS_DOCKER_PORT="8082"
+NEXUS_EXPOSED_PORT="8081"
+NEXUS_PORT=${NEXUS_EXPOSED_PORT}
+NEXUS_DOCKER_EXPOSED_PORT="8082"
+NEXUS_DOCKER_PORT=${NEXUS_DOCKER_EXPOSED_PORT}
 DEFAULT_REGISTRY="docker.io"
 
 # Nexus repository credentials
@@ -96,6 +98,8 @@ usage () {
      -p  | --pypi                       use specific list of pypi packages to be pushed into Nexus
      -rl | --resource-list-directory    use specific directory with docker, pypi and npm lists
      -c  | --container-name             use specific Nexus docker container name
+     -NP | --nexus-port                 use specific port for published Nexus service
+     -DP | --docker-port                use specific port for published Nexus docker registry port
     "
     exit 1
 }
@@ -223,6 +227,12 @@ while [ "${1}" != "" ]; do
         -rl | --resource-list-directory )  shift
                                            LISTS_DIR="$(realpath ${1})"
                                            ;;
+        -NP | --nexus-port )               shift
+                                           NEXUS_PORT="${1}"
+                                           ;;
+        -DP | --docker-port )              shift
+                                           NEXUS_DOCKER_PORT="${1}"
+                                           ;;
         -h | --help )                      usage
                                            ;;
         *)                                 usage
@@ -276,7 +286,7 @@ if [ -f ~/.docker/config.json ]; then
 fi
 
 # Setup default ports published to host as docker registry
-PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_PORT}"
+PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_EXPOSED_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_EXPOSED_PORT}"
 
 # Nexus repository configuration setup
 NEXUS_CONFIG_GROOVY='import org.sonatype.nexus.security.realm.RealmManager
