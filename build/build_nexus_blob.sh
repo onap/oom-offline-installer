@@ -175,12 +175,10 @@ push_pip () {
 }
 
 docker_login () {
-    for REGISTRY in $(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY}) ${DOCKER_REGISTRY}; do
-        if ! grep -wqs ${REGISTRY} ~/.docker/config.json; then
-	        echo "Docker login to ${REGISTRY}"
-            echo -n "${NEXUS_PASSWORD}" | docker login -u "${NEXUS_USERNAME}" --password-stdin ${REGISTRY} > /dev/null
-	    fi
-    done
+    if ! grep -wqs ${DOCKER_REGISTRY} ~/.docker/config.json; then
+        echo "Docker login to ${DOCKER_REGISTRY}"
+        echo -n "${NEXUS_PASSWORD}" | docker login -u "${NEXUS_USERNAME}" --password-stdin ${DOCKER_REGISTRY} > /dev/null
+    fi
 }
 
 push_docker () {
@@ -196,13 +194,15 @@ push_docker () {
             fi
         elif [[ -z $(sed -n '/\.[^/].*\//p' <<< ${IMAGE}) ]]; then
             PUSH="${DOCKER_REGISTRY}/${IMAGE}"
-        fi
-        if [[ ! -z ${PUSH} ]]; then
-            docker tag ${IMAGE} ${PUSH}
         else
-            PUSH="${IMAGE}"
+            # substitute all host names with $DOCKER_REGISTRY
+            repo_host=$(sed -e 's/\/.*$//' <<< ${IMAGE})
+            PUSH="$(sed -e 's/'"${repo_host}"'/'"${DOCKER_REGISTRY}"'/' <<< ${IMAGE})"
         fi
-            docker push ${PUSH}
+        docker tag ${IMAGE} ${PUSH}
+        docker push ${PUSH}
+        # Remove created tag
+        docker rmi ${PUSH}
         echo "${IMAGE} pushed as ${PUSH} to Nexus"
     done
 }
@@ -436,12 +436,12 @@ fi
 ## Populate Docker repository #
 ###############################
 
-# Login to simulated docker registries
+# Login to docker registry simulated by Nexus container
 # Push images to private nexus based on the lists
-# Images from default registry need to be tagged to private registry
-# and those without defined repository in tag uses default repository 'library'
+# All images need to be tagged to simulated registry
+# and those without defined repository in tag use default repository 'library'
+docker_login
 for DOCKER_IMG_LIST in "${NXS_DOCKER_IMG_LISTS[@]}"; do
-    docker_login "${DOCKER_IMG_LIST}"
     push_docker "${DOCKER_IMG_LIST}"
 done
 
