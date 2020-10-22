@@ -99,21 +99,6 @@ usage () {
     exit 1
 }
 
-publish_ports () {
-    for REGISTRY in $(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true) ${NEXUS_PORT}; do
-        if [[ ${REGISTRY} != *":"* ]]; then
-            if [[ ${PUBLISHED_PORTS} != *"80:${NEXUS_DOCKER_PORT}"* ]]; then
-                PUBLISHED_PORTS="${PUBLISHED_PORTS} -p 80:${NEXUS_DOCKER_PORT}"
-            fi
-        else
-            REGISTRY_PORT="$(sed 's/^.*\:\([[:digit:]]*\)$/\1/' <<< ${REGISTRY})"
-            if [[ ${PUBLISHED_PORTS} != *"${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"* ]]; then
-                PUBLISHED_PORTS="${PUBLISHED_PORTS} -p ${REGISTRY_PORT}:${NEXUS_DOCKER_PORT}"
-            fi
-        fi
-    done
-}
-
 simulated_hosts () {
     SIMUL_HOSTS=($(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$// ; s/:.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true ) ${NEXUS_DOMAIN})
     for HOST in "${SIMUL_HOSTS[@]}"; do
@@ -305,10 +290,8 @@ fi
 # Setup default ports published to host as docker registry
 PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_PORT}"
 
-# Setup additional ports published to host based on simulated docker registries
 # Setup simulated domain names to be able to push all to private Nexus repository
 for DOCKER_IMG_LIST in "${NXS_DOCKER_IMG_LISTS[@]}"; do
-    publish_ports "${DOCKER_IMG_LIST}"
     simulated_hosts "${DOCKER_IMG_LIST}"
 done
 
