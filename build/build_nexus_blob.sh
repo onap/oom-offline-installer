@@ -37,6 +37,7 @@ exec &> >(tee -a "${SCRIPT_LOG}")
 
 # Nexus repository properties
 NEXUS_DOMAIN="nexus"
+NEXUS_HOST="127.0.0.1"
 NEXUS_PORT="8081"
 NEXUS_DOCKER_PORT="8082"
 DEFAULT_REGISTRY="docker.io"
@@ -97,15 +98,6 @@ usage () {
      -c  | --container-name             use specific Nexus docker container name
     "
     exit 1
-}
-
-simulated_hosts () {
-    SIMUL_HOSTS=($(sed -n '/\.[^/].*\//p' ${1} | sed -e 's/\/.*$// ; s/:.*$//' | sort -u | grep -v ${DEFAULT_REGISTRY} || true ) ${NEXUS_DOMAIN})
-    for HOST in "${SIMUL_HOSTS[@]}"; do
-        if ! grep -wq ${HOST} /etc/hosts; then
-            echo "127.0.0.1 ${HOST}" >> /etc/hosts
-        fi
-    done
 }
 
 load_docker_images () {
@@ -253,9 +245,9 @@ if [ ${#FAILED_COMMANDS[*]} -gt 0 ]; then
 fi
 
 # Nexus repository locations
-NPM_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/npm-private/"
-PYPI_REGISTRY="http://${NEXUS_DOMAIN}:${NEXUS_PORT}/repository/pypi-private/"
-DOCKER_REGISTRY="${NEXUS_DOMAIN}:${NEXUS_DOCKER_PORT}"
+NPM_REGISTRY="http://${NEXUS_HOST}:${NEXUS_PORT}/repository/npm-private/"
+PYPI_REGISTRY="http://${NEXUS_HOST}:${NEXUS_PORT}/repository/pypi-private/"
+DOCKER_REGISTRY="${NEXUS_HOST}:${NEXUS_DOCKER_PORT}"
 
 # Setup directories with resources for docker, npm and pypi
 NXS_SRC_DOCKER_IMG_DIR="${DATA_DIR}/offline_data/docker_images_for_nexus"
@@ -277,10 +269,6 @@ if [ ${#NXS_DOCKER_IMG_LISTS[@]} -eq 0 ]; then
     NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}" "${NXS_K8S_DOCKER_IMG_LIST}")
 fi
 
-# Backup /etc/hosts
-HOSTS_BACKUP="$(eval ${TIMESTAMP}_hosts.bk)"
-cp /etc/hosts /etc/${HOSTS_BACKUP}
-
 # Backup the current docker registry settings
 if [ -f ~/.docker/config.json ]; then
     DOCKER_CONF_BACKUP="$(eval ${TIMESTAMP}_config.json.bk)"
@@ -289,11 +277,6 @@ fi
 
 # Setup default ports published to host as docker registry
 PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_PORT}"
-
-# Setup simulated domain names to be able to push all to private Nexus repository
-for DOCKER_IMG_LIST in "${NXS_DOCKER_IMG_LISTS[@]}"; do
-    simulated_hosts "${DOCKER_IMG_LIST}"
-done
 
 # Nexus repository configuration setup
 NEXUS_CONFIG_GROOVY='import org.sonatype.nexus.security.realm.RealmManager
@@ -378,15 +361,15 @@ INFO
 # Start the Nexus
 NEXUS_CONT_ID=$(docker run -d --rm -v ${NEXUS_DATA_DIR}:/nexus-data:rw --name ${NEXUS_DOMAIN} ${PUBLISHED_PORTS} ${NEXUS_IMAGE})
 echo "Waiting for Nexus to fully start"
-until curl -su ${NEXUS_USERNAME}:${NEXUS_PASSWORD} http://${NEXUS_DOMAIN}:${NEXUS_PORT}/service/metrics/healthcheck | grep '"healthy":true' > /dev/null ; do
+until curl -su ${NEXUS_USERNAME}:${NEXUS_PASSWORD} http://${NEXUS_HOST}:${NEXUS_PORT}/service/metrics/healthcheck | grep '"healthy":true' > /dev/null ; do
     printf "."
     sleep 3
 done
 echo -e "\nNexus started"
 
 # Configure the nexus repository
-curl -sX POST --header 'Content-Type: application/json' --data-binary "${NEXUS_CONFIG}" http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@${NEXUS_DOMAIN}:${NEXUS_PORT}/service/rest/v1/script
-curl -sX POST --header "Content-Type: text/plain" http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@${NEXUS_DOMAIN}:${NEXUS_PORT}/service/rest/v1/script/configure/run > /dev/null
+curl -sX POST --header 'Content-Type: application/json' --data-binary "${NEXUS_CONFIG}" http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@${NEXUS_HOST}:${NEXUS_PORT}/service/rest/v1/script
+curl -sX POST --header "Content-Type: text/plain" http://${NEXUS_USERNAME}:${NEXUS_PASSWORD}@${NEXUS_HOST}:${NEXUS_PORT}/service/rest/v1/script/configure/run > /dev/null
 
 ###########################
 # Populate NPM repository #
@@ -436,9 +419,6 @@ echo "Stopping Nexus and returning backups"
 
 # Stop the Nexus
 docker stop ${NEXUS_CONT_ID} > /dev/null
-
-# Return backed up configuration files
-mv -f "/etc/${HOSTS_BACKUP}" /etc/hosts
 
 if [ -f ~/.docker/${DOCKER_CONF_BACKUP} ]; then
     mv -f ~/.docker/${DOCKER_CONF_BACKUP} ~/.docker/config.json
