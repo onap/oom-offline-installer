@@ -156,10 +156,8 @@ push_pip () {
 }
 
 docker_login () {
-    if ! grep -wqs ${DOCKER_REGISTRY} ~/.docker/config.json; then
-        echo "Docker login to ${DOCKER_REGISTRY}"
-        echo -n "${NEXUS_PASSWORD}" | docker login -u "${NEXUS_USERNAME}" --password-stdin ${DOCKER_REGISTRY} > /dev/null
-    fi
+    echo "Docker login to ${DOCKER_REGISTRY}"
+    echo -n "${NEXUS_PASSWORD}" | docker --config "${DOCKER_CONFIG_DIR}" login -u "${NEXUS_USERNAME}" --password-stdin ${DOCKER_REGISTRY} > /dev/null
 }
 
 push_docker () {
@@ -181,7 +179,7 @@ push_docker () {
             PUSH="$(sed -e 's/'"${repo_host}"'/'"${DOCKER_REGISTRY}"'/' <<< ${IMAGE})"
         fi
         docker tag ${IMAGE} ${PUSH}
-        docker push ${PUSH}
+        docker --config "${DOCKER_CONFIG_DIR}" push ${PUSH}
         # Remove created tag
         docker rmi ${PUSH}
         echo "${IMAGE} pushed as ${PUSH} to Nexus"
@@ -279,11 +277,8 @@ if [ ${#NXS_DOCKER_IMG_LISTS[@]} -eq 0 ]; then
     NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}" "${NXS_K8S_DOCKER_IMG_LIST}")
 fi
 
-# Backup the current docker registry settings
-if [ -f ~/.docker/config.json ]; then
-    DOCKER_CONF_BACKUP="$(eval ${TIMESTAMP}_config.json.bk)"
-    mv ~/.docker/config.json ~/.docker/${DOCKER_CONF_BACKUP}
-fi
+# Create Docker client config dir
+DOCKER_CONFIG_DIR=$(mktemp -p /tmp -d .docker.XXXXXXXX)
 
 # Setup default ports published to host as docker registry
 PUBLISHED_PORTS="-p ${NEXUS_PORT}:${NEXUS_EXPOSED_PORT} -p ${NEXUS_DOCKER_PORT}:${NEXUS_DOCKER_EXPOSED_PORT}"
@@ -430,9 +425,8 @@ echo "Stopping Nexus and returning backups"
 # Stop the Nexus
 docker stop ${NEXUS_CONT_ID} > /dev/null
 
-if [ -f ~/.docker/${DOCKER_CONF_BACKUP} ]; then
-    mv -f ~/.docker/${DOCKER_CONF_BACKUP} ~/.docker/config.json
-fi
+# Drop temporary Docker client config dir
+rm -rf ${DOCKER_CONFIG_DIR}
 
 echo "Nexus blob is built"
 exit 0
