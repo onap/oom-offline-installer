@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Set type of distribution where script is running
+# Set distribution family
 distro_type=$(cat /etc/*-release | grep -w "ID" | awk -F'=' '{ print $2 }' | tr -d '"')
 case "$distro_type" in
         ubuntu)
@@ -15,30 +15,30 @@ case "$distro_type" in
         ;;
 esac
 
-# Path where will be created repository (in container)
+# Target path for created repository
 OFFLINE_REPO_DIR=""
 
-# Path where is stored onap_rpm.list and onap_deb.list file
+# Path to directory containing onap_rpm.list and onap_deb.list files
 PCKG_LIST_DIR=""
 
-# Path where is stored additional packages lists
+# Path to additional packages lists
 ADD_LIST_DIR=""
 
-# Show help for using this script
+# Show help
 help () {
 cat <<EOF
-Docker entrypoint script for creating RPM/DEB repository based on linux distribution where script is running
+Docker entrypoint script for creating RPM/DEB repository based on container platfrom type
 
-usage: create-repo.sh [-d|--directory output directory] [-l|--list input rpm/deb list directory] [-a|--additional-lists list1.list]
--h --help: Show this help
--d --directory: set path for repo directory in container
--l --list: set path where rpm or deb list is stored in container
--a --additional-list: add name of additional packages list
-                      can be used multiple times for more additional lists
--p --packages-lists-path: set path for other additional packages lists
+usage: create-repo.sh [OPTION]...
+
+  -d | --directory              target repository path
+  -l | --list                   input rpm/deb list directory
+  -a | --additional-list        additional packages list; can be used multiple times
+  -p | --packages-lists-path    other additional packages lists
+  -h | --help                   show this help
 
 Both paths have to be set with shared volume between
-container and host computer. Default path in container is: /tmp/
+container and the host. Default path in container is: /tmp/
 Repository will be created at: /<path>/resources/pkg/rhel/
 RMP/DEB list is stored at: ./data_list/
 EOF
@@ -59,18 +59,18 @@ do
             exit
             ;;
         -d|--directory)
-            # Directory parametter
-            # Sets path where will be created reposity
+            # Directory parameter
+            # Set target reposity path
             OFFLINE_REPO_DIR="$2"
             ;;
         -l|--list)
-            # List parametter
-            # Sets path where is stored onap_rpm.list or onap_deb.list file
+            # List parameter
+            # Set path containing onap_rpm.list or onap_deb.list file
             PCKG_LIST_DIR="$2"
             ;;
         -p|--packages-lists-path)
             # Path parametter
-            # Sets path where is stored additional packages lists
+            # Set path for additional packages lists
             ADD_LIST_DIR="$2"
             ;;
         -a|--additional-list)
@@ -86,8 +86,8 @@ do
     shift;shift
 done
 
-# Testing if directory parametter was used
-# If not variable is sets to default value:
+# Testing if directory parameter was used
+# If not variable is set to default value:
 # /tmp/repo/resources/pkg/rpm
 # or
 # /tmp/repo/resources/pkg/deb
@@ -96,15 +96,15 @@ then
     OFFLINE_REPO_DIR="/tmp/repo/"
 fi
 
-# Testing if list parametter was used
-# If not variable is sets to default value /tmp/offline/data-list
+# Testing if list parameter was used
+# If not variable is set to default value /tmp/offline/data-list
 if test -z "$PCKG_LIST_DIR"
 then
     PCKG_LIST_DIR="/tmp/offline/data_list/"
 fi
 
-# Testing if additional packages list parametter was used
-# If not variable is sets to default value /tmp/additional-lists
+# Testing if additional packages list parameter was used
+# If not variable is set to default value /tmp/additional-lists
 if test -z "$PCKG_LIST_DIR"
 then
     PCKG_LIST_DIR="/tmp/additional-lists/"
@@ -141,7 +141,7 @@ case "$distro_type" in
                     done;
                 done
 
-        # Download all packages with dependecies from all additional packages lists via apt-get to repository folder
+        # Download all packages with dependencies from all additional packages lists via apt-get to repository folder
         if ! [ ${#ADDITIONAL_LISTS[@]} -eq 0 ]; then
             for list in ${ADDITIONAL_LISTS[@]}
             do
@@ -179,7 +179,7 @@ case "$distro_type" in
             done
         fi
 
-        # In repository folder create repositor
+        # Create repository
         createrepo $OFFLINE_REPO_DIR
     ;;
 

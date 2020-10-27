@@ -1,45 +1,45 @@
 #!/usr/bin/env bash
 
-# Set type of distribution
+# Set distribution type
 distro_type="$(cat /etc/*-release | grep -w "ID" | awk -F'=' '{ print $2 }' | tr -d '"')"
 
-# Path to folder with cloned offline-installer build directory with docker_entrypoint script
+# Path to cloned offline-installer build directory with docker_entrypoint script
 volume_offline_directory="$(readlink -f $(dirname ${0}))"
 
-# Path for directory where repository will be created
+# Destination path for created repository
 volume_repo_directory="$(pwd)"
 
 # Path inside container with cloned offline-installer build directory
 container_offline_volume="/mnt/offline/"
 
-# Path inside container where will be created repository
+# Target repository path inside container
 container_repo_volume="/mnt/repo/"
 
-# Path inside container where will be stored additional packages lists
+# Additional packages lists files path within container
 container_list_volume="/mnt/additional-lists/"
 
-# Show help for using this script
+# Show script usage
 help () {
 cat <<EOF
-Script for run docker container creating DEB or RPM repository
+Wrapper script running docker container for creating package repository
 
-Type of repository is created based on user input or if input is empty type of host OS
+Repository type is set with --target-platform option and the default is to use host OS platform type
 
-usage: create_repo.sh [-d|--destination-repository output directory] [-c|--cloned-directory input directory] 
-                      [-t|--target-platform centos target platform for repository]
-                      [-a|----additional-lists path to additional package list]
--h --help: Show this help
--d --destination-repository: set path where will be stored RPM packages. Default value is current directory
--c --cloned-directory: set path where is stored this script and docker-entrypoint script (offline-installer/build directory). Fill it just when you want to use different script/datalists
--t --target-platform: set target platform for repository (ubuntu/rhel/centos) 
--a --additional-list: add additional packages list
-                      can be used multiple times for more additional lists
+usage: create_repo.sh [OPTION]...
 
-If build folder from offline repository is not specified will be used default path of current folder.
+
+  -d | --destination-repository    target path to store downloaded packages. Current directory by default
+  -c | --cloned-directory          path to directory containing this and docker-entrypoint scripts (offline-installer/build directory)
+                                   Set it only when you want to use different script/datalists
+  -t | --target-platform           target repository platform type (ubuntu/rhel/centos)
+  -a | --additional-list           additional packages list; can be used multiple times for more additional lists
+  -h | --help                      show this help
+
+If build folder from offline repository is not specified current one will be used by default.
 EOF
 }
 
-# Get type of distribution
+# Get distribution type
 # Set Docker image name and version based on type of linux distribution
 # Set expected directory for RPM/DEB packages
 set_enviroment () {
@@ -79,23 +79,22 @@ do
             exit 0
             ;;
         -c|--cloned-directory)
-            # Directory parametter
-            # Sets path where is cloned offline-installer build directory
+            # Directory parameter
+            # Set path to offline-installer build directory
             volume_offline_directory="$2"
             ;;
         -d|--destination-repository)
-            # Repository direcotry parametter
-            # Sets path where will be repository created
+            # Repository directory parameter
+            # Set destination path for created repository
             volume_repo_directory="$2"
             ;;
         -t|--target-platform)
             # Repository type (rpm/deb)
-            # Sets target platform for repository
+            # Set target platform for repository
             target_input="$2"
             ;;
         -a|--additional-list)
-            # Array with more packages lists
-            # Add more packages lists to download
+            # Array of additional packages lists
             additional_lists+=("$2")
             ;;
         *)
@@ -107,8 +106,8 @@ do
     shift;shift
 done
 
-# Check if user specified type of repository
-# This settings have higher priority, then type of distribution
+# Check if user specified repository type
+# This setting has higher priority than distribution type
 if ! test -z "$target_input"
 then
     set_enviroment "$target_input"
@@ -116,11 +115,11 @@ else
     set_enviroment "$distro_type"
 fi
 
-# Check if path contains expected path:
+# Check if path contains expected components:
 # "resources/pkg/rpm" for Rhel/CentOS or
 # "resources/pkg/deb" for Ubuntu/Debian
 if ! [[ "/$volume_repo_directory/" = *"/$expected_dir/"* ]]; then
-    # Create repo folder if it not exists
+    # Create repo folder if it doesn't exist
     case "$distro_type" in
         ubuntu)
             volume_repo_directory="$volume_repo_directory"/resources/pkg/deb
