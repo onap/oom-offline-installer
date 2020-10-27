@@ -33,6 +33,7 @@ usage: create_repo.sh [OPTION]...
                                    Set it only when you want to use different script/datalists
   -t | --target-platform           target repository platform type (ubuntu/rhel/centos)
   -a | --additional-list           additional packages list; can be used multiple times for more additional lists
+  -n | --container-name-suffix     add custom suffix to docker container name
   -h | --help                      show this help
 
 If build folder from offline repository is not specified current one will be used by default.
@@ -42,19 +43,19 @@ EOF
 # Get distribution type
 # Set Docker image name and version based on type of linux distribution
 # Set expected directory for RPM/DEB packages
-set_enviroment () {
+set_environment () {
     case "$1" in
     ubuntu)
         distro_type="ubuntu"
         docker_image="ubuntu:18.04"
         expected_dir="resources/pkg/deb"
-        container_name=$1"_repo"
+        container_name="${1}_repo${container_name_suffix}"
     ;;
     centos|rhel)
         distro_type="rhel"
         docker_image="centos:centos7.6.1810"
         expected_dir="resources/pkg/rpm"
-        container_name=$1"_repo"
+        container_name="${1}_repo${container_name_suffix}"
     ;;
     *)
         echo "Unknown type of linux distribution."
@@ -64,7 +65,6 @@ set_enviroment () {
 }
 
 # Getting input parametters
-POSITIONAL=()
 if [[ $# -eq 0 ]] ; then
     help # show help
     exit 0
@@ -97,6 +97,10 @@ do
             # Array of additional packages lists
             additional_lists+=("$2")
             ;;
+        -n|--container-name-suffix)
+            # Set custom container name suffix
+            container_name_suffix="_${2}"
+            ;;
         *)
             # unknown option
             help # show help
@@ -110,9 +114,9 @@ done
 # This setting has higher priority than distribution type
 if ! test -z "$target_input"
 then
-    set_enviroment "$target_input"
+    set_environment "$target_input"
 else
-    set_enviroment "$distro_type"
+    set_environment "$distro_type"
 fi
 
 # Check if path contains expected components:
@@ -131,8 +135,9 @@ if ! [[ "/$volume_repo_directory/" = *"/$expected_dir/"* ]]; then
     [ ! -d "$volume_repo_directory" ] && mkdir -p $volume_repo_directory
 fi
 
-#Check if container "centos-repo" is running
-if [ ! "$(docker ps -q -f name=$container_name)" ]; then
+# Check if container is already running
+if [ ! $(docker ps -q -f name="^${container_name}$") ];
+then
     # run repo container
     # name of container $container_name
     # docker entrypoint script from mounted volume
@@ -159,5 +164,5 @@ if [ ! "$(docker ps -q -f name=$container_name)" ]; then
                --entrypoint="${container_offline_volume}docker-entrypoint.sh" \
                     -it ${docker_image} \
                     "${param_array[@]}"
-    docker logs $(docker ps --filter "name=${container_name}" --format '{{.ID}}' -a) -f
+    docker logs $(docker ps --filter name="^${container_name}$" --format '{{.ID}}' -a) -f
 fi
