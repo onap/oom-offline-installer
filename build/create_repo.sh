@@ -133,10 +133,6 @@ fi
 
 #Check if container "centos-repo" is running
 if [ ! "$(docker ps -q -f name=$container_name)" ]; then
-    if [ "$(docker ps -aq -f status=exited -f name=$container_name)" ]; then
-        # cleanup
-        docker rm $container_name
-    fi
     # run repo container
     # name of container $container_name
     # docker entrypoint script from mounted volume
