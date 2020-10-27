@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "01166b0c_4d1e63f8",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2020-10-27T18:14:34Z",
+      "side": 1,
+      "message": "missing space after year?",
+      "revId": "8583bf98b526c23d487f0159401a65400fb044fa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
