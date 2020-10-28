@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a7cffe12_4693bcb8",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2020-10-28T10:46:49Z",
+      "side": 1,
+      "message": "platform",
+      "range": {
+        "startLine": 30,
+        "startChar": 76,
+        "endLine": 30,
+        "endChar": 85
+      },
+      "revId": "c9e4e4021abcff7738b5ea3f46b4015e7ee2fed4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00585b22_0fc8006d",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2020-10-28T10:46:49Z",
+      "side": 1,
+      "message": "parameters",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 27
+      },
+      "revId": "c9e4e4021abcff7738b5ea3f46b4015e7ee2fed4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "783ebf5c_971a7ca7",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2020-10-28T10:46:49Z",
+      "side": 1,
+      "message": "parameter",
+      "range": {
+        "startLine": 57,
+        "startChar": 19,
+        "endLine": 57,
+        "endChar": 29
+      },
+      "revId": "c9e4e4021abcff7738b5ea3f46b4015e7ee2fed4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d91800c_04d06f60",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2020-10-28T10:46:49Z",
+      "side": 1,
+      "message": "parameter",
+      "range": {
+        "startLine": 72,
+        "startChar": 19,
+        "endLine": 72,
+        "endChar": 29
+      },
+      "revId": "c9e4e4021abcff7738b5ea3f46b4015e7ee2fed4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bef8d412_2e609592",
+        "filename": "build/docker-entrypoint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2020-10-28T10:46:49Z",
+      "side": 1,
+      "message": "Looks to me it\u0027s just set to /tmp/repo by default?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "c9e4e4021abcff7738b5ea3f46b4015e7ee2fed4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
