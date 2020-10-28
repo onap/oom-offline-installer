@@ -155,8 +155,7 @@ then
             mounted_lists+=(-v ${array_list}:${container_list_volume}${array_list##*/})
         done
 
-    docker run -d \
-               --name $container_name \
+    docker run --name $container_name \
                -v ${volume_offline_directory}:${container_offline_volume} \
                -v ${volume_repo_directory}:${container_repo_volume} \
                "${mounted_lists[@]}" \
@@ -164,5 +163,4 @@ then
                --entrypoint="${container_offline_volume}docker-entrypoint.sh" \
                     -it ${docker_image} \
                     "${param_array[@]}"
-    docker logs $(docker ps --filter name="^${container_name}$" --format '{{.ID}}' -a) -f
 fi
