@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eo pipefail
+
 # Set distribution family
 distro_type=$(cat /etc/*-release | grep -w "ID" | awk -F'=' '{ print $2 }' | tr -d '"')
 case "$distro_type" in
@@ -45,7 +47,6 @@ EOF
 }
 
 # Getting input parameters
-POSITIONAL=()
 if [[ $# -eq 0 ]] ; then
     help # show help
     exit 0
