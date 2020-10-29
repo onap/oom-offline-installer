@@ -107,6 +107,9 @@ then
     PCKG_LIST_DIR="/tmp/additional-lists/"
 fi
 
+# Clean target repo dir for idempotency
+rm -rf ${OFFLINE_REPO_DIR}/*
+
 case "$distro_type" in
     ubuntu)
         # Change current working dir
