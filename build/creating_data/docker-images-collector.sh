@@ -81,8 +81,11 @@ fi
 PROJECT_DIR="${1}"
 LIST="${2}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
-HELM_REPO="127.0.0.1:8879"
+HELM_REPO_HOST="127.0.0.1"
+HELM_REPO_PORT="8879"
+HELM_REPO="${HELM_REPO_HOST}:${HELM_REPO_PORT}"
 HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/Makefile
+DOCKER_CONTAINER="generate-certs-${HELM_REPO_PORT}" # oom-cert-service container name override
 PROJECT="$(basename ${1})"
 
 if [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
@@ -116,7 +119,8 @@ helm repo remove stable 2>/dev/null || true
 pushd "${PROJECT_DIR}/.."
 echo "Building project..."
 export SKIP_LINT=TRUE
-make all > /dev/null; make ${PROJECT} > /dev/null
+export DOCKER_CONTAINER
+make -e all > /dev/null; make -e ${PROJECT} > /dev/null
 popd
 
 # Create the list from all enabled subsystems
