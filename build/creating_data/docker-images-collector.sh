@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2019 © Samsung Electronics Co., Ltd.
+#   Copyright 2019-2020 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 
 ### This script is preparing docker images list based on kubernetes project
 
-### NOTE: helm needs to be installed and working, it is required for correct processing
+### NOTE: helm needs to be installed; it is required for correct processing
 ### of helm charts in oom directory
 
 # Fail fast settings
@@ -30,7 +30,11 @@ usage () {
     echo "      "
     echo "  This script is preparing docker images list based on kubernetes project"
     echo "      Usage:"
-    echo "        ./$(basename $0) <path to project> [<output list file>]"
+    echo "        ./$(basename $0) [OPTION]... <path to project> [<output list file>]"
+    echo "      "
+    echo "      Options:"
+    echo "          -h | --help      Show script usage synopsis"
+    echo "          -p | --helm-port Chart repository server port"
     echo "      "
     echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
@@ -73,16 +77,38 @@ kill_helm() {
     done
 }
 
-# Configuration
-if [ "${1}" == "-h" ] || [ "${1}" == "--help" ] || [ $# -lt 1 ]; then
+# Proccess input options
+if [ $# -lt 1 ]; then
     usage
 fi
 
+while [ $# -gt 0 ];
+do
+    case "${1}" in
+        -h | --help)
+            usage
+            ;;
+        -p | --helm-port)
+            PORT="${2}"
+            shift 2
+            ;;
+        -*)
+            echo "Unknown option ${1}"
+            usage
+            ;;
+        *)
+            # end of options
+            break
+            ;;
+    esac
+done
+
+# Configuration
 PROJECT_DIR="${1}"
 LIST="${2}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
 HELM_REPO_HOST="127.0.0.1"
-HELM_REPO_PORT="8879"
+HELM_REPO_PORT="${PORT:-8879}"
 HELM_REPO="${HELM_REPO_HOST}:${HELM_REPO_PORT}"
 HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/Makefile
 DOCKER_CONTAINER="generate-certs-${HELM_REPO_PORT}" # oom-cert-service container name override
