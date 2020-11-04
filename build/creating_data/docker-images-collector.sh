@@ -77,6 +77,15 @@ kill_helm() {
     done
 }
 
+check_helm() {
+    sleep 2 # let the helm process settle
+    if [ $(pgrep -f "helm serve --address ${HELM_REPO}" -c) -eq 0 ];
+    then
+        echo "Fatal: Helm chart repository server failed to start"
+	exit 1
+    fi
+}
+
 # Proccess input options
 if [ $# -lt 1 ]; then
     usage
@@ -140,6 +149,7 @@ mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
 helm init -c --local-repo-url "http://${HELM_REPO}"
 helm serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
 helm repo remove stable 2>/dev/null || true
+check_helm
 
 # Make all
 pushd "${PROJECT_DIR}/.."
