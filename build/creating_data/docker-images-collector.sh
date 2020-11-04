@@ -65,6 +65,14 @@ create_list() {
             -e 's/\x27\|,//g; s/^.*\(image\|tag_version\):\ //' | tr -d '\r'
 }
 
+# Kill helm if already running
+kill_helm() {
+    for pid in $(pgrep -f "helm serve --address ${HELM_REPO}");
+    do
+        kill $pid
+    done
+}
+
 # Configuration
 if [ "${1}" == "-h" ] || [ "${1}" == "--help" ] || [ $# -lt 1 ]; then
     usage
@@ -73,7 +81,8 @@ fi
 PROJECT_DIR="${1}"
 LIST="${2}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
-HELM_REPO="local http://127.0.0.1:8879"
+HELM_REPO="127.0.0.1:8879"
+HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/Makefile
 PROJECT="$(basename ${1})"
 
 if [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
@@ -95,18 +104,13 @@ if [ -e "${LIST}" ]; then
 fi
 
 # Setup helm
-if ps -eaf | grep -v "grep" | grep "helm" > /dev/null; then
-    echo "helm is already running"
-else
-    helm init -c > /dev/null
-    helm serve &
-    helm repo remove stable 2>/dev/null || true
-fi
-
-# Create helm repository
-if ! helm repo list 2>&1 | awk '{ print $1, $2 }' | grep -q "$HELM_REPO" > /dev/null; then
-    helm repo add $HELM_REPO
-fi
+HELM_HOME=$(mktemp -p /tmp -d .helm.XXXXXXXX)
+export HELM_HOME
+kill_helm # make sure it's not already running
+mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
+helm init -c --local-repo-url "http://${HELM_REPO}"
+helm serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
+helm repo remove stable 2>/dev/null || true
 
 # Make all
 pushd "${PROJECT_DIR}/.."
@@ -132,4 +136,10 @@ sed -i "1i# generated from ${COMMENT}" "${LIST}"
 
 echo -e ${MSG}
 echo -e 'The list has been created:\n '"${LIST}"
+
+# Remove temporary helm directory
+rm -rf ${HELM_HOME}
+# Kill helm
+kill_helm
+
 exit 0
