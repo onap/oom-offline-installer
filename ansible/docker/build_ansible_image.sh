@@ -24,6 +24,9 @@ set -e
 ansible_version="$1"
 image_name="${2:-ansible:latest}"
 
+# Override image name from env variable if set
+image_name="${ANSIBLE_CHROOT_IMAGE_NAME:-$image_name}"
+
 script_path=$(readlink -f "$0")
 script_dir=$(dirname "$script_path")
 
