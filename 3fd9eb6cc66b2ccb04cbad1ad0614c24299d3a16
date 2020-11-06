@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "343fa6ed_87e0b585",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2020-11-06T10:08:39Z",
+      "side": 1,
+      "message": "if a user runs the script without any params, he gets usage info and exit 1,\nbut if he runs the script as follows (without specifying port number):\ndocker-images-collector.sh -p\nthe script runs with the default port 8879. Maybe it would make sense to either return an info/error message to the user in such case or run with the default port if no parameters are specified? To make it consistent across different invocations.\nOr implement a validation of the second parameter if -p is supplied.",
+      "revId": "3fd9eb6cc66b2ccb04cbad1ad0614c24299d3a16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
