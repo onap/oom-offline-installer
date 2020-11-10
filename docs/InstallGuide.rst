@@ -64,7 +64,7 @@ KUBERNETES NODE     OS                 NETWORK              CPU            RAM  
 SUM                                                         ``56 vCPUs``   ``176+ GB``  ``400 GB``
 =========================================================== ============== ============ ===============
 
-Unfortunately, the offline installer supports only **RHEL 7.x** or **CentOS 7.6** distribution as of now. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing.
+As of now, the offline installer supports only **RHEL 7.x** and **CentOS 7.6** distributions, with at least *@core* and *@base* package groups installed including *Mandatory* and *Default* package sets. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing.
 
 We will expect from now on that you installed four VMs and they are connected to the shared network. All VMs must be reachable from our *install-server* (below), which can be the hypervisor, *infra-node* or completely different machine. But in either of these cases the *install-server* must be able to connect over ssh to all of these nodes.
 
