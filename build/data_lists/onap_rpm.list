@@ -13,7 +13,7 @@ libnfsidmap-0.25-19.el7.x86_64
 libpath_utils-0.2.1-32.el7.x86_64
 libref_array-0.1.5-32.el7.x86_64
 libverto-libevent-0.2.5-4.el7.x86_64
-nfs-utils-1.3.0-0.66.el7_8.x86_64
+nfs-utils-1.3.0-0.68.el7.x86_64
 python-docker-py-1.10.6-9.el7_6.noarch
 python-docker-pycreds-0.3.0-9.el7_6.noarch
 python-chardet-2.2.1-3.el7.noarch
