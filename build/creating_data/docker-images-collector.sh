@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2019 © Samsung Electronics Co., Ltd.
+#   Copyright 2019-2020 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 
 ### This script is preparing docker images list based on kubernetes project
 
-### NOTE: helm needs to be installed and working, it is required for correct processing
+### NOTE: helm needs to be installed; it is required for correct processing
 ### of helm charts in oom directory
 
 # Fail fast settings
@@ -30,7 +30,11 @@ usage () {
     echo "      "
     echo "  This script is preparing docker images list based on kubernetes project"
     echo "      Usage:"
-    echo "        ./$(basename $0) <path to project> [<output list file>]"
+    echo "        ./$(basename $0) [OPTION]... <path to project> [<output list file>]"
+    echo "      "
+    echo "      Options:"
+    echo "          -h | --help      Show script usage synopsis"
+    echo "          -p | --helm-port Chart repository server port"
     echo "      "
     echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
@@ -65,15 +69,72 @@ create_list() {
             -e 's/\x27\|,//g; s/^.*\(image\|tag_version\):\ //' | tr -d '\r'
 }
 
-# Configuration
-if [ "${1}" == "-h" ] || [ "${1}" == "--help" ] || [ $# -lt 1 ]; then
+# Kill helm if already running
+kill_helm() {
+    for pid in $(pgrep -f "helm serve --address ${HELM_REPO}");
+    do
+        kill $pid
+    done
+}
+
+validate_port() {
+    if [ -z $1 ];
+    then
+        echo "Error: No valid port number provided"
+        exit 1
+    fi
+    if ! [[ "$1" =~ ^[0-9]*$ ]];
+    then
+        echo "Error: "${1}" is not a valid port number"
+        exit 1
+    fi
+}
+
+check_helm() {
+    sleep 2 # let the helm process settle
+    if [ $(pgrep -f "helm serve --address ${HELM_REPO}" -c) -eq 0 ];
+    then
+        echo "Fatal: Helm chart repository server failed to start"
+        exit 1
+    fi
+}
+
+# Proccess input options
+if [ $# -lt 1 ]; then
     usage
 fi
 
+while [ $# -gt 0 ];
+do
+    case "${1}" in
+        -h | --help)
+            usage
+            ;;
+        -p | --helm-port)
+            PORT="${2}"
+            validate_port "${PORT}"
+            shift 2
+            ;;
+        -*)
+            echo "Unknown option ${1}"
+            usage
+            ;;
+        *)
+            # end of options
+            break
+            ;;
+    esac
+done
+
+# Configuration
 PROJECT_DIR="${1}"
 LIST="${2}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
-HELM_REPO="local http://127.0.0.1:8879"
+HELM_REPO_HOST="127.0.0.1"
+HELM_REPO_PORT="${PORT:-8879}"
+HELM_REPO="${HELM_REPO_HOST}:${HELM_REPO_PORT}"
+HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/Makefile
+DOCKER_CONTAINER="generate-certs-${HELM_REPO_PORT}" # oom-cert-service container name override
 PROJECT="$(basename ${1})"
 
 if [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
@@ -95,24 +156,21 @@ if [ -e "${LIST}" ]; then
 fi
 
 # Setup helm
-if ps -eaf | grep -v "grep" | grep "helm" > /dev/null; then
-    echo "helm is already running"
-else
-    helm init -c > /dev/null
-    helm serve &
-    helm repo remove stable 2>/dev/null || true
-fi
-
-# Create helm repository
-if ! helm repo list 2>&1 | awk '{ print $1, $2 }' | grep -q "$HELM_REPO" > /dev/null; then
-    helm repo add $HELM_REPO
-fi
+HELM_HOME=$(mktemp -p /tmp -d .helm.XXXXXXXX)
+export HELM_HOME
+kill_helm # make sure it's not already running
+mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
+helm init -c --local-repo-url "http://${HELM_REPO}"
+helm serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
+helm repo remove stable 2>/dev/null || true
+check_helm
 
 # Make all
 pushd "${PROJECT_DIR}/.."
 echo "Building project..."
 export SKIP_LINT=TRUE
-make all > /dev/null; make ${PROJECT} > /dev/null
+export DOCKER_CONTAINER
+make -e all > /dev/null; make -e ${PROJECT} > /dev/null
 popd
 
 # Create the list from all enabled subsystems
@@ -132,4 +190,10 @@ sed -i "1i# generated from ${COMMENT}" "${LIST}"
 
 echo -e ${MSG}
 echo -e 'The list has been created:\n '"${LIST}"
+
+# Remove temporary helm directory
+rm -rf ${HELM_HOME}
+# Kill helm
+kill_helm
+
 exit 0
