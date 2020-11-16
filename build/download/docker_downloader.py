@@ -168,8 +168,7 @@ class DockerDownloader(ConcurrentDownloader):
         :param image_name: name of the image from list
         """
         dst = '{}/{}'.format(output_dir, self._image_filename(image_name))
-        if not os.path.exists(output_dir):
-            os.makedirs(output_dir)
+        os.makedirs(output_dir, exist_ok=True)
         try:
             with open(dst, 'wb') as f:
                 for chunk in image.save(named=self.image_registry_name(image_name)):
