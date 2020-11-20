@@ -35,8 +35,8 @@ cpp
 dpkg-dev
 g++
 g++-7
-libcc-0
-libcc-7-dev
+libcc1-0
+libgcc-7-dev
 libgomp1
 libitm1
 libatomic1
@@ -47,11 +47,9 @@ libubsan0
 libcilkrts5
 libmpx2
 libquadmath0
-libc6-dev
 gcc
 gcc-7
 libc6-dev
-libc-dev
 make
 binutils
 resolvconf
