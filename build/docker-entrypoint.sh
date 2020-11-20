@@ -26,6 +26,9 @@ PCKG_LIST_DIR=""
 # Path to additional packages lists
 ADD_LIST_DIR=""
 
+# Use cache by default
+drop_cache=false
+
 # Show help
 help () {
 cat <<EOF
@@ -37,6 +40,7 @@ usage: create-repo.sh [OPTION]...
   -l | --list                   input rpm/deb list directory
   -a | --additional-list        additional packages list; can be used multiple times
   -p | --packages-lists-path    other additional packages lists
+  -r | --drop-cache             remove cached packages (use package cache by default)
   -h | --help                   show this help
 
 Both paths have to be set with shared volume between
@@ -63,20 +67,28 @@ do
             # Directory parameter
             # Set target reposity path
             OFFLINE_REPO_DIR="$2"
+            shift
             ;;
         -l|--list)
             # List parameter
             # Set path containing onap_rpm.list or onap_deb.list file
             PCKG_LIST_DIR="$2"
+            shift
             ;;
         -p|--packages-lists-path)
             # Path parameter
             # Set path for additional packages lists
             ADD_LIST_DIR="$2"
+            shift
             ;;
         -a|--additional-list)
             # Array of additional packages lists
             ADDITIONAL_LISTS+=("$2")
+            shift
+            ;;
+        -r|--drop-cache)
+            # Set flag to clean cache
+            drop_cache=true
             ;;
         *)
             # unknown option
@@ -84,7 +96,7 @@ do
             exit
             ;;
     esac
-    shift;shift
+    shift
 done
 
 # Testing if directory parameter was used
@@ -98,18 +110,21 @@ fi
 # If not variable is set to default value /tmp/offline/data-list
 if test -z "$PCKG_LIST_DIR"
 then
-    PCKG_LIST_DIR="/tmp/offline/data_list/"
+    PCKG_LIST_DIR="/tmp/offline/data_list"
 fi
 
 # Testing if additional packages list parameter was used
 # If not variable is set to default value /tmp/additional-lists
 if test -z "$PCKG_LIST_DIR"
 then
-    PCKG_LIST_DIR="/tmp/additional-lists/"
+    PCKG_LIST_DIR="/tmp/additional-lists"
 fi
 
-# Clean target repo dir for idempotency
-rm -rf ${OFFLINE_REPO_DIR}/*
+# Clean target repo dir if --drop-cache set
+if ${drop_cache};
+then
+    rm -rf ${OFFLINE_REPO_DIR}/*
+fi
 
 case "$distro_type" in
     ubuntu)
@@ -133,22 +148,54 @@ case "$distro_type" in
         # https://bugs.launchpad.net/ubuntu/+source/aptitude/+bug/1543280
         chown _apt $OFFLINE_REPO_DIR
 
-        # Download all packages from onap_deb.list via apt-get to repository folder
-        for i in $(cat ${PCKG_LIST_DIR}onap_deb.list | awk '{print $1}');do apt-get download $i -y; done
-        for i in $(cat ${PCKG_LIST_DIR}onap_deb.list | awk '{print $1}');
-                    do
-                    for depends in $(apt-cache depends $i | grep -E 'Depends' | cut -d ':' -f 2,3 | sed -e s/'<'/''/ -e s/'>'/''/);
-                        do apt-get download $depends -y;
-                    done;
-                done
+        # Create tmp file for package list
+        list_file=$(mktemp)
+
+        # Enumerate packages that are already downloaded
+        for package in $(cat ${PCKG_LIST_DIR}/onap_deb.list);
+        do
+            # If package name contains explicit version info cut the version string off for further processing
+            p=$(echo $package |sed -r 's/=.*//')
+            # Add package to download list only if it's not already there
+            if [ $(ls ${p}_*.deb 2>/dev/null | wc -l) -eq 0 ];
+            then
+                echo ${package} >> ${list_file}
+            fi
+        done
+
+        # Download all packages via apt-get to repository folder
+        for i in $(cat ${list_file});do echo apt-get download $i -y; done
+        for i in $(cat ${list_file});
+            do
+                for depends in $(apt-cache depends $i | grep -E 'Depends' | grep -v 'Depends:.*>$' | cut -d ':' -f 2,3 | sed -e s/'<'/''/ -e s/'>'/''/);
+                do
+echo                    apt-get download $depends -y;
+                done;
+            done
 
         # Download all packages with dependencies from all additional packages lists via apt-get to repository folder
         if ! [ ${#ADDITIONAL_LISTS[@]} -eq 0 ]; then
             for list in ${ADDITIONAL_LISTS[@]}
             do
-                for i in $(cat ${ADD_LIST_DIR}$list | awk '{print $1}');do apt-get download $i -y; done
-                for i in $(cat ${ADD_LIST_DIR}$list | awk '{print $1}');
-                    do
+
+                # Create tmp file for package list
+                list_file=$(mktemp)
+
+                # Enumerate packages that are already downloaded
+                for package in $(cat ${ADD_LIST_DIR}/${list});
+                do
+                    # If package name contains explicit version info cut the version string off for further processing
+                    p=$(echo $package |sed -r 's/=.*//')
+                    # Add package to download list only if it's not already there
+                    if [ $(ls ${p}_*.deb 2>/dev/null | wc -l) -eq 0 ];
+                    then
+                        echo ${package} >> ${list_file}
+                    fi
+                done
+
+                for i in $(cat ${list_file});do apt-get download $i -y; done
+                for i in $(cat ${list_file});
+                do
                     for depends in $(apt-cache depends $i | grep -E 'Depends' | cut -d ':' -f 2,3 | sed -e s/'<'/''/ -e s/'>'/''/);
                         do apt-get download $depends -y;
                     done;
@@ -169,14 +216,42 @@ case "$distro_type" in
         # Add official docker repository
         yum-config-manager --add-repo=https://download.docker.com/linux/centos/7/x86_64/stable/
 
-        # Download all packages from onap_rpm.list via yumdownloader to repository folder
-        for i in $(cat ${PCKG_LIST_DIR}onap_rpm.list | awk '{print $1}');do yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y; done
+        # Create tmp file for package list
+        list_file=$(mktemp)
 
-        # Download all packages from all additional packages lists via apt-get to repository folder
+        # Enumerate packages that are already downloaded
+        for package in $(cat ${PCKG_LIST_DIR}/onap_rpm.list);
+        do
+            # Add package to download list only if it's not already there
+            if [ ! -f ${OFFLINE_REPO_DIR}/${package}.rpm ];
+            then
+                echo ${package} >> ${list_file}
+            fi
+        done
+
+        # Download all packages from onap_rpm.list via yumdownloader to repository folder
+        for i in $(cat ${list_file});do yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y; done
+
+        # Download all packages from all additional packages lists via yumdownloader to repository folder
         if ! [ ${#ADDITIONAL_LISTS[@]} -eq 0 ]; then
             for list in ${ADDITIONAL_LISTS[@]}
             do
-                for i in $(cat ${ADD_LIST_DIR}$list | awk '{print $1}');do yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y; done
+                # Create tmp file for additional package list
+                list_file=$(mktemp)
+                # Enumerate packages that are already downloaded
+                for package in $(cat ${ADD_LIST_DIR}/${list});
+                do
+                    # Add package to download list only if it's not already there
+                    if [ ! -f ${OFFLINE_REPO_DIR}/${package}.rpm ];
+                    then
+                        echo ${package} >> ${list_file}
+                    fi
+                done
+
+                for i in $(cat ${list_file});
+                do
+                    yumdownloader --resolve --downloadonly --destdir=${OFFLINE_REPO_DIR} $i -y
+                done
             done
         fi
 
