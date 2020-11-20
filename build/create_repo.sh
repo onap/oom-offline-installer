@@ -18,6 +18,9 @@ container_repo_volume="/mnt/repo/"
 # Additional packages lists files path within container
 container_list_volume="/mnt/additional-lists/"
 
+# Use cache by default
+drop_cache=false
+
 # Show script usage
 help () {
 cat <<EOF
@@ -34,6 +37,7 @@ usage: create_repo.sh [OPTION]...
   -t | --target-platform           target repository platform type (ubuntu/rhel/centos)
   -a | --additional-list           additional packages list; can be used multiple times for more additional lists
   -n | --container-name-suffix     add custom suffix to docker container name
+  -r | --drop-cache                remove cached packages (use package cache by default)
   -h | --help                      show this help
 
 If build folder from offline repository is not specified current one will be used by default.
@@ -82,24 +86,33 @@ do
             # Directory parameter
             # Set path to offline-installer build directory
             volume_offline_directory="$2"
+            shift
             ;;
         -d|--destination-repository)
             # Repository directory parameter
             # Set destination path for created repository
             volume_repo_directory="$2"
+            shift
             ;;
         -t|--target-platform)
             # Repository type (rpm/deb)
             # Set target platform for repository
             target_input="$2"
+            shift
             ;;
         -a|--additional-list)
             # Array of additional packages lists
             additional_lists+=("$2")
+            shift
             ;;
         -n|--container-name-suffix)
             # Set custom container name suffix
             container_name_suffix="_${2}"
+            shift
+            ;;
+        -r|--drop-cache)
+            # Set flag to clean cache
+            drop_cache=true
             ;;
         *)
             # unknown option
@@ -107,7 +120,7 @@ do
             exit 1
             ;;
     esac
-    shift;shift
+    shift
 done
 
 # Check if user specified repository type
@@ -148,6 +161,10 @@ then
     param_array+=(--directory ${container_repo_volume})
     param_array+=(--list ${container_offline_volume}data_lists/)
     param_array+=(--packages-lists-path ${container_list_volume})
+    if ${drop_cache};
+    then
+        param_array+=(--drop-cache)
+    fi
     [[ ! ${#additional_lists[@]} -eq 0 ]] && \
         for array_list in "${additional_lists[@]}";
         do
@@ -155,7 +172,7 @@ then
             mounted_lists+=(-v ${array_list}:${container_list_volume}${array_list##*/})
         done
 
-    docker run --name $container_name \
+        docker run --name $container_name \
                -v ${volume_offline_directory}:${container_offline_volume} \
                -v ${volume_repo_directory}:${container_repo_volume} \
                "${mounted_lists[@]}" \
