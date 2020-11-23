@@ -53,16 +53,6 @@
     state: present
   when: ansible_os_family == "Debian"
 
-- name: Build local helm repository
-  make:
-    chdir: "{{ app_helm_charts_infra_directory }}"
-    params:
-      SKIP_LINT: "TRUE"
-    target: "{{ item }}"
-  loop: "{{ app_helm_build_targets }}"
-  environment:
-    PATH: "{{ helm_bin_dir }}:{{ ansible_env.PATH }}"
-
 - name: Generate Helm application override file with custom role
   include_role:
     name: "{{ app_helm_override_role }}"
@@ -77,21 +67,3 @@
 - name: Print final list of override files
   debug:
     var: helm_override_files
-
-- name: Check for deploy plugin presence
-  stat:
-    path: '{{ helm_home_dir.stdout }}/plugins/deploy/deploy.sh'
-  register: deploy_plugin_presence
-
-- name: "Helm Install application {{ app_name }}"
-  command: >
-          {{ helm_bin_dir }}/helm
-          {{ 'deploy' if deploy_plugin_presence.stat.exists else 'install --name' }}
-          {{ app_helm_release_name }}
-          {{ helm_repository_name }}/{{ app_helm_chart_name }}
-          --namespace {{ app_kubernetes_namespace }}
-          {{ helm_override_files | map('regex_replace', '^', '-f ') | join(' ') }}
-          {{ helm_extra_install_options | map(attribute='opt') | join(' ') }}
-  changed_when: true  # when executed its a changed type of action
-  register: helm_install
-  failed_when: helm_install.stderr
