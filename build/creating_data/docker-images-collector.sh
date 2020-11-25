@@ -64,7 +64,7 @@ create_list() {
     else
         >&2 echo -e \n"    !!! ${1} sybsystem does not exist !!!"\n
     fi
-    helm template --set global.masterPassword=TemplatePassword -f ${PROJECT_DIR}/values.yaml "${SUBSYS_DIR}" | grep 'image:\ \|tag_version:\ \|h._image' |
+    helm template --set global.masterPassword=TemplatePassword,global.offlineDeploymentBuild=true -f ${PROJECT_DIR}/values.yaml "${SUBSYS_DIR}" | grep 'image:\ \|tag_version:\ \|h._image' |
         sed -e 's/^.*\"h._image\"\ :\ //; s/^.*\"\(.*\)\".*$/\1/' \
             -e 's/\x27\|,//g; s/^.*\(image\|tag_version\):\ //' | tr -d '\r'
 }
