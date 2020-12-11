@@ -42,6 +42,8 @@ router_addr: "10.1.0.1"
 external_subnet_cidr: ""
 #Address of cicd docker registry.
 cicd_docker_registry: ""
+#Address of custom docker registry mirror
+docker_registry_mirror: ""
 #Number of nodes to deploy.
 num_nodes: "3"
 #Stack name to deploy on heat.
