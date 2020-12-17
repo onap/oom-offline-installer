@@ -37,6 +37,8 @@ subnet_range_start: "10.1.0.4"
 subnet_range_end: "10.1.0.254"
 #Ip address of router used as a gateway to external network.
 router_addr: "10.1.0.1"
+#A list of dns resolvers for all instances
+dns_nameservers: []
 #Cidr of external subnet to allow access to, 0.0.0.0/0 means allow internet access.
 # For offline deployment it is recommended to set this to a cidr of intranet.
 external_subnet_cidr: ""

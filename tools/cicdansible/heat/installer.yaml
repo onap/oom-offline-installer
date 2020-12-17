@@ -58,6 +58,10 @@ parameters:
     type: string
     constraints:
       - custom_constraint: ip_addr
+  dns_nameservers:
+    label: "dns resolvers"
+    description: "List of dns resolvers"
+    type: comma_delimited_list
   public_network_name:
     label: "name of the public network"
     description: "Name of the public, internet facing network, also allowing access to company internal hosts"
@@ -140,6 +144,7 @@ resources:
       allocation_pools:
         - { start: { get_param: subnet_range_start }, end: { get_param: subnet_range_end } }
       gateway_ip: { get_param: router_addr }
+      dns_nameservers: { get_param: dns_nameservers }
       ip_version: 4
   #A port connected to the private network, taken by router.
   routerport:
