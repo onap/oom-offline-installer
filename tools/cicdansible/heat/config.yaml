@@ -3,6 +3,8 @@
 disable_root: false
 #Output everything to /dev/console...
 output: { all: "/dev/console" }
+resolv_conf:
+  nameservers: []
 #Initialization.
 runcmd:
   - |
