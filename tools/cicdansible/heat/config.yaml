@@ -3,6 +3,7 @@
 disable_root: false
 #Output everything to /dev/console...
 output: { all: "/dev/console" }
+manage_resolv_conf: false
 #Initialization.
 runcmd:
   - |
