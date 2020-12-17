@@ -3,6 +3,9 @@
 disable_root: false
 #Output everything to /dev/console...
 output: { all: "/dev/console" }
+#Clear /etc/resolv.conf
+bootcmd:
+  - echo > /etc/resolv.conf
 #Initialization.
 runcmd:
   - |
