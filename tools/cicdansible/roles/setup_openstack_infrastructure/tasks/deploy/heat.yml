@@ -24,6 +24,7 @@
       subnet_range_start: "{{ subnet_range_start }}"
       subnet_range_end: "{{ subnet_range_end }}"
       router_addr: "{{ router_addr }}"
+      dns_nameserver: "{{ dns_nameserver | default(omit) }}"
       auth_key: "{{ auth_public_key }}"
       image_name: "{{ image_name }}"
       node_flavor_name: "{{ node_flavor_name }}"
