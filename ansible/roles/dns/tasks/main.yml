@@ -1,5 +1,5 @@
 ---
-- name: Ensure cfg directory exist
+- name: Ensure cfg directory exist foo
   file:
     path: "{{ app_data_path }}/cfg"
     state: directory
