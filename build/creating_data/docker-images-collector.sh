@@ -160,7 +160,7 @@ HELM_HOME=$(mktemp -p /tmp -d .helm.XXXXXXXX)
 export HELM_HOME
 kill_helm # make sure it's not already running
 mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
-helm init -c --local-repo-url "http://${HELM_REPO}"
+helm init --skip-refresh -c --local-repo-url "http://${HELM_REPO}"
 helm serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
 helm repo remove stable 2>/dev/null || true
 check_helm
