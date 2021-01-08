@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Verified+1: Bartek Grzybowski <b.grzybowski@partner.samsung.com>
+Code-Review+2: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Submitted-by: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Submitted-at: Fri, 08 Jan 2021 10:27:42 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/oom/offline-installer/+/116456
+Project: oom/offline-installer
+Branch: refs/heads/master
