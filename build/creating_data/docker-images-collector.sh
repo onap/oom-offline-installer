@@ -155,6 +155,7 @@ HELM_REPO_HOST="127.0.0.1"
 HELM_REPO_PORT="${PORT:-8879}"
 HELM_REPO="${HELM_REPO_HOST}:${HELM_REPO_PORT}"
 HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/Makefile
+HELM_VERSION=$(${HELM_BIN} version -c --template "{{.Version}}")
 DOCKER_CONTAINER="generate-certs-${HELM_REPO_PORT}" # oom-cert-service container name override
 PROJECT="$(basename ${1})"
 
