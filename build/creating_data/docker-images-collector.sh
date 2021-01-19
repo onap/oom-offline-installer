@@ -21,8 +21,8 @@
 ### This script is preparing docker images list based on kubernetes project
 
 ### NOTE: helm needs to be installed; it is required for correct processing
-### of helm charts in oom directory; chartmuseum is also required if using
-### helm v3
+### of helm charts in oom directory; chartmuseum and helm push plugin are also
+### required if using helm v3
 
 # Fail fast settings
 set -e
@@ -34,9 +34,10 @@ usage () {
     echo "        ./$(basename $0) [OPTION]... <path to project> [<output list file>]"
     echo "      "
     echo "      Options:"
-    echo "          -h | --help      Show script usage synopsis"
-    echo "          -p | --helm-port Chart repository server port"
-    echo "          -b | --helm-bin  Path to Helm executable"
+    echo "          -h | --help            Show script usage synopsis"
+    echo "          -p | --helm-port       Chart repository server port"
+    echo "          -b | --helm-bin        Path to Helm executable"
+    echo "          -c | --chartmuseum-bin Path to Chartmuseum executable"
     echo "      "
     echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
@@ -75,16 +76,15 @@ create_list() {
 kill_chart_repo() {
     if [[ "${HELM_VERSION}" =~ "v3" ]];
     then
-        # Kill chartmuseum
-        # FIXME
-        echo "not implemented"
+        cmd=${HELM3_CMD_PATTERN}
     else
-        # Kill helm executable
-        for pid in $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}");
-        do
-            kill $pid
-        done
+        cmd=${HELM2_CMD_PATTERN}
     fi
+    for pid in $(pgrep -f "${cmd}");
+    do
+        # Kill helm repository server process
+        kill $pid
+    done
 }
 
 validate_port() {
@@ -118,15 +118,14 @@ check_chart_repo() {
     sleep 2 # let the helm repository process settle
     if [[ "${HELM_VERSION}" =~ "v3" ]];
     then
-        # Check chartmuseum
-        # FIXME
-        echo "not implemented"
+        cmd=${HELM3_CMD_PATTERN}
     else
-        if [ $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}" -c) -eq 0 ];
-        then
-            echo "Fatal: Helm chart repository server failed to start"
-            exit 1
-        fi
+        cmd=${HELM2_CMD_PATTERN}
+    fi
+    if [ $(pgrep -f "${cmd}" -c) -eq 0 ];
+    then
+        echo "Fatal: Helm chart repository server failed to start"
+        exit 1
     fi
 }
 
@@ -151,6 +150,11 @@ do
             validate_bin "${BIN}"
             shift 2
             ;;
+        -c | --chartmuseum-bin)
+            CHARTMUSEUM_BIN="${2}"
+            validate_bin "${CHARTMUSEUM_BIN}"
+            shift 2
+            ;;
         -*)
             echo "Unknown option ${1}"
             usage
@@ -167,6 +171,7 @@ PROJECT_DIR="${1}"
 LIST="${2}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
 HELM_BIN=${BIN:-helm}
+CHARTMUSEUM_BIN=${CHART_BIN:-chartmuseum}
 HELM_REPO_HOST="127.0.0.1"
 HELM_REPO_PORT="${PORT:-8879}"
 HELM_REPO="${HELM_REPO_HOST}:${HELM_REPO_PORT}"
@@ -174,6 +179,8 @@ HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/
 HELM_VERSION=$(${HELM_BIN} version -c --template "{{.Version}}")
 DOCKER_CONTAINER="generate-certs-${HELM_REPO_PORT}" # oom-cert-service container name override
 PROJECT="$(basename ${1})"
+HELM3_CMD_PATTERN="${CHARTMUSEUM_BIN} --storage local --storage-local-rootdir .*/chartmuseum -port ${HELM_REPO_PORT}"
+HELM2_CMD_PATTERN="${HELM_BIN} serve --address ${HELM_REPO}"
 
 if [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
     echo "Wrong path to project directory entered"
@@ -194,16 +201,19 @@ if [ -e "${LIST}" ]; then
 fi
 
 HELM_HOME=$(mktemp -p /tmp -d .helm.XXXXXXXX)
+export HELM_HOME
 
+kill_chart_repo # make sure it's not already running
 if [[ "${HELM_VERSION}" =~ "v3" ]];
 then
     # Setup helm v3
-    # FIXME
-    echo "not implemented"
+    export HELM_CONFIG_HOME="${HELM_HOME}/.config"
+    export HELM_CACHE_HOME="${HELM_HOME}/.cache"
+    ${CHARTMUSEUM_BIN} --storage local --storage-local-rootdir "${HELM_HOME}/chartmuseum" -port ${HELM_REPO_PORT} &
+    sleep 2 # let the chartmuseum process settle
+    ${HELM_BIN} repo add local "http://${HELM_REPO}"
 else
     # Setup helm v2
-    export HELM_HOME
-    kill_chart_repo # make sure it's not already running
     mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
     ${HELM_BIN} init --skip-refresh -c --local-repo-url "http://${HELM_REPO}"
     ${HELM_BIN} serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
