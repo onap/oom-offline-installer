@@ -238,9 +238,9 @@ sed -i "1i# generated from ${COMMENT}" "${LIST}"
 echo -e ${MSG}
 echo -e 'The list has been created:\n '"${LIST}"
 
-# Remove temporary helm directory
-rm -rf ${HELM_HOME}
 # Kill helm
 kill_chart_repo
+# Remove temporary helm directory
+rm -rf ${HELM_HOME}
 
 exit 0
