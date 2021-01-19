@@ -21,7 +21,8 @@
 ### This script is preparing docker images list based on kubernetes project
 
 ### NOTE: helm needs to be installed; it is required for correct processing
-### of helm charts in oom directory
+### of helm charts in oom directory; chartmuseum is also required if using
+### helm v3
 
 # Fail fast settings
 set -e
@@ -39,7 +40,7 @@ usage () {
     echo "      "
     echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
-    echo "      Dependencies: helm, python-yaml, make"
+    echo "      Dependencies: helm, python-yaml, make, chartmuseum (helm v3 only)"
     echo "      "
     exit 1
 }
@@ -70,12 +71,20 @@ create_list() {
             -e 's/\x27\|,//g; s/^.*\(image\|tag_version\):\ //' | tr -d '\r'
 }
 
-# Kill helm if already running
-kill_helm() {
-    for pid in $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}");
-    do
-        kill $pid
-    done
+# Kill helm repository if already running
+kill_chart_repo() {
+    if [[ "${HELM_VERSION}" =~ "v3" ]];
+    then
+        # Kill chartmuseum
+        # FIXME
+        echo "not implemented"
+    else
+        # Kill helm executable
+        for pid in $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}");
+        do
+            kill $pid
+        done
+    fi
 }
 
 validate_port() {
@@ -105,12 +114,19 @@ validate_bin() {
     fi
 }
 
-check_helm() {
-    sleep 2 # let the helm process settle
-    if [ $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}" -c) -eq 0 ];
+check_chart_repo() {
+    sleep 2 # let the helm repository process settle
+    if [[ "${HELM_VERSION}" =~ "v3" ]];
     then
-        echo "Fatal: Helm chart repository server failed to start"
-        exit 1
+        # Check chartmuseum
+        # FIXME
+        echo "not implemented"
+    else
+        if [ $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}" -c) -eq 0 ];
+        then
+            echo "Fatal: Helm chart repository server failed to start"
+            exit 1
+        fi
     fi
 }
 
@@ -177,15 +193,23 @@ if [ -e "${LIST}" ]; then
     MSG="$(realpath ${LIST}) already existed\nCreated backup $(realpath ${LIST}).bk\n"
 fi
 
-# Setup helm
 HELM_HOME=$(mktemp -p /tmp -d .helm.XXXXXXXX)
-export HELM_HOME
-kill_helm # make sure it's not already running
-mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
-${HELM_BIN} init --skip-refresh -c --local-repo-url "http://${HELM_REPO}"
-${HELM_BIN} serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
-${HELM_BIN} repo remove stable 2>/dev/null || true
-check_helm
+
+if [[ "${HELM_VERSION}" =~ "v3" ]];
+then
+    # Setup helm v3
+    # FIXME
+    echo "not implemented"
+else
+    # Setup helm v2
+    export HELM_HOME
+    kill_chart_repo # make sure it's not already running
+    mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
+    ${HELM_BIN} init --skip-refresh -c --local-repo-url "http://${HELM_REPO}"
+    ${HELM_BIN} serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
+    ${HELM_BIN} repo remove stable 2>/dev/null || true
+fi
+check_chart_repo
 
 # Make all
 pushd "${PROJECT_DIR}/.."
@@ -217,6 +241,6 @@ echo -e 'The list has been created:\n '"${LIST}"
 # Remove temporary helm directory
 rm -rf ${HELM_HOME}
 # Kill helm
-kill_helm
+kill_chart_repo
 
 exit 0
