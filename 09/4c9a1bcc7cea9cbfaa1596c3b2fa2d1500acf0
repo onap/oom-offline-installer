@@ -1,0 +1,12 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Verified+1: Bartek Grzybowski <b.grzybowski@partner.samsung.com>
+Code-Review+1: Marcin Wilk <m.wilk@samsung.com>
+Code-Review+1: Krystian Kedron <k.kedron@partner.samsung.com>
+Code-Review+1: Konrad Ba?ka <k.banka@samsung.com>
+Code-Review+1: Lasse Kaihlavirta <l.kaihlavirt@partner.samsung.com>
+Code-Review+2: Krzysztof Opasiak <k.opasiak@samsung.com>
+Submitted-by: Krzysztof Opasiak <k.opasiak@samsung.com>
+Submitted-at: Wed, 20 Jan 2021 15:10:20 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/oom/offline-installer/+/116948
+Project: oom/offline-installer
+Branch: refs/heads/master
