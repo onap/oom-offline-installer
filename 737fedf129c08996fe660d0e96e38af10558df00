@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e942e684_43ed037b",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2021-01-20T15:25:45Z",
+      "side": 1,
+      "message": "I\u0027m not a fan of this check. It\u0027s fine to check that the file actually exists but I\u0027d just check that it has executable bit set instead of strictly checking that it\u0027s elf.\n\nThis can be useful if one would like to wrap all helm calls into some script so that he can force some additional arguments",
+      "revId": "737fedf129c08996fe660d0e96e38af10558df00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
