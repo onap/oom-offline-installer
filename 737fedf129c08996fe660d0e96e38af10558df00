@@ -16,6 +16,24 @@
       "revId": "737fedf129c08996fe660d0e96e38af10558df00",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d839626_d5763a01",
+        "filename": "build/creating_data/docker-images-collector.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-01-21T08:47:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e942e684_43ed037b",
+      "revId": "737fedf129c08996fe660d0e96e38af10558df00",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
