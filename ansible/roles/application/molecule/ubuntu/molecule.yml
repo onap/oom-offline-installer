@@ -28,6 +28,7 @@ provisioner:
           - all
           - onap
         app_helm_chart_name: "{{ app_name }}"
+        helm_version: v2
   lint:
     name: ansible-lint
   playbooks:
