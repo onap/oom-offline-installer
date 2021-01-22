@@ -20,28 +20,5 @@
         src: "{{ app_helm_charts_install_directory }}.tgz"
         dest: "{{ app_helm_charts_infra_directory }}"
 
-
-- name: Install helm plugins if needed
-  block:
-    - name: Get helm dir
-      command: "{{ helm_bin_dir }}/helm home"
-      register: helm_home_dir
-    - name: Ensure that dir for helm plugins exists
-      file:
-        path: "{{ helm_home_dir.stdout }}/plugins"
-        state: directory
-        mode: 0755
-    - name: Register all plugins to be inserted by dir names
-      find:
-        paths: "{{ app_helm_plugins_directory }}"
-        file_type: "directory"
-      register: list_of_plugins
-      delegate_to: localhost
-    - name: Install all helm plugins from {{ app_helm_plugins_directory }} dir
-      copy:
-        src: "{{ item.path }}"
-        dest: "{{ helm_home_dir.stdout }}/plugins"
-        directory_mode: true
-        mode: 0755
-      loop: "{{ list_of_plugins.files }}"
-  when: app_helm_plugins_directory is defined and app_helm_plugins_directory is not none
+- include_tasks: install-helm2-plugins.yml
+  when: helm_version | regex_search("^v2" )
