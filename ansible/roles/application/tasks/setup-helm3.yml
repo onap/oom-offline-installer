@@ -1,0 +1,5 @@
+---
+- name: Check for deploy plugin presence
+  stat:
+    path: '{{ helm_data_dir }}/plugins/deploy/deploy.sh'
+  register: deploy_plugin_presence
