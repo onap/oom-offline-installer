@@ -29,6 +29,7 @@ provisioner:
         app_helm_chart_name: "{{ app_name }}"
         application_pre_install_role: application/test-patch-role
         application_post_install_role: application/test-patch-role
+        helm_version: v2
   lint:
     name: ansible-lint
   playbooks:
