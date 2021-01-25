@@ -6,6 +6,7 @@
   delegate_to: localhost
   loop:
     - "{{ app_helm_charts_install_directory }}"
+    - "{{ app_helm_charts_install_directory + '/helm' + '/plugins' + '/deploy' }}"
     - certs
     - "{{ application_pre_install_role + '/tasks/' }}"
     - "{{ application_post_install_role + '/tasks/' }}"
@@ -16,6 +17,14 @@
       all:
       onap:
     dest: "{{ app_helm_charts_install_directory }}/Makefile"
+  delegate_to: localhost
+  when: simulate_helm
+
+- name: Create Helm plugin mock
+  copy:
+    content: |
+      # Mocked Helm plugin
+    dest: "{{ app_helm_charts_install_directory + '/helm' + '/plugins' + '/deploy' }}/deploy.sh"
   delegate_to: localhost
   when: simulate_helm
 
