@@ -252,6 +252,9 @@ def build_offline_deliverables(build_version,
         kubectl_files = glob.glob(os.path.join('.', '**/kubectl'), recursive=True)
         os.symlink(kubectl_files[0], os.path.join(download_dir_path, kubectl_files[0].split('/')[-1]))
 
+        chartmuseum_files = glob.glob(os.path.join('.', '**/chartmuseum'), recursive=True)
+        os.symlink(chartmuseum_files[0], os.path.join(download_dir_path, chartmuseum_files[0].split('/')[-1]))
+
         os.chdir(script_location)
         # End of workaround
 
