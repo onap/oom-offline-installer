@@ -1,0 +1,3 @@
+---
+chartmuseum_port: "8879"
+chartmuseum_storage_dir: "{{ app_data_path }}/chartmuseum"

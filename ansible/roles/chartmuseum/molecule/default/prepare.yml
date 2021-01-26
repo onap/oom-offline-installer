@@ -1,0 +1,5 @@
+---
+- name: Prepare infra
+  hosts: infrastructure
+  roles:
+    - prepare-chartmuseum

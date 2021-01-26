@@ -1,0 +1,20 @@
+---
+- name: Install chartmuseum
+  copy:
+    src: "{{ app_data_path }}/downloads/chartmuseum"
+    dest: "{{ helm_bin_dir }}"
+    remote_src: true
+    mode: 0755
+
+- name: Create storage directory for chartmuseum
+  file:
+    path: "{{ chartmuseum_storage_dir }}"
+    state: directory
+
+- name: Run Helm chart repository
+  shell: "{{ helm_bin_dir }}/chartmuseum --storage local --storage-local-rootdir {{ chartmuseum_storage_dir }} -port {{ chartmuseum_port }} &"
+  async: 10
+  poll: 3
+  register: chart_repository
+  changed_when: "'address already in use' not in chart_repository.stderr"
+  failed_when: "'Starting ChartMuseum' not in chart_repository.stderr"

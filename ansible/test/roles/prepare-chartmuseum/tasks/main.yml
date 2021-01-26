@@ -1,0 +1,12 @@
+---
+- name: "Ensure {{ app_data_path }}/downloads directory exists"
+  file:
+    path: "{{ app_data_path }}/downloads"
+    recurse: true
+    state: directory
+
+- name: "Download chartmuseum"
+  get_url:
+    url: "https://s3.amazonaws.com/chartmuseum/release/latest/bin/linux/amd64/chartmuseum"
+    dest: "{{ app_data_path }}/downloads"
+    remote_src: true
