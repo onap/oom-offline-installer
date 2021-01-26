@@ -1,0 +1,38 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: instance-ubuntu-chartmuseum
+    image: ubuntu:18.04
+    dockerfile: ../default/Dockerfile.j2
+    groups:
+      - infrastructure
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        app_name: moleculetestapp
+        app_data_path: "/opt/{{ app_name }}"
+        helm_bin_dir: /usr/local/bin
+        chartmuseum_storage_dir: "/opt/{{ app_name }}/chartmuseum"
+        chartmuseum_port: "1234"
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+scenario:
+  name: ubuntu
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+  directory: ../default/tests/
