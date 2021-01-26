@@ -1,4 +1,51 @@
 ---
+- name: Helm init and upgrade
+  command: |
+     {{ helm_bin_dir }}/helm init
+     --upgrade
+     --skip-refresh
+  changed_when: true  # init is always changed type of action
+
+# A correct way to implement this would be using --wait option in helm init invocation.
+# However, it does not work due to https://github.com/helm/helm/issues/4031 (fixed in newer helm release)
+- name: "Wait for helm upgrade to finish"
+  command: "{{ helm_bin_dir }}/helm version --tiller-connection-timeout 10"
+  register: result
+  until: result.rc == 0
+  delay: 10
+  retries: 12
+  changed_when: false  # for idempotency
+
+- name: Get all helm repos
+  command: "{{ helm_bin_dir }}/helm repo list"
+  register: repos
+  changed_when: false  # for idempotency
+
+- name: Remove stable repo
+  command: "{{ helm_bin_dir }}/helm repo remove stable"
+  changed_when: true  # when executed its a changed type of action
+  when: "'stable' in repos.stdout"
+
+- name: Helm Serve
+  shell: "{{ helm_bin_dir }}/helm serve &"
+  async: 45
+  poll: 3  # wait 3sec to get a chance for some stderr
+  register: helm_serve
+  changed_when: "'address already in use' not in helm_serve.stderr"
+
+- name: List helm repos
+  command: "{{ helm_bin_dir }}/helm repo list"
+  register: helm_repo_list
+  changed_when: false  # for idempotency
+  failed_when:
+    - helm_repo_list.rc > 0
+    - "'Error: no repositories to show' not in helm_repo_list.stderr"
+
+- name: Helm Add Repo
+  command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name | mandatory }} {{ helm_repository_url | mandatory }}"
+  when: "'local' not in helm_repo_list.stdout"
+  changed_when: true  # when executed its a changed type of action
+
 - name: Check for deploy plugin presence
   stat:
     path: '{{ helm_home_dir.stdout }}/plugins/deploy/deploy.sh'
