@@ -1,0 +1,4 @@
+---
+app_name: moleculeapp
+app_data_path: "/opt/{{ app_name }}"
+helm_version: v3.3.4
