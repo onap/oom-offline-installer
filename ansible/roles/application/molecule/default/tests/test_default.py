@@ -23,6 +23,8 @@ overrides/onap-all.yaml -f /opt/moleculetestapp/override.yaml \
 --timeout 1800"""
     elif helm_release == 'v3':
         expected_content = """env
+repo list
+repo add local http://127.0.0.1:8879
 deploy moleculetestapp local/moleculetestapp --namespace \
 moleculetestapp -f /opt/moleculetestapp/helm_charts/onap/resources/\
 overrides/onap-all.yaml -f /opt/moleculetestapp/override.yaml \
