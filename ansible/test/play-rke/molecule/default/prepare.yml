@@ -19,3 +19,5 @@
         mode: infra
     - prepare-kubectl
     - prepare-helm
+    - role: prepare-chartmuseum
+      when: helm_version | regex_search("^v3" )
