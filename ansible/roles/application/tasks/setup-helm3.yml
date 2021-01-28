@@ -1,4 +1,17 @@
 ---
+- name: List helm repos
+  command: "{{ helm_bin_dir }}/helm repo list"
+  register: helm_repo_list
+  changed_when: false  # for idempotency
+  failed_when:
+    - helm_repo_list.rc > 0
+    - "'Error: no repositories to show' not in helm_repo_list.stderr"
+
+- name: Helm Add Repo
+  command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name | mandatory }} {{ helm_repository_url | mandatory }}"
+  when: "'local' not in helm_repo_list.stdout"
+  changed_when: true  # when executed its a changed type of action
+
 - name: Check for deploy plugin presence
   stat:
     path: '{{ helm_data_dir }}/plugins/deploy/deploy.sh'
