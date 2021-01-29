@@ -21,6 +21,7 @@ deploy moleculetestapp local/moleculetestapp --namespace \
 moleculetestapp -f /opt/moleculetestapp/helm_charts/onap/resources/\
 overrides/onap-all.yaml -f /opt/moleculetestapp/override.yaml \
 --timeout 1800"""
+        expected_plugin_path = '/plugins/deploy/deploy.sh'
     elif helm_release == 'v3':
         expected_content = """env
 repo list
@@ -29,7 +30,10 @@ deploy moleculetestapp local/moleculetestapp --namespace \
 moleculetestapp -f /opt/moleculetestapp/helm_charts/onap/resources/\
 overrides/onap-all.yaml -f /opt/moleculetestapp/override.yaml \
 --timeout 1800"""
+        expected_plugin_path = '/root/.local/share/helm/plugins/deploy/' +\
+                               'deploy.sh'
     assert fc == expected_content
+    assert host.file(expected_plugin_path).exists
 
 
 def test_helm_override_file(host):
