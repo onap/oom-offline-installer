@@ -6,12 +6,12 @@
       register: helm_env
     - name: Set helm data dir
       set_fact:
-        helm_data_dir: |
-          "{% if 'HELM_DATA_HOME' in helm_env.stdout %}
+        helm_data_dir:
+          "{% if 'HELM_DATA_HOME' in helm_env.stdout -%}
            {{ (helm_env.stdout | replace('\"', '') | regex_search('HELM_DATA_HOME.*')).split('=')[1] }}
-           {% else %}
+           {%- else -%}
            {{ '~/.local/share/helm' }}
-           {% endif %}"
+           {%- endif %}"
     - name: Ensure that dir for helm plugins exists
       file:
         path: "{{ helm_data_dir }}/plugins"
