@@ -255,6 +255,9 @@ def build_offline_deliverables(build_version,
         chartmuseum_files = glob.glob(os.path.join('.', '**/chartmuseum'), recursive=True)
         os.symlink(chartmuseum_files[0], os.path.join(download_dir_path, chartmuseum_files[0].split('/')[-1]))
 
+        helm_push_files = glob.glob(os.path.join('.', '**/helm-push_*_linux_amd64.tar.gz'), recursive=True)
+        os.symlink(helm_push_files[0], os.path.join(download_dir_path, helm_push_files[0].split('/')[-1]))
+
         os.chdir(script_location)
         # End of workaround
 
