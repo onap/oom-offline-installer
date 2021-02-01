@@ -5,6 +5,6 @@
     state: directory
 
 - name: "Install rke-{{ rke_version }}"
-  get_url:
-    url: "https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_linux-amd64"
-    dest: "{{ app_data_path }}/downloads/rke_linux-amd64"
+  command: "curl -L https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_linux-amd64 -o {{ app_data_path }}/downloads/rke_linux-amd64"
+  args:
+    warn: false
