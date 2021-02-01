@@ -7,10 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: infrastructure-server
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
-    pre_build_image: True
-    privileged: true
-    override_command: False
+    image: ubuntu:18.04
     groups:
       - infrastructure
 provisioner:
@@ -28,7 +25,6 @@ provisioner:
       all:
         app_name: onap
         app_data_path: "/opt/{{ app_name }}"
-        helm_bin_dir: /usr/local/bin
 scenario:
   name: ubuntu
 verifier:
