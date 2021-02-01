@@ -48,54 +48,21 @@ function run_molecule() {
 #######################################################################$
 #                           MAIN                                      #$
 #######################################################################$
+./doit.py
+head -c 10 /tmp/foo
+
 echo "----------   ONAP OFFLINE INSTALLER - CHANGE VERIFICATION START   ----------"
 FAILED_ROLES=()
 ALL_PLAYBOOKS=(`ls -d ansible/test/play-*`) # enumerate all playbook tests for later usage
 # Setup environment
 prep_ubuntu_16_04_for_molecule > ubuntu_preparation.log
-
+cat ubuntu_preparation.log
 # Check for changes in Ansible roles
 ROLE_CHANGES=(`git diff HEAD^ HEAD --name-only ansible/roles | cut -f 1-3 -d "/" | sort -u`)
 if [ -z "${ROLE_CHANGES}" ];  then
   echo "NO ANSIBLE ROLE TESTS REQUIRED"
 else
   run_molecule "${ROLE_CHANGES[@]}"
-fi
-
-# Check for changes in Molecule tests
-if ! $(git diff HEAD^ HEAD --exit-code --quiet ansible/test); then
-  # If there are any changes in ansible/test area
-  MOLECULE_CHANGES=(`git diff HEAD^ HEAD --name-only ansible/test | grep -v "ansible/test/play-.*/"`)
-  if [ ${#MOLECULE_CHANGES[@]} -gt 0 ]; then
-    # If detected changes that affect all playbook tests - run all
-    run_molecule "${ALL_PLAYBOOKS[@]}"
-    # memorize already tested playbooks
-    TESTED_PLAYBOOKS=${ALL_PLAYBOOKS[@]}
-  else
-    # Changes only in ansible/test/play-* area - run tests only for changed playbook tests
-    PLAYBOOKS=(`git diff HEAD^ HEAD --name-only ansible/test | cut -f 1-3 -d "/" | sort -u`)
-    run_molecule "${PLAYBOOKS[@]}"
-    # memorize already tested playbooks
-    TESTED_PLAYBOOKS=${PLAYBOOKS[@]}
-  fi
-fi
-
-# Check for changes in Ansible playbooks
-PLAYBOOK_CHANGES=(`git diff HEAD^ HEAD --name-only --relative=ansible ansible/*yml | cut -f 1 -d "."`)
-if [ ${#PLAYBOOK_CHANGES[@]} -gt 0 ]; then
-  for playbook in ${PLAYBOOK_CHANGES[@]};
-  do
-    if [ -d ansible/test/play-${playbook} ]; then
-      # If tests for this playbook are defined
-      if [[ ! ${TESTED_PLAYBOOKS[*]} =~ ${playbook} ]]; then
-        # AND weren't already run
-        run_molecule "ansible/test/play-${playbook}"
-      fi
-    else
-      # Warn that no tests are defined for this playbook
-      echo "[WARNING] ---------- THERE ARE NO TESTS DEFINED FOR ${playbook}.yml PLAYBOOK ----------"
-    fi
-  done
 fi
 
 # Check for changes in Ansible group_vars or libraries
