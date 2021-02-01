@@ -1,18 +1,7 @@
 ---
-- name: "Prepare hosts"
-  hosts: all
-  roles:
-    - role: prepare-rke
-      vars:
-        mode: all
-    - prepare-docker-dind
-
 - name: "Infra specific preparations"
   hosts: infrastructure
   roles:
     - role: prepare-rke
       vars:
         mode: infra
-    - role: prepare-kubectl
-      vars:
-        kubectl_install: true
