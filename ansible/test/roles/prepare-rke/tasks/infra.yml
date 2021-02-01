@@ -4,7 +4,27 @@
     path: "{{ app_data_path }}/downloads"
     state: directory
 
+- name: "Test: Resolve github.com"
+  shell: "ping -c 1 github.com"
+  register: host_out
+
+- debug: var=host_out.stdout
+- debug: var=host_out.stderr
+  
+- name: "test"
+  get_url:
+    url: "https://get.helm.sh/helm-v2.16.6-linux-amd64.tar.gz"
+    dest: "/tmp"
+
+- name: "Test: Curl github.com"
+  shell: "curl -I https://github.com"
+  register: host_out
+
+- debug: var=host_out.stdout
+- debug: var=host_out.stderr
+
 - name: "Install rke-{{ rke_version }}"
   get_url:
     url: "https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_linux-amd64"
     dest: "{{ app_data_path }}/downloads/rke_linux-amd64"
+    validate_certs: no
