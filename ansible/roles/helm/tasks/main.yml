@@ -15,6 +15,7 @@
     - name: Get helm environment information
       command: "{{ helm_bin_dir }}/helm env"
       register: helm_env
+      changed_when: false  # for idempotency
 
     - name: Set helm plugin dir fact
       set_fact:
