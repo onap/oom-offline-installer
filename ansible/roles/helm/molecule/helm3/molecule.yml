@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server-helm3
+    image: centos:7
+    groups:
+      - infrastructure
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        app_name: onap
+        app_data_path: "/opt/{{ app_name }}"
+scenario:
+  name: helm3
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+  directory: ../default/tests

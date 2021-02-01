@@ -10,3 +10,10 @@
     url: "https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz"
     dest: "{{ app_data_path }}/downloads"
     remote_src: true
+
+- name: Download Helm v3 helm-push plugin
+  get_url:
+    url: "https://github.com/chartmuseum/helm-push/releases/download/v{{ helm3_push_version }}/helm-push_{{ helm3_push_version }}_linux_amd64.tar.gz"
+    dest: "{{ app_data_path }}/downloads"
+    remote_src: true
+  when: helm_version | regex_search("^v3" )
