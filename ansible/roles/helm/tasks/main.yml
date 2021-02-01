@@ -9,3 +9,31 @@
       - '*/helm'
     remote_src: true
     mode: 0755
+
+- name: Install helm-push plugin if runing with Helm v3
+  block:
+    - name: Get helm environment information
+      command: "{{ helm_bin_dir }}/helm env"
+      register: helm_env
+
+    - name: Set helm plugin dir fact
+      set_fact:
+        helm_plugin_dir:
+          "{% if 'HELM_PLUGINS' in helm_env.stdout -%}
+           {{ (helm_env.stdout | replace('\"', '') | regex_search('HELM_PLUGINS.*')).split('=')[1] }}
+           {%- else -%}
+           {{ '~/.local/share/helm/plugins' }}
+           {%- endif %}"
+
+    - name: Ensure that plugin directory exists
+      file:
+        path: "{{ helm_plugin_dir }}/helm-push"
+        state: directory
+        mode: 0755
+
+    - name: Deploy helm-push plugin
+      unarchive:
+        src: "{{ app_data_path }}/downloads/helm-push_{{ helm3_push_version }}_linux_amd64.tar.gz"
+        dest: "{{ helm_plugin_dir }}/helm-push"
+        remote_src: true
+  when: helm_version | regex_search("^v3" )
