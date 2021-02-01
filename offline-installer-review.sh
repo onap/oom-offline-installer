@@ -48,6 +48,10 @@ function run_molecule() {
 #######################################################################$
 #                           MAIN                                      #$
 #######################################################################$
+cd /tmp
+wget https://github.com/rancher/rke/releases/download/v1.0.4/rke_linux-amd64
+ls -l
+
 echo "----------   ONAP OFFLINE INSTALLER - CHANGE VERIFICATION START   ----------"
 FAILED_ROLES=()
 ALL_PLAYBOOKS=(`ls -d ansible/test/play-*`) # enumerate all playbook tests for later usage
