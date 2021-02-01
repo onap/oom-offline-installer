@@ -9,4 +9,13 @@
   get_url:
     url: "https://get.helm.sh/helm-{{ helm_version }}-linux-amd64.tar.gz"
     dest: "{{ app_data_path }}/downloads"
-    remote_src: true
+
+- name: Download Helm v3 helm-push plugin
+  command: "curl --connect-timeout 10 -L https://github.com/chartmuseum/helm-push/releases/download/v{{ helm3_push_version }}/helm-push_{{ helm3_push_version }}_linux_amd64.tar.gz -o {{ app_data_path }}/downloads/helm-push_{{ helm3_push_version }}_linux_amd64.tar.gz"
+  register: result
+  retries: 10
+  delay: 1
+  until: not result.failed
+  args:
+    warn: false
+  when: helm_version | regex_search("^v3" )
