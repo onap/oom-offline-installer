@@ -7,10 +7,7 @@ lint:
   name: yamllint
 platforms:
   - name: infrastructure-server
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
-    pre_build_image: True
-    privileged: true
-    override_command: False
+    image: centos:7
     groups:
       - infrastructure
 provisioner:
@@ -25,7 +22,6 @@ provisioner:
       all:
         app_name: onap
         app_data_path: "/opt/{{ app_name }}"
-        helm_bin_dir: /usr/local/bin
 scenario:
   name: default
 verifier:

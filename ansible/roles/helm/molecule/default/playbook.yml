@@ -1,5 +1,10 @@
 ---
 - name: Converge
   hosts: all
+  pre_tasks:
+    - name: Include infrastructure group variables
+      include_vars: ../../../../group_vars/infrastructure.yml
+    - name: Include test scenario variables
+      include_vars: vars.yml
   roles:
     - helm
