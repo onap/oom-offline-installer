@@ -49,6 +49,10 @@ provisioner:
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        cluster_config_dir: /opt/onap/cluster
   options:
     e: "app_data_path=/opt/onap"
   lint:

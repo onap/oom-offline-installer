@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if [[ $@ =~ 'up' ]];
+then
+  # If the operation is 'rke up' then simulate rke up operation
+  echo $@
+  touch {{ cluster_config_dir }}/kube_config_cluster.yml
+elif [[ $@ =~ 'version' ]];
+then
+  {{ app_data_path }}/downloads/rke_linux-amd64_real version
+  exit 0
+else
+  {{ app_data_path }}/downloads/rke_linux-amd64_real $@
+fi

@@ -52,18 +52,19 @@ provisioner:
   inventory:
     group_vars:
       all:
+        cluster_config_dir: /opt/onap/cluster
         rke_etcd:
           enabled_custom_etcd_storage: false
           storage_path: /var/lib/etcd-custom
           storage_mountpoint: /var/lib/rancher/etcd-custom
           enabled_unsafe_volatile_storage: true
           tmpfs_size: 5G
+  options:
+    e: "app_data_path=/opt/onap"
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml
     destroy: ../default/destroy.yml
-  options:
-    e: "app_data_path=/opt/onap"
   lint:
     name: ansible-lint
 scenario:

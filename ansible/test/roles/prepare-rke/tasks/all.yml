@@ -4,3 +4,6 @@
     name: systemd-user-sessions
     state: started
 
+- name: "Add docker group"
+  group:
+    name: docker

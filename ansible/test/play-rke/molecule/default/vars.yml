@@ -1,3 +1,4 @@
 ---
 app_name: moleculeapp
 app_data_path: "/opt/{{ app_name }}"
+cluster_config_dir: "/opt/{{ app_name }}/cluster"

@@ -2,7 +2,6 @@
 - name: Prepare for all
   hosts: all
   roles:
-    - prepare-docker-dind
     - role: prepare-rke
       vars:
         mode: all
