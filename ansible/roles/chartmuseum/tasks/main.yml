@@ -12,9 +12,13 @@
     state: directory
 
 - name: Run Helm chart repository
-  shell: "{{ helm_bin_dir }}/chartmuseum --storage local --storage-local-rootdir {{ chartmuseum_storage_dir }} -port {{ chartmuseum_port }} &"
+  shell: "{{ helm_bin_dir }}/chartmuseum --storage local --storage-local-rootdir {{ chartmuseum_storage_dir }} -port {{ chartmuseum_port }} > /dev/null 2>&1 &"
   async: 10
   poll: 3
-  register: chart_repository
-  changed_when: "'address already in use' not in chart_repository.stderr"
-  failed_when: "'Starting ChartMuseum' not in chart_repository.stderr"
+  changed_when: false
+
+- name: Check Helm chart repository is running
+  command: pgrep chartmuseum
+  changed_when: false
+  register: pgrep_out
+  failed_when: pgrep_out.rc != 0
