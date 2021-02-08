@@ -41,5 +41,6 @@ source ${VENV_PATH}/bin/activate
 # Install Molecule
 if [ ! -z ${VIRTUAL_ENV} ]; then
     echo "Activated virtual env in ${VIRTUAL_ENV}"
-    pip -q install molecule==2.20 ansible==2.7.8 ansible-lint==4.2.0 docker pyopenssl
+    pip -q install -U pip
+    pip -q install pyopenssl molecule==2.20 ansible==2.7.8 ansible-lint==4.2.0 docker
 fi
