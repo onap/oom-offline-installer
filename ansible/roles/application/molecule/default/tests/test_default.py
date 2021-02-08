@@ -29,7 +29,7 @@ repo add local http://127.0.0.1:8879
 deploy moleculetestapp local/moleculetestapp --namespace \
 moleculetestapp -f /opt/moleculetestapp/helm_charts/onap/resources/\
 overrides/onap-all.yaml -f /opt/moleculetestapp/override.yaml \
---timeout 1800"""
+--timeout 1800s"""
         expected_plugin_path = '/root/.local/share/helm/plugins/deploy/' +\
                                'deploy.sh'
     assert fc == expected_content
