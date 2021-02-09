@@ -36,6 +36,12 @@
   debug:
     var: helm_override_files
 
+- name: "Ensure kubernetes namespace for {{ app_name }} exists"
+  command: kubectl create namespace {{ app_kubernetes_namespace }}
+  register: kubectl_out
+  changed_when: kubectl_out.rc == 0
+  failed_when: kubectl_out.rc == 1 and "AlreadyExists" not in kubectl_out.stderr
+
 - name: "Helm Install application {{ app_name }}"
   command: >
           {{ helm_bin_dir }}/helm
