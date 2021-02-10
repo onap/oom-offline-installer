@@ -22,6 +22,30 @@
       "revId": "31d3a265b3f7613f1af536c4a04f119ea83d9794",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98de662_962cabae",
+        "filename": "ansible/test/roles/prepare-rke/tasks/infra.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-02-10T09:27:20Z",
+      "side": 1,
+      "message": "The code you see here (and all that lives in ansible/test scope) is just test framework setup and hence it does not matter whether it\u0027s idempotent or not so no use adding such conditions. Molecule has a test env state management so it wouldn\u0027t even allow running \"prepare\" step twice without running \"cleanup\" (rollbacks test env to initial step, we don\u0027t use it) first.",
+      "parentUuid": "271e496e_a7b9bd95",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "31d3a265b3f7613f1af536c4a04f119ea83d9794",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
