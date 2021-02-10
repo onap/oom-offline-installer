@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "271e496e_a7b9bd95",
+        "filename": "ansible/test/roles/prepare-rke/tasks/infra.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2021-02-10T09:21:01Z",
+      "side": 1,
+      "message": "Considering switch from idemoptency-providing module to `command`, could you add relevant changed_when/failed_when attributes?",
+      "range": {
+        "startLine": 7,
+        "startChar": 2,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "31d3a265b3f7613f1af536c4a04f119ea83d9794",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
