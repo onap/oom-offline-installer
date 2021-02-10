@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e512ae6_539af59b",
+        "filename": "ansible/roles/chartmuseum/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2021-02-10T08:45:20Z",
+      "side": 1,
+      "message": "Same question as in https://gerrit.onap.org/r/c/oom/offline-installer/+/117546/1",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 10
+      },
+      "revId": "283ecef8914e6397b4a8b88e4a31b2908d4aa078",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
