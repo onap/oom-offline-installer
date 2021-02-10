@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5de6198c_66f15c0d",
+        "filename": "ansible/roles/chartmuseum/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2021-02-10T08:35:28Z",
+      "side": 1,
+      "message": "I\u0027m wondering if it wouldn\u0027t look tidier if instead of running process in background, we could just define service for it and later enable/start it?\nAlso, I believe you should add `nohup` for execution of this chartmuseum process in background",
+      "revId": "77324013ff407183b0d9729bd335d8bf3cc72b79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
