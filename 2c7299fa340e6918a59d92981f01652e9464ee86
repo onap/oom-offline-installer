@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a0ed7f21_c9a06948",
+        "filename": "ansible/roles/application/tasks/install-helm3-plugins.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2021-02-11T21:50:34Z",
+      "side": 1,
+      "message": "Why don\u0027t you just use helm plugin install?",
+      "revId": "2c7299fa340e6918a59d92981f01652e9464ee86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
