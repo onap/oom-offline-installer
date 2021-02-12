@@ -7,8 +7,12 @@ lint:
   name: yamllint
 platforms:
   - name: instance-ubuntu-chartmuseum
-    image: ubuntu:18.04
-    dockerfile: ../default/Dockerfile.j2
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: True
+    privileged: true
+    override_command: False
+    volumes:
+      - /var/lib/docker
     groups:
       - infrastructure
 provisioner:
@@ -19,13 +23,8 @@ provisioner:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
   inventory:
-    group_vars:
-      all:
-        app_name: moleculetestapp
-        app_data_path: "/opt/{{ app_name }}"
-        helm_bin_dir: /usr/local/bin
-        chartmuseum_storage_dir: "/opt/{{ app_name }}/chartmuseum"
-        chartmuseum_port: "1234"
+    links:
+      group_vars: ../../../../group_vars
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml

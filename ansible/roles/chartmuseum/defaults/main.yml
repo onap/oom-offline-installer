@@ -1,3 +1,4 @@
 ---
+chartmuseum_server_image_tar: "{{ chartmuseum_server_image | regex_replace('(\\/|\\:)', '_') }}.tar"
 chartmuseum_port: "8879"
 chartmuseum_storage_dir: "{{ app_data_path }}/chartmuseum"

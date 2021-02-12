@@ -1,24 +1,14 @@
 ---
-- name: Install chartmuseum
-  copy:
-    src: "{{ app_data_path }}/downloads/chartmuseum"
-    dest: "{{ helm_bin_dir }}"
-    remote_src: true
-    mode: 0755
-
 - name: Create storage directory for chartmuseum
   file:
     path: "{{ chartmuseum_storage_dir }}"
     state: directory
+    mode: 0777
 
-- name: Run Helm chart repository
-  shell: "{{ helm_bin_dir }}/chartmuseum --storage local --storage-local-rootdir {{ chartmuseum_storage_dir }} -port {{ chartmuseum_port }} > /dev/null 2>&1 &"
-  async: 10
-  poll: 3
-  changed_when: false
-
-- name: Check Helm chart repository is running
-  command: pgrep chartmuseum
-  changed_when: false
-  register: pgrep_out
-  failed_when: pgrep_out.rc != 0
+- name: Load chartmuseum server image
+  docker_image:
+    name: "{{ chartmuseum_server_image }}"
+    load_path: "{{ infra_images_path }}/{{ chartmuseum_server_image_tar }}"
+    state: present
+    timeout: 120
+  notify: Run chartmuseum server container

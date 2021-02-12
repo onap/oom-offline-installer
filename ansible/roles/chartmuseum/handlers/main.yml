@@ -1,0 +1,14 @@
+---
+- name: Run chartmuseum server container
+  docker_container:
+    name: chartmuseum
+    image: "{{ chartmuseum_server_image }}"
+    env:
+      STORAGE: "local"
+      STORAGE_LOCAL_ROOTDIR: "/charts"
+    volumes:
+      - "{{ chartmuseum_storage_dir }}:/charts:rw"
+    ports:
+      - "{{ chartmuseum_port }}:8080/tcp"
+    restart_policy: unless-stopped
+    recreate: true

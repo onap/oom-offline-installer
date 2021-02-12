@@ -31,5 +31,3 @@
         mode: deploy
     - kubectl
     - helm
-    - role: chartmuseum
-      when: helm_version | regex_search("^v3" )

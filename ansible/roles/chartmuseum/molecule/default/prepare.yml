@@ -1,5 +1,8 @@
 ---
 - name: Prepare infra
   hosts: infrastructure
+  vars_files:
+    - ../../../../roles/chartmuseum/defaults/main.yml
   roles:
+    - prepare-docker-dind
     - prepare-chartmuseum
