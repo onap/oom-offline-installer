@@ -16,6 +16,24 @@
       "revId": "77324013ff407183b0d9729bd335d8bf3cc72b79",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fd85a20_1a7edb1e",
+        "filename": "ansible/roles/chartmuseum/tasks/main.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-02-12T15:15:29Z",
+      "side": 1,
+      "message": "Thx for tip. Actually I decided to run it in docker container, please see commit at the top of the topic: https://gerrit.onap.org/r/c/oom/offline-installer/+/117792/1",
+      "parentUuid": "5de6198c_66f15c0d",
+      "revId": "77324013ff407183b0d9729bd335d8bf3cc72b79",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
