@@ -16,6 +16,24 @@
       "revId": "2c7299fa340e6918a59d92981f01652e9464ee86",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171cc39a_c8a4aded",
+        "filename": "ansible/roles/application/tasks/install-helm3-plugins.yml",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-02-12T07:39:11Z",
+      "side": 1,
+      "message": "# helm plugin install /opt/onap/resources/helm_charts/helm/plugins/deploy/\nInstalled plugin: deploy\n\n# file /root/.local/share/helm/plugins/deploy\n/root/.local/share/helm/plugins/deploy: symbolic link to `/opt/onap/resources/helm_charts/helm/plugins/deploy\u0027\n\n\"helm plugin install \u003cpath\u003e\" creates symlink which is not what I want.\n\nBesides it\u0027s in accordance with OOM install guide: https://git.onap.org/oom/tree/docs/oom_quickstart_guide_helm3.rst#n32",
+      "parentUuid": "a0ed7f21_c9a06948",
+      "revId": "2c7299fa340e6918a59d92981f01652e9464ee86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
