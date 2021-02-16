@@ -78,10 +78,10 @@
   debug:
     var: helm_override_files
 
-- include_tasks: setup-helm2.yml
-  when: helm_version | regex_search("^v2" )
-- include_tasks: setup-helm3.yml
-  when: helm_version | regex_search("^v3" )
+- name: Check for deploy plugin presence
+  stat:
+    path: '{{ helm_home_dir.stdout }}/plugins/deploy/deploy.sh'
+  register: deploy_plugin_presence
 
 - name: "Helm Install application {{ app_name }}"
   command: >

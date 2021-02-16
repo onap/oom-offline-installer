@@ -8,12 +8,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_helm_commands(host):
     fc = host.file('/tmp/helm_simu_output').content_string
-    helm_release = host.ansible.get_variables()['helm_version']
-    if helm_release == 'v2':
-        content_str1 = 'home'
-    elif helm_release == 'v3':
-        content_str1 = 'env'
-    expected_content = content_str1 + """
+    expected_content = """home
 init --upgrade --skip-refresh
 version --tiller-connection-timeout 10
 repo list
