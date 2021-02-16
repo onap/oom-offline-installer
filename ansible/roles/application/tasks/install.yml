@@ -1,57 +1,15 @@
 ---
-- name: Helm init and upgrade
-  command: |
-     {{ helm_bin_dir }}/helm init
-     --upgrade
-     --skip-refresh
-  changed_when: true  # init is always changed type of action
-
-# A correct way to implement this would be using --wait option in helm init invocation.
-# However, it does not work due to https://github.com/helm/helm/issues/4031 (fixed in newer helm release)
-- name: "Wait for helm upgrade to finish"
-  command: "{{ helm_bin_dir }}/helm version --tiller-connection-timeout 10"
-  register: result
-  until: result.rc == 0
-  delay: 10
-  retries: 12
-  changed_when: false  # for idempotency
-
-- name: Get all helm repos
-  command: "{{ helm_bin_dir }}/helm repo list"
-  register: repos
-  changed_when: false  # for idempotency
-
-- name: Remove stable repo
-  command: "{{ helm_bin_dir }}/helm repo remove stable"
-  changed_when: true  # when executed its a changed type of action
-  when: "'stable' in repos.stdout"
-
-- name: Helm Serve
-  shell: "{{ helm_bin_dir }}/helm serve &"
-  async: 45
-  poll: 3  # wait 3sec to get a chance for some stderr
-  register: helm_serve
-  changed_when: "'address already in use' not in helm_serve.stderr"
-
-- name: List helm repos
-  command: "{{ helm_bin_dir }}/helm repo list"
-  register: helm_repo_list
-  changed_when: false  # for idempotency
-  failed_when:
-    - helm_repo_list.rc > 0
-    - "'Error: no repositories to show' not in helm_repo_list.stderr"
-
-- name: Helm Add Repo
-  command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name | mandatory }} {{ helm_repository_url | mandatory }}"
-  when: "'local' not in helm_repo_list.stdout"
-  changed_when: true  # when executed its a changed type of action
-
 # Make utility is missing in Ubuntu by default and it's necessary for building local helm repository
 - name: Install build-essential
   package:
     name: build-essential
     state: present
   when: ansible_os_family == "Debian"
+
+- include_tasks: setup-helm2.yml
+  when: helm_version | regex_search("^v2" )
+- include_tasks: setup-helm3.yml
+  when: helm_version | regex_search("^v3" )
 
 - name: Build local helm repository
   make:
@@ -78,10 +36,11 @@
   debug:
     var: helm_override_files
 
-- include_tasks: setup-helm2.yml
-  when: helm_version | regex_search("^v2" )
-- include_tasks: setup-helm3.yml
-  when: helm_version | regex_search("^v3" )
+- name: "Ensure kubernetes namespace for {{ app_name }} exists"
+  command: kubectl create namespace {{ app_kubernetes_namespace }}
+  register: kubectl_out
+  changed_when: kubectl_out.rc == 0
+  failed_when: kubectl_out.rc == 1 and "AlreadyExists" not in kubectl_out.stderr
 
 - name: "Helm Install application {{ app_name }}"
   command: >
@@ -94,4 +53,4 @@
           {{ helm_extra_install_options | map(attribute='opt') | join(' ') }}
   changed_when: true  # when executed its a changed type of action
   register: helm_install
-  failed_when: helm_install.stderr
+  failed_when: "'FAILED' in (helm_install.stdout | upper()) or helm_install.rc != 0"

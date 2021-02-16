@@ -11,35 +11,19 @@ platforms:
     pre_build_image: true
     privileged: true
     override_command: false
-    restart_policy: unless-stopped
-    volumes:
-      - /var/lib/docker
-      - /var/lib/kubelet
     groups:
       - infrastructure
       - kubernetes-etcd
       - kubernetes-control-plane
       - kubernetes
-    networks:
-      - name: rke
-    purge_networks: true
-
   - name: kubernetes-node-1
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
     pre_build_image: true
     privileged: true
     override_command: false
-    restart_policy: unless-stopped
-    volumes:
-      - /var/lib/docker
-      - /var/lib/kubelet
     groups:
       - kubernetes
       - kubernetes-node
-    networks:
-      - name: rke
-    purge_networks: true
-
 provisioner:
   name: ansible
   env:

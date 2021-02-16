@@ -9,12 +9,14 @@
     - prepare-nexus
     - prepare-dns
     - prepare-firewall
+    - prepare-chartmuseum
   vars_files:
     - vars.yml
     - ../../../../roles/nginx/defaults/main.yml
     - ../../../../roles/vncserver/defaults/main.yml
     - ../../../../roles/nexus/defaults/main.yml
     - ../../../../roles/dns/defaults/main.yml
+    - ../../../../roles/chartmuseum/defaults/main.yml
 
 - name: Prepare kubernetes
   hosts: kubernetes

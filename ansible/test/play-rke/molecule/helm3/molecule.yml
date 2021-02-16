@@ -1,0 +1,39 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: infrastructure-server
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    groups:
+      - infrastructure
+      - kubernetes-etcd
+      - kubernetes-control-plane
+      - kubernetes
+  - name: kubernetes-node-1
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: true
+    privileged: true
+    override_command: false
+    groups:
+      - kubernetes
+      - kubernetes-node
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  lint:
+    name: ansible-lint
+scenario:
+  name: helm3
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

@@ -1,0 +1,37 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: instance-ubuntu-chartmuseum
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: True
+    privileged: true
+    override_command: False
+    volumes:
+      - /var/lib/docker
+    groups:
+      - infrastructure
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    links:
+      group_vars: ../../../../group_vars
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/playbook.yml
+scenario:
+  name: ubuntu
+verifier:
+  name: testinfra
+  lint:
+    name: flake8
+  directory: ../default/tests/

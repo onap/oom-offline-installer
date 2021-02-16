@@ -2,7 +2,6 @@
 - name: Prepare for all
   hosts: all
   roles:
-    - prepare-docker-dind
     - role: prepare-rke
       vars:
         mode: all
@@ -12,11 +11,11 @@
   pre_tasks:
     - name: Include infrastructure group variables
       include_vars: ../../../../group_vars/infrastructure.yml
+    - name: Include test setup variables
+      include_vars: vars.yml
   roles:
     - role: prepare-rke
       vars:
         mode: infra
     - prepare-kubectl
     - prepare-helm
-  vars_files:
-    vars.yml

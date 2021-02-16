@@ -23,4 +23,4 @@
     src: "{{ cluster_config_dir }}/kube_config_cluster.yml"
     dest: "{{ kube_config_dir }}/config"
     remote_src: true
-    mode: 0755
+    mode: 0600

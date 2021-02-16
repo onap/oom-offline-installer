@@ -243,14 +243,14 @@ def build_offline_deliverables(build_version,
             if os.path.islink(file):
                 os.unlink(file)
 
-        rke_files = glob.glob(os.path.join('.', '**/rke_linux-amd64'), recursive=True)
-        os.symlink(rke_files[0], os.path.join(download_dir_path, rke_files[0].split('/')[-1]))
+        bin_pattern_list = ['**/rke_linux-amd64',
+                            '**/helm-*-linux-amd64.tar.gz',
+                            '**/kubectl',
+                            '**/helm-push_*_linux_amd64.tar.gz']
 
-        helm_tar_files = glob.glob(os.path.join('.', '**/helm-*-linux-amd64.tar.gz'), recursive=True)
-        os.symlink(helm_tar_files[0], os.path.join(download_dir_path, helm_tar_files[0].split('/')[-1]))
-
-        kubectl_files = glob.glob(os.path.join('.', '**/kubectl'), recursive=True)
-        os.symlink(kubectl_files[0], os.path.join(download_dir_path, kubectl_files[0].split('/')[-1]))
+        for pattern in bin_pattern_list:
+            for bin_file in glob.glob(os.path.join('.', pattern), recursive=True):
+                os.symlink(bin_file, os.path.join(download_dir_path, bin_file.split('/')[-1]))
 
         os.chdir(script_location)
         # End of workaround

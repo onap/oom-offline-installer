@@ -1,0 +1,18 @@
+---
+- name: "Create chartmuseum image storage dir"
+  file:
+    path: "{{ infra_images_path }}"
+    state: directory
+    mode: "u+rw,g+wx,o+rwx"
+    recurse: true
+
+- name: Download and archive chartmuseum docker image
+  delegate_to: localhost
+  docker_image:
+    name: "{{ chartmuseum_server_image }}"
+    archive_path: /tmp/chartmuseum.tar
+
+- name: Copy chartmuseum image to node
+  copy:
+    src: /tmp/chartmuseum.tar
+    dest: "{{ infra_images_path }}/{{ chartmuseum_server_image_tar }}"

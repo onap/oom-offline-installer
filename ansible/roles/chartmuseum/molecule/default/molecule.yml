@@ -1,0 +1,33 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: instance-chartmuseum
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    pre_build_image: True
+    privileged: true
+    override_command: False
+    volumes:
+      - /var/lib/docker
+    groups:
+      - infrastructure
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    links:
+      group_vars: ../../../../group_vars
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

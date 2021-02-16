@@ -4,7 +4,22 @@
     path: "{{ app_data_path }}/downloads"
     state: directory
 
-- name: "Install rke-{{ rke_version }}"
-  get_url:
-    url: "https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_linux-amd64"
+- name: "Create rke binary wrapper"
+  template:
+    src: rke.j2
     dest: "{{ app_data_path }}/downloads/rke_linux-amd64"
+    mode: 0755
+
+- name: "Install rke-{{ rke_version }}"
+  command: "curl --connect-timeout 10 -L https://github.com/rancher/rke/releases/download/v{{ rke_version }}/rke_linux-amd64 -o {{ app_data_path }}/downloads/rke_linux-amd64_real"
+  register: result
+  retries: 10
+  delay: 1
+  until: not result.failed
+  args:
+    warn: false
+
+- name: "Ensure downloaded rke binary has correct file mode"
+  file:
+    path: "{{ app_data_path }}/downloads/rke_linux-amd64_real"
+    mode: 0755
