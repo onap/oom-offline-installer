@@ -93,34 +93,7 @@ addons: ""
 addons_include:
 - "{{ cluster_config_dir }}/kubernetes-dashboard.yml"
 - "{{ cluster_config_dir }}/k8s-dashboard-user.yml"
-system_images:
-  etcd: "{{ rke.etcd }}"
-  alpine: "{{ rke.alpine }}"
-  nginx_proxy: "{{ rke.nginx_proxy }}"
-  cert_downloader: "{{ rke.cert_downloader }}"
-  kubernetes_services_sidecar: "{{ rke.kubernetes_services_sidecar }}"
-  kubedns: "{{ rke.kubedns }}"
-  dnsmasq: "{{ rke.dnsmasq }}"
-  kubedns_sidecar: "{{ rke.kubedns_sidecar }}"
-  kubedns_autoscaler: "{{ rke.kubedns_autoscaler }}"
-  coredns: "{{ rke.coredns }}"
-  coredns_autoscaler: "{{ rke.coredns_autoscaler }}"
-  kubernetes: "{{ rke.kubernetes }}"
-  flannel: "{{ rke.flannel }}"
-  flannel_cni: "{{ rke.flannel_cni }}"
-  calico_node: "{{ rke.calico_node }}"
-  calico_cni: "{{ rke.calico_cni }}"
-  calico_controllers: ""
-  calico_ctl: "{{ rke.calico_ctl }}"
-  canal_node: "{{ rke.canal_node }}"
-  canal_cni: "{{ rke.canal_cni }}"
-  canal_flannel: "{{ rke.canal_flannel }}"
-  weave_node: "{{ rke.weave_node }}"
-  weave_cni: "{{ rke.weave_cni }}"
-  pod_infra_container: "{{ rke.pod_infra_container }}"
-  ingress: "{{ rke.ingress }}"
-  ingress_backend: "{{ rke.ingress_backend }}"
-  metrics_server: "{{ rke.metrics_server }}"
+system_images: {}
 ssh_key_path: "{{ cluster_config_dir }}/cluster_key"
 ssh_cert_path: ""
 ssh_agent_auth: false
@@ -128,7 +101,7 @@ authorization:
   mode: none
   options: {}
 ignore_docker_version: false
-kubernetes_version: ""
+kubernetes_version: {{ rke_kubernetes_version }}
 private_registries: []
 ingress:
   provider: ""
