@@ -7,7 +7,7 @@
 
 - name: "Install kubectl-{{ kubectl_version }}"
   get_url:
-    url: "https://storage.googleapis.com/kubernetes-release/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl"
+    url: "https://dl.k8s.io/release/v{{ kubectl_version }}/bin/linux/amd64/kubectl"
     dest: "{{ '/usr/local/bin/kubectl' if kubectl_install else app_data_path+'/downloads/kubectl' }}"
     # This mode conditional allows checking if kubectl role, when installing kubectl, correctly
     # adds executable bit (bonus).
