@@ -190,7 +190,12 @@ get_labels()
 helm_undeploy()
 {
     msg "Undeploy helm release name: ${1}"
-    helm undeploy ${1} --purge
+    # Helm v3 does not support "--purge" flag since it's a default behavior for v3
+    if [[ $(helm version --template "{{.Version}}") =~ ^v3 ]];then
+        helm undeploy ${1}
+    else
+        helm undeploy ${1} --purge
+    fi
     sleep 15s
 }
 
@@ -349,11 +354,9 @@ docker_cleanup()
 is_helm_serve_running()
 {
     # healthy result: HTTP/1.1 200 OK
-    _helm_serve_result=$(\
-        curl --head --silent --connect-timeout 3 http://127.0.0.1:8879 | \
-        head -n 1 | cut -d" " -f 3 | tr '[:upper:]' '[:lower:]' | tr -d '\r' )
+    _helm_serve_result=$(curl -w %{http_code} --silent --connect-timeout 3 http://127.0.0.1:8879/ -o /dev/null)
 
-    if [ "$_helm_serve_result" == ok ] ; then
+    if [ "$_helm_serve_result" == "200" ] ; then
         return 0
     else
         return 1
@@ -620,6 +623,10 @@ if [ -n "$arg_cleanonly" ] ; then
     HELM_SKIP_DEPLOY=yes
 fi
 
+# If running with helm v3 a time unit has to be appended to HELM_TIMEOUT
+if [[ $(helm version --template "{{.Version}}") =~ ^v3 ]];then
+    HELM_TIMEOUT="${HELM_TIMEOUT}s"
+fi
 
 #
 # main
