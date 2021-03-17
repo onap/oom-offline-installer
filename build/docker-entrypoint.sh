@@ -164,12 +164,12 @@ case "$distro_type" in
         done
 
         # Download all packages via apt-get to repository folder
-        for i in $(cat ${list_file});do echo apt-get download $i -y; done
+        for i in $(cat ${list_file});do apt-get download $i -y; done
         for i in $(cat ${list_file});
             do
                 for depends in $(apt-cache depends $i | grep -E 'Depends' | grep -v 'Depends:.*>$' | cut -d ':' -f 2,3 | sed -e s/'<'/''/ -e s/'>'/''/);
                 do
-echo                    apt-get download $depends -y;
+                    apt-get download $depends -y;
                 done;
             done
 
