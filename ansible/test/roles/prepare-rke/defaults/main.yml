@@ -1,5 +1,3 @@
 ---
 #The rke version.
-rke_version: 1.0.4
-#The kubectl version.
-kubectl_version: 1.15.11
+rke_version: 1.2.4
