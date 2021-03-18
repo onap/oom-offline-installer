@@ -11,7 +11,7 @@ Procedure was completely tested on RHEL 7.6 as it’s tested target platform, ho
 Some discrepancies when Centos 7.6 is used are described below as well.
 
 
-Part 1. Preparations
+Part 1. Prerequisites
 --------------------
 
 We assume that procedure is executed on RHEL 7.6 server with \~300G disc space, 16G+ RAM and internet connectivity
@@ -85,31 +85,28 @@ Then it is necessary to clone all installer and build related repositories and p
 Part 2. Download artifacts for offline installer
 ------------------------------------------------
 
-.. note::
-   It is possible to generate actual list of docker images using docker-images-collector.sh (helm is required) from cloned OOM directory
-   based on enabled subsystems.
+Generate actual list of docker images using docker-images-collector.sh (helm binary is required) from cloned OOM repository
+based on enabled subsystems.
 
-   In the beginning of the generated list is written commit number from which it was created - the same commit number should be used
-   in Part 4. Packages preparation.
+At the beginning of the generated list file there is the OOM repo commit sha from which it was created - the same commit reference
+should be used in **Part 4. Packages preparation** as *--application-repository_reference* option value.
 
-   Following example will create the list to the default path:
-   ::
+Following example will create the list to the default path (*build/data_lists/onap_docker_images.list*):
+
+::
 
     # clone the OOM repository
     git clone https://gerrit.onap.org/r/oom -b <branch> --recurse-submodules /tmp/oom
-
-.. note::  replace <branch> by branch you want to build
-
-    # docker-images-collector.sh script uses oom/kubernetes/onap/resources/overrides/onap-all.yaml file to find what subsystems
-    are enabled. By default all subsystems are enabled there. Modify the file if want to drop some subsystems.
-
     #run the collector providing path the the project
     ./build/creating_data/docker-images-collector.sh /tmp/oom/kubernetes/onap
 
-   For the other options check the usage of the script.
+For the list of all available options check script usage info.
 
-.. note:: Skip this step if you have already all necessary resources and continue with Part 3. Populate local nexus
+.. note::  replace <branch> with OOM branch you want to build
 
+.. note::  docker-images-collector.sh script uses oom/kubernetes/onap/resources/overrides/onap-all.yaml file to find what subsystems are enabled. By default all subsystems are enabled there. Modify the file to disable some of them if needed.
+
+.. note:: Skip this step if you have already all necessary resources and continue with **Part 3. Populate local nexus**
 
 Repository containing packages to be installed on all nodes needs to be created:
 
