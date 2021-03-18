@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2019-2020 © Samsung Electronics Co., Ltd.
+#   Copyright 2019-2021 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -18,18 +18,18 @@
 #
 #   COPYRIGHT NOTICE ENDS HERE
 
-### This script is preparing docker images list based on kubernetes project
+### This script is preparing docker images list based on OOM project
 
-### NOTE: helm needs to be installed; it is required for correct processing
-### of helm charts in oom directory; chartmuseum and helm push plugin are also
-### required if using helm v3
+### NOTE: helm and docker need to be installed; those are required for correct processing
+### of helm charts in oom directory; helm push plugin is also  required if
+### using helm v3
 
 # Fail fast settings
 set -e
 
 usage () {
     echo "      "
-    echo "  This script is preparing docker images list based on kubernetes project"
+    echo "  This script is preparing docker images list based on OOM project"
     echo "      Usage:"
     echo "        ./$(basename $0) [OPTION]... <path to project> [<output list file>]"
     echo "      "
@@ -37,11 +37,10 @@ usage () {
     echo "          -h | --help            Show script usage synopsis"
     echo "          -p | --helm-port       Chart repository server port"
     echo "          -b | --helm-bin        Path to Helm executable"
-    echo "          -c | --chartmuseum-bin Path to Chartmuseum executable"
     echo "      "
     echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
-    echo "      Dependencies: helm, python-yaml, make, chartmuseum (helm v3 only)"
+    echo "      Dependencies: helm, python-yaml, make"
     echo "      "
     exit 1
 }
@@ -76,15 +75,17 @@ create_list() {
 kill_chart_repo() {
     if [[ "${HELM_VERSION}" =~ "v3" ]];
     then
-        cmd=${HELM3_CMD_PATTERN}
+        if [ $(docker ps -aq -f name="^chartmuseum-${HELM_REPO_PORT}$") ];
+        then
+            docker kill "chartmuseum-${HELM_REPO_PORT}"
+        fi
     else
-        cmd=${HELM2_CMD_PATTERN}
+        for pid in $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}");
+        do
+            # Kill helm repository server process
+            kill $pid
+        done
     fi
-    for pid in $(pgrep -f "${cmd}");
-    do
-        # Kill helm repository server process
-        kill $pid
-    done
 }
 
 validate_port() {
@@ -118,14 +119,17 @@ check_chart_repo() {
     sleep 2 # let the helm repository process settle
     if [[ "${HELM_VERSION}" =~ "v3" ]];
     then
-        cmd=${HELM3_CMD_PATTERN}
+        if [ ! $(docker ps -aq -f name="^chartmuseum-${HELM_REPO_PORT}$") ];
+        then
+            echo "Fatal: Helm chart repository docker container failed to start"
+            exit 1
+        fi
     else
-        cmd=${HELM2_CMD_PATTERN}
-    fi
-    if [ $(pgrep -f "${cmd}" -c) -eq 0 ];
-    then
-        echo "Fatal: Helm chart repository server failed to start"
-        exit 1
+        if [ $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}" -c) -eq 0 ];
+        then
+            echo "Fatal: Helm chart repository server failed to start"
+            exit 1
+        fi
     fi
 }
 
@@ -150,11 +154,6 @@ do
             validate_bin "${BIN}"
             shift 2
             ;;
-        -c | --chartmuseum-bin)
-            CHARTMUSEUM_BIN="${2}"
-            validate_bin "${CHARTMUSEUM_BIN}"
-            shift 2
-            ;;
         -*)
             echo "Unknown option ${1}"
             usage
@@ -171,7 +170,6 @@ PROJECT_DIR="${1}"
 LIST="${2}"
 LISTS_DIR="$(readlink -f $(dirname ${0}))/../data_lists"
 HELM_BIN=${BIN:-helm}
-CHARTMUSEUM_BIN=${CHART_BIN:-chartmuseum}
 HELM_REPO_HOST="127.0.0.1"
 HELM_REPO_PORT="${PORT:-8879}"
 HELM_REPO="${HELM_REPO_HOST}:${HELM_REPO_PORT}"
@@ -179,8 +177,6 @@ HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/
 HELM_VERSION=$(${HELM_BIN} version -c --template "{{.Version}}")
 DOCKER_CONTAINER="generate-certs-${HELM_REPO_PORT}" # oom-cert-service container name override
 PROJECT="$(basename ${1})"
-HELM3_CMD_PATTERN="${CHARTMUSEUM_BIN} --storage local --storage-local-rootdir .*/chartmuseum -port ${HELM_REPO_PORT}"
-HELM2_CMD_PATTERN="${HELM_BIN} serve --address ${HELM_REPO}"
 
 if [ ! -f "${PROJECT_DIR}/../Makefile" ]; then
     echo "Wrong path to project directory entered"
@@ -209,7 +205,11 @@ then
     # Setup helm v3
     export HELM_CONFIG_HOME="${HELM_HOME}/.config"
     export HELM_CACHE_HOME="${HELM_HOME}/.cache"
-    ${CHARTMUSEUM_BIN} --storage local --storage-local-rootdir "${HELM_HOME}/chartmuseum" -port ${HELM_REPO_PORT} &
+    mkdir --mode=777 ${HELM_HOME}/chartmuseum
+    docker run --rm -it -d -p ${HELM_REPO_PORT}:8080 \
+      --name "chartmuseum-${HELM_REPO_PORT}" \
+      -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts \
+      -v ${HELM_HOME}/chartmuseum:/charts chartmuseum/chartmuseum
     sleep 2 # let the chartmuseum process settle
     ${HELM_BIN} repo add local "http://${HELM_REPO}"
 else
