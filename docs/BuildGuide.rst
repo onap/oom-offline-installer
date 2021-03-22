@@ -5,19 +5,18 @@
 Offline Installer Package Build Guide
 =====================================
 
-This document is describing procedure for building offline installer packages. It is supposed to be triggered on server with internet connectivity and will download all artifacts required for ONAP deployment based on our static lists. The server used for the procedure in this guide is preferred to be separate build server.
+This document describes how to build offline installer packages. The build process should be triggered on a host with internet connectivity. It will retrieve all artifacts required for ONAP deployment based on both - static data list files and dynamically assembled ones. The host used for the procedure in this guide should be preferably a separate build server.
 
-Procedure was completely tested on RHEL 7.6 as it’s tested target platform, however with small adaptations it should be applicable also for other platforms.
+Procedure was completely tested on RHEL 7.6 as it’s the default target installation platform, however with small adaptations it should be applicable also for other platforms.
 Some discrepancies when Centos 7.6 is used are described below as well.
 
 
 Part 1. Prerequisites
 ---------------------
 
-We assume that procedure is executed on RHEL 7.6 server with \~300G disc space, 16G+ RAM and internet connectivity
+We assume that procedure is executed on RHEL 7.6 server with \~300G disc space, 16G+ RAM and internet connectivity.
 
-Some additional sw packages are required by ONAP Offline platform building tooling. in order to install them
-following repos has to be configured for RHEL 7.6 platform.
+Some additional software packages are required by ONAP Offline platform building tooling. In order to install them following repos have to be configured for RHEL 7.6 platform.
 
 
 
@@ -33,7 +32,7 @@ following repos has to be configured for RHEL 7.6 platform.
     # Register server
     subscription-manager register --username <rhel licence name> --password <password> --auto-attach
 
-    # required by special centos docker recommended by ONAP
+    # required by custom docker version recommended by ONAP
     yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
     # required by docker dependencies i.e. docker-selinux
@@ -50,7 +49,7 @@ Alternatively
    # Centos 7.6 #
    ##############
 
-   # required by special centos docker recommended by ONAP
+   # required by custom docker version recommended by ONAP
    yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
 
    # enable epel repo for npm and jq
@@ -66,7 +65,7 @@ Subsequent steps are the same on both platforms:
     # install Python 3
     yum install -y python36 python36-pip
 
-    # docker daemon must be running on host
+    # ensure docker daemon is running
     service docker start
 
 Then it is necessary to clone all installer and build related repositories and prepare the directory structure.
@@ -85,8 +84,7 @@ Then it is necessary to clone all installer and build related repositories and p
 Part 2. Download artifacts for offline installer
 ------------------------------------------------
 
-Generate actual list of docker images using docker-images-collector.sh (helm binary is required) from cloned OOM repository
-based on enabled subsystems.
+Generate the actual list of docker images that are defined within OOM helm charts. Run the docker-images-collector.sh script (check script for runtime dependencies) from cloned OOM repository.
 
 At the beginning of the generated list file there is the OOM repo commit sha from which it was created - the same commit reference
 should be used in **Part 4. Packages preparation** as *--application-repository_reference* option value.
@@ -108,11 +106,13 @@ For the list of all available options check script usage info.
 
 .. note:: Skip this step if you have already all necessary resources and continue with **Part 3. Populate local nexus**
 
-Repository containing packages to be installed on all nodes needs to be created:
+Create repository containing OS packages to be installed on all nodes:
 
 ::
 
-    # run the docker container with -d parameter for destination directory with RPM packages and optionally use -t parameter for target platform. Supported target platforms are centos|rhel|ubuntu. If -t parameter is not given, default platform is based on host platform where script is running.
+    # run create_repo.sh script to download all required packages with their dependencies
+    # set destination directory for packages with '-d' parameter
+    # optionally use '-t' parameter to set target platform (host platform by default)
     ./offline-installer/build/create_repo.sh -d $(pwd) -t centos|rhel|ubuntu
 
 .. note:: If script fails due to permissions issue, it could be a problem with SeLinux. It can be fixed by running:
@@ -121,66 +121,58 @@ Repository containing packages to be installed on all nodes needs to be created:
       # Change security context of directory
       chcon -Rt svirt_sandbox_file_t $(pwd)
 
-It's possible to download rest artifacts in single ./download.py execution. Recently we improved reliability of download scripts
-so one might try following command to download most of the required artifacts in single shot.
+Download all required binaries and docker images. Run download.py twice (as shown below) as it does not support mixing downloading docker images to local directory or just being pulled to local docker engine cache in one run. Docker images from *infra_docker_images.list* need to be saved to resources directory while the rest of the images need to be just pulled locally:
 
 ::
 
-        # following arguments are provided
-        # all data lists are taken from ./build/data_lists/ folder
-        # all resources will be stored in expected folder structure within ../resources folder
-
+        # all data lists are taken from ./build/data_lists/ folder by default
+        # all resources will be stored in expected folder structure within "../resources" folder
         ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
         --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
 
-        # following docker images do not necessarily need to be stored under resources as they load into repository in next part
-        # if second argument for --docker is not present, images are just pulled and cached.
-        # Warning: script must be run twice separately, for more details run download.py --help
+        # second argument for --docker is not present, images are just pulled and cached
         ./build/download/download.py --docker ./build/data_lists/rke_docker_images.list \
         --docker ./build/data_lists/k8s_docker_images.list \
-        --docker ./build/data_lists/onap_docker_images.list \
+        --docker ./build/data_lists/onap_docker_images.list
 
 
-This concludes SW download part required for ONAP offline platform creating.
 
 Part 3. Populate local nexus
 ----------------------------
 
-Prerequisites:
-
-- All data lists and resources which are pushed to local nexus repository are available
-- Following ports are not occupied by another service: 80, 8081, 8082, 10001
-- There's no docker container called "nexus"
+In order to build nexus blob all docker images required for ONAP offline platform should be available locally (see Part 2).
 
 .. note:: In case you skipped the Part 2 for the artifacts download, please ensure that the onap docker images are cached and copy of resources data are untarred in *./onap-offline/../resources/*
 
+*build_nexus_blob.sh* script will run the Nexus container and configure it a docker repository. Then it will push all docker images from previously generated list to it. After all is done the repository container is stopped and it's filesystem gets saved to resources directory.
+
 ::
 
-        #Whole nexus blob data will be created by running script build_nexus_blob.sh.
         ./onap-offline/build/build_nexus_blob.sh
 
-It will load the listed docker images, run the Nexus, configure it as npm, pypi
-and docker repositories. Then it will push all listed docker images to the repositories. After all is done the repository container is stopped.
+It will load the listed docker images, run the Nexus, configure it as npm, pypi and docker repositories. Then it will push all listed docker images to the repositories. After all is done the repository container is stopped.
 
-.. note:: In the current release scope we aim to maintain just single example data lists set, tags used in previous releases are not needed. Datalists are also covering latest versions verified by us despite user is allowed to build data lists on his own.
+.. note:: By default the script uses data lists from ./build/data_lists/ directory and saves the blob to ../resources/nexus_data.
+
+.. note:: By default the script uses "nexus" for the container name and publishes 8081 and 8082 ports. Should those names/ports be already taken please check the script options on how to customize them.
 
 
 Part 4. Packages preparation
---------------------------------------------------------
+----------------------------
 
 ONAP offline deliverable consist of 3 packages:
 
-+---------------------------------------+------------------------------------------------------------------------------+
-| Package                               | Description                                                                  |
-+=======================================+==============================================================================+
-| sw_package.tar                        | Contains installation software and configuration for infrastructure and ONAP |
-+---------------------------------------+------------------------------------------------------------------------------+
-| resources_package.tar                 | Contains all input files  needed to deploy infrastructure and ONAP           |
-+---------------------------------------+------------------------------------------------------------------------------+
-| aux_package.tar                       | Contains auxiliary input files that can be added to ONAP                     |
-+---------------------------------------+------------------------------------------------------------------------------+
++---------------------------------------+------------------------------------------------------------------------------------+
+| Package                               | Description                                                                        |
++=======================================+====================================================================================+
+| sw_package.tar                        | Contains provisioning software and configuration for infrastructure and ONAP       |
++---------------------------------------+------------------------------------------------------------------------------------+
+| resources_package.tar                 | Contains all binary data and config files needed to deploy infrastructure and ONAP |
++---------------------------------------+------------------------------------------------------------------------------------+
+| aux_package.tar                       | Contains auxiliary input files that can be added to ONAP                           |
++---------------------------------------+------------------------------------------------------------------------------------+
 
-All packages can be created using script build/package.py. Beside of archiving files gathered in the previous steps, script also builds docker images used in on infra server.
+All packages can be created using build/package.py script. Beside of archiving files gathered in the previous steps, script also builds docker images used on infra server.
 
 From onap-offline directory run:
 
@@ -196,7 +188,7 @@ For example:
 
 .. note::  replace <branch> by branch you want to build
 
-In the target directory you should find tar files:
+Above command should produce below tar files in the target directory:
 
 ::
 
