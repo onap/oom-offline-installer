@@ -1,9 +1,9 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
-.. Copyright 2019 Samsung Electronics Co., Ltd.
+.. Copyright 2021 Samsung Electronics Co., Ltd.
 
-OOM ONAP Offline Installer Testing Guide
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Offline Installer Testing Guide
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This testing guide describes how offline installer can be tested in local
 development environment (laptop) without the need for actual servers.
@@ -91,6 +91,7 @@ or default scenario playbook can be extended to run role tests multiple times ju
 configuration between.
 
 Single scenario example with nexus role
+
 ::
 
     ├── infrastructure.yml
@@ -108,6 +109,7 @@ Single scenario example with nexus role
     │   │   └── vars
 
 Multiple scenario example with chrony role
+
 ::
 
     roles/chrony
@@ -197,6 +199,7 @@ testing for the reason not to repeat the same that is done already in role level
   to leave them out.
 
 Example with infrastructure playbook level test files
+
 ::
 
     ├── infrastructure.yml
@@ -265,6 +268,7 @@ role for it's for together with optional description:
     <action>-<role>[-<description>]
 
 Examples of commonly used test roles
+
 ::
 
     ├── infrastructure.yml
@@ -292,6 +296,7 @@ listed below. Most significant feature of those is support for Systemd, so they
 should be used in cases where ansible's 'systemd' module is used.
 
 Used Dockerfiles/Box definitions are kept in following directory structure
+
 ::
 
     └── test
