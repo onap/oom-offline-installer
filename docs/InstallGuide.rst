@@ -1,11 +1,9 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
-.. Copyright 2019 Samsung Electronics Co., Ltd.
+.. Copyright 2021 Samsung Electronics Co., Ltd.
 
-.. _oooi_installguide:
-
-OOM ONAP Offline Installer - Installation Guide
-===============================================
+Offline Installer - Installation Guide
+======================================
 
 This document describes the correct offline installation procedure for `OOM ONAP`_, which is done by the ansible based `offline-installer <https://gerrit.onap.org/r/#/admin/projects/oom/offline-installer>`_.
 
@@ -15,16 +13,12 @@ This current version of the *Installation Guide* supports `El Alto release`_.
 
 -----
 
-.. _oooi_installguide_preparations:
-
 Part 1. Prerequisites
 ---------------------
 
 OOM ONAP deployment has certain hardware resource requirements - `El Alto requirements`_:
 
 Community recommended footprint from `El Alto requirements`_ page is 16 VMs ``224 GB RAM`` and ``112 vCPUs``. We will not follow strictly this setup due to such demanding resource consumption and so we will deploy our installation across four nodes (VMs) instead of sixteen. Our simplified setup is definitively not supported or recommended - you are free to diverge - you can follow the official guidelines or make completely different layout, but the minimal count of nodes should not drop below three - otherwise you may have to do some tweaking to make it work, which is not covered here (there is a pod count limit for a single kubernetes node - you can read more about it in this `discussion <https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556>`_).
-
-.. _oooi_installguide_preparations_k8s_cluster:
 
 Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~
@@ -68,8 +62,6 @@ As of now, the offline installer supports only **RHEL 7.x** and **CentOS 7.6** d
 
 We will expect from now on that you installed four VMs and they are connected to the shared network. All VMs must be reachable from our *install-server* (below), which can be the hypervisor, *infra-node* or completely different machine. But in either of these cases the *install-server* must be able to connect over ssh to all of these nodes.
 
-.. _oooi_installguide_preparations_installserver:
-
 Install-server
 ~~~~~~~~~~~~~~
 
@@ -88,14 +80,10 @@ Our *install-server* will have ip: ``10.8.8.4``.
 
 -----
 
-.. _oooi_installguide_config:
-
 Part 2. Preparation and configuration
 -------------------------------------
 
 We *MUST* do all the following instructions from the *install-server* and also we will be running them as a user ``root``. But that is not necessary - you can without any problem pick and use a regular user. The ssh/ansible connection to the nodes will also expect that we are connecting as a ``root`` - you need to elevate privileges to be able to install on them. Although it can be achieved by other means (sudo), we decided here to keep instructions simple.
-
-.. _oooi_installguide_config_packages:
 
 Installer packages
 ~~~~~~~~~~~~~~~~~~
@@ -113,8 +101,6 @@ We will store them in the ``/data`` directory on the *install-server* and then w
     $ mkdir ~/onap-offline-installer
     $ tar -C ~/onap-offline-installer -xf /data/sw_package.tar
 
-.. _oooi_installguide_config_app:
-
 Application directory
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -130,8 +116,6 @@ If you created the ``'sw'`` package according to the *Build Guide* then you shou
 - ``inventory/hosts.yml``
 
 Following paragraphs describe fine-tuning of ``'inventory.yml'`` and ``'application_configuration.yml'`` to reflect your VMs setup.
-
-.. _oooi_installguide_config_hosts:
 
 hosts.yml
 ~~~~~~~~~
@@ -270,8 +254,6 @@ After all the changes, the ``'hosts.yml'`` should look similar to this::
           hosts:
             kubernetes-node-1
 
-.. _oooi_installguide_config_appconfig:
-
 application_configuration.yml
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -331,8 +313,6 @@ Final configuration can resemble the following::
       slewclock: true
       timezone: UTC
 
-.. _oooi_installguide_config_appconfig_overrides:
-
 Helm chart value overrides
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -352,8 +332,6 @@ For example, the following lines could be appended to ``application_configuratio
           openStackEncryptedPasswordHere: "encrypted_password"
 
 In addition or alternatively to that one can configure ``helm_override_files`` key, which is new feature implemented in Change-Id: I8b8ded38b39aa9a75e55fc63fa0e11b986556cb8.
-
-.. _oooi_installguide_config_ssh:
 
 SSH authentication
 ~~~~~~~~~~~~~~~~~~
@@ -394,8 +372,6 @@ We can finally edit and finish the configuration of the ``'hosts.yml'``:
 
 -----
 
-.. _oooi_installguide_install:
-
 Part 3. Installation
 --------------------
 
@@ -419,8 +395,6 @@ This will take a while so be patient.
 - ``application.yml``
 
 ----
-
-.. _oooi_installguide_postinstall:
 
 Part 4. Post-installation and troubleshooting
 ---------------------------------------------
@@ -470,8 +444,6 @@ Jq can be used for editing json data format as output of kubectl. For example jq
     $ kubectl -n onap get job onap-sdc-sdc-be-config-backend -o json | jq "del(.spec.selector)" | jq "del(.spec.template.metadata.labels)" | kubectl -n onap replace --force -f -
 
 -----
-
-.. _oooi_installguide_appendix1:
 
 Appendix 1. Ansible execution/bootstrap
 ---------------------------------------
