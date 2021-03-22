@@ -1,9 +1,9 @@
 .. This work is licensed under a Creative Commons Attribution 4.0 International License.
 .. http://creativecommons.org/licenses/by/4.0
-.. Copyright 2019 Samsung Electronics Co., Ltd.
+.. Copyright 2021 Samsung Electronics Co., Ltd.
 
-OOM ONAP Offline Installer Package Build Guide
-=============================================================
+Offline Installer Package Build Guide
+=====================================
 
 This document is describing procedure for building offline installer packages. It is supposed to be triggered on server with internet connectivity and will download all artifacts required for ONAP deployment based on our static lists. The server used for the procedure in this guide is preferred to be separate build server.
 
@@ -12,7 +12,7 @@ Some discrepancies when Centos 7.6 is used are described below as well.
 
 
 Part 1. Prerequisites
---------------------
+---------------------
 
 We assume that procedure is executed on RHEL 7.6 server with \~300G disc space, 16G+ RAM and internet connectivity
 
