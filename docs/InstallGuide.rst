@@ -5,7 +5,7 @@
 Offline Installer - Installation Guide
 ======================================
 
-This document describes the correct offline installation procedure for `OOM ONAP`_, which is done by the ansible based `offline-installer <https://gerrit.onap.org/r/#/admin/projects/oom/offline-installer>`_.
+This document describes offline installation procedure for `OOM ONAP`_, which is done by the ansible based `Offline installer`_.
 
 Before you dive into the installation you should prepare the offline installer itself - the installer consists of at least two packages/resources. You can read about it in the `Build Guide`_, which provides the instructions for creating them.
 
@@ -521,4 +521,5 @@ Usage is basically the same as with the default chroot way - the only difference
 .. _Build Guide: ./BuildGuide.rst
 .. _El Alto requirements: https://onap.readthedocs.io/en/elalto/guides/onap-developer/settingup/index.html#installing-onap
 .. _El Alto release: https://docs.onap.org/en/elalto/release/
-.. _OOM ONAP: https://wiki.onap.org/display/DW/ONAP+Operations+Manager+Project
+.. _OOM ONAP: https://docs.onap.org/projects/onap-oom/en/latest/index.html
+.. _Offline installer: https://gerrit.onap.org/r/q/oom/offline-installer
