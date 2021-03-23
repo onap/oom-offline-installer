@@ -7,18 +7,14 @@ Offline Installer - Installation Guide
 
 This document describes offline installation procedure for `OOM ONAP`_, which is done by the ansible based `Offline installer`_.
 
-Before you dive into the installation you should prepare the offline installer itself - the installer consists of at least two packages/resources. You can read about it in the `Build Guide`_, which provides the instructions for creating them.
-
-This current version of the *Installation Guide* supports `El Alto release`_.
+Before you begin the installation process you should prepare the offline installation packages. Please refer to the `Build Guide`_ for instructions on how to create them.
 
 -----
 
 Part 1. Prerequisites
 ---------------------
 
-OOM ONAP deployment has certain hardware resource requirements - `El Alto requirements`_:
-
-Community recommended footprint from `El Alto requirements`_ page is 16 VMs ``224 GB RAM`` and ``112 vCPUs``. We will not follow strictly this setup due to such demanding resource consumption and so we will deploy our installation across four nodes (VMs) instead of sixteen. Our simplified setup is definitively not supported or recommended - you are free to diverge - you can follow the official guidelines or make completely different layout, but the minimal count of nodes should not drop below three - otherwise you may have to do some tweaking to make it work, which is not covered here (there is a pod count limit for a single kubernetes node - you can read more about it in this `discussion <https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556>`_).
+OOM ONAP deployment has certain hardware resource requirements (See `Software requirements`_): general recommendations are ``224 GB RAM``, ``112 vCPUs`` and ``160GB`` of storage. The minimum count of nodes should not drop below three - otherwise you may have to do some tweaking to make it work, which is not covered here (there is a pod count limit for a single kubernetes node - you can read more about it in this `discussion <https://lists.onap.org/g/onap-discuss/topic/oom_110_kubernetes_pod/25213556>`_).
 
 Kubernetes cluster
 ~~~~~~~~~~~~~~~~~~
@@ -32,6 +28,7 @@ The four nodes/VMs will be running these services:
     - dns
     - kubernetes-etcd
     - kubernetes-control-plane
+    - chartmuseum (if using helm v3)
 
 **NOTE:** kubernetes-* roles can be collocated directly with kubernetes nodes and not necessarily on infra node.
 
@@ -39,14 +36,14 @@ The four nodes/VMs will be running these services:
 
     - kubernetes worker
 
-You don't need to care about these services now - that is the responsibility of the installer (described below). Just start four VMs as seen in this table (or according to your needs as we hinted above):
+You don't need to care about these services now - that is the responsibility of the installer (described below). Just start four VMs as seen in below table (or according to your needs as we hinted above):
 
 .. _Overview table of the kubernetes cluster:
 
 Kubernetes cluster overview
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In El Alto we are using RKE as k8s orchestrator method, however everyone is free to diverge from this example and can set it up in own way omitting our rke playbook execution.
+.. note:: Offline installer leverages `RKE`_ to provision kubernetes cluster. If you'd like to use different k8s installation method please exclude ``rke.yml`` ansible playbook from execution and provide your own.
 
 =================== ================== ==================== ============== ============ ===============
 KUBERNETES NODE     OS                 NETWORK              CPU            RAM          STORAGE
@@ -60,7 +57,7 @@ SUM                                                         ``56 vCPUs``   ``176
 
 As of now, the offline installer supports only **RHEL 7.x** and **CentOS 7.6** distributions, with at least *@core* and *@base* package groups installed including *Mandatory* and *Default* package sets. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing.
 
-We will expect from now on that you installed four VMs and they are connected to the shared network. All VMs must be reachable from our *install-server* (below), which can be the hypervisor, *infra-node* or completely different machine. But in either of these cases the *install-server* must be able to connect over ssh to all of these nodes.
+We will expect from now on that you installed four VMs and they are connected to the shared network. All VMs must be reachable from *install-server* (below), which can be the hypervisor, *infra-node* or completely different host. But in either of these cases the *install-server* must be able to connect over ssh to all of these nodes.
 
 Install-server
 ~~~~~~~~~~~~~~
@@ -519,7 +516,7 @@ Usage is basically the same as with the default chroot way - the only difference
 -----
 
 .. _Build Guide: ./BuildGuide.rst
-.. _El Alto requirements: https://onap.readthedocs.io/en/elalto/guides/onap-developer/settingup/index.html#installing-onap
-.. _El Alto release: https://docs.onap.org/en/elalto/release/
+.. _Software requirements: https://docs.onap.org/projects/onap-oom/en/latest/oom_cloud_setup_guide.html#software-requirements
 .. _OOM ONAP: https://docs.onap.org/projects/onap-oom/en/latest/index.html
 .. _Offline installer: https://gerrit.onap.org/r/q/oom/offline-installer
+.. _RKE: https://rancher.com/products/rke/
