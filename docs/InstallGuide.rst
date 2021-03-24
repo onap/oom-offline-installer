@@ -470,9 +470,9 @@ There are two ways how to easily run the installer's ansible playbooks:
 (Re)build docker image and/or chroot archive
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Inside the ``'docker'`` directory is the ``'Dockerfile'`` and ``'build_ansible_image.sh'`` script. You can run ``'build_ansible_image.sh'`` script on some machine with the internet connectivity and it will download all required packages needed for building the ansible docker image and for exporting it into a flat chroot environment.
+Inside the ``'ansible/docker'`` directory you'll find the ``'Dockerfile'`` and ``'build_ansible_image.sh'`` script. You can run ``'build_ansible_image.sh'`` script on some machine with the internet connectivity and it will download all required packages needed for building the ansible docker image and for exporting it into a flat chroot environment.
 
-Built image is exported into ``'ansible_chroot.tgz'`` archive in the same (``'docker'``) directory.
+Built image is exported into ``'ansible_chroot.tgz'`` archive in the same (``'ansible/docker'``) directory.
 
 This script has two optional arguments:
 
@@ -486,7 +486,7 @@ Launching ansible playbook using chroot environment
 
 This is the default and preferred way of running ansible playbooks in an offline environment as there is no dependency on docker to be installed on the system. Chroot environment is already provided by included archive ``'ansible_chroot.tgz'``.
 
-It should be available in the ``'docker'`` directory as the end-result of the packaging script or after manual run of the ``'build_ansible_image.sh'`` script referenced above.
+It should be available in the ``'ansible/docker'`` directory as the end-result of the packaging script or after manual run of the ``'build_ansible_image.sh'`` script referenced above.
 
 All playbooks can be executed via ``'./run_playbook.sh'`` wrapper script.
 
@@ -506,16 +506,16 @@ Developers notes
 * Second script will automate chrooting (necessary steps for chroot to work and cleanup)
 * Both of them have help - just run::
 
-    $ cd docker
+    $ cd ansible/docker
     $ ./create_docker_chroot.sh help
     $ ./run_chroot.sh help
 
 Example usage::
 
     $ sudo su
-    $ docker/create_docker_chroot.sh convert some_docker_image ./new_name_for_chroot
+    $ ansible/docker/create_docker_chroot.sh convert some_docker_image ./new_name_for_chroot
     $ cat ./new_name_for_chroot/README.md
-    $ docker/run_chroot.sh execute ./new_name_for_chroot cat /etc/os-release 2>/dev/null
+    $ ansible/docker/run_chroot.sh execute ./new_name_for_chroot cat /etc/os-release 2>/dev/null
 
 Launching ansible playbook using docker container (ALTERNATIVE APPROACH)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
