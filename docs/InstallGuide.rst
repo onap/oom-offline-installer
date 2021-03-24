@@ -30,7 +30,7 @@ The four nodes/VMs will be running these services:
     - kubernetes-control-plane
     - chartmuseum (if using helm v3)
 
-**NOTE:** kubernetes-* roles can be collocated directly with kubernetes nodes and not necessarily on infra node.
+**NOTE:** kubernetes-* control plane can be collocated directly with k8s nodes and not necessarily on infra node.
 
 - **kubernetes node 1-3**::
 
@@ -77,15 +77,15 @@ Our *install-server* will have ip: ``10.8.8.4``.
 
 -----
 
-Part 2. Preparation and configuration
--------------------------------------
+Part 2. Configuration
+---------------------
 
-We *MUST* do all the following instructions from the *install-server* and also we will be running them as a user ``root``. But that is not necessary - you can without any problem pick and use a regular user. The ssh/ansible connection to the nodes will also expect that we are connecting as a ``root`` - you need to elevate privileges to be able to install on them. Although it can be achieved by other means (sudo), we decided here to keep instructions simple.
+All commands and setups described in this chapter *MUST* be run on the *install-server*. It's assumed here that all commands are run as ``root`` which is of course not necessary - you can use a regular user account. The ssh/ansible connection to the nodes will also expect that we are connecting as ``root`` - you need to elevate privileges to be able to install on them. Although it can be achieved by other means (sudo), we decided here to keep instructions simple.
 
 Installer packages
 ~~~~~~~~~~~~~~~~~~
 
-As was stated above you must have prepared the installer packages (names will differ - check out the `Build Guide`_):
+At this point you should have the installer packages already prepared (see `Build Guide`_):
 
 - sw_package.tar
 - resources_package.tar
@@ -93,7 +93,9 @@ As was stated above you must have prepared the installer packages (names will di
 
 **NOTE:** ``'aux_package.tar'`` is optional and if you don't have use for it, you can ignore it.
 
-We will store them in the ``/data`` directory on the *install-server* and then we will unpack the ``'sw'`` package to your home directory for example::
+Copy above packages to the ``/data`` directory on the *install-server* and then unpack the ``'sw_package.tar'`` to your home directory:
+
+::
 
     $ mkdir ~/onap-offline-installer
     $ tar -C ~/onap-offline-installer -xf /data/sw_package.tar
@@ -101,18 +103,18 @@ We will store them in the ``/data`` directory on the *install-server* and then w
 Application directory
 ~~~~~~~~~~~~~~~~~~~~~
 
-Change the current directory to the ``'ansible'``::
+Change the current directory to ``'ansible'``::
 
     $ cd ~/onap-offline-installer/ansible
 
-You can see multiple files and directories inside - this is the *offline-installer*. It is implemented as a set of ansible playbooks.
+You can see multiple files and directories inside - those are the *offline-installer* ansible playbooks.
 
-If you created the ``'sw'`` package according to the *Build Guide* then you should have had the *offline-installer* populated with at least the following files:
+If you created the ``'sw_package.tar'`` package according to the *Build Guide* then at least the following files should be present:
 
 - ``application/application_configuration.yml``
 - ``inventory/hosts.yml``
 
-Following paragraphs describe fine-tuning of ``'inventory.yml'`` and ``'application_configuration.yml'`` to reflect your VMs setup.
+Following paragraphs describe fine-tuning of ``'inventory.yml'`` to reflect your VMs setup and ``'application_configuration.yml'`` to setup the provisioner itself.
 
 hosts.yml
 ~~~~~~~~~
@@ -154,6 +156,10 @@ We need to setup the ``'hosts.yml'`` first, the template looks like this::
                   ansible_host: 10.8.8.19
                   #ip of the node that it uses for communication with k8s cluster.
                   cluster_ip: 10.8.8.19
+                  # External ip of the node, used for access from outside of the cluster.
+                  # Can be set to some kind of floating or public ip.
+                  # If not set, cluster_ip is used for this purpose.
+                  # external_ip: x.x.x.x
 
             # Group of hosts containing etcd cluster nodes.
             # Defaults to infra.
@@ -165,7 +171,7 @@ We need to setup the ``'hosts.yml'`` first, the template looks like this::
             # This means they host kubernetes api server, controller manager and scheduler.
             # This example uses infra for this purpose, however note that any
             # other host could be used including kubernetes nodes.
-            # cluster_ip needs to be set for hosts used as control planes.
+            # cluster_ip needs to be set for hosts used as control planes, external_ip can also be used.
             kubernetes-control-plane:
               hosts:
                 infrastructure-server
@@ -176,17 +182,17 @@ We need to setup the ``'hosts.yml'`` first, the template looks like this::
 
 There is some ssh configuration under the ``'vars'`` section - we will deal with ssh setup a little bit later in the `SSH authentication`_.
 
-We need to first correct the ip addresses and add a couple of kubernetes nodes to match our four-node cluster:
+First you need to set the ip addresses and add a couple of kubernetes nodes to match your four-node cluster:
 
-- Under the ``'resource-host'`` set the ``'ansible_host'`` address to the ip of your server, where the packages are stored - it must be reachable by ssh from the *install-server* (for ansible to run playbooks on it)  **AND** *infra-node* (to extract resource data from *resource-host* to *infra-node* over ssh). In our scenario the *resource-host* is the same as the *install-server*: ``'10.8.8.4'``
+- Under the ``'resource-host'`` set the ``'ansible_host'`` address to the ip of the host where the packages are stored - it must be reachable by ssh from the *install-server* (for ansible to run playbooks on it)  **AND** *infra-node* (to extract resource data from *resource-host* to *infra-node* over ssh). In our scenario the *resource-host* is the same as the *install-server*: ``'10.8.8.4'``
 - Similarly, set the ``'ansible_host'`` to the address of the *infra-node* under the ``'infrastructure-server'``.
 - Copy the whole ``'kubernetes-node-1'`` subsection and paste it twice directly after.  Change the numbers to ``'kubernetes-node-2'`` and ``'kubernetes-node-3'`` respectively and fix the addresses in the ``'ansible_host'`` variables again to match *kube-node1*, *kube-node2* and *kube-node3*.
 
 As you can see, there is another ``'cluster_ip'`` variable for each node - this serve as a designated node address in the kubernetes cluster. Make it the same as the respective ``'ansible_host'``.
 
-**NOTE:** In our simple setup we have only one interface per node, but that does not need to be a case for some other deployment - especially if we start to deal with a production usage. Basically, an ``'ansible_host'`` is an entry point for the *install-server's* ansible (*offline-installer*), but the kubernetes cluster can be communicating on a separate network to which *install-server* has no access. That is why we have this distinctive variable, so we can tell the installer that there is a different network, where we want to run the kubernetes traffic and what address each node has on such a network.
+**NOTE:** In our simple setup we have only one interface per node, but that does not need to be a case for some other deployments - especially if we start to deal with a production usage. Basically, an ``'ansible_host'`` is an entry point for the *install-server's* ansible (*offline-installer*), but the kubernetes cluster can be communicating on a separate network to which *install-server* has no access. That is why we have this distinctive variable, so we can tell the installer that there is a different network, where we want to run the kubernetes traffic and what address each node has on such a network.
 
-After all the changes, the ``'hosts.yml'`` should look similar to this::
+After applying all described changes, the ``'hosts.yml'`` should look similar to this::
 
     ---
     # This group contains hosts with all resources (binaries, packages, etc.)
@@ -223,6 +229,10 @@ After all the changes, the ``'hosts.yml'`` should look similar to this::
                   ansible_host: 10.8.8.101
                   #ip of the node that it uses for communication with k8s cluster.
                   cluster_ip: 10.8.8.101
+                  # External ip of the node, used for access from outside of the cluster.
+                  # Can be set to some kind of floating or public ip.
+                  # If not set, cluster_ip is used for this purpose.
+                  # external_ip: x.x.x.x
                 kubernetes-node-2:
                   ansible_host: 10.8.8.102
                   #ip of the node that it uses for communication with k8s cluster.
@@ -242,7 +252,7 @@ After all the changes, the ``'hosts.yml'`` should look similar to this::
             # This means they host kubernetes api server, controller manager and scheduler.
             # This example uses infra for this purpose, however note that any
             # other host could be used including kubernetes nodes.
-            # cluster_ip needs to be set for hosts used as control planes.
+            # cluster_ip needs to be set for hosts used as control planes, external_ip can also be used.
             kubernetes-control-plane:
               hosts:
                 infrastructure-server
@@ -264,15 +274,15 @@ Here, we will be interested in the following variables:
 - ``app_name``
 - ``timesync``
 
-``'resource_dir'``, ``'resources_filename'`` and ``'aux_resources_filename'`` must correspond to the file paths on the *resource-host* (variable ``'resource_host'``), which is in our case the *install-server*.
+``'resource_dir'``, ``'resources_filename'`` and ``'aux_resources_filename'`` must correspond to the file paths on the *resource-host* (``'resource-host'`` in ``hosts.yml``), which in our case is the *install-server* host.
 
 The ``'resource_dir'`` should be set to ``'/data'``, ``'resources_filename'`` to ``'resources_package.tar'`` and ``'aux_resources_filename'`` to ``'aux_package.tar'``. The values should be the same as are in the `Installer packages`_ section.
 
-``'app_data_path'`` is the absolute path on the *infra-node* to where the package ``'resources_package.tar'`` will be extracted and similarly ``'aux_data_path'`` is another absolute path for ``'aux_package.tar'``. Both the paths are fully arbitrary, but they should point to the filesystem with enough space - the storage requirement in `Overview table of the kubernetes cluster`_.
+``'app_data_path'`` is the absolute path on the *infra-node* to where the package ``'resources_package.tar'`` will be extracted and similarly ``'aux_data_path'`` is another absolute path for ``'aux_package.tar'``. Both paths are fully arbitrary, but they should point to the filesystem with enough disk space - the storage requirements are described in `Overview table of the kubernetes cluster`_.
 
 **NOTE:** As we mentioned in `Installer packages`_ - the auxiliary package is not mandatory and we will not utilize it in here either.
 
-The ``'app_name'`` variable should be short and descriptive. We will set it simply to: ``onap``.
+The ``'app_name'`` variable should be short and descriptive. We will set it simply to ``onap``.
 
 The ``'timesync'`` variable is optional and controls synchronisation of the system clock on hosts. It should be configured only if a custom NTP server is available and needed. Such a time authority should be on a host reachable from all installation nodes. If this setting is not provided then the default behavior is to setup NTP daemon on infra-node and sync all kube-nodes' time with it.
 
@@ -310,10 +320,10 @@ Final configuration can resemble the following::
       slewclock: true
       timezone: UTC
 
-Helm chart value overrides
-^^^^^^^^^^^^^^^^^^^^^^^^^^
+Helm chart values overrides
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In El Alto OOM charts are coming with all ONAP components disabled, this setting is also prepackaged within our sw_package.tar. Luckily there are multiple ways supported how to override this setting. It's also necessary for setting-up VIM specific entries and basically to configure any stuff with non default values.
+OOM charts are coming with all ONAP components disabled, this setting is also prepackaged within our sw_package.tar. Luckily there are multiple ways supported how to override this setting. It's also necessary for setting-up VIM specific entries and basically to configure any stuff with non default values.
 
 First option is to use ``overrides`` key in ``application_configuration.yml``.
 These settings will override helm values originally stored in ``values.yaml`` files in helm chart directories.
@@ -328,14 +338,20 @@ For example, the following lines could be appended to ``application_configuratio
           openStackKeyStoneUrl: "keystone_url"
           openStackEncryptedPasswordHere: "encrypted_password"
 
-In addition or alternatively to that one can configure ``helm_override_files`` key, which is new feature implemented in Change-Id: I8b8ded38b39aa9a75e55fc63fa0e11b986556cb8.
+In addition or alternatively to that one can configure ``helm_override_files`` variable in ``'application_configuration.yml'`` and mention all files with helm chart values there, e.g.:
+
+::
+
+  helm_override_files:
+    - "/path/to/values1.yaml"
+    - "/path/to/values2.yaml"
 
 SSH authentication
 ~~~~~~~~~~~~~~~~~~
 
-We are almost finished with the configuration and we are close to start the installation, but we need to setup password-less login from *install-server* to the nodes.
+Finally you need to setup password-less login from *install-server* to the nodes.
 
-You can use the ansible playbook ``'setup.yml'`` like this::
+You can use the ansible playbook ``'setup.yml'`` for that purpose::
 
     $ ./run_playbook.sh -i inventory/hosts.yml setup.yml -u root --ask-pass
 
