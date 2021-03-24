@@ -412,7 +412,7 @@ This will take a while so be patient. The whole provisioning process is idempote
 Part 4. Post-installation and troubleshooting
 ---------------------------------------------
 
-After all of the playbooks are run successfully, it will still take a lot of time until all pods are up and running. You can monitor your newly created kubernetes cluster for example like this::
+After all of the playbooks are run successfully the ONAP kubernetes application will be still deploying and it might take some time until all pods are up and running. You can monitor your newly created kubernetes cluster with this command::
 
     $ ssh -i ~/.ssh/offline_ssh_key root@10.8.8.100 # tailor this command to connect to your infra-node
     $ watch -d -n 5 'kubectl get pods --all-namespaces'
@@ -427,8 +427,9 @@ To automatically verify functionality with healthchecks after deployment becomes
 
 It is strongly recommended to tailor ``helm_deployment_status.py`` to your needs since default values might not be what you'd expect. The defaults can be displayed with ``--help`` switch.
 
-Final result of installation varies based on number of k8s nodes used and distribution of pods. In some dev envs we quite frequently hit problems with not all pods properly deployed. In successful deployments all jobs should be in successful state.
-This can be verified using ::
+Final result of installation varies based on number of k8s nodes used and distribution of pods. In successful deployments all jobs should be in successful state. This can be verified with:
+
+::
 
     $ kubectl get jobs -n <namespace>
 
@@ -448,9 +449,9 @@ Once all pods are properly deployed and in running state, one can verify functio
     $ cd <app_data_path>/<app_name>/helm_charts/robot
     $ ./ete-k8s.sh onap health
 
-For better work with terminal screen and jq packages were added . It can be installed from resources directory.
+You can install ``screen`` and ``jq`` packages to aid troubleshooting. Those can be installed from resources directory.
 
-Screen is a terminal multiplexer. With screen it is possible to have more terminal instances active. Screen as well keeps active SSH connections even terminal is closed.
+Screen is a terminal multiplexer and allows running multiple virtual terminal sessions as well as keep active SSH connections even when terminal is closed.
 
 Jq can be used for editing json data format as output of kubectl. For example jq was used to troubleshoot `SDNC-739 (UEB - Listener in Crashloopback) <https://jira.onap.org/browse/SDNC-739/>`_ ::
 
