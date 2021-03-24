@@ -2,8 +2,8 @@
 
 #
 # This is example configuration to install offline ONAP.
-# See available variables to configure and used default values
-# from ../ansible/group_vars/*.yml files.
+# See available variables to configure and default values used
+# in ../ansible/group_vars/*.yml files.
 #
 resources_dir: /data
 app_name: onap
