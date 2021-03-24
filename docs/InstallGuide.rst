@@ -390,19 +390,19 @@ Part 3. Installation
 
 We should have the configuration complete and be ready to start the installation. The installation is done via ansible playbooks, which are run either inside a **chroot** environment (default) or from the **docker** container. If for some reason you want to run playbooks from the docker instead of chroot then you cannot use *infra-node* or any other *kube-node* as the *install-server* - otherwise you risk that installation will fail due to restarting of the docker service.
 
-If you built your ``'sw'`` package well then there should be the file ``'ansible_chroot.tgz'`` inside the ``'docker'`` directory. If not then you must create it - to learn how to do that and to get more info about the scripts dealing with docker and chroot, go to `Appendix 1. Ansible execution/bootstrap`_
+``'sw_package.tar'`` should contain ``'ansible_chroot.tgz'`` file inside the ``'docker'`` directory. Detailed instructions on how to create it manually and to get more info about the scripts dealing with docker and chroot, go to `Appendix 1. Ansible execution/bootstrap`_.
 
 We will use the default chroot option so we don't need any docker service to be running.
 
-Installation is actually very straightforward now::
+Commence the installation process by running below command::
 
     $ ./run_playbook.sh -i inventory/hosts.yml -e @application/application_configuration.yml site.yml
 
-This will take a while so be patient.
+This will take a while so be patient. The whole provisioning process is idempotent so you may safely re-run it if required.
 
-``'site.yml'`` playbook actually runs in the order the following playbooks:
+``'site.yml'`` playbook will runs below playbooks in the following order::
 
-- ``upload_resources.yml``
+- ``resources.yml``
 - ``infrastructure.yml``
 - ``rke.yml``
 - ``application.yml``
