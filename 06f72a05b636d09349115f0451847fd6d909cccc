@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f8743282_ed079511",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-03-25T09:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09ab7f7f_7c16d25b",
+      "range": {
+        "startLine": 397,
+        "startChar": 37,
+        "endLine": 397,
+        "endChar": 58
+      },
+      "revId": "06f72a05b636d09349115f0451847fd6d909cccc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5742f9c7_522c203a",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "06f72a05b636d09349115f0451847fd6d909cccc",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc94089a_1ddc7ec0",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-03-25T09:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5742f9c7_522c203a",
+      "range": {
+        "startLine": 403,
+        "startChar": 24,
+        "endLine": 403,
+        "endChar": 33
+      },
+      "revId": "06f72a05b636d09349115f0451847fd6d909cccc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
