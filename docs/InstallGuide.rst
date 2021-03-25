@@ -307,6 +307,14 @@ Second one controls time zone setting on host. It's value should be time zone na
 
 ``'timesync.servers'``, ``'timesync.slewclock'`` and ``'timesync.timezone'`` settings can be used independently.
 
+In the Guilin release, OOM added support for `Helm`_ v3 Kubernetes package manager. Offline installer leverages on the v2 version by default. Should you desire to deploy Onap with helm v3 you need to set following variable:
+
+::
+
+    helm_version: v3.x.x
+
+The exact version string to use above should be picked from ``'build/data_lists/infra_bin_utils.list'`` file.
+
 Final configuration can resemble the following::
 
     resources_dir: /data
@@ -538,3 +546,4 @@ Usage is basically the same as with the default chroot way - the only difference
 .. _OOM ONAP: https://docs.onap.org/projects/onap-oom/en/latest/index.html
 .. _Offline installer: https://gerrit.onap.org/r/q/oom/offline-installer
 .. _RKE: https://rancher.com/products/rke/
+.. _Helm: https://helm.sh/
