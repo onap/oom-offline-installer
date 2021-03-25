@@ -46,6 +46,30 @@
       "revId": "9b2cc061dd769a79b231b92dbb052d8bea1ccad4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6d15a4c_7a0b9832",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T11:01:45Z",
+      "side": 1,
+      "message": "I got it, however \u0027below\u0027 here seems to be a bit odd to me as it more relates to the spatial position. Leave it as is, if you feel ok with that. You may also take a look on https://wikidiff.com/below/following",
+      "parentUuid": "1e7695a0_e5781cae",
+      "range": {
+        "startLine": 403,
+        "startChar": 33,
+        "endLine": 403,
+        "endChar": 38
+      },
+      "revId": "9b2cc061dd769a79b231b92dbb052d8bea1ccad4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
