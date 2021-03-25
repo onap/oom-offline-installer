@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd2565f9_365fba86",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2021-03-25T09:49:35Z",
+      "side": 1,
+      "message": "Quite a few mentions of El Alto in this doc - should these be Guilin?",
+      "range": {
+        "startLine": 12,
+        "startChar": 59,
+        "endLine": 12,
+        "endChar": 66
+      },
+      "revId": "d549d82b83594f010c3ac58850865af1d18d71be",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
