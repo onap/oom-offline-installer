@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c5f4e2b_c71ddd2b",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-03-25T10:35:58Z",
+      "side": 1,
+      "message": "No, sorry, \"collocated\" is the right form https://www.merriam-webster.com/dictionary/collocate",
+      "parentUuid": "a98ec99c_57df7199",
+      "range": {
+        "startLine": 33,
+        "startChar": 44,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "e9146826ab39170edf3b5bb31d7e61417423ca86",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1154f134_6a1c3015",
         "filename": "docs/InstallGuide.rst",
         "patchSetId": 1
