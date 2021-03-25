@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7890ace1_fedad335",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2021-03-25T09:54:13Z",
+      "side": 1,
+      "message": "its",
+      "range": {
+        "startLine": 147,
+        "startChar": 228,
+        "endLine": 147,
+        "endChar": 232
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
