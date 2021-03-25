@@ -106,6 +106,8 @@ For the list of all available options check script usage info.
 
 .. note:: Skip this step if you have already all necessary resources and continue with **Part 3. Populate local nexus**
 
+.. note:: Docker images collector supports both helm v2 and v3. Please note that helm v3 support was added in Guilin release of OOM and as of Honolulu release helm v2 will be obsoleted.
+
 Create repository containing OS packages to be installed on all nodes:
 
 ::
