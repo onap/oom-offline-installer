@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "ac9d44a9_e422dfff",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:57:16Z",
+      "side": 1,
+      "message": "or -\u003e and?",
+      "range": {
+        "startLine": 124,
+        "startChar": 164,
+        "endLine": 124,
+        "endChar": 166
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74cdc07e_b6dd7fbb",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:57:16Z",
+      "side": 1,
+      "message": "just being pulled... -\u003e pulling them...?",
+      "range": {
+        "startLine": 124,
+        "startChar": 167,
+        "endLine": 124,
+        "endChar": 184
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7890ace1_fedad335",
         "filename": "docs/BuildGuide.rst",
         "patchSetId": 2
@@ -46,6 +92,121 @@
       "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4409e620_08eb71f8",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:57:16Z",
+      "side": 1,
+      "message": "\u0027and configure it as a docker repository\u0027?",
+      "range": {
+        "startLine": 147,
+        "startChar": 58,
+        "endLine": 147,
+        "endChar": 94
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5ee732e_b6a56fb1",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:57:16Z",
+      "side": 1,
+      "message": "After that the ...\nAfter all the images are pushed the...",
+      "range": {
+        "startLine": 147,
+        "startChar": 170,
+        "endLine": 147,
+        "endChar": 191
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3edd1891_8b43bbb9",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:57:16Z",
+      "side": 1,
+      "message": "binds?",
+      "range": {
+        "startLine": 157,
+        "startChar": 72,
+        "endLine": 157,
+        "endChar": 81
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fad26d0_9528f65a",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:57:16Z",
+      "side": 1,
+      "message": "used?",
+      "range": {
+        "startLine": 157,
+        "startChar": 139,
+        "endLine": 157,
+        "endChar": 144
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eac6afa1_da7c1aca",
+        "filename": "docs/BuildGuide.rst",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:57:16Z",
+      "side": 1,
+      "message": "following?",
+      "range": {
+        "startLine": 191,
+        "startChar": 29,
+        "endLine": 191,
+        "endChar": 34
+      },
+      "revId": "b205b63f8092d064ec0922b25895c0a33c7d01ba",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
