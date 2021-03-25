@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09ab7f7f_7c16d25b",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:38:38Z",
+      "side": 1,
+      "message": "consider \u0027running following command\u0027 instead",
+      "range": {
+        "startLine": 397,
+        "startChar": 37,
+        "endLine": 397,
+        "endChar": 58
+      },
+      "revId": "06f72a05b636d09349115f0451847fd6d909cccc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5742f9c7_522c203a",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 7353
+      },
+      "writtenOn": "2021-03-25T09:38:38Z",
+      "side": 1,
+      "message": "will runs -\u003e will run",
+      "range": {
+        "startLine": 403,
+        "startChar": 24,
+        "endLine": 403,
+        "endChar": 33
+      },
+      "revId": "06f72a05b636d09349115f0451847fd6d909cccc",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
