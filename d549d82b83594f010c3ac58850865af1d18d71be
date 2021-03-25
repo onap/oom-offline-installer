@@ -22,6 +22,30 @@
       "revId": "d549d82b83594f010c3ac58850865af1d18d71be",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "440dfb53_eddb2cb3",
+        "filename": "docs/InstallGuide.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-03-25T09:53:31Z",
+      "side": 1,
+      "message": "This part was changed in one of next PRs in the topic and all mentions of specific releases removed.",
+      "parentUuid": "cd2565f9_365fba86",
+      "range": {
+        "startLine": 12,
+        "startChar": 59,
+        "endLine": 12,
+        "endChar": 66
+      },
+      "revId": "d549d82b83594f010c3ac58850865af1d18d71be",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
