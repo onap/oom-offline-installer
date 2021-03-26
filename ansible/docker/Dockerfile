@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM alpine:3.13.3
 
 ARG ansible_version=2.7.8
 LABEL ansible_version=$ansible_version vendor=Samsung
