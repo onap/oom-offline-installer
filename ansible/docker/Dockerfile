@@ -1,6 +1,7 @@
-FROM alpine:3.13.3
+FROM alpine:3.8
 
 ARG ansible_version=2.7.8
+ARG cryptography_version=2.1.4
 LABEL ansible_version=$ansible_version vendor=Samsung
 
 # Install Ansible build dependencies
@@ -23,6 +24,7 @@ RUN apk --no-cache update \
 && pip3 install --upgrade pip \
 && pip3 install \
   ansible==$ansible_version \
+  cryptography==$cryptography_version \
   jmespath \
   netaddr \
   jsonpointer \
