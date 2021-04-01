@@ -540,6 +540,67 @@ Usage is basically the same as with the default chroot way - the only difference
 
 -----
 
+Appendix 2. Running Kubernetes Dashboard
+----------------------------------------
+
+Kubernetes Dashboard is a web-based, general purpose user interface for managing a k8s cluster.
+
+Some of its capabilities are:
+
+* workloads/services management (troubleshooting, scaling, editing, restarting pods)
+* deploying new workloads/applications to the cluster
+* managing the cluster itself
+
+Dashboard also provides information on the state of the cluster resources and on any errors that may have occurred.
+
+Kubernetes Dashboard itself is a kubernetes application. For user convenience the Offline platform has it already pre-installed:
+
+::
+
+    $ kubectl -n kubernetes-dashboard get deployment
+    NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
+    dashboard-metrics-scraper   1/1     1            1           76m
+    kubernetes-dashboard        1/1     1            1           76m
+
+Accessing the dashboard
+~~~~~~~~~~~~~~~~~~~~~~~
+
+There are multiple ways to access the application's web UI. Here we'll assume usage of local port forwarding on a box where you have access to a browser since the dashboard in Offline platform is exposed via a node port by default.
+
+First get the node port number that the dashboard service is exposed on:
+
+::
+
+    $ kubectl -n kubernetes-dashboard get svc kubernetes-dashboard -o custom-columns=PORTS:.spec.ports[].nodePort
+    PORTS
+    30825
+
+Now establish an ssh session to the infra node from your box from which you'll be accessing the dashboard:
+
+::
+
+    $ ssh -L 8080:127.0.0.1:30825 root@<infra host ip>
+
+Point your browser at https://localhost:8080/ and you should see the login page:
+
+.. image:: images/kubernetes-dashboard-signin.png
+   :alt: Kubernetes Dashboard signin
+
+Here, we'll leverage the Bearer Token to log in. Offline platform comes with dashboard admin user already created, we just need to extract its token. On the infra node issue following command:
+
+::
+
+    $ kubectl -n kubernetes-dashboard get secret $(kubectl -n kubernetes-dashboard get sa/admin-user -o jsonpath="{.secrets[0].name}") -o go-template="{{.data.token | base64decode}}"
+
+It will return the token string on stdout. Copy-paste it into the sign-in form, selecting the "Token" option first. Upon successful login you'll be presented the cluster resources from ``default`` namespace. In the drop down box at the top select the namespace into which you installed the Onap application (namespace name equals the value of ``app_name`` variable from offline-installer setup) and you should see the cluster resources for Onap:
+
+.. image:: images/kubernetes-dashboard-main.png
+   :alt: Kubernetes Dashboard main page
+
+For additional information concerning the Kubernetes Dashboard please refer to the `official documentation <https://github.com/kubernetes/dashboard/tree/master/docs>`_.
+
+-----
+
 .. _Build Guide: ./BuildGuide.rst
 .. _Software requirements: https://docs.onap.org/projects/onap-oom/en/latest/oom_cloud_setup_guide.html#software-requirements
 .. _Hardware requirements: https://docs.onap.org/projects/onap-oom/en/latest/oom_cloud_setup_guide.html#minimum-hardware-configuration
