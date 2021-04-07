@@ -33,7 +33,7 @@
 VENV_PATH=${VENV_PATH:-~/molecule_venv}
 
 # Create virtual env
-python3.6 -m venv ${VENV_PATH}
+python3.8 -m venv ${VENV_PATH}
 
 # Activate virtual env
 source ${VENV_PATH}/bin/activate
@@ -42,5 +42,8 @@ source ${VENV_PATH}/bin/activate
 if [ ! -z ${VIRTUAL_ENV} ]; then
     echo "Activated virtual env in ${VIRTUAL_ENV}"
     pip -q install -U pip
-    pip -q install pyopenssl molecule==2.20 ansible==2.7.8 ansible-lint==4.2.0 docker
+    pip -q install pyopenssl molecule==3.3.0 ansible==3.2.0 ansible-lint docker
+    echo "PIP LISTING START"
+    pip list
+    echo "PIP LISTING END"
 fi

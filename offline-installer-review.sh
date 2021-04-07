@@ -26,8 +26,8 @@ function prep_ubuntu_16_04_for_molecule() {
   sudo apt-get --assume-yes install software-properties-common
   sudo add-apt-repository  --yes  ppa:deadsnakes/ppa
   sudo apt update
-  sudo apt install --assume-yes python3.6
-  sudo apt install --assume-yes python3.6-venv
+  sudo apt install --assume-yes python3.8
+  sudo apt install --assume-yes python3.8-venv
 }
 
 function run_molecule() {
@@ -52,7 +52,7 @@ echo "----------   ONAP OFFLINE INSTALLER - CHANGE VERIFICATION START   --------
 FAILED_ROLES=()
 ALL_PLAYBOOKS=(`ls -d ansible/test/play-*`) # enumerate all playbook tests for later usage
 # Setup environment
-prep_ubuntu_16_04_for_molecule > ubuntu_preparation.log
+prep_ubuntu_16_04_for_molecule
 
 # Check for changes in Ansible roles
 ROLE_CHANGES=(`git diff HEAD^ HEAD --name-only ansible/roles | cut -f 1-3 -d "/" | sort -u`)
