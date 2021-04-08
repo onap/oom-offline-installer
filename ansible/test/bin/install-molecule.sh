@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 
-#   Copyright 2019 © Samsung Electronics Co., Ltd.
+#   Copyright 2019-2021 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -33,7 +33,7 @@
 VENV_PATH=${VENV_PATH:-~/molecule_venv}
 
 # Create virtual env
-python3.6 -m venv ${VENV_PATH}
+python3.8 -m venv ${VENV_PATH}
 
 # Activate virtual env
 source ${VENV_PATH}/bin/activate
@@ -42,5 +42,5 @@ source ${VENV_PATH}/bin/activate
 if [ ! -z ${VIRTUAL_ENV} ]; then
     echo "Activated virtual env in ${VIRTUAL_ENV}"
     pip -q install -U pip
-    pip -q install pyopenssl molecule==2.20 ansible==2.7.8 ansible-lint==4.2.0 docker
+    pip -q install pyopenssl molecule==3.3.0 ansible==3.2.0 ansible-lint==5.0.7 docker molecule-docker==0.2.4
 fi
