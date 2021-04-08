@@ -32,7 +32,7 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
-    converge: ../default/playbook.yml
+    converge: ../default/converge.yml
   inventory:
     host_vars:
       infrastructure-server:

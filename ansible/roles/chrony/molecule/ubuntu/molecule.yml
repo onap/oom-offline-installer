@@ -33,7 +33,7 @@ provisioner:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
   playbooks:
     prepare: ../default/prepare.yml
-    converge: ../default/playbook.yml
+    converge: ../default/converge.yml
 verifier:
   name: testinfra
   options:

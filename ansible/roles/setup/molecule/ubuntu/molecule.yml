@@ -15,7 +15,7 @@ platforms:
 provisioner:
   name: ansible
   playbooks:
-    converge: ../default/playbook.yml
+    converge: ../default/converge.yml
 scenario:
   name: ubuntu
 verifier:

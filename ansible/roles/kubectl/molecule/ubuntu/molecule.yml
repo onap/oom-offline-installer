@@ -23,7 +23,7 @@ provisioner:
     ANSIBLE_LIBRARY: ../../../../library
   playbooks:
     prepare: ../default/prepare.yml
-    converge: ../default/playbook.yml
+    converge: ../default/converge.yml
   inventory:
     group_vars:
       all:
