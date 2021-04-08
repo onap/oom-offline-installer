@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: infra_host-ubuntu
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
@@ -26,8 +29,6 @@ platforms:
       - kubernetes
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
   inventory:
@@ -43,8 +44,6 @@ provisioner:
     converge: ../external_time_source/playbook.yml
 verifier:
   name: testinfra
-  lint:
-    name: flake8
   options:
     v: 1
   directory: ../default/tests/

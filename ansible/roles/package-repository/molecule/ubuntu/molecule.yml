@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: infrastructure-server
     image: ${PLATFORM_DISTRO:-ubuntu}:${ISTRO_VERSION:-18.04}
@@ -28,8 +31,6 @@ platforms:
 
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
   playbooks:
     converge: ../default/playbook.yml
   inventory:
@@ -46,6 +47,4 @@ verifier:
   name: testinfra
   options:
     verbose: true
-  lint:
-    name: flake8
   directory: ../default/tests

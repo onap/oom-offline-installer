@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: instance
     image: centos:7
@@ -30,8 +33,6 @@ provisioner:
         application_pre_install_role: application/test-patch-role
         application_post_install_role: application/test-patch-role
         helm_version: v2
-  lint:
-    name: ansible-lint
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml
@@ -52,5 +53,3 @@ scenario:
     - destroy
 verifier:
   name: testinfra
-  lint:
-    name: flake8

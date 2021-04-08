@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: centos7
     image: couchbase/centos7-systemd
@@ -23,11 +26,7 @@ provisioner:
   name: ansible
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
-  lint:
-    name: ansible-lint
 verifier:
   name: testinfra
   options:
     verbose: true
-  lint:
-    name: flake8

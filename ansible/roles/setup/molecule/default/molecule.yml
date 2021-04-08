@@ -3,18 +3,17 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: instance
     image: ${PLATFORM_DISTRO:-centos}:${DISTRO_VERSION:-7}
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
 scenario:
   name: default
 verifier:
   name: testinfra
-  lint:
-    name: flake8

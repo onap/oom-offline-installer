@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: instance
     image: ubuntu:18.04
@@ -29,8 +32,6 @@ provisioner:
           - onap
         app_helm_chart_name: "{{ app_name }}"
         helm_version: v2
-  lint:
-    name: ansible-lint
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml
@@ -60,6 +61,4 @@ scenario:
     - destroy
 verifier:
   name: testinfra
-  lint:
-    name: flake8
   directory: ../default/tests/

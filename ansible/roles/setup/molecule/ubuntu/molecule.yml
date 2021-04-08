@@ -3,22 +3,21 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: instance
     image: ${PLATFORM_DISTRO:-ubuntu}:${DISTRO_VERSION:-18.04}
     dockerfile: ../default/Dockerfile.j2
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
   playbooks:
     converge: ../default/playbook.yml
 scenario:
   name: ubuntu
 verifier:
   name: testinfra
-  lint:
-    name: flake8
   directory: ../default/tests/
