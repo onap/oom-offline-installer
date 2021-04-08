@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #   COPYRIGHT NOTICE STARTS HERE
 #
-#   Copyright 2018-2020 © Samsung Electronics Co., Ltd.
+#   Copyright 2018-2021 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -26,8 +26,8 @@ function prep_ubuntu_16_04_for_molecule() {
   sudo apt-get --assume-yes install software-properties-common
   sudo add-apt-repository  --yes  ppa:deadsnakes/ppa
   sudo apt update
-  sudo apt install --assume-yes python3.6
-  sudo apt install --assume-yes python3.6-venv
+  sudo apt install --assume-yes python3.8
+  sudo apt install --assume-yes python3.8-venv
 }
 
 function run_molecule() {

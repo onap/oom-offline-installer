@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 
-#   Copyright 2019-2020 © Samsung Electronics Co., Ltd.
+#   Copyright 2019-2021 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ if [ "${MOLECULE_CONTAINER}" == "true" ]; then
 else # Install Molecule natively in the target platform
     echo "Install Molecule with virtualenv"
     source ${LOCAL_PATH}/../bin/install-molecule.sh
-    MOLECULE_BINARY=molecule
+    MOLECULE_BINARY="molecule --version"
 fi
 
 cd ${ROLE_PATH}
