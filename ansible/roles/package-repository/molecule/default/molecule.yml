@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: infrastructure-server
     image: ${PLATFORM_DISTRO:-centos}:${DISTRO_VERSION:-7}
@@ -26,8 +29,6 @@ platforms:
 
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
   inventory:
     host_vars:
       infrastructure-server:
@@ -40,5 +41,3 @@ verifier:
   name: testinfra
   options:
     verbose: true
-  lint:
-    name: flake8

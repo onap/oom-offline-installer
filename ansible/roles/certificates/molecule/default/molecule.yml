@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: infrastructure-server
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
@@ -24,8 +27,6 @@ platforms:
 provisioner:
   name: ansible
   log: true
-  lint:
-    name: ansible-lint
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
@@ -63,5 +64,3 @@ verifier:
   name: testinfra
   options:
     verbose: true
-  lint:
-    name: flake8

@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: kubernetes-node-1
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
@@ -40,8 +43,6 @@ provisioner:
     links:
       group_vars: ../../../../group_vars
       host_vars: ../default/host_vars
-  lint:
-    name: ansible-lint
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml
@@ -49,6 +50,4 @@ scenario:
   name: ubuntu
 verifier:
   name: testinfra
-  lint:
-    name: flake8
   directory: ../default/tests

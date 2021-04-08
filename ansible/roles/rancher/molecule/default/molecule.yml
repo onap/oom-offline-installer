@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: infrastructure-server
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
@@ -60,8 +63,6 @@ provisioner:
             #   ansible_sudo_pass: ${LOCALHOST_ANSIBLE_SUDO_PASS:-""}
             #   ansible_ssh_pass: ${LOCALHOST_ANSIBLE_PASSWORD:-""}
             # End of 2)
-  lint:
-    name: ansible-lint
 scenario:
   name: default
   test_sequence:
@@ -84,5 +85,3 @@ scenario:
     - destroy
 verifier:
   name: testinfra
-  lint:
-    name: flake8

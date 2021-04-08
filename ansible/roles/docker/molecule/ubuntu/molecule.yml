@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: infrastructure-server
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
@@ -20,8 +23,6 @@ platforms:
       - /var/lib/docker
 provisioner:
   name: ansible
-  lint:
-    name: ansible-lint
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml
@@ -39,8 +40,6 @@ verifier:
   name: testinfra
   options:
     verbose: true
-  lint:
-    name: flake8
     options:
       ignore: W291  # trailing whitespace
   directory: ../default/tests/

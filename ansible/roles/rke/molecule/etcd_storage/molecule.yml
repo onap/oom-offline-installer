@@ -3,8 +3,11 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
-  name: yamllint
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
 platforms:
   - name: infrastructure-server
     image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
@@ -45,11 +48,7 @@ provisioner:
     prepare: ../default/prepare.yml
     converge: ../default/playbook.yml
     destroy: ../default/destroy.yml
-  lint:
-    name: ansible-lint
 scenario:
   name: etcd_storage
 verifier:
   name: testinfra
-  lint:
-    name: flake8
