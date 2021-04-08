@@ -28,7 +28,7 @@ provisioner:
       group_vars: ../../../../group_vars
   playbooks:
     prepare: ../default/prepare.yml
-    converge: ../default/playbook.yml
+    converge: ../default/converge.yml
 scenario:
   name: ubuntu
 verifier:

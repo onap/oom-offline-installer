@@ -27,7 +27,7 @@ provisioner:
       group_vars: ../../../../group_vars
   playbooks:
     prepare: ../default/prepare.yml
-    converge: ../default/playbook.yml
+    converge: ../default/converge.yml
     cleanup: ../default/cleanup.yml
 scenario:
   name: ubuntu

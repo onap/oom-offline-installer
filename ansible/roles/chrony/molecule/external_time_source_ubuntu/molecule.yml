@@ -41,7 +41,7 @@ provisioner:
           timezone: Europe/Warsaw
   playbooks:
     prepare: ../default/prepare.yml
-    converge: ../external_time_source/playbook.yml
+    converge: ../external_time_source/converge.yml
 verifier:
   name: testinfra
   options:
