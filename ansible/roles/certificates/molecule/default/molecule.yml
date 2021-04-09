@@ -31,34 +31,19 @@ provisioner:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
   inventory:
-    links:
-      group_vars: ../../../../group_vars/
-scenario:
-  test_sequence:
-    - lint
-    - cleanup
-    - destroy
-    - dependency
-    - syntax
-    - create
-    - prepare
-    - converge
-    # - idempotence
-    #  --> Action: 'idempotence'
-    #  ERROR: Idempotence test failed because of the following tasks:
-    #  * [infrastructure-server -> localhost] => certificates : Generate an OpenSSL CSR.
-    #  * [infrastructure-server -> localhost] => certificates : Generate root CA certificate
-    #  * [infrastructure-server] => certificates : Upload certificates to infrastructure server
-    #  * [infrastructure-server] => certificates : Copy root certificate
-    #  * [infrastructure-server] => certificates : Extract root certificate
-    #  * [infrastructure-server] => docker : Setup docker dns settings
-    #  * [kubernetes-node-1] => certificates : Copy root certificate
-    #  * [kubernetes-node-1] => certificates : Extract root certificate
-    #  * [kubernetes-node-1] => certificates : Extract root certificate
-    - side_effect
-    - verify
-    - cleanup
-    - destroy
+    group_vars:
+      all:
+        certificates:
+          organization_name: MoleculeTesters
+          state_or_province_name: Poland
+          country_name: PL
+          locality_name: Krakow
+        app_data_path: /opt/moleculetestapp
+        all_simulated_hosts:
+          - molecule.sim.host1
+          - molecule.sim.host2
+      infrastructure-server:
+        cluster_ip: 1.2.3.4
 verifier:
   name: testinfra
   options:

@@ -9,8 +9,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 @pytest.fixture
 def group_vars(host):
-    all_file = "file=group_vars/all.yml name=all"
-    return host.ansible("include_vars", all_file)["ansible_facts"]["all"]
+    return host.ansible.get_variables()
 
 
 @pytest.mark.parametrize('cert_file', [
@@ -27,13 +26,7 @@ def test_generated_cert_files_copied_to_infra(host, cert_file, group_vars):
     assert f.user == 'root'
     assert f.group == 'root'
 
-    os = host.system_info.distribution
-    if (os == "centos"):
-        node_directory = "certs/"
-    elif (os == "ubuntu"):
-        node_directory = "../default/certs/"
-
     # Verify cert files content locally is as in node
-    with open(node_directory + cert_file) as local_cert_file:
+    with open("molecule/default/certs/" + cert_file) as local_cert_file:
         local_content = local_cert_file.read().strip()
-    assert local_content == f.content_string
+    assert local_content == f.content_string.strip()
