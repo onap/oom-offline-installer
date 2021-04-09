@@ -1,4 +1,7 @@
 ---
+- name: Restart Docker
+  import_tasks: docker_restart.yml
+
 - name: Extract root certificate
   command: "{{ extract_root_cert[ansible_os_family].update_command }}"
   changed_when: true  # this handler is executed just when there is a new cert
