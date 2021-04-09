@@ -20,13 +20,13 @@
     country_name: "{{ certificates.country_name }}"
     locality_name: "{{ certificates.locality_name }}"
     basic_constraints:
-      - CA:true
+      - CA:TRUE
     basic_constraints_critical: true
     key_usage:
-      - critical
       - digitalSignature
       - cRLSign
       - keyCertSign
+    key_usage_critical: true
 
 - name: Generate root CA certificate
   openssl_certificate:
@@ -34,19 +34,12 @@
     path: "{{ certificates_local_dir }}/rootCA.crt"
     csr_path: "{{ certificates_local_dir }}/rootCA.csr"
     privatekey_path: "{{ certificates_local_dir }}/rootCA.key"
-    key_usage:
-      - critical
-      - digitalSignature
-      - cRLSign
-      - keyCertSign
-    force: true
   notify: Restart Docker
 
 - name: Generate private Nexus key
   openssl_privatekey:
     path: "{{ certificates_local_dir }}/nexus_server.key"
     size: 4096
-    force: false
 
 - name: Generate Nexus CSR (certificate signing request)
   openssl_csr:
@@ -75,10 +68,3 @@
     csr_path: "{{ certificates_local_dir }}/nexus_server.csr"
     ownca_path: "{{ certificates_local_dir }}/rootCA.crt"
     ownca_privatekey_path: "{{ certificates_local_dir }}/rootCA.key"
-    key_usage:
-      - digitalSignature
-      - nonRepudiation
-      - keyEncipherment
-      - dataEncipherment
-    subject_alt_name:
-      "{{ all_simulated_hosts | map('regex_replace', '(.*)', 'DNS:\\1') | list }}"
