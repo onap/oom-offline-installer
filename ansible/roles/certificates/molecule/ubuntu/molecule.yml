@@ -31,6 +31,7 @@ provisioner:
     ANSIBLE_LIBRARY: ../../../../library
   playbooks:
     converge: ../default/converge.yml
+    cleanup: ../default/cleanup.yml
   inventory:
     links:
       group_vars: ../../../../group_vars/
