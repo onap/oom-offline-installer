@@ -38,7 +38,5 @@ provisioner:
         cluster_config_dir: /opt/onap/cluster
   options:
     e: "app_data_path=/opt/onap"
-scenario:
-  name: default
 verifier:
   name: testinfra

@@ -41,8 +41,6 @@ provisioner:
       all:
         app_name: moleculetestapp
         app_data_path: "/opt/{{ app_name }}"
-scenario:
-  name: ubuntu
 verifier:
   name: testinfra
   options:

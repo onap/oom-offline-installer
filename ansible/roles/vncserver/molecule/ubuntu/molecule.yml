@@ -29,8 +29,6 @@ provisioner:
   inventory:
     links:
       group_vars: ../../../../group_vars
-scenario:
-  name: ubuntu
 verifier:
   name: testinfra
   options:

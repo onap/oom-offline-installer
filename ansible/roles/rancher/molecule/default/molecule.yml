@@ -64,7 +64,6 @@ provisioner:
             #   ansible_ssh_pass: ${LOCALHOST_ANSIBLE_PASSWORD:-""}
             # End of 2)
 scenario:
-  name: default
   test_sequence:
     - lint
     - cleanup

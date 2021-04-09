@@ -34,8 +34,6 @@ provisioner:
       infrastructure-server:
         cluster_ip: 1.2.3.4
         remote_tmp: $HOME/.ansible/tmp
-scenario:
-  name: ubuntu
 verifier:
   name: testinfra
   options:

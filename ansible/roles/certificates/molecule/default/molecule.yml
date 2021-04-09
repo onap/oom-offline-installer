@@ -34,7 +34,6 @@ provisioner:
     links:
       group_vars: ../../../../group_vars/
 scenario:
-  name: default
   test_sequence:
     - lint
     - cleanup

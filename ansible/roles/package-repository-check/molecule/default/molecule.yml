@@ -32,7 +32,6 @@ provisioner:
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
 scenario:
-  name: default
   test_sequence:
     - lint
     - cleanup

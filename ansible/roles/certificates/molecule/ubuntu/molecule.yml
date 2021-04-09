@@ -35,7 +35,6 @@ provisioner:
     links:
       group_vars: ../../../../group_vars/
 scenario:
-  name: ubuntu
   test_sequence:
     - lint
     - cleanup

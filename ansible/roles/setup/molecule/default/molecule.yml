@@ -13,7 +13,5 @@ platforms:
     image: ${PLATFORM_DISTRO:-centos}:${DISTRO_VERSION:-7}
 provisioner:
   name: ansible
-scenario:
-  name: default
 verifier:
   name: testinfra

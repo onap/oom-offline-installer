@@ -26,7 +26,5 @@ provisioner:
   inventory:
     links:
       group_vars: ../../../../group_vars
-scenario:
-  name: default
 verifier:
   name: testinfra

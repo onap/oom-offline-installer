@@ -16,8 +16,6 @@ provisioner:
   name: ansible
   playbooks:
     converge: ../default/converge.yml
-scenario:
-  name: ubuntu
 verifier:
   name: testinfra
   directory: ../default/tests/
