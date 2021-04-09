@@ -44,7 +44,5 @@ provisioner:
     links:
       group_vars: ../../../../group_vars
       host_vars: host_vars
-scenario:
-  name: default
 verifier:
   name: testinfra

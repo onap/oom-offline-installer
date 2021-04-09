@@ -28,7 +28,6 @@ provisioner:
       infrastructure-server:
         cluster_ip: 6.5.4.3
 scenario:
-  name: ubuntu
   test_sequence:
     - lint
     - cleanup

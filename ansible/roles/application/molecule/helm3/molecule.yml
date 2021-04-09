@@ -36,7 +36,6 @@ provisioner:
     converge: ../default/converge.yml
     cleanup: ../default/cleanup.yml
 scenario:
-  name: helm3
   test_sequence:
     - lint
     - cleanup

@@ -32,7 +32,6 @@ provisioner:
         app_helm_chart_name: "{{ app_name }}"
         helm_version: v2
 scenario:
-  name: default
   test_sequence:
     - lint
     - cleanup

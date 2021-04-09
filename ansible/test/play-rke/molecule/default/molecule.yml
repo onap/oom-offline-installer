@@ -32,7 +32,5 @@ provisioner:
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
-scenario:
-  name: default
 verifier:
   name: testinfra

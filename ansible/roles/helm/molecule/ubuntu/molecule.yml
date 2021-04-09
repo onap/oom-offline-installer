@@ -26,8 +26,6 @@ provisioner:
       all:
         app_name: onap
         app_data_path: "/opt/{{ app_name }}"
-scenario:
-  name: ubuntu
 verifier:
   name: testinfra
   directory: ../default/tests

@@ -29,7 +29,5 @@ provisioner:
     prepare: ../default/prepare.yml
     converge: ../default/converge.yml
     cleanup: ../default/cleanup.yml
-scenario:
-  name: ubuntu
 verifier:
   name: testinfra

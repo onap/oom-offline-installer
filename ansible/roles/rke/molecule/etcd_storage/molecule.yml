@@ -48,7 +48,5 @@ provisioner:
     prepare: ../default/prepare.yml
     converge: ../default/converge.yml
     destroy: ../default/destroy.yml
-scenario:
-  name: etcd_storage
 verifier:
   name: testinfra
