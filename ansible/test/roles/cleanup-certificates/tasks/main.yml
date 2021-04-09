@@ -1,0 +1,8 @@
+---
+- name: Clean certificates role ephemeral directories
+  file:
+    path: "{{ item }}"
+    state: absent
+  delegate_to: localhost
+  loop:
+    - certs
