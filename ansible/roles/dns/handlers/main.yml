@@ -11,3 +11,4 @@
     state: started
     restart_policy: unless-stopped
     recreate: true
+    container_default_behavior: compatibility

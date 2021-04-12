@@ -15,6 +15,7 @@
     name: andyshinn/dnsmasq
     tag: 2.76
     archive_path: /tmp/dnsmasq.tar
+    source: pull
 
 - name: Copy dnsmasq image to node
   copy:

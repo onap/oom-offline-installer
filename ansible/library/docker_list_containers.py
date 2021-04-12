@@ -54,7 +54,7 @@ containers:
     ]
 '''
 
-from ansible.module_utils.docker_common import AnsibleDockerClient
+from ansible_collections.community.docker.plugins.module_utils.common import AnsibleDockerClient
 
 class DockerListContainers:
 
