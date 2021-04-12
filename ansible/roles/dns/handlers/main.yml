@@ -8,9 +8,6 @@
     capabilities: NET_ADMIN
     volumes:
       - "{{ app_data_path }}/cfg/simulated_hosts:/simulated_hosts:ro"
-    ports:
-      - "53:53/tcp"
-      - "53:53/udp"
     state: started
     restart_policy: unless-stopped
     recreate: true
