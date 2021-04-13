@@ -11,7 +11,9 @@
 - name: Build nginx docker image
   delegate_to: localhost
   docker_image:
-    path: ../../../../../build/creating_data/create_nginx_image/
+    build:
+      path: ../../../../../build/creating_data/create_nginx_image/
+    source: build
     name: own_nginx
     tag: 2.0.0
 
@@ -21,6 +23,7 @@
     name: own_nginx
     tag: 2.0.0
     archive_path: /tmp/nginx.tar
+    source: local
 
 - name: Copy nginx image to node
   copy:

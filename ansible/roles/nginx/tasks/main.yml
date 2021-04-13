@@ -14,6 +14,7 @@
     name: "{{ nginx_server_image }}"
     load_path: "{{ infra_images_path }}/{{ nginx_server_image_tar }}"
     state: present
+    source: load
     timeout: 120
 
 - name: Create nexus network
@@ -27,7 +28,9 @@
     image: "{{ nginx_server_image }}"
     networks:
       - name: nexus_network
+    network_mode: default
     ports: "{{ nginx.ports }}"
     volumes: "{{ nginx.volumes }}"
     state: started
     restart_policy: unless-stopped
+    container_default_behavior: compatibility
