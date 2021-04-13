@@ -10,6 +10,7 @@
   docker_image:
     name: "{{ nexus3_image }}"
     load_path: "{{ infra_images_path }}/{{ nexus3_image_tar }}"
+    source: load
     state: present
     timeout: 120
 
@@ -29,6 +30,7 @@
       - "{{ app_data_path }}/nexus_data:/nexus-data:rw"
     state: started
     restart_policy: unless-stopped
+    container_default_behavior: compatibility
 
 - name: Wait for nexus to come up
   uri:
