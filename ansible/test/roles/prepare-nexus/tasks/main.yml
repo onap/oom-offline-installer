@@ -24,6 +24,7 @@
     name: "{{ item.name }}"
     tag: "{{ item.tag | default('latest') }}"  # Tag given in 'name' has precedence over the one declared here
     archive_path: "{{ item.archive_path }}"
+    source: pull
   loop: "{{ prepare_nexus_images }}"
 
 - name: Copy docker images to node
