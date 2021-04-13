@@ -13,6 +13,7 @@
   docker_image:
     name: "{{ vnc_server_image }}"
     state: present
+    source: pull
     archive_path: /tmp/vncserver.tar
     timeout: 240
 

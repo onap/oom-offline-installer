@@ -4,6 +4,7 @@
     name: "{{ vnc_server_image }}"
     load_path: "{{ infra_images_path }}/{{ vnc_server_image_tar }}"
     state: present
+    source: load
     timeout: 120
 
 - name: Start VNC server container
@@ -17,3 +18,4 @@
       - "6901:6901"
     env:
       VNC_PW: "{{ vnc_passwd }}"
+    container_default_behavior: compatibility
