@@ -17,5 +17,6 @@
         tag: "{{ runtime_images[component].tag }}"
         push: true
         load_path: "{{ item.path }}"
+        source: load
         timeout: 120
       changed_when: false  # for idempotence
