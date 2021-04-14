@@ -43,7 +43,7 @@ if [ "${MOLECULE_CONTAINER}" == "true" ]; then
 else # Install Molecule natively in the target platform
     echo "Install Molecule with virtualenv"
     source ${LOCAL_PATH}/../bin/install-molecule.sh
-    MOLECULE_BINARY="molecule --version"
+    MOLECULE_BINARY="molecule"
 fi
 
 cd ${ROLE_PATH}
