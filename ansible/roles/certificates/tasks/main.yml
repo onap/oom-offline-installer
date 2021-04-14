@@ -9,4 +9,5 @@
     directory_mode: true
     dest: "{{ app_data_path }}/"
 
+
 - import_tasks: upload_root_ca.yml
