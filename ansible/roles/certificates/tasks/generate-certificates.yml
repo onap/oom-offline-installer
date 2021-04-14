@@ -59,7 +59,7 @@
     extended_key_usage:
       - serverAuth
     subject_alt_name:
-      "{{ all_simulated_hosts | map('regex_replace', '(.*)', 'DNS:\\1') | list }}"
+      "{{ all_simulated_hosts | map('regex_replace', '^(.*)$', 'DNS:\\1') | list }}"
 
 - name: Sign Nexus certificate
   openssl_certificate:
