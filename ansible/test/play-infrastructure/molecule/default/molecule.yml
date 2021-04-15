@@ -46,24 +46,5 @@ provisioner:
   inventory:
     links:
       group_vars: ../../../../group_vars
-scenario:
-  test_sequence:
-    - lint
-    - cleanup
-    - destroy
-    - dependency
-    - syntax
-    - create
-    - prepare
-    - converge
-    # - idempotence
-    # --> Action: 'idempotence'
-    # ERROR: Idempotence test failed because of the following tasks:
-    # * [infrastructure-server -> 10.0.2.15] => certificates : Generate an OpenSSL CSR.
-    # * [infrastructure-server -> 10.0.2.15] => certificates : Generate root CA certificate
-    - side_effect
-    - verify
-    - cleanup
-    - destroy
 verifier:
   name: testinfra
