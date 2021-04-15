@@ -9,6 +9,7 @@
   docker_image:
     name: "{{ chartmuseum_server_image }}"
     load_path: "{{ infra_images_path }}/{{ chartmuseum_server_image_tar }}"
+    source: load
     state: present
     timeout: 120
   notify: Run chartmuseum server container

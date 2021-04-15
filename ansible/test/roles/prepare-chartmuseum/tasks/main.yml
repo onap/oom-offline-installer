@@ -11,6 +11,7 @@
   docker_image:
     name: "{{ chartmuseum_server_image }}"
     archive_path: /tmp/chartmuseum.tar
+    source: pull
 
 - name: Copy chartmuseum image to node
   copy:
