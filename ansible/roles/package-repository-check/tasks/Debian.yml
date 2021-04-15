@@ -6,6 +6,8 @@
       command: apt clean && apt autoclean
       args:
         warn: false
+      tags:
+        - molecule-idempotence-notest
     # Refresh cache to ensure repo is reachable
     - name: Update apt cache
       apt:
@@ -13,6 +15,7 @@
         state: latest
       tags:
         - skip_ansible_lint  # Prevent '[403] Package installs should not use latest' ansible lint task rule
+        - molecule-idempotence-notest
   rescue:
     - name: Fail if apt cache updating failed
       fail:
@@ -34,3 +37,5 @@
   service:
     name: resolvconf
     state: restarted
+  tags:
+    - molecule-idempotence-notest

@@ -27,25 +27,6 @@ provisioner:
     host_vars:
       infrastructure-server:
         cluster_ip: 6.5.4.3
-scenario:
-  test_sequence:
-    - lint
-    - cleanup
-    - destroy
-    - dependency
-    - syntax
-    - create
-    - prepare
-    - converge
-    # - idempotence
-    #  --> Action: 'idempotence'
-    #  ERROR: Idempotence test failed because of the following tasks:
-    #  * [infra_host] => package-repository-check : Clean yum cache
-    #  * [node0] => package-repository-check : Clean yum cache
-    - side_effect
-    - verify
-    - cleanup
-    - destroy
 verifier:
   name: testinfra
   options:
