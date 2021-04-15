@@ -12,3 +12,4 @@
       - "{{ chartmuseum_port }}:8080/tcp"
     restart_policy: unless-stopped
     recreate: true
+    container_default_behavior: compatibility
