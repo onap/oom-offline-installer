@@ -6,6 +6,8 @@
       command: yum clean all
       args:
         warn: false
+      tags:
+        - molecule-idempotence-notest
     # Refresh cache to ensure repo is reachable
     - name: Update yum cache
       yum:
