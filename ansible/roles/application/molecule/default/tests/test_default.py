@@ -20,7 +20,8 @@ repo add local http://127.0.0.1:8879
 deploy moleculetestapp local/moleculetestapp --namespace \
 moleculetestapp -f /opt/moleculetestapp/helm_charts/onap/resources/\
 overrides/onap-all.yaml -f /opt/moleculetestapp/override.yaml \
---timeout 1800"""
+--timeout 1800
+"""
         expected_plugin_path = '/plugins/deploy/deploy.sh'
     elif helm_release == 'v3':
         expected_content = """env
@@ -41,5 +42,6 @@ def test_helm_override_file(host):
     expected_content = """global:
     cacert: 'this is dummy server certificate value
 
-        '"""
+        '
+"""
     assert fc == expected_content
