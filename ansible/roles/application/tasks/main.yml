@@ -19,6 +19,6 @@
     - include_tasks: post-install.yml
   when: install_needed
 
-- debug:
+- debug:  # noqa unnamed-task
     msg: "NOTE, nothing done as application Helm charts does not exist!"
   when: not install_needed
