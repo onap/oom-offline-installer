@@ -47,6 +47,5 @@ provisioner:
   playbooks:
     prepare: ../default/prepare.yml
     converge: ../default/converge.yml
-    destroy: ../default/destroy.yml
 verifier:
   name: testinfra
