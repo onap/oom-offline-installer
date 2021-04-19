@@ -7,7 +7,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_helm_commands(host):
-    fc = host.file('/tmp/helm_simu_output').content_string
+    fc = host.file('/tmp/helm_simu_output').content_string.strip()
     helm_release = host.ansible.get_variables()['helm_version']
     if helm_release == 'v2':
         expected_content = """home
@@ -37,7 +37,7 @@ overrides/onap-all.yaml -f /opt/moleculetestapp/override.yaml \
 
 
 def test_helm_override_file(host):
-    fc = host.file('/opt/moleculetestapp/override.yaml').content_string
+    fc = host.file('/opt/moleculetestapp/override.yaml').content_string.strip()
     expected_content = """global:
     cacert: 'this is dummy server certificate value
 
