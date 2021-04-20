@@ -34,5 +34,3 @@ verifier:
   name: testinfra
   options:
     verbose: true
-    options:
-      ignore: W291  # trailing whitespace
