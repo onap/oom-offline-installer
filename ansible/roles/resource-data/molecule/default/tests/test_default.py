@@ -9,7 +9,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 @pytest.fixture
 def group_vars(host):
-    all_file = "file=group_vars/all.yml name=all"
+    all_file = "file=molecule/default/group_vars/all.yml name=all"
     return host.ansible("include_vars", all_file)["ansible_facts"]["all"]
 
 
