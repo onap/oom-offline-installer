@@ -9,7 +9,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 @pytest.fixture
 def chrony_conf_file(host, os_family):
-    conf = host.ansible('include_vars', 'file=../../defaults/main.yml')[
+    conf = host.ansible('include_vars', 'file=defaults/main.yml')[
             'ansible_facts']['chrony']['conf'][os_family]['config_file']
     return conf
 

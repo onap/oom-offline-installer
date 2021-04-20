@@ -29,5 +29,5 @@ def test_exports(host):
         "eth0").addresses[0]
     f = host.file(host_file)
     assert f.exists
-    assert f.content_string == \
+    assert f.content_string.strip() == \
         """/dockerdata-nfs  """ + node2_ip + """(rw,sync,no_root_squash,no_subtree_check)"""  # noqa: E501
