@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87913fab_bd9cc764",
+        "filename": "ansible/test/bin/ci-molecule.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2021-04-21T15:54:42Z",
+      "side": 1,
+      "message": "so... in native installation this comes out as \"molecule --version --version\"? I\u0027m not sure what\u0027s supposed to be happening here",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "cecf6cf2aa21080105876fdcf93b26f434fb9eb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
