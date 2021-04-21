@@ -22,6 +22,30 @@
       "revId": "cecf6cf2aa21080105876fdcf93b26f434fb9eb4",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d69a5b_2772f11b",
+        "filename": "ansible/test/bin/ci-molecule.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 3949
+      },
+      "writtenOn": "2021-04-21T16:22:11Z",
+      "side": 1,
+      "message": "...right, restored in later commit",
+      "parentUuid": "87913fab_bd9cc764",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 28
+      },
+      "revId": "cecf6cf2aa21080105876fdcf93b26f434fb9eb4",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
