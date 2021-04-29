@@ -12,7 +12,7 @@
     auth: "{{ os_auth }}"
     auth_type: token
     name: "{{ stack_name }}"
-    template: "heat/installer.yaml"
+    template: "heat/infra.yaml"
     state: present
     environment:
       - "heat/installer.env"
