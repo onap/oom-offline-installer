@@ -12,7 +12,7 @@
     auth: "{{ os_auth }}"
     auth_type: token
     name: "{{ stack_name }}"
-    template: "heat/installer.yaml"
+    template: "heat/infra.yaml"
     state: present
     environment:
       - "heat/installer.env"
@@ -29,10 +29,8 @@
       image_name: "{{ image_name }}"
       node_flavor_name: "{{ node_flavor_name }}"
       infra_flavor_name: "{{ infra_flavor_name }}"
-      installer_flavor_name: "{{ installer_flavor_name }}"
       node_ip: "{{ floating_ips_by_address[first_node_ip].id }}"
       infra_ip: "{{ floating_ips_by_address[infra_ip].id }}"
-      installer_ip: "{{ floating_ips_by_address[installer_ip].id }}"
       use_volume_for_nfs: "{{ use_volume_for_nfs }}"
       demo_network: "{{ demo_network_id }}"
     wait: true
