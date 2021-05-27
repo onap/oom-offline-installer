@@ -41,6 +41,16 @@ committers:
       company: 'Samsung'
       id: 'kaihlavi'
       timezone: 'Europe/Helsinki'
+    - name: 'Konrad Banka'
+      email: 'k.banka@samsung.com'
+      company: 'samsung'
+      id: 'kbanka'
+      timezone: 'Europe/Warsaw'
+    - name: 'Krystian Kedron'
+      email: 'k.kedron@partner.samsung.com'
+      company: 'samsung'
+      id: 'krystian'
+      timezone: 'Europe/Warsaw'
     - name: 'Sylvain Desbureaux'
       email: "sulvain.desbureaux@orange.com"
       id: "sdesbure"
