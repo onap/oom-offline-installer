@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include kube-prometheus-stack"
+      include_role:
+        name: "kube-prometheus-stack"
