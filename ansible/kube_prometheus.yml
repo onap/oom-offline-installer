@@ -1,0 +1,5 @@
+---
+- name: Deploy kube-prometheus stack
+  hosts: infrastructure
+  roles:
+    - kube-prometheus-stack

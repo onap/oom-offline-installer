@@ -27,3 +27,4 @@ nexus3_image: sonatype/nexus3:3.15.2
 dns_server_image: andyshinn/dnsmasq:2.76
 nginx_server_image: own_nginx:2.0.0
 chartmuseum_server_image: chartmuseum/chartmuseum
+kube_prometheus_stack_enabled: false
