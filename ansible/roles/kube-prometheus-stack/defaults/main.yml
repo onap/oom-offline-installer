@@ -1,2 +1,5 @@
 ---
-# defaults file for kube-prometheus-stack
+kube_prometheus_stack:
+  k8s_namespace: kube-prometheus
+  helm_release_name: kube-prometheus-stack
+  helm_timeout: "60s"

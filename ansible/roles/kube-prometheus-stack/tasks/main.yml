@@ -1,2 +1,16 @@
 ---
-# tasks file for kube-prometheus-stack
+- name: Check {{ kube_prometheus_stack.helm_release_name }} helm package exists
+  stat:
+    path: "{{ app_data_path }}/downloads/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz"
+  register: kube_prometheus_package_stat
+  failed_when: not kube_prometheus_package_stat.stat.exists
+
+- name: "Install Helm release {{ kube_prometheus_stack.helm_release_name }}"
+  community.kubernetes.helm:
+    release_name: "{{ kube_prometheus_stack.helm_release_name }}"
+    release_namespace: "{{ kube_prometheus_stack.k8s_namespace }}"
+    create_namespace: True
+    chart_ref: "{{ app_data_path }}/downloads/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz"
+    wait: True
+    wait_timeout: "{{ kube_prometheus_stack.helm_timeout }}"
+  tags: molecule-notest
