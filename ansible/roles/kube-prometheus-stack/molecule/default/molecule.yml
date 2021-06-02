@@ -18,5 +18,10 @@ provisioner:
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        app_name: onap
+        app_data_path: "/opt/{{ app_name }}"
 verifier:
   name: testinfra
