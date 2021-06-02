@@ -1,0 +1,11 @@
+---
+- name: "Ensure {{ app_data_path }}/downloads directory exists"
+  file:
+    path: "{{ app_data_path }}/downloads"
+    recurse: true
+    state: directory
+
+- name: "Download kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz"
+  get_url:
+    url: "https://github.com/prometheus-community/helm-charts/releases/download/kube-prometheus-stack-{{ kube_prometheus_stack_version }}/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz"
+    dest: "{{ app_data_path }}/downloads"
