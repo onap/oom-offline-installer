@@ -1,0 +1,11 @@
+---
+- name: Install OpenShift Python client library  # community.kubernetes.k8s module dependency
+  package:
+    name: 'python2-openshift'
+    state: present
+
+- name: Create k8s persistent volumes
+  community.kubernetes.k8s:
+    wait: True
+    template: pv.yaml.j2
+  loop: "{{ k8s_volumes }}"
