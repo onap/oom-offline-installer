@@ -1,0 +1,5 @@
+---
+k8s_volumes:
+  - name: kube-prometheus
+    capacity: "6Gi"
+    path_prefix: "{{ nfs_mount_path }}"
