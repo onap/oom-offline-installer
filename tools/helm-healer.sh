@@ -199,6 +199,18 @@ helm_undeploy()
     sleep 15s
 }
 
+helm_deploy()
+{
+
+  msg helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+  # Helm v3 need "--create-namespace" to create namespace if don't exist
+  if [[ $(helm version --template "{{.Version}}") =~ ^v3 ]];then
+    helm deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+  else
+    helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+  fi
+}
+
 # arg: <job name>
 delete_job()
 {
@@ -691,8 +703,7 @@ fi
 if [ -z "$HELM_SKIP_DEPLOY" ] ; then
     # TODO: this is suboptimal - find a way how to deploy only the affected component...
     msg "Redeploy onap..."
-    msg helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
-    helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+    helm_deploy
 else
     msg "Clean only option used: Skipping redeploy..."
 fi
