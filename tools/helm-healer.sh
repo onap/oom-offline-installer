@@ -692,7 +692,7 @@ if [ -z "$HELM_SKIP_DEPLOY" ] ; then
     # TODO: this is suboptimal - find a way how to deploy only the affected component...
     msg "Redeploy onap..."
     msg helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
-    helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+    helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} --create-namespace ${OVERRIDES} --timeout ${HELM_TIMEOUT}
 else
     msg "Clean only option used: Skipping redeploy..."
 fi
