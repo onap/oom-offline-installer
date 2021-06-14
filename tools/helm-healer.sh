@@ -57,17 +57,17 @@ USAGE
 EXAMPLES
 
     Usage 1: (simple heuristics - redeploy failed components):
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs
+        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs/onap
 
     Usage 2: (redeploy ONLY explicitly listed components):
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs \\
+        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs/onap \\
                -c onap-aaf -c onap-sdc -c onap-portal
 
     Usage 3: (delete EVERYTHING and redeploy):
-        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs --delete-all
+        ${CMD} -n onap -f /some/override1.yml -s /dockerdata-nfs/onap --delete-all
 
     Usage 4: (delete EVERYTHING and DO NOT redeploy - clean env.)
-        ${CMD} -n onap -s /dockerdata-nfs --delete-all --clean-only
+        ${CMD} -n onap -s /dockerdata-nfs/onap --delete-all --clean-only
 
 NOTES
 
