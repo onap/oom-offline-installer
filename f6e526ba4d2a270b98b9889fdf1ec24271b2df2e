@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a564c751_8a7f37e0",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-06-14T07:00:42Z",
+      "side": 1,
+      "message": "Please update the msg according to the change in cmdline you\u0027ve made.",
+      "revId": "f6e526ba4d2a270b98b9889fdf1ec24271b2df2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76f3fa28_17f28457",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-06-14T07:00:42Z",
+      "side": 1,
+      "message": "This will be a regression for helm v2 which does not support --create-namespace flag. You need to run this cmd variand conditionally. Use conditional statement like in helm_undeploy() function.",
+      "revId": "f6e526ba4d2a270b98b9889fdf1ec24271b2df2e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
