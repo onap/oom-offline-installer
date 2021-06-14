@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad212017_6f5cd92f",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-06-14T08:21:27Z",
+      "side": 1,
+      "message": "empty line",
+      "revId": "a3328c575dd9cf9320f39d7e8f8b2727dd97a6fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bf031b5_bca74477",
+        "filename": "tools/helm-healer.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-06-14T08:21:27Z",
+      "side": 1,
+      "message": "Put the msg into if-else, it varies between helm versions.",
+      "revId": "a3328c575dd9cf9320f39d7e8f8b2727dd97a6fb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
