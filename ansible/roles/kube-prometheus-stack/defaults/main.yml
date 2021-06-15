@@ -7,6 +7,13 @@ kube_prometheus_stack:
   helm_values:
     grafana:
       adminPassword: admin
+      persistence:
+        type: pvc
+        enabled: true
+        storageClassName: kube-prometheus-grafana
+        accessModes:
+          - ReadWriteOnce
+        size: 4Gi
     prometheus:
       prometheusSpec:
         scrapeInterval: 60s
@@ -14,7 +21,7 @@ kube_prometheus_stack:
           disableMountSubPath: true
           volumeClaimTemplate:
             spec:
-              storageClassName: kube-prometheus
+              storageClassName: kube-prometheus-prometheus
               accessModes: ["ReadWriteOnce"]
               resources:
                 requests:
