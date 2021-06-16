@@ -10,6 +10,11 @@
     dest: "{{ kube_prometheus_stack.helm_values_file }}"
     content: "{{ kube_prometheus_stack.helm_values | combine(kube_prometheus_helm_values | default({}), recursive=True) | to_nice_yaml }}"
 
+- name: Upload custom Grafana dashboard
+  copy:
+    src: grafana_dashboard.json
+    dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/custom/"
+
 - name: "Install Helm release {{ kube_prometheus_stack.helm_release_name }}"
   community.kubernetes.helm:
     release_name: "{{ kube_prometheus_stack.helm_release_name }}"
