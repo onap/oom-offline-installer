@@ -23,5 +23,6 @@ provisioner:
       all:
         app_name: onap
         app_data_path: "/opt/{{ app_name }}"
+        nfs_mount_path: "/nfs"
 verifier:
   name: testinfra
