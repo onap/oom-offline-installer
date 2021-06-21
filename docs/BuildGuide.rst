@@ -130,12 +130,14 @@ Download all required binaries and docker images. Run download.py twice (as show
         # all data lists are taken from ./build/data_lists/ folder by default
         # all resources will be stored in expected folder structure within "../resources" folder
         ./build/download/download.py --docker ./build/data_lists/infra_docker_images.list ../resources/offline_data/docker_images_infra \
-        --http ./build/data_lists/infra_bin_utils.list ../resources/downloads
+        --http ./build/data_lists/infra_bin_utils.list ../resources/downloads \
+        --http ./build/data_lists/kube_prometheus_stack_http.list ../resources/downloads
 
         # second argument for --docker is not present, images are just pulled and cached
         ./build/download/download.py --docker ./build/data_lists/rke_docker_images.list \
         --docker ./build/data_lists/k8s_docker_images.list \
-        --docker ./build/data_lists/onap_docker_images.list
+        --docker ./build/data_lists/onap_docker_images.list \
+        --docker ./build/data_lists/kube_prometheus_stack_docker_images.list
 
 
 
