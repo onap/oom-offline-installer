@@ -12,7 +12,7 @@ HELM_CHART_RELEASE_NAME=
 HELM_DELETE_ALL=
 HELM_SKIP_DEPLOY=
 VOLUME_STORAGE=
-HELM_TIMEOUT=3600
+HELM_TIMEOUT=3600s
 RELEASE_PREFIX=onap
 
 #
@@ -190,25 +190,14 @@ get_labels()
 helm_undeploy()
 {
     msg "Undeploy helm release name: ${1}"
-    # Helm v3 does not support "--purge" flag since it's a default behavior for v3
-    if [[ $(helm version --template "{{.Version}}") =~ ^v3 ]];then
-        helm undeploy ${1}
-    else
-        helm undeploy ${1} --purge
-    fi
+    helm undeploy ${1}
     sleep 15s
 }
 
 helm_deploy()
 {
-  # Helm v3 need "--create-namespace" to create namespace if don't exist
-  if [[ $(helm version --template "{{.Version}}") =~ ^v3 ]];then
     msg helm deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
     helm deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
-  else
-    msg helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
-    helm deploy ${RELEASE_PREFIX} local/onap --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
-  fi
 }
 
 # arg: <job name>
@@ -612,7 +601,7 @@ if [ -n "$arg_prefix" ] ; then
 fi
 
 if [ -n "$arg_timeout" ] ; then
-    HELM_TIMEOUT="$arg_timeout"
+    HELM_TIMEOUT="${arg_timeout}s"
 fi
 
 if [ -n "$arg_storage" ] ; then
@@ -633,11 +622,6 @@ fi
 
 if [ -n "$arg_cleanonly" ] ; then
     HELM_SKIP_DEPLOY=yes
-fi
-
-# If running with helm v3 a time unit has to be appended to HELM_TIMEOUT
-if [[ $(helm version --template "{{.Version}}") =~ ^v3 ]];then
-    HELM_TIMEOUT="${HELM_TIMEOUT}s"
 fi
 
 #
