@@ -2,7 +2,7 @@
 kube_prometheus_stack:
   k8s_namespace: kube-prometheus
   helm_release_name: kube-prometheus-stack
-  helm_timeout: "60s"
+  helm_timeout: "240s"
   helm_values_file: "{{ app_data_path }}/kube_prometheus_values.yaml"
   helm_values:
     grafana:
