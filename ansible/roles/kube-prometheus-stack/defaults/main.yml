@@ -27,6 +27,14 @@ kube_prometheus_stack:
         accessModes:
           - ReadWriteOnce
         size: 4Gi
+      service:
+        enabled: true
+        type: NodePort
+        port: 80
+        targetPort: 3000
+        annotations: {}
+        labels: {}
+        portName: service
     prometheus:
       prometheusSpec:
         scrapeInterval: 60s

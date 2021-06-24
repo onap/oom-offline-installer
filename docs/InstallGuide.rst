@@ -662,6 +662,13 @@ In the left pane navigate to *Dashboards -> Manage* to see the various pre-defin
 .. image:: images/grafana-dashboards.png
    :alt: Grafana dashboards
 
+Alternative way of accessing the UI is by leveraging the NodePort type service which exposes Grafana UI on the Infra host public port directly. To do so get the port number first::
+
+    kubectl -n kube-prometheus get service/kube-prometheus-stack-grafana -o custom-columns=PORTS:.spec.ports[].nodePort
+
+Then navigate to http://<infra IP>:<nodePort> to access the UI.
+
+
 Caveats
 ~~~~~~~
 
