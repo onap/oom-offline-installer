@@ -190,14 +190,14 @@ get_labels()
 helm_undeploy()
 {
     msg "Undeploy helm release name: ${1}"
-    helm undeploy ${1}
+    helm -n ${NAMESPACE} undeploy ${1}
     sleep 15s
 }
 
 helm_deploy()
 {
-    msg helm deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
-    helm deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+    msg helm -n ${NAMESPACE} deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+    helm -n ${NAMESPACE} deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
 }
 
 # arg: <job name>
@@ -223,7 +223,7 @@ delete_job()
 get_resources_for_component()
 {
 
-helm status $1 | awk -f <(cat - <<-'EOD'
+helm -n ${NAMESPACE} status $1 | awk -f <(cat - <<-'EOD'
 BEGIN {
   work="no"
   kind=""
