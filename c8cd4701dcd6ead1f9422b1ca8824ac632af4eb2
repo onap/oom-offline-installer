@@ -22,6 +22,30 @@
       "revId": "c8cd4701dcd6ead1f9422b1ca8824ac632af4eb2",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "beb69743_7bc34f92",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-06-28T14:14:40Z",
+      "side": 1,
+      "message": "We can\u0027t since not all list file are docker image list files, other include deb/rpm/http lists.",
+      "parentUuid": "fd53d831_3322d63d",
+      "range": {
+        "startLine": 278,
+        "startChar": 4,
+        "endLine": 278,
+        "endChar": 24
+      },
+      "revId": "c8cd4701dcd6ead1f9422b1ca8824ac632af4eb2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
