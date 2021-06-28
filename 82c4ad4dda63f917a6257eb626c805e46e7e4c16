@@ -22,6 +22,30 @@
       "revId": "82c4ad4dda63f917a6257eb626c805e46e7e4c16",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce62a1d8_c728f483",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-06-28T14:04:29Z",
+      "side": 1,
+      "message": "$ git grep kube_prometheus_stack_version\nansible/group_vars/infrastructure.yml:kube_prometheus_stack_version: 16.1.2\nansible/roles/kube-prometheus-stack/tasks/main.yml:    path: \"{{ app_data_path }}/downloads/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz\"\nansible/roles/kube-prometheus-stack/tasks/main.yml:    chart_ref: \"{{ app_data_path }}/downloads/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz\"\nansible/test/roles/prepare-kube-prometheus-stack/tasks/main.yml:- name: \"Download kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz\"\nansible/test/roles/prepare-kube-prometheus-stack/tasks/main.yml:    url: \"https://github.com/prometheus-community/helm-charts/releases/download/kube-prometheus-stack-{{ kube_prometheus_stack_version }}/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz\"\n\nBuild scripts and ansible do not share the config so version string has to be embedded in data lists like it is.",
+      "parentUuid": "a852c4ac_49282f17",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "82c4ad4dda63f917a6257eb626c805e46e7e4c16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
