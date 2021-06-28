@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a852c4ac_49282f17",
+        "filename": "ansible/group_vars/infrastructure.yml",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 5335
+      },
+      "writtenOn": "2021-06-28T13:55:59Z",
+      "side": 1,
+      "message": "[Question] This version is use somewhere?\n\nBecouse we hardcode url in: https://gerrit.onap.org/r/c/oom/offline-installer/+/121596/2/build/data_lists/kube_prometheus_stack_http.list",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 37
+      },
+      "revId": "82c4ad4dda63f917a6257eb626c805e46e7e4c16",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
