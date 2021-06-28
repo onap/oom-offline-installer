@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd53d831_3322d63d",
+        "filename": "build/build_nexus_blob.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 5335
+      },
+      "writtenOn": "2021-06-28T14:08:59Z",
+      "side": 1,
+      "message": "[Minor] Maybe we should improve this script and set up this NXS_DOCKER_IMG_LISTS with all files that match the pattern \u0027*.list\u0027 in ${LIST_DIR} - instead of listing those files one by one like in lines 266-270 ?",
+      "range": {
+        "startLine": 278,
+        "startChar": 4,
+        "endLine": 278,
+        "endChar": 24
+      },
+      "revId": "c8cd4701dcd6ead1f9422b1ca8824ac632af4eb2",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
