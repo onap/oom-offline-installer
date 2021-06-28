@@ -222,34 +222,7 @@ delete_job()
 #arg: <component>
 get_resources_for_component()
 {
-
-helm -n ${NAMESPACE} status $1 | awk -f <(cat - <<-'EOD'
-BEGIN {
-  work="no"
-  kind=""
-  a["dummy"]=""
-}
-
-$1 ~ ":" {
-  if ( $1 == "RESOURCES:" ) {
-          work="yes"
-} else {
-  work="no"
-}
-
-}
-
-$1 == "==>" {
-  split($2, a, "[/(]")
-  kind=a[2]
-}
-
-$1 != "NAME" && $1 != "==>" && work == "yes" && $1 !~ ":" && $1 != "" {
-  printf "%s/%s\n", kind, $1
-}
-
-EOD
-)
+    helm -n ${NAMESPACE} get manifest $1 | kubectl -n ${NAMESPACE} get -f - | awk '{print $1}' | grep -v NAME | grep -v ^$
 }
 
 # arg: <resource>
@@ -259,8 +232,7 @@ delete_resource()
     local _kind="${_resource%/*}"
     local _name="${_resource#*/}"
 
-
-    if kubectl get ${_resource} >/dev/null 2>&1; then
+    if kubectl -n ${NAMESPACE} get ${_resource} >/dev/null 2>&1; then
         msg "${_resource} has not been removed with helm undeploy, manual removal is required. Proceeding"
         kubectl delete ${_resource} -n ${NAMESPACE} \
             --cascade=true \
@@ -378,18 +350,17 @@ undeploy_component()
 
     for resource in ${_component_resources[@]}; do
         case $resource in
-            CronJob/* | Job/* | Secret/* | ConfigMap/* | Pod/* | Service/* | Deployment/* | StatefulSet/*)
+            cronjob/* | job.batch/* | secret/* | configmap/* | service/* | deployment.apps/* | statefulset.apps/* | serviceaccount/* | rolebinding.rbac.authorization.k8s.io/* | role.rbac.authorization.k8s.io/* | poddisruptionbudget.policy/* | clusterrolebinding.rbac.authorization.k8s.io/*)
                 _standard+=(${resource});;
             #Ignoring PVC, they will be handled along with PV as 'helm' status does not return them for some components
-            PersistentVolumeClaim/*)
+            persistentvolumeclaim/*)
                 ;;
-            PersistentVolume/*)
+            persistentvolume/*)
                 _persistent_volumes+=(${resource});;
             *)
                 _unknown_kinds+=(${resource})
         esac
     done
-
 
     #Gathering physical location of directories for persistent volumes to delete them after undeploy
     declare -a _physical_locations
