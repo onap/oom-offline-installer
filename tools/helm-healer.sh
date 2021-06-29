@@ -14,6 +14,7 @@ HELM_SKIP_DEPLOY=
 VOLUME_STORAGE=
 HELM_TIMEOUT=3600s
 RELEASE_PREFIX=onap
+HELM_DEBUG=
 
 #
 # control variables
@@ -53,6 +54,7 @@ USAGE
            [(-c|--component <component release name>)...|
             (-D|--delete-all)]
            [-C|--clean-only]
+           [-d|--debug]
 
 EXAMPLES
 
@@ -116,6 +118,8 @@ NOTES
     '--clean-only' can be used with any usage: heuristics, explicit component
     list or with '--delete-all'. It basically just skips the last step - the
     actual redeploy.
+
+    '--debug' will turn on helm's verbose output
 EOF
 }
 
@@ -190,14 +194,14 @@ get_labels()
 helm_undeploy()
 {
     msg "Undeploy helm release name: ${1}"
-    helm -n ${NAMESPACE} undeploy ${1}
+    helm ${HELM_DEBUG} -n ${NAMESPACE} undeploy ${1}
     sleep 15s
 }
 
 helm_deploy()
 {
-    msg helm -n ${NAMESPACE} deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
-    helm -n ${NAMESPACE} deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+    msg helm ${HELM_DEBUG} -n ${NAMESPACE} deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
+    helm ${HELM_DEBUG} -n ${NAMESPACE} deploy ${RELEASE_PREFIX} local/onap --create-namespace --namespace ${NAMESPACE} ${OVERRIDES} --timeout ${HELM_TIMEOUT}
 }
 
 # arg: <job name>
@@ -475,6 +479,9 @@ while [ -n "$1" ] ; do
                     else
                         error "Duplicit argument for 'clean only' option! (IGNORING)"
                     fi
+                    ;;
+                -d|--debug)
+                    HELM_DEBUG="--debug"
                     ;;
                 *)
                     error "Unknown parameter: $1"
