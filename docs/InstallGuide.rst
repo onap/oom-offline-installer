@@ -601,6 +601,79 @@ For additional information concerning the Kubernetes Dashboard please refer to t
 
 -----
 
+Appendix 3. Running kube-prometheus stack
+-----------------------------------------
+
+`Kube-prometheus stack`_ is a collection of Kubernetes manifests, Grafana dashboards, and Prometheus rules combined with documentation and scripts to provide easy to operate end-to-end Kubernetes cluster monitoring with Prometheus using the `Prometheus Operator`_.
+
+The Stack is not deployed by default in Offline ONAP Platform, but all artifacts which it requires are downloaded by relevant scripts in the package build phase (see `Build Guide`_).
+
+Setup (optional)
+~~~~~~~~~~~~~~~~
+
+Kube-prometheus stack itself is a Kubernetes native application provisioned using Helm Charts. As such it can be configured using Helm values. Offline Installer provides a handy way for passing those values to the helm installation process.
+
+Any values for the Stack should be defined as subkeys of **kube_prometheus_helm_values** variable in **application_configuration.yml**. For instance, in order to override the default Grafana password, insert below structure into application_configuration.yml::
+
+    kube_prometheus_helm_values:
+      grafana:
+        adminPassword: <password>
+
+Another example - to set custom storage size for Prometheus tsdb::
+
+
+    kube_prometheus_helm_values:
+      prometheus:
+        prometheusSpec:
+          storageSpec:
+            volumeClaimTemplate:
+              spec:
+                resources:
+                  requests:
+                    storage: 6Gi
+
+A comprehensive list of Helm values for the Stack can be obtained on the `Kube-prometheus stack`_ project site, in the `values.yaml`_ file. Additional values for the Grafana can be checked on the `Grafana`_ project site in the *charts/grafana/values.yaml* file.
+
+Installation
+~~~~~~~~~~~~
+
+In order to actually install this tool it's required to set the following variable in application_configuration.yml::
+
+    kube_prometheus_stack_enabled: true
+
+After the Offline Platform installation process is complete, the Stack will be deployed into its own kubernetes and helm namespace **kube-prometheus**.
+
+Accessing Grafana dashboard
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The most straightforward way to access the Grafana UI is by leveraging the *port-forward* k8s facility. Issue following command on the Infra host::
+
+    kubectl -n kube-prometheus port-forward --address 0.0.0.0 svc/kube-prometheus-stack-grafana 8081:80
+
+Then navigate to http://<infra IP>:8081 to access the UI:
+
+.. image:: images/grafana-signin.png
+   :alt: Grafana Login page
+
+Default username is *admin* and the default password is *prom-operator*.
+
+In the left pane navigate to *Dashboards -> Manage* to see the various pre-defined dashboards that come bundled with kube-prometheus stack. There is also the *Custom* folder which holds few additional dashes defined by the Offline Installer authors:
+
+.. image:: images/grafana-dashboards.png
+   :alt: Grafana dashboards
+
+Alternative way of accessing the UI is by leveraging the NodePort type service which exposes Grafana UI on the Infra host public port directly. To do so get the port number first::
+
+    kubectl -n kube-prometheus get service/kube-prometheus-stack-grafana -o custom-columns=PORTS:.spec.ports[].nodePort
+
+Then navigate to http://<infra IP>:<nodePort> to access the UI.
+
+
+Caveats
+~~~~~~~
+
+Kube-prometheus stack bundled with Offline Installer requires at least release v3 of Helm. If you wish to deploy the Stack you need to set relevant v3 release of Helm. Please see **Part 2. Configuration** for details.
+
 .. _Build Guide: ./BuildGuide.rst
 .. _Software requirements: https://docs.onap.org/projects/onap-oom/en/latest/oom_cloud_setup_guide.html#software-requirements
 .. _Hardware requirements: https://docs.onap.org/projects/onap-oom/en/latest/oom_cloud_setup_guide.html#minimum-hardware-configuration
@@ -608,3 +681,7 @@ For additional information concerning the Kubernetes Dashboard please refer to t
 .. _Offline installer: https://gerrit.onap.org/r/q/oom/offline-installer
 .. _RKE: https://rancher.com/products/rke/
 .. _Helm: https://helm.sh/
+.. _Kube-prometheus stack: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
+.. _Prometheus Operator: https://github.com/prometheus-operator/prometheus-operator
+.. _values.yaml: https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
+.. _Grafana: https://github.com/grafana/helm-charts

@@ -1,0 +1,49 @@
+---
+kube_prometheus_stack:
+  k8s_namespace: kube-prometheus
+  helm_release_name: kube-prometheus-stack
+  helm_timeout: "240s"
+  helm_values_file: "{{ app_data_path }}/kube_prometheus_values.yaml"
+  helm_values:
+    grafana:
+      adminPassword: admin
+      dashboardProviders:
+        dashboardproviders.yaml:
+          apiVersion: 1
+          providers:
+            - name: 'custom'
+              orgId: 1
+              folder: 'Custom'
+              type: file
+              disableDeletion: false
+              editable: true
+              updateIntervalSeconds: 60
+              options:
+                path: /var/lib/grafana/dashboards/custom
+      persistence:
+        type: pvc
+        enabled: true
+        storageClassName: kube-prometheus-grafana
+        accessModes:
+          - ReadWriteOnce
+        size: 4Gi
+      service:
+        enabled: true
+        type: NodePort
+        port: 80
+        targetPort: 3000
+        annotations: {}
+        labels: {}
+        portName: service
+    prometheus:
+      prometheusSpec:
+        scrapeInterval: 60s
+        storageSpec:
+          disableMountSubPath: true
+          volumeClaimTemplate:
+            spec:
+              storageClassName: kube-prometheus-prometheus
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 6Gi

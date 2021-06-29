@@ -1,0 +1,27 @@
+---
+- name: Check {{ kube_prometheus_stack.helm_release_name }} helm package exists
+  stat:
+    path: "{{ app_data_path }}/downloads/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz"
+  register: kube_prometheus_package_stat
+  failed_when: not kube_prometheus_package_stat.stat.exists
+
+- name: Generate helm values file
+  copy:
+    dest: "{{ kube_prometheus_stack.helm_values_file }}"
+    content: "{{ kube_prometheus_stack.helm_values | combine(kube_prometheus_helm_values | default({}), recursive=True) | to_nice_yaml }}"
+
+- name: Upload custom Grafana dashboard
+  copy:
+    src: grafana_dashboard.json
+    dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/custom/"
+
+- name: "Install Helm release {{ kube_prometheus_stack.helm_release_name }}"
+  community.kubernetes.helm:
+    release_name: "{{ kube_prometheus_stack.helm_release_name }}"
+    release_namespace: "{{ kube_prometheus_stack.k8s_namespace }}"
+    create_namespace: True
+    chart_ref: "{{ app_data_path }}/downloads/kube-prometheus-stack-{{ kube_prometheus_stack_version }}.tgz"
+    values_files: "{{ kube_prometheus_stack.helm_values_file }}"
+    wait: True
+    wait_timeout: "{{ kube_prometheus_stack.helm_timeout }}"
+  tags: molecule-notest

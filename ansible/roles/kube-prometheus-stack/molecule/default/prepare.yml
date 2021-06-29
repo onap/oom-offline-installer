@@ -1,0 +1,10 @@
+---
+- name: Prepare infra for kube-prometheus-stack role
+  hosts: all
+  pre_tasks:
+    - name: Include infrastructure group variables
+      include_vars: ../../../../group_vars/infrastructure.yml
+  tasks:
+    - name: "Include prepare-kube-prometheus-stack"
+      include_role:
+        name: "prepare-kube-prometheus-stack"

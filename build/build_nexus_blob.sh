@@ -267,6 +267,7 @@ NXS_INFRA_LIST="${LISTS_DIR}/infra_docker_images.list"
 NXS_DOCKER_IMG_LIST="${LISTS_DIR}/onap_docker_images.list"
 NXS_RKE_DOCKER_IMG_LIST="${LISTS_DIR}/rke_docker_images.list"
 NXS_K8S_DOCKER_IMG_LIST="${LISTS_DIR}/k8s_docker_images.list"
+NXS_PROMETHEUS_DOCKER_IMG_LIST="${LISTS_DIR}/kube_prometheus_stack_docker_images.list"
 
 # Setup Nexus image used for build and install infra
 NEXUS_IMAGE="$(grep sonatype/nexus3 ${NXS_INFRA_LIST})"
@@ -274,7 +275,7 @@ NEXUS_IMAGE_TAR="${DATA_DIR}/offline_data/docker_images_infra/$(sed 's/\//\_/ ; 
 
 # Set default lists if nothing specific defined by user
 if [ ${#NXS_DOCKER_IMG_LISTS[@]} -eq 0 ]; then
-    NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}" "${NXS_K8S_DOCKER_IMG_LIST}")
+    NXS_DOCKER_IMG_LISTS=("${NXS_DOCKER_IMG_LIST}" "${NXS_RKE_DOCKER_IMG_LIST}" "${NXS_K8S_DOCKER_IMG_LIST}" "${NXS_PROMETHEUS_DOCKER_IMG_LIST}")
 fi
 
 # Create Docker client config dir

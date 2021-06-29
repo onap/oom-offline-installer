@@ -1,0 +1,9 @@
+---
+- name: Deploy kube-prometheus stack
+  hosts: infrastructure
+  pre_tasks:
+    - name: Include "kubernetes" group variables  # k8s-persistent-volume role needs 'nfs_mount_path'
+      include_vars: group_vars/kubernetes.yml
+  roles:
+    - k8s-persistent-volume
+    - kube-prometheus-stack

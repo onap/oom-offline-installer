@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
+platforms:
+  - name: infrastructure-kube-prometheus-stack
+    image: centos:7
+    groups:
+      - infrastructure
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        app_name: onap
+        app_data_path: "/opt/{{ app_name }}"
+        nfs_mount_path: "/nfs"
+verifier:
+  name: testinfra
