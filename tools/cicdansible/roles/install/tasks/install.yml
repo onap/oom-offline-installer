@@ -45,7 +45,7 @@
       resources_dir: {{ resources_dir }}
       resources_filename: {{ resources_filename }}
       aux_resources_filename: {{ aux_resources_filename }}
-      app_data_path: /opt/onap/resources
+      app_data_path: {{ app_data_path }}
     dest: "{{ installer_deploy_path }}/ansible/application/resources.yml"
 #Run script.
 - name: "Execute installation"

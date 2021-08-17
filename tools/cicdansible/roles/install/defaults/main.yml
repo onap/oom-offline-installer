@@ -1,3 +1,4 @@
 ---
 installer_deploy_path: "{{ ansible_user_dir }}/installer"
 install_timeout: 10600
+app_data_path: /opt/onap/resources
