@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Krystian Kedron <k.kedron@partner.samsung.com>
+Code-Review+2: Krzysztof Opasiak <k.opasiak@samsung.com>
+Submitted-by: Krzysztof Opasiak <k.opasiak@samsung.com>
+Submitted-at: Tue, 24 Aug 2021 18:16:03 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/oom/offline-installer/+/123294
+Project: oom/offline-installer
+Branch: refs/heads/master
