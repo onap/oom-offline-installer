@@ -1,12 +1,17 @@
 ---
 kube_prometheus_stack:
   k8s_namespace: kube-prometheus
+  grafana_dashboards:
+    - { src: "grafana_dashboard.json", dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/custom/" }
+    - { src: "grafana_home.json", dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/" }
   helm_release_name: kube-prometheus-stack
   helm_timeout: "240s"
   helm_values_file: "{{ app_data_path }}/kube_prometheus_values.yaml"
   helm_values:
     grafana:
       adminPassword: grafana
+      env:
+        GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/grafana_home.json
       dashboardProviders:
         dashboardproviders.yaml:
           apiVersion: 1
