@@ -1,2 +1,3 @@
 ---
 resources_on_nfs: false
+resources_cfg_path: /etc/default/resources.cfg
