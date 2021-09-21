@@ -57,7 +57,7 @@ set_environment () {
     ;;
     centos|rhel)
         distro_type="rhel"
-        docker_image="centos:centos7.6.1810"
+        docker_image="centos:centos7.9.2009"
         expected_dir="resources/pkg/rpm"
         container_name="${1}_repo${container_name_suffix}"
     ;;
