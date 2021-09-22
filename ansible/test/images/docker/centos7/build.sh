@@ -2,7 +2,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 
-#   Copyright 2018 © Samsung Electronics Co., Ltd.
+#   Copyright 2021 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -19,5 +19,5 @@
 #   COPYRIGHT NOTICE ENDS HERE
 
 set -e
-TAG=${1:-centos7.6}
+TAG=${1:-centos7.9}
 docker build . -t molecule-centos:${TAG}
