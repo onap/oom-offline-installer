@@ -10,7 +10,7 @@ lint: |
   flake8
 platforms:
   - name: instance-chartmuseum
-    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.6}
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.9}
     pre_build_image: True
     privileged: true
     override_command: False
