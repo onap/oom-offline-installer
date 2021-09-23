@@ -1,4 +1,8 @@
 ---
+- name: Get installed packages list
+  package_facts:
+    manager: "auto"
+
 - name: Disable DNS management in Network Manager
   ini_file:
     path: /etc/NetworkManager/NetworkManager.conf
@@ -11,7 +15,7 @@
     group: root
     mode: 0644
     backup: false
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == 'RedHat' and 'NetworkManager' in ansible_facts.packages
   notify:
     - Restart NetworkManager
 
