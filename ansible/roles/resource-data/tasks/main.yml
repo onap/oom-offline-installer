@@ -41,3 +41,9 @@
   when:
     - inventory_hostname in groups.infrastructure
     - hostvars[groups.resources.0].to_be_uploaded_resources_list is defined
+
+- name: Store resources location in cfg file
+  template:
+    src: resources.cfg.j2
+    dest: "{{ resources_cfg_path }}"
+  when: inventory_hostname in groups.infrastructure
