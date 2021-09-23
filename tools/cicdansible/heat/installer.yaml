@@ -29,7 +29,7 @@ parameters:
         description: "need to specify a valid flavor"
   image_name:
     label: "image name"
-    description: "name of the image from which to create all instances, should be rhel 7.6 or centos image"
+    description: "name of the image from which to create all instances, should be rhel/centos 7.9 image"
     type: string
     constraints:
       - custom_constraint: glance.image
