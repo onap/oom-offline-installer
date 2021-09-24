@@ -48,14 +48,14 @@ Kubernetes cluster overview
 =================== ================== ==================== ============== ============ ===============
 KUBERNETES NODE     OS                 NETWORK              CPU            RAM          STORAGE
 =================== ================== ==================== ============== ============ ===============
-**infra-node**      RHEL/CentOS 7.6    ``10.8.8.100/24``    ``8 vCPUs``    ``8 GB``     ``100 GB``
-**kube-node1**      RHEL/CentOS 7.6    ``10.8.8.101/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
-**kube-node2**      RHEL/CentOS 7.6    ``10.8.8.102/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
-**kube-node3**      RHEL/CentOS 7.6    ``10.8.8.103/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+**infra-node**      RHEL/CentOS 7.9    ``10.8.8.100/24``    ``8 vCPUs``    ``8 GB``     ``100 GB``
+**kube-node1**      RHEL/CentOS 7.9    ``10.8.8.101/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+**kube-node2**      RHEL/CentOS 7.9    ``10.8.8.102/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
+**kube-node3**      RHEL/CentOS 7.9    ``10.8.8.103/24``    ``16 vCPUs``   ``56+ GB``   ``100 GB``
 SUM                                                         ``56 vCPUs``   ``176+ GB``  ``400 GB``
 =========================================================== ============== ============ ===============
 
-As of now, the offline installer supports only **RHEL 7.x** and **CentOS 7.6** distributions, with at least *@core* and *@base* package groups installed including *Mandatory* and *Default* package sets. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing.
+As of now, the offline installer supports only **RHEL 7.x** and **CentOS 7.9** distributions, with at least *@core* and *@base* package groups installed including *Mandatory* and *Default* package sets. So, your VMs should be preinstalled with this operating system - the hypervisor and platform can be of your choosing.
 
 We will expect from now on that you installed four VMs and they are connected to the shared network. All VMs must be reachable from *install-server* (below), which can be the hypervisor, *infra-node* or completely different host. But in either of these cases the *install-server* must be able to connect over ssh to all of these nodes.
 
