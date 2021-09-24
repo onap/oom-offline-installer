@@ -7,16 +7,16 @@ Offline Installer Package Build Guide
 
 This document describes how to build offline installer packages. The build process should be triggered on a host with internet connectivity. It will retrieve all artifacts required for ONAP deployment based on both - static data list files and dynamically assembled ones. The host used for the procedure in this guide should be preferably a separate build server.
 
-Procedure was completely tested on RHEL 7.6 as it’s the default target installation platform, however with small adaptations it should be applicable also for other platforms.
-Some discrepancies when Centos 7.6 is used are described below as well.
+Procedure was completely tested on RHEL 7.9 as it’s the default target installation platform, however with small adaptations it should be applicable also for other platforms.
+Some discrepancies when Centos 7.9 is used are described below as well.
 
 
 Part 1. Prerequisites
 ---------------------
 
-We assume that procedure is executed on RHEL 7.6 server with \~300G disc space, 16G+ RAM and internet connectivity.
+We assume that procedure is executed on RHEL 7.9 server with \~300G disc space, 16G+ RAM and internet connectivity.
 
-Some additional software packages are required by ONAP Offline platform building tooling. In order to install them following repos have to be configured for RHEL 7.6 platform.
+Some additional software packages are required by ONAP Offline platform building tooling. In order to install them following repos have to be configured for RHEL 7.9 platform.
 
 
 
@@ -26,7 +26,7 @@ Some additional software packages are required by ONAP Offline platform building
 ::
 
     ############
-    # RHEL 7.6 #
+    # RHEL 7.9 #
     ############
 
     # Register server
@@ -46,7 +46,7 @@ Alternatively
 ::
 
    ##############
-   # Centos 7.6 #
+   # Centos 7.9 #
    ##############
 
    # required by custom docker version recommended by ONAP
