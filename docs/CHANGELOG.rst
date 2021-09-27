@@ -3,6 +3,11 @@ CHANGELOG
 
 -----
 
+2021-09-24
+----------
+
+- Upgrade supported OS to RedHat/CentOS 7.9
+
 2021-09-17
 ----------
 
