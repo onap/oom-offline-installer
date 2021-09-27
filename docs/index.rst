@@ -11,3 +11,4 @@ OOM offline-installer
    InstallGuide.rst
    TestingGuide.rst
    vFWCL-notes.rst
+   CHANGELOG.rst
