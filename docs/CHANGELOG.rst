@@ -8,6 +8,11 @@ CHANGELOG
 
 - Add support in cicdansible for docker_storage_size heat stack parameter for setting custom docker storage volume size on nodes
 
+2021-09-24
+----------
+
+- Upgrade supported OS to RedHat/CentOS 7.9
+
 2021-09-17
 ----------
 
