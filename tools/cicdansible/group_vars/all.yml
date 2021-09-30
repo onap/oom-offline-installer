@@ -47,7 +47,7 @@ cicd_docker_registry: ""
 #Address of custom docker registry mirror
 docker_registry_mirror: ""
 #Number of nodes to deploy.
-num_nodes: "3"
+num_nodes: "4"
 #Stack name to deploy on heat.
 stack_name: "installer-test"
 #Address of resource server with packages.
