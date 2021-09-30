@@ -103,6 +103,10 @@ parameters:
     type: string
     description: "specifies id of network used for demo usecases"
     default: ""
+  docker_storage_size:
+    label: "nodes' docker storage size"
+    type: number
+    description: "Size of the volume for the docker storage on nodes"
 conditions:
   #Condition for nfs volume usage.
   use_volume_for_nfs: { get_param: use_volume_for_nfs }
@@ -212,6 +216,7 @@ resources:
           notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
           security_group: { get_resource: secgroup }
           demo_network: { get_param: demo_network }
+          docker_storage_size: { get_param: docker_storage_size }
           scheduler_hints:
             group: { get_resource: anti_affinity_group }
     depends_on: [routercon, instance_wait_handle]
