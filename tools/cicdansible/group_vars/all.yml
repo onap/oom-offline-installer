@@ -70,3 +70,5 @@ install_app: true
 application_config: ''
 # Id of the network for demo usecases
 demo_network_id: ""
+# Size of docker storage volumes on nodes
+docker_storage_size: 60

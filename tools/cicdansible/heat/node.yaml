@@ -25,13 +25,15 @@ parameters:
   demo_network:
     type: string
     default: ""
+  docker_storage_size:
+    type: number
 resources:
   #Volume for storing /var/lib/docker for node.
   docker_storage:
     type: OS::Cinder::Volume
     properties:
       name: docker_storage
-      size: 120
+      size: { get_param: docker_storage_size }
   #Call generic instance template.
   instance:
     type: instance.yaml
