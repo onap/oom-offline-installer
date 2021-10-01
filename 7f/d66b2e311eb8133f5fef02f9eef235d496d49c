@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Verified+1: Krystian Kedron <k.kedron@partner.samsung.com>
+Code-Review+2: Krystian Kedron <k.kedron@partner.samsung.com>
+Submitted-by: Bartek Grzybowski <b.grzybowski@partner.samsung.com>
+Submitted-at: Fri, 01 Oct 2021 08:25:28 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/oom/offline-installer/+/124591
+Project: oom/offline-installer
+Branch: refs/heads/honolulu
