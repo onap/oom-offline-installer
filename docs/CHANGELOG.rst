@@ -3,6 +3,11 @@ CHANGELOG
 
 -----
 
+2021-09-30
+----------
+
+- Add support in cicdansible for docker_storage_size heat stack parameter for setting custom docker storage volume size on nodes
+
 2021-09-17
 ----------
 
