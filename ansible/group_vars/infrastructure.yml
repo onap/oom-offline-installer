@@ -29,3 +29,4 @@ nginx_server_image: own_nginx:2.0.0
 chartmuseum_server_image: chartmuseum/chartmuseum
 kube_prometheus_stack_enabled: false
 kube_prometheus_stack_version: 18.0.4
+cert_manager_version: 1.5.4

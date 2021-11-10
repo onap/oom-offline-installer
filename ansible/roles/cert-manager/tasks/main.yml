@@ -1,0 +1,22 @@
+---
+- name: Check {{ cert_manager.helm_release_name }} helm package exists
+  stat:
+    path: "{{ app_data_path }}/downloads/cert-manager-v{{ cert_manager_version }}.tgz"
+  register: cert_manager_package_stat
+  failed_when: not cert_manager_package_stat.stat.exists
+
+- name: Generate helm values file
+  copy:
+    dest: "{{ cert_manager.helm_values_file }}"
+    content: "{{ cert_manager.helm_values | to_nice_yaml }}"
+
+- name: "Install Helm release {{ cert_manager.helm_release_name }}"
+  community.kubernetes.helm:
+    release_name: "{{ cert_manager.helm_release_name }}"
+    release_namespace: "{{ cert_manager.k8s_namespace }}"
+    create_namespace: True
+    chart_ref: "{{ app_data_path }}/downloads/cert-manager-v{{ cert_manager_version }}.tgz"
+    values_files: "{{ cert_manager.helm_values_file }}"
+    wait: True
+    wait_timeout: "{{ cert_manager.helm_timeout }}"
+  tags: molecule-notest
