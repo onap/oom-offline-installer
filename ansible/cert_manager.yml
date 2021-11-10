@@ -1,0 +1,5 @@
+---
+- name: Provision cert-manager into Kubernetes cluster
+  hosts: infrastructure
+  roles:
+    - cert-manager
