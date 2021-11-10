@@ -247,7 +247,8 @@ def build_offline_deliverables(build_version,
                             '**/helm-*-linux-amd64.tar.gz',
                             '**/kubectl',
                             '**/helm-push_*_linux_amd64.tar.gz',
-                            '**/kube-prometheus-stack-*.tgz']
+                            '**/kube-prometheus-stack-*.tgz',
+                            '**/cert-manager-*.tgz']
 
         for pattern in bin_pattern_list:
             for bin_file in glob.glob(os.path.join('.', pattern), recursive=True):
