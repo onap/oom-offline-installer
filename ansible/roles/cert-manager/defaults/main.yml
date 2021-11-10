@@ -1,0 +1,8 @@
+---
+cert_manager:
+  k8s_namespace: cert-manager
+  helm_release_name: cert-manager
+  helm_timeout: "240s"
+  helm_values_file: "{{ app_data_path }}/cert_manager.yaml"
+  helm_values:
+    installCRDs: true
