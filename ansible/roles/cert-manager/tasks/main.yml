@@ -20,3 +20,12 @@
     wait: True
     wait_timeout: "{{ cert_manager.helm_timeout }}"
   tags: molecule-notest
+
+- name: Install cmctl
+  unarchive:
+    src: "{{ app_data_path }}/downloads/cmctl-linux-amd64.tar.gz"
+    dest: "{{ cmctl_bin_dir }}"
+    extra_opts:
+      - 'cmctl'
+    remote_src: true
+    mode: 0755
