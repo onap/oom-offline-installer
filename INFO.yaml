@@ -41,6 +41,11 @@ committers:
       company: 'samsung'
       id: 'krystian'
       timezone: 'Europe/Warsaw'
+    - name: 'Marcin Krasowski'
+      email: 'm.krasowski@samsung.com'
+      company: 'samsung'
+      id: 'mkrasowski'
+      timezone: 'Europe/Warsaw'
     - name: 'Sylvain Desbureaux'
       email: "sylvain.desbureaux@orange.com"
       id: "sdesbure"
