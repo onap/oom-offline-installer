@@ -1,0 +1,53 @@
+---
+- name: Check {{ cert_manager.helm_release_name }} helm package exists
+  stat:
+    path: "{{ app_data_path }}/downloads/cert-manager-v{{ cert_manager_version }}.tgz"
+  register: cert_manager_package_stat
+  failed_when: not cert_manager_package_stat.stat.exists
+
+- name: Generate helm values file
+  copy:
+    dest: "{{ cert_manager.helm_values_file }}"
+    content: "{{ cert_manager.helm_values | to_nice_yaml }}"
+
+- name: "Install Helm release {{ cert_manager.helm_release_name }}"
+  community.kubernetes.helm:
+    release_name: "{{ cert_manager.helm_release_name }}"
+    release_namespace: "{{ cert_manager.k8s_namespace }}"
+    create_namespace: True
+    chart_ref: "{{ app_data_path }}/downloads/cert-manager-v{{ cert_manager_version }}.tgz"
+    values_files: "{{ cert_manager.helm_values_file }}"
+    wait: True
+    wait_timeout: "{{ cert_manager.helm_timeout }}"
+  tags: molecule-notest
+
+- name: Install cmctl
+  unarchive:
+    src: "{{ app_data_path }}/downloads/cmctl-linux-amd64.tar.gz"
+    dest: "{{ cmctl_bin_dir }}"
+    extra_opts:
+      - 'cmctl'
+    remote_src: true
+    mode: 0755
+
+- name: Install completion for the bash shell
+  package:
+    name: "{{ completion_package }}"
+    state: present
+
+- name: Generate shell autocompletion code for cmctl
+  command: cmctl completion bash
+  register: cmctl_completion
+  changed_when: false
+
+- name: Ensure bash completion dir exists
+  file:
+    path: "{{ completion_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Install bash autocompletion code for cmctl
+  copy:
+    content: "{{ cmctl_completion.stdout }}"
+    dest: "{{ completion_dir }}/cmctl"
+    mode: 0644

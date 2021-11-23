@@ -1,0 +1,16 @@
+---
+- name: "Ensure {{ app_data_path }}/downloads directory exists"
+  file:
+    path: "{{ app_data_path }}/downloads"
+    recurse: true
+    state: directory
+
+- name: "Download cert-manager-v{{ cert_manager_version }}.tgz"
+  get_url:
+    url: "https://charts.jetstack.io/charts/cert-manager-v{{ cert_manager_version }}.tgz"
+    dest: "{{ app_data_path }}/downloads"
+
+- name: "Download cmctl binary"
+  get_url:
+    url: "https://github.com/jetstack/cert-manager/releases/download/v{{ cmctl_version }}/cmctl-linux-amd64.tar.gz"
+    dest: "{{ app_data_path }}/downloads"

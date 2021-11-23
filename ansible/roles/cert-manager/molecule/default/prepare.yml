@@ -1,0 +1,12 @@
+---
+- name: Prepare infra container to play cert-manager role
+  hosts: all
+  pre_tasks:
+    - name: Include infrastructure group variables
+      include_vars: ../../../../group_vars/infrastructure.yml
+    - name: Include test scenario variables
+      include_vars: vars.yml
+  tasks:
+    - name: "Include prepare-cert-manager role"
+      include_role:
+        name: "prepare-cert-manager"

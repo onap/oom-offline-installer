@@ -3,6 +3,18 @@ CHANGELOG
 
 -----
 
+2021-11-16
+----------
+
+- Added support for provisioning the cert-manager (https://cert-manager.io/)
+- Added cmctl CLI management utility for cert-manager
+
+2021-10-27
+----------
+
+- Upgraded Helm release to 3.6.3
+
+
 2021-09-30
 ----------
 
