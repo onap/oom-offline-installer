@@ -20,7 +20,7 @@ all_simulated_hosts:
   "{{ simulated_hosts.http + simulated_hosts.nexus }}"
 populate_nexus: false
 helm_bin_dir: /usr/local/bin
-helm_version: v2.16.6
+helm_version: v3.6.3
 helm3_push_version: 0.9.0
 rke_kubernetes_version: v1.19.14-rancher1-2
 vnc_server_image: consol/ubuntu-icewm-vnc:1.4.0
