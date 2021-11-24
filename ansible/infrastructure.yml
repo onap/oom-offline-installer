@@ -17,7 +17,6 @@
     - chrony
     - nexus
     - role: chartmuseum
-      when: helm_version | regex_search("^v3" )
 
 - name: Setup base for Kubernetes nodes
   hosts: kubernetes:!infrastructure
