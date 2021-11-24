@@ -30,7 +30,7 @@ provisioner:
           - all
           - onap
         app_helm_chart_name: "{{ app_name }}"
-        helm_version: v2
+        helm_version: v3
 scenario:
   test_sequence:
     - lint
