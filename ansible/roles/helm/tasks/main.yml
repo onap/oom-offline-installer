@@ -10,7 +10,7 @@
     remote_src: true
     mode: 0755
 
-- name: Install helm-push plugin if runing with Helm v3
+- name: Install helm-push plugin
   block:
     - name: Get helm environment information
       command: "{{ helm_bin_dir }}/helm env"
@@ -37,4 +37,3 @@
         src: "{{ app_data_path }}/downloads/helm-push_{{ helm3_push_version }}_linux_amd64.tar.gz"
         dest: "{{ helm_plugin_dir }}/helm-push"
         remote_src: true
-  when: helm_version | regex_search("^v3" )
