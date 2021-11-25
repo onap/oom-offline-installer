@@ -20,7 +20,4 @@
         src: "{{ app_helm_charts_install_directory }}.tgz"
         dest: "{{ app_helm_charts_infra_directory }}"
 
-- include_tasks: install-helm2-plugins.yml
-  when: helm_version | regex_search("^v2" )
-- include_tasks: install-helm3-plugins.yml
-  when: helm_version | regex_search("^v3" )
+- include_tasks: install-helm-plugins.yml

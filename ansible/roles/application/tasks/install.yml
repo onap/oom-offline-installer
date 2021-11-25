@@ -6,10 +6,7 @@
     state: present
   when: ansible_os_family == "Debian"
 
-- include_tasks: setup-helm2.yml
-  when: helm_version | regex_search("^v2" )
-- include_tasks: setup-helm3.yml
-  when: helm_version | regex_search("^v3" )
+- include_tasks: setup-helm.yml
 
 - name: Build local helm repository
   make:
