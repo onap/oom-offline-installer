@@ -3,6 +3,11 @@ CHANGELOG
 
 -----
 
+2021-11-25
+----------
+
+- Dropped support for obsoleted Helm v2
+
 2021-11-16
 ----------
 
