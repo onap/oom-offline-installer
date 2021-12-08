@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3df8f464_df49f2e6",
+        "filename": "ansible/roles/cert-manager/molecule/default/tests/test_default.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-12-08T11:44:10Z",
+      "side": 1,
+      "message": "This statement is noop unless there is a test failure it won\u0027t be printed so I\u0027d remove it.",
+      "revId": "559fb158b6c1e66102a30108fe7cc7ec7275ed69",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32589f2a_4d34d584",
+        "filename": "ansible/roles/cert-manager/molecule/default/tests/test_default.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-12-08T11:44:10Z",
+      "side": 1,
+      "message": "Please compare the actual content against the explicitly expected string, that is without control chars. You can achieve this by stripping the content_string in line 6, e.g.:\n\nconstr \u003d f.content_string.strip()\n(...)\nassert constr \u003d\u003d \"installCRDs: true\"",
+      "revId": "559fb158b6c1e66102a30108fe7cc7ec7275ed69",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "758b2cf0_1c9f1293",
+        "filename": "ansible/roles/cert-manager/molecule/default/tests/test_default.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2021-12-08T11:44:10Z",
+      "side": 1,
+      "message": "This is redundant as you\u0027re already checking for completion file in test_bash_completion_cmctl test, so the other one will implicitly also test for /etc/bash_completion.d presence. I would check for completion_package presence instead.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "559fb158b6c1e66102a30108fe7cc7ec7275ed69",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
