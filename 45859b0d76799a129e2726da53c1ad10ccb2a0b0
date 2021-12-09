@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e70395f2_8b39c719",
+        "filename": "docs/CHANGELOG.rst",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 6641
+      },
+      "writtenOn": "2021-12-09T12:56:11Z",
+      "side": 1,
+      "message": "it is enough to say dropped supprt for Helm v2 :)",
+      "revId": "45859b0d76799a129e2726da53c1ad10ccb2a0b0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
