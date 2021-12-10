@@ -3,9 +3,7 @@ def test_helm_value_file(host):
     assert f.exists
     assert f.user == 'root'
     assert f.group == 'root'
-    constr = f.content_string
-    print(constr)
-    assert constr == "installCRDs: true\n"
+    assert f.content_string.strip() == "installCRDs: true"
 
 
 def test_cmctl(host):
@@ -17,9 +15,7 @@ def test_cmctl(host):
 
 
 def test_bash_completion(host):
-    f = host.file('/etc/bash_completion.d')
-    f.exists
-    f.is_directory
+    assert host.package("bash-completion").is_installed
 
 
 def test_bash_completion_cmctl(host):
