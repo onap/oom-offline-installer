@@ -20,9 +20,8 @@
 
 ### This script is preparing docker images list based on OOM project
 
-### NOTE: helm and docker need to be installed; those are required for correct processing
-### of helm charts in oom directory; helm push plugin is also  required if
-### using helm v3
+### NOTE: helm v3.x.x, helm push plugin and docker need to be installed; those are
+### required for correct processing of helm charts in oom directory.
 
 # Fail fast settings
 set -e
@@ -40,7 +39,7 @@ usage () {
     echo "      "
     echo "      Example: ./$(basename $0) /root/oom/kubernetes/onap"
     echo "      "
-    echo "      Dependencies: helm, python-yaml, make"
+    echo "      Dependencies: helm v3.x.x, helm push plugin, python-yaml, make"
     echo "      "
     exit 1
 }
@@ -73,18 +72,9 @@ create_list() {
 
 # Kill helm repository if already running
 kill_chart_repo() {
-    if [[ "${HELM_VERSION}" =~ "v3" ]];
+    if [ $(docker ps -aq -f name="^chartmuseum-${HELM_REPO_PORT}$") ];
     then
-        if [ $(docker ps -aq -f name="^chartmuseum-${HELM_REPO_PORT}$") ];
-        then
-            docker kill "chartmuseum-${HELM_REPO_PORT}"
-        fi
-    else
-        for pid in $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}");
-        do
-            # Kill helm repository server process
-            kill $pid
-        done
+        docker kill "chartmuseum-${HELM_REPO_PORT}"
     fi
 }
 
@@ -117,19 +107,10 @@ validate_bin() {
 
 check_chart_repo() {
     sleep 2 # let the helm repository process settle
-    if [[ "${HELM_VERSION}" =~ "v3" ]];
+    if [ ! $(docker ps -aq -f name="^chartmuseum-${HELM_REPO_PORT}$") ];
     then
-        if [ ! $(docker ps -aq -f name="^chartmuseum-${HELM_REPO_PORT}$") ];
-        then
-            echo "Fatal: Helm chart repository docker container failed to start"
-            exit 1
-        fi
-    else
-        if [ $(pgrep -f "${HELM_BIN} serve --address ${HELM_REPO}" -c) -eq 0 ];
-        then
-            echo "Fatal: Helm chart repository server failed to start"
-            exit 1
-        fi
+        echo "Fatal: Helm chart repository docker container failed to start"
+        exit 1
     fi
 }
 
@@ -174,7 +155,6 @@ HELM_REPO_HOST="127.0.0.1"
 HELM_REPO_PORT="${PORT:-8879}"
 HELM_REPO="${HELM_REPO_HOST}:${HELM_REPO_PORT}"
 HELM_REPO_PATH="dist/packages" # based on PACKAGE_DIR defined in oom/kubernetes/Makefile
-HELM_VERSION=$(${HELM_BIN} version -c --template "{{.Version}}")
 DOCKER_CONTAINER="generate-certs-${HELM_REPO_PORT}" # oom-cert-service container name override
 PROJECT="$(basename ${1})"
 
@@ -200,25 +180,17 @@ HELM_HOME=$(mktemp -p /tmp -d .helm.XXXXXXXX)
 export HELM_HOME
 
 kill_chart_repo # make sure it's not already running
-if [[ "${HELM_VERSION}" =~ "v3" ]];
-then
-    # Setup helm v3
-    export HELM_CONFIG_HOME="${HELM_HOME}/.config"
-    export HELM_CACHE_HOME="${HELM_HOME}/.cache"
-    mkdir --mode=777 ${HELM_HOME}/chartmuseum
-    docker run --rm -it -d -p ${HELM_REPO_PORT}:8080 \
-      --name "chartmuseum-${HELM_REPO_PORT}" \
-      -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts \
-      -v ${HELM_HOME}/chartmuseum:/charts chartmuseum/chartmuseum
-    sleep 2 # let the chartmuseum process settle
-    ${HELM_BIN} repo add local "http://${HELM_REPO}"
-else
-    # Setup helm v2
-    mkdir -p "${PROJECT_DIR}/../${HELM_REPO_PATH}"
-    ${HELM_BIN} init --skip-refresh -c --local-repo-url "http://${HELM_REPO}"
-    ${HELM_BIN} serve --address ${HELM_REPO} --repo-path "${PROJECT_DIR}/../${HELM_REPO_PATH}" &
-    ${HELM_BIN} repo remove stable 2>/dev/null || true
-fi
+
+export HELM_CONFIG_HOME="${HELM_HOME}/.config"
+export HELM_CACHE_HOME="${HELM_HOME}/.cache"
+mkdir --mode=777 ${HELM_HOME}/chartmuseum
+docker run --rm -it -d -p ${HELM_REPO_PORT}:8080 \
+  --name "chartmuseum-${HELM_REPO_PORT}" \
+  -e STORAGE=local -e STORAGE_LOCAL_ROOTDIR=/charts \
+  -v ${HELM_HOME}/chartmuseum:/charts chartmuseum/chartmuseum
+sleep 2 # let the chartmuseum process settle
+${HELM_BIN} repo add local "http://${HELM_REPO}"
+
 check_chart_repo
 
 # Make all
