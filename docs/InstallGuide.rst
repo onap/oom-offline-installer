@@ -307,14 +307,6 @@ Second one controls time zone setting on host. It's value should be time zone na
 
 ``'timesync.servers'``, ``'timesync.slewclock'`` and ``'timesync.timezone'`` settings can be used independently.
 
-In the Guilin release, OOM added support for `Helm`_ v3 Kubernetes package manager. Offline installer leverages on the v2 version by default. Should you desire to deploy Onap with helm v3 you need to set following variable:
-
-::
-
-    helm_version: v3.x.x
-
-The exact version string to use above should be picked from ``'build/data_lists/infra_bin_utils.list'`` file.
-
 Final configuration can resemble the following::
 
     resources_dir: /data
@@ -408,11 +400,14 @@ Commence the installation process by running following command::
 
 This will take a while so be patient. The whole provisioning process is idempotent so you may safely re-run it if required.
 
-``'site.yml'`` playbook will run following playbooks in the given order::
+``'site.yml'`` playbook will run following playbooks in the given order:
 
 - ``resources.yml``
 - ``infrastructure.yml``
 - ``rke.yml``
+- ``nfs.yml``
+- ``kube_prometheus.yml``
+- ``cert_manager.yml``
 - ``application.yml``
 
 ----
@@ -655,7 +650,7 @@ Then navigate to http://<infra IP>:8081 to access the UI:
 .. image:: images/grafana-signin.png
    :alt: Grafana Login page
 
-Default username is *admin* and the default password is *prom-operator*.
+Default username is *admin* and the default password is *grafana*.
 
 In the left pane navigate to *Dashboards -> Manage* to see the various pre-defined dashboards that come bundled with kube-prometheus stack. There is also the *Custom* folder which holds few additional dashes defined by the Offline Installer authors:
 
@@ -668,19 +663,12 @@ Alternative way of accessing the UI is by leveraging the NodePort type service w
 
 Then navigate to http://<infra IP>:<nodePort> to access the UI.
 
-
-Caveats
-~~~~~~~
-
-Kube-prometheus stack bundled with Offline Installer requires at least release v3 of Helm. If you wish to deploy the Stack you need to set relevant v3 release of Helm. Please see **Part 2. Configuration** for details.
-
 .. _Build Guide: ./BuildGuide.rst
 .. _Software requirements: https://docs.onap.org/projects/onap-oom/en/latest/oom_cloud_setup_guide.html#software-requirements
 .. _Hardware requirements: https://docs.onap.org/projects/onap-oom/en/latest/oom_cloud_setup_guide.html#minimum-hardware-configuration
 .. _OOM ONAP: https://docs.onap.org/projects/onap-oom/en/latest/index.html
 .. _Offline installer: https://gerrit.onap.org/r/q/oom/offline-installer
 .. _RKE: https://rancher.com/products/rke/
-.. _Helm: https://helm.sh/
 .. _Kube-prometheus stack: https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack
 .. _Prometheus Operator: https://github.com/prometheus-operator/prometheus-operator
 .. _values.yaml: https://github.com/prometheus-community/helm-charts/blob/main/charts/kube-prometheus-stack/values.yaml
