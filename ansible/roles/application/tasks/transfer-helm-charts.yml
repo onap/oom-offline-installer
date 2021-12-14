@@ -8,7 +8,6 @@
         warn: false
       tags:
         - skip_ansible_lint  # Prevent '[303] tar used in place of unarchive module'
-      changed_when: false  # for idempotency
       delegate_to: localhost
     - name: Create helm charts dir on infra
       file:
@@ -19,5 +18,6 @@
       unarchive:
         src: "{{ app_helm_charts_install_directory }}.tgz"
         dest: "{{ app_helm_charts_infra_directory }}"
+  tags: molecule-idempotence-notest
 
 - include_tasks: install-helm-plugins.yml

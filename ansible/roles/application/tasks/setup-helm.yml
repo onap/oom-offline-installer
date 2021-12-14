@@ -10,7 +10,7 @@
 - name: Helm Add Repo
   command: "{{ helm_bin_dir }}/helm repo add {{ helm_repository_name | mandatory }} {{ helm_repository_url | mandatory }}"
   when: "'local' not in helm_repo_list.stdout"
-  changed_when: true  # when executed its a changed type of action
+  changed_when: false  # for idempotency
 
 - name: Check for deploy plugin presence
   stat:
