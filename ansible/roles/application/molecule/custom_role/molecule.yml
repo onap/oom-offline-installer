@@ -39,3 +39,4 @@ provisioner:
     cleanup: ../default/cleanup.yml
 verifier:
   name: testinfra
+  directory: ../default/tests/
