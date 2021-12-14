@@ -4,6 +4,7 @@
     - name: Get helm environment information
       command: "{{ helm_bin_dir }}/helm env"
       register: helm_env
+      changed_when: false
     - name: Set helm data dir
       set_fact:
         helm_data_dir:

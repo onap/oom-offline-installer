@@ -48,6 +48,6 @@
           --namespace {{ app_kubernetes_namespace }}
           {{ helm_override_files | map('regex_replace', '^', '-f ') | join(' ') }}
           {{ helm_extra_install_options | map(attribute='opt') | join(' ') }}
-  changed_when: true  # when executed its a changed type of action
+  changed_when: false  # for idempotency
   register: helm_install
   failed_when: "'FAILED' in (helm_install.stdout | upper()) or helm_install.rc != 0"
