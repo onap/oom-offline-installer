@@ -13,4 +13,4 @@
 - name: Flush iptables
   iptables:
     flush: true
-  changed_when: false  # for idempotence
+  tags: molecule-idempotence-notest
