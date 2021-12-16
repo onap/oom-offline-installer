@@ -3,3 +3,5 @@
   hosts: infrastructure
   roles:
     - cert-manager
+    - role: bash-completion
+      completion_bin: cmctl

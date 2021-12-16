@@ -1,0 +1,22 @@
+---
+- name: Install completion for the bash shell
+  package:
+    name: "{{ completion_package }}"
+    state: present
+
+- name: Ensure bash completion dir exists
+  file:
+    path: "{{ completion_dir }}"
+    state: directory
+    mode: 0755
+
+- name: Generate shell autocompletion code for {{ completion_bin }}
+  command: "{{ completion_bin }} completion bash"
+  register: bash_completion
+  changed_when: false
+
+- name: Install bash autocompletion code for {{ completion_bin }}
+  copy:
+    content: "{{ bash_completion.stdout }}"
+    dest: "{{ completion_dir }}/{{ completion_bin }}"
+    mode: 0644

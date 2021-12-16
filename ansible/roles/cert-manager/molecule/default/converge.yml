@@ -6,3 +6,5 @@
       include_vars: ../../../../group_vars/infrastructure.yml
   roles:
     - cert-manager
+    - role: bash-completion
+      completion_bin: cmctl
