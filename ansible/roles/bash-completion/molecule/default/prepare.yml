@@ -1,0 +1,7 @@
+---
+- name: Prepare
+  hosts: all
+  roles:
+    # This role is played in prepare stage only to install kubectl which will be
+    # used as a binary to test the bash-completion role
+    - prepare-kubectl
