@@ -30,4 +30,8 @@
       vars:
         mode: deploy
     - kubectl
+    - role: bash-completion
+      completion_bin: kubectl
     - helm
+    - role: bash-completion
+      completion_bin: helm
