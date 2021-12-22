@@ -27,9 +27,5 @@ provisioner:
     host_vars:
       infrastructure-server:
         cluster_ip: 127.0.0.1
-    group_vars:
-      all:
-        app_name: onap
-        app_data_path: "/opt/{{ app_name }}"
 verifier:
   name: testinfra
