@@ -1,0 +1,4 @@
+---
+app_name: onap
+app_data_path: "/opt/{{ app_name }}"
+cmctl_version: 1.6.1
