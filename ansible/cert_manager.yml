@@ -5,3 +5,4 @@
     - cert-manager
     - role: bash-completion
       completion_bin: cmctl
+
