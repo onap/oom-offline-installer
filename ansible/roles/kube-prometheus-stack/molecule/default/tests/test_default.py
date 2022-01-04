@@ -26,7 +26,7 @@ def test_helm_values_file(host):
 
 
 def test_grafana_dashboards(host):
-    assert host.file('/nfs/kube-prometheus/kube-prometheus-grafana/'
+    assert host.file('/dockerdata-nfs/kube-prometheus/kube-prometheus-grafana/'
                      'dashboards/custom/grafana_dashboard.json').exists
-    assert host.file('/nfs/kube-prometheus/kube-prometheus-grafana/'
+    assert host.file('/dockerdata-nfs/kube-prometheus/kube-prometheus-grafana/'
                      'dashboards/grafana_home.json').exists
