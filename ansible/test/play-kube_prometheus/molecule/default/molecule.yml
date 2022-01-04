@@ -9,8 +9,9 @@ lint: |
   ansible-lint .
   flake8
 platforms:
-  - name: infrastructure-kube-prometheus-stack
-    image: centos:7
+  - name: infrastructure-play-kube-prometheus
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-centos}:${PREBUILD_DISTRO_VERSION:-centos7.9}
+    pre_build_image: true
     groups:
       - infrastructure
 provisioner:
@@ -18,11 +19,6 @@ provisioner:
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
-  inventory:
-    group_vars:
-      all:
-        app_name: onap
-        app_data_path: "/opt/{{ app_name }}"
-        nfs_mount_path: "/dockerdata-nfs"
 verifier:
   name: testinfra
+  directory: ../../../../roles/kube-prometheus-stack/molecule/default/tests/
