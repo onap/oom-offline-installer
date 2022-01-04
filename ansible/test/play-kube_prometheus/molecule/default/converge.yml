@@ -1,0 +1,8 @@
+---
+- name: Initialize
+  hosts: all
+  tasks:
+    - name: Include variables
+      include_vars: vars.yml
+
+- import_playbook: ../../../../kube_prometheus.yml
