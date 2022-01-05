@@ -10,7 +10,7 @@ lint: |
   flake8
 platforms:
   - name: infrastructure-server
-    image: ${PLATFORM_DISTRO:-ubuntu}:${ISTRO_VERSION:-18.04}
+    image: ${PLATFORM_DISTRO:-ubuntu}:${DISTRO_VERSION:-18.04}
     dockerfile: ../default/Dockerfile.j2
     groups:
       - infrastructure
@@ -20,7 +20,7 @@ platforms:
       - 6.5.4.3
 
   - name: kubernetes-node-1
-    image: ${PLATFORM_DISTRO:-ubuntu}:${ISTRO_VERSION:-18.04}
+    image: ${PLATFORM_DISTRO:-ubuntu}:${DISTRO_VERSION:-18.04}
     dockerfile: ../default/Dockerfile.j2
     groups:
       - kubernetes
