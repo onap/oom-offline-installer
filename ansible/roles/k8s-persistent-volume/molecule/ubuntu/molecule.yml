@@ -1,0 +1,25 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
+platforms:
+  - name: infrastructure-ubuntu-k8s-persistent-volume
+    image: molecule-${PREBUILD_PLATFORM_DISTRO:-ubuntu}:${PREBUILD_DISTRO_VERSION:-18.04}
+    pre_build_image: true
+    groups:
+      - infrastructure
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  playbooks:
+    converge: ../default/converge.yml
+verifier:
+  name: testinfra

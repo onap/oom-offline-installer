@@ -3,6 +3,7 @@
   package:
     name: 'python2-openshift'
     state: present
+  when: ansible_os_family == 'RedHat'
 
 - name: Create k8s persistent volumes
   community.kubernetes.k8s:
