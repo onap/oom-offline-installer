@@ -3,7 +3,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 
-#   Copyright 2019 © Samsung Electronics Co., Ltd.
+#   Copyright 2022 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ class DockerDownloader(ConcurrentDownloader):
             self._docker_client = docker.from_env(timeout=300)
         except docker.errors.DockerException as err:
             log.exception(
-                'Error creating docker client. Check if is docker installed and running'
+                'Error creating docker client. Check if docker is installed and running'
                 ' or if you have right permissions.')
             raise err
         self._pulled_images = set(itertools.chain.from_iterable((image.tags for image
@@ -220,7 +220,7 @@ def run_cli():
     else:
         logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(message)s')
 
-    downloader = DockerDownloader(args.save, [args.file_list, args.output_dir], workers=args.workers)
+    downloader = DockerDownloader(args.save, [args.image_list, args.output_dir], workers=args.workers)
 
     if args.check:
         log.info('Check mode. No download will be executed.')
