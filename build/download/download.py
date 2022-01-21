@@ -3,7 +3,7 @@
 
 #   COPYRIGHT NOTICE STARTS HERE
 
-#   Copyright 2019 © Samsung Electronics Co., Ltd.
+#   Copyright 2022 © Samsung Electronics Co., Ltd.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -67,6 +67,9 @@ def parse_args():
                             help='pypi packages type list and directory to save downloaded files')
     parser.add_argument('--npm-registry', default='https://registry.npmjs.org',
                         help='npm registry to use (default: https://registry.npmjs.org)')
+    parser.add_argument('--docker-private-registry-mirror', default=None, metavar='IP:PORT',
+                        help='Address of docker mirroring repository that caches images'
+                             ' from private registries to get those images from')
     parser.add_argument('--check', '-c', action='store_true', default=False,
                         help='Check what is missing. No download.')
     parser.add_argument('--debug', action='store_true', default=False,
@@ -173,7 +176,7 @@ def run_cli():
 
     if args.docker:
         save = True if len(list(filter(lambda x: len(x) == 2, args.docker))) == len(args.docker) else False
-        docker = docker_downloader.DockerDownloader(save, *args.docker, workers=3)
+        docker = docker_downloader.DockerDownloader(save, *args.docker, mirror=args.docker_private_registry_mirror, workers=3)
         interval_start = handle_download(docker, args.check, errorred_lists, interval_start)
 
     if args.http:
