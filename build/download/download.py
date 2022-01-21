@@ -67,9 +67,13 @@ def parse_args():
                             help='pypi packages type list and directory to save downloaded files')
     parser.add_argument('--npm-registry', default='https://registry.npmjs.org',
                         help='npm registry to use (default: https://registry.npmjs.org)')
-    parser.add_argument('--docker-private-registry-mirror', default=None, metavar='IP:PORT',
+    parser.add_argument('--docker-private-registry-mirror', default=None, metavar='HOST:PORT',
                         help='Address of docker mirroring repository that caches images'
                              ' from private registries to get those images from')
+    parser.add_argument('--docker-private-registry-exclude', action='append', default=[], metavar='REGISTRY_NAME',
+                        help='The name of a private registry to exclude when using --docker-private-registry-mirror.'
+                             ' Images that originate from excluded registry will not be'
+                             ' pulled from mirroring repository. This option can be used multiple times.')
     parser.add_argument('--check', '-c', action='store_true', default=False,
                         help='Check what is missing. No download.')
     parser.add_argument('--debug', action='store_true', default=False,
@@ -176,7 +180,7 @@ def run_cli():
 
     if args.docker:
         save = True if len(list(filter(lambda x: len(x) == 2, args.docker))) == len(args.docker) else False
-        docker = docker_downloader.DockerDownloader(save, *args.docker, mirror=args.docker_private_registry_mirror, workers=3)
+        docker = docker_downloader.DockerDownloader(save, *args.docker, mirror=args.docker_private_registry_mirror, mirror_exclude=args.docker_private_registry_exclude, workers=3)
         interval_start = handle_download(docker, args.check, errorred_lists, interval_start)
 
     if args.http:
