@@ -36,12 +36,13 @@ log = logging.getLogger(__name__)
 
 
 class DockerDownloader(ConcurrentDownloader):
-    def __init__(self, save, *list_args, mirror=None, workers=3):
+    def __init__(self, save, *list_args, mirror=None, mirror_exclude=[], workers=3):
         """
         :param mirror: private repository mirror address (ip:port)
         """
         self._save = save
         self._mirror = mirror
+        self._mirror_exclude = mirror_exclude
         try:
             # big timeout in case of massive images like pnda-mirror-container:5.0.0 (11.4GB)
             self._docker_client = docker.from_env(timeout=300)
@@ -162,9 +163,11 @@ class DockerDownloader(ConcurrentDownloader):
                 image_name_split = image_name.split('/')
                 if (len(image_name_split) > 1) \
                    and (image_name_split[0].find(".")) \
-                   and not (image_name.startswith('docker.io/')):
+                   and not (image_name.startswith('docker.io/')) \
+                   and (image_name_split[0] not in self._mirror_exclude):
                        # if image originates from private registry and its name does not start with 'docker.io'
-                       # download image from docker mirror and retag it to its original name
+                       # and it does not originate from excluded registry
+                       # -> download image from docker mirror and retag it to its original name
                        mirrored_image_name = self._mirror + "/" + '/'.join(image_name_split[1:])
                        img = self._docker_client.images.pull(mirrored_image_name)
                        self._docker_client.images.model.tag(img, image_name)
@@ -226,9 +229,13 @@ def run_cli():
                         help='Save images (without it only pull is executed)')
     parser.add_argument('--output-dir', '-o', default=os.getcwd(),
                         help='Download destination')
-    parser.add_argument('--private-registry-mirror', default=None, metavar='IP:PORT',
+    parser.add_argument('--private-registry-mirror', default=None, metavar='HOST:PORT',
                         help='Address of docker mirroring repository that caches images'
                              ' from private registries to get those images from')
+    parser.add_argument('--private-registry-exclude', action='append', default=[], metavar='REGISTRY_NAME',
+                        help='The name of a private registry to exclude when using --private-registry-mirror.'
+                             ' Images that originate from excluded registry will not be'
+                             ' pulled from mirroring repository. This option can be used multiple times.')
     parser.add_argument('--check', '-c', action='store_true', default=False,
                         help='Check what is missing. No download.'
                              'Use with combination with -s to check saved images as well.')
@@ -244,7 +251,7 @@ def run_cli():
     else:
         logging.basicConfig(stream=sys.stdout, level=logging.INFO, format='%(message)s')
 
-    downloader = DockerDownloader(args.save, [args.image_list, args.output_dir], mirror=args.private_registry_mirror, workers=args.workers)
+    downloader = DockerDownloader(args.save, [args.image_list, args.output_dir], mirror=args.private_registry_mirror, mirror_exclude=args.private_registry_exclude, workers=args.workers)
 
     if args.check:
         log.info('Check mode. No download will be executed.')
