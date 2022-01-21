@@ -3,6 +3,11 @@ CHANGELOG
 
 -----
 
+2022-01-21
+----------
+
+- Add support in download script for leveraging docker mirroring registry for images from private repositories
+
 2021-09-30
 ----------
 
