@@ -43,6 +43,9 @@ kube_prometheus_stack:
     prometheus:
       prometheusSpec:
         scrapeInterval: 60s
+        serviceMonitorNamespaceSelector: {}
+        serviceMonitorSelector: {}
+        serviceMonitorSelectorNilUsesHelmValues: false
         storageSpec:
           disableMountSubPath: true
           volumeClaimTemplate:
