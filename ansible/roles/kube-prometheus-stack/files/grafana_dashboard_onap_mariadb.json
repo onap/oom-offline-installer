@@ -96,7 +96,35 @@
             ]
           }
         },
+<<<<<<< HEAD   (309bdb [ANSIBLE] Update ONAP MariaDB dashboard)
         "overrides": []
+=======
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total replicas"
+            },
+            "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "1": {
+                        "color": "dark-green",
+                        "index": 0,
+                        "text": "1"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+>>>>>>> CHANGE (e03192 [ANSIBLE] Update ONAP MariaDB dashboard)
       },
       "gridPos": {
         "h": 5,
