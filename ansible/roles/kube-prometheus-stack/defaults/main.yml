@@ -4,7 +4,7 @@ kube_prometheus_stack:
   grafana_dashboards:
     - { src: "grafana_dashboard.json", dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/custom/" }
     - { src: "grafana_home.json", dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/" }
-    - { src: "grafana_dashboard_onap.json", dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/onap/" }
+    - { src: "grafana_dashboard_onap_mariadb.json", dest: "{{ nfs_mount_path }}/kube-prometheus/kube-prometheus-grafana/dashboards/onap/" }
   helm_release_name: kube-prometheus-stack
   helm_timeout: "240s"
   helm_values_file: "{{ app_data_path }}/kube_prometheus_values.yaml"
