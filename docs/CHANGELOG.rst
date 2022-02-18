@@ -3,6 +3,11 @@ CHANGELOG
 
 -----
 
+2022-02-18
+----------
+
+- Add support for ONAP services monitoring (leverages Prometheus ServiceMonitor objects)
+
 2022-01-21
 ----------
 
