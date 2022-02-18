@@ -28,5 +28,5 @@ dns_server_image: andyshinn/dnsmasq:2.76
 nginx_server_image: own_nginx:2.0.0
 chartmuseum_server_image: chartmuseum/chartmuseum
 kube_prometheus_stack_enabled: false
-kube_prometheus_stack_version: 18.0.4
+kube_prometheus_stack_version: 32.2.1
 cert_manager_version: 1.5.4
