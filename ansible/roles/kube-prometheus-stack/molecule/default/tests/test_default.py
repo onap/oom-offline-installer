@@ -3,7 +3,7 @@ import yaml
 
 def test_prometheus_helm_package(host):
     assert host.file('/opt/onap/downloads/'
-                     'kube-prometheus-stack-18.0.4.tgz').exists
+                     'kube-prometheus-stack-32.2.1.tgz').exists
 
 
 def test_helm_values_file(host):
