@@ -638,6 +638,21 @@ In order to actually install this tool it's required to set the following variab
 
 After the Offline Platform installation process is complete, the Stack will be deployed into its own kubernetes and helm namespace **kube-prometheus**.
 
+ONAP Services Monitoring
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some ONAP services export application metrics which can be scraped by Prometheus by leveraging the ServiceMonitor objects. Offline Platform provides a curated set of Grafana panels for monitoring ONAP's mariadb-galera chart. To enable mariadb-galera monitoring provide the following helm values in ``application_configuration.yml``::
+
+    overrides:
+      mariadb-galera:
+        metrics:
+          serviceMonitor:
+            enabled: true
+            basicAuth:
+              enabled: false
+
+To access the Galera/MariaDB dashboard navigate to *Dashboards -> Manage -> ONAP -> Galera/MariaDB* in Grafana UI.
+
 Accessing Grafana dashboard
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
