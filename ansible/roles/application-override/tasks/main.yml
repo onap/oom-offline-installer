@@ -8,7 +8,13 @@
 
 - name: "Set root ca certificate"
   set_fact:
-    merged_overrides: "{{ overrides | default({}) | combine({'global': {'cacert': root_cert.content | b64decode}}, recursive=True) }}"
+    merged_overrides: "{{ overrides | default({}) | combine({'global': {'cacert':  root_cert.content | b64decode }}, recursive=True) }}"
+
+- name: "Ensure application directory exists"
+  file:
+    path: "{{ app_data_path }}"
+    state: directory
+    mode: 0755
 
 - name: "Create {{ app_helm_override_file }}"
   copy:
