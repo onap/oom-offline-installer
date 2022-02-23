@@ -1,11 +1,4 @@
 ---
-# Make utility is missing in Ubuntu by default and it's necessary for building local helm repository
-- name: Install build-essential
-  package:
-    name: build-essential
-    state: present
-  when: ansible_os_family == "Debian"
-
 - include_tasks: setup-helm.yml
 
 - name: Build local helm repository

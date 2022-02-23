@@ -46,6 +46,13 @@
   package:
     name: make
     state: present
+  when: ansible_os_family == "RedHat"
+
+- name: Install build-essential
+  package:
+    name: build-essential
+    state: present
+  when: ansible_os_family == "Debian"
 
 - name: Create dummy cert file to simulate offline server certificates in helm install with override.yml file
   copy:

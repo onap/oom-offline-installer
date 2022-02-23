@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include application-override"
+      include_role:
+        name: "application-override"
