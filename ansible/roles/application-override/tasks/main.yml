@@ -10,7 +10,7 @@
   set_fact:
     merged_overrides: "{{ overrides | default({}) | combine({'global': {'cacert': root_cert.content | b64decode}}, recursive=True) }}"
 
-- name: "Create {{ app_helm_override_file }}"
+- name: "Create override file"
   copy:
     dest: "{{ app_helm_override_file }}"
     content: "{{ merged_overrides | to_nice_yaml }}"

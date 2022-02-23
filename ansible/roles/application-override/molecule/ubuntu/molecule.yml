@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
+platforms:
+  - name: instance
+    image: ubuntu:18.04
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+  inventory:
+    group_vars:
+      all:
+        app_helm_override_file: "/override.yml"
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/converge.yml
+    cleanup: ../default/cleanup.yml
+verifier:
+  name: testinfra
+  directory: ../default/tests/
