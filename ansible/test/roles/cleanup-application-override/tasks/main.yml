@@ -1,0 +1,5 @@
+- name: "Clean application-override mocked certificate directory"
+  file:
+    path: "{{ playbook_dir }}/certs"
+    state: absent
+  delegate_to: localhost

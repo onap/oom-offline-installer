@@ -1,0 +1,13 @@
+- name: "Create certificate directory"
+  file:
+    path: "{{ playbook_dir }}/certs"
+    state: directory
+  delegate_to: localhost
+
+- name: "Create dummy cert file"
+  copy:
+    content: |
+      this is dummy server certificate value
+    dest: certs/rootCA.crt
+  delegate_to: localhost
+
