@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97ecff9c_99a3baf0",
+        "filename": "ansible/roles/application-override/.yamllint",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "In most roles we have common rules for yaml linting, please use them (e.g. copy from application/.yamllint)",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2106a04_22fabafa",
+        "filename": "ansible/roles/application-override/molecule/default/Dockerfile.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "This dockerfile is not needed here, Molecule will provide its own default tempalate.",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4df0a36_1af9a48d",
+        "filename": "ansible/roles/application-override/molecule/default/cleanup.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "This role does not create artifacts created by \"application\" role so is calling \"cleanup-application\" here justified?",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b3e9ed_9e9f4295",
+        "filename": "ansible/roles/application-override/molecule/default/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "Most of this variables are not used by this role so they are not required. If you copy-paste please remove parts that are not needed.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 24
+      },
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "190e99ba_a5598b41",
+        "filename": "ansible/roles/application-override/molecule/default/verify.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "Do we need this?",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e003c7bd_f89790f5",
+        "filename": "ansible/roles/application-override/molecule/ubuntu/Dockerfile.j2",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "This file is not required.",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03722010_33a3f05e",
+        "filename": "ansible/roles/application-override/molecule/ubuntu/molecule.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "See comments to this file in default scenario.",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd0357f8_e7d9d411",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "Any reason for additional spaces in this line?",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c77ccf_e3d41fea",
+        "filename": "ansible/roles/application-override/tasks/main.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "This task does not belong here, app_data_path is being already created in one of the roles that is played  before this one. If this dir is missing in molecule test it should be created at test prepare stage.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 14
+      },
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43e2f531_fb014968",
+        "filename": "ansible/roles/application/tasks/install.yml",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-02-28T13:28:03Z",
+      "side": 1,
+      "message": "You have moved the task from the code to the test framework....",
+      "revId": "70b3ee6f04f9a234cb27f032491a5446654efe19",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
