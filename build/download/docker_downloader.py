@@ -162,7 +162,7 @@ class DockerDownloader(ConcurrentDownloader):
                 # if docker mirroring repository is set
                 image_name_split = image_name.split('/')
                 if (len(image_name_split) > 1) \
-                   and (image_name_split[0].find(".")) \
+                   and (image_name_split[0].find(".")) >= 0 \
                    and not (image_name.startswith('docker.io/')) \
                    and (image_name_split[0] not in self._mirror_exclude):
                     # if image originates from private registry and its name does not start with 'docker.io'
