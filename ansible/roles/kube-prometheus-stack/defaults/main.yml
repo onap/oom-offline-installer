@@ -65,3 +65,8 @@ kube_prometheus_stack:
               resources:
                 requests:
                   storage: 6Gi
+    prometheusOperator:
+      admissionWebhooks:
+        patch:
+          image:
+            sha: ''
