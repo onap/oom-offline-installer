@@ -164,9 +164,11 @@ class DockerDownloader(ConcurrentDownloader):
                 if (len(image_name_split) > 1) \
                    and (image_name_split[0].find(".")) >= 0 \
                    and not (image_name.startswith('docker.io/')) \
+                   and not (image_name.startswith(self._mirror)) \
                    and (image_name_split[0] not in self._mirror_exclude):
                     # if image originates from private registry and its name does not start with 'docker.io'
                     # and it does not originate from excluded registry
+                    # and docker mirror name differs from private registry name
                     # -> download image from docker mirror and retag it to its original name
                     mirrored_image_name = self._mirror + "/" + '/'.join(image_name_split[1:])
                     img = self._docker_client.images.pull(mirrored_image_name)
