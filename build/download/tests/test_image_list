@@ -1,0 +1,6 @@
+nexus3.onap.org:10001/onap/dmaap/dbc-client:1.0.9
+grafana/grafana:8.3.5
+docker.io/busybox:1.32
+docker.io/dibi/envsubst:1
+nexus3.onap.org:10001/onap/clamp-frontend:5.1.5
+alpine:latest
