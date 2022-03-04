@@ -78,14 +78,7 @@ def parse_args():
                         help='Check what is missing. No download.')
     parser.add_argument('--debug', action='store_true', default=False,
                         help='Turn on debug output')
-
-    args = parser.parse_args()
-
-    for arg in ('docker', 'npm', 'http', 'rpm', 'git', 'pypi'):
-        if getattr(args, arg):
-            return args
-
-    parser.error('One of --docker, --npm, --http, --rpm, --git or --pypi must be specified')
+    return parser
 
 
 def log_start(item_type):
@@ -156,7 +149,15 @@ def run_cli():
     if sys.version_info.major < 3:
         log.error('Unfortunately Python 2 is not supported for data download.')
         sys.exit(1)
-    args = parse_args()
+
+    parser = parse_args()
+    args = parser.parse_args()
+
+    for arg in ('docker', 'npm', 'http', 'rpm', 'git', 'pypi'):
+        if getattr(args, arg):
+            break
+        else:
+            parser.error('One of --docker, --npm, --http, --rpm, --git or --pypi must be specified')
 
     console_handler = logging.StreamHandler(sys.stdout)
     console_formatter = logging.Formatter('%(message)s')
