@@ -57,6 +57,7 @@ resources:
       name: { get_param: instance_name }
       image: { get_param: image_name }
       flavor: { get_param: flavor_name }
+      availability_zone: "onap"
       key_name: { get_param: key_name }
       config_drive: true
       networks:
