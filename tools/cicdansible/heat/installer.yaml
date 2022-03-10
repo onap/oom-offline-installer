@@ -34,6 +34,10 @@ parameters:
     constraints:
       - custom_constraint: glance.image
         description: "must specify a valid image name"
+  availability_zone:
+    label: "availability zone"
+    description: "availability zone to use for scheduling instances"
+    type: string
   subnet_cidr:
     label: "private subnet cidr"
     description: "Cidr of a private subnet instances will be connected to"
@@ -213,6 +217,7 @@ resources:
           network: { get_resource: privnet }
           subnet: { get_resource: privsubnet }
           flavor_name: { get_param: node_flavor_name }
+          availability_zone: { get_param: availability_zone }
           notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
           security_group: { get_resource: secgroup }
           demo_network: { get_param: demo_network }
@@ -255,6 +260,7 @@ resources:
       subnet: { get_resource: privsubnet }
       key_name: { get_resource: key }
       flavor_name: { get_param: infra_flavor_name }
+      availability_zone: { get_param: availability_zone }
       image_name: { get_param: image_name }
       notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
       security_group: { get_resource: secgroup }
@@ -280,6 +286,7 @@ resources:
       instance_name: installer
       image_name: { get_param: image_name }
       flavor_name: { get_param: installer_flavor_name }
+      availability_zone: { get_param: availability_zone }
       key_name: { get_resource: key }
       network: { get_resource: privnet }
       subnet: { get_resource: privsubnet }
