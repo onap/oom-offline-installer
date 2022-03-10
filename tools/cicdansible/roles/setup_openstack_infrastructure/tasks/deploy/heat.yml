@@ -30,6 +30,7 @@
       node_flavor_name: "{{ node_flavor_name }}"
       infra_flavor_name: "{{ infra_flavor_name }}"
       installer_flavor_name: "{{ installer_flavor_name }}"
+      availability_zone: "{{ availability_zone }}"
       node_ip: "{{ floating_ips_by_address[first_node_ip].id }}"
       infra_ip: "{{ floating_ips_by_address[infra_ip].id }}"
       installer_ip: "{{ floating_ips_by_address[installer_ip].id }}"
