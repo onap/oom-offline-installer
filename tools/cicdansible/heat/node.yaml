@@ -27,6 +27,8 @@ parameters:
     default: ""
   docker_storage_size:
     type: number
+  availability_zone:
+    type: string
 resources:
   #Volume for storing /var/lib/docker for node.
   docker_storage:
@@ -47,6 +49,7 @@ resources:
       network: { get_param: network }
       subnet: { get_param: subnet }
       flavor_name: { get_param: flavor_name }
+      availability_zone: { get_param: availability_zone }
       notify_command: { get_param: notify_command }
       security_group: { get_param: security_group }
       scheduler_hints: { get_param: scheduler_hints }
