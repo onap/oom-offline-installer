@@ -171,13 +171,6 @@ resources:
           data: { num_nodes: { get_param: num_nodes } }
           #This is number of all nodes + 2 (infra instance and installer)
           expression: "$.data.num_nodes + 2"
-  #Affinity Policy - nodes spread onto as many physical machines as possible (aka. .anti-affinity.).
-  anti_affinity_group:
-   type: OS::Nova::ServerGroup
-   properties:
-     name: k8s nodes on separate computes
-     policies:
-      - anti-affinity
   #Resource group to deploy n nodes using node template for each, each node numbered starting from 0.
   nodes:
     type: OS::Heat::ResourceGroup
@@ -194,8 +187,6 @@ resources:
           flavor_name: { get_param: node_flavor_name }
           notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
           security_group: { get_resource: secgroup }
-          scheduler_hints:
-            group: { get_resource: anti_affinity_group }
     depends_on: [routercon, instance_wait_handle]
   #Nfs storage volume for first node.
   nfs_storage:
@@ -233,7 +224,6 @@ resources:
       image_name: { get_param: image_name }
       notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
       security_group: { get_resource: secgroup }
-      scheduler_hints: {}
     depends_on: [instance_wait_handle]
   #Volume attachment for infra node.
   resources_storage_attachment:
@@ -259,7 +249,6 @@ resources:
       subnet: { get_resource: privsubnet }
       notify_command: { get_attr: ["instance_wait_handle", "curl_cli"] }
       security_group: { get_resource: secgroup }
-      scheduler_hints: {}
     depends_on: instance_wait_handle
   #Floating ip for installer.
   installer_fip_assoc:
