@@ -42,5 +42,5 @@ source ${VENV_PATH}/bin/activate
 if [ ! -z ${VIRTUAL_ENV} ]; then
     echo "Activated virtual env in ${VIRTUAL_ENV}"
     pip -q install -U pip
-    pip -q install molecule==3.3.0 Jinja2==2.11.3 ansible-base==2.10.8 ansible==3.2.0 docker molecule-docker==0.2.4 pytest-testinfra yamllint flake8 markupsafe==2.0.1
+    pip -q install ansible-lint==5.4.0 molecule==3.3.0 Jinja2==2.11.3 ansible-base==2.10.8 ansible==3.2.0 docker molecule-docker==0.2.4 pytest-testinfra yamllint flake8 markupsafe==2.0.1
 fi
