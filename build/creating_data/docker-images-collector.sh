@@ -199,7 +199,7 @@ echo "Building project..."
 export SKIP_LINT=TRUE
 export DOCKER_CONTAINER
 export HELM_BIN
-make -e all > /dev/null; make -e ${PROJECT} > /dev/null
+make -e all > /dev/null
 popd
 
 # Create the list from all enabled subsystems
