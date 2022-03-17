@@ -16,5 +16,4 @@ certificates:
   locality_name: Krakow
 app_helm_build_targets:
   - all
-  - onap
 app_helm_chart_name: onap
