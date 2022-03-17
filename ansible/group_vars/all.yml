@@ -111,10 +111,8 @@ app_helm_charts_infra_directory: "{{ app_data_path }}/helm_charts"
 app_helm_chart_name:
 
 # Targets for helm charts repository build
-# e.g. for ONAP Casablanca
 # app_helm_build_targets:
 #   - all
-#   - onap
 app_helm_build_targets:
 
 # Directory with helm plugins
