@@ -26,6 +26,8 @@ infra_flavor_name: ""
 installer_flavor_name: ""
 #Name of the image for instances.
 image_name: ""
+#Name of openstack availability zone to use for instances
+availability_zone: "nova"
 #Whether to use a volume for /dockerdata-nfs or to use ephemeral disk.
 #True by default, most openstack providers offer ssd volumes probably.
 use_volume_for_nfs: true
