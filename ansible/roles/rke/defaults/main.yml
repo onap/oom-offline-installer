@@ -7,6 +7,7 @@ kubernetes_config_dir: "/etc/kubernetes"
 kubelet:
   static_config: "kubelet-static-config.yml"
   runtime_request_timeout: "2m0s"
+  feature_gates: "DynamicKubeletConfig=true"
 cluster_config_dir: "{{ app_data_path }}/cluster"
 # Whether dashboard is exposed.
 rke_dashboard_exposed: true
