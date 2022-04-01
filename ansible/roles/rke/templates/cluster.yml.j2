@@ -70,6 +70,7 @@ services:
     extra_args:
         dynamic-config-dir: "/kubelet-dynamic-config-dir"
         config: "/kubelet-static-config.yml"
+        feature-gates: {{ kubelet.feature-gates }}
     extra_binds:
         - "{{ kubernetes_config_dir }}/{{ kubelet.static_config }}:/kubelet-static-config.yml:ro"
     extra_env: []
