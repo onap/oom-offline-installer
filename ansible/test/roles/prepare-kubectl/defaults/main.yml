@@ -4,4 +4,4 @@
 # cases where it is used by verification tests of other roles).
 kubectl_install: false
 # Kubectl version.
-kubectl_version: 1.19.14
+kubectl_version: 1.22.4
