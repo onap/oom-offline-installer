@@ -13,3 +13,4 @@ rancher/mirrored-pause:3.6
 rancher/nginx-ingress-controller:nginx-1.1.0-rancher1
 rancher/rke-tools:v0.1.80
 rancher/mirrored-flannelcni-flannel:v0.17.0
+rancher/mirrored-ingress-nginx-kube-webhook-certgen:v1.1.1
