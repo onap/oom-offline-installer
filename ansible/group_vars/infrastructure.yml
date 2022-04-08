@@ -30,3 +30,4 @@ chartmuseum_server_image: chartmuseum/chartmuseum
 kube_prometheus_stack_enabled: false
 kube_prometheus_stack_version: 32.2.1
 cert_manager_version: 1.5.4
+strimzi_kafka_version: 0.28.0
