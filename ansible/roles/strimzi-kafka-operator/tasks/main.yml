@@ -1,0 +1,22 @@
+---
+- name: Check {{ strimzi_kafka.helm_release_name }} helm package exists
+  stat:
+    path: "{{ app_data_path }}/downloads/strimzi-kafka-operator-helm-3-chart-{{ strimzi_kafka_version }}.tgz"
+  register: strimzi_kafka_package_stat
+  failed_when: not strimzi_kafka_package_stat.stat.exists
+
+- name: Generate helm values file
+  copy:
+    dest: "{{ strimzi_kafka.helm_values_file }}"
+    content: "{{ strimzi_kafka.helm_values | to_nice_yaml }}"
+
+- name: "Install Helm release {{ strimzi_kafka.helm_release_name }}"
+  community.kubernetes.helm:
+    release_name: "{{ strimzi_kafka.helm_release_name }}"
+    release_namespace: "{{ strimzi_kafka.k8s_namespace }}"
+    create_namespace: True
+    chart_ref: "{{ app_data_path }}/downloads/strimzi-kafka-operator-helm-3-chart-{{ strimzi_kafka_version }}.tgz"
+    values_files: "{{ strimzi_kafka.helm_values_file }}"
+    wait: True
+    wait_timeout: "{{ strimzi_kafka.helm_timeout }}"
+  tags: molecule-notest

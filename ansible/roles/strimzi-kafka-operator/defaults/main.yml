@@ -1,0 +1,8 @@
+---
+strimzi_kafka:
+  k8s_namespace: strimzi-system
+  helm_release_name: strimzi-kafka-operator
+  helm_timeout: "240s"
+  helm_values_file: "{{ app_data_path }}/strimzi_kafka.yaml"
+  helm_values:
+    watchAnyNamespace: true

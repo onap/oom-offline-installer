@@ -1,0 +1,5 @@
+---
+- name: Provision strimzi-kafka-operator into Kubernetes cluster
+  hosts: infrastructure
+  roles:
+    - strimzi-kafka-operator
