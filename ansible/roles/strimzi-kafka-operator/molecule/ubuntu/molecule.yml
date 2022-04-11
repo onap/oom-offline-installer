@@ -1,0 +1,31 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint: |
+  set -e
+  yamllint .
+  ansible-lint .
+  flake8
+platforms:
+  - name: infrastructure-ubuntu-cert-manager
+    image: ubuntu:18.04
+    groups:
+      - infrastructure
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: ../../../../test/roles
+    ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        app_name: onap
+        app_data_path: "/opt/{{ app_name }}"
+  playbooks:
+    prepare: ../default/prepare.yml
+    converge: ../default/converge.yml
+verifier:
+  name: testinfra
+  directory: ../default/tests
