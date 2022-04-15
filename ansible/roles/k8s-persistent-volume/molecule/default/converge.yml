@@ -4,8 +4,6 @@
   pre_tasks:
     - name: Include kubernetes group variables
       include_vars: ../../../../group_vars/kubernetes.yml
-    - name: Include test scenario variables
-      include_vars: vars.yml
   tasks:
     - name: "Include k8s-persistent-volume"
       include_role:

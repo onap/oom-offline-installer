@@ -1,0 +1,6 @@
+---
+- name: Prepare for k8s-persistent-volume tests
+  hosts: all
+  roles:
+    - prepare-k8s-persistent-volume
+    - prepare-kubectl

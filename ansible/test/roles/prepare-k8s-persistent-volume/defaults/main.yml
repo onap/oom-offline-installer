@@ -1,0 +1,7 @@
+---
+kind_version: 0.12.0
+kind_arch: "amd64"
+
+docker:
+  RedHat: 'docker'
+  Debian: 'docker.io'
