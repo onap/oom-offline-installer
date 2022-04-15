@@ -1,10 +1,18 @@
 ---
 k8s_volumes:
   - name: kube-prometheus-prometheus
-    capacity: "6Gi"
+    capacity: "20Mi"
     path_prefix: "{{ nfs_mount_path }}/kube-prometheus"
     owner: 1000  # derived from prometheus.prometheusSpec.securityContext.runAsUser
     group: 2000  # derived from prometheus.prometheusSpec.securityContext.fsGroup
   - name: kube-prometheus-grafana
-    capacity: "4Gi"
+    capacity: "25Mi"
     path_prefix: "{{ nfs_mount_path }}/kube-prometheus"
+
+pip_client:
+  RedHat:
+    name: "python3-pip"
+    version: "22.0.4"
+  Debian:
+    name: "python3-pip"
+    version: "21.3.1"
