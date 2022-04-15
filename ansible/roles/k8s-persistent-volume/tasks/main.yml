@@ -1,9 +1,26 @@
 ---
-- name: Install OpenShift Python client library  # community.kubernetes.k8s module dependency
+- name: Install python2-openshift  # community.kubernetes.k8s module dependency
   package:
-    name: 'python2-openshift'
+    name: python2-openshift
     state: present
-  when: ansible_os_family == 'RedHat'
+  when: ansible_os_family == "RedHat"
+
+- name: Install pip
+  package:
+    name: python3-pip
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Install OpenShift Python client library
+  pip:
+    name: openshift
+  environment:
+    PIP_DISABLE_PIP_VERSION_CHECK: 1
+  when: ansible_os_family == "Debian"
+
+- name: Check volumes config
+  debug:
+    msg: "k8s volumes: {{ k8s_volumes }}"
 
 - name: Create k8s persistent volumes
   community.kubernetes.k8s:

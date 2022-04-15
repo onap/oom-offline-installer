@@ -1,0 +1,4 @@
+---
+- name: "Delete k8s cluster in kind"
+  command: "/root/kind-linux-{{ kind_arch }} delete cluster"
+  ignore_errors: true
