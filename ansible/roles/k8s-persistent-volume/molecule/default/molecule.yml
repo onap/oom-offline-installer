@@ -14,10 +14,17 @@ platforms:
     pre_build_image: true
     groups:
       - infrastructure
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: "host"
 provisioner:
   name: ansible
   env:
     ANSIBLE_ROLES_PATH: ../../../../test/roles
     ANSIBLE_LIBRARY: ../../../../library
+  inventory:
+    group_vars:
+      all:
+        kubectl_install: true
 verifier:
   name: testinfra

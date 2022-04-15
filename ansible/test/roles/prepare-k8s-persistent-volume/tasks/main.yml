@@ -1,0 +1,19 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: true
+  when: ansible_facts.os_family == 'Debian'
+
+- name: Install docker  # needed for kind
+  package:
+    name: "{{ docker[ansible_facts.os_family] }}"
+    state: present
+
+- name: "Download kind-{{ kind_version }}"
+  get_url:
+    url: "https://github.com/kubernetes-sigs/kind/releases/download/v{{ kind_version }}/kind-linux-{{ kind_arch }}"
+    dest: "/root"
+    mode: 0755
+
+- name: "Setup k8s cluster with kind"
+  command: "/root/kind-linux-{{ kind_arch }} create cluster"
