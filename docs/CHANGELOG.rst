@@ -3,6 +3,13 @@ CHANGELOG
 
 -----
 
+2022-04-19
+----------
+
+- RKE upgrade to 1.3.8
+- Kubernetes version deployed by RKE has been upgraded to v1.22.7
+- Added provisioning of the Kubernetes Strimzi Kafka Operator
+
 2022-02-18
 ----------
 
