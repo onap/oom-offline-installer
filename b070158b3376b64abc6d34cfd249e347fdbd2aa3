@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6178720e_44986395",
+        "filename": "ansible/roles/k8s-persistent-volume/defaults/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-04-19T10:40:35Z",
+      "side": 1,
+      "message": "Is this change reasonable? 20MB is way to few for prometheus and grafana volumes.",
+      "revId": "b070158b3376b64abc6d34cfd249e347fdbd2aa3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
