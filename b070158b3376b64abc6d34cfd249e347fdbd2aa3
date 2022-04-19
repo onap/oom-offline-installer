@@ -16,6 +16,29 @@
       "revId": "b070158b3376b64abc6d34cfd249e347fdbd2aa3",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "782ba0ec_b66752c4",
+        "filename": "ansible/roles/k8s-persistent-volume/tasks/main.yml",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 5097
+      },
+      "writtenOn": "2022-04-19T10:44:29Z",
+      "side": 1,
+      "message": "We don\u0027t need pip on target hosts. Besides this would fail while provisioning due to missing deb packages. If you require OpenShift library for molecule itself then please add the required pip package in this file:\nansible/test/bin/install-molecule.sh (line 45)",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 37
+      },
+      "revId": "b070158b3376b64abc6d34cfd249e347fdbd2aa3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
