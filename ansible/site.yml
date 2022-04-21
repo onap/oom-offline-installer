@@ -14,11 +14,11 @@
 #    is a precondition, which should be done during configuration of the
 #    installer
 - import_playbook: resources.yml
-- import_playbook: infrastructure.yml
-- import_playbook: rke.yml
-- import_playbook: nfs.yml
-- import_playbook: kube_prometheus.yml
-  when: kube_prometheus_stack_enabled
-- import_playbook: cert_manager.yml
-- import_playbook: strimzi_kafka.yml
-- import_playbook: application.yml
+#- import_playbook: infrastructure.yml
+#- import_playbook: rke.yml
+#- import_playbook: nfs.yml
+#- import_playbook: kube_prometheus.yml
+#  when: kube_prometheus_stack_enabled
+#- import_playbook: cert_manager.yml
+#- import_playbook: strimzi_kafka.yml
+#- import_playbook: application.yml
