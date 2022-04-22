@@ -5,14 +5,6 @@
     mode: 0700
     state: directory
 
-- name: Add kubernetes nodes host keys to known_hosts file
-  known_hosts:
-    name: "{{ hostvars[item].cluster_ip }}"
-    key: "{{ hostvars[item].cluster_ip }} ssh-rsa {{ hostvars[item].ansible_ssh_host_key_rsa_public }}"
-    hash_host: true
-    state: present
-  loop: "{{ groups['kubernetes'] }}"
-
 - name: "Ensure {{ cluster_config_dir }} is present"
   file:
     path: "{{ cluster_config_dir }}"
