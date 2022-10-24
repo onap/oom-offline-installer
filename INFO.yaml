@@ -61,6 +61,26 @@ committers:
       company: 'Samsung'
       id: 'kopasiak'
       timezone: 'Europe/Warsaw'
+    - name: 'Jack Lucas'
+      email: 'jflos@sonoris.net'
+      company: 'Individual'
+      id: 'jackl'
+      timezone: 'USA/EST'
+    - name: 'Fiachra Corcoran'
+      email: 'fiachra.corcoran@est.tech'
+      company: 'ericsson'
+      id: 'efiacor'
+      timezone: 'Europe/Dublin'
+    - name: 'Dan Timoney'
+      email: 'dtimoney@att.com'
+      id: 'djtimoney'
+      company: 'ATT'
+      timezone: 'America/New_York'
+    - name: 'Andreas Geissler'
+      email: 'andreas-geissler@telekom.de'
+      id: 'andreasgeissler'
+      company: 'Deutsche Telekom'
+      timezone: 'Europe/Berlin'
 tsc:
     approval: 'https://lists.onap.org/pipermail/onap-tsc'
     changes:
@@ -75,3 +95,19 @@ tsc:
           name: 'Krzysztof Opasiak'
           # yamllint disable-line rule:line-length
           link: 'https://lists.onap.org/g/onap-tsc/topic/committer_promotion_request/70242499?p=,,,20,0,0,0::recentpostdate%2Fsticky,,,20,2,0,70242499'
+        - type: 'Addition'
+          name: 'Jack Lucas'
+          # yamllint disable-line rule:line-length
+          link: 'https://wiki.onap.org/display/DW/Committer+Promotion+for+%5BOOM%5D+%3A+Jack+Lucas'
+        - type: 'Addition'
+          name: 'Fiachra Corcoran'
+          # yamllint disable-line rule:line-length
+          link: 'https://wiki.onap.org/display/DW/Committer+Promotion+Request+for+%5BOOM%5D+-+Fiachra+Corcoran'
+        - type: 'Addition'
+          name: 'Dan Timoney'
+          # yamllint disable-line rule:line-length
+          link: 'https://wiki.onap.org/display/DW/Committer+Promotion+Request+for+%5BOOM%5D+-+Dan+Timoney'
+        - type: 'Addition'
+          name: 'Andreas Geissler'
+          # yamllint disable-line rule:line-length
+          link: 'https://wiki.onap.org/display/DW/Committer+Promotion+Request+for+%5BOOM%5D+%3A+Andreas+Geissler'
