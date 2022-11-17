@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Marcin Sebastian Krasowski <lfn@krasm.net>
+Code-Review+2: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-by: Thomas Kulik <thomas.kulik@telekom.de>
+Submitted-at: Thu, 17 Nov 2022 12:28:51 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/oom/offline-installer/+/128625
+Project: oom/offline-installer
+Branch: refs/heads/istanbul
